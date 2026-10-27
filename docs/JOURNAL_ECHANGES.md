@@ -61,3 +61,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien fournit la fiche « architecture de sécurité (relais + sélecteur Auto/Manu) », direction souhaitée, à critiquer.
 - Appliquée : f40 (notes), f41 (shunts Manu-A / Manu-B), f42 refait (sorties 1/2/3), f43 créé. Résultat `schema/generes/TTK_2026-10-27_v2.xrs` : 28 folios, 136 symboles, 630 fils, 0 problème au contrôle interne, 0 erreur `xrs_tool verifier`.
 - Écarts relevés : voir `docs/ARCHITECTURE_SECURITE_2026-10-27.md`. Revue d'ensemble faite (réponse du 27/10 soir).
+
+## 27/10/2026 (nuit)
+- Julien : capteur magnétique codé RS 0163138 ; affectation des sorties « je ne sais pas » ; -K511 « pour quelles fonctions ? ».
+- Claude : affectation des sorties figée avec justification ; explication de -K511 et proposition de le supprimer ; demande de la référence fabricant du capteur codé.

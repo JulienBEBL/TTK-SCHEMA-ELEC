@@ -38,3 +38,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Bornes -X711 : 1-6 AU, 7-8 Auto-A, 9-10 Auto-B, 11-12 Auto-C, 13-14 Manu-A, 15-16 Manu-B, 17-18 Manu-C, 19-20 Manu-D, 21-23 alimentation IHM.
 - [D] Nouveau folio 43 « SECURITE - FONCTIONNEMENT » : contacts du sélecteur, états, transitions, points à vérifier, risques résiduels. Une zone de notes par folio de sécurité.
 - I1.5 = diagnostic -K401 (borne à confirmer).
+
+## 27/10/2026 (nuit)
+- [C] Capot magnétique : capteur **codé** commandé (RS 0163138, lien donné par Julien). Remplace « non codé » de la base. Fabricant, référence et contacts à relever (page RS inaccessible depuis la session).
+- [D par Claude, Julien ne sait pas] Sorties -K401 figées : 13-14 freins + 48 V, 23-24 -KM1 / -KM2, 33-34 STO. Raison : le STO a une sortie dédiée qui ne coupe que quelques mA, jamais de bobine, donc pas d'usure du contact par les charges inductives ; freins et 48 V ensemble car ils tombent sur le même événement. À revoir seulement si la notice XPSUAF13AP montre des sorties différentes.
+- [?] -K511 (ordre automate -KM1 / -KM2) : Julien demande à quoi il sert. Proposition : le supprimer (option A), en attente de sa réponse.
