@@ -56,3 +56,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Modifications dans `ttk_schema.py` : câbles W201/202/203 et W211/212/213 en direct ; f41 avec pontage Manu des capots ; f42 refait (STO, -K511, -KM1/-KM2, freins et 48 V) ; f50 entrées (liste du 06/10) ; f51 sorties CPU + bobine -K511 ; f52 SM 1223 (colonne, voyants, alarme switch) ; f31 voyant tension -P512 ; bornes X711 1-21.
 - Résultat : `schema/generes/TTK_2026-10-27_v1.xrs` (133 symboles, 627 fils, 0 problème au contrôle interne, 0 erreur `xrs_tool verifier`).
 - Non vérifié : ouverture dans WinRelais (aucun accès). À faire par Julien.
+
+## 27/10/2026 (soir) : passage en Opus, partie sécurité
+- Julien fournit la fiche « architecture de sécurité (relais + sélecteur Auto/Manu) », direction souhaitée, à critiquer.
+- Appliquée : f40 (notes), f41 (shunts Manu-A / Manu-B), f42 refait (sorties 1/2/3), f43 créé. Résultat `schema/generes/TTK_2026-10-27_v2.xrs` : 28 folios, 136 symboles, 630 fils, 0 problème au contrôle interne, 0 erreur `xrs_tool verifier`.
+- Écarts relevés : voir `docs/ARCHITECTURE_SECURITE_2026-10-27.md`. Revue d'ensemble faite (réponse du 27/10 soir).

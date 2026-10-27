@@ -30,3 +30,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Câbles moteurs : Julien laisse le choix. Retenu : motor U/V/W, frein (2G1,5) et sonde TF (2G1 blindé) en direct armoire -> moteur, sans bornier intermédiaire (moins de connexions, CEM, blindage repris à 360°). Les bornes X701.17 à .24 disparaissent.
 - [H] Appliqué sans confirmation (à valider) : Q12 / Q13 supprimés (déjà dans le script, décision du 04/10 ; remplacés par les contacts de -K401) ; liste d'E/S du 06/10 (S412 I0.0, S411 I0.1, fins de course I0.6 à I1.1, retours KM1 / KM2 / Q423 I1.2 à I1.4, I0.5 = mode Manu) ; sorties CPU Q0.0 à Q0.2 / Q0.4 à Q0.6 = PUL / DIR / ENA, Q0.7 = relais d'interface -K511 ; SM 1223 : Q8.0 à Q8.2 colonne, Q8.3 voyant réarmement, Q8.4 voyant défaut, I8.4 alarme switch.
 - [H] Architecture sécurité f42 conforme au §3.5 : 13-14 STO des 2 variateurs, 23-24 + -S413 Auto + -K511 -> -KM1 / -KM2, 33-34 -> -Q421 / -Q422 / -Q423 (sans passer par -S413).
+
+## 27/10/2026 (soir) : sécurité selon la fiche de Julien
+- [D] Sorties -K401 : 13-14 freins (+ 48 V via Manu-D), 23-24 Auto-A + ordre automate -> -KM1 / -KM2, 33-34 Auto-B -> STO. Affectation 1/2/3 proposée, à valider.
+- [D] 48 V pas-à-pas alimenté uniquement en Manu (Manu-D, 83-84). Remplace « -Q423 sur la sortie de sécurité en Auto et en Manu » (v1).
+- [D] Contacts -S413 : Auto-A 13-14, Auto-B 23-24, Auto-C 33-34, Auto-D 43-44 (réserve), Manu-A 53-54, Manu-B 63-64, Manu-C 73-74, Manu-D 83-84 (numérotation provisoire).
+- [D] Bornes -X711 : 1-6 AU, 7-8 Auto-A, 9-10 Auto-B, 11-12 Auto-C, 13-14 Manu-A, 15-16 Manu-B, 17-18 Manu-C, 19-20 Manu-D, 21-23 alimentation IHM.
+- [D] Nouveau folio 43 « SECURITE - FONCTIONNEMENT » : contacts du sélecteur, états, transitions, points à vérifier, risques résiduels. Une zone de notes par folio de sécurité.
+- I1.5 = diagnostic -K401 (borne à confirmer).
