@@ -21,6 +21,7 @@ MODELE = os.path.join(ICI, "..", "schema", "modele", "SCHEMA_ELEC_TTK.xrs")
 REP = lire_tableau.reperes(TABLEAU)
 FOL = lire_tableau.folios(TABLEAU)
 # décisions postérieures au classeur (27/10/2026) : le classeur de Julien n'est pas modifié, voir livrables/MAJ_Reperes_2026-10-27.csv
+REP["B412"].update({"fab": "ifm MN508S (RS 016-3138)", "carac": "codé - 2 NO + 1 NF - M12 - 24 V 50 mA"})
 REP["S413"].update({"fab": "Eaton T0-4-8223/E", "carac": "8 contacts NO (4 par position) - numérotation provisoire"})
 FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "42") + 1,
            {"num": "43", "titre": "SECURITE - FONCTIONNEMENT", "desc": "SELECTEUR AUTO/MANU : CONTACTS, ETATS, TRANSITIONS",
@@ -637,7 +638,8 @@ notes(f, 22000, 12400, 29400, [
     "Un contact Manu par voie, jamais commun.",
     "Contacts NO des capots -> automate (discordance).",
     "! -S413 : numérotation provisoire (photo plaque).",
-    "! -B412 : contact fermé capot fermé à confirmer.",
+    "! -B412 (ifm MN508S, 2 NO + 1 NF) : 1 NO en voie 2,",
+    "! NF vers I0.3, 2e NO en réserve ; brochage M12 à relever.",
 ])
 
 # ======================================================================== 42 SECURITE - SORTIES
@@ -844,7 +846,7 @@ renvoi("41", VOIES["B412"][1], f, I50["I0.3"], "24")
 texte(f, 24800, 12400, "X1 P1 : PROFINET -> -K541 (f54)", 200)
 g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
     ["Entrée", "Repère", "Fonction"], ["I0.0", "-S412", "AU pupitre actionné (NO)"], ["I0.1", "-S411", "AU armoire actionné (NO)"],
-    ["I0.2", "-B411", "capot fermé (mécanique)"], ["I0.3", "-B412", "capot fermé (magnétique)"],
+    ["I0.2", "-B411", "capot ouvert, mécanique (NO aux.)"], ["I0.3", "-B412", "capot ouvert, magnétique (NF aux.)"],
     ["I0.4", "-S413", "mode Auto"], ["I0.5", "-S413", "mode Manu"],
     ["I0.6 / I0.7", "-B501 / -B502", "fins de course axe 1 min / max (NF)"],
     ["I1.0 / I1.1", "-B503 / -B504", "fins de course axe 2 min / max (NF)"],
