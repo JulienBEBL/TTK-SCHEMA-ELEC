@@ -21,3 +21,10 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
   6. Préfixe librairie de S414 = H alors que le repère est S ; LC1D09BD avec 5 préfixes (KM, Q) : voulu (exception R8), mais à ne pas laisser comme « attention » au contrôle.
   7. Source de vérité : `test_xrs_claude.xrs` est régénéré par `ttk_schema.py`. Toute modification faite à la main dans WinRelais est écrasée à la régénération. À trancher : script ou fichier WinRelais, lequel fait foi ?
 - Remise en question : BASE du 22/10 décrit Julien comme « dessinateur » (faux, corrigé) et conseille de ne pas toucher au fichier de travail : cohérent avec la base de session.
+
+## 27/10/2026 (suite) : deux .xrs reçus
+- Archivés : `schema/recus/2026-10-27_SCHEMA_ELEC_TTK_main.xrs` (à la main) et `2026-10-27_test_xrs_claude_script.xrs` (généré par script).
+- Fichier à la main : 22 folios, 52 symboles, compteur 18120. Quasi identique à l'état du 22/10 (anomalies inchangées sauf T7 recalé sur la grille et le fil PUL+ de T7 repris). Reste : repères anciens, F1:N, G1:L, G2:L, T5:H1-H3 à 1 mm, M3/K4/K5 hors grille, K2/K3 et K4/K5 en double, noms internes de folios en double, descriptions f31 et f40 fausses, synoptique avec image à chemin absolu.
+- Fichier script : 27 folios, 131 symboles, 0 hors grille, 0 erreur ≤ 2 mm, repères cibles, f31 à f60 remplis, f70/f71 présents. Plus de logo (le synoptique f04 n'a plus d'image).
+- 22 « attente? » à 4 mm (f12, f13, f41, f42) : faux positifs de l'outil (extrémité libre du même fil que la broche). À corriger dans `xrs_check.py`.
+- Point ouvert : lequel fait foi ? Voir réponse de Julien.
