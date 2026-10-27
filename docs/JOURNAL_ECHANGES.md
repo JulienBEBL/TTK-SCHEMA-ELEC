@@ -43,3 +43,9 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
   - f42 : STO via S413 Auto (13-14, 23-24) ; 33-34 via S413 vers « +24 VS sorties » (alimentation des sorties automate) ; bobines KM1, KM2, Q421, Q422, Q423 commandées « par l'automate » ; ordre API KM1/KM2 non décidé. Pas de boucle de retour EDM sur Y1-Y2 visible.
   - `Gen` et `ttk_schema.py` écrivent « 22/10/2026 » en dur.
 - Conséquence : f41 et f42 sont à refaire avec les décisions de l'architecture figée (§3.5 de la base de session) une fois les points ouverts tranchés.
+
+## 27/10/2026 (suite 3) : point d'avancement et plan de tâches
+- Demande de Julien : repartir en ingénieur, état d'avancement, tâches, questions.
+- Constat : les repères cibles sont déjà appliqués dans le fichier script. La question « repères maintenant ou à la fin » est caduque si le fichier script devient la base.
+- Questions bloquantes posées : (1) base de travail, (2) architecture sécurité f41/f42 et S413, (3) Q12/Q13 et 24 V commuté, (4) liste d'E/S et relais d'interface Q0.7.
+- Tâches proposées : voir `docs/PLAN_TACHES.md`.
