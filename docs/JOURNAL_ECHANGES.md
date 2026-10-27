@@ -28,3 +28,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Fichier script : 27 folios, 131 symboles, 0 hors grille, 0 erreur ≤ 2 mm, repères cibles, f31 à f60 remplis, f70/f71 présents. Plus de logo (le synoptique f04 n'a plus d'image).
 - 22 « attente? » à 4 mm (f12, f13, f41, f42) : faux positifs de l'outil (extrémité libre du même fil que la broche). À corriger dans `xrs_check.py`.
 - Point ouvert : lequel fait foi ? Voir réponse de Julien.
+
+## 27/10/2026 (suite) : outils Python reçus
+- Archivés dans `outils/` : `xrs_tool.py` (lecture, `verifier`), `xrs_edit.py` (édition sûre), `xrs_gen.py` (générateur). Manque encore `ttk_schema.py` (description du schéma) et `corrections_*.py`.
+- `xrs_tool.py verifier` donne : fichier à la main 8 erreurs / 62 attentions ; fichier script 0 erreur / 27 attentions (identique au rapport du 22-23/10). Il traite déjà le faux positif « extrémité libre à 4 mm de sa propre broche » : `xrs_check.py` (annexe A) est donc redondant, on utilise `xrs_tool.py`.
+- Constat : références croisées toujours à -1 dans le fichier script (pas de lien bobine ↔ contacts). Dates codées en dur « 22/10/2026 » dans `xrs_gen.py` (cartouche, auteur des symboles).
