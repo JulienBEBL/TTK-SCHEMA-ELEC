@@ -49,3 +49,10 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Constat : les repères cibles sont déjà appliqués dans le fichier script. La question « repères maintenant ou à la fin » est caduque si le fichier script devient la base.
 - Questions bloquantes posées : (1) base de travail, (2) architecture sécurité f41/f42 et S413, (3) Q12/Q13 et 24 V commuté, (4) liste d'E/S et relais d'interface Q0.7.
 - Tâches proposées : voir `docs/PLAN_TACHES.md`.
+
+## 27/10/2026 (suite 4) : génération du .xrs en session
+- Julien : « tu dois générer le .xrs, je le télécharge, je teste dans WinRelais et je te fais des retours ». Réponses : S413 = 4 NO par position (8 au total) ; voyants : 2 minimum ; parafoudre supprimé ; 5G1,5 en réserve ; XB5AD25 supprimé ; câbles moteurs : choix laissé.
+- Mise en place : `schema/modele/`, `outils/librairie/` (symboles reconstruits, `reconstruire_librairie.py`), `ttk_schema.py` et `xrs_gen.py` rendus portables (chemins relatifs, `TTK_LIB`, `TTK_DATE`). Reproduction du fichier script du 27/10 : 131 symboles, 597 fils, 0 problème.
+- Modifications dans `ttk_schema.py` : câbles W201/202/203 et W211/212/213 en direct ; f41 avec pontage Manu des capots ; f42 refait (STO, -K511, -KM1/-KM2, freins et 48 V) ; f50 entrées (liste du 06/10) ; f51 sorties CPU + bobine -K511 ; f52 SM 1223 (colonne, voyants, alarme switch) ; f31 voyant tension -P512 ; bornes X711 1-21.
+- Résultat : `schema/generes/TTK_2026-10-27_v1.xrs` (133 symboles, 627 fils, 0 problème au contrôle interne, 0 erreur `xrs_tool verifier`).
+- Non vérifié : ouverture dans WinRelais (aucun accès). À faire par Julien.

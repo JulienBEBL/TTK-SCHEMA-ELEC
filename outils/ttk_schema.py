@@ -14,12 +14,14 @@ import lire_tableau
 from xrs_gen import Gen, check
 
 ICI = os.path.dirname(os.path.abspath(__file__))
-SORTIE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ICI, "..", "test_xrs_claude.xrs")
-TABLEAU = sys.argv[2] if len(sys.argv) > 2 else r"C:\Users\Julien\Downloads\TTK_Plan_Folios_Reperes.xlsx"
-MODELE = os.path.join(ICI, "..", "SCHEMA_ELEC_TTK.xrs")
+SORTIE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ICI, "..", "schema", "generes", "TTK_genere.xrs")
+TABLEAU = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ICI, "..", "livrables", "TTK_Plan_Folios_Reperes.xlsx")
+MODELE = os.path.join(ICI, "..", "schema", "modele", "SCHEMA_ELEC_TTK.xrs")
 
 REP = lire_tableau.reperes(TABLEAU)
 FOL = lire_tableau.folios(TABLEAU)
+# décisions postérieures au classeur (27/10/2026) : le classeur de Julien n'est pas modifié, voir livrables/MAJ_Reperes_2026-10-27.csv
+REP["S413"].update({"fab": "Eaton T0-4-8223/E", "carac": "8 contacts NO (4 par position) - numérotation provisoire"})
 for f in FOL:      # AU et sélecteur dessinés là où travaillent leurs contacts (règle R4) : f60 = IHM seule
     if f["num"] == "60":
         f["desc"] = "IHM KTP700 : ALIMENTATION ET LIAISONS DU PUPITRE"
@@ -64,6 +66,7 @@ def contacteur(xsy, rep, f, x, y, **kw):
     r = REP.get(rep, {})
     fab = r.get("fab", "").replace("Schneider ", "Schneider Electric ")
     champs = {2: r.get("des", ""), 3: fab, 4: "3P - 9 A AC-3 - bobine 24 V CC (f42)"}
+    kw.setdefault("prefix", "KM" if rep.startswith("KM") else "Q")
     return g.place(xsy, rep, F[f], x, y, champs=champs, ref=(), loc=loc(rep), wrap=24, **kw)
 
 
@@ -114,7 +117,8 @@ g.tableau(F["01"], 4000, 7600, [6000, 10000], 500, [
 g.tableau(F["01"], 4000, 12400, [1600, 2800, 12600, 3000], 500, [
     ["Indice", "Date", "Objet", "Par"],
     ["A", "22/10/2026", "Création - reconstruction d'après TTK_Plan_Folios_Reperes.xlsx", "THRO.J"],
-    ["", "", "", ""], ["", "", "", ""],
+    ["B", "27/10/2026", "Sécurité f41-f42, câbles frein / TF séparés, E/S automate, colonne et voyants", "THRO.J"],
+    ["", "", "", ""],
 ], size=250)
 
 rows = [["N°", "Titre", "Description", "Ind."]] + [[f["num"], f["titre"], f["desc"][:70], "A"] for f in FOL]
@@ -190,14 +194,14 @@ for x, y, t in blocs:
 liaisons = [
     (11600, 1400, 11600, 2400, 11800, 1500, "-W101 réseau client 5G2,5"),
     (18800, 6000, 20400, 6000, 18900, 6600, "-W711 + PROFINET"),
-    (18800, 15200, 20400, 15200, 13600, 15000, "-W201 -W202 -W211 -W212 (moteurs)"),
+    (18800, 15200, 20400, 15200, 13600, 15000, "-W201 -W202 -W203 -W211 -W212 -W213 (moteurs)"),
     (18800, 16000, 20400, 16000, 13600, 15800, "-X701 capteurs / fins de course"),
     (18800, 16800, 20400, 16800, 13600, 16600, "-W531 compensation TC"),
 ]
 for x1, y1, x2, y2, tx, ty, t in liaisons:
     g.ligne(SY, x1, y1, x2, y2, width=40)
     texte("04", tx, ty, t, 200)
-texte("04", 2400, 18200, "Le synoptique remplace l'image collée (repères et folios à jour au 22/10/2026).", 220)
+texte("04", 2400, 18200, "Le synoptique remplace l'image collée (repères et folios à jour au 27/10/2026).", 220)
 
 # ======================================================================== règles de mise en page
 # Un renvoi WinRelais dessine flèche + texte sur ~1,6 cm AU-DELA de son point, côté opposé au fil :
@@ -370,8 +374,8 @@ mcx = C + "SEW_Variateur_MCX91A-0055-5E3_CSO_CFN.xsy"
 mot = C + "SEW_K39-DRN100LS4-BE5-TF_motoreducteur_frein.xsy"
 res = C + "SEW_BW100-001_resistance_freinage.xsy"
 VAR = {}
-for f, t, r, m, w1, w2, km, qf, nb in (("20", "T201", "R201", "M201", "W201", "W202", "KM1", "Q421", 17),
-                                       ("21", "T211", "R211", "M211", "W211", "W212", "KM2", "Q422", 21)):
+for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W202", "W203", "KM1", "Q421"),
+                                       ("21", "T211", "R211", "M211", "W211", "W212", "W213", "KM2", "Q422")):
     T = maitre(mcx, t, f, 4000, 6000, wrap=34)
     R = maitre(res, r, f, 9600, 10000, shown=(2,), wrap=22)
     M = maitre(mot, m, f, 5200, 15600, fpos=(10000, 0), wrap=36)   # textes à droite du moteur
@@ -388,19 +392,15 @@ for f, t, r, m, w1, w2, km, qf, nb in (("20", "T201", "R201", "M201", "W201", "W
             etiq=(1600, 13800), size=200)
     W(f, [T["X2:-R"], (8000, 9600), (9600, 9600), R["1"]], "DC")
     W(f, [T["X2:+R"], (7200, 12000), (9600, 12000), R["2"]], "DC")
-    # frein et sonde TF : bornier machine -X701 (côté armoire en haut, moteur en bas)
-    bf2 = borne(f"X701.{nb}", f, 10400, 13200)
-    bf3 = borne(f"X701.{nb + 1}", f, 11200, 13200)
-    bt1 = borne(f"X701.{nb + 2}", f, 7600, 13200)
-    bt2 = borne(f"X701.{nb + 3}", f, 8400, 13200)
-    for b_, p in ((bf2, "2"), (bf3, "3"), (bt1, "1b"), (bt2, "2b")):
-        W(f, [b_["2"], M[p]], "24" if p in ("1b", "2b") else "L")
-    renvoi("12", out12[(qf, "4/T2")], f, W(f, [bf2["1"], (10400, 12000), (13600, 12000)], "L"), "L")
-    renvoi("12", out12[(qf, "6/T3")], f, W(f, [bf3["1"], (11200, 11200), (13600, 11200)], "L"), "L")
-    W(f, [bt1["1"], (7600, 12800), (21200, 12800), (21200, 5200), (11600, 5200), T["X10:1"]], "24")
-    W(f, [bt2["1"], (8400, 12400), (21600, 12400), (21600, 5600), (12000, 5600), T["X10:2"]], "24")
-    g.cable(F[f], 7200, 11600, 14400, w2, "4 x 1 mm² blindé", "Câble frein + TF CEM", [7600, 8400, 10400, 11200],
-            etiq=(12000, 13800), size=200)
+    # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, en direct (sans bornier), décision 26/10
+    renvoi("12", out12[(qf, "4/T2")], f, W(f, [M["2"], (M["2"].x, 12000), (13600, 12000)], "L"), "L")
+    renvoi("12", out12[(qf, "6/T3")], f, W(f, [M["3"], (M["3"].x, 11200), (13600, 11200)], "L"), "L")
+    W(f, [M["1b"], (M["1b"].x, 12800), (21200, 12800), (21200, 5200), (11600, 5200), T["X10:1"]], "24")
+    W(f, [M["2b"], (M["2b"].x, 12400), (21600, 12400), (21600, 5600), (12000, 5600), T["X10:2"]], "24")
+    g.cable(F[f], M["1b"].x - 400, M["2b"].x + 400, 14400, w3, "2G1 blindé", "Câble sonde TF CEM",
+            [M["1b"].x, M["2b"].x], etiq=(14800, 13800), size=200)
+    g.cable(F[f], M["2"].x - 400, M["3"].x + 400, 14400, w2, "2G1,5", "Câble frein 400 V CA",
+            [M["2"].x, M["3"].x], etiq=(12000, 13800), size=200)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
@@ -412,7 +412,7 @@ for f, t, r, m, w1, w2, km, qf, nb in (("20", "T201", "R201", "M201", "W201", "W
     texte(f, 22400, 4800, "X5 : +24 V AUTRE (f31) - X6 : STO (f42)", 200)
     texte(f, 22400, 5200, "STO X6 et TF X10 : bornes à confirmer", 200, ROUGE)
     texte(f, 22400, 5600, "(notice SEW MCX91A)", 200, ROUGE)
-    texte(f, 22400, 6400, f"{w1} / {w2} blindés : blindage repris à 360°", 200)
+    texte(f, 22400, 6400, f"{w1} / {w3} blindés : blindage repris à 360°", 200)
     texte(f, 22400, 6800, "(presse-étoupe CEM côté moteur,", 200)
     texte(f, 22400, 7200, "collier de masse côté variateur)", 200)
 
@@ -463,6 +463,11 @@ d31 = {"0V20": W(f, [x312["5"], (6400, 16800), (8800, 16800)], "0V"),
 for ff in ("20", "21"):
     renvoi(f, d31["24V" + ff], ff, VAR[(ff, "24")], "24")
     renvoi(f, d31["0V" + ff], ff, VAR[(ff, "0V")], "0V")
+REP["P512"] = {"des": "Voyant porte : tension de commande présente", "fab": "À définir", "carac": "24 V CC - blanc ou vert", "loc": "+A1"}
+p512 = decrit("Signalisation et voyants\\Voyant.xsy", "P512", f, 24800, 8800, "Voyant porte : tension de commande présente",
+              fpos=(600, 400), wrap=20, prefix="P")
+W(f, [p512["X1"], (24800, RAIL24_Y)], "24")
+W(f, [p512["X2"], (24800, RAIL0_Y)], "0V")
 texte(f, 7600, 2200, "+24 V SECU -> f40 à f60 : relais sécu, CPU, IHM, switch, modules", 200)
 texte(f, 7600, 18600, "0 V -> f40 à f60", 200)
 texte(f, 17600, 3600, "+24 V AUTRE -> X5 des variateurs (f20, f21)", 200)
@@ -534,7 +539,7 @@ DESC_KM = {"KM1": "contacteur amont variateur 1", "KM2": "contacteur amont varia
            "Q421": "contacteur frein M1", "Q422": "contacteur frein M2", "Q423": "contacteur coupure 48 V"}
 for i, rep in enumerate(DESC_KM):
     c = decrit(miroir, rep, f, 20000, 3200 + 2400 * i, f"Retour {DESC_KM[rep]}",
-               prefix="KM" if rep.startswith("KM") else None, wrap=24, fpos=(2200, 200))
+               prefix="KM" if rep.startswith("KM") else "Q", wrap=24, fpos=(2200, 200))
     if i:
         W(f, [prev, c["21"]], "24")
     prev = c["22"]
@@ -551,12 +556,16 @@ proposition(f, ["14 / 24 = STO voies 1 / 2, 34 = +24 VS des sorties automate"], 
 f = "41"
 au = "BP & Commut & Voyants\\Arret urgence NC déverr tournant.xsy"
 nc2 = "--- X Contact\\RC Contact NC 21-22.xsy"
+# -S413 (Eaton T0-4-8223/E, essai du 27/10 : 4 contacts NO par position, 8 en tout, numérotation provisoire)
+#   position 1 = Auto : 13-14 STO, 23-24 ordre contacteurs, 33-34 information automate, 43-44 réserve
+#   position 2 = Manu : 53-54 pontage capot voie 1, 63-64 pontage capot voie 2, 73-74 information automate, 83-84 réserve
+CT = {n: f"--- X Contact\\RC Contact NO {n}-{n + 1}.xsy" for n in (13, 23, 33, 43, 53, 63, 73, 83)}
 VOIES = {}
-for voie, x, s1, s2, cap, capxsy, bornes, src, ret in (
-        (1, 6000, "S411", "S412", "B411", C + "RSPRO_902-6874_interrupteur_position.xsy",
-         ("X711.1", "X711.2", "X701.1", "X701.2", "X701.3", "X701.4"), "S11", "S12"),
-        (2, 14000, "S411", "S412", "B412", C + "ifm_MN508S_capteur_magnetique_code.xsy",
-         ("X711.3", "X711.4", "X701.5", "X701.6", "X701.7", "X701.8"), "S21", "S22")):
+for voie, x, s1, s2, cap, capxsy, bornes, src, ret, byp in (
+        (1, 7200, "S411", "S412", "B411", C + "RSPRO_902-6874_interrupteur_position.xsy",
+         ("X711.1", "X711.2", "X701.1", "X701.2", "X701.3", "X701.4"), "S11", "S12", (53, ("X711.13", "X711.14"))),
+        (2, 15200, "S411", "S412", "B412", C + "ifm_MN508S_capteur_magnetique_code.xsy",
+         ("X711.3", "X711.4", "X701.5", "X701.6", "X701.7", "X701.8"), "S21", "S22", (63, ("X711.15", "X711.16")))):
     if voie == 1:
         c1 = maitre(au, s1, f, x, 4400, prefix="S")
         c2 = maitre(au, s2, f, x, 8000, prefix="S")
@@ -570,10 +579,19 @@ for voie, x, s1, s2, cap, capxsy, bornes, src, ret in (
     b1, b2 = borne(ta, f, x, 6800), borne(tb, f, x, 10400)
     b3, b4 = borne(tc, f, x, 11600), borne(td, f, x, 15200)
     cp = maitre(capxsy, cap, f, x, 12800)
-    for a, b in ((c1[p1[1]], b1["1"]), (b1["2"], c2[p2[0]]), (c2[p2[1]], b2["1"]), (b2["2"], b3["1"]),
-                 (b3["2"], cp["11"]), (cp["12"], b4["1"])):
-        W(f, [a, b], "24")
+    for a_, b_ in ((c1[p1[1]], b1["1"]), (b1["2"], c2[p2[0]]), (c2[p2[1]], b2["1"]), (b2["2"], b3["1"]),
+                   (b3["2"], cp["11"]), (cp["12"], b4["1"])):
+        W(f, [a_, b_], "24")
     bot = stub(f, (x, 16400), b4["2"], "24")
+    # pontage du capot par -S413 position Manu (contact NO en parallèle de la chaîne -X701 / capot)
+    n_c, (bya, byb) = byp
+    xb = x - 3200
+    ba, bb = borne(bya, f, xb, 11600), borne(byb, f, xb, 15200)
+    ctc = decrit(CT[n_c], "S413", f, xb, 12800, f"Sélecteur Manu - pontage capot voie {voie}", wrap=20)
+    W(f, [(x, 11200), (xb, 11200), ba["1"]], "24")
+    W(f, [ba["2"], ctc[str(n_c)]], "24")
+    W(f, [ctc[str(n_c + 1)], bb["1"]], "24")
+    W(f, [bb["2"], (xb, 16000), (x, 16000)], "24")
     renvoi("40", S40[src], f, top, "24")
     renvoi("40", S40[ret], f, bot, "24")
     # contact NO du capot -> automate (f50)
@@ -583,58 +601,74 @@ for voie, x, s1, s2, cap, capxsy, bornes, src, ret in (
     W(f, [cp["24"], t2["1"]], "24")
     entree = W(f, [t2["2"], (x + 800, 16000), (x + 2800, 16000)], "24")
     VOIES[cap] = (plus, entree)
-s414 = maitre("BP & Commut & Voyants\\BP lumineux NO.xsy", "S414", f, 21200, 4400, prefix="S", fpos=(600, 0))
-a414 = stub(f, (21200, 4000), s414["3"], "24")
-b414 = W(f, [s414["4"], (21200, 6800)], "24")
+s414 = maitre("BP & Commut & Voyants\\BP lumineux NO.xsy", "S414", f, 21600, 4400, prefix="S", fpos=(600, 0))
+a414 = stub(f, (21600, 4000), s414["3"], "24")
+b414 = W(f, [s414["4"], (21600, 6800)], "24")
 renvoi("40", y_s414, f, a414, "24")
 renvoi(f, b414, "40", y2, "24")
-maitre("Poussoirs et commutateurs\\Tête 2 pos fixes NO.xsy", "S413", f, 25200, 4400, prefix="S", fpos=(600, 0))
-texte(f, 21200, 9600, "Voie 1 : S411 - S412 (+P1) - B411 (+M)", 220)
-texte(f, 21200, 10000, "Voie 2 : S411 - S412 (+P1) - B412 (+M)", 220)
-texte(f, 21200, 10800, "Contacts de -S413 : f42 (STO, sorties), f50 (entrées)", 200)
-proposition(f, ["voie 1 = -B411 mécanique,", "voie 2 = -B412 magnétique", "(redondance diversifiée)"],
-            x=21200, y=12000)
+maitre("Poussoirs et commutateurs\\Tête 2 pos fixes NO.xsy", "S413", f, 21600, 9600, prefix="S", fpos=(600, 0))
+texte(f, 21600, 13200, "Voie 1 : S411 - S412 (+P1) - B411 (+M)", 220)
+texte(f, 21600, 13600, "Voie 2 : S411 - S412 (+P1) - B412 (+M)", 220)
+texte(f, 21600, 14000, "Pontage capot : -S413 Manu (53-54, 63-64)", 200)
+texte(f, 21600, 14400, "Autres contacts -S413 : f42, f50", 200)
+proposition(f, ["voie 1 = -B411 mécanique,", "voie 2 = -B412 magnétique", "numérotation de -S413 provisoire",
+                "(photo de la plaque Eaton)"], x=21600, y=15200)
 
 # ======================================================================== 42 SECURITE - SORTIES
 f = "42"
-no = {"a": ("--- X Contact\\RC Contact NO 13-14.xsy", "13", "14"), "b": ("--- X Contact\\RC Contact NO 23-24.xsy", "23", "24"),
-      "c": ("--- X Contact\\RC Contact NO 33-34.xsy", "33", "34"), "d": ("--- X Contact\\RC Contact NO 43-44.xsy", "43", "44"),
-      "e": ("--- X Contact\\RC Contact NO 53-54.xsy", "53", "54")}
+bob = C + "Schneider_LC1D09BD_contacteur_bobine.xsy"
+REP["K511"] = {"des": "Relais d'interface : ordre automate de fermeture de -KM1 / -KM2 (sortie Q0.7)",
+               "fab": "À définir", "carac": "Bobine 24 V CC - 1 contact NO", "loc": "+A1"}
 O42 = {}
-for key, x, (ba, bb), src, des in (("a", 4800, ("X711.7", "X711.8"), "14", "Sélecteur Auto - STO voie 1"),
-                                   ("b", 7600, ("X711.9", "X711.10"), "24", "Sélecteur Auto - STO voie 2"),
-                                   ("c", 10400, ("X711.11", "X711.12"), "34", "Sélecteur Auto - sorties automate")):
-    xsy, pa, pb = no[key]
+for key, x, (ba, bb), src, n_c, des in (("a", 4800, ("X711.7", "X711.8"), "14", 13, "Sélecteur Auto - STO des variateurs"),
+                                        ("b", 9600, ("X711.9", "X711.10"), "24", 23, "Sélecteur Auto - ordre contacteurs")):
     t1 = borne(ba, f, x, 4400)
     top = stub(f, (x, 4000), t1["1"], "24")
-    c = decrit(xsy, "S413", f, x, 5600, des, wrap=20)
+    c = decrit(CT[n_c], "S413", f, x, 5600, des, wrap=20)
     t2 = borne(bb, f, x, 8000)
-    W(f, [t1["2"], c[pa]], "24")
-    W(f, [c[pb], t2["1"]], "24")
-    O42[(key, 1)] = W(f, [t2["2"], (x, 10400)], "24")
-    W(f, [(x, 9200), (x + 800, 9200), (x + 800, 10400)], "24")
-    O42[(key, 2)] = (x + 800, 10400)
+    W(f, [t1["2"], c[str(n_c)]], "24")
+    W(f, [c[str(n_c + 1)], t2["1"]], "24")
     renvoi("40", O40[src], f, top, "24")
-renvoi(f, O42[("a", 1)], "20", VAR[("20", "STO1")], "24")
-renvoi(f, O42[("a", 2)], "21", VAR[("21", "STO1")], "24")
-renvoi(f, O42[("b", 1)], "20", VAR[("20", "STO2")], "24")
-renvoi(f, O42[("b", 2)], "21", VAR[("21", "STO2")], "24")
-texte(f, 4400, 12400, "STO voie 1", 200)
-texte(f, 7200, 12400, "STO voie 2", 200)
-texte(f, 10000, 12400, "+24 VS sorties", 200)
+    O42[key] = t2
+# 13-14 -> STO des 2 variateurs en parallèle (validé SEW) : 4 destinations X6 (f20, f21)
+sto = [W(f, [O42["a"]["2"], (4800, 10400)], "24")]
+W(f, [(4800, 9200), (7200, 9200)], "24")
+sto += [W(f, [(xx, 9200), (xx, 10400)], "24") for xx in (5600, 6400, 7200)]
+renvoi(f, (4800, 10400), "20", VAR[("20", "STO1")], "24")
+renvoi(f, (5600, 10400), "20", VAR[("20", "STO2")], "24")
+renvoi(f, (6400, 10400), "21", VAR[("21", "STO1")], "24")
+renvoi(f, (7200, 10400), "21", VAR[("21", "STO2")], "24")
+texte(f, 4400, 12400, "STO X6 des 2 variateurs", 200)
+texte(f, 4400, 12700, "(en parallèle, validé SEW)", 200)
 g0 = {"20": W(f, [(4800, RAIL0_Y), (4800, 17600)], "0V"), "21": W(f, [(5600, RAIL0_Y), (5600, 17600)], "0V")}
 renvoi(f, g0["20"], "20", VAR[("20", "STO0")], "0V")
 renvoi(f, g0["21"], "21", VAR[("21", "STO0")], "0V")
 texte(f, 6000, 18200, "0 V STO X6 (f20, f21)", 200)
-bob = C + "Schneider_LC1D09BD_contacteur_bobine.xsy"
+# 23-24 -> -S413 Auto -> contact du relais d'interface -K421 (ordre automate Q0.7) -> bobines -KM1 / -KM2
+k511c = decrit(CT[13], "K511", f, 9600, 9200, "Contact du relais d'interface : ordre automate", prefix="K", wrap=20)
+W(f, [O42["b"]["2"], k511c["13"]], "24")
 COIL = {}
 for rep, x, pref in (("KM1", 13600, "KM"), ("KM2", 16800, "KM"), ("Q421", 20000, "Q"), ("Q422", 23200, "Q"),
                      ("Q423", 26400, "Q")):
     k = maitre(bob, rep, f, x, 12800, ref=("SCHNEIDER ELECTRIC", "", "LC1D09BD"), prefix=pref, wrap=16)
-    COIL[rep] = stub(f, (x, 12000), k["A1"], "24")
     W(f, [k["A2"], (x, RAIL0_Y)], "0V")
-proposition(f, ["STO -K401 14/24 + -S413 Auto", "+24 VS sorties : -K401 34 + -S413",
-                "bobines commandées par l'automate (f51, f52)", "ordre API -KM1 / -KM2 : non décidé au 22/10"],
+    COIL[rep] = k
+W(f, [k511c["14"], (9600, 12000), (16800, 12000)], "24")
+W(f, [(13600, 12000), COIL["KM1"]["A1"]], "24")
+W(f, [(16800, 12000), COIL["KM2"]["A1"]], "24")
+# 33-34 -> bobines des freins (-Q421, -Q422) et du 48 V (-Q423), sans passer par le sélecteur
+W(f, [(21400, 4000), (21400, 11600)], "24")
+top34 = (21400, 4000)
+W(f, [(20000, 11600), (26400, 11600)], "24")
+for rep in ("Q421", "Q422", "Q423"):
+    W(f, [(COIL[rep]["A1"].x, 11600), COIL[rep]["A1"]], "24")
+renvoi("40", O40["34"], f, top34, "24")
+texte(f, 10400, 11200, "-K511 : bobine f51 (Q0.7)", 200)
+texte(f, 17600, 9600, "Freins et 48 V : alimentés dès que", 200)
+texte(f, 17600, 9900, "-K401 est armé (Auto et Manu)", 200)
+proposition(f, ["14 = STO ; 24 = -KM1 / -KM2 ; 34 = freins et 48 V",
+                "relais d'interface -K511 : référence à choisir",
+                "courant admissible de 34 pour 3 bobines à vérifier (notice XPSUAF13AP)"],
             x=2400, y=13600)
 
 # ======================================================================== 50 AUTOMATE ENTREES
@@ -646,10 +680,10 @@ W(f, [(3600, 11200), (9200, 11200)], "0V")
 W(f, [k501e["1M"], (9200, 11200)], "0V")
 W(f, [(3600, 11200), (3600, RAIL0_Y)], "0V")
 renvoi("11", fe11["1"], f, W(f, [k501e["FE"], (6400, 10400)], "PE"), "PE")
-W(f, [k501e["L+ capt"], (7200, 3200), (21200, 3200)], "24")
-W(f, [(20400, 3200), (20400, 4000)], "24")
-renvoi(f, (21200, 3200), "41", VOIES["B411"][0], "24")
-renvoi(f, (20400, 4000), "41", VOIES["B412"][0], "24")
+W(f, [k501e["L+ capt"], (7200, 3200), (23600, 3200)], "24")
+W(f, [(22400, 3200), (22400, 4000)], "24")
+renvoi(f, (23600, 3200), "41", VOIES["B411"][0], "24")
+renvoi(f, (22400, 4000), "41", VOIES["B412"][0], "24")
 fdc = "Contacts Fin de course et rupteurs\\Fin de course NO.xsy"
 nom = "--- X Contact\\RC Contact NO 13-14.xsy"
 
@@ -671,40 +705,47 @@ def entree(inp, row, elems):
                 s = g.place(xsy, rep, F[f], x, y, champs=info(rep), loc=loc(rep), compact=True, rep_size=200,
                             prefix=rep[0])
             else:
-                s = esclave(xsy, rep, f, x, y, des=des)
+                s = esclave(xsy, rep, f, x, y, des=des, prefix=rep[:2] if rep.startswith("KM") else rep[0])
             W(f, [cur, s[pins[0]]], "24")
             cur = s[pins[1]].xy
     W(f, [cur, p], "24")
 
 
-entree("I0.0", 1, [("esclave", "S411", nom, "AU armoire - contact NO", ("13", "14"))])
-entree("I0.1", 2, [("borne", "X711.5", None, None, None),
+nom = CT[13]
+entree("I0.0", 1, [("borne", "X711.5", None, None, None),
                    ("esclave", "S412", nom, "AU pupitre - contact NO", ("13", "14")),
                    ("borne", "X711.6", None, None, None)])
-entree("I0.4", 1, [("borne", "X711.13", None, None, None),
-                   ("esclave", "S413", no["d"][0], "Sélecteur - Auto", ("43", "44")),
-                   ("borne", "X711.14", None, None, None)])
-entree("I0.5", 2, [("borne", "X711.15", None, None, None),
-                   ("esclave", "S413", no["e"][0], "Sélecteur - Manu", ("53", "54")),
-                   ("borne", "X711.16", None, None, None)])
-FDC = {"I1.0": ("B501", "Fin de course axe 1 min", 1, "X701.9", "X701.10"),
-       "I1.1": ("B502", "Fin de course axe 1 max", 2, "X701.11", "X701.12"),
-       "I1.2": ("B503", "Fin de course axe 2 min", 1, "X701.13", "X701.14"),
-       "I1.3": ("B504", "Fin de course axe 2 max", 2, "X701.15", "X701.16")}
+entree("I0.1", 2, [("esclave", "S411", nom, "AU armoire - contact NO", ("13", "14"))])
+entree("I0.4", 1, [("borne", "X711.11", None, None, None),
+                   ("esclave", "S413", CT[33], "Sélecteur - Auto", ("33", "34")),
+                   ("borne", "X711.12", None, None, None)])
+entree("I0.5", 2, [("borne", "X711.17", None, None, None),
+                   ("esclave", "S413", CT[73], "Sélecteur - Manu", ("73", "74")),
+                   ("borne", "X711.18", None, None, None)])
+FDC = {"I0.6": ("B501", "Fin de course axe 1 min", 1, "X701.9", "X701.10"),
+       "I0.7": ("B502", "Fin de course axe 1 max", 2, "X701.11", "X701.12"),
+       "I1.0": ("B503", "Fin de course axe 2 min", 1, "X701.13", "X701.14"),
+       "I1.1": ("B504", "Fin de course axe 2 max", 2, "X701.15", "X701.16")}
 for inp, (rep, des, row, t1, t2) in FDC.items():
-    REP[rep] = {"des": des, "fab": "À définir", "carac": "NO", "loc": "+M"}
+    REP[rep] = {"des": des, "fab": "À définir", "carac": "contact NF (0 = atteint ou fil coupé) - symbole NO provisoire", "loc": "+M"}
     entree(inp, row, [("borne", t1, None, None, None), ("maitre", rep, fdc, "", ("13", "14")),
                       ("borne", t2, None, None, None)])
-I50 = {inp: stub(f, (k501e[inp].x, 11200), k501e[inp], "24") for inp in ("I0.2", "I0.3", "I0.7")}
+for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amont variateur 1 (aux NO)"),
+                                 ("I1.3", "KM2", "KM", 2, "Retour contacteur amont variateur 2 (aux NO)"),
+                                 ("I1.4", "Q423", "Q", 1, "Retour contacteur 48 V (aux NO)")):
+    entree(inp, row, [("esclave", rep, nom, des, ("13", "14"))])
+I50 = {inp: stub(f, (k501e[inp].x, 11200), k501e[inp], "24") for inp in ("I0.2", "I0.3")}
 renvoi("41", VOIES["B411"][1], f, I50["I0.2"], "24")
 renvoi("41", VOIES["B412"][1], f, I50["I0.3"], "24")
 texte(f, 24800, 12400, "X1 P1 : PROFINET -> -K541 (f54)", 200)
 g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
-    ["Entrée", "Repère", "Fonction"], ["I0.0", "-S411", "AU armoire actionné"], ["I0.1", "-S412", "AU pupitre actionné"],
+    ["Entrée", "Repère", "Fonction"], ["I0.0", "-S412", "AU pupitre actionné (NO)"], ["I0.1", "-S411", "AU armoire actionné (NO)"],
     ["I0.2", "-B411", "capot fermé (mécanique)"], ["I0.3", "-B412", "capot fermé (magnétique)"],
-    ["I0.4", "-S413", "mode Auto"], ["I0.5", "-S413", "mode Manu"], ["I0.6", "", "réserve"],
-    ["I0.7", "-K541", "défaut switch (ALM)"], ["I1.0 / I1.1", "-B501 / -B502", "fins de course axe 1 min / max"],
-    ["I1.2 / I1.3", "-B503 / -B504", "fins de course axe 2 min / max"], ["I1.4 / I1.5", "", "réserve"],
+    ["I0.4", "-S413", "mode Auto"], ["I0.5", "-S413", "mode Manu"],
+    ["I0.6 / I0.7", "-B501 / -B502", "fins de course axe 1 min / max (NF)"],
+    ["I1.0 / I1.1", "-B503 / -B504", "fins de course axe 2 min / max (NF)"],
+    ["I1.2 / I1.3", "-KM1 / -KM2", "retour contacteurs amont variateurs"],
+    ["I1.4", "-Q423", "retour contacteur 48 V"], ["I1.5", "", "réserve"],
 ], size=200)
 proposition(f, ["affectation des entrées automate"], x=13600, y=13700)
 
@@ -714,32 +755,34 @@ k501s = maitre(C + "Siemens_6ES7214-1AH50-0XB0_CPU1214C_G2_sorties.xsy", "K501",
                base="K501", compact=True, rep_size=300)
 vs51 = (3600, 7200)
 W(f, [vs51, (4800, 7200), k501s["3L+"]], "24")
+W(f, [(3600, RAIL24_Y), vs51], "24")
 W(f, [k501s["3M"], (5600, RAIL0_Y)], "0V")
-Q51 = {q: W(f, [k501s[q], (k501s[q].x, 8000)], "24") for q in ("Q0.0", "Q0.1", "Q0.2", "Q0.3")}
+Q51 = {q: W(f, [k501s[q], (k501s[q].x, 8000)], "24") for q in ("Q0.0", "Q0.1", "Q0.2", "Q0.4", "Q0.5", "Q0.6")}
+voyant = "Signalisation et voyants\\Voyant.xsy"
 col = maitre(C + "RSPRO_199-9760_colonne_lumineuse.xsy", "P511", f, 17600, 12800)
-W(f, [k501s["Q0.4"], (9600, 10400), (17600, 10400), col["RD"]], "24")
-W(f, [k501s["Q0.5"], (10400, 10800), (19200, 10800), col["OG"]], "24")
-W(f, [k501s["Q0.6"], (11200, 11200), (20800, 11200), col["GN"]], "24")
+COL51 = {c: stub(f, (col[c].x, 11200), col[c], "24") for c in ("RD", "OG", "GN")}
 W(f, [col["COM"], (19200, RAIL0_Y)], "0V")
-voy = decrit("Signalisation et voyants\\Voyant.xsy", "S414", f, 12000, 12800, "Voyant du bouton de réarmement",
-             fpos=(-2400, 400), wrap=20)
-W(f, [k501s["Q0.7"], voy["X1"]], "24")
+REP["P513"] = {"des": "Voyant porte : défaut machine", "fab": "À définir", "carac": "24 V CC - rouge", "loc": "+A1"}
+p513 = decrit(voyant, "P513", f, 7600, 12800, "Voyant porte : défaut machine", fpos=(600, 400), wrap=20, prefix="P")
+V513 = stub(f, (7600, 11200), p513["X1"], "24")
+W(f, [p513["X2"], (7600, RAIL0_Y)], "0V")
+voy = decrit(voyant, "S414", f, 12000, 12800, "Voyant du bouton de réarmement", fpos=(600, 400), wrap=20)
+V414 = stub(f, (12000, 11200), voy["X1"], "24")
 W(f, [voy["X2"], (12000, RAIL0_Y)], "0V")
-Q51["Q1.0"] = W(f, [k501s["Q1.0"], (13200, 12000)], "24")
-Q51["Q1.1"] = W(f, [k501s["Q1.1"], (14000, 12000)], "24")
-renvoi("42", O42[("c", 1)], f, vs51, "24")
-for q, (T, s) in (("Q0.0", ("T322", "PUL")), ("Q0.1", ("T322", "DIR")), ("Q0.2", ("T323", "PUL")),
-                  ("Q0.3", ("T323", "DIR"))):
-    renvoi(f, Q51[q], "32", CMD32[(T, s)], "24")
-renvoi(f, Q51["Q1.0"], "42", COIL["KM1"], "24")
-renvoi(f, Q51["Q1.1"], "42", COIL["KM2"], "24")
-g.tableau(F[f], 20800, 15600, [1400, 1600, 4800], 300, [
-    ["Sortie", "Repère", "Fonction"], ["Q0.0 / Q0.1", "-T322", "PUL / DIR axe 1 (PTO1)"],
-    ["Q0.2 / Q0.3", "-T323", "PUL / DIR axe 2 (PTO2)"], ["Q0.4..Q0.6", "-P511", "rouge / orange / vert"],
-    ["Q0.7", "-S414", "voyant réarmement"], ["Q1.0", "-KM1", "contacteur variateur 1"],
-    ["Q1.1", "-KM2", "contacteur variateur 2"],
+for q, (T, sg) in (("Q0.0", ("T322", "PUL")), ("Q0.1", ("T322", "DIR")), ("Q0.2", ("T322", "ENA")),
+                   ("Q0.4", ("T323", "PUL")), ("Q0.5", ("T323", "DIR")), ("Q0.6", ("T323", "ENA"))):
+    renvoi(f, Q51[q], "32", CMD32[(T, sg)], "24")
+k511 = maitre(C + "Schneider_LC1D09BD_contacteur_bobine.xsy", "K511", f, 14800, 9600, ref=("", "", "À définir"), prefix="K", wrap=16)
+W(f, [k501s["Q0.7"], (12000, 7200), (14800, 7200), k511["A1"]], "24")
+W(f, [k511["A2"], (14800, RAIL0_Y)], "0V")
+texte(f, 16000, 8400, "Q0.3, Q1.0, Q1.1 : réserve", 200)
+g.tableau(F[f], 20800, 15600, [1800, 1600, 4800], 300, [
+    ["Sortie", "Repère", "Fonction"], ["Q0.0 / 0.1 / 0.2", "-T322", "PUL / DIR / ENA axe 1 (PTO1)"],
+    ["Q0.4 / 0.5 / 0.6", "-T323", "PUL / DIR / ENA axe 2 (PTO2)"],
+    ["Q0.7", "-K511", "ordre de fermeture -KM1 / -KM2"], ["Q0.3, Q1.0, Q1.1", "", "réserve"],
+    ["SM 1223 (f52)", "", "colonne, voyants, alarme switch"],
 ], size=200)
-proposition(f, ["affectation des sorties automate (freins, 48 V et validations sur -K521, f52)"], x=13600, y=1300)
+proposition(f, ["affectation des sorties automate (liste d'E/S du 06/10, à confirmer)"], x=13600, y=1300)
 
 # ======================================================================== 52 MODULE SM 1223
 f = "52"
@@ -750,19 +793,21 @@ W(f, [(3600, 3600), (10800, 3600)], "0V")
 W(f, [k521e["1M"], (6800, 3600)], "0V")
 W(f, [k521e["2M"], (10800, 3600)], "0V")
 W(f, [(3600, 3600), (3600, RAIL0_Y)], "0V")
+# I8.4 : alarme du switch (contact ALM2), le fil part vers la droite pour ne pas croiser la ligne 0 V
+I52 = W(f, [k521e["I8.4"], (11600, 3200), (15200, 3200)], "24")
 k521s = maitre(C + "Siemens_6ES7223-5BH50-0XB0_SM1223_G2_sorties.xsy", "K521", f, 4800, 14400, ref=(),
                compact=True, rep_size=300)
-vs52 = stub(f, (4800, 16800), k521s["3L+"], "24")
+W(f, [(4000, RAIL24_Y), (4000, 16800), (4800, 16800)], "24")
+W(f, [(4800, 16800), k521s["3L+"]], "24")
 W(f, [k521s["3M"], (5600, RAIL0_Y)], "0V")
-renvoi("42", O42[("c", 2)], f, vs52, "24")
-for q, dest in (("Q8.0", ("42", "Q421")), ("Q8.1", ("42", "Q422")), ("Q8.2", ("42", "Q423")),
-                ("Q8.3", ("32", ("T322", "ENA"))), ("Q8.4", ("32", ("T323", "ENA")))):
+for q, dest in (("Q8.0", COL51["RD"]), ("Q8.1", COL51["OG"]), ("Q8.2", COL51["GN"]), ("Q8.3", V414), ("Q8.4", V513)):
     pt = W(f, [k521s[q], (k521s[q].x, 16000)], "24")
-    renvoi(f, pt, dest[0], COIL[dest[1]] if dest[0] == "42" else CMD32[dest[1]], "24")
-g.tableau(F[f], 16000, 12800, [1400, 1600, 5600], 300, [
-    ["E/S", "Repère", "Fonction"], ["I8.0..I8.7", "", "réserve"], ["Q8.0", "-Q421", "frein M201"],
-    ["Q8.1", "-Q422", "frein M211"], ["Q8.2", "-Q423", "coupure 48 V"], ["Q8.3", "-T322", "validation ENA axe 1"],
-    ["Q8.4", "-T323", "validation ENA axe 2"], ["Q8.5..Q8.7", "", "réserve"],
+    renvoi(f, pt, "51", dest, "24")
+g.tableau(F[f], 16000, 12800, [2800, 1600, 5600], 300, [
+    ["E/S", "Repère", "Fonction"], ["I8.4", "-K541", "alarme switch (ALM2)"], ["I8.0..I8.3, I8.5..I8.7", "", "réserve"],
+    ["Q8.0 / 8.1 / 8.2", "-P511", "colonne rouge / orange / vert"],
+    ["Q8.3", "-S414", "voyant réarmement requis"], ["Q8.4", "-P513", "voyant défaut machine"],
+    ["Q8.5..Q8.7", "", "réserve"],
 ], size=200)
 proposition(f, ["affectation des E/S du module SM 1223"], x=16000, y=12100)
 
@@ -784,7 +829,7 @@ k541 = maitre(C + "Weidmuller_2682250000_switch_IE-SW-AL05LM-5TX.xsy", "K541", f
 W(f, [k541["V1+"], (16000, RAIL24_Y)], "24")
 W(f, [k541["V1-"], (16800, 3600), (26400, 3600), (26400, RAIL0_Y)], "0V")
 W(f, [k541["ALM1"], (19200, RAIL24_Y)], "24")
-renvoi(f, W(f, [k541["ALM2"], (20000, 3200), (21600, 3200)], "24"), "50", I50["I0.7"], "24")
+renvoi(f, W(f, [k541["ALM2"], (20000, 3200), (21600, 3200)], "24"), "52", I52, "24")
 for p, t in (("P1", "Port 1 -> -K501 automate CPU 1214C, port X1 P1 (f50)"),
              ("P2", "Port 2 -> -T201 variateur M1, port X40 (f20)"),
              ("P3", "Port 3 -> -T211 variateur M2, port X40 (f21)"),
@@ -797,7 +842,7 @@ texte(f, 8000, 13600, "Liaisons PROFINET (câbles RJ45 à repérer) - V2+ / V2- 
 # ======================================================================== 60 PUPITRE
 f = "60"
 p601 = maitre(C + "Siemens_6AV2123-2GB03-0AX0_IHM_KTP700_Basic_PN.xsy", "P601", f, 6400, 10000)
-t17, t18, t19 = borne("X711.17", f, 6400, 10800), borne("X711.18", f, 7200, 10800), borne("X711.19", f, 8000, 10800)
+t17, t18, t19 = borne("X711.19", f, 6400, 10800), borne("X711.20", f, 7200, 10800), borne("X711.21", f, 8000, 10800)
 W(f, [p601["L+"], t17["1"]], "24")
 W(f, [p601["M"], t18["1"]], "0V")
 W(f, [p601["FE"], t19["1"]], "PE")
@@ -816,7 +861,7 @@ texte(f, 8800, 15600, "Liaisons armoire <-> pupitre : bornes -X711 (f71) et câb
 
 # ======================================================================== 80 - 90 (générés par WinRelais)
 for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par WinRelais (carnet de câbles)",
-                            "-W101, -W201, -W202, -W211, -W212, -W531, -W711."]),
+                            "-W101, -W201, -W202, -W203, -W211, -W212, -W213, -W531, -W711."]),
                     ("85", ["Implantation armoire +A1 : à réaliser sous WinArmoire",
                             "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."]),
                     ("90", ["Nomenclature : à générer par WinRelais (Optimisation / Générer / Nomenclature),",
@@ -826,36 +871,53 @@ for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par Wi
 
 # ======================================================================== spécification des liaisons
 MEMES = [
+    # chaîne d'arrêt d'urgence et capots (deux voies), pontage Manu par -S413
     ["K401:S11", "S411:1"], ["S411:2", "X711.1:1"], ["X711.1:2", "S412:1"], ["S412:2", "X711.2:1"],
-    ["X701.1:2", "B411:11"], ["B411:12", "X701.2:1"], ["X701.2:2", "K401:S12"],
-    ["K401:S21", "S411:21"], ["X701.5:2", "B412:11"], ["X701.6:2", "K401:S22"],
+    ["X711.2:2", "X701.1:1", "X711.13:1"], ["X701.1:2", "B411:11"], ["B411:12", "X701.2:1"],
+    ["X701.2:2", "K401:S12", "X711.14:2"], ["X711.13:2", "S413:53"], ["S413:54", "X711.14:1"],
+    ["K401:S21", "S411:21"], ["S411:22", "X711.3:1"], ["X711.3:2", "S412:21"], ["S412:22", "X711.4:1"],
+    ["X711.4:2", "X701.5:1", "X711.15:1"], ["X701.5:2", "B412:11"], ["B412:12", "X701.6:1"],
+    ["X701.6:2", "K401:S22", "X711.16:2"], ["X711.15:2", "S413:63"], ["S413:64", "X711.16:1"],
     ["B411:23", "X701.3:2"], ["B411:24", "X701.4:1"], ["B412:23", "X701.7:2"], ["B412:24", "X701.8:1"],
+    # boucle de retour (EDM) et réarmement
     ["K401:Y1", "KM1:21"], ["KM1:22", "KM2:21"], ["Q423:22", "S414:3"], ["S414:4", "K401:Y2"],
-    ["K401:14", "X711.7:1"], ["X711.8:2", "T201:X6:1", "T211:X6:1"],
-    ["K401:24", "X711.9:1"], ["X711.10:2", "T201:X6:3", "T211:X6:3"],
-    ["K401:34", "X711.11:1"], ["X711.12:2", "K501:3L+", "K521:3L+"],
-    ["K501:Q1.0", "KM1:A1"], ["K501:Q1.1", "KM2:A1"], ["K521:Q8.0", "Q421:A1"], ["K521:Q8.1", "Q422:A1"],
-    ["K521:Q8.2", "Q423:A1"], ["K521:Q8.3", "T322:ENA+"], ["K521:Q8.4", "T323:ENA+"],
-    ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.2", "T323:PUL+"], ["K501:Q0.3", "T323:DIR+"],
-    ["K501:Q0.4", "P511:RD"], ["K501:Q0.5", "P511:OG"], ["K501:Q0.6", "P511:GN"], ["K501:Q0.7", "S414:X1"],
-    ["K501:I0.2", "X701.4:2"], ["K501:I0.3", "X701.8:2"], ["K501:I0.7", "K541:ALM2"],
-    ["K501:L+ capt", "X701.3:1", "X701.7:1", "X711.5:1", "X711.13:1", "X711.15:1", "X701.9:1", "S411:13"],
-    ["X311:1", "K401:A1", "K401:13", "K501:L+", "K521:L+", "K531:L+", "K541:V1+", "K541:ALM1", "X711.17:2"],
+    # sorties du relais de sécurité
+    ["K401:14", "X711.7:1"], ["X711.7:2", "S413:13"], ["S413:14", "X711.8:1"],
+    ["X711.8:2", "T201:X6:1", "T201:X6:3", "T211:X6:1", "T211:X6:3"],
+    ["K401:24", "X711.9:1"], ["X711.9:2", "S413:23"], ["S413:24", "X711.10:1"], ["X711.10:2", "K511:13"],
+    ["K511:14", "KM1:A1", "KM2:A1"],
+    ["K401:34", "Q421:A1", "Q422:A1", "Q423:A1"],
+    # sorties automate
+    ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.2", "T322:ENA+"],
+    ["K501:Q0.4", "T323:PUL+"], ["K501:Q0.5", "T323:DIR+"], ["K501:Q0.6", "T323:ENA+"], ["K501:Q0.7", "K511:A1"],
+    ["K521:Q8.0", "P511:RD"], ["K521:Q8.1", "P511:OG"], ["K521:Q8.2", "P511:GN"],
+    ["K521:Q8.3", "S414:X1"], ["K521:Q8.4", "P513:X1"],
+    # entrées automate
+    ["K501:I0.0", "X711.6:2"], ["K501:I0.1", "S411:14"], ["K501:I0.2", "X701.4:2"], ["K501:I0.3", "X701.8:2"],
+    ["K501:I0.4", "X711.12:2"], ["K501:I0.5", "X711.18:2"], ["K501:I0.6", "X701.10:2"], ["K501:I0.7", "X701.12:2"],
+    ["K501:I1.0", "X701.14:2"], ["K501:I1.1", "X701.16:2"], ["K501:I1.2", "KM1:14"], ["K501:I1.3", "KM2:14"],
+    ["K501:I1.4", "Q423:14"], ["K521:I8.4", "K541:ALM2"],
+    ["K501:L+ capt", "X701.3:1", "X701.7:1", "X701.9:1", "X701.11:1", "X701.13:1", "X701.15:1", "X711.5:1",
+     "X711.11:1", "X711.17:1", "S411:13", "KM1:13", "KM2:13", "Q423:13"],
+    ["X311:1", "K401:A1", "K401:13", "K401:23", "K401:33", "K501:L+", "K501:3L+", "K521:L+", "K521:3L+",
+     "K531:L+", "K541:V1+", "K541:ALM1", "P512:X1", "X711.19:2"],
     ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:3M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
-     "KM1:A2", "Q423:A2", "P511:COM", "S414:X2", "T201:X5:GND", "T211:X5:GND", "T201:X6:2", "T211:X6:4",
-     "T322:PUL-", "T323:ENA-", "X711.18:2"],
+     "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "K511:A2", "P511:COM", "P512:X2", "P513:X2", "S414:X2",
+     "T201:X5:GND", "T211:X5:GND", "T201:X6:2", "T201:X6:4", "T211:X6:2", "T211:X6:4",
+     "T322:PUL-", "T322:DIR-", "T322:ENA-", "T323:PUL-", "T323:DIR-", "T323:ENA-", "X711.20:2"],
     ["X313:1", "T201:X5:24V", "T211:X5:24V"],
     ["K501:FE", "X112:E", "P601:FE", "F101:PE", "T301:PE", "M201:PE", "X131:PE", "T321:PE"],
     ["B531:1", "K531:AI0+"], ["B531:2", "K531:AI0-"],
-    ["M201:1b", "X701.19:2"], ["X701.19:1", "T201:X10:1"], ["M211:2b", "X701.24:2"], ["X701.24:1", "T211:X10:2"],
-    ["Q421:4/T2", "X701.17:1"], ["X701.17:2", "M201:2"], ["Q422:6/T3", "X701.22:1"], ["X701.22:2", "M211:3"],
+    # moteurs SEW : frein (W202 / W212) et sonde TF (W203 / W213) en direct, sans bornier
+    ["M201:1b", "T201:X10:1"], ["M201:2b", "T201:X10:2"], ["M211:1b", "T211:X10:1"], ["M211:2b", "T211:X10:2"],
+    ["Q421:4/T2", "M201:2"], ["Q421:6/T3", "M201:3"], ["Q422:4/T2", "M211:2"], ["Q422:6/T3", "M211:3"],
     ["Q102:2", "F101:L1", "X111:30"], ["Q102:4", "F101:L2", "X111:20"], ["Q102:6", "F101:L3", "X111:10"],
     ["KM1:2/T1", "T201:X1:L1"], ["KM2:6/T3", "T211:X1:L3"],
     ["Q423:6/T3", "T322:+V", "T323:+V"], ["Q423:4/T2", "T322:-V", "T323:-V"],
 ]
-DIFFERENTS = ["X112:E", "X311:1", "X312:1", "X313:1", "X711.12:2", "Q423:6/T3", "Q423:4/T2",
+DIFFERENTS = ["X112:E", "X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "K401:34", "Q423:6/T3", "Q423:4/T2",
               "X111:10", "X111:20", "X111:30", "X111:N0", "K401:S11", "K401:S12", "K401:S21", "K401:S22",
-              "X711.8:2", "X711.10:2", "K401:Y1", "K401:Y2", "K501:I0.2", "K501:I0.3"]
+              "K401:Y1", "K401:Y2", "K501:I0.2", "K501:I0.3", "K501:I0.0", "K501:I0.1"]
 
 
 def nets_par_broche(path, bornes_passantes=True):

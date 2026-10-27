@@ -1,0 +1,13 @@
+Repère;Action;Désignation;Fabricant + référence;Caractéristiques;Emplacement;Folio maître
+-S413;modifier;Sélecteur de mode Auto/Manu (commutateur à cames);Eaton T0-4-8223/E;8 contacts NO (4 par position) - pos 1 Auto - pos 2 Manu - numérotation provisoire;+P1;41
+-W202;modifier;Câble frein M1 (400 V CA);À définir;2G1,5;+A1 → +M;20
+-W203;créer;Câble sonde TF M1 (blindé);À définir;2G1 blindé;+A1 → +M;20
+-W212;modifier;Câble frein M2 (400 V CA);À définir;2G1,5;+A1 → +M;21
+-W213;créer;Câble sonde TF M2 (blindé);À définir;2G1 blindé;+A1 → +M;21
+-K511;créer;Relais d'interface : ordre automate de fermeture de -KM1 / -KM2 (Q0.7);À définir;Bobine 24 V CC - 1 contact NO;+A1;51
+-P512;créer;Voyant porte : tension de commande présente;À définir;24 V CC - blanc ou vert;+A1;31
+-P513;créer;Voyant porte : défaut machine;À définir;24 V CC - rouge;+A1;51
+-B501…-B504;modifier;Fins de course de translation (NF, 0 = atteint ou fil coupé);À définir;contact NF - symbole NO provisoire;+M;50
+-X701;modifier;Bornier armoire <-> machine : bornes 1 à 16 (capots, fins de course), plus de bornes frein / TF;À définir;16 bornes;+A1;70
+-X711;modifier;Bornier armoire <-> pupitre : bornes 1 à 21 (AU, S413, alimentation IHM);À définir;21 bornes;+A1;71
+-Q12 / -Q13;supprimer;Contacteurs 24 V / 48 V : remplacés par les contacts de -K401;;;;

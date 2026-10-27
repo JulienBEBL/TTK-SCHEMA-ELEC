@@ -214,7 +214,7 @@ class XrsDoc:
             c[0], c[1], c[2] = ref
             block[n] = SEP.join(c)
         block += ["¤#AuteurSymbole¤", auteur]
-        self._append_symbol(block, name, f"nouveau symbole {name} ({xsy_path.split(chr(92))[-1]})")
+        self._append_symbol(block, name, f"nouveau symbole {name} ({xsy_path.replace(chr(92), "/").split("/")[-1]})")
 
     # --- fils, jonctions, renvois, textes
     def add_wire(self, folio, p1, p2, attrs, why):

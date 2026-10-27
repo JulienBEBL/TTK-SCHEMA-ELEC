@@ -16,8 +16,9 @@ from collections import defaultdict
 from xrs_edit import XrsDoc, SEP
 from xrs_tool import split_sections, fields, to_int
 
-LIB = r"C:\Users\Public\Documents\Elec-CAO\sym_electrotech"
+LIB = os.environ.get("TTK_LIB") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "librairie")
 GRID = 400
+DATE = os.environ.get("TTK_DATE") or "27/10/2026"     # date de modification inscrite au cartouche et dans les symboles
 ZONE_X = (1300, 29600)          # cadre utile (hors marges)
 ZONE_Y = (1300, 19600)          # au-dessus du cartouche
 RENVOI_L = 1600                 # emprise flèche + texte d'un renvoi au-delà de son point (mesurée sur WinRelais)
@@ -110,6 +111,7 @@ class Gen:
     # ------------------------------------------------------------------ symboles
     def _load_xsy(self, path):
         if path not in self._xsy_cache:
+            path = path.replace("\\", "/")
             full = path if os.path.isabs(path) else os.path.join(LIB, path)
             lines = XrsDoc(full).lines
             a = lines.index("\u00a4#Autre\u00a4")
@@ -184,7 +186,7 @@ class Gen:
             c = block[n].split(SEP)
             c[0] = loc
             block[n] = SEP.join(c)
-        block += ["¤#AuteurSymbole¤", "Julien·Ingerea·22/10/2026·1.0·0·"]
+        block += ["¤#AuteurSymbole¤", f"Julien·Ingerea·{DATE}·1.0·0·"]
         p = Placed(self, folio, rep, block, self._bbox(block))
         p.texts = []
         for c in ch:
@@ -520,7 +522,7 @@ class Gen:
                 elif key == "DESCRIPTION FOLIO":
                     f[2] = desc
                 elif key == "DATE MODIF":
-                    f[2] = "22/10/2026"
+                    f[2] = DATE
                 elif key == "01" and f[11] == "4":
                     f[2] = str(len(self.folios))
                 elif key == "01" and f[11] == "1":
