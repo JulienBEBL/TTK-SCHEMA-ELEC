@@ -33,3 +33,13 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Archivés dans `outils/` : `xrs_tool.py` (lecture, `verifier`), `xrs_edit.py` (édition sûre), `xrs_gen.py` (générateur). Manque encore `ttk_schema.py` (description du schéma) et `corrections_*.py`.
 - `xrs_tool.py verifier` donne : fichier à la main 8 erreurs / 62 attentions ; fichier script 0 erreur / 27 attentions (identique au rapport du 22-23/10). Il traite déjà le faux positif « extrémité libre à 4 mm de sa propre broche » : `xrs_check.py` (annexe A) est donc redondant, on utilise `xrs_tool.py`.
 - Constat : références croisées toujours à -1 dans le fichier script (pas de lien bobine ↔ contacts). Dates codées en dur « 22/10/2026 » dans `xrs_gen.py` (cartouche, auteur des symboles).
+
+## 27/10/2026 (suite 2) : outils, 2e partie
+- Archivés dans `outils/` : `ttk_schema.py` (995 lignes, description complète du schéma), `lire_tableau.py`, `corrections_2026-10-22.py`, `application_plan_2026-10-22.py`.
+- `ttk_schema.py` n'est pas exécutable ici : il lit `TTK_Plan_Folios_Reperes.xlsx` (chemin `C:\Users\Julien\Downloads\`), la librairie `.xsy` (`C:\Users\Public\Documents\Elec-CAO\sym_electrotech`) et le modèle `SCHEMA_ELEC_TTK.xrs`. Il faut le lancer sur le PC de Julien.
+- Constat sur le code (conforme au fichier, pas de nouvelle donnée) :
+  - f20/f21 : câble `W202/W212 = "4 x 1 mm² blindé" frein + TF`, bornes `X701.17..24` ; à remplacer par 3 câbles (W201 moteur, W202 frein 2G1,5, W203 TF 2G1 blindé), bornes frein et TF séparées. Décision [D] du 26/10.
+  - f41 : voies 1/2 = S411 + S412 + capot (B411 / B412) en série, S413 posé comme simple « Tête 2 pos fixes NO » sans pontage Manu du capot (architecture du 30/09 : capot en parallèle d'un contact Manu de S413). Marqué « PROPOSITION A VALIDER ».
+  - f42 : STO via S413 Auto (13-14, 23-24) ; 33-34 via S413 vers « +24 VS sorties » (alimentation des sorties automate) ; bobines KM1, KM2, Q421, Q422, Q423 commandées « par l'automate » ; ordre API KM1/KM2 non décidé. Pas de boucle de retour EDM sur Y1-Y2 visible.
+  - `Gen` et `ttk_schema.py` écrivent « 22/10/2026 » en dur.
+- Conséquence : f41 et f42 sont à refaire avec les décisions de l'architecture figée (§3.5 de la base de session) une fois les points ouverts tranchés.
