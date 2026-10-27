@@ -134,7 +134,7 @@ g.tableau(F["01"], 4000, 12400, [1600, 2800, 12600, 3000], 500, [
     ["Indice", "Date", "Objet", "Par"],
     ["A", "22/10/2026", "Création - reconstruction d'après TTK_Plan_Folios_Reperes.xlsx", "THRO.J"],
     ["B", "27/10/2026", "Sécurité f41-f42, câbles frein / TF séparés, E/S automate, colonne et voyants", "THRO.J"],
-    ["C", "27/10/2026", "Sécurité selon fiche du 27/10 : sorties 1/2/3, 48 V en Manu (Manu-D), folio 43", "THRO.J"],
+    ["C", "27/10/2026", "Sécurité selon fiche du 27/10, folio 43 ; -KM1 / -KM2 sans ordre automate ; -B412 MN508S", "THRO.J"],
 ], size=250)
 
 rows = [["N°", "Titre", "Description", "Ind."]] + [[f["num"], f["titre"], f["desc"][:70], "A"] for f in FOL]
@@ -566,7 +566,7 @@ notes(f, 4400, 13200, 19200, [
     "Relais -K401 : AU + capot, arrêt catégorie 0 (pas de sortie temporisée), PL d visé.",
     "Entrées : voie 1 S11-S12, voie 2 S21-S22 (f41) sur sorties de test distinctes.",
     "Sorties (f42) : 13-14 = freins -Q421 / -Q422 + 48 V -Q423 via Manu-D ;",
-    "23-24 = Auto-A + ordre automate -K511 -> -KM1 / -KM2 ; 33-34 = Auto-B -> STO.",
+    "23-24 = Auto-A -> -KM1 / -KM2 (sans ordre automate) ; 33-34 = Auto-B -> STO.",
     "Réarmement -S414 en série avec la boucle de retour (NF miroir des 5 LC1D09BD).",
     "Réglages : FONCTION 1 (AU + protecteurs, entrées dynamisées, surveillance S12-S22),",
     "DEPART 3 (démarrage surveillé, sans test au démarrage, avec dynamisation).",
@@ -645,12 +645,10 @@ notes(f, 22000, 12400, 29400, [
 # ======================================================================== 42 SECURITE - SORTIES
 # Architecture du 27/10 (fiche de Julien) :
 #   sortie 1 (13-14) -> bobines freins -Q421 / -Q422, et via Manu-D -> bobine -Q423 (48 V en Manu seulement)
-#   sortie 2 (23-24) -> Auto-A -> contact -K511 (ordre automate) -> bobines -KM1 / -KM2
+#   sortie 2 (23-24) -> Auto-A -> bobines -KM1 / -KM2 (pas d'ordre automate, option A du 27/10)
 #   sortie 3 (33-34) -> Auto-B -> STO des 2 variateurs en parallèle
 f = "42"
 bob = C + "Schneider_LC1D09BD_contacteur_bobine.xsy"
-REP["K511"] = {"des": "Relais d'interface : ordre automate de fermeture de -KM1 / -KM2 (sortie Q0.7)",
-               "fab": "À définir", "carac": "Bobine 24 V CC - 1 contact NO", "loc": "+A1"}
 YC = 12800                                  # ligne des bobines
 
 
@@ -680,12 +678,10 @@ W(f, [(11200, 4800), t1["1"]], "24")
 W(f, [t2["2"], COIL["Q423"]["A1"]], "24")
 renvoi("40", O40["14"], f, s1, "24")
 texte(f, 4800, 3000, "Sortie 1 (13-14) : freins + 48 V", 220, 0, 1)
-# --- sortie 2 : Auto-A puis ordre automate -> -KM1 / -KM2
-t1, t2 = chaine_s413(15200, "X711.7", "X711.8", 13, "Auto-A : autorisation -KM1 / -KM2")
+# --- sortie 2 : Auto-A -> -KM1 / -KM2 (pas d'ordre automate, décision du 27/10, option A)
+t1, t2 = chaine_s413(15200, "X711.7", "X711.8", 13, "Auto-A : commande -KM1 / -KM2")
 s2 = stub(f, (15200, 4000), t1["1"], "24")
-k511c = decrit(CT[13], "K511", f, 15200, 9600, "Ordre automate (bobine f51, Q0.7)", prefix="K", wrap=18)
-W(f, [t2["2"], k511c["13"]], "24")
-W(f, [k511c["14"], COIL["KM1"]["A1"]], "24")
+W(f, [t2["2"], COIL["KM1"]["A1"]], "24")
 W(f, [(15200, 12000), (18400, 12000), COIL["KM2"]["A1"]], "24")
 renvoi("40", O40["24"], f, s2, "24")
 texte(f, 15600, 3000, "Sortie 2 (23-24) : -KM1 / -KM2", 220, 0, 1)
@@ -714,8 +710,11 @@ notes(f, 25200, 4000, 29400, [
     "le changement de mode.",
     "48 V pas-à-pas : en Manu",
     "seulement (Manu-D).",
-    "-KM1 / -KM2 : Auto-A en série",
-    "avant l'ordre automate -K511.",
+    "-KM1 / -KM2 : fermés dès que",
+    "le relais est armé en Auto",
+    "(pas d'ordre automate).",
+    "Arrêt de service : rampe + STO,",
+    "pas -KM1 / -KM2.",
     "STO : Auto-B, entrées X6 des",
     "2 variateurs en parallèle.",
     "! Antiparasite des bobines",
@@ -732,7 +731,7 @@ f = "43"
 texte(f, 2400, 2800, "SELECTEUR -S413 (Eaton T0-4-8223/E) : 4 contacts NO par position - position 1 = Auto, position 2 = Manu", 250, 0, 1)
 g.tableau(F[f], 2400, 3400, [1800, 1400, 1600, 9600], 330, [
     ["Contact", "Bornes", "Fermé en", "Rôle (folio)"],
-    ["Auto-A", "13-14", "Auto", "autorisation -KM1 / -KM2, avant l'ordre automate (f42)"],
+    ["Auto-A", "13-14", "Auto", "commande -KM1 / -KM2 (f42), sans ordre automate"],
     ["Auto-B", "23-24", "Auto", "autorisation STO des 2 variateurs (f42)"],
     ["Auto-C", "33-34", "Auto", "entrée automate I0.4 « Auto » (f50)"],
     ["Auto-D", "43-44", "Auto", "réserve"],
@@ -744,7 +743,7 @@ g.tableau(F[f], 2400, 3400, [1800, 1400, 1600, 9600], 330, [
 texte(f, 2400, 7000, "COMPORTEMENT PAR ETAT", 250, 0, 1)
 g.tableau(F[f], 2400, 7400, [1500, 2600, 1300, 2200, 1700, 2600, 1500, 2800], 330, [
     ["Sélecteur", "Capot", "AU", "Freins", "48 V", "-KM1 / -KM2", "STO", "Automate"],
-    ["Auto", "fermé", "OK", "alimentés", "coupé", "ordre automate", "libéré", "I0.4 = 1"],
+    ["Auto", "fermé", "OK", "alimentés", "coupé", "fermés", "libéré", "I0.4 = 1"],
     ["Auto", "ouvert", "OK", "coupés", "coupé", "coupés", "actif", "relais retombé"],
     ["Manu", "ouvert ou fermé", "OK", "alimentés", "alimenté", "coupés", "actif", "I0.5 = 1"],
     ["tous", "tous", "enfoncé", "coupés", "coupé", "coupés", "actif", "relais retombé"],
@@ -755,7 +754,7 @@ g.tableau(F[f], 2400, 10000, [3600, 12600], 330, [
     ["Auto -> Manu, capot fermé", "-KM1 / -KM2 et STO retombent, shunts ajoutés sur voies fermées, 48 V alimenté, pas de réarmement"],
     ["Auto -> Manu, en rotation", "idem, moteurs en roue libre freins desserrés (≈ 10 s à mesurer) : risque résiduel accepté"],
     ["Auto -> Manu, capot ouvert", "relais déjà retombé : réarmement -S414 après passage en Manu"],
-    ["Manu -> Auto, capot fermé", "48 V coupé, STO et -KM1 / -KM2 autorisés ; rien ne démarre sans ordre de marche IHM"],
+    ["Manu -> Auto, capot fermé", "48 V coupé, STO libéré et -KM1 / -KM2 fermés ; rien ne démarre sans ordre de marche IHM"],
     ["Manu -> Auto, capot ouvert", "shunts ouverts : le relais retombe ; fermer le capot puis réarmer"],
 ], size=200)
 notes(f, 2400, 12600, 19000, [
@@ -878,14 +877,12 @@ W(f, [voy["X2"], (12000, RAIL0_Y)], "0V")
 for q, (T, sg) in (("Q0.0", ("T322", "PUL")), ("Q0.1", ("T322", "DIR")), ("Q0.2", ("T322", "ENA")),
                    ("Q0.4", ("T323", "PUL")), ("Q0.5", ("T323", "DIR")), ("Q0.6", ("T323", "ENA"))):
     renvoi(f, Q51[q], "32", CMD32[(T, sg)], "24")
-k511 = maitre(C + "Schneider_LC1D09BD_contacteur_bobine.xsy", "K511", f, 14800, 9600, ref=("", "", "À définir"), prefix="K", wrap=16)
-W(f, [k501s["Q0.7"], (12000, 7200), (14800, 7200), k511["A1"]], "24")
-W(f, [k511["A2"], (14800, RAIL0_Y)], "0V")
-texte(f, 16000, 8400, "Q0.3, Q1.0, Q1.1 : réserve", 200)
+
+texte(f, 16000, 8400, "Q0.3, Q0.7, Q1.0, Q1.1 : réserve", 200)
 g.tableau(F[f], 20800, 15600, [1800, 1600, 4800], 300, [
     ["Sortie", "Repère", "Fonction"], ["Q0.0 / 0.1 / 0.2", "-T322", "PUL / DIR / ENA axe 1 (PTO1)"],
     ["Q0.4 / 0.5 / 0.6", "-T323", "PUL / DIR / ENA axe 2 (PTO2)"],
-    ["Q0.7", "-K511", "ordre de fermeture -KM1 / -KM2"], ["Q0.3, Q1.0, Q1.1", "", "réserve"],
+    ["Q0.3, Q0.7, Q1.0, Q1.1", "", "réserve"],
     ["SM 1223 (f52)", "", "colonne, voyants, alarme switch"],
 ], size=200)
 proposition(f, ["affectation des sorties automate (liste d'E/S du 06/10, à confirmer)"], x=13600, y=1300)
@@ -990,13 +987,12 @@ MEMES = [
     # sorties du relais de sécurité (architecture du 27/10)
     ["K401:14", "Q421:A1", "Q422:A1", "X711.19:1"], ["X711.19:2", "S413:83"], ["S413:84", "X711.20:1"],
     ["X711.20:2", "Q423:A1"],
-    ["K401:24", "X711.7:1"], ["X711.7:2", "S413:13"], ["S413:14", "X711.8:1"], ["X711.8:2", "K511:13"],
-    ["K511:14", "KM1:A1", "KM2:A1"],
+    ["K401:24", "X711.7:1"], ["X711.7:2", "S413:13"], ["S413:14", "X711.8:1"], ["X711.8:2", "KM1:A1", "KM2:A1"],
     ["K401:34", "X711.9:1"], ["X711.9:2", "S413:23"], ["S413:24", "X711.10:1"],
     ["X711.10:2", "T201:X6:1", "T201:X6:3", "T211:X6:1", "T211:X6:3"],
     # sorties automate
     ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.2", "T322:ENA+"],
-    ["K501:Q0.4", "T323:PUL+"], ["K501:Q0.5", "T323:DIR+"], ["K501:Q0.6", "T323:ENA+"], ["K501:Q0.7", "K511:A1"],
+    ["K501:Q0.4", "T323:PUL+"], ["K501:Q0.5", "T323:DIR+"], ["K501:Q0.6", "T323:ENA+"],
     ["K521:Q8.0", "P511:RD"], ["K521:Q8.1", "P511:OG"], ["K521:Q8.2", "P511:GN"],
     ["K521:Q8.3", "S414:X1"], ["K521:Q8.4", "P513:X1"],
     # entrées automate
@@ -1009,7 +1005,7 @@ MEMES = [
     ["X311:1", "K401:A1", "K401:13", "K401:23", "K401:33", "K501:L+", "K501:3L+", "K521:L+", "K521:3L+",
      "K531:L+", "K541:V1+", "K541:ALM1", "P512:X1", "X711.21:2"],
     ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:3M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
-     "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "K511:A2", "P511:COM", "P512:X2", "P513:X2", "S414:X2",
+     "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "P511:COM", "P512:X2", "P513:X2", "S414:X2",
      "T201:X5:GND", "T211:X5:GND", "T201:X6:2", "T201:X6:4", "T211:X6:2", "T211:X6:4",
      "T322:PUL-", "T322:DIR-", "T322:ENA-", "T323:PUL-", "T323:DIR-", "T323:ENA-", "X711.22:2"],
     ["X313:1", "T201:X5:24V", "T211:X5:24V"],

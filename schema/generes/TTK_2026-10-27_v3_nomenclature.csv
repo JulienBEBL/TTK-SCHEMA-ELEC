@@ -1,0 +1,135 @@
+Repère;Folio;Désignation;Champ 3;Champ 4;Fabricant;Référence;Symbole;Nb broches;X;Y
+B411;41;Interrupteur capot mécanique;À définir;1 NO + 1 NF;RS PRO;Interrupteur de position poussoir a galet;interrupteur position galet rs 902-6874;4;7200;12800
+B412;41;Interrupteur capot;ifm MN508S (RS 016-3138);codé - 2 NO + 1 NF - M12;IFM ELECTRONIC;MN508S;capteur codage magnetique ifm mn508s;6;17200;12800
+B501;50;Fin de course axe 1 min;À définir;contact NF (0 = atteint ou;;;fin de course no;2;14800;4400
+B502;50;Fin de course axe 1 max;À définir;contact NF (0 = atteint ou;;;fin de course no;2;15600;7600
+B503;50;Fin de course axe 2 min;À définir;contact NF (0 = atteint ou;;;fin de course no;2;16400;4400
+B504;50;Fin de course axe 2 max;À définir;contact NF (0 = atteint ou;;;fin de course no;2;17200;7600
+B531;53;Thermocouple tête;Type K (réf. à définir);;;;thermocouple;2;6800;7200
+E131;13;Éclairage armoire n°1;RS PRO 194-0417;230 V - 14 W LED;RS PRO;Lampe d'armoire LED 14 W;RSPRO_194-0417_eclairage_armoire_LED;2;4400;15600
+E132;13;Éclairage armoire n°2;RS PRO 194-0417;230 V - 14 W LED;RS PRO;Lampe d'armoire LED 14 W;RSPRO_194-0417_eclairage_armoire_LED;2;7600;15600
+F101;10;Parafoudre type 2 (option;Schneider A9L16297;Imax 20 kA - Up 1,5 kV;SCHNEIDER ELECTRIC;A9L16297;parafoudre 3p+n autoprotege signalisation;8;11600;15200
+G131;13;Ventilateur armoire;IDE VF92AC;230 V - 19 W;IDE;VF92AC;IDE_VF92AC_ventilateur_230V;2;11200;15600
+G132;13;Ventilateur armoire;IDE VF92AC;230 V - 19 W;IDE;VF92AC;IDE_VF92AC_ventilateur_230V;2;14800;15600
+S414;51;Voyant du bouton de;;;;;voyant;2;12000;12800
+K401;40;Relais de sécurité AU /;Schneider XPSUAF13AP;Fonction 1 - départ 3 - 24 V;SCHNEIDER ELECTRIC;XPSUAF13AP;module de securite xpsuaf13ap;16;4400;8000
+K501;50;Automate CPU 1214C G2 DC/DC/DC;Siemens 6ES7214-1AH50-0XB0;14 DI / 10 DQ 24 V CC;SIEMENS;6ES7214-1AH50-0XB0;cpu 1214c g2 dc-dc-dc alim entrees;22;4800;12000
+K501;51;Automate CPU 1214C G2;Siemens 6ES7214-1AH50-0XB0;14 DI / 10 DQ 24 V CC;;;cpu 1214c g2 dc-dc-dc sorties;12;4800;6400
+K521;52;Module E/S SM 1223 G2 8DI/8DQ;Siemens 6ES7223-5BH50-0XB0;8 DI / 8 DQ 24 V CC;SIEMENS;6ES7223-5BH50-0XB0;sm 1223 g2 8di 8dq alim entrees;12;4800;4400
+K521;52;Module E/S SM 1223 G2;Siemens 6ES7223-5BH50-0XB0;8 DI / 8 DQ 24 V CC;;;sm 1223 g2 8di 8dq sorties;10;4800;14400
+K531;53;Module SM 1231 TC G2;Siemens 6ES7231-5QF50-0XB0;8 AI thermocouple;SIEMENS;6ES7231-5QF50-0XB0;sm 1231 tc g2 8ai thermocouple;18;4800;12000
+K541;54;Switch PROFINET armoire;Weidmüller 2682250000;5 ports - 2 alim.;WEIDMULLER;2682250000;weidmuller ie-sw-al05lm-5tx;11;16000;4400
+KM1;12;Contacteur amont;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;3600;10800
+KM1;40;Retour contacteur amont;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;3200
+KM1;42;Contacteur amont;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;15200;12800
+KM1;50;Retour contacteur amont;;;;;rc contact no 13-14;2;18000;4400
+KM2;12;Contacteur amont;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;11600;10800
+KM2;40;Retour contacteur amont;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;5600
+KM2;42;Contacteur amont;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;18400;12800
+KM2;50;Retour contacteur amont;;;;;rc contact no 13-14;2;18800;7600
+M201;20;Motoréducteur frein;SEW K39 DRN100LS4/BE5/TF;2,2 kW - 400 V Y - frein 400 V CA;SEW-EURODRIVE;K39 DRN100LS4/BE5/TF;sew k39 drn100ls4 be5 tf;10;5200;15600
+M211;21;Motoréducteur frein;SEW K39 DRN100LS4/BE5/TF;2,2 kW - 400 V Y - frein 400 V CA;SEW-EURODRIVE;K39 DRN100LS4/BE5/TF;sew k39 drn100ls4 be5 tf;10;5200;15600
+M321;32;Moteur pas-à-pas translation;StepperOnline 34IP65-85;Nema 34 - 6 A - 8,5 Nm;STEPPERONLINE;34IP65-85;moteur pas a pas nema34 34ip65-85;4;10800;15600
+M322;32;Moteur pas-à-pas translation;StepperOnline 34IP65-85;Nema 34 - 6 A - 8,5 Nm;STEPPERONLINE;34IP65-85;moteur pas a pas nema34 34ip65-85;4;22800;15600
+P511;51;Colonne lumineuse 3 couleurs;À définir;24 V CC;RS PRO;Colonne lumineuse LED 3 feux;colonne lumineuse 3 feux rs 199-9760;4;17600;12800
+P512;31;Voyant porte :;;;;;voyant;2;24800;8800
+P513;51;Voyant porte :;;;;;voyant;2;7600;12800
+P601;60;IHM pupitre;Siemens 6AV2123-2GB03-0AX0;24 V CC - PROFINET;SIEMENS;6AV2123-2GB03-0AX0;ktp700 basic pn;4;8400;10000
+Q101;10;Sectionneur général;Legrand 022515 Vistop;63 A - 4P - 690 V;LEGRAND;022515;inter sectionneur 4p vertical legrand vistop;8;4800;5200
+Q102;10;Disjoncteur de tête;Hager NFT820;20 A courbe C - 10 kA - 3P+N;HAGER;NFT820;disjoncteur 3p+n neutre a gauche;8;4800;8000
+Q121;12;Disjoncteur moteur départ;Schneider GV2ME14;6-10 A - réglage 6,5 A;SCHNEIDER ELECTRIC;GV2ME14;disjoncteur moteur gv2me14;6;3600;6000
+Q122;12;Disjoncteur moteur départ;Schneider GV2ME14;6-10 A - réglage 6,5 A;SCHNEIDER ELECTRIC;GV2ME14;disjoncteur moteur gv2me14;6;11600;6000
+Q123;12;Disjoncteur départ frein M1;Schneider A9F74202 (iC60N);2 A courbe C - 2P;SCHNEIDER ELECTRIC;A9F74202;disjoncteur bipolaire ic60n a9f74202;4;18000;6000
+Q124;12;Disjoncteur départ frein M2;Schneider A9F74202 (iC60N);2 A courbe C - 2P;SCHNEIDER ELECTRIC;A9F74202;disjoncteur bipolaire ic60n a9f74202;4;23600;6000
+Q131;13;Disjoncteur différentiel;IMO B6CR1N1630A;16 A C - 30 mA type A - 6 kA;IMO;B6CR1N1630A;disjoncteur differentiel 1p+n imo b6cr;4;18000;11200
+Q132;13;Disjoncteur alimentation 24;Hager NFT706;6 A C - 10 kA - 1P+N;HAGER;NFT706;disjoncteur 1p+n hager nft706;4;2400;4800
+Q133;13;Disjoncteur alimentation 24;Hager NFT706;6 A C - 10 kA - 1P+N;HAGER;NFT706;disjoncteur 1p+n hager nft706;4;8800;4800
+Q134;13;Disjoncteur alimentation 48;Schneider A9F75204 (iC60N);4 A courbe D - 2P;SCHNEIDER ELECTRIC;A9F75204;disjoncteur bipolaire ic60n a9f75204;4;15200;4800
+Q135;13;Disjoncteur limitation prise;Schneider A9P71606 (iDT40K);6 A C - 4,5 kA;SCHNEIDER ELECTRIC;A9P71606;disjoncteur 1p+n schneider idt40k a9p71606;4;21600;14400
+Q136;13;Disjoncteur ventilateurs;À définir;;;;disjoncteur 1p+n hager nft706;4;11200;11200
+Q137;13;Disjoncteur éclairage (2;À définir;;;;disjoncteur 1p+n hager nft706;4;4400;11200
+Q421;12;Contacteur frein M1;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;17200;10800
+Q421;40;Retour contacteur frein;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;8000
+Q421;42;Contacteur frein;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;4400;12800
+Q422;12;Contacteur frein M2;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;22800;10800
+Q422;40;Retour contacteur frein;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;10400
+Q422;42;Contacteur frein;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;7600;12800
+Q423;32;Contacteur coupure 48 V;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;3200;8000
+Q423;40;Retour contacteur;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;12800
+Q423;42;Contacteur;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;11200;12800
+Q423;50;Retour contacteur 48 V (aux;;;;;rc contact no 13-14;2;19600;4400
+R201;20;Résistance de freinage;SEW BW100-001;100 Ω - 0,1 kW;SEW-EURODRIVE;BW100-001;resistance de freinage sew bw100-001;2;9600;10000
+R211;21;Résistance de freinage;SEW BW100-001;100 Ω - 0,1 kW;SEW-EURODRIVE;BW100-001;resistance de freinage sew bw100-001;2;9600;10000
+S411;41;Arrêt d'urgence armoire;À définir;2 NF + 1 NO;;;arret urgence nc déverr tournant;2;7200;4400
+S411;41;AU armoire - 2e;;;;;rc contact nc 21-22;2;17200;4400
+S411;50;AU armoire - contact NO;;;;;rc contact no 13-14;2;10800;7600
+S412;41;Arrêt d'urgence pupitre;À définir;3 contacts;;;arret urgence nc déverr tournant;2;7200;8000
+S412;41;AU pupitre (+P1) - 2e;;;;;rc contact nc 21-22;2;17200;8000
+S412;50;AU pupitre - contact NO;;;;;rc contact no 13-14;2;10000;4400
+S413;41;Manu-A :;;;;;rc contact no 53-54;2;4000;12800
+S413;41;Manu-B :;;;;;rc contact no 63-64;2;14000;12800
+S413;41;Sélecteur de mode Auto/Manu;Eaton T0-4-8223/E;8 contacts NO (4 par;;;tête 2 pos fixes no;2;21600;9600
+S413;42;Manu-D : 48 V en;;;;;rc contact no 83-84;2;11200;6800
+S413;42;Auto-A : commande;;;;;rc contact no 13-14;2;15200;5600
+S413;42;Auto-B :;;;;;rc contact no 23-24;2;21600;5600
+S413;50;Sélecteur - Auto;;;;;rc contact no 33-34;2;13200;4400
+S413;50;Sélecteur - Manu;;;;;rc contact no 73-74;2;14000;7600
+S414;41;Bouton de réarmement;À définir;1 NO + voyant 24 V;;;bp lumineux no;2;21600;4400
+T101;10;Transformateur US -> UE;TEMCo TT1041;15 kVA - 480 V triangle;TEMCO;TT1041;temco tt1041 480d 400y-230;8;20800;5600
+T201;20;Variateur M1;SEW;2,2 kW - 5,5 A - STO - PROFINET;SEW-EURODRIVE;MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM;sew movitrac advanced mcx91a-0055-5e3 cso cfn;41;4000;6000
+T211;21;Variateur M2;SEW;2,2 kW - 5,5 A - STO - PROFINET;SEW-EURODRIVE;MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM;sew movitrac advanced mcx91a-0055-5e3 cso cfn;41;4000;6000
+T301;30;Alimentation 24 V CC n°1;RS PRO 284-0491;24 V - 10 A - 240 W;RS PRO;Alimentation rail DIN 24 V 240 W;alim 230ac 24dc 240w rs 284-0491;7;4000;4800
+T302;30;Alimentation 24 V CC n°2;RS PRO 284-0491;24 V - 10 A - 240 W;RS PRO;Alimentation rail DIN 24 V 240 W;alim 230ac 24dc 240w rs 284-0491;7;16000;4800
+T321;32;Alimentation 48 V CC;Mean Well NDR-240-48;48 V - 5 A - 240 W;MEAN WELL;NDR-240-48;alim 230ac 48dc 240w ndr-240-48;7;3600;4800
+T322;32;Driver pas-à-pas axe 1;Jkongmotor JKDM860H;48 V CC - 6,0 A;JKONGMOTOR;JKDM860H;driver pas a pas jkdm860h;12;11600;12000
+T323;32;Driver pas-à-pas axe 2;Jkongmotor JKDM860H;48 V CC - 6,0 A;JKONGMOTOR;JKDM860H;driver pas a pas jkdm860h;12;23600;12000
+X101.1;10;Bornier arrivée réseau L1 L2;;;;;borne 4 mm;2;4800;3600
+X101.2;10;Bornier arrivée réseau L1 L2;;;;;borne 4 mm;2;5600;3600
+X101.3;10;Bornier arrivée réseau L1 L2;;;;;borne 4 mm;2;6400;3600
+X101.4;10;Bornier arrivée réseau L1 L2;;;;;borne 4 mm;2;7200;3600
+X101.VJ;10;Bornier arrivée réseau L1 L2;;;;;borne 4 mm;2;4000;3600
+X111;11;Répartiteur tétrapolaire;AE AEE300427;125 A - 1 entrée + 7 départs;;Répartiteur tétrapolaire 125 A 7 départs;Repartiteur_4P_125A_7departs_AEE300427;32;4800;7600
+X112;11;Bornier de terre PE;Legrand 404839;1 x 6-25 mm² + 26 x 1,5-16;LEGRAND;404839;bornier de terre legrand 404839;27;4800;14800
+X131;13;Prise de service;Legrand 004280;2P+T 16 A 250 V - limitée;LEGRAND;004280;Legrand_004280_prise_2P+T_16A;3;21600;17200
+X311;31;Distribution +24 V SECU;Phoenix 3002781 PTFIX 6X1,5-BK;6 points - 17,5 A;PHOENIX CONTACT;3002781;borne distribution ptfix 6x1.5;6;6000;6400
+X312;31;Distribution 0 V;Phoenix 3002781 PTFIX 6X1,5-BK;6 points - 17,5 A;PHOENIX CONTACT;3002781;borne distribution ptfix 6x1.5;6;6000;15200
+X313;31;Distribution +24 V AUTRE;Phoenix 3002781 PTFIX 6X1,5-BK;6 points - 17,5 A;PHOENIX CONTACT;3002781;borne distribution ptfix 6x1.5;6;16000;6400
+X701.1;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;7200;11600
+X701.2;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;7200;15200
+X701.3;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;8000;12000
+X701.4;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;8000;14800
+X701.5;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;17200;11600
+X701.6;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;17200;15200
+X701.7;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;18000;12000
+X701.8;41;Bornier armoire ↔ machine;;;;;borne 4 mm;2;18000;14800
+X701.9;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;14800;3600
+X701.10;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;14800;6400
+X701.11;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;15600;6400
+X701.12;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;15600;9600
+X701.13;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;16400;3600
+X701.14;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;16400;6400
+X701.15;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;17200;6400
+X701.16;50;Bornier armoire ↔ machine;;;;;borne 4 mm;2;17200;9600
+X711.1;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;7200;6800
+X711.2;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;7200;10400
+X711.3;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;17200;6800
+X711.4;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;17200;10400
+X711.5;50;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;10000;3600
+X711.6;50;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;10000;6400
+X711.7;42;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;15200;4400
+X711.8;42;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;15200;8000
+X711.9;42;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;21600;4400
+X711.10;42;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;21600;8000
+X711.11;50;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;13200;3600
+X711.12;50;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;13200;6400
+X711.13;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;4000;11600
+X711.14;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;4000;15200
+X711.15;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;14000;11600
+X711.16;41;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;14000;15200
+X711.17;50;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;14000;6400
+X711.18;50;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;14000;9600
+X711.19;42;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;11200;5600
+X711.20;42;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;11200;9200
+X711.21;60;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;8400;10800
+X711.22;60;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;9200;10800
+X711.23;60;Bornier armoire ↔ pupitre;;;;;borne 4 mm;2;10000;10800

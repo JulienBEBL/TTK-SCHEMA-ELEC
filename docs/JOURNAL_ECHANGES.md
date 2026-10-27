@@ -65,3 +65,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 27/10/2026 (nuit)
 - Julien : capteur magnétique codé RS 0163138 ; affectation des sorties « je ne sais pas » ; -K511 « pour quelles fonctions ? ».
 - Claude : affectation des sorties figée avec justification ; explication de -K511 et proposition de le supprimer ; demande de la référence fabricant du capteur codé.
+
+## 27/10/2026 (nuit, suite)
+- Julien : capteur = ifm (série MN, 2 NO + 1 NF, M12, 50 mA) ; option A retenue ; demande la v3 et une fiche récapitulative pour un autre chat (local).
+- v3 générée : `schema/generes/TTK_2026-10-27_v3.xrs` (28 folios, 134 symboles, 624 fils, 0 problème, 0 erreur verifier) + vérification + nomenclature. Récap : `docs/RECAP_2026-10-27.md`.
