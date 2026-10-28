@@ -32,6 +32,8 @@ for l in body.split("\n"):
         ax.plot([int(f[0]), int(f[2])], [int(f[1]), int(f[3])], color=COL.get(f[9], "r"), lw=1.2)
     elif sec == "¤#Jonction¤" and len(f) > 3 and f[2] == idx:
         ax.plot([int(f[0])], [int(f[1])], "o", color="k", ms=3)
+    elif sec == "¤#Numero¤" and len(f) > 7 and f[3] == idx:
+        ax.text(int(f[0]) - 150, int(f[1]), f[2], fontsize=5, color="navy", rotation=int(f[7]), va="center", ha="center")
     elif sec == "¤#Texte¤" and len(f) > 9 and f[4] == idx:
         ax.text(int(f[0]), int(f[1]), f[2], fontsize=int(f[7]) / 55, va="top", color="firebrick" if f[9] == "255" else "k")
     elif sec == "¤#DSansTexte¤" and len(f) > 9 and f[5] == idx:

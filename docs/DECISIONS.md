@@ -76,3 +76,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Règle de Julien : pastille d'état en haut à droite de chaque folio (vert = validé par Julien, tous éléments compris ; orange = presque fini ; rouge = moins de 50 %). États initiaux proposés par Claude (aucun vert), dans `STATUT` de `ttk_schema.py`.
 - [?] f32 « bornier pour le 0 V » : -X35 existe déjà ; demande à préciser.
 - [?] Numérotation des fils : méthode à tester sur f12 (L1, L2, L3).
+
+## 28/10/2026 (nuit) : v6
+- [D] -KM3 coupe le +48 V seul, avec 1 pôle (pas de pôles en série) ; 0 V 48 non coupé, direct de -T3 à -X35.
+- [D] f32 : un fil par driver depuis -X34 / -X35, sans dérivation (croisements sans jonction acceptés).
+- [D] Numérotation des fils, convention A : les fils de puissance portent le nom de leur phase (L1, L2, L3, N), sans différenciation. Les autres fils ne sont pas numérotés tant que le schéma n'est pas fini. Format relevé sur le fichier numéroté par Julien (`schema/recus/2026-10-28_v5_numerotation_f12.xrs`) : `x·y·texte·folio·0·Arial·300·angle·8388608·0·0·0·`, un numéro par tronçon, au milieu du segment, angle 90 en vertical. Généré par `nommer_phases()` (phase connue aux départs de -X12, propagée à travers les pôles).
+- [D] f70 : rectangles 6 x 12 mm repérés (1..n, PE, U V W, 1b 2b, 2 3, L1 L2 L3 N). f71 : tableau agrandi (ligne 6 mm, police 2,5 mm).

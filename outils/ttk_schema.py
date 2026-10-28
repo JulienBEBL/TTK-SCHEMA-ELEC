@@ -73,6 +73,54 @@ def _place_ren(xsy, rep, folio, x, y, champs=None, **kw):
     return p
 
 
+POLES = [("1", "2"), ("3", "4"), ("5", "6"), ("1/L1", "2/T1"), ("3/L2", "4/T2"), ("5/L3", "6/T3")]
+
+
+def nommer_phases():
+    """Fils de puissance (L, N) : nom de la phase (L1, L2, L3, N) au lieu d'un numéro (choix de Julien, 28/10).
+    Phase connue aux départs du répartiteur -X111 (1x = L1, 2x = L2, 3x = L3, Nx = N), propagée à travers les pôles
+    des disjoncteurs et contacteurs. Un nom par tronçon de fil, au milieu du plus long segment."""
+    from collections import defaultdict
+    g._finalize_wires()
+    phase = {}
+    for s_ in g.symbols:
+        if s_.rep == "X111":
+            for nom, pts in s_.pins.items():
+                ph = "N" if nom.startswith("N") else {"1": "L1", "2": "L2", "3": "L3"}.get(nom[0])
+                for xy in pts:
+                    phase[g._find(("P", s_.folio) + xy)] = ph
+    liens = []
+    for s_ in g.symbols:
+        if s_.rep == "X111":
+            continue
+        paires = [(s_.pins[a][0], s_.pins[b][0]) for a, b in POLES if a in s_.pins and b in s_.pins]
+        if len(s_.pins.get("N", [])) == 2:
+            paires.append(tuple(s_.pins["N"]))
+        for a, b in paires:
+            liens.append((g._find(("P", s_.folio) + a), g._find(("P", s_.folio) + b)))
+    change = True
+    while change:
+        change = False
+        for a, b in liens:
+            for u, v in ((a, b), (b, a)):
+                if u in phase and v not in phase:
+                    phase[v] = phase[u]
+                    change = True
+    troncons = defaultdict(list)
+    for w in g.wires:
+        if w[5] in ("L", "N"):
+            troncons[(w[0], g._find(("P", w[0], w[1], w[2])))].append(w)
+    for (f_, r), ws in troncons.items():
+        ph = phase.get(r)
+        if not ph:
+            continue
+        w = max(ws, key=lambda w_: abs(w_[3] - w_[1]) + abs(w_[4] - w_[2]))
+        if abs(w[3] - w[1]) + abs(w[4] - w[2]) < 800:
+            continue
+        vertical = w[1] == w[3]
+        g.numeros.append((f_, (w[1] + w[3]) // 2, (w[2] + w[4]) // 2, ph, 90 if vertical else 0))
+
+
 def renommer_symboles():
     """À appeler avant l'écriture : les contrôles relisent le fichier avec les nouveaux repères."""
     for p_ in g.symbols:
@@ -603,27 +651,24 @@ t321 = maitre(C + "MeanWell_NDR-240-48_alim_48V_240W.xsy", "T321", f, 4000, 5200
 for p, side in (("N", "N"), ("L", "L")):
     renvoi("13", out13[("Q134", side)], f, stub(f, (t321[p].x, 3600), t321[p], side), side)
 q423p = contacteur(poles, "Q423", f, 3600, 8400)
-W(f, [t321[("-V", 1)], q423p["3/L2"]], "0V")
+# 48 V : -Q423 coupe le +48 V seul (1 pôle, 5/L3-6/T3), juste après l'alimentation ; 0 V 48 non coupé.
+# Borniers de distribution -X34 (+48 V) et -X35 (0 V 48) ; un fil par driver, sans dérivation.
 W(f, [t321[("+V", 0)], q423p["5/L3"]], "DC")
-# 48 V : contacteur -Q423 juste après l'alimentation, puis borniers de distribution +48 V (-X34) et 0 V 48 (-X35)
 DESC32 = {"X34": "Distribution +48 V (après contacteur)", "X35": "Distribution 0 V 48"}
-x34 = g.place(ptf, "X34", F[f], 10400, 8800, champs={2: DESC32["X34"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
-                                                    4: "6 points - 17,5 A"}, loc="A1", wrap=24)
+x34 = g.place(ptf, "X34", F[f], 10000, 9600, champs={2: DESC32["X34"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
+                                                    4: "6 points - 17,5 A"}, loc="A1", compact=True, rep_size=250)
 x35 = g.place(ptf, "X35", F[f], 4400, 13600, fpos=(0, 1200), champs={2: DESC32["X35"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
-                                                     4: "6 points - 17,5 A"}, loc="A1", wrap=24)
-W(f, [q423p["6/T3"], (5200, 10400), (10400, 10400), x34["4"]], "DC")
-W(f, [x34["6"], (11200, 11200), (24000, 11200)], "DC")
-W(f, [q423p["4/T2"], x35["1"]], "0V")
-W(f, [x35["3"], (5200, 11600), (24800, 11600)], "0V")
+                                                     4: "6 points - 17,5 A"}, loc="A1", compact=True, rep_size=250)
+W(f, [q423p["6/T3"], (5200, 10400), x34["4"]], "DC")
+W(f, [t321[("-V", 0)], (4000, 7200), (3200, 7200), (3200, 13600), x35["1"]], "0V")
 W(f, [t321["PE"], (2800, 6000), (2800, PE_Y), (3600, PE_Y)], "PE")
 drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
-CMD32 = {}
+CMD32, DRV = {}, {}
 for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 24000)):
     D = maitre(drv, T, f, x0, 12400)
     Mo = maitre(mpp, Mrep, f, x0 - 800, 16000)
-    W(f, [(x0, 11200), D["+V"]], "DC")
-    W(f, [(x0 + 800, 11600), D["-V"]], "0V")
+    DRV[T] = D
     for p in ("A+", "A-", "B+", "B-"):
         W(f, [D[p], Mo[p]], "DC")
     xin, xbus = x0 - 4000, x0 - 3200
@@ -633,8 +678,17 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 24000)):
     CMD32[(T, "0V")] = W(f, [(xbus, D["PUL-"].y), (xbus, 15600)], "0V")
 renvoi("31", d31["0V32a"], f, CMD32[("T322", "0V")], "0V")
 renvoi("31", d31["0V32b"], f, CMD32[("T323", "0V")], "0V")
-texte(f, 8800, 10800, "+48 V", 200)
-texte(f, 8800, 11800, "0 V 48", 200)
+W(f, [x34["3"], (10800, 8800), (12000, 8800), DRV["T322"]["+V"]], "DC")
+W(f, [x34["2"], (10400, 8400), (24000, 8400), DRV["T323"]["+V"]], "DC")
+W(f, [x35["3"], (5200, 11600), (12800, 11600), DRV["T322"]["-V"]], "0V")
+W(f, [x35["2"], (4800, 11200), (24800, 11200), DRV["T323"]["-V"]], "0V")
+notes(f, 15600, 3200, 27600, [
+    "-Q423 coupe le +48 V seul (1 pôle), juste après l'alimentation -T321.",
+    "-X34 : distribution +48 V ; -X35 : distribution 0 V 48 (non coupé).",
+    "Un fil par driver depuis les borniers, sans dérivation.",
+    "Borniers : Phoenix 3002781 PTFIX 6X1,5-BK, 6 points 17,5 A.",
+    "! Pouvoir de coupure DC-1 du LC1D09BD sous 48 V à vérifier (notice).",
+])
 
 # ======================================================================== chaînes PE et +24 V / 0 V
 PEC = [("10", None, (XR, PE_Y)), ("11", (XL, PE_Y), (XR, PE_Y)), ("13", (XL, PE_Y), (XR, PE_Y)),
@@ -1147,9 +1201,9 @@ MEMES = [
     ["Q421:4/T2", "M201:2"], ["Q421:6/T3", "M201:3"], ["Q422:4/T2", "M211:2"], ["Q422:6/T3", "M211:3"],
     ["Q102:2", "X111:30"], ["Q102:4", "X111:20"], ["Q102:6", "X111:10"],
     ["KM1:2/T1", "T201:X1:L1"], ["KM2:6/T3", "T211:X1:L3"],
-    ["Q423:6/T3", "X34:4"], ["X34:6", "T322:+V", "T323:+V"], ["Q423:4/T2", "X35:1"], ["X35:3", "T322:-V", "T323:-V"],
+    ["Q423:6/T3", "X34:4", "T322:+V", "T323:+V"], ["T321:-V", "X35:1", "T322:-V", "T323:-V"],
 ]
-DIFFERENTS = ["X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "X711.20:2", "K401:14", "K401:24", "K401:34", "Q423:6/T3", "Q423:4/T2",
+DIFFERENTS = ["X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "X711.20:2", "K401:14", "K401:24", "K401:34", "Q423:6/T3",
               "X111:10", "X111:20", "X111:30", "X111:N0", "K401:S11", "K401:S12", "K401:S21", "K401:S22",
               "K401:Y1", "K401:Y2", "K501:I0.2", "K501:I0.3", "K501:I0.0", "K501:I0.1"]
 
@@ -1263,24 +1317,27 @@ def organisation_x70():
     """Folio 70 en construction : groupes de bornes prévus, non attribués (dessin seul, aucun symbole)."""
     f = "70"
     texte(f, 2400, 1600, "BORNIER -X701 : ARMOIRE +A1 <-> MACHINE +M - ORGANISATION (EN CONSTRUCTION, NON ATTRIBUE)", 280, 0, 1)
-    groupes = [("Câble 19G1 : armoire <-> machine (18 bornes + PE)", [19]),
-               ("Câble 27G1 (26 bornes + PE) - destination à confirmer", [27]),
-               ("Sondes thermiques TF moteurs M1 / M2", [2, 2]),
-               ("Moteurs M1 / M2 : U, V, W, PE", [4, 4]),
-               ("Freins M1 / M2", [2, 2]),
-               ("Capteur capot magnétique -B412 : câble M12 8 broches", [8]),
-               ("Arrivée réseau L1, L2, L3, N, PE (actuellement -X101, f10)", [5])]
+    n19 = [str(i) for i in range(1, 19)] + ["PE"]
+    n27 = [str(i) for i in range(1, 27)] + ["PE"]
+    groupes = [("Câble 19G1 : armoire <-> machine (18 + PE)", [n19]),
+               ("Câble 27G1 : machine <-> armoire (26 + PE), répartition non attribuée", [n27]),
+               ("Sondes thermiques TF : M1 / M2", [["1b", "2b"], ["1b", "2b"]]),
+               ("Moteurs M1 / M2", [["U", "V", "W", "PE"], ["U", "V", "W", "PE"]]),
+               ("Freins M1 / M2 (bornes BE 2-3)", [["2", "3"], ["2", "3"]]),
+               ("Capteur capot magnétique -B412 : câble M12 8 broches", [[str(i) for i in range(1, 9)]]),
+               ("Arrivée réseau (actuellement -X101, f10)", [["L1", "L2", "L3", "N", "PE"]])]
     y = 2600
     for titre, blocs in groupes:
-        texte(f, 2400, y, f"{titre} - {sum(blocs)} bornes", 220, 0, 1)
+        texte(f, 2400, y, f"{titre} - {sum(len(b_) for b_ in blocs)} bornes", 220, 0, 1)
         x = 2400
-        for n in blocs:
-            for _ in range(n):
-                g.cadre(F[f], x, y + 400, x + 300, y + 1100, width=10)
-                x += 400
+        for b_ in blocs:
+            for lettre in b_:
+                g.cadre(F[f], x, y + 400, x + 600, y + 1600, width=15)
+                texte(f, x + 300 - int(len(lettre) * 200 * 0.55 / 2), y + 900, lettre, 200)
+                x += 800
             x += 800
-        y += 2000
-    notes(f, 15600, 9000, 28800, [
+        y += 2300
+    notes(f, 15600, 9600, 28800, [
         "Folio en construction : groupes prévus par Julien (28/10), aucune borne attribuée.",
         "Les bornes seront posées sur les folios fonctionnels (f20, f21, f41, f50, f53),",
         "puis le bornier graphique sera généré par WinRelais (Générer / Bornier).",
@@ -1298,9 +1355,9 @@ def ecrire_borniers(path):
     for num, bornier, titre in (("71", "X711", "BORNIER -X711 : ARMOIRE +A1 <-> PUPITRE +P1"),):
         lignes = plan_bornier(path, ren(bornier))
         texte(num, 2400, 1600, titre, 300, 0, 1)
-        g.tableau(F[num], 2400, 2400, [1400, 11000, 11000], 380,
-                  [["Borne", "Côté armoire (intérieur)", "Côté terrain (extérieur)"]] + lignes, size=200)
-        y = 2400 + 380 * (len(lignes) + 1) + 600
+        g.tableau(F[num], 1800, 2400, [1800, 12400, 12400], 600,
+                  [["Borne", "Côté armoire (intérieur)", "Côté terrain (extérieur)"]] + lignes, size=250)
+        y = 2400 + 600 * (len(lignes) + 1) + 400
         for l in ("Méthode : 1 borne par conducteur qui sort de l'armoire, bornes regroupées par appareil / câble,",
                   "côté armoire en haut de la borne sur le schéma, côté terrain en bas.",
                   f"Bornier graphique : Optimisation / Générer / Bornier, onglet Automatique, extraire {bornier},",
@@ -1313,6 +1370,7 @@ def ecrire_borniers(path):
 for num in F:                       # contenu centré dans le cadre (pas la garde, la légende, les notes)
     if "10" <= num <= "69":
         g.centrer(F[num])
+nommer_phases()
 renommer_symboles()
 g.write(SORTIE)
 ecrire_borniers(SORTIE)

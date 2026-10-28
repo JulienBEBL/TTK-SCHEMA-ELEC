@@ -81,3 +81,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 28/10/2026 (soir) : v5
 - Retours de Julien sur f10, f11, f12, f32, f70, règle des pastilles, numérotation des fils, potentiels 24 V.
 - v5 : `schema/generes/TTK_2026-10-28_v5.xrs` ; 0 problème au contrôle interne, 0 erreur verifier.
+
+## 28/10/2026 (nuit) : v6
+- Retours v5 : f32 (un fil par driver, KM3 1 pôle), f70 (rectangles repérés), f71 (tableau plus grand), numérotation testée par Julien sur f12.
+- v6 : `schema/generes/TTK_2026-10-28_v6.xrs` ; 0 problème au contrôle interne, 0 erreur verifier ; 84 noms de phase posés sur les fils de puissance (f10 à f21).

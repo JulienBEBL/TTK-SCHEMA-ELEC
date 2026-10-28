@@ -93,6 +93,7 @@ class Gen:
         self.symbols = []           # Placed
         self.wires = []             # (folio, x1, y1, x2, y2, type)
         self.jonctions = []
+        self.numeros = []           # (folio, x, y, texte, angle) : numéros / noms de fil (¤#Numero)
         self.renvois = []
         self.textes = []
         self.dessins = []
@@ -558,6 +559,12 @@ class Gen:
         L.append("\u00a4#Jonction\u00a4")
         for f, x, y, w, c in self.jonctions:
             L.append(SEP.join(map(str, (x, y, f, w, 0, 2, c, 0))) + SEP)
+        if self.numeros:
+            # format relevé sur un fichier numéroté par WinRelais (28/10/2026) :
+            # x·y·texte·folio·0·police·taille·angle·couleur·0·0·0·
+            L.append("\u00a4#Numero\u00a4")
+            for f, x, y, txt, ang in self.numeros:
+                L.append(SEP.join(map(str, (x, y, txt, f, 0, "Arial", 300, ang, 8388608, 0, 0, 0))) + SEP)
         if self.renvois:
             L.append("\u00a4#RenvoiF\u00a4")
             for fa, pa, fb, pb, t, vert in self.renvois:
