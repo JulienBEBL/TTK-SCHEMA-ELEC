@@ -77,3 +77,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 28/10/2026 (suite)
 - Julien : T1 OK mais « est-ce un 24 V coupé par l'AU ? » ; 27G1 machine <-> armoire, non attribué ; thermocouple en direct ; moteurs / freins / TF via bornier OK ; attendre sa relecture de la v4 avant toute nouvelle version.
+
+## 28/10/2026 (soir) : v5
+- Retours de Julien sur f10, f11, f12, f32, f70, règle des pastilles, numérotation des fils, potentiels 24 V.
+- v5 : `schema/generes/TTK_2026-10-28_v5.xrs` ; 0 problème au contrôle interne, 0 erreur verifier.

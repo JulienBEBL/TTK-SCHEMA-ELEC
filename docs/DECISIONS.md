@@ -67,3 +67,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Thermocouple : câble de compensation en direct jusqu'au module -K3, sans borne. Groupe « thermocouple » à retirer du folio 70.
 - [D] Moteurs, freins et sondes TF via bornier -X70 : validé, à câbler aux folios 20 / 21 dans la prochaine version.
 - [?] Renommer les potentiels « +24 V SECU » / « +24 V AUTRE » pour éviter de croire qu'ils sont coupés par l'AU (proposition : « +24 V ELECTRONIQUE » / « +24 V COMMANDE »).
+
+## 28/10/2026 (soir) : retours v4 -> v5
+- [D] Potentiels renommés : +24 V ELEC (-T2 : automate, IHM, switch, A1 du relais de sécurité, X5 variateurs) et +24 V COMMANDE (-T1 : contacts 13 / 23 / 33 de -KA1 -> bobines, sorties 3L+ de -K2 -> colonne et voyants). Aucun n'est coupé par l'AU.
+- [D] Câble client -W1 : 5G4 mm².
+- [D] f11 / f12 : étiquettes des départs centrées sur les renvois, police 2,6 / 3 mm.
+- [D] f70 : groupe « arrivée réseau » (5 bornes) ajouté en bas, groupe thermocouple retiré.
+- [D] Règle de Julien : pastille d'état en haut à droite de chaque folio (vert = validé par Julien, tous éléments compris ; orange = presque fini ; rouge = moins de 50 %). États initiaux proposés par Claude (aucun vert), dans `STATUT` de `ttk_schema.py`.
+- [?] f32 « bornier pour le 0 V » : -X35 existe déjà ; demande à préciser.
+- [?] Numérotation des fils : méthode à tester sur f12 (L1, L2, L3).
