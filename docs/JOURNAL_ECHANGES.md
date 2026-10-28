@@ -74,3 +74,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Retours de Julien sur f01, f02, f03, f10, f20, f21, f30, f31, f32, f54, f60, f70 + nommage + 48 V + voyant 230 V (détail : `docs/DECISIONS.md` du 28/10).
 - v4 générée : `schema/generes/TTK_2026-10-28_v4.xrs` (28 folios, 137 symboles, 630 fils, 109 renvois ; 0 problème au contrôle interne ; 0 erreur `xrs_tool verifier`). Attention attendue : 0 V et PE sur le même potentiel (liaison PELV -X36.1).
 - Non fait, en attente d'un .xrs modifié par Julien : affichage câble blindé, masquage des numéros de broches des drivers.
+
+## 28/10/2026 (suite)
+- Julien : T1 OK mais « est-ce un 24 V coupé par l'AU ? » ; 27G1 machine <-> armoire, non attribué ; thermocouple en direct ; moteurs / freins / TF via bornier OK ; attendre sa relecture de la v4 avant toute nouvelle version.

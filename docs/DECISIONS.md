@@ -60,3 +60,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f70 en construction : groupes de bornes (19G1, 27G1, TF 4, moteurs 2x4, freins 2x2, M12 8 broches, thermocouple 2), non attribués. Moteurs, freins et TF via bornier : remplace le raccordement direct du 27/10.
 - [D] f01 : encadrés logos TTK, BEBL, LEVERT INDUSTRIE ; tableau des indices supprimé. f02 : tableau pleine page, police 2,6 mm, colonne indice retirée.
 - [?] Affichage « câble blindé » (W2, W5) et masquage des numéros de broches des drivers (U3, U4) : champs du format .xrs inconnus. Julien fait la modification sur un symbole / câble dans WinRelais et renvoie le .xrs pour repérer le champ.
+
+## 28/10/2026 (suite) : réponses de Julien, en attente de sa relecture de la v4 (pas de nouvelle version)
+- [D] +24 V AUTRE (-T1) : affecté aux charges « puissance de commande » (bobines via les contacts de -KA1, colonne, voyants, sorties automate 3L+ des voyants). Rappel : aucune des deux alimentations n'est coupée par l'AU ; l'AU agit par les contacts de -KA1.
+- [D] Câble 27G1 : machine <-> armoire ; répartition machine / pupitre non attribuée.
+- [D] Thermocouple : câble de compensation en direct jusqu'au module -K3, sans borne. Groupe « thermocouple » à retirer du folio 70.
+- [D] Moteurs, freins et sondes TF via bornier -X70 : validé, à câbler aux folios 20 / 21 dans la prochaine version.
+- [?] Renommer les potentiels « +24 V SECU » / « +24 V AUTRE » pour éviter de croire qu'ils sont coupés par l'AU (proposition : « +24 V ELECTRONIQUE » / « +24 V COMMANDE »).
