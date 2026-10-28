@@ -69,3 +69,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 27/10/2026 (nuit, suite)
 - Julien : capteur = ifm (série MN, 2 NO + 1 NF, M12, 50 mA) ; option A retenue ; demande la v3 et une fiche récapitulative pour un autre chat (local).
 - v3 générée : `schema/generes/TTK_2026-10-27_v3.xrs` (28 folios, 134 symboles, 624 fils, 0 problème, 0 erreur verifier) + vérification + nomenclature. Récap : `docs/RECAP_2026-10-27.md`.
+
+## 28/10/2026 : retours v3 -> v4
+- Retours de Julien sur f01, f02, f03, f10, f20, f21, f30, f31, f32, f54, f60, f70 + nommage + 48 V + voyant 230 V (détail : `docs/DECISIONS.md` du 28/10).
+- v4 générée : `schema/generes/TTK_2026-10-28_v4.xrs` (28 folios, 137 symboles, 630 fils, 109 renvois ; 0 problème au contrôle interne ; 0 erreur `xrs_tool verifier`). Attention attendue : 0 V et PE sur le même potentiel (liaison PELV -X36.1).
+- Non fait, en attente d'un .xrs modifié par Julien : affichage câble blindé, masquage des numéros de broches des drivers.

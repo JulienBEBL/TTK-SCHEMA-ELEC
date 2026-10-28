@@ -64,5 +64,15 @@ for m in re.finditer(r"¤#Symbole·\d+¤\n(.*?)¤#FIN¤", sy, re.S):
             ax.add_patch(plt.Circle((int(c[0]), int(c[1])), int(c[2]), fill=False, color="0.2", lw=0.8))
         elif cur == "¤#Broche¤" and len(c) > 2:
             ax.plot([int(c[1])], [int(c[2])], ".", color="r", ms=3)
+for m in re.finditer(r"¤#DefCable·\d+¤\n¤#Autre¤\n(.*?)¤#FIN¤", t, re.S):
+    L = m.group(1).split("\n")
+    a = L[0].split(SEP)
+    if a[0] != idx:
+        continue
+    ax.plot([int(a[1]), int(a[3])], [int(a[2]), int(a[4])], color="purple", lw=2)
+    for l in L[4:11]:
+        c = l.split(SEP)
+        if len(c) > 6 and c[3] == "1" and c[0]:
+            ax.text(int(c[1]), int(c[2]), c[0], fontsize=int(c[6]) / 55, va="top", color="purple")
 fig.savefig(out, dpi=110, bbox_inches="tight")
 print(out)

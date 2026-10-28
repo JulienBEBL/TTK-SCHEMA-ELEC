@@ -47,3 +47,16 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D par Claude] Câblage -B412 : 1 NO (fermé capot fermé) en voie 2 du relais ; NF -> automate I0.3 (1 = capot ouvert, même sens que -B411 sur I0.2) ; 2e NO en réserve. Contacts à 50 mA max : uniquement entrées relais / automate.
 - [?] À vérifier sur la fiche ifm : homologation sécurité (EN 60947-5-3 / EN ISO 14119, absente des données RS), actionneur codé à associer (commandé ?), brochage M12. Câble : M12 (et non M8 comme noté en base), nombre de broches et longueur à définir.
 - [D] Option A : pas d'ordre automate sur -KM1 / -KM2 (-K511 supprimé, Q0.7 en réserve). -KM1 / -KM2 fermés dès que -K401 est armé en Auto ; arrêt de service par rampe + STO.
+
+## 28/10/2026 : retours de Julien sur la v3
+- [D] Nouveau repérage (table : `docs/NOMMAGE_2026-10-28.md`) : lettres de fonction + n° d'ordre dans la fonction, sens de l'énergie ; -KM1 / -KM2 moteurs, -KF1 / -KF2 freins ; disjoncteurs QS1, QF1 à QF10, QM1 / QM2 ; borniers X1x / X3x / X70 / X71. Remplace la règle R6 (folio maître). Folio 03 refait.
+- [D] Parafoudre supprimé du schéma (f10).
+- [D] 48 V : contacteur -KM3 (LC1D09BD) juste après l'alimentation, puis borniers de distribution -X34 (+48 V) / -X35 (0 V 48) avant les drivers ; bobine alimentée par le 24 V qui traverse le sélecteur (Manu-D), **ce 24 V venant de la sortie 13-14 de -KA1** (condition pour que l'AU coupe le 48 V).
+- [D] X5 des variateurs sur le +24 V SECU (-X31). Conséquence : -T1 (+24 V AUTRE) n'a plus aucun départ, affectation à décider.
+- [D] 0 V commun aux 2 alimentations : conservé (explication sur f30). Liaison PELV dessinée : -X36.1 (borne sectionnable) entre 0 V et PE.
+- [D] Voyant 230 V présence tension -H2 (f13), alimenté par les départs libres 35 (L3) et N4 du répartiteur -X12 (f11), protégé par -QF1 : câblage 2,5 mm².
+- [D] f54 : renvois PROFINET (type provisoire « Autre tension DC » en vert) vers -K1 X1 P1 (f50), -U1 / -U2 X40 (f20 / f21), -P1 X1 (f60). Relais d'alarme du switch non câblé.
+- [D] f60 : IHM sur +24 V SECU, câble -W711 retiré, mise en page aérée.
+- [D] f70 en construction : groupes de bornes (19G1, 27G1, TF 4, moteurs 2x4, freins 2x2, M12 8 broches, thermocouple 2), non attribués. Moteurs, freins et TF via bornier : remplace le raccordement direct du 27/10.
+- [D] f01 : encadrés logos TTK, BEBL, LEVERT INDUSTRIE ; tableau des indices supprimé. f02 : tableau pleine page, police 2,6 mm, colonne indice retirée.
+- [?] Affichage « câble blindé » (W2, W5) et masquage des numéros de broches des drivers (U3, U4) : champs du format .xrs inconnus. Julien fait la modification sur un symbole / câble dans WinRelais et renvoie le .xrs pour repérer le champ.

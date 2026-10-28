@@ -18,7 +18,7 @@ from xrs_tool import split_sections, fields, to_int
 
 LIB = os.environ.get("TTK_LIB") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "librairie")
 GRID = 400
-DATE = os.environ.get("TTK_DATE") or "27/10/2026"     # date de modification inscrite au cartouche et dans les symboles
+DATE = os.environ.get("TTK_DATE") or "28/10/2026"     # date de modification inscrite au cartouche et dans les symboles
 ZONE_X = (1300, 29600)          # cadre utile (hors marges)
 ZONE_Y = (1300, 19600)          # au-dessus du cartouche
 RENVOI_L = 1600                 # emprise flèche + texte d'un renvoi au-delà de son point (mesurée sur WinRelais)
@@ -32,6 +32,8 @@ TYPES = {
     "24": ("1·20·11302912·0·Commande 24VDC·0·0·0·0·0·", 20, 11302912),
     "0V": ("1·20·16744448·0·0V·0·0·0·0·0·", 20, 16744448),
     "DC": ("1·20·4227327·0·Autre tension DC·0·0·0·0·0·", 20, 4227327),
+    # PROFINET : type « Autre tension DC » affiché en vert, en attendant un type de conducteur dédié dans WinRelais
+    "PN": ("1·20·32768·0·Autre tension DC·0·0·0·0·0·", 20, 32768),
 }
 
 

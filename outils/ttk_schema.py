@@ -8,6 +8,7 @@ fabricant (onglet Repères), esclaves = même repère sans référence (règles 
 Tout ce que le tableau ne décide pas est marqué « PROPOSITION A VALIDER » sur le folio.
 """
 import os
+import re
 import sys
 
 import lire_tableau
@@ -30,6 +31,58 @@ for f in FOL:      # AU et sélecteur dessinés là où travaillent leurs contac
     if f["num"] == "60":
         f["desc"] = "IHM KTP700 : ALIMENTATION ET LIAISONS DU PUPITRE"
 g = Gen(MODELE)
+
+# ---------------------------------------------------------------- nommage des appareils (décision de Julien du 28/10)
+# Le script garde en interne les repères du classeur (Q121, T201...) ; ren() les traduit au moment de l'écriture
+# (repère, champs, textes, câbles, folios). Logique : lettres de fonction + n° d'ordre dans la fonction,
+# dans le sens de l'énergie ; -KM1 / -KM2 moteurs, -KF1 / -KF2 freins (choix de Julien) ; borniers par groupe
+# de fonction (X1x puissance, X3x très basse tension, X70 machine, X71 pupitre).
+RENOMME = {
+    "X101": "X11", "W101": "W1", "Q101": "QS1", "Q102": "QF1", "T101": "TR1", "X111": "X12", "X112": "X13",
+    "Q121": "QM1", "Q122": "QM2", "Q123": "QF2", "Q124": "QF3", "Q421": "KF1", "Q422": "KF2", "Q423": "KM3",
+    "Q132": "QF4", "Q133": "QF5", "Q134": "QF6", "Q136": "QF7", "Q137": "QF8", "Q131": "QF9", "Q135": "QF10",
+    "X131": "X14", "G131": "EV1", "G132": "EV2", "E131": "EL1", "E132": "EL2",
+    "T201": "U1", "R201": "R1", "M201": "M1", "W201": "W2", "W202": "W3", "W203": "W4",
+    "T211": "U2", "R211": "R2", "M211": "M2", "W211": "W5", "W212": "W6", "W213": "W7",
+    "T301": "T1", "T302": "T2", "T321": "T3", "X311": "X31", "X312": "X32", "X313": "X33",
+    "T322": "U3", "T323": "U4", "M321": "M3", "M322": "M4",
+    "K401": "KA1", "S411": "S1", "S412": "S2", "S413": "S3", "S414": "S4", "B411": "B1", "B412": "B2",
+    "K501": "K1", "B501": "B3", "B502": "B4", "B503": "B5", "B504": "B6", "P511": "H1", "P512": "H3", "P513": "H4",
+    "K521": "K2", "K531": "K3", "B531": "B7", "W531": "W8", "K541": "K4", "P601": "P1",
+    "X701": "X70", "X711": "X71",
+}
+_RE = re.compile(r"(?<![A-Za-z0-9])(" + "|".join(sorted(map(re.escape, RENOMME), key=len, reverse=True))
+                 + r")(?![0-9A-Za-z])")
+
+
+def ren(s):
+    return _RE.sub(lambda m: RENOMME[m.group(1)], s) if isinstance(s, str) else s
+
+
+_place, _texte, _cable, _folio = g.place, g.texte, g.cable, g.folio
+
+
+def _place_ren(xsy, rep, folio, x, y, champs=None, **kw):
+    """Pose avec l'ancien repère (clés internes du script), écrit le nouveau dans le champ 1."""
+    new = ren(rep)
+    kw["prefix"] = re.match(r"[A-Z]+", new).group(0)
+    p = _place(xsy, rep, folio, x, y, champs={k: ren(v) for k, v in (champs or {}).items()}, **kw)
+    f1 = p.block[3].split("·")
+    f1[0] = new
+    p.block[3] = "·".join(f1)
+    return p
+
+
+def renommer_symboles():
+    """À appeler avant l'écriture : les contrôles relisent le fichier avec les nouveaux repères."""
+    for p_ in g.symbols:
+        p_.rep = ren(p_.rep)
+
+
+g.place = _place_ren
+g.texte = lambda folio, x, y, txt, *a, **k: _texte(folio, x, y, ren(txt), *a, **k)
+g.cable = lambda folio, x1, x2, y, rep_, compo, desig, *a, **k: _cable(folio, x1, x2, y, ren(rep_), compo, ren(desig), *a, **k)
+g.folio = lambda numero, titre, description: _folio(numero, titre, ren(description))
 F = {f["num"]: g.folio(f["num"], f["titre"], f["desc"]) for f in FOL}
 
 C = "CUSTOM\\"
@@ -130,32 +183,32 @@ g.tableau(F["01"], 4000, 7600, [6000, 10000], 500, [
     ["Commande", "24 V CC PELV (-T301 / -T302), 48 V CC pas-à-pas (-T321)"],
     ["Puissance installée", "à calculer (2 x 2,2 kW + alimentations)"],
 ], size=250)
-g.tableau(F["01"], 4000, 12400, [1600, 2800, 12600, 3000], 500, [
-    ["Indice", "Date", "Objet", "Par"],
-    ["A", "22/10/2026", "Création - reconstruction d'après TTK_Plan_Folios_Reperes.xlsx", "THRO.J"],
-    ["B", "27/10/2026", "Sécurité f41-f42, câbles frein / TF séparés, E/S automate, colonne et voyants", "THRO.J"],
-    ["C", "27/10/2026", "Sécurité selon fiche du 27/10, folio 43 ; -KM1 / -KM2 sans ordre automate ; -B412 MN508S", "THRO.J"],
-], size=250)
+for i, logo in enumerate(("TTK", "BEBL", "LEVERT INDUSTRIE")):
+    x = 4000 + 7200 * i
+    g.cadre(F["01"], x, 12400, x + 6400, 16400, width=20)
+    texte("01", x + 200, 12500, f"Logo {logo}", 250)
 
-rows = [["N°", "Titre", "Description", "Ind."]] + [[f["num"], f["titre"], f["desc"][:70], "A"] for f in FOL]
-g.tableau(F["02"], 2400, 2000, [1200, 8400, 15200, 1200], 580, rows, size=220)
+rows = [["N°", "Titre", "Description"]] + [[f["num"], f["titre"], ren(f["desc"])] for f in FOL]
+g.tableau(F["02"], 1600, 1600, [1600, 9200, 16800], (19200 - 1600) // len(rows), rows, size=260)
 
 g.tableau(F["03"], 2000, 2000, [2400, 10400], 450, [
-    ["Repérage", "IEC 81346-2 - règles BEBL"],
-    ["Repère", "lettre de classe + n° du folio maître + rang sur ce folio (ex. -Q121)"],
+    ["Repérage", "Règles BEBL (28/10/2026)"],
+    ["Repère", "lettres de fonction + n° d'ordre dans la fonction (ex. -QF4)"],
+    ["Ordre", "dans le sens de l'énergie et selon l'implantation"],
     ["Maître", "porte la référence fabricant, compté en nomenclature"],
     ["Esclave", "même repère, sans référence (contacts, parties d'appareil)"],
-    ["Exception", "-KM1 / -KM2 réservés aux contacteurs amont variateurs"],
+    ["Borniers", "X1x puissance, X3x très basse tension, X70 machine, X71 pupitre"],
     ["Localisation", "+A1 armoire, +P1 pupitre, +M machine"],
 ], size=220)
-g.tableau(F["03"], 2000, 5600, [1200, 11600], 450, [
-    ["Lettre", "Classe"], ["Q", "commutation (sectionneur, disjoncteur, contacteur)"],
-    ["F", "protection"], ["K", "traitement (automate, relais, switch)"],
-    ["T", "conversion (alimentation, variateur, driver, transformateur)"],
-    ["M", "moteur"], ["R", "résistance"], ["S", "commande manuelle"], ["B", "capteur"],
-    ["P", "signalisation / IHM"], ["G", "ventilateur"], ["E", "éclairage"],
-    ["X", "connexion (borne, répartiteur)"], ["W", "câble"],
-], size=220)
+g.tableau(F["03"], 2000, 5600, [1400, 11400], 400, [
+    ["Préfixe", "Appareil"], ["QS", "sectionneur"], ["QF", "disjoncteur, disjoncteur différentiel"],
+    ["QM", "disjoncteur moteur"], ["KM", "contacteur moteur (KM1 / KM2 variateurs, KM3 48 V pas-à-pas)"],
+    ["KF", "contacteur de frein"], ["KA", "relais de sécurité"], ["K", "automate, modules, switch"],
+    ["U", "variateur, driver pas-à-pas"], ["T / TR", "alimentation / transformateur"],
+    ["M", "moteur"], ["R", "résistance"], ["S", "commande manuelle (AU, sélecteur, BP)"],
+    ["B", "capteur"], ["H / P", "signalisation / IHM"], ["EV / EL", "ventilateur / éclairage"],
+    ["X / W", "borne, bornier, répartiteur / câble"],
+], size=200)
 g.tableau(F["03"], 16000, 2000, [5200, 6400], 450, [
     ["Type de conducteur", "Couleur / usage"],
     ["Puissance", "noir - phases 400 / 230 V CA"],
@@ -168,11 +221,10 @@ g.tableau(F["03"], 16000, 2000, [5200, 6400], 450, [
 g.tableau(F["03"], 16000, 5600, [3600, 8000], 450, [
     ["Potentiel", "Origine"],
     ["L1 L2 L3 N PE", "réseau via -Q101 / -Q102"],
-    ["+24 V SECU", "-T302 (f30) : automate, IHM, switch, relais sécu"],
-    ["+24 V AUTRE", "-T301 (f30) : variateurs (X5)"],
-    ["+24 VS", "+24 V coupé par -K401 (34) et -S413 : sorties automate"],
-    ["0 V", "commun -T301 / -T302, relié au PE en un point (PELV)"],
-    ["+48 V / 0 V 48", "-T321 via -Q423 : drivers pas-à-pas"],
+    ["+24 V SECU", "-T302 (f30) : automate, IHM, switch, relais sécu, variateurs (X5)"],
+    ["+24 V AUTRE", "-T301 (f30) : aucun départ (à affecter)"],
+    ["0 V", "commun -T301 / -T302, relié au PE en un point (-X36.1, PELV)"],
+    ["+48 V / 0 V 48", "-T321 via -Q423 (Manu seulement) : -X34 / -X35, drivers"],
 ], size=220)
 
 # synoptique
@@ -184,32 +236,32 @@ texte("04", 20600, 2500, "+P1 PUPITRE", 350, 0, 1)
 g.cadre(SY, 20400, 10000, 28400, 17600, width=40, dashed=True)
 texte("04", 20600, 10100, "+M MACHINE", 350, 0, 1)
 blocs = [
-    (2800, 3600, "Arrivée -X101 / -Q101 / -Q102 / -F101 (f10)"),
-    (2800, 4400, "Répartiteur -X111, terre -X112 (f11)"),
-    (2800, 5200, "Départs 400 V : -Q121 -Q122 -KM1 -KM2 -Q123 -Q124 -Q421 -Q422 (f12)"),
-    (2800, 6000, "Départs 230 V : -Q131 à -Q137, -X131, -G131 -G132, -E131 -E132 (f13)"),
-    (2800, 6800, "Variateurs -T201 / -T211 + résistances -R201 / -R211 (f20, f21)"),
-    (2800, 7600, "Alimentations 24 V -T301 / -T302 (f30, f31), 48 V -T321 + -Q423 (f32)"),
-    (2800, 8400, "Drivers pas-à-pas -T322 / -T323 (f32)"),
-    (2800, 9200, "Relais de sécurité -K401 (f40), bobines contacteurs (f42)"),
-    (2800, 10000, "Automate -K501 (CPU 1214C G2), -K521 (SM 1223), -K531 (SM 1231 TC) (f50-f53)"),
-    (2800, 10800, "Switch PROFINET -K541 (f54)"),
-    (2800, 11600, "AU armoire -S411, réarmement -S414 (f41), colonne -P511 (f51)"),
-    (2800, 12400, "Borniers -X701 (machine), -X711 (pupitre)"),
-    (21000, 3600, "IHM -P601 KTP700 (f60)"),
-    (21000, 4400, "AU pupitre -S412 (f41)"),
-    (21000, 5200, "Sélecteur Auto/Manu -S413"),
-    (21000, 10800, "Motoréducteurs -M201 / -M211"),
-    (21000, 11600, "Moteurs pas-à-pas -M321 / -M322"),
-    (21000, 12400, "Capots -B411 / -B412 (f41)"),
-    (21000, 13200, "Fins de course -B501 à -B504 (f50)"),
-    (21000, 14000, "Thermocouple tête -B531 (f53)"),
+    (2800, 3600, "Arrivée -X11, sectionneur -QS1, disjoncteur de tête -QF1 (f10)"),
+    (2800, 4400, "Répartiteur -X12, terre -X13 (f11)"),
+    (2800, 5200, "400 V : -QM1 -QM2 -KM1 -KM2 (variateurs), -QF2 -QF3 -KF1 -KF2 (freins) (f12)"),
+    (2800, 6000, "230 V : -QF4 à -QF10, prise -X14, -EV1 -EV2, -EL1 -EL2, voyant -H2 (f13)"),
+    (2800, 6800, "Variateurs -U1 / -U2 + résistances -R1 / -R2 (f20, f21)"),
+    (2800, 7600, "24 V -T1 / -T2 (f30, f31), 48 V -T3 + -KM3 + -X34 / -X35 (f32)"),
+    (2800, 8400, "Drivers pas-à-pas -U3 / -U4 (f32)"),
+    (2800, 9200, "Relais de sécurité -KA1 (f40), sécurité (f41 à f43)"),
+    (2800, 10000, "Automate -K1 (CPU 1214C G2), -K2 (SM 1223), -K3 (SM 1231 TC) (f50-f53)"),
+    (2800, 10800, "Switch PROFINET -K4 (f54)"),
+    (2800, 11600, "AU armoire -S1, réarmement -S4, colonne -H1, voyants -H2 -H3 -H4"),
+    (2800, 12400, "Borniers -X70 (machine), -X71 (pupitre)"),
+    (21000, 3600, "IHM -P1 KTP700 (f60)"),
+    (21000, 4400, "AU pupitre -S2 (f41)"),
+    (21000, 5200, "Sélecteur Auto/Manu -S3"),
+    (21000, 10800, "Motoréducteurs -M1 / -M2"),
+    (21000, 11600, "Moteurs pas-à-pas -M3 / -M4"),
+    (21000, 12400, "Capots -B1 / -B2 (f41)"),
+    (21000, 13200, "Fins de course -B3 à -B6 (f50)"),
+    (21000, 14000, "Thermocouple tête -B7 (f53)"),
 ]
 for x, y, t in blocs:
     texte("04", x, y, t, 250)
 liaisons = [
     (11600, 1400, 11600, 2400, 11800, 1500, "-W101 réseau client 5G2,5"),
-    (18800, 6000, 20400, 6000, 18900, 6600, "-W711 + PROFINET"),
+    (18800, 6000, 20400, 6000, 18900, 6600, "Câble pupitre + PROFINET"),
     (18800, 15200, 20400, 15200, 13600, 15000, "-W201 -W202 -W203 -W211 -W212 -W213 (moteurs)"),
     (18800, 16000, 20400, 16000, 13600, 15800, "-X701 capteurs / fins de course"),
     (18800, 16800, 20400, 16800, 13600, 16600, "-W531 compensation TC"),
@@ -217,7 +269,7 @@ liaisons = [
 for x1, y1, x2, y2, tx, ty, t in liaisons:
     g.ligne(SY, x1, y1, x2, y2, width=40)
     texte("04", tx, ty, t, 200)
-texte("04", 2400, 18200, "Le synoptique remplace l'image collée (repères et folios à jour au 27/10/2026).", 220)
+texte("04", 2400, 18200, "Synoptique à jour au 28/10/2026 (nouveau repérage).", 220)
 
 # ======================================================================== règles de mise en page
 # Un renvoi WinRelais dessine flèche + texte sur ~1,6 cm AU-DELA de son point, côté opposé au fil :
@@ -254,11 +306,7 @@ ends10 = {}
 for pin, y in {"6": 11600, "4": 12400, "2": 13200, ("N", 1): 14000}.items():
     p = q102[pin]
     ends10[pin] = W(f, [p, (p.x, y), (XR, y)], "N" if pin == ("N", 1) else "L")
-f101 = maitre(C + "Schneider_A9L16297_parafoudre_3P+N.xsy", "F101", f, 12000, 15200)
-for pin, y in (("N", 14000), ("L1", 13200), ("L2", 12400), ("L3", 11600)):
-    W(f, [f101[pin], (f101[pin].x, y)], "N" if pin == "N" else "L")
 W(f, [(XL, PE_Y), (XR, PE_Y)], "PE")
-W(f, [f101["PE"], (f101["PE"].x, PE_Y)], "PE")
 t101 = maitre(C + "TEMCo_TT1041_transformateur_480D_400Y230_15kVA.xsy", "T101", f, 21200, 5600, wrap=24)
 g.cadre(F[f], 18400, 2800, 28800, 10000, width=20, dashed=True)
 texte(f, 18600, 2900, "VARIANTE USA (option) - réseau 3 x 480 V", 220, 0, 1)
@@ -281,10 +329,15 @@ dep11 = ["11", "21", "31", "12", "22", "32", "13", "23", "14", "34", "15", "N5",
 pts11 = {}
 for i, pin in enumerate(sorted(dep11, key=lambda p: x111[p].x)):
     pts11[pin] = W(f, [x111[pin], (x111[pin].x, 10400 if i % 2 == 0 else 12000)], "N" if pin.startswith("N") else "L")
+# voyant 230 V présence tension (H2, f13) : départs libres 35 (L3) et N4, 3e niveau de renvoi
+pts11["35"] = W(f, [x111["35"], (x111["35"].x, 13600)], "L")
+pts11["N4"] = W(f, [x111["N4"], (x111["N4"].x, 13600)], "N")
 for x, t in ((7200, "VARIATEUR 1"), (8800, "VARIATEUR 2"), (10400, "FREIN 1"), (12000, "FREIN 2"),
              (13600, "24 V"), (15600, "48 V"), (17600, "230 V AUX.")):
-    texte(f, x, 14000, t, 200)
-x112 = maitre(C + "Legrand_404839_bornier_terre_27.xsy", "X112", f, 4800, 16400, fpos=(12800, -1200))
+    texte(f, x, 15600, t, 200)
+texte(f, 19600, 13400, "35 / N4 : voyant présence tension -H2 (f13)", 200)
+texte(f, 19600, 13700, "protégé par -QF1 20 A : câblage 2,5 mm²", 200, ROUGE)
+x112 = maitre(C + "Legrand_404839_bornier_terre_27.xsy", "X112", f, 4800, 17600, fpos=(12800, -1200))
 W(f, [(XL, PE_Y), (XR, PE_Y)], "PE")
 W(f, [x112["E"], (x112["E"].x, PE_Y)], "PE")
 fe11 = {"1": stub(f, (22400, 17600), (22400, PE_Y), "PE"), "2": stub(f, (23200, 17600), (23200, PE_Y), "PE")}
@@ -383,7 +436,15 @@ W(f, [x131["PE"], (x131["PE"].x, PE_Y)], "PE")
 for x, y, ph in ((3300, 4300, "L1"), (9700, 4300, "L1"), (16100, 3700, "L2"), (6400, 9200, "L3")):
     texte(f, x, y, ph, 200, 16711680)
 texte(f, 2400, 18000, "Phases : 24 V sur L1 (X111 départ 5), 48 V sur L2 (départ 6), 230 V aux. sur L3 (départ 7)", 200)
-texte(f, 2400, 18400, "Q12 / Q13 supprimés (décision 04/10) : coupure 48 V par -Q423 seul, sorties coupées par -K401.", 200)
+REP["H2"] = {"des": "Voyant porte : armoire sous tension (230 V)", "fab": "À définir", "carac": "230 V CA - blanc",
+            "loc": "+A1"}
+h2 = maitre("Signalisation et voyants\\Voyant.xsy", "H2", f, 21600, 4400, fpos=(600, 400), wrap=22)
+W(f, [(21600, 3200), h2["X1"]], "L")
+W(f, [(20800, 3200), (20800, 6800), (21600, 6800), h2["X2"]], "N")
+renvoi("11", pts11["35"], f, (21600, 3200), "L")
+renvoi("11", pts11["N4"], f, (20800, 3200), "N")
+texte(f, 20400, 7600, "Présence tension en aval de -QF1 (départ du répartiteur -X12).", 200)
+texte(f, 20400, 7900, "Information seulement : ne remplace pas une vérification d'absence de tension.", 200)
 
 # ======================================================================== 20 / 21 VARIATEURS
 mcx = C + "SEW_Variateur_MCX91A-0055-5E3_CSO_CFN.xsy"
@@ -397,26 +458,27 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     M = maitre(mot, m, f, 5200, 15600, fpos=(10000, 0), wrap=36)   # textes à droite du moteur
     for p, kp in (("X1:L1", "2/T1"), ("X1:L2", "4/T2"), ("X1:L3", "6/T3")):
         renvoi("12", out12[(km, kp)], f, stub(f, (T[p].x, 4800), T[p], "L"), "L")
-    W(f, [T["X1:PE"], (4000, 5200), (3600, 5200), (3600, PE_Y)], "PE")
+    W(f, [T["X1:PE"], (4000, 5200), (2800, 5200), (2800, 9600), (4000, 9600)], "PE")
     W(f, [(XL, PE_Y), (XR, PE_Y)], "PE")
     W(f, [T["X2:PE"], (4000, 12000), (4400, 12000), M["PE"]], "PE")
-    W(f, [(4000, 9600), (3600, 9600)], "PE")
+    W(f, [(4000, 12000), (3600, 12000), (3600, PE_Y)], "PE")
     W(f, [T["X2:U"], (4800, 12400), (5200, 12400), M["U1"]], "L")
     W(f, [T["X2:V"], (5600, 12800), (6000, 12800), M["V1"]], "L")
     W(f, [T["X2:W"], (6400, 13200), (6800, 13200), M["W1"]], "L")
-    g.cable(F[f], 4000, 7000, 14400, w1, "4G2,5 blindé", "Câble moteur CEM", [4400, 5200, 6000, 6800],
+    g.cable(F[f], 4000, 7000, 14400, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [4400, 5200, 6000, 6800],
             etiq=(1600, 13800), size=200)
     W(f, [T["X2:-R"], (8000, 9600), (9600, 9600), R["1"]], "DC")
     W(f, [T["X2:+R"], (7200, 12000), (9600, 12000), R["2"]], "DC")
     # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, en direct (sans bornier), décision 26/10
     renvoi("12", out12[(qf, "4/T2")], f, W(f, [M["2"], (M["2"].x, 12000), (13600, 12000)], "L"), "L")
     renvoi("12", out12[(qf, "6/T3")], f, W(f, [M["3"], (M["3"].x, 11200), (13600, 11200)], "L"), "L")
-    W(f, [M["1b"], (M["1b"].x, 12800), (21200, 12800), (21200, 5200), (11600, 5200), T["X10:1"]], "24")
-    W(f, [M["2b"], (M["2b"].x, 12400), (21600, 12400), (21600, 5600), (12000, 5600), T["X10:2"]], "24")
-    g.cable(F[f], M["1b"].x - 400, M["2b"].x + 400, 14400, w3, "2G1 blindé", "Câble sonde TF CEM",
-            [M["1b"].x, M["2b"].x], etiq=(14800, 13800), size=200)
-    g.cable(F[f], M["2"].x - 400, M["3"].x + 400, 14400, w2, "2G1,5", "Câble frein 400 V CA",
-            [M["2"].x, M["3"].x], etiq=(12000, 13800), size=200)
+    W(f, [M["1b"], (M["1b"].x, 12800), (21200, 12800), (21200, 4400), (11600, 4400), T["X10:1"]], "24")
+    W(f, [M["2b"], (M["2b"].x, 12400), (21600, 12400), (21600, 4800), (12000, 4800), T["X10:2"]], "24")
+    VAR[(f, "PN")] = W(f, [T["X40"], (13600, 5600), (16000, 5600)], "PN")
+    g.cable(F[f], M["1b"].x - 400, M["2b"].x + 400, 14000, w3, "2G1 blindé",
+            f"Sonde thermique TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], etiq=(12000, 13200), size=200)
+    g.cable(F[f], M["2"].x - 400, M["3"].x + 400, 14800, w2, "2G1,5",
+            f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], etiq=(12000, 14400), size=200)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
@@ -424,8 +486,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [T["X6:2"], (9200, 5200), (10000, 5200)], "0V")
     W(f, [T["X6:4"], (10000, 5200)], "0V")
     VAR[(f, "STO0")] = W(f, [(10000, 5200), (10000, 4800)], "0V")
-    texte(f, 22400, 4400, "X40 : PROFINET -> -K541 (f54)", 200)
-    texte(f, 22400, 4800, "X5 : +24 V AUTRE (f31) - X6 : STO (f42)", 200)
+    texte(f, 22400, 4400, "X40 : PROFINET (f54)", 200)
+    texte(f, 22400, 4800, "X5 : +24 V SECU (f31) - X6 : STO (f42)", 200)
     texte(f, 22400, 5200, "STO X6 et TF X10 : bornes à confirmer", 200, ROUGE)
     texte(f, 22400, 5600, "(notice SEW MCX91A)", 200, ROUGE)
     texte(f, 22400, 6400, f"{w1} / {w3} blindés : blindage repris à 360°", 200)
@@ -450,45 +512,60 @@ W(f, [t302[("-V", 0)], (16000, 12000)], "0V")
 texte(f, 20000, 9900, "+24 V AUTRE (-T301)", 220)
 texte(f, 20000, 10700, "+24 V SECU (-T302)", 220)
 texte(f, 20000, 11500, "0 V commun", 220)
-texte(f, 4400, 13200, "PELV : 0 V relié au PE en un point unique,", 220)
-texte(f, 4400, 13600, "par borne sectionnable (à définir), non dessiné pour", 220)
-texte(f, 4400, 14000, "garder des potentiels distincts (règle VRE 106p1)", 220)
+# PELV : liaison unique 0 V - PE, par une borne sectionnable (mesure d'isolement)
+b36 = borne("X36.1", f, 8000, 15600)
+W(f, [(8000, 12000), b36["1"]], "0V")
+W(f, [b36["2"], (8000, PE_Y)], "PE")
+notes(f, 15200, 12800, 29000, [
+    "0 V commun aux 2 alimentations : c'est normal et nécessaire. Les signaux passent d'une source à l'autre",
+    "(automate, relais de sécurité, variateurs, voyants) et doivent avoir la même référence 0 V.",
+    "L'AU coupe les +24 V par les contacts de -KA1 (f42), jamais le 0 V : aucun effet du 0 V commun sur l'AU.",
+    "A ne jamais faire : mettre les deux +24 V en parallèle.",
+    "PELV : 0 V relié au PE en un seul point, borne sectionnable -X36.1 (ouverte pour la mesure d'isolement).",
+], titre="0 V COMMUN ET PELV")
 
 # ======================================================================== 31 DISTRIBUTION 24 V
 f = "31"
 ptf = C + "Phoenix_3002781_PTFIX_6x1.5_BK.xsy"
 DESC31 = {"X311": "Distribution +24 V SECU", "X312": "Distribution 0 V", "X313": "Distribution +24 V AUTRE"}
 P31 = {}
-for rep, x, y in (("X311", 6000, 6400), ("X312", 6000, 15200), ("X313", 16000, 6400)):
-    P31[rep] = g.place(ptf, rep, F[f], x, y, champs={2: DESC31[rep], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
-                                                    4: "6 points - 17,5 A"}, loc="A1", wrap=34)
+for rep_, x, y in (("X311", 6000, 4800), ("X313", 6000, 9600), ("X312", 6000, 14400)):
+    P31[rep_] = g.place(ptf, rep_, F[f], x, y, champs={2: DESC31[rep_], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
+                                                     4: "6 points - 17,5 A"}, loc="A1", wrap=34)
+    g.cadre(F[f], 12000, y - 1200, 18400, y + 1800, width=10, dashed=True)
+    texte(f, 12200, y - 1100, f"Image du bornier -{rep_} (à insérer)", 180)
 x311, x312, x313 = P31["X311"], P31["X312"], P31["X313"]
-W(f, [(XL, 11200), (4800, 11200), (4800, 5600), (6000, 5600), x311["1"]], "24")
-W(f, [(XL, 12000), (4000, 12000), (4000, 14800), (6000, 14800), x312["1"]], "0V")
-W(f, [(XL, 10400), (14800, 10400), (14800, 5600), (16000, 5600), x313["1"]], "24")
-renvoi("30", a24, f, (XL, 10400), "24")
-renvoi("30", s24, f, (XL, 11200), "24")
-renvoi("30", z30, f, (XL, 12000), "0V")
+W(f, [(XL, 4400), (6000, 4400), x311["1"]], "24")
+W(f, [(XL, 9200), (6000, 9200), x313["1"]], "24")
+W(f, [(XL, 14000), (6000, 14000), x312["1"]], "0V")
+renvoi("30", s24, f, (XL, 4400), "24")
+renvoi("30", a24, f, (XL, 9200), "24")
+renvoi("30", z30, f, (XL, 14000), "0V")
 W(f, [x311["2"], (6400, RAIL24_Y), (XR, RAIL24_Y)], "24")
 W(f, [x312["4"], (6000, RAIL0_Y), (XR, RAIL0_Y)], "0V")
-d31 = {"0V20": W(f, [x312["5"], (6400, 16800), (8800, 16800)], "0V"),
-       "0V21": W(f, [x312["6"], (6800, 17600), (8800, 17600)], "0V"),
-       "0V32a": W(f, [x312["2"], (6400, 14400), (8800, 14400)], "0V"),
+d31 = {"24V20": W(f, [x311["6"], (6800, 6400), (8800, 6400)], "24"),
+       "24V21": W(f, [x311["5"], (6400, 7200), (8800, 7200)], "24"),
+       "0V32a": W(f, [x312["2"], (6400, 12800), (8800, 12800)], "0V"),
        "0V32b": W(f, [x312["3"], (6800, 13600), (8800, 13600)], "0V"),
-       "24V20": W(f, [x313["2"], (16400, 4800)], "24"), "24V21": W(f, [x313["5"], (16400, 8000)], "24")}
+       "0V20": W(f, [x312["6"], (6800, 16000), (8800, 16000)], "0V"),
+       "0V21": W(f, [x312["5"], (6400, 16800), (8800, 16800)], "0V")}
 for ff in ("20", "21"):
     renvoi(f, d31["24V" + ff], ff, VAR[(ff, "24")], "24")
     renvoi(f, d31["0V" + ff], ff, VAR[(ff, "0V")], "0V")
 REP["P512"] = {"des": "Voyant porte : tension de commande présente", "fab": "À définir", "carac": "24 V CC - blanc ou vert", "loc": "+A1"}
-p512 = decrit("Signalisation et voyants\\Voyant.xsy", "P512", f, 24800, 8800, "Voyant porte : tension de commande présente",
+p512 = decrit("Signalisation et voyants\\Voyant.xsy", "P512", f, 24800, 8800, "Voyant porte : 24 V SECU présent",
               fpos=(600, 400), wrap=20, prefix="P")
 W(f, [p512["X1"], (24800, RAIL24_Y)], "24")
 W(f, [p512["X2"], (24800, RAIL0_Y)], "0V")
-texte(f, 7600, 2200, "+24 V SECU -> f40 à f60 : relais sécu, CPU, IHM, switch, modules", 200)
+texte(f, 7600, 2200, "+24 V SECU -> f40 à f60 : relais sécu, automate, IHM, switch, modules, variateurs (X5)", 200)
 texte(f, 7600, 18600, "0 V -> f40 à f60", 200)
-texte(f, 17600, 3600, "+24 V AUTRE -> X5 des variateurs (f20, f21)", 200)
-proposition(f, ["répartition des départs 24 V entre -T301 et -T302,",
-                "repères -X311 / -X312 / -X313 à ajouter au tableau"], x=12000, y=14400)
+notes(f, 19600, 12800, 28800, [
+    "-X31 +24 V SECU (-T2) : tous les départs.",
+    "-X33 +24 V AUTRE (-T1) : aucun départ",
+    "depuis le passage des X5 des variateurs",
+    "sur le 24 V SECU (28/10).",
+    "! Affectation de -T1 à décider.",
+])
 
 # ======================================================================== 32 48 V ET PAS-A-PAS
 f = "32"
@@ -498,8 +575,16 @@ for p, side in (("N", "N"), ("L", "L")):
 q423p = contacteur(poles, "Q423", f, 3600, 8400)
 W(f, [t321[("-V", 1)], q423p["3/L2"]], "0V")
 W(f, [t321[("+V", 0)], q423p["5/L3"]], "DC")
-W(f, [q423p["6/T3"], (5200, 11200), (24000, 11200)], "DC")
-W(f, [q423p["4/T2"], (4400, 11600), (24800, 11600)], "0V")
+# 48 V : contacteur -Q423 juste après l'alimentation, puis borniers de distribution +48 V (-X34) et 0 V 48 (-X35)
+DESC32 = {"X34": "Distribution +48 V (après contacteur)", "X35": "Distribution 0 V 48"}
+x34 = g.place(ptf, "X34", F[f], 10400, 8800, champs={2: DESC32["X34"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
+                                                    4: "6 points - 17,5 A"}, loc="A1", wrap=24)
+x35 = g.place(ptf, "X35", F[f], 4400, 13600, fpos=(0, 1200), champs={2: DESC32["X35"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
+                                                     4: "6 points - 17,5 A"}, loc="A1", wrap=24)
+W(f, [q423p["6/T3"], (5200, 10400), (10400, 10400), x34["4"]], "DC")
+W(f, [x34["6"], (11200, 11200), (24000, 11200)], "DC")
+W(f, [q423p["4/T2"], x35["1"]], "0V")
+W(f, [x35["3"], (5200, 11600), (24800, 11600)], "0V")
 W(f, [t321["PE"], (2800, 6000), (2800, PE_Y), (3600, PE_Y)], "PE")
 drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
@@ -532,8 +617,8 @@ for fpe, _, _ in PEC[:-1]:
 CH = ["31", "40", "41", "42", "43", "50", "51", "52", "53", "54", "60"]
 for i, f in enumerate(CH[1:], 1):
     last = f == "60"
-    W(f, [(XL, RAIL24_Y), (3600 if last else XR, RAIL24_Y)], "24")
-    W(f, [(XL, RAIL0_Y), (7200 if last else XR, RAIL0_Y)], "0V")
+    W(f, [(XL, RAIL24_Y), (4000 if last else XR, RAIL24_Y)], "24")
+    W(f, [(XL, RAIL0_Y), (8800 if last else XR, RAIL0_Y)], "0V")
     renvoi(CH[i - 1], (XR, RAIL24_Y), f, (XL, RAIL24_Y), "24")
     renvoi(CH[i - 1], (XR, RAIL0_Y), f, (XL, RAIL0_Y), "0V")
 for f in CH:
@@ -842,7 +927,8 @@ for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amo
 I50 = {inp: stub(f, (k501e[inp].x, 11200), k501e[inp], "24") for inp in ("I0.2", "I0.3")}
 renvoi("41", VOIES["B411"][1], f, I50["I0.2"], "24")
 renvoi("41", VOIES["B412"][1], f, I50["I0.3"], "24")
-texte(f, 24800, 12400, "X1 P1 : PROFINET -> -K541 (f54)", 200)
+PN50 = W(f, [k501e["X1 P1"], (26000, k501e["X1 P1"].y)], "PN")
+texte(f, 24800, 12000, "PROFINET", 200)
 g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
     ["Entrée", "Repère", "Fonction"], ["I0.0", "-S412", "AU pupitre actionné (NO)"], ["I0.1", "-S411", "AU armoire actionné (NO)"],
     ["I0.2", "-B411", "capot ouvert, mécanique (NO aux.)"], ["I0.3", "-B412", "capot ouvert, magnétique (NF aux.)"],
@@ -896,8 +982,6 @@ W(f, [(3600, 3600), (10800, 3600)], "0V")
 W(f, [k521e["1M"], (6800, 3600)], "0V")
 W(f, [k521e["2M"], (10800, 3600)], "0V")
 W(f, [(3600, 3600), (3600, RAIL0_Y)], "0V")
-# I8.4 : alarme du switch (contact ALM2), le fil part vers la droite pour ne pas croiser la ligne 0 V
-I52 = W(f, [k521e["I8.4"], (11600, 3200), (15200, 3200)], "24")
 k521s = maitre(C + "Siemens_6ES7223-5BH50-0XB0_SM1223_G2_sorties.xsy", "K521", f, 4800, 14400, ref=(),
                compact=True, rep_size=300)
 W(f, [(4000, RAIL24_Y), (4000, 16800), (4800, 16800)], "24")
@@ -907,7 +991,7 @@ for q, dest in (("Q8.0", COL51["RD"]), ("Q8.1", COL51["OG"]), ("Q8.2", COL51["GN
     pt = W(f, [k521s[q], (k521s[q].x, 16000)], "24")
     renvoi(f, pt, "51", dest, "24")
 g.tableau(F[f], 16000, 12800, [2800, 1600, 5600], 300, [
-    ["E/S", "Repère", "Fonction"], ["I8.4", "-K541", "alarme switch (ALM2)"], ["I8.0..I8.3, I8.5..I8.7", "", "réserve"],
+    ["E/S", "Repère", "Fonction"], ["I8.0..I8.7", "", "réserve (alarme switch non câblée)"],
     ["Q8.0 / 8.1 / 8.2", "-P511", "colonne rouge / orange / vert"],
     ["Q8.3", "-S414", "voyant réarmement requis"], ["Q8.4", "-P513", "voyant défaut machine"],
     ["Q8.5..Q8.7", "", "réserve"],
@@ -931,36 +1015,50 @@ f = "54"
 k541 = maitre(C + "Weidmuller_2682250000_switch_IE-SW-AL05LM-5TX.xsy", "K541", f, 16000, 4400)
 W(f, [k541["V1+"], (16000, RAIL24_Y)], "24")
 W(f, [k541["V1-"], (16800, 3600), (26400, 3600), (26400, RAIL0_Y)], "0V")
-W(f, [k541["ALM1"], (19200, RAIL24_Y)], "24")
-renvoi(f, W(f, [k541["ALM2"], (20000, 3200), (21600, 3200)], "24"), "52", I52, "24")
-for p, t in (("P1", "Port 1 -> -K501 automate CPU 1214C, port X1 P1 (f50)"),
-             ("P2", "Port 2 -> -T201 variateur M1, port X40 (f20)"),
-             ("P3", "Port 3 -> -T211 variateur M2, port X40 (f21)"),
-             ("P4", "Port 4 -> -P601 IHM pupitre KTP700, port X1 (f60)"), ("P5", "Port 5 : réserve")):
-    px, py = k541[p].xy
-    g.ligne(F[f], 8000, py, px, py, color=32768, width=30)
+PN54 = {}
+for p_, t in (("P1", "Port 1 -> -K501 automate CPU 1214C, port X1 P1"),
+              ("P2", "Port 2 -> -T201 variateur M1, port X40"),
+              ("P3", "Port 3 -> -T211 variateur M2, port X40"),
+              ("P4", "Port 4 -> -P601 IHM pupitre KTP700, port X1"), ("P5", "Port 5 : réserve")):
+    px, py = k541[p_].xy
+    if p_ != "P5":
+        PN54[p_] = W(f, [k541[p_], (8000, py)], "PN")
     texte(f, 8000, py - 350, t, 220)
-texte(f, 8000, 13600, "Liaisons PROFINET (câbles RJ45 à repérer) - V2+ / V2- : 2e alimentation non utilisée", 200)
+renvoi(f, PN54["P1"], "50", PN50, "PN")
+renvoi(f, PN54["P2"], "20", VAR[("20", "PN")], "PN")
+renvoi(f, PN54["P3"], "21", VAR[("21", "PN")], "PN")
+notes(f, 8000, 13200, 24000, [
+    "Liaisons PROFINET : câbles RJ45 (à repérer), dessinés en vert avec renvois vers chaque appareil.",
+    "V2+ / V2- : 2e alimentation du switch non utilisée.",
+    "Relais d'alarme ALM1 / ALM2 : non câblé pour le moment.",
+    "! Type de conducteur « PROFINET » à créer dans WinRelais (provisoire : Autre tension DC, vert).",
+])
 
 # ======================================================================== 60 PUPITRE
 f = "60"
-p601 = maitre(C + "Siemens_6AV2123-2GB03-0AX0_IHM_KTP700_Basic_PN.xsy", "P601", f, 6400, 10000)
-t17, t18, t19 = borne("X711.21", f, 6400, 10800), borne("X711.22", f, 7200, 10800), borne("X711.23", f, 8000, 10800)
-W(f, [p601["L+"], t17["1"]], "24")
-W(f, [p601["M"], t18["1"]], "0V")
-W(f, [p601["FE"], t19["1"]], "PE")
-W(f, [t17["2"], (6400, 12400), (3600, 12400), (3600, RAIL24_Y)], "24")
-W(f, [t18["2"], (7200, RAIL0_Y)], "0V")
-renvoi("11", fe11["2"], f, W(f, [t19["2"], (8000, 12000)], "PE"), "PE")
-g.cable(F[f], 6000, 8400, 11600, "W711", "à définir (≈ 10 m)", "", [6400, 7200, 8000])
-g.cadre(F[f], 5200, 4800, 16800, 10400, width=20, dashed=True)
-texte(f, 5400, 4900, "+P1 PUPITRE", 250, 0, 1)
-texte(f, 11200, 10400, "X1 : PROFINET -> -K541 (f54)", 200)
-texte(f, 8800, 14000, "Contenu du pupitre +P1 :", 220, 0, 1)
-texte(f, 8800, 14400, "-P601 IHM KTP700 : ce folio", 220)
-texte(f, 8800, 14800, "-S412 arrêt d'urgence pupitre : contacts f41 (sécurité) et f50 (retour automate)", 220)
-texte(f, 8800, 15200, "-S413 sélecteur Auto/Manu : contacts f42 (sécurité) et f50 (automate)", 220)
-texte(f, 8800, 15600, "Liaisons armoire <-> pupitre : bornes -X711 (f71) et câble -W711", 220)
+g.cadre(F[f], 4800, 3200, 27200, 10800, width=20, dashed=True)
+texte(f, 5000, 3300, "+P1 PUPITRE", 300, 0, 1)
+p601 = maitre(C + "Siemens_6AV2123-2GB03-0AX0_IHM_KTP700_Basic_PN.xsy", "P601", f, 8000, 9600)
+t21, t22, t23 = borne("X711.21", f, 8000, 12400), borne("X711.22", f, 8800, 12400), borne("X711.23", f, 9600, 12400)
+W(f, [p601["L+"], t21["1"]], "24")
+W(f, [p601["M"], t22["1"]], "0V")
+W(f, [p601["FE"], t23["1"]], "PE")
+W(f, [t21["2"], (8000, 13600), (4000, 13600), (4000, RAIL24_Y)], "24")
+W(f, [t22["2"], (8800, RAIL0_Y)], "0V")
+renvoi("11", fe11["2"], f, W(f, [t23["2"], (9600, 14400)], "PE"), "PE")
+renvoi(f, W(f, [p601["X1"], (p601["X1"].x, 11600)], "PN"), "54", PN54["P4"], "PN")
+texte(f, 4200, 13300, "+24 V SECU", 220)
+texte(f, 10000, 13600, "Bornes -X711 (armoire)", 220)
+notes(f, 17200, 4000, 26800, [
+    "Contenu du pupitre +P1 :",
+    "-P601 IHM KTP700 Basic PN : ce folio",
+    "-S412 arrêt d'urgence : f41 (sécurité), f50 (automate)",
+    "-S413 sélecteur Auto/Manu : f41, f42, f43, f50",
+    "Alimentation IHM : +24 V SECU par -X711.21 à .23",
+    "PROFINET : port X1 -> switch -K541 (f54)",
+    "Liaison armoire <-> pupitre : câble multiconducteur",
+    "et câble RJ45 (repères à définir).",
+], titre="PUPITRE +P1", size=230)
 
 # ======================================================================== 80 - 90 (générés par WinRelais)
 for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par WinRelais (carnet de câbles)",
@@ -999,26 +1097,25 @@ MEMES = [
     ["K501:I0.0", "X711.6:2"], ["K501:I0.1", "S411:14"], ["K501:I0.2", "X701.4:2"], ["K501:I0.3", "X701.8:2"],
     ["K501:I0.4", "X711.12:2"], ["K501:I0.5", "X711.18:2"], ["K501:I0.6", "X701.10:2"], ["K501:I0.7", "X701.12:2"],
     ["K501:I1.0", "X701.14:2"], ["K501:I1.1", "X701.16:2"], ["K501:I1.2", "KM1:14"], ["K501:I1.3", "KM2:14"],
-    ["K501:I1.4", "Q423:14"], ["K521:I8.4", "K541:ALM2"],
+    ["K501:I1.4", "Q423:14"],
     ["K501:L+ capt", "X701.3:1", "X701.7:1", "X701.9:1", "X701.11:1", "X701.13:1", "X701.15:1", "X711.5:1",
      "X711.11:1", "X711.17:1", "S411:13", "KM1:13", "KM2:13", "Q423:13"],
     ["X311:1", "K401:A1", "K401:13", "K401:23", "K401:33", "K501:L+", "K501:3L+", "K521:L+", "K521:3L+",
-     "K531:L+", "K541:V1+", "K541:ALM1", "P512:X1", "X711.21:2"],
+     "K531:L+", "K541:V1+", "P512:X1", "T201:X5:24V", "T211:X5:24V", "X711.21:2"],
     ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:3M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
      "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "P511:COM", "P512:X2", "P513:X2", "S414:X2",
      "T201:X5:GND", "T211:X5:GND", "T201:X6:2", "T201:X6:4", "T211:X6:2", "T211:X6:4",
      "T322:PUL-", "T322:DIR-", "T322:ENA-", "T323:PUL-", "T323:DIR-", "T323:ENA-", "X711.22:2"],
-    ["X313:1", "T201:X5:24V", "T211:X5:24V"],
-    ["K501:FE", "X112:E", "P601:FE", "F101:PE", "T301:PE", "M201:PE", "X131:PE", "T321:PE"],
+    ["K501:FE", "X112:E", "P601:FE", "X101.VJ:2", "T301:PE", "M201:PE", "X131:PE", "T321:PE"],
     ["B531:1", "K531:AI0+"], ["B531:2", "K531:AI0-"],
     # moteurs SEW : frein (W202 / W212) et sonde TF (W203 / W213) en direct, sans bornier
     ["M201:1b", "T201:X10:1"], ["M201:2b", "T201:X10:2"], ["M211:1b", "T211:X10:1"], ["M211:2b", "T211:X10:2"],
     ["Q421:4/T2", "M201:2"], ["Q421:6/T3", "M201:3"], ["Q422:4/T2", "M211:2"], ["Q422:6/T3", "M211:3"],
-    ["Q102:2", "F101:L1", "X111:30"], ["Q102:4", "F101:L2", "X111:20"], ["Q102:6", "F101:L3", "X111:10"],
+    ["Q102:2", "X111:30"], ["Q102:4", "X111:20"], ["Q102:6", "X111:10"],
     ["KM1:2/T1", "T201:X1:L1"], ["KM2:6/T3", "T211:X1:L3"],
-    ["Q423:6/T3", "T322:+V", "T323:+V"], ["Q423:4/T2", "T322:-V", "T323:-V"],
+    ["Q423:6/T3", "X34:4"], ["X34:6", "T322:+V", "T323:+V"], ["Q423:4/T2", "X35:1"], ["X35:3", "T322:-V", "T323:-V"],
 ]
-DIFFERENTS = ["X112:E", "X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "X711.20:2", "K401:14", "K401:24", "K401:34", "Q423:6/T3", "Q423:4/T2",
+DIFFERENTS = ["X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "X711.20:2", "K401:14", "K401:24", "K401:34", "Q423:6/T3", "Q423:4/T2",
               "X111:10", "X111:20", "X111:30", "X111:N0", "K401:S11", "K401:S12", "K401:S21", "K401:S22",
               "K401:Y1", "K401:Y2", "K501:I0.2", "K501:I0.3", "K501:I0.0", "K501:I0.1"]
 
@@ -1044,8 +1141,10 @@ def nets_par_broche(path, bornes_passantes=True):
 
 def controle_specification(path):
     net, _ = nets_par_broche(path)
+    memes = [[ren(p) for p in grp] for grp in MEMES]
+    differents = [ren(p) for p in DIFFERENTS]
     out = []
-    for grp in MEMES:
+    for grp in memes:
         for p in grp:
             if p not in net:
                 out.append(f"spécification : broche {p} absente du schéma")
@@ -1053,7 +1152,7 @@ def controle_specification(path):
         if ids and not set.intersection(*ids):
             out.append("spécification : pas sur la même équipotentielle : " + ", ".join(grp))
     seen = {}
-    for p in DIFFERENTS:
+    for p in differents:
         for r in net.get(p, ()):
             if r in seen:
                 out.append(f"spécification : court-circuit entre {seen[r]} et {p}")
@@ -1062,14 +1161,14 @@ def controle_specification(path):
 
 
 # ======================================================================== plans de bornier (f70, f71)
-TERRAIN = ("B4", "B5", "M2", "S412", "S413", "P601")    # appareils hors armoire (+M, +P1)
+TERRAIN = ("B", "M", "S2", "S3", "P1")    # appareils hors armoire (+M, +P1), nouveaux repères
 
 
 # potentiels communs à plusieurs appareils : nommés dans les tableaux de bornier
 POTENTIELS = [("-K501:L+ capt", "+24 V capteurs (-K501 L+ capt, f50)"),
               ("-K401:13", "+24 V commande (-X311, f31)"),
               ("-K401:A2", "0 V commande (-X312, f31)"),
-              ("-F101:PE", "Terre PE / FE (-X112, f11)"),
+              ("-X112:E", "Terre PE / FE (-X112, f11)"),
               ("-T201:X6:1", "STO voie 1 des variateurs -T201 (f20) / -T211 (f21)"),
               ("-T201:X6:3", "STO voie 2 des variateurs -T201 (f20) / -T211 (f21)"),
               ("-K501:3L+", "+24 V sorties automate -K501 / -K521 (3L+, f51-f52)")]
@@ -1084,7 +1183,7 @@ def designations():
             des.setdefault(p.rep, d)
     for rep, r in REP.items():
         if r.get("des"):
-            des[rep] = r["des"]
+            des[ren(rep)] = ren(r["des"])
     return des
 
 
@@ -1103,14 +1202,14 @@ def plan_bornier(path, bornier):
                 for rep, b, fo in membres[r]:
                     if rep == nom:
                         continue
-                    if rep.startswith(("X7", "X31")):
+                    if rep.startswith(("X7", "X3")):
                         ponts.append(f"-{rep.replace('.', ':')} (f{fo})")
                     else:
                         autres.append(f"-{rep}:{b} (f{fo})")
                         ext.append(rep.startswith(TERRAIN))
             # une borne reliée seulement à une autre borne : on nomme cette borne
             autres = sorted(set(autres)) or sorted(set(ponts))
-            nom_pot = [t for k, t in POTENTIELS if any(a.startswith(k + " ") for a in autres)]
+            nom_pot = [ren(t) for k, t in POTENTIELS if any(a.startswith(ren(k) + " ") for a in autres)]
             if len(autres) > 1 and nom_pot:
                 autres = nom_pot[:1]
             if len(autres) == 1:            # un seul appareil : on dit ce que c'est
@@ -1126,12 +1225,44 @@ def plan_bornier(path, bornier):
     return lignes
 
 
+def organisation_x70():
+    """Folio 70 en construction : groupes de bornes prévus, non attribués (dessin seul, aucun symbole)."""
+    f = "70"
+    texte(f, 2400, 1600, "BORNIER -X701 : ARMOIRE +A1 <-> MACHINE +M - ORGANISATION (EN CONSTRUCTION, NON ATTRIBUE)", 280, 0, 1)
+    groupes = [("Câble 19G1 : armoire <-> machine (18 bornes + PE)", [19]),
+               ("Câble 27G1 (26 bornes + PE) - destination à confirmer", [27]),
+               ("Sondes thermiques TF moteurs M1 / M2", [2, 2]),
+               ("Moteurs M1 / M2 : U, V, W, PE", [4, 4]),
+               ("Freins M1 / M2", [2, 2]),
+               ("Capteur capot magnétique -B412 : câble M12 8 broches", [8]),
+               ("Thermocouple tête Microdia -B531", [2])]
+    y = 2600
+    for titre, blocs in groupes:
+        texte(f, 2400, y, f"{titre} - {sum(blocs)} bornes", 220, 0, 1)
+        x = 2400
+        for n in blocs:
+            for _ in range(n):
+                g.cadre(F[f], x, y + 400, x + 300, y + 1100, width=10)
+                x += 400
+            x += 800
+        y += 2000
+    notes(f, 15600, 9000, 28800, [
+        "Folio en construction : groupes prévus par Julien (28/10), aucune borne attribuée.",
+        "Les bornes seront posées sur les folios fonctionnels (f20, f21, f41, f50, f53),",
+        "puis le bornier graphique sera généré par WinRelais (Générer / Bornier).",
+        "! Moteurs, freins et TF par bornier : remplace le raccordement direct du 27/10.",
+        "! Blindages (moteur, TF) : reprise à 360° sur étrier, pas sur une borne.",
+        "! Thermocouple : bornes de compensation type K, ou liaison directe.",
+        "! Câble 27G1 : pupitre (-X711, f71) ou machine ?",
+    ])
+
+
 def ecrire_borniers(path):
     global DES
     DES = designations()
-    for num, bornier, titre in (("70", "X701", "BORNIER -X701 : ARMOIRE +A1 <-> MACHINE +M"),
-                                ("71", "X711", "BORNIER -X711 : ARMOIRE +A1 <-> PUPITRE +P1")):
-        lignes = plan_bornier(path, bornier)
+    organisation_x70()
+    for num, bornier, titre in (("71", "X711", "BORNIER -X711 : ARMOIRE +A1 <-> PUPITRE +P1"),):
+        lignes = plan_bornier(path, ren(bornier))
         texte(num, 2400, 1600, titre, 300, 0, 1)
         g.tableau(F[num], 2400, 2400, [1400, 11000, 11000], 380,
                   [["Borne", "Côté armoire (intérieur)", "Côté terrain (extérieur)"]] + lignes, size=200)
@@ -1148,6 +1279,7 @@ def ecrire_borniers(path):
 for num in F:                       # contenu centré dans le cadre (pas la garde, la légende, les notes)
     if "10" <= num <= "69":
         g.centrer(F[num])
+renommer_symboles()
 g.write(SORTIE)
 ecrire_borniers(SORTIE)
 for num in ("70", "71"):
