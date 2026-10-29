@@ -82,3 +82,18 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f32 : un fil par driver depuis -X34 / -X35, sans dérivation (croisements sans jonction acceptés).
 - [D] Numérotation des fils, convention A : les fils de puissance portent le nom de leur phase (L1, L2, L3, N), sans différenciation. Les autres fils ne sont pas numérotés tant que le schéma n'est pas fini. Format relevé sur le fichier numéroté par Julien (`schema/recus/2026-10-28_v5_numerotation_f12.xrs`) : `x·y·texte·folio·0·Arial·300·angle·8388608·0·0·0·`, un numéro par tronçon, au milieu du segment, angle 90 en vertical. Généré par `nommer_phases()` (phase connue aux départs de -X12, propagée à travers les pôles).
 - [D] f70 : rectangles 6 x 12 mm repérés (1..n, PE, U V W, 1b 2b, 2 3, L1 L2 L3 N). f71 : tableau agrandi (ligne 6 mm, police 2,5 mm).
+
+## 29/10/2026 : reprise en local, retours sur la v6
+- [D] Travail uniquement dans le clone local du dépôt (`Repo_git/TTK-SCHEMA-ELEC`) ; commits, push et versions confiés à l'assistant.
+- [D] QF7 / QF8 = Hager NFT702 (2 A, 1P+N, courbe C, 6-10 kA, 1 module).
+- [D] **Plus aucune note encadrée** sur les folios. Points à vérifier : `memoire/05_POINTS_OUVERTS.md`.
+- [D] Répartition 24 V ELEC / COMMANDE : tableau actuel conservé, pas de contacteur en plus. Les deux 24 V restent distribués après un AU (l'AU agit par les contacts de -KA1).
+- [D] L'un des deux 24 V s'appelle **24VSEC**. [?] Lequel (proposition : T1, qui passe par -KA1) et nom de l'autre.
+- [D] Numéros de fil L1, L2, L3, N, **PE** sur tous les tronçons de puissance des f10, f12, f13 (y compris les tronçons courts).
+- [D] f13 à séparer en 2 folios (esthétique). [?] Découpage.
+- [D] f13 : supprimer le croisement des fils de EL1 / EL2.
+- [?] Terre en bas des f10 / f13 « moche » : options A (PE dans le faisceau), B (symbole terre local), C (renvoi PE court) proposées.
+- [?] f12 : bus tri / tétra avec piquages au lieu des renvois au-dessus des appareils (points de jonction, à concilier avec la règle du f32).
+- [C] Incohérence relevée sur la v6 : au f10, les fils QF1 → renvois vers X12 sont croisés (L3 réseau sur la barre L1 et inversement). À corriger en v7.
+- [D] Pas de génération de la v7 avant d'avoir discuté ces points.
+- Dossier `memoire/` créé : synthèse par thème (projet, matériel, architecture, règles de dessin, points ouverts, v7, méthode).

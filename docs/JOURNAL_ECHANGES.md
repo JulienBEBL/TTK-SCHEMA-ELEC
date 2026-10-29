@@ -88,3 +88,10 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 29/10/2026
 - Fiche de passation complète pour le chat local : `docs/PASSATION_CHAT_LOCAL_2026-10-29.md` (copie dans `livrables/`). Julien la joint avec les .xrs v5 (ouvert, numérotation test f12) et v6 (non ouvert).
+
+## 29/10/2026 (après-midi) : assistant local
+- Reprise depuis la passation. v5 jointe = fichier déjà archivé ; v6 jointe = v6 générée, réenregistrée par WinRelais sans changement de contenu (archivée : `schema/recus/2026-10-29_v6_ouverte_WinRelais.xrs`). 0 erreur au verifier sur les deux.
+- Tableau 24 V ELEC / COMMANDE envoyé ; incohérence signalée (« contacteur qui coupe le 24 V ELEC » : il n'existe pas et couperait automate et relais de sécurité). Julien : ok pour le tableau actuel.
+- Retours de Julien sur f10, f12, f13 (terre, numéros de fil, bus tri, découpage f13, 24VSEC, EL1 / EL2). Détail : `memoire/06_V7_A_FAIRE.md`.
+- Remise en question : bus tri du f12 = points de jonction, refusés au f32. Inversion de phases trouvée au f10.
+- Dossier `memoire/` créé. Pas de .xrs généré (demande de Julien).
