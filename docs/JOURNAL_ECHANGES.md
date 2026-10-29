@@ -102,3 +102,10 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Contrôles par calcul : chaque tronçon de puissance des f10 à f32 porte un nom ; QS1 1/L1 = L1 ; 0 croisement au f10 ; EL1 / EL2 sans croisement ; aucune note encadrée.
 - Symbole Hager NFT702 créé dans `outils/librairie/CUSTOM/` (copie du NFT706, référence et caractéristiques changées).
 - Limites signalées : EV1 / EV2 gardent un croisement (bornes N et L en haut du symbole) ; phases L3 en haut au f10.
+
+## 29/10/2026 (nuit) : v8
+- Retours de Julien sur la v7 (f01, f03, f05 = page 5 = f10, f06 = page 6 = f11, f11, f13, f14, f20, f21, f32, f50-f54, f60, ordre des folios, marque / référence, KM3). 4 questions posées : f11 supprimé (oui), switch avant les variateurs (oui), « AU » = arrêt d'urgence (sécurité en tête), barres 24 V / 0 V en haut partout (oui).
+- v8 : `schema/generes/TTK_2026-10-29_v8.xrs` (26 folios, 135 symboles, 614 fils, 94 renvois ; 0 problème au contrôle interne, 0 erreur verifier, 28 attentions connues). Détail : `memoire/06_EN_COURS.md`.
+- Contrôles par calcul : croisements f20 = 0, f23 = 2 (piquages du bus), f24 = 2 (+ 4 déjà présents sur les entrées des drivers), f25 = 2 (piquages des barres) ; chaque tronçon de puissance nommé, noms alignés.
+- v7 réenregistrée par Julien archivée dans `schema/recus/`.
+- Mémoire : table de correspondance des numéros de folio (affichés / internes) ajoutée, avec le piège signalé dans `CLAUDE.md` et la structure du script dans `07_METHODE_TRAVAIL.md`.

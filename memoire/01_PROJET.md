@@ -4,7 +4,7 @@
 - **Machine de tressage TTK** : tresse du caoutchouc autour d'un câble, en ligne avec une tête d'extrusion Microdia (hors périmètre, sauf la mesure de sa température).
 - **Client** : TTK (Nicolas Ghut). **N° machine** : 001-EU. **Affaire** : inconnue (laissée vide).
 - **Réseau UE** : 400 V 3P+N+PE, **TN-S**, **Icc 6 kA** (page de garde).
-- **Variante US** : transformateur TEMCo 15 kVA hors armoire, fourni par BEBL, installé par le client (TR1 dessiné en variante au f10).
+- **Variante US** : transformateur TEMCo 15 kVA hors armoire, fourni par BEBL, installé par le client (TR1 dessiné en variante au f20).
 - **Pas de marquage CE** (accepté par le client). Normes en bonne pratique : IEC 60204-1, EN ISO 13849-1, 13850, 14119, 14118, 12100.
 
 ## Fonctionnement

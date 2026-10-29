@@ -30,10 +30,16 @@
    python ttk_schema.py ..\schema\generes\TTK_AAAA-MM-JJ_vN.xrs
    python xrs_tool.py verifier ..\schema\generes\TTK_AAAA-MM-JJ_vN.xrs
    ```
-   Attendu : « 0 problème(s) de contrôle » et 0 erreur au verifier. Les 27 « attention » connues sont normales (références croisées à lancer dans WinRelais, 0 V / PE liés par X36.1).
+   Attendu : « 0 problème(s) de contrôle » et 0 erreur au verifier. Les 28 « attention » connues de la v8 sont normales (fils en attente de l'arrivée réseau et de la variante USA, début de barre au f10, références croisées à lancer dans WinRelais, 0 V / PE liés par X36.1).
 4. Mettre à jour `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md` et `memoire/`.
 5. Commit + push (message en français, fin : `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`).
 6. Julien ouvre le .xrs, lit le Journal, lance « Références croisées automatique », renvoie ses retours.
+
+## Structure de `ttk_schema.py` (à connaître avant de modifier)
+- **Numéros de folio** : anciens numéros en interne (`F["13"]`, `STATUT`, textes « (f13) ») ; `NUMFOL` donne le numéro affiché, `ren()` traduit les « fNN » des textes et les repères (`RENOMME`). Un texte qui contient déjà un nouveau numéro (relu dans le fichier, ex. tableaux de bornier f71) passe par `ren_rep()` seulement.
+- **Terre** : chaque fil PE court d'appareil est ajouté à `PE_DEST` ; les départs PE du f20 et leurs renvois sont tracés à la fin, triés par folio.
+- **Barres 24 V / 0 V** : tracées à la fin (liste `CH`, triée par numéro affiché) ; les folios 40, 41, 42, 50 (anciens numéros) sont d'abord descendus par `g.decaler` pour laisser la place, puis leurs liaisons aux barres sont tracées. Tout renvoi vers ces folios doit être posé **avant** le décalage.
+- **Numéros de fil** : `nommer_phases()` (tronçon = fils reliés bout à bout sur le folio ; alignement des voisins ; nom des bus à gauche).
 
 ## Contrôles : pas de rendu
 - **Pas d'aperçu HTML / SVG / image des schémas.** On contrôle par calcul : équipotentielles (`xrs_tool.build_nets`), géométrie (`geometry_issues`), verifier.

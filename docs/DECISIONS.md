@@ -107,3 +107,16 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] N° de départ du répartiteur non affiché sur le bus du f12 ; ordre L3 / L2 / L1 / N / PE de haut en bas au f10 (sans croisement).
 - [D] Système de mémoire : Julien demande de signaler et faire toute amélioration. Ajout de `CLAUDE.md` à la racine (lu automatiquement par un nouveau chat Claude Code).
 - v7 générée : `schema/generes/TTK_2026-10-29_v7.xrs`.
+
+## 29/10/2026 (nuit) : retours v7 -> v8
+- [D] Nouvel ordre des folios : AU / sécurité (f10-f12), alimentations 400 / 230 / 48 / 24 V (f20-f25), switch PROFINET (f30, avant les variateurs), variateurs (f31, f32), IHM (f40), automate (f50-f53), borniers (f70, f71). Table de correspondance : `memoire/04_REGLES_DESSIN.md`.
+- [H] Ordre interne du bloc sécurité : entrées (AU) f10, relais KA1 f11, sorties f12.
+- [D] Supprimés : ancien f11 (pas de symbole du répartiteur X12 ni de la barrette de terre X13), ancien f30 (fondu dans le 230 V alimentations, f22).
+- [D] Règle C pour la terre sur tous les folios : fil PE court + renvoi vers l'arrivée (f20). Moteur : PE → X2 PE du variateur ; X1 PE en renvoi court.
+- [D] Barres 24VELEC et 0 V en haut de tous les folios de commande.
+- [D] Marque et référence masquées sur tous les composants sauf les borniers.
+- [D] KM3 renommé : contacteur auxiliaire de coupure du +48 V → **KA2** (nom choisi par Claude, convention KA). Il coupe le 48 V, pas le 24 V.
+- [D] f01 : lignes « Commande » et « Puissance installée » supprimées. f03 : seul le tableau des conducteurs reste. f20 : texte d'arrivée réseau dans un cadre.
+- [D] f22 / f23 : éléments centrés, fils allongés après les disjoncteurs, prise de service dans l'axe. f24 : architecture descendante.
+- [D] Numéros de fil centrés et alignés.
+- [C] Julien a déplacé la variante USA (TR1) à gauche au f10 dans WinRelais : reprise dans le script.

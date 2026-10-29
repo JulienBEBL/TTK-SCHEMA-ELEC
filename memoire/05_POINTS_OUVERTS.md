@@ -6,9 +6,9 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q5 | Retours sur la v7 (f10, f12, f13, f14, numéros de fil, noms 24VSEC / 24VELEC) | en attente |
-| Q6 | PE en renvoi court aussi sur f20, f21, f30, f32 ? | proposé le 29/10 |
-| Q7 | Ordre des phases au f10 : L3 en haut, L1 en bas (pour éviter tout croisement). Inverser, avec croisements ? | proposé le 29/10 |
+| Q8 | Retours sur la v8 (nouvel ordre des folios, barres 24 V / 0 V en haut, terre en renvois courts, f24 descendant) | en attente |
+| Q9 | Ordre interne du bloc sécurité : f10 entrées (AU), f11 relais KA1, f12 sorties [H : choix de l'assistant, « AU » en tête] | à confirmer |
+| Q10 | X12 (répartiteur) et X13 (barrette de terre) ne sont plus dessinés : ils sortent de la nomenclature WinRelais. Les ajouter à la main, ou un symbole hors schéma ? | à poser |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
@@ -26,7 +26,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 11. Câbles frein 2G1,5 et TF 2G1 blindé : à commander, longueurs à définir.
 
 ## Très basse tension
-12. DC-1 du LC1D09BD sous 48 V (KM3).
+12. DC-1 du LC1D09BD sous 48 V (KA2).
 13. Polarité de l'entrée ENA du DM860H.
 
 ## Automate
@@ -42,8 +42,8 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 21. Symbole Hager NFT702 : créé par copie du NFT706 dans `outils/librairie/CUSTOM/`, pas dans la librairie WinRelais du PC. À copier dans `sym_electrotech\CUSTOM` si Julien veut le poser à la main.
 
 ## Divers
-22. KM3 : nom à confirmer.
+22. (réglé le 29/10 : KM3 renommé KA2, contacteur auxiliaire.)
 23. Câble 27G1 : répartition machine / pupitre ; repères des câbles 19G1 / 27G1 et RJ45 du pupitre.
 24. Classeur Excel à mettre à jour avec le nommage du 28/10.
 25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f03, f10 corrigés en v7).
-26. f31 : images des borniers à insérer par Julien. f01 : logos à insérer.
+26. f25 : images des borniers à insérer par Julien. f01 : logos à insérer.
