@@ -92,6 +92,13 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 29/10/2026 (après-midi) : assistant local
 - Reprise depuis la passation. v5 jointe = fichier déjà archivé ; v6 jointe = v6 générée, réenregistrée par WinRelais sans changement de contenu (archivée : `schema/recus/2026-10-29_v6_ouverte_WinRelais.xrs`). 0 erreur au verifier sur les deux.
 - Tableau 24 V ELEC / COMMANDE envoyé ; incohérence signalée (« contacteur qui coupe le 24 V ELEC » : il n'existe pas et couperait automate et relais de sécurité). Julien : ok pour le tableau actuel.
-- Retours de Julien sur f10, f12, f13 (terre, numéros de fil, bus tri, découpage f13, 24VSEC, EL1 / EL2). Détail : `memoire/06_V7_A_FAIRE.md`.
+- Retours de Julien sur f10, f12, f13 (terre, numéros de fil, bus tri, découpage f13, 24VSEC, EL1 / EL2). Détail : `memoire/06_EN_COURS.md`.
 - Remise en question : bus tri du f12 = points de jonction, refusés au f32. Inversion de phases trouvée au f10.
 - Dossier `memoire/` créé. Pas de .xrs généré (demande de Julien).
+
+## 29/10/2026 (soir) : v7
+- Julien : OK option A (f10) et C (f13), OK bus au f12, OK découpage f13, nom de T2 laissé à l'assistant, f43 à supprimer ; améliorer la mémoire si besoin.
+- v7 : `schema/generes/TTK_2026-10-29_v7.xrs` (28 folios, 137 symboles, 631 fils, 102 renvois ; 0 problème au contrôle interne, 0 erreur verifier, 26 attentions connues). Détail : `memoire/06_EN_COURS.md`.
+- Contrôles par calcul : chaque tronçon de puissance des f10 à f32 porte un nom ; QS1 1/L1 = L1 ; 0 croisement au f10 ; EL1 / EL2 sans croisement ; aucune note encadrée.
+- Symbole Hager NFT702 créé dans `outils/librairie/CUSTOM/` (copie du NFT706, référence et caractéristiques changées).
+- Limites signalées : EV1 / EV2 gardent un croisement (bornes N et L en haut du symbole) ; phases L3 en haut au f10.

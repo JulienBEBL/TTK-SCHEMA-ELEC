@@ -3,13 +3,12 @@
 Ne jamais inventer de valeur : tant qu'un point est ici, le schéma porte la valeur provisoire ou rien.
 Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils sont maintenant **uniquement ici**.
 
-## Questions à Julien (29/10)
+## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q1 | Représentation de la terre (f10, f13) : options A / B / C | en attente |
-| Q2 | f12 en bus tri : points de jonction acceptés ici ? n° de départ du répartiteur à garder ? | en attente |
-| Q3 | Nom des 24 V : T1 = 24VSEC ? nom de T2 ? | en attente |
-| Q4 | Découpage du f13 en deux folios : contenu proposé | en attente |
+| Q5 | Retours sur la v7 (f10, f12, f13, f14, numéros de fil, noms 24VSEC / 24VELEC) | en attente |
+| Q6 | PE en renvoi court aussi sur f20, f21, f30, f32 ? | proposé le 29/10 |
+| Q7 | Ordre des phases au f10 : L3 en haut, L1 en bas (pour éviter tout croisement). Inverser, avec croisements ? | proposé le 29/10 |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
@@ -39,11 +38,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 17. Champ « câble blindé » (W2, W4, W5, W7) : Julien coche « blindé » sur W2, enregistre, envoie le .xrs.
 18. Champ « afficher les numéros » des broches (U3, U4) : idem, décoché sur U3.
 19. Type de conducteur PROFINET à créer (Préférences / Conducteurs).
-20. Numéros de fil générés (v6) : reconnus par WinRelais comme numéros ou comme texte libre ? Messages du Journal à l'ouverture ?
+20. Numéros de fil générés : reconnus par WinRelais comme numéros ou comme texte libre ? Messages du Journal à l'ouverture ?
+21. Symbole Hager NFT702 : créé par copie du NFT706 dans `outils/librairie/CUSTOM/`, pas dans la librairie WinRelais du PC. À copier dans `sym_electrotech\CUSTOM` si Julien veut le poser à la main.
 
 ## Divers
-21. KM3 : nom à confirmer.
-22. Câble 27G1 : répartition machine / pupitre ; repères des câbles 19G1 / 27G1 et RJ45 du pupitre.
-23. Classeur Excel à mettre à jour avec le nommage du 28/10.
-24. Descriptions de cartouche obsolètes (f02 « indices de révision », f03 « IEC 81346-2 », f10 « PARAFOUDRE », f51 « contacteurs, freins »).
-25. f31 : images des borniers à insérer par Julien. f01 : logos à insérer.
+22. KM3 : nom à confirmer.
+23. Câble 27G1 : répartition machine / pupitre ; repères des câbles 19G1 / 27G1 et RJ45 du pupitre.
+24. Classeur Excel à mettre à jour avec le nommage du 28/10.
+25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f03, f10 corrigés en v7).
+26. f31 : images des borniers à insérer par Julien. f01 : logos à insérer.

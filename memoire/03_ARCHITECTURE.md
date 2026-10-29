@@ -1,15 +1,16 @@
-# 03 · Architecture électrique (état v6, 28/10)
+# 03 · Architecture électrique (état v7, 29/10)
 
 ## Puissance
-- W1 → X11 → QS1 → QF1 → X12 (répartiteur) → départs.
-- **f12 (400 V)** : QM1 / QM2 → KM1 / KM2 → U1 / U2. QF2 / QF3 → KF1 / KF2 → freins (alimentés côté CA, indépendamment du variateur).
-- **f13 (230 V)** : QF4 / QF5 → T1 / T2 ; QF6 → T3 ; QF7 → EV1 / EV2 ; QF8 → EL1 / EL2 ; QF9 → QF10 → X14. Voyant H2 sur les départs libres 35 et N4.
+- W1 → X11 → QS1 → QF1 → X12 (répartiteur) → départs. QF1 : 2 = L1, 4 = L2, 6 = L3 (inversion de la v6 corrigée en v7).
+- **f12 (400 V)** : bus L1 L2 L3 (3 renvois depuis X12, départs 11 / 21 / 31), piquages : QM1 / QM2 (L1 L2 L3) → KM1 / KM2 → U1 / U2 ; QF2 (L1 L2) / QF3 (L1 L3) → KF1 / KF2 → freins (alimentés côté CA, indépendamment du variateur).
+- **f13 (230 V alimentations)** : QF4 / QF5 → T1 / T2 ; QF6 → T3 ; voyant H2 sur les départs libres 35 et N4.
+- **f14 (230 V services)** : QF7 → EV1 / EV2 ; QF8 → EL1 / EL2 ; QF9 → QF10 → X14 (PE par renvoi court vers X13).
 - Phases au f13 : 24 V = L1, 48 V = L2, 230 V auxiliaires = L3 (notes du 23/10).
 - Parafoudre **supprimé** [D 28/10].
 - Moteurs, freins et TF **via le bornier X70** [D 28/10] : pas encore câblé aux f20 / f21 (v7).
 
 ## 24 V : deux alimentations, 0 V commun
-| +24 V ELEC (T2, bornier X31) | +24 V COMMANDE (T1, bornier X33) |
+| 24VELEC (T2, bornier X31) | 24VSEC (T1, bornier X33) |
 |---|---|
 | CPU K1 : L+ et sorties 3L+ (PUL / DIR / ENA des drivers) | KA1 13-14 → KF1, KF2 ; puis Manu-D → KM3 (48 V) |
 | K2, K3 : L+ | KA1 23-24 → Auto-A → KM1, KM2 |
@@ -20,7 +21,7 @@
 | Voyant H3 | |
 
 - **Répartition validée par Julien le 29/10** (« ok pour le tableau actuel »).
-- **Renommage demandé le 29/10** : l'un des deux doit s'appeler **24VSEC**. Proposition : T1 (celui qui passe par les contacts de KA1) = 24VSEC. Nom de T2 à arrêter. [?]
+- **Noms (29/10, v7)** : **24VSEC** = T1 (bornier X33, alimente les contacts de KA1) ; **24VELEC** = T2 (bornier X31, électronique). Anciens noms : +24 V COMMANDE / +24 V ELEC.
 - **Après un AU, les deux 24 V restent distribués.** L'AU ouvre les contacts de KA1 : bobines KM1, KM2, KM3, KF1, KF2 et STO perdent leur 24 V. Automate, IHM, switch, colonne et voyants restent alimentés (affichage du défaut). Seuls QS1 / QF1 / QF4 / QF5 coupent T1 / T2.
 - 0 V commun (X32) [D 28/10] ; les deux +24 V ne sont **jamais** mis en parallèle. Liaison PELV unique 0 V – PE par la borne sectionnable X36.1 (f30).
 
@@ -55,6 +56,18 @@
 | Manu | ouvert ou fermé | OK | alimentés | alimenté | coupés | actif |
 | tous | tous | enfoncé | coupés | coupé | coupés | actif |
 
+Transitions (ancien f43, supprimé le 29/10) :
+
+| Passage | Effet |
+|---|---|
+| Auto → Manu, capot fermé | KM1 / KM2 et STO retombent, shunts ajoutés, 48 V alimenté, pas de réarmement |
+| Auto → Manu, en rotation | idem, moteurs en roue libre freins desserrés (≈ 10 s à mesurer) : risque résiduel |
+| Auto → Manu, capot ouvert | relais déjà retombé : réarmement S4 après passage en Manu |
+| Manu → Auto, capot fermé | 48 V coupé, STO libéré, KM1 / KM2 fermés ; rien ne démarre sans ordre de marche IHM |
+| Manu → Auto, capot ouvert | shunts ouverts : le relais retombe ; fermer le capot puis réarmer |
+
+Programme : défaut sélecteur si I0.4 = I0.5 en régime établi (0/0 ou 1/1), filtrage de quelques centaines de ms à la commutation. Procédure normale : demande Manu sur l'IHM, arrêt en rampe, puis rotation du sélecteur.
+
 Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du client) ; roue libre si le sélecteur tourne pendant la rotation (≈ 10 s, à mesurer) ; un seul contact Manu-D pour le 48 V (PL c accepté).
 
 ## Automate (f50 à f53) : liste d'E/S du 06/10, **gelée, non validée**
@@ -67,6 +80,7 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 ## PROFINET (f54) et pupitre (f60)
 - K4 : P1 → K1 X1 P1 (f50), P2 → U1 X40 (f20), P3 → U2 X40 (f21), P4 → P1 X1 (f60), P5 réserve. Texte de destination sur chaque fil.
 - Type de fil provisoire « Autre tension DC » en vert ; type « PROFINET » à créer dans WinRelais.
+- Switch : V2+ / V2- (2e alimentation) non utilisée ; relais d'alarme ALM1 / ALM2 non câblé.
 - f60 : on ne garde que l'IHM, alimentée par X71.21 (L+), .22 (M), .23 (FE).
 
 ## Borniers

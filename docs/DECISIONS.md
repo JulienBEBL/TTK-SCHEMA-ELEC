@@ -97,3 +97,13 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Incohérence relevée sur la v6 : au f10, les fils QF1 → renvois vers X12 sont croisés (L3 réseau sur la barre L1 et inversement). À corriger en v7.
 - [D] Pas de génération de la v7 avant d'avoir discuté ces points.
 - Dossier `memoire/` créé : synthèse par thème (projet, matériel, architecture, règles de dessin, points ouverts, v7, méthode).
+
+## 29/10/2026 (soir) : réponses de Julien, v7
+- [D] Terre : option A au f10 (PE dans le faisceau), option C au f13 / f14 (fil PE court + renvoi vers X13).
+- [D] f12 en bus L1 L2 L3 avec piquages (points de jonction acceptés sur un bus).
+- [D] f13 séparé : f13 alimentations (QF4, QF5, QF6, H2), f14 services (QF7 à QF10, X14, EV1 / EV2, EL1 / EL2).
+- [D] f43 supprimé (contenu repris dans `memoire/03_ARCHITECTURE.md`).
+- [D par Claude, Julien « à toi de trouver »] T1 = **24VSEC**, T2 = **24VELEC**.
+- [H] N° de départ du répartiteur non affiché sur le bus du f12 ; ordre L3 / L2 / L1 / N / PE de haut en bas au f10 (sans croisement).
+- [D] Système de mémoire : Julien demande de signaler et faire toute amélioration. Ajout de `CLAUDE.md` à la racine (lu automatiquement par un nouveau chat Claude Code).
+- v7 générée : `schema/generes/TTK_2026-10-29_v7.xrs`.
