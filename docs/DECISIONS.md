@@ -120,3 +120,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f22 / f23 : éléments centrés, fils allongés après les disjoncteurs, prise de service dans l'axe. f24 : architecture descendante.
 - [D] Numéros de fil centrés et alignés.
 - [C] Julien a déplacé la variante USA (TR1) à gauche au f10 dans WinRelais : reprise dans le script.
+- [D] X12 et X13 (non dessinés) : Julien les ajoute lui-même à la nomenclature. Rien à faire côté script.

@@ -34,4 +34,3 @@ La v7 réenregistrée par Julien (TR1 déplacé, numéros alignés au f11) est a
 2. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien.
 3. Type de conducteur PROFINET.
 4. Liste d'E/S (f50 à f52) : seulement après validation de Julien.
-5. Nomenclature de X12 / X13 (Q10).

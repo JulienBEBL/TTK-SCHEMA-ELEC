@@ -8,7 +8,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 |---|---|---|
 | Q8 | Retours sur la v8 (nouvel ordre des folios, barres 24 V / 0 V en haut, terre en renvois courts, f24 descendant) | en attente |
 | Q9 | Ordre interne du bloc sécurité : f10 entrées (AU), f11 relais KA1, f12 sorties [H : choix de l'assistant, « AU » en tête] | à confirmer |
-| Q10 | X12 (répartiteur) et X13 (barrette de terre) ne sont plus dessinés : ils sortent de la nomenclature WinRelais. Les ajouter à la main, ou un symbole hors schéma ? | à poser |
+| Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
