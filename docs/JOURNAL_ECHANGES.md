@@ -85,3 +85,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 28/10/2026 (nuit) : v6
 - Retours v5 : f32 (un fil par driver, KM3 1 pôle), f70 (rectangles repérés), f71 (tableau plus grand), numérotation testée par Julien sur f12.
 - v6 : `schema/generes/TTK_2026-10-28_v6.xrs` ; 0 problème au contrôle interne, 0 erreur verifier ; 84 noms de phase posés sur les fils de puissance (f10 à f21).
+
+## 29/10/2026
+- Fiche de passation complète pour le chat local : `docs/PASSATION_CHAT_LOCAL_2026-10-29.md` (copie dans `livrables/`). Julien la joint avec les .xrs v5 (ouvert, numérotation test f12) et v6 (non ouvert).
