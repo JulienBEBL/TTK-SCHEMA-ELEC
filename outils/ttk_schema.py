@@ -38,12 +38,12 @@ for f in FOL:
     if f["num"] == "13":
         f["titre"] = "DISTRIBUTION 230 V - ALIMENTATIONS"
     f["desc"] = DESC_FOL.get(f["num"], f["desc"])
-# Ordre des folios (29/10 soir, demande de Julien) : AU / sécurité, alimentations (400, 230, 48, 24), switch,
-# variateurs, IHM, automate, borniers. f11 (répartiteur, barrette de terre) et f30 (fondu dans f13) supprimés.
+# Ordre des folios (Julien, 29/10 et 30/10) : alimentations (400, 230, 48, 24), switch, variateurs, sécurité (f40-f42,
+# remis à leur place le 30/10), IHM, automate, borniers. f11 (répartiteur, barrette de terre) et f30 (fondu dans f13) supprimés.
 # Le script garde les anciens numéros en interne ; NUMFOL donne le numéro affiché. Dans les textes du script,
 # « fNN » est toujours un ANCIEN numéro (traduit à l'écriture par ren()).
-NUMFOL = {"41": "10", "40": "11", "42": "12", "10": "20", "12": "21", "13": "22", "14": "23", "32": "24",
-          "31": "25", "54": "30", "20": "31", "21": "32", "60": "40"}
+NUMFOL = {"10": "20", "12": "21", "13": "22", "14": "23", "32": "24",
+          "31": "25", "54": "30", "20": "31", "21": "32", "60": "45"}
 FOL = sorted((f for f in FOL if f["num"] not in ("11", "30")), key=lambda f: NUMFOL.get(f["num"], f["num"]))
 g = Gen(MODELE)
 
@@ -178,6 +178,10 @@ def nommer_phases():
             continue
         if w[1] == w[3]:
             lo, hi = min(w[2], w[4]), max(w[2], w[4])
+            # le numéro de brin d'un câble s'écrit juste au-dessus du croisement (f20, 30/10) : on reste à l'écart
+            for c_ in g.cables:
+                if c_[0] == f_ and w[1] in c_[7] and lo < c_[3] < hi:
+                    lo, hi = max(((lo, c_[3] - 400), (c_[3] + 100, hi)), key=lambda a: a[1] - a[0])
             poses.append([f_, w[1], lo, hi, ph, 90, (lo + hi) // 2])
         else:
             lo, hi = min(w[1], w[3]), max(w[1], w[3])
@@ -292,25 +296,6 @@ def etiquette(f, xs, y, txt, size=300):
     texte(f, int(round((xc - len(txt) * size * 0.55 / 2) / 100) * 100), y, txt, size, 0, 1)
 
 
-# État de chaque folio (règle de Julien du 28/10) : pastille en haut à droite.
-# vert = validé par Julien (tous les éléments du folio) ; orange = presque fini ; rouge = moins de 50 %.
-COULEUR = {"vert": 32768, "orange": 33023, "rouge": 255}
-STATUT = {"01": "orange", "02": "orange", "03": "orange", "04": "rouge",
-          "10": "orange", "12": "orange", "13": "orange", "14": "orange", "20": "orange", "21": "orange",
-          "31": "orange", "32": "orange", "40": "orange", "41": "orange", "42": "orange",
-          "50": "rouge", "51": "rouge", "52": "rouge", "53": "orange", "54": "orange", "60": "orange",
-          "70": "rouge", "71": "rouge", "80": "rouge", "85": "rouge", "90": "rouge"}
-
-
-def pastilles():
-    """Carré plein 5 x 5 mm en haut à droite (traits serrés), à poser après le centrage des folios."""
-    for num, etat in STATUT.items():
-        if num in F:
-            c = COULEUR[etat]
-            for yy in range(1400, 1900, 50):
-                g.ligne(F[num], 28800, yy, 29300, yy, color=c, width=60)
-
-
 def proposition(f, lignes, x=2400, y=1400):
     texte(f, x, y, "PROPOSITION A VALIDER : " + lignes[0], 250, ROUGE, 1)
     for i, l in enumerate(lignes[1:], 1):
@@ -356,15 +341,15 @@ texte("04", 20600, 2500, "+P1 PUPITRE", 350, 0, 1)
 g.cadre(SY, 20400, 10000, 28400, 17600, width=40, dashed=True)
 texte("04", 20600, 10100, "+M MACHINE", 350, 0, 1)
 blocs = [
-    (2800, 3600, "Sécurité : entrées AU / capots (f41), relais -KA1 (f40), sorties (f42)"),
-    (2800, 4400, "Arrivée -X11, sectionneur -QS1, disjoncteur de tête -QF1 (f10)"),
-    (2800, 5200, "400 V : -QM1 -QM2 -KM1 -KM2 (variateurs), -QF2 -QF3 -KF1 -KF2 (freins) (f12)"),
-    (2800, 6000, "230 V : -QF4 -QF5 -T1 -T2 (24 V), -QF6 (48 V), voyant -H2 (f13)"),
-    (2800, 6800, "230 V : -QF7 à -QF10, -X14, -EV1 -EV2, -EL1 -EL2 (f14)"),
-    (2800, 7600, "48 V -T3 + -KA2 + -X34 / -X35, drivers pas-à-pas -U3 / -U4 (f32)"),
-    (2800, 8400, "Distribution 24 V -X31 / -X32 / -X33 (f31)"),
-    (2800, 9200, "Switch PROFINET -K4 (f54)"),
-    (2800, 10000, "Variateurs -U1 / -U2 + résistances -R1 / -R2 (f20, f21)"),
+    (2800, 3600, "Arrivée -X11, sectionneur -QS1, disjoncteur de tête -QF1 (f10)"),
+    (2800, 4400, "400 V : -QM1 -QM2 -KM1 -KM2 (variateurs), -QF2 -QF3 -KF1 -KF2 (freins) (f12)"),
+    (2800, 5200, "230 V : -QF4 -QF5 -T1 -T2 (24 V), -QF6 (48 V), voyant -H2 (f13)"),
+    (2800, 6000, "230 V : -QF7 à -QF10, -X14, -EV1 -EV2, -EL1 -EL2 (f14)"),
+    (2800, 6800, "48 V -T3 + -KA2 + -X34 / -X35, drivers pas-à-pas -U3 / -U4 (f32)"),
+    (2800, 7600, "Distribution 24 V -X31 / -X32 / -X33 (f31)"),
+    (2800, 8400, "Switch PROFINET -K4 (f54)"),
+    (2800, 9200, "Variateurs -U1 / -U2 + résistances -R1 / -R2 (f20, f21)"),
+    (2800, 10000, "Sécurité : relais -KA1 (f40), entrées AU / capots (f41), sorties (f42)"),
     (2800, 10800, "Automate -K1 (CPU 1214C G2), -K2 (SM 1223), -K3 (SM 1231 TC) (f50-f53)"),
     (2800, 11600, "AU armoire -S1, réarmement -S4, colonne -H1, voyants -H2 -H3 -H4"),
     (2800, 12400, "Borniers -X70 (machine), -X71 (pupitre) ; répartiteur -X12 et terre -X13 non dessinés"),
@@ -389,7 +374,7 @@ liaisons = [
 for x1, y1, x2, y2, tx, ty, t in liaisons:
     g.ligne(SY, x1, y1, x2, y2, width=40)
     texte("04", tx, ty, t, 200)
-texte("04", 2400, 18200, "Synoptique à jour au 29/10/2026 (nouvel ordre des folios).", 220)
+texte("04", 2400, 18200, "Synoptique à jour au 30/10/2026 (ordre des folios).", 220)
 
 # ======================================================================== règles de mise en page
 # Un renvoi WinRelais dessine flèche + texte sur ~1,6 cm AU-DELA de son point, côté opposé au fil :
@@ -536,8 +521,8 @@ texte(f, 20000, 9500, "Ne remplace pas une vérification d'absence de tension.",
 f = "14"
 BUS14 = {"L3": 2400, "N": 3200}
 q137 = maitre(nft702, "Q137", f, 4400, 4400)
-q136 = maitre(nft702, "Q136", f, 11200, 4400)
-q131 = maitre(C + "IMO_B6CR1N1630A_disj_diff_1P+N_16A_30mA.xsy", "Q131", f, 18800, 4400)
+q136 = maitre(nft702, "Q136", f, 12000, 4400)
+q131 = maitre(C + "IMO_B6CR1N1630A_disj_diff_1P+N_16A_30mA.xsy", "Q131", f, 20000, 4400)
 for q in (q137, q136, q131):
     W(f, [(q[("N", 0)].x, BUS14["N"]), q[("N", 0)]], "N")
     W(f, [(q["1"].x, BUS14["L3"]), q["1"]], "L")
@@ -546,8 +531,8 @@ W(f, [(XL, BUS14["N"]), (q131[("N", 0)].x, BUS14["N"])], "N")
 for ph in ("L3", "N"):
     renvoi("13", (XR, BUS13[ph]), f, (XL, BUS14[ph]), "N" if ph == "N" else "L")
 # prise de service : -QF9 -> -QF10 -> -X14 dans l'axe, fils allongés (29/10)
-q135 = maitre(C + "Schneider_A9P71606_iDT40K_disjoncteur_1PN_6A_C.xsy", "Q135", f, 18800, 8800)
-x131 = maitre(C + "Legrand_004280_prise_2P+T_16A.xsy", "X131", f, 18800, 13200)
+q135 = maitre(C + "Schneider_A9P71606_iDT40K_disjoncteur_1PN_6A_C.xsy", "Q135", f, 20000, 8800)
+x131 = maitre(C + "Legrand_004280_prise_2P+T_16A.xsy", "X131", f, 20000, 13200)
 W(f, [q131[("N", 1)], q135[("N", 0)]], "N")
 W(f, [q131["2"], q135["1"]], "L")
 W(f, [q135[("N", 1)], x131["N"]], "N")
@@ -556,19 +541,19 @@ PE_DEST.append((f, W(f, [x131["PE"], (x131["PE"].x, x131["PE"].y + 800)], "PE"))
 # éclairage : lampes l'une sous l'autre, N à gauche, L à droite (pas de croisement)
 lampe = C + "RSPRO_194-0417_eclairage_armoire_LED.xsy"
 e131 = maitre(lampe, "E131", f, 4400, 8400, fpos=(2400, -300))
-e132 = maitre(lampe, "E132", f, 4400, 10400, fpos=(2400, -300))
+e132 = maitre(lampe, "E132", f, 4400, 12800, fpos=(2400, -300))
 W(f, [q137[("N", 1)], e131["N"]], "N")
 W(f, [e131["N"], e132["N"]], "N")
 W(f, [q137["2"], (q137["2"].x, 7600), (e131["L"].x, 7600), e131["L"]], "L")
 W(f, [e131["L"], e132["L"]], "L")
 # ventilateurs l'un sous l'autre : N contourne par la gauche, L par la droite (pas de croisement)
 vent = C + "IDE_VF92AC_ventilateur_230V.xsy"
-g131 = maitre(vent, "G131", f, 11200, 8800, fpos=(2000, 400))
-g132 = maitre(vent, "G132", f, 11200, 11200, fpos=(2000, 400))
+g131 = maitre(vent, "G131", f, 12000, 8800, fpos=(2000, 400))
+g132 = maitre(vent, "G132", f, 12000, 13200, fpos=(2000, 400))
 W(f, [q136[("N", 1)], g131["N"]], "N")
 W(f, [q136["2"], g131["L"]], "L")
-W(f, [(11200, 8400), (10400, 8400), (10400, 10800), (11200, 10800), g132["N"]], "N")
-W(f, [(12000, 8000), (12800, 8000), (12800, 10800), (12000, 10800), g132["L"]], "L")
+W(f, [(12000, 8400), (11200, 8400), (11200, 12800), (12000, 12800), g132["N"]], "N")
+W(f, [(12800, 8000), (13600, 8000), (13600, 12800), (12800, 12800), g132["L"]], "L")
 
 # ======================================================================== 20 / 21 VARIATEURS
 mcx = C + "SEW_Variateur_MCX91A-0055-5E3_CSO_CFN.xsy"
@@ -577,38 +562,42 @@ res = C + "SEW_BW100-001_resistance_freinage.xsy"
 VAR = {}
 for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W202", "W203", "KM1", "Q421"),
                                        ("21", "T211", "R211", "M211", "W211", "W212", "W213", "KM2", "Q422")):
-    T = maitre(mcx, t, f, 4000, 6000, wrap=34)
-    R = maitre(res, r, f, 9600, 10000, shown=(2,), wrap=22)
-    M = maitre(mot, m, f, 5200, 15600, fpos=(10000, 0), wrap=36)   # textes à droite du moteur
+    # variateur remonté, moteur dans l'axe de X2 (fils droits), câbles W sur une seule ligne (30/10)
+    T = maitre(mcx, t, f, 4000, 5200, wrap=34)
+    R = maitre(res, r, f, 9600, 8800, shown=(2,), wrap=22)
+    M = maitre(mot, m, f, 4800, 15600, fpos=(10000, 0), wrap=36)   # textes à droite du moteur
+    YC = 13600                                                     # ligne des 3 câbles moteur
     for p, kp in (("X1:L1", "2/T1"), ("X1:L2", "4/T2"), ("X1:L3", "6/T3")):
-        renvoi("12", out12[(km, kp)], f, stub(f, (T[p].x, 4800), T[p], "L"), "L")
+        renvoi("12", out12[(km, kp)], f, stub(f, (T[p].x, 4000), T[p], "L"), "L")
     # terre (29/10) : PE moteur -> X2 PE du variateur ; X1 PE -> fil court + renvoi vers la terre (f10)
-    PE_DEST.append((f, W(f, [T["X1:PE"], (4000, 4800)], "PE")))
-    W(f, [T["X2:PE"], (4000, 12000), (4400, 12000), M["PE"]], "PE")
-    W(f, [T["X2:U"], (4800, 12400), (5200, 12400), M["U1"]], "L")
-    W(f, [T["X2:V"], (5600, 12800), (6000, 12800), M["V1"]], "L")
-    W(f, [T["X2:W"], (6400, 13200), (6800, 13200), M["W1"]], "L")
-    g.cable(F[f], 4000, 7000, 14400, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [4400, 5200, 6000, 6800],
-            etiq=(1600, 13800), size=200)
-    W(f, [T["X2:-R"], (8000, 9600), (9600, 9600), R["1"]], "DC")
-    W(f, [T["X2:+R"], (7200, 12000), (9600, 12000), R["2"]], "DC")
+    PE_DEST.append((f, W(f, [T["X1:PE"], (4000, 4000)], "PE")))
+    W(f, [T["X2:PE"], M["PE"]], "PE")
+    W(f, [T["X2:U"], M["U1"]], "L")
+    W(f, [T["X2:V"], M["V1"]], "L")
+    W(f, [T["X2:W"], M["W1"]], "L")
+    g.cable(F[f], 3600, 6600, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [4000, 4800, 5600, 6400],
+            etiq=(1600, YC - 300), size=200)
+    W(f, [T["X2:-R"], (8000, 8400), (9600, 8400), R["1"]], "DC")
+    W(f, [T["X2:+R"], (7200, 10800), (9600, 10800), R["2"]], "DC")
     # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, en direct (sans bornier), décision 26/10
+    # frein : pin 2 au-dessus de pin 3, sans croisement
     renvoi("12", out12[(qf, "4/T2")], f, W(f, [M["2"], (M["2"].x, 12000), (13600, 12000)], "L"), "L")
-    renvoi("12", out12[(qf, "6/T3")], f, W(f, [M["3"], (M["3"].x, 11200), (13600, 11200)], "L"), "L")
-    W(f, [M["1b"], (M["1b"].x, 12800), (21200, 12800), (21200, 4400), (11600, 4400), T["X10:1"]], "24")
-    W(f, [M["2b"], (M["2b"].x, 12400), (21600, 12400), (21600, 4800), (12000, 4800), T["X10:2"]], "24")
-    VAR[(f, "PN")] = W(f, [T["X40"], (13600, 5600), (16000, 5600)], "PN")
-    g.cable(F[f], M["1b"].x - 400, M["2b"].x + 400, 14000, w3, "2G1 blindé",
-            f"Sonde thermique TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], etiq=(12000, 13200), size=200)
-    g.cable(F[f], M["2"].x - 400, M["3"].x + 400, 14800, w2, "2G1,5",
-            f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], etiq=(12000, 14400), size=200)
+    renvoi("12", out12[(qf, "6/T3")], f, W(f, [M["3"], (M["3"].x, 12800), (13600, 12800)], "L"), "L")
+    # sonde TF : remonte à droite du variateur vers X10 (1b -> X10:1 impose un croisement)
+    W(f, [M["1b"], (M["1b"].x, 11600), (21600, 11600), (21600, 3600), (11600, 3600), T["X10:1"]], "24")
+    W(f, [M["2b"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
+    VAR[(f, "PN")] = W(f, [T["X40"], (13600, 4800), (16000, 4800)], "PN")
+    g.cable(F[f], M["1b"].x - 200, M["2b"].x + 400, YC, w3, "2G1 blindé",
+            f"Sonde TF {m}", [M["1b"].x, M["2b"].x], etiq=(8600, YC - 300), size=200)
+    g.cable(F[f], M["2"].x - 200, M["3"].x + 400, YC, w2, "2G1,5",
+            f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], etiq=(11400, YC - 300), size=200)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
     VAR[(f, "STO2")] = W(f, [T["X6:3"], (9600, 3200)], "24")
-    W(f, [T["X6:2"], (9200, 5200), (10000, 5200)], "0V")
-    W(f, [T["X6:4"], (10000, 5200)], "0V")
-    VAR[(f, "STO0")] = W(f, [(10000, 5200), (10000, 4800)], "0V")
+    W(f, [T["X6:2"], (9200, 4800), (10400, 4800)], "0V")
+    W(f, [T["X6:4"], (10000, 4800)], "0V")
+    VAR[(f, "STO0")] = W(f, [(10400, 4800), (10400, 4000)], "0V")
     texte(f, 22400, 4400, "X40 : PROFINET (f54)", 200)
     texte(f, 22400, 4800, "X5 : 24VELEC (f31) - X6 : STO (f42)", 200)
     texte(f, 22400, 5200, "STO X6 et TF X10 : bornes à confirmer", 200, ROUGE)
@@ -673,12 +662,12 @@ x35 = g.place(ptf, "X35", F[f], 7200, 10000, champs={2: DESC32["X35"], 3: "Phoen
                                                    4: "6 points - 17,5 A"}, loc="A1", shown=(2,), rep_size=250,
               fpos=(1200, 0), wrap=20)
 W(f, [q423p["2/T1"], x34["1"]], "DC")
-W(f, [t321[("-V", 0)], (4000, 9200), (7200, 9200), x35["1"]], "0V")
+W(f, [t321[("-V", 0)], (4000, 9600), (7200, 9600), x35["1"]], "0V")
 drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
 CMD32, DRV = {}, {}
 for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
-    D = maitre(drv, T, f, x0, 12800, fpos=(2600, 0), wrap=22)
+    D = maitre(drv, T, f, x0, 12800, fpos=(2600, 0), wrap=22, noms=T != "T322")
     Mo = maitre(mpp, Mrep, f, x0 - 800, 16400)
     DRV[T] = D
     for p in ("A+", "A-", "B+", "B-"):
@@ -853,8 +842,9 @@ def entree(inp, row, elems):
     """elems : liste de (type, repère, fichier, description, broches) du haut vers le bas."""
     p = k501e[inp]
     x = p.x
-    y = 4400 if row == 1 else 7600
-    yt1, yt2 = (3600, 6400) if row == 1 else (6400, 9600)
+    # alignement de Julien (30/10) : bornes sur 2 lignes (haut, bas), contacts sur 2 niveaux en quinconce
+    y = 4800 if row == 1 else 7200
+    yt1, yt2 = 3600, 10400
     cur = (x, 3200)
     for kind, rep, xsy, des, pins in elems:
         if kind == "borne":
@@ -909,7 +899,6 @@ g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
     ["I1.2 / I1.3", "-KM1 / -KM2", "retour contacteurs amont variateurs"],
     ["I1.4", "-Q423", "retour contacteur 48 V"], ["I1.5", "-K401", "diagnostic relais sécu (borne à confirmer)"],
 ], size=200)
-proposition(f, ["affectation des entrées automate"], x=13600, y=13700)
 
 # ======================================================================== 51 AUTOMATE SORTIES
 f = "51"
@@ -917,7 +906,7 @@ k501s = maitre(C + "Siemens_6ES7214-1AH50-0XB0_CPU1214C_G2_sorties.xsy", "K501",
                base="K501", compact=True, rep_size=300)
 W(f, [k501s["3L+"], (4800, 7200), (4000, 7200), (4000, RAIL24_Y)], "24")
 W(f, [k501s["3M"], (5600, 7600), (3600, 7600), (3600, RAIL0_Y)], "0V")
-Q51 = {q: W(f, [k501s[q], (k501s[q].x, 8000)], "24") for q in ("Q0.0", "Q0.1", "Q0.2", "Q0.4", "Q0.5", "Q0.6")}
+Q51 = {q: W(f, [k501s[q], (k501s[q].x, 8000)], "24") for q in ("Q0.0", "Q0.1", "Q0.2", "Q0.3", "Q0.4", "Q0.5")}
 voyant = "Signalisation et voyants\\Voyant.xsy"
 col = maitre(C + "RSPRO_199-9760_colonne_lumineuse.xsy", "P511", f, 17600, 12800)
 COL51 = {c: stub(f, (col[c].x, 11200), col[c], "24") for c in ("RD", "OG", "GN")}
@@ -930,18 +919,18 @@ V414 = stub(f, (12000, 11200), voy["X1"], "24")
 for p in (p513["X2"], voy["X2"], col["COM"]):
     W(f, [p, (p.x, 15600)], "0V")
 W(f, [(col["COM"].x, 15600), (3600, 15600), (3600, 7600)], "0V")
-for q, (T, sg) in (("Q0.0", ("T322", "PUL")), ("Q0.1", ("T322", "DIR")), ("Q0.2", ("T322", "ENA")),
-                   ("Q0.4", ("T323", "PUL")), ("Q0.5", ("T323", "DIR")), ("Q0.6", ("T323", "ENA"))):
+# PUL des 2 drivers obligatoirement en 100 kHz (Julien, 30/10) : Q0.0 à Q0.3 seulement, Q0.4 et suivantes = 20 kHz
+for q, (T, sg) in (("Q0.0", ("T322", "PUL")), ("Q0.1", ("T322", "DIR")), ("Q0.2", ("T323", "PUL")),
+                   ("Q0.3", ("T323", "DIR")), ("Q0.4", ("T322", "ENA")), ("Q0.5", ("T323", "ENA"))):
     renvoi(f, Q51[q], "32", CMD32[(T, sg)], "24")
 
-texte(f, 16000, 8400, "Q0.3, Q0.7, Q1.0, Q1.1 : réserve", 200)
+texte(f, 11200, 7400, "Q0.6, Q0.7, Q1.0, Q1.1 : réserve", 200)
 g.tableau(F[f], 20800, 15600, [1800, 1600, 4800], 300, [
-    ["Sortie", "Repère", "Fonction"], ["Q0.0 / 0.1 / 0.2", "-T322", "PUL / DIR / ENA axe 1 (PTO1)"],
-    ["Q0.4 / 0.5 / 0.6", "-T323", "PUL / DIR / ENA axe 2 (PTO2)"],
-    ["Q0.3, Q0.7, Q1.0, Q1.1", "", "réserve"],
+    ["Sortie", "Repère", "Fonction"], ["Q0.0 / 0.1 / 0.4", "-T322", "PUL / DIR / ENA axe 1 (PUL 100 kHz)"],
+    ["Q0.2 / 0.3 / 0.5", "-T323", "PUL / DIR / ENA axe 2 (PUL 100 kHz)"],
+    ["Q0.6, Q0.7, Q1.0, Q1.1", "", "réserve"],
     ["SM 1223 (f52)", "", "colonne, voyants, alarme switch"],
 ], size=200)
-proposition(f, ["affectation des sorties automate (liste d'E/S du 06/10, à confirmer)"], x=13600, y=1300)
 
 # ======================================================================== 52 MODULE SM 1223
 f = "52"
@@ -1040,8 +1029,8 @@ MEMES = [
     ["K401:34", "X711.9:1"], ["X711.9:2", "S413:23"], ["S413:24", "X711.10:1"],
     ["X711.10:2", "T201:X6:1", "T201:X6:3", "T211:X6:1", "T211:X6:3"],
     # sorties automate
-    ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.2", "T322:ENA+"],
-    ["K501:Q0.4", "T323:PUL+"], ["K501:Q0.5", "T323:DIR+"], ["K501:Q0.6", "T323:ENA+"],
+    ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.4", "T322:ENA+"],
+    ["K501:Q0.2", "T323:PUL+"], ["K501:Q0.3", "T323:DIR+"], ["K501:Q0.5", "T323:ENA+"],
     ["K521:Q8.0", "P511:RD"], ["K521:Q8.1", "P511:OG"], ["K521:Q8.2", "P511:GN"],
     ["K521:Q8.3", "S414:X1"], ["K521:Q8.4", "P513:X1"],
     # entrées automate
@@ -1276,16 +1265,17 @@ for i, f in enumerate(CH):
     texte(f, xt, RAIL0_Y - 300, "0 V", 200)
 
 # ======================================================================== écriture + contrôle
+# bus 400 / 230 V, barres 24 V / 0 V et variateurs : en haut du folio, même hauteur partout (30/10) ; centrés en largeur
+HAUT = {"12", "13", "14", "20", "21"} | set(CH)
 for num in F:                       # contenu centré dans le cadre (pas la garde, la légende, les notes)
     if "10" <= num <= "69":
-        g.centrer(F[num])
+        g.centrer(F[num], vertical=num not in HAUT)
 nommer_phases()
 renommer_symboles()
 g.write(SORTIE)
 ecrire_borniers(SORTIE)
 for num in ("70", "71"):
     g.centrer(F[num])
-pastilles()
 g.write(SORTIE)
 pb = check(g, SORTIE) + controle_specification(SORTIE)
 print(f"{len(g.folios)} folios, {len(g.symbols)} symboles, {len(g.wires)} fils, {len(g.renvois)} renvois")

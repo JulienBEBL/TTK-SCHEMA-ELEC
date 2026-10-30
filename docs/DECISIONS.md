@@ -121,3 +121,15 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Numéros de fil centrés et alignés.
 - [C] Julien a déplacé la variante USA (TR1) à gauche au f10 dans WinRelais : reprise dans le script.
 - [D] X12 et X13 (non dessinés) : Julien les ajoute lui-même à la nomenclature. Rien à faire côté script.
+
+## 30/10/2026 : retours v8 -> v9
+- [D] Sécurité remise à sa place : f40 (relais KA1), f41 (entrées), f42 (sorties). La mise en tête de la v8 venait d'une mauvaise lecture de « AU ».
+- [H] IHM numérotée f45 (entre sécurité et automate, conforme à la liste de Julien). Alimentations gardent 20 à 25.
+- [D] Carré de couleur en haut des folios supprimé.
+- [D] **PUL des 2 drivers sur des sorties 100 kHz** : Q0.0 (U3), Q0.2 (U4). DIR et ENA sans contrainte. [C] Fiche Siemens 6ES7214-1AH50-0XB0 : Qa.0-Qa.3 100 kHz, Qa.4-Qb.1 20 kHz. L'ancienne affectation Q0.4 pour PUL U4 était limitée à 20 kHz.
+- [H] DIR Q0.1 / Q0.3, ENA Q0.4 / Q0.5 ; Q0.6, Q0.7, Q1.0, Q1.1 en réserve. PTO à vérifier dans TIA.
+- [D] f50 : alignement de Julien (bornes sur 2 lignes, contacts sur 2 niveaux en quinconce), à garder comme modèle. Règle chiffrée : `memoire/04_REGLES_DESSIN.md`.
+- [D] Bus des f21, f22, f23 en haut, à la même hauteur (modèle f22). [H] Étendu aux barres 24 V / 0 V et aux variateurs.
+- [D] f23 : lampes et ventilateurs écartés. f20 : numéro de fil séparé du numéro de brin du câble.
+- [D] f31, f32 : variateur remonté. [H] Moteur dans l'axe de X2, 3 câbles sur une ligne (image du défaut non reçue).
+- [C] Noms de broches : réglables par symbole (champ 5). U3 masqué, U4 affiché. Règle générale à donner par Julien.

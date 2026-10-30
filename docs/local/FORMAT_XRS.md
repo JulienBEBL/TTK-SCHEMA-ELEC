@@ -95,6 +95,8 @@ modèle de cartouche (`TITRE FOLIO`, `DESCRIPTION FOLIO`, `DATE DESSIN`, `NOM DE
 
 ## 4. Symbole
 
+Ligne 2 de `Autre` du symbole : `100·famille·symbole··préfixe·N·…·folio·…`. **Champ 5 (`N`) = afficher les noms de broches** (1 = oui, 0 = non), mesuré le 30/10 sur U3 / U4 : seul ce champ change, les textes `MDessin` restent dans le fichier.
+
 Un symbole est **entièrement copié dans le schéma** (dessin compris) : le fichier `.xsy` de la
 librairie n'est plus nécessaire après insertion. Toutes les coordonnées (contours, broches, champs)
 sont **absolues** sur le folio : déplacer un symbole oblige à décaler toutes ses lignes.

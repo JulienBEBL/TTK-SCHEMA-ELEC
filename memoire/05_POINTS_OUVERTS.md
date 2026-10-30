@@ -6,9 +6,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q8 | Retours sur la v8 (nouvel ordre des folios, barres 24 V / 0 V en haut, terre en renvois courts, f24 descendant) | en attente |
-| Q9 | Ordre interne du bloc sécurité : f10 entrées (AU), f11 relais KA1, f12 sorties [H : choix de l'assistant, « AU » en tête] | à confirmer |
+| Q8 | Retours sur la v9 | en attente |
+| Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
+| Q11 | Noms de broches : quels composants afficher, lesquels masquer ? (U3 masqué, U4 affiché pour comparer) | à répondre |
+| Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f20, f23, f50). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
+| Q13 | f52 : mention rouge « PROPOSITION A VALIDER » conservée (Julien l'a retirée aux f50 et f51 seulement) | à confirmer |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
@@ -32,7 +35,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Automate
 14. Liste d'E/S à valider (f50 à f52 figés d'ici là).
 15. Brochages G2 à confirmer (seuls ceux de la génération 1 ont été trouvés).
-16. PTO sur Q0.0 / Q0.4 à vérifier dans TIA V21.
+16. PUL sur Q0.0 (U3) et Q0.2 (U4) : sorties 100 kHz d'après la fiche Siemens [C]. Affectation PTO (impulsion + direction) à vérifier dans TIA V21.
 
 ## WinRelais (champs du format .xrs inconnus)
 17. Champ « câble blindé » (W2, W4, W5, W7) : Julien coche « blindé » sur W2, enregistre, envoie le .xrs.

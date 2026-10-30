@@ -47,7 +47,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA à vérifier |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 
-## Sécurité, commande (f10 à f12, f40)
+## Sécurité, commande (f40 à f42, f45)
 | Repère | Matériel | Remarque |
 |---|---|---|
 | KA1 | Schneider XPSUAF13AP | cat. 0, PL d visé, démarrage surveillé par S4 |

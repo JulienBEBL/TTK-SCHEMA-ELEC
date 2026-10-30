@@ -109,3 +109,10 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Contrôles par calcul : croisements f20 = 0, f23 = 2 (piquages du bus), f24 = 2 (+ 4 déjà présents sur les entrées des drivers), f25 = 2 (piquages des barres) ; chaque tronçon de puissance nommé, noms alignés.
 - v7 réenregistrée par Julien archivée dans `schema/recus/`.
 - Mémoire : table de correspondance des numéros de folio (affichés / internes) ajoutée, avec le piège signalé dans `CLAUDE.md` et la structure du script dans `07_METHODE_TRAVAIL.md`.
+
+## 30/10/2026 : v9
+- Retours de Julien sur la v8 (sécurité à remettre à sa place, f20, carré de couleur, f21, f23, f24, f31, f32, f50, f51) + v8 modifiée, archivée dans `schema/recus/`. Images reçues : f20, f23, f50 ; pas celles des f24 et f31.
+- Différences relevées dans son fichier : f50 (19 symboles déplacés), U3 (noms de broches), f50 / f51 (PROPOSITION retirée, réserve déplacée), câbles W2 / W4 du f31 retouchés.
+- v9 : `schema/generes/TTK_2026-10-30_v9.xrs` (26 folios, 135 symboles, 600 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement). Détail : `memoire/06_EN_COURS.md`.
+- Fiche Siemens de la CPU relue : Q0.0 à Q0.3 en 100 kHz. Q0.4 (PUL U4 en v8) était à 20 kHz : corrigé.
+- Mémoire : nouveau contrôle `outils/xrs_chevauchements.py`, règle de disposition du f50, format des noms de broches, table des folios, chemin du format .xrs corrigé dans la mémoire locale.

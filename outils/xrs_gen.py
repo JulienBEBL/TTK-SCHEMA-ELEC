@@ -129,7 +129,7 @@ class Gen:
         return list(self._xsy_cache[path])
 
     def place(self, xsy, rep, folio, x, y, champs=None, ref=None, prefix=None, compact=False,
-              rep_size=None, wrap=28, fpos=None, loc=None, shown=(2, 3, 4)):
+              rep_size=None, wrap=28, fpos=None, loc=None, shown=(2, 3, 4), noms=None):
         """Pose un symbole de librairie, origine en (x, y).
 
         champs = {2: désignation, 3: fabricant + réf., 4: caractéristiques} (données nomenclature,
@@ -137,6 +137,7 @@ class Gen:
         Les textes longs sont coupés (wrap caractères) dans les champs libres 5 à 8.
         fpos = position du repère relative à l'origine (sinon celle de la librairie).
         ref = (fabricant, réf1, réf2), () pour effacer (esclave). loc = localisation (A1, P1, M).
+        noms = afficher les noms de broches (True / False), sinon valeur de la librairie.
         """
         if x % 200 or y % 200:
             raise GenError(f"{rep} : origine hors grille ({x},{y})")
@@ -147,6 +148,8 @@ class Gen:
         info[8] = str(folio)
         if prefix:
             info[4] = prefix
+        if noms is not None:
+            info[5] = "1" if noms else "0"
         block[2] = SEP.join(info)
         ch = [block[3 + k].split(SEP) for k in range(8)]       # ch[0] = champ 1
         ax, ay = (x + fpos[0], y + fpos[1]) if fpos else (int(ch[0][1]), int(ch[0][2]))
@@ -459,8 +462,9 @@ class Gen:
             return None
         return (min(b[0] for b in bx), min(b[1] for b in bx), max(b[2] for b in bx), max(b[3] for b in bx))
 
-    def centrer(self, folio, zone_x=None, zone_y=None, pas=400):
-        """Décale tout le contenu du folio pour le centrer dans le cadre (pas de grille 400)."""
+    def centrer(self, folio, zone_x=None, zone_y=None, pas=400, vertical=True):
+        """Décale tout le contenu du folio pour le centrer dans le cadre (pas de grille 400).
+        vertical=False : centrage horizontal seul, le haut du folio reste où il est."""
         zx, zy = zone_x or ZONE_X, zone_y or ZONE_Y
         e = self.emprise(folio)
         if not e:
@@ -469,7 +473,7 @@ class Gen:
             d = int(d / pas) * pas
             return max(min(d, maxi // pas * pas), -(mini // pas * pas))
         dx = pas_vers(((zx[0] + zx[1]) - (e[0] + e[2])) / 2, e[0] - zx[0], zx[1] - e[2])
-        dy = pas_vers(((zy[0] + zy[1]) - (e[1] + e[3])) / 2, e[1] - zy[0], zy[1] - e[3])
+        dy = pas_vers(((zy[0] + zy[1]) - (e[1] + e[3])) / 2, e[1] - zy[0], zy[1] - e[3]) if vertical else 0
         if dx or dy:
             self.decaler(folio, dx, dy)
         return (dx, dy)
