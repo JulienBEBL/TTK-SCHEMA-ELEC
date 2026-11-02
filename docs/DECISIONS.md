@@ -176,3 +176,14 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Dossier `folios/` (vide depuis le 29/10) supprimé.
 - [?] R-33 : fusible gG ≤ 10 A en amont des contacts du KA1, décision de Julien attendue (Q22).
 - Modifications du schéma en attente : Julien relit d'abord la v13.
+
+## 02/11/2026 (nuit) : v15
+- [D] f10 : cadre de l'arrivée réseau en pointillé.
+- [D] Pour chaque modification : regarder le .xrs actuel de Julien pour vérifier ou comparer ; ses retouches à la main sont reprises dans le script.
+- [D] But : schéma propre (borniers, sécurité, automate) avant la numérotation des fils.
+- [D] f20 : bornes et câble répartis sur la longueur driver-moteur. f31 / f32 : compositions des câbles placées comme Julien.
+- [D] Bouton de réarmement S4 au f40.
+- [D] AU armoire S1 (porte) raccordé par des bornes en bas de l'armoire, jamais en direct (f41, f60).
+- [D] f61 / f62 : nom du module tout près, détails empilés proprement.
+- [D] Q21 et Q23 appliqués : R1 / R2 décalées, textes f10 / f63, Z1 → I1.5.
+- [?] Contacts des AU : Julien pense 3 NF ; schéma et base XPSUAF : 2 NF + 1 NO (Q25).

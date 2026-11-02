@@ -1,16 +1,16 @@
 """Contrôle par calcul des chevauchements sur un .xrs : numéros de fil et de brin, textes de câble, textes libres,
 champs de symbole, renvois, fils. Usage : python xrs_chevauchements.py <fichier.xrs> [numéros de folio].
-Tailles de texte estimées (0,55 x hauteur par caractère). Le fichier n'est jamais modifié."""
+Largeurs de texte estimées avec la chasse Arial (xrs_gen.largeur). Le fichier n'est jamais modifié."""
 import sys
 import xrs_tool as T
-from xrs_gen import RENVOI_L, RENVOI_W
+from xrs_gen import RENVOI_L, RENVOI_W, largeur
 SEP = "\u00b7"
 P = sys.argv[1]
 m = T.parse(P)
 L = open(P, "rb").read().decode("utf-8-sig").replace("\r\n", "\n").split("\n")
 num = {f["index"]: f["numero"] for f in m["folios"]}
 box = {k: [] for k in num}
-W = lambda t, s: int(len(t) * s * 0.55)
+W = largeur                     # chasse Arial (02/11), plus juste que 0,55 par caractère
 # numéros de fil
 i = L.index("\u00a4#Numero\u00a4") + 1
 while not L[i].startswith("\u00a4#"):

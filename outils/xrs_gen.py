@@ -42,6 +42,22 @@ TYPES = {
 }
 
 
+# largeur des caractères Arial (fraction de la hauteur de police), pour estimer la longueur d'un texte
+_AW = dict.fromkeys("ijl.,;:'|! ", 0.278)
+_AW.update(dict.fromkeys("ftrI-()[]/", 0.333))
+_AW.update(dict.fromkeys("ckszvxyJ*", 0.5))
+_AW.update(dict.fromkeys("mMW", 0.833))
+_AW.update(dict.fromkeys("wCDGHNOQRU", 0.75))
+_AW.update(dict.fromkeys("ABEKPSVXYZ&", 0.667))
+_AW.update(dict.fromkeys("FTL", 0.611))
+
+
+def largeur(txt, size):
+    """Largeur estimée d'un texte (02/11 : chasse Arial x 0,85, mesurée sur des copies d'écran de Julien).
+    Sert aux contrôles de chevauchement ; la mise en page garde l'estimation de 0,55 par caractère."""
+    return int(sum(_AW.get(c, 0.556) for c in txt) * size * 0.85)
+
+
 class GenError(Exception):
     pass
 
@@ -376,14 +392,14 @@ class Gen:
                                bold=1 if (entete and r == 0) else 0)
                 cx += c
 
-    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_droite=False):
+    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
         à gauche, composition dessous à gauche, désignation gardée mais masquée.
-        compo_droite=dx : composition sous le trait, à dx à droite du dernier brin (pas de place à gauche)."""
+        compo_dx : abscisse de la composition par rapport au 1er brin (placement de Julien, f31 du 02/11)."""
         if ovale:
-            x1, x2, etiq, size = brins_x[0], brins_x[-1], f"ovale-d{compo_droite}" if compo_droite else "ovale", 300
+            x1, x2, etiq, size = brins_x[0], brins_x[-1], "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
         self.cables.append((folio, x1, x2, y, rep, compo, desig, brins_x, etiq, size))
 
     def cable_textes(self, c):
@@ -393,8 +409,8 @@ class Gen:
             w = int(len(rep) * size * 0.55)
             # composition sous l'ovale, arrêtée avant le 1er brin (texte long : décalée à gauche, 02/11)
             cx = min(x1 - 2000, (x1 - 300 - int(len(compo) * size * 0.55)) // 100 * 100)
-            if etiq.startswith("ovale-d"):
-                cx = x2 + int(etiq[7:])
+            if ":" in etiq:
+                cx = x1 + int(etiq.split(":")[1])
             return [(rep, x1 - 600 - w // 2, y - 150, size), (compo, cx, y + 400, size), ("", x1, y + 700, size)]
         if etiq:
             ex, ey = etiq
@@ -691,14 +707,15 @@ class Gen:
         texts = defaultdict(list)       # folio -> (propriétaire, texte, boîte)
         for s in self.symbols:
             for txt, box in getattr(s, "texts", []):
+                # largeur Arial (02/11) ; le bord gauche reste celui de la mise en page
+                box = (box[0], box[1], box[0] + min(box[2] - box[0], largeur(txt, box[3] - box[1])), box[3])
                 texts[s.folio].append((s.rep, txt, box))
         for f, x, y, txt, size, _, _ in self.textes:
-            w = int(len(txt) * size * 0.55)
-            texts[f].append(("texte", txt, (x, y, x + w, y + size)))
+            texts[f].append(("texte", txt, (x, y, x + largeur(txt, size), y + size)))
         for c in self.cables:
             for txt, x, y, sz in self.cable_textes(c):
                 if txt:
-                    texts[c[0]].append((f"câble {c[4]}", txt, (x, y, x + int(len(txt) * sz * 0.55), y + sz)))
+                    texts[c[0]].append((f"câble {c[4]}", txt, (x, y, x + largeur(txt, sz), y + sz)))
         for f, lst in texts.items():
             for i, (own, txt, box) in enumerate(lst):
                 b = _shrink(box, 20)

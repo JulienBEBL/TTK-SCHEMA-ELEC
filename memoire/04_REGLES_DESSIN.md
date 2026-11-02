@@ -51,6 +51,14 @@ Le sommaire (f02) est généré à partir de cette liste : Julien veut qu'il soi
 
 Orange = circuits exceptés (encore sous tension QS1 ouvert) : **aucun sur TTK**, donc plus d'orange (avant v13 : 48 V, résistance, thermocouple en orange). Rouge = commande en alternatif : aucune.
 
+## Retouches de Julien dans WinRelais (02/11)
+- **Toujours comparer le .xrs réenregistré par Julien à la version générée** (section par section, symboles par repère, textes par contenu) et reprendre ses déplacements dans le script (demande du 02/11 : « regarde le .xrs actuel pour vérifier ou comparer »).
+- Reprises : `POS_JULIEN` (textes déplacés, coordonnées finales, appliqué après le centrage) et déplacement des tableaux des f61 / f62 près des modules (fin du script). Si le folio change de contenu, vérifier que ces positions tombent encore juste.
+- Nom d'un module (repère) **tout près de son cadre**, détails empilés proprement dessous (f61 / f62, 02/11).
+- f10 : cadre « ARRIVEE RESEAU » **en pointillé** (02/11).
+- Câbles en ovale : composition sous l'ovale, abscisse relative au 1er brin (`compo_dx`) : moteur -2300, sonde TF -1600, frein -1200 (f31, f32), pas-à-pas -2000 (f20). Au f20 : bornes 800 sous le driver, câble à mi-chemin entre les bornes et le moteur.
+- Contrôle des chevauchements : largeur des textes estimée avec la chasse Arial (`xrs_gen.largeur`, mesurée sur ses copies d'écran) ; la mise en page garde 0,55 par caractère.
+
 ## Composants
 9. Affichage : **fonction + caractéristiques** seulement. Marque et référence (champ 3) **masquées** sur tous les composants sauf les borniers (29/10) ; la donnée reste dans le symbole (nomenclature). Fait dans `_place_ren` (`shown=(2, 4)` par défaut).
 9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. **Règle de Julien (02/11) : on ne masque pas par principe, cas par cas quand il le demande.** Masqués : TR1 (f10), U3, U4, M3, M4 (f20), M1, M2 (f31, f32, demande du 02/11).

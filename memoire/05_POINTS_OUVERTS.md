@@ -6,7 +6,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q8 | Retours sur la v13 | en attente |
+| Q8 | Retours sur la v15 | en attente |
 | Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
@@ -19,10 +19,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q18 | Prise de service X14 → XD1 | réglé le 02/11 : oui |
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
 | Q20 | Câbles M1 / M2 | réglé le 02/11 : frein 2G1,5, sonde TF 2x0,75 blindé |
-| Q21 | Retouches de Julien dans la v12 (`schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) : R1 décalé de 2000 à gauche au f31, étiquette « Distribution » du f10, texte « AI1 à AI7 » du f63 | **OUI le 02/11 : à reprendre, et R1 aussi au f32** ; à faire après la relecture de la v13 |
+| Q21 | Retouches de Julien dans la v12 | réglé : reprises en v15 (R1 et R2 décalées, textes f10 et f63) |
 | Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | Julien demande si c'est obligatoire. Réponse : prescription de la notice Schneider (pouvoir de coupure en court-circuit des contacts garanti avec gG ≤ 10 A) ; sans elle, un court-circuit côté charge peut souder un contact = perte de la fonction de sécurité. Décision de Julien attendue |
-| Q23 | f40, Z1 (diagnostic) → I1.5 | **OK le 02/11** ; à faire après la relecture de la v13 ; décodage des trames à confirmer dans TIA |
+| Q23 | Z1 → I1.5 | fait en v15 ; décodage des trames à confirmer dans TIA |
 | Q24 | Capteur de capot B2 codé ou non | **réglé le 02/11 : codé** (ifm MN508S). La base XPSUAF (§14.1, « non codé ») est fausse sur ce point |
+| Q25 | Contacts des AU S1 / S2 : Julien pense « 3 NF » ; le schéma et la base XPSUAF disent 2 NF + 1 NO | à confirmer sur la commande (ZBE101 = NO, ZBE102 = NF) |
+| Q26 | W10 : brins « 1-2-3-3 » vus dans WinRelais après déplacement du câble à la main ; le fichier généré porte 1-2-3-4 | à revoir à l'ouverture de la v15 |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 validé (Q23), à faire. B2 raccordée au 0 V en v13.
@@ -32,7 +34,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 3. Antiparasites des bobines LC1D09BD : pas de diode simple sur KF1 / KF2 (retard de serrage des freins) ; varistance ou RC. Module intégré ?
 4. Sélecteur Eaton : photo de la plaque (numérotation réelle) ; recouvrement Auto / Manu à la continuité ; courant minimal des contacts sous 24 V.
 5. ifm MN508S : homologation sécurité (EN 60947-5-3 / ISO 14119) ; actionneur codé commandé ? ; brochage M12 8 broches ; câble M12.
-6. AU XB5AS8442 : ZBE101 / ZBE102 NO ou NF ?
+6. AU XB5AS8442 : ZBE101 / ZBE102 NO ou NF ? (Q25)
 7. Fins de course : symbole « NF » (11-12) à poser, le symbole actuel est un NO.
 
 ## Puissance et variateurs

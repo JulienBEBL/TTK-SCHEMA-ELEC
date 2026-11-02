@@ -142,3 +142,9 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 02/11/2026 (nuit, suite)
 - Réponses de Julien : Q21 oui (+ R1 au f32), Q23 oui, Q24 capteur codé ; Q22 : « est-ce obligatoire ? » (réponse : prescription de la notice Schneider).
 - Dossier `folios/` supprimé. Aucune modification du schéma : Julien relit la v13.
+
+## 02/11/2026 (nuit) : v15
+- Retours de Julien : f10 cadre pointillé, f20 câble / bornes, f31 / f32 textes des câbles, S4 au f40, bornes de l'AU armoire, f62 nom des modules. W10 « 1-2-3-3 » signalé (le fichier généré porte 1-2-3-4 ; apparu après son déplacement à la main).
+- La v13 réenregistrée par Julien est archivée dans `schema/recus/` ; ses retouches (textes, tableaux f61 / f62, f41, câbles) sont relevées par comparaison et reprises.
+- Contrôle des chevauchements : largeur des textes avec la chasse Arial.
+- v15 : `schema/generes/release/TTK_2026-11-02_v15.xrs` (25 folios, 165 symboles, 642 fils, 92 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement). Pas de v14 publiée.
