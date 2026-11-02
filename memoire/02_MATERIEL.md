@@ -43,7 +43,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | T1 / T2 | RS PRO 284-0491, 24 V 240 W (10 A) | T1 = COMMANDE, T2 = ELEC (noms à changer, voir 03) |
 | T3 | Mean Well NDR-240-48, 48 V 240 W | |
 | KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire, 1 pôle (1-2) sur le +48 V | pouvoir de coupure DC-1 sous 48 V à vérifier |
-| X31 à X35 | Phoenix 3002781 PTFIX 6X1,5-BK (6 points, 17,5 A) | X36 = borne sectionnable PELV |
+| X31 à X33 | Phoenix 3002781 PTFIX 6X1,5-BK (6 points, 17,5 A) | X36 = borne sectionnable PELV ; X34 / X35 (48 V) supprimés le 02/11 |
 | U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA à vérifier |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 

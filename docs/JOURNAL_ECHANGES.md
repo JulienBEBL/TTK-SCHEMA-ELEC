@@ -116,3 +116,9 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - v9 : `schema/generes/TTK_2026-10-30_v9.xrs` (26 folios, 135 symboles, 600 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement). Détail : `memoire/06_EN_COURS.md`.
 - Fiche Siemens de la CPU relue : Q0.0 à Q0.3 en 100 kHz. Q0.4 (PUL U4 en v8) était à 20 kHz : corrigé.
 - Mémoire : nouveau contrôle `outils/xrs_chevauchements.py`, règle de disposition du f50, format des noms de broches, table des folios, chemin du format .xrs corrigé dans la mémoire locale.
+
+## 02/11/2026 : v10
+- Retours de Julien (f03, f04, f20, f21, f22, f24) avec 4 images (f20 variante USA, f21, f22, f24) + v9 modifiée, archivée dans `schema/recus/`.
+- Dans son fichier : TR1 / U3 / M3 sans noms de broches, f21 descendu de 700, W1 et texte « vers -X11 » retirés au f20, 4 notes (f24, f25, f41, f53).
+- v10 : `schema/generes/TTK_2026-11-02_v10.xrs` (25 folios, 133 symboles, 606 fils, 96 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement ; f04 : 0 texte coupé par un cadre ou une flèche). Détail : `memoire/06_EN_COURS.md`.
+- Mémoire : règle des noms de broches, règle du synoptique, questions Q14 à Q16.

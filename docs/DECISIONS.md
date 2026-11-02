@@ -133,3 +133,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f23 : lampes et ventilateurs écartés. f20 : numéro de fil séparé du numéro de brin du câble.
 - [D] f31, f32 : variateur remonté. [H] Moteur dans l'axe de X2, 3 câbles sur une ligne (image du défaut non reçue).
 - [C] Noms de broches : réglables par symbole (champ 5). U3 masqué, U4 affiché. Règle générale à donner par Julien.
+
+## 02/11/2026 : retours v9 -> v10
+- [D] f03 (légende, conventions) supprimé. Sommaire mis à jour (ordre contrôlé).
+- [D] f04 : synoptique en logigramme, plus de cadres ; note du bas supprimée.
+- [D] Noms de broches : jamais masqués par principe, au cas par cas sur demande. Masqués : TR1, U3, U4, M3, M4.
+- [D] f21 : composants descendus. f22 : note « Présence tension » supprimée.
+- [D] T3 (48 V) déplacée au f22. Borniers X34 / X35 supprimés : les 2 sorties + et les 2 sorties - de T3 vont directement aux drivers, les 2 +48 V passent par KA2.
+- [H] KA2 reste au f24 ; 1 pôle par driver (1-2 U3, 3-4 U4).
+- [C] Repris du fichier de Julien : texte « vers -X11 » de la variante USA retiré. [?] W1 absent de son fichier : gardé.

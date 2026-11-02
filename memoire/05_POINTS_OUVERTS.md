@@ -9,9 +9,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q8 | Retours sur la v9 | en attente |
 | Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
-| Q11 | Noms de broches : quels composants afficher, lesquels masquer ? (U3 masqué, U4 affiché pour comparer) | à répondre |
+| Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
 | Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f20, f23, f50). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
 | Q13 | f52 : mention rouge « PROPOSITION A VALIDER » conservée (Julien l'a retirée aux f50 et f51 seulement) | à confirmer |
+| Q14 | f20 : câble client W1 absent du .xrs renvoyé le 02/11 (supprimé volontairement ?) ; gardé dans la v10 | à confirmer |
+| Q15 | Notes laissées par Julien dans son .xrs du 02/11 : f25 « mettre les borniers sur la même page alims », f41 « dégager 24 en haut si pas besoin », f53 « rajouter bornier spécial TH blindé » ; pas encore faites | à confirmer |
+| Q16 | f24 : message coupé « Pour simplifier le » | à compléter |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
@@ -48,5 +51,5 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 22. (réglé le 29/10 : KM3 renommé KA2, contacteur auxiliaire.)
 23. Câble 27G1 : répartition machine / pupitre ; repères des câbles 19G1 / 27G1 et RJ45 du pupitre.
 24. Classeur Excel à mettre à jour avec le nommage du 28/10.
-25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f03, f10 corrigés en v7).
+25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f10 corrigés en v7).
 26. f25 : images des borniers à insérer par Julien. f01 : logos à insérer.

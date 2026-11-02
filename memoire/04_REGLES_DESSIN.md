@@ -9,12 +9,12 @@ Le script garde les **anciens numéros en interne** (clés de `F`, textes « fNN
 
 | Affiché (v9) | Ancien (script) | Contenu |
 |---|---|---|
-| 01 à 04 | 01 à 04 | garde, sommaire, légende (conducteurs seuls), synoptique |
+| 01, 02, 04 | idem | garde, sommaire, synoptique en logigramme (f03 légende supprimé le 02/11) |
 | 20 | 10 | arrivée, QS1, QF1, départs PE, variante USA |
 | 21 | 12 | distribution 400 V (bus) |
-| 22 | 13 + 30 | 230 V alimentations : QF4 / QF5 → T1 / T2, QF6, H2, PELV X36.1 |
+| 22 | 13 + 30 | 230 V alimentations : QF4 / QF5 → T1 / T2, QF6 → T3 48 V, H2, PELV X36.1 |
 | 23 | 14 | 230 V services : QF7 à QF10, X14, EL1 / EL2, EV1 / EV2 |
-| 24 | 32 | 48 V : T3, KA2, X34 / X35, drivers, moteurs pas-à-pas |
+| 24 | 32 | 48 V : 4 arrivées de T3, KA2 (2 pôles), drivers, moteurs pas-à-pas |
 | 25 | 31 | distribution 24 V : X31, X32, X33, voyant H3 |
 | 30 | 54 | switch PROFINET (avant les variateurs, demande de Julien) |
 | 31, 32 | 20, 21 | variateurs U1, U2 |
@@ -37,8 +37,11 @@ Le sommaire (f02) est généré à partir de cette liste : Julien veut qu'il soi
 
 ## Composants
 9. Affichage : **fonction + caractéristiques** seulement. Marque et référence (champ 3) **masquées** sur tous les composants sauf les borniers (29/10) ; la donnée reste dans le symbole (nomenclature). Fait dans `_place_ren` (`shown=(2, 4)` par défaut).
-9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. U3 masqué, U4 affiché (Julien compare) ; la règle pour les autres composants reste à fixer (Q11).
+9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. **Règle de Julien (02/11) : on ne masque pas par principe, cas par cas quand il le demande.** Masqués : TR1 (f20), U3, U4, M3, M4 (f24).
 10. Repérage : lettres de fonction + n° d'ordre, sens de l'énergie (28/10, `docs/NOMMAGE_2026-10-28.md`). Maître = référence fabricant ; esclaves = même repère, sans référence. Contacteur utilisé comme relais / contacteur auxiliaire = **KA** (KA2, 29/10), même si la référence est celle d'un contacteur moteur.
+
+## Synoptique (f04, 02/11)
+Logigramme : blocs encadrés (titre en gras + 1 à 3 lignes, n° de folio dans le titre), flèches dans le sens de l'énergie, PROFINET en pointillés, variante USA en pointillés. Pas de note en bas. Un texte plus large que son cadre arrête le script.
 
 ## Disposition d'une rangée de contacts (f50, alignement de Julien du 30/10)
 Modèle à reprendre pour les folios d'E/S (`entree()` dans le script, coordonnées du fichier) :

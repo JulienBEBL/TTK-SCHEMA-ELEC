@@ -40,11 +40,12 @@ for f in FOL:
     f["desc"] = DESC_FOL.get(f["num"], f["desc"])
 # Ordre des folios (Julien, 29/10 et 30/10) : alimentations (400, 230, 48, 24), switch, variateurs, sécurité (f40-f42,
 # remis à leur place le 30/10), IHM, automate, borniers. f11 (répartiteur, barrette de terre) et f30 (fondu dans f13) supprimés.
+# f03 (légende et conventions) supprimé le 02/11 : Julien n'en a pas besoin.
 # Le script garde les anciens numéros en interne ; NUMFOL donne le numéro affiché. Dans les textes du script,
 # « fNN » est toujours un ANCIEN numéro (traduit à l'écriture par ren()).
 NUMFOL = {"10": "20", "12": "21", "13": "22", "14": "23", "32": "24",
           "31": "25", "54": "30", "20": "31", "21": "32", "60": "45"}
-FOL = sorted((f for f in FOL if f["num"] not in ("11", "30")), key=lambda f: NUMFOL.get(f["num"], f["num"]))
+FOL = sorted((f for f in FOL if f["num"] not in ("03", "11", "30")), key=lambda f: NUMFOL.get(f["num"], f["num"]))
 g = Gen(MODELE)
 
 # ---------------------------------------------------------------- nommage des appareils (décision de Julien du 28/10)
@@ -321,60 +322,84 @@ for i, logo in enumerate(("TTK", "BEBL", "LEVERT INDUSTRIE")):
 rows = [["N°", "Titre", "Description"]] + [[NUMFOL.get(f["num"], f["num"]), f["titre"], ren(f["desc"])] for f in FOL]
 g.tableau(F["02"], 1600, 1600, [1600, 9200, 16800], (19200 - 1600) // len(rows), rows, size=260)
 
-# f03 : seul le tableau des conducteurs reste (demande du 29/10)
-g.tableau(F["03"], 2000, 2000, [5200, 6400], 450, [
-    ["Type de conducteur", "Couleur / usage"],
-    ["Puissance", "noir - phases 400 / 230 V CA"],
-    ["Neutre Puissance", "bleu clair - neutre"],
-    ["Conducteur terre", "vert / jaune - PE"],
-    ["Commande 24VDC", "bleu foncé - +24 V CC"],
-    ["0V", "bleu - 0 V CC"],
-    ["Autre tension DC", "orange - 48 V CC, signaux"],
-], size=220)
-
-# synoptique
+# synoptique en logigramme (02/11) : blocs encadrés reliés par des flèches, dans le sens de l'énergie
 SY = F["04"]
-g.cadre(SY, 2000, 2400, 18800, 17600, width=40, dashed=True)
-texte("04", 2200, 2500, "+A1 ARMOIRE", 350, 0, 1)
-g.cadre(SY, 20400, 2400, 28400, 8800, width=40, dashed=True)
-texte("04", 20600, 2500, "+P1 PUPITRE", 350, 0, 1)
-g.cadre(SY, 20400, 10000, 28400, 17600, width=40, dashed=True)
-texte("04", 20600, 10100, "+M MACHINE", 350, 0, 1)
-blocs = [
-    (2800, 3600, "Arrivée -X11, sectionneur -QS1, disjoncteur de tête -QF1 (f10)"),
-    (2800, 4400, "400 V : -QM1 -QM2 -KM1 -KM2 (variateurs), -QF2 -QF3 -KF1 -KF2 (freins) (f12)"),
-    (2800, 5200, "230 V : -QF4 -QF5 -T1 -T2 (24 V), -QF6 (48 V), voyant -H2 (f13)"),
-    (2800, 6000, "230 V : -QF7 à -QF10, -X14, -EV1 -EV2, -EL1 -EL2 (f14)"),
-    (2800, 6800, "48 V -T3 + -KA2 + -X34 / -X35, drivers pas-à-pas -U3 / -U4 (f32)"),
-    (2800, 7600, "Distribution 24 V -X31 / -X32 / -X33 (f31)"),
-    (2800, 8400, "Switch PROFINET -K4 (f54)"),
-    (2800, 9200, "Variateurs -U1 / -U2 + résistances -R1 / -R2 (f20, f21)"),
-    (2800, 10000, "Sécurité : relais -KA1 (f40), entrées AU / capots (f41), sorties (f42)"),
-    (2800, 10800, "Automate -K1 (CPU 1214C G2), -K2 (SM 1223), -K3 (SM 1231 TC) (f50-f53)"),
-    (2800, 11600, "AU armoire -S1, réarmement -S4, colonne -H1, voyants -H2 -H3 -H4"),
-    (2800, 12400, "Borniers -X70 (machine), -X71 (pupitre) ; répartiteur -X12 et terre -X13 non dessinés"),
-    (21000, 3600, "IHM -P1 KTP700 (f60)"),
-    (21000, 4400, "AU pupitre -S2 (f41)"),
-    (21000, 5200, "Sélecteur Auto/Manu -S3"),
-    (21000, 10800, "Motoréducteurs -M1 / -M2"),
-    (21000, 11600, "Moteurs pas-à-pas -M3 / -M4"),
-    (21000, 12400, "Capots -B1 / -B2 (f41)"),
-    (21000, 13200, "Fins de course -B3 à -B6 (f50)"),
-    (21000, 14000, "Thermocouple tête -B7 (f53)"),
-]
-for x, y, t in blocs:
-    texte("04", x, y, t, 250)
-liaisons = [
-    (11600, 1400, 11600, 2400, 11800, 1500, "-W101 réseau client 5G4"),
-    (18800, 6000, 20400, 6000, 18900, 6600, "Câble pupitre + PROFINET"),
-    (18800, 15200, 20400, 15200, 13600, 15000, "-W201 -W202 -W203 -W211 -W212 -W213 (moteurs)"),
-    (18800, 16000, 20400, 16000, 13600, 15800, "-X701 capteurs / fins de course"),
-    (18800, 16800, 20400, 16800, 13600, 16600, "-W531 compensation TC"),
-]
-for x1, y1, x2, y2, tx, ty, t in liaisons:
-    g.ligne(SY, x1, y1, x2, y2, width=40)
-    texte("04", tx, ty, t, 200)
-texte("04", 2400, 18200, "Synoptique à jour au 30/10/2026 (ordre des folios).", 220)
+
+
+def bloc(x1, y1, x2, lignes, dashed=False):
+    """Cadre + titre en gras + lignes ; rend (x1, y1, x2, y2). Refuse un texte plus large que le cadre."""
+    y2 = y1 + 330 * len(lignes) + 300
+    g.cadre(SY, x1, y1, x2, y2, width=30, dashed=dashed)
+    for i, t in enumerate(lignes):
+        sz = 220 if i == 0 else 200
+        if len(ren(t)) * sz * 0.55 > x2 - x1 - 400:
+            raise SystemExit(f"f04 : texte trop long pour son cadre : {t}")
+        texte("04", x1 + 200, y1 + 150 + 330 * i, t, sz, 0, 1 if i == 0 else 0)
+    return (x1, y1, x2, y2)
+
+
+def fleche(pts, dashed=False, tete=True):
+    for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
+        g.ligne(SY, xa, ya, xb, yb, width=30, dashed=dashed)
+    if tete:
+        (xa, ya), (xb, yb) = pts[-2], pts[-1]
+        dx, dy = (xb > xa) - (xb < xa), (yb > ya) - (yb < ya)
+        for k in (-1, 1):
+            g.ligne(SY, xb - 250 * dx + 150 * k * dy, yb - 250 * dy + 150 * k * dx, xb, yb, width=30)
+
+
+C1, C2, C3 = 5600, 14800, 24000                      # colonnes : 400 V moteurs, alimentations, services
+col = lambda c: (c - 3800, c + 3800)
+res = bloc(*col(C2)[:1], 1600, col(C2)[1], ["ARRIVEE RESEAU (f10)", "3 x 400 V + N + PE - câble client -W1, bornes -X11"])
+usa = bloc(*col(C3)[:1], 1600, col(C3)[1], ["VARIANTE USA (option, f10)", "3 x 480 V -> -TR1 15 kVA -> 400 V"], dashed=True)
+fleche([(usa[0], 2080), (res[2], 2080)], dashed=True)
+pro = bloc(*col(C2)[:1], 3200, col(C2)[1], ["SECTIONNEMENT ET PROTECTION (f10)", "-QS1, -QF1 20 A ; terre PE vers chaque appareil"])
+fleche([(C2, res[3]), (C2, pro[1])])
+fleche([(C2, pro[3]), (C2, 4800)], tete=False)
+fleche([(C1, 4800), (C3, 4800)], tete=False)
+for c in (C1, C2, C3):
+    fleche([(c, 4800), (c, 5400)])
+texte("04", 15000, 4450, "3 x 400 V + N", 200)
+d400 = bloc(*col(C1)[:1], 5400, col(C1)[1], ["DISTRIBUTION 400 V (f12)", "-QM1 + -KM1 -> variateur 1", "-QM2 + -KM2 -> variateur 2",
+                                             "-QF2 + -KF1, -QF3 + -KF2 -> freins"])
+ali = bloc(*col(C2)[:1], 5400, col(C2)[1], ["ALIMENTATIONS (f13)", "-QF4 -> -T1 24VSEC", "-QF5 -> -T2 24VELEC",
+                                            "-QF6 -> -T3 48 V ; voyant -H2 ; PELV -X36"])
+srv = bloc(*col(C3)[:1], 5400, col(C3)[1], ["SERVICES 230 V (f14)", "-QF7 -> ventilateurs -EV1 -EV2", "-QF8 -> éclairage -EL1 -EL2",
+                                            "-QF9 -> -QF10 -> prise -X14"])
+var = bloc(*col(C1)[:1], 8400, col(C1)[1], ["VARIATEURS (f20, f21)", "-U1, -U2 MCX91A + résistances -R1 -R2", "STO commandé par la sécurité (f42)"])
+pap = bloc(*col(C2)[:1], 8400, col(C2)[1], ["48 V PAS-A-PAS (f32)", "-KA2 coupe les 2 x +48 V", "drivers -U3 / -U4"])
+d24 = bloc(*col(C3)[:1], 8400, col(C3)[1], ["DISTRIBUTION 24 V (f31)", "-X31 24VELEC, -X33 24VSEC", "-X32 0 V commun, voyant -H3"])
+fleche([(C1, d400[3]), (C1, var[1])])
+fleche([(C2, ali[3]), (C2, pap[1])])
+texte("04", C2 + 200, 7400, "48 V", 200)
+fleche([(17800, ali[3]), (17800, 7800), (22400, 7800), (22400, d24[1])])
+texte("04", 19200, 7400, "24 V", 200)
+mot = bloc(*col(C1)[:1], 10800, col(C1)[1], ["MOTOREDUCTEURS -M1 / -M2 (+M)", "câbles -W2 à -W7 : moteur, frein, sonde TF"])
+mpp = bloc(*col(C2)[:1], 10800, col(C2)[1], ["MOTEURS PAS-A-PAS -M3 / -M4 (+M)", "Nema 34 - 6 A"])
+fleche([(C1, var[3]), (C1, mot[1])])
+fleche([(C2, pap[3]), (C2, mpp[1])])
+# consommateurs 24 V
+F4 = [(2000, 8000), (8800, 14800), (15600, 21600), (22400, 28400)]
+cx = [(a + b) // 2 for a, b in F4]
+fleche([(C3, d24[3]), (C3, 12600)], tete=False)
+fleche([(cx[0], 12600), (cx[-1], 12600)], tete=False)
+for c in cx:
+    fleche([(c, 12600), (c, 13200)])
+texte("04", C3 + 200, 11000, "24 V / 0 V", 200)
+sec = bloc(F4[0][0], 13200, F4[0][1], ["SECURITE (f40-f42)", "relais -KA1, AU -S1 -S2, capots -B1 -B2", "coupe -KM -KF -KA2, STO -U1 -U2"])
+api = bloc(F4[1][0], 13200, F4[1][1], ["AUTOMATE (f50-f53)", "-K1 CPU 1214C, -K2 SM 1223", "-K3 SM 1231 TC (thermocouple -B7)"])
+swi = bloc(F4[2][0], 13200, F4[2][1], ["SWITCH PROFINET (f54)", "-K4 : -K1, -U1, -U2, -P1"])
+pup = bloc(F4[3][0], 13200, F4[3][1], ["PUPITRE +P1 (f60)", "IHM -P1 KTP700", "AU -S2, sélecteur -S3"])
+# PROFINET (pointillés)
+fleche([(cx[2], swi[3]), (cx[2], 15200)], dashed=True, tete=False)
+fleche([(cx[1], 15200), (cx[3], 15200)], dashed=True, tete=False)
+fleche([(cx[1], 15200), (cx[1], api[3])], dashed=True)
+fleche([(cx[3], 15200), (cx[3], pup[3])], dashed=True)
+texte("04", 19000, 15300, "PROFINET (et -U1, -U2 : f20, f21)", 200)
+ter = bloc(2000, 16000, 28400, ["TERRAIN (f70, f71)", "-X70 : armoire <-> machine +M (fins de course -B3 à -B6, capots -B1 -B2)",
+                                 "-X71 : armoire <-> pupitre +P1"])
+fleche([(cx[0], sec[3]), (cx[0], ter[1])])
+fleche([(10400, api[3]), (10400, ter[1])])
 
 # ======================================================================== règles de mise en page
 # Un renvoi WinRelais dessine flèche + texte sur ~1,6 cm AU-DELA de son point, côté opposé au fil :
@@ -415,7 +440,7 @@ etiquette(f, [q102[p_].x for p_ in (("N", 1), "2", "4", "6")], 13800, "Distribut
 # terre : PE dans le faisceau (option A), puis une dérivation courte par appareil (renvois posés à la fin)
 PE10 = W(f, [B["X101.VJ"]["2"], (4400, 4400), (3600, 4400), (3600, 14800)], "PE")
 # variante USA : déplacée à gauche par Julien dans WinRelais (v7 du 29/10), reprise ici
-t101 = maitre(C + "TEMCo_TT1041_transformateur_480D_400Y230_15kVA.xsy", "T101", f, 18000, 4800, wrap=24)
+t101 = maitre(C + "TEMCo_TT1041_transformateur_480D_400Y230_15kVA.xsy", "T101", f, 18000, 4800, wrap=24, noms=False)
 g.cadre(F[f], 15200, 2000, 25600, 9200, width=20, dashed=True)
 texte(f, 15400, 2100, "VARIANTE USA (option) - réseau 3 x 480 V", 220, 0, 1)
 for pin in ("H1", "H2", "H3", "GND"):
@@ -423,13 +448,12 @@ for pin in ("H1", "H2", "H3", "GND"):
 for pin in ("X0", "X1", "X2", "X3"):
     W(f, [t101[pin], (t101[pin].x, 8400)], "N" if pin == "X0" else "L")
 texte(f, 15400, 2700, "480 V L1 L2 L3 / PE", 200)
-texte(f, 15400, 8600, "vers -X101 : N, L1, L2, L3 (à la place du réseau 400 V)", 200)
 
 # ======================================================================== 12 DISTRIBUTION 400 V
 f = "12"
 gv = C + "Schneider_GV2ME14_disjoncteur_moteur.xsy"
 poles = C + "Schneider_LC1D09BD_contacts_puissance_3P.xsy"
-DY12 = 2000                        # place pour le bus en haut du folio
+DY12 = 2800                        # place pour le bus en haut du folio (descendu de 800 le 02/11)
 q121 = maitre(gv, "Q121", f, 4800, 3600 + DY12)
 km1p = contacteur(poles, "KM1", f, 4800, 8400 + DY12, prefix="KM")
 q122 = maitre(gv, "Q122", f, 12000, 3600 + DY12)
@@ -499,23 +523,28 @@ for T, q in ((t301, q132), (t302, q133)):
     W(f, [q[("N", 1)], T["N"]], "N")
     W(f, [q["2"], (q["2"].x, 9600), (T["L"].x, 9600), T["L"]], "L")
     PE_DEST.append((f, W(f, [T["PE"], (T["PE"].x, 12400)], "PE")))
-# sorties vers la distribution (f31) : 24VELEC (-T302), 24VSEC (-T301), 0 V commun
-s24 = W(f, [t302[("+V", 0)], (t302[("+V", 0)].x, 12800), (XR, 12800)], "24")
-a24 = W(f, [t301[("+V", 0)], (t301[("+V", 0)].x, 14400), (XR, 14400)], "24")
-z30 = W(f, [t301[("-V", 0)], (t301[("-V", 0)].x, 15200), (XR, 15200)], "0V")
-W(f, [t302[("-V", 0)], (t302[("-V", 0)].x, 15200)], "0V")
-texte(f, 22400, 12400, "24VELEC (-T302)", 220)
-texte(f, 22400, 14000, "24VSEC (-T301)", 220)
-texte(f, 22400, 14800, "0 V commun", 220)
+# -T3 48 V sous -QF6 (déplacée du f32 le 02/11) : 4 départs vers les drivers (f32), un + et un - par driver
+t321 = maitre(C + "MeanWell_NDR-240-48_alim_48V_240W.xsy", "T321", f, 15200, 10400)
+W(f, [q134["2"], t321["N"]], "N")
+W(f, [q134["4"], (q134["4"].x, 9600), (t321["L"].x, 9600), t321["L"]], "L")
+PE_DEST.append((f, W(f, [t321["PE"], (t321["PE"].x, 12400)], "PE")))
+# bornes de sortie de droite à gauche : +V (U4), +V (U3), -V (U4), -V (U3) ; chaque fil descend un cran plus bas
+d48 = {}
+for (pin, k), cle, y in ((("+V", 0), "+U4", 12400), (("+V", 1), "+U3", 13200), (("-V", 1), "-U4", 14000), (("-V", 0), "-U3", 14800)):
+    d48[cle] = W(f, [t321[(pin, k)], (t321[(pin, k)].x, y), (XR, y)], "DC" if cle[0] == "+" else "0V")
+    texte(f, 22400, y - 400, ("+48 V" if cle[0] == "+" else "0 V 48") + " -> -" + {"U3": "T322", "U4": "T323"}[cle[1:]], 220)
+# sorties vers la distribution (f31) : 24VELEC (-T302), 24VSEC (-T301), 0 V commun (sous les départs 48 V)
+s24 = W(f, [t302[("+V", 0)], (t302[("+V", 0)].x, 15600), (XR, 15600)], "24")
+a24 = W(f, [t301[("+V", 0)], (t301[("+V", 0)].x, 16400), (XR, 16400)], "24")
+z30 = W(f, [t301[("-V", 0)], (t301[("-V", 0)].x, 17200), (XR, 17200)], "0V")
+W(f, [t302[("-V", 0)], (t302[("-V", 0)].x, 17200)], "0V")
+texte(f, 22400, 15200, "24VELEC (-T302)", 220)
+texte(f, 22400, 16000, "24VSEC (-T301)", 220)
+texte(f, 22400, 16800, "0 V commun", 220)
 # PELV : liaison unique 0 V - PE, par une borne sectionnable (mesure d'isolement)
-b36 = borne("X36.1", f, 7200, 16000)
-W(f, [(7200, 15200), b36["1"]], "0V")
-PE_DEST.append((f, W(f, [b36["2"], (7200, 17200)], "PE")))
-# départ 48 V (f32)
-out13 = {(q134.rep, "N"): W(f, [q134["2"], (q134["2"].x, 10400)], "N"),
-         (q134.rep, "L"): W(f, [q134["4"], (q134["4"].x, 10400)], "L")}
-texte(f, 20000, 9200, "Présence tension en aval de -QF1.", 200)
-texte(f, 20000, 9500, "Ne remplace pas une vérification d'absence de tension.", 200)
+b36 = borne("X36.1", f, 7200, 17600)
+W(f, [(7200, 17200), b36["1"]], "0V")
+PE_DEST.append((f, W(f, [b36["2"], (7200, 18400), (6400, 18400)], "PE")))
 
 # ======================================================================== 14 DISTRIBUTION 230 V - SERVICES
 f = "14"
@@ -644,31 +673,22 @@ W(f, [p512["X1"], (20800, RAIL24_Y)], "24")
 W(f, [p512["X2"], (20800, 6400), (20000, 6400), (20000, RAIL0_Y)], "0V")
 
 # ======================================================================== 32 48 V ET PAS-A-PAS
-# architecture descendante (29/10) : -T3 -> -KA2 (1 pôle sur le +48 V) -> -X34 / -X35 -> un fil par driver
+# 02/11 : -T3 sur f13 ; ici 2 arrivées +48 V et 2 arrivées 0 V 48 (un + et un - par driver), sans bornier.
+# Les 2 +48 V passent chacun par un pôle de -KA2 (1-2 -> -U3, 3-4 -> -U4) ; 0 V 48 non coupé.
 f = "32"
-t321 = maitre(C + "MeanWell_NDR-240-48_alim_48V_240W.xsy", "T321", f, 4000, 4400)
-for p, side in (("N", "N"), ("L", "L")):
-    renvoi("13", out13[("Q134", side)], f, stub(f, (t321[p].x, 3200), t321[p], side), side)
-PE_DEST.append((f, W(f, [t321["PE"], (t321["PE"].x, 6400)], "PE")))
 REP["Q423"]["des"] = "Contacteur auxiliaire : coupure du +48 V des drivers"
-q423p = contacteur(poles, "Q423", f, 5200, 7200)
-# 48 V : -KA2 coupe le +48 V seul (pôle 1-2), juste après l'alimentation ; 0 V 48 non coupé.
-W(f, [t321[("+V", 0)], q423p["1/L1"]], "DC")
-DESC32 = {"X34": "Distribution +48 V (après contacteur)", "X35": "Distribution 0 V 48"}
-x34 = g.place(ptf, "X34", F[f], 5200, 10000, champs={2: DESC32["X34"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
-                                                   4: "6 points - 17,5 A"}, loc="A1", shown=(2,), rep_size=250,
-              fpos=(-2800, 0), wrap=20)
-x35 = g.place(ptf, "X35", F[f], 7200, 10000, champs={2: DESC32["X35"], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
-                                                   4: "6 points - 17,5 A"}, loc="A1", shown=(2,), rep_size=250,
-              fpos=(1200, 0), wrap=20)
-W(f, [q423p["2/T1"], x34["1"]], "DC")
-W(f, [t321[("-V", 0)], (4000, 9600), (7200, 9600), x35["1"]], "0V")
+q423p = contacteur(poles, "Q423", f, 5200, 5600)
+A48 = {"-U4": W(f, [(XL, 2800), (24000, 2800)], "0V"),
+       "+U4": W(f, [(XL, 3600), (q423p["3/L2"].x, 3600), q423p["3/L2"]], "DC"),
+       "+U3": W(f, [(XL, 4400), (q423p["1/L1"].x, 4400), q423p["1/L1"]], "DC")}
+for cle in ("-U4", "+U4", "+U3"):
+    renvoi("13", d48[cle], f, (XL, {"-U4": 2800, "+U4": 3600, "+U3": 4400}[cle]), "DC" if cle[0] == "+" else "0V")
 drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
 CMD32, DRV = {}, {}
 for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
-    D = maitre(drv, T, f, x0, 12800, fpos=(2600, 0), wrap=22, noms=T != "T322")
-    Mo = maitre(mpp, Mrep, f, x0 - 800, 16400)
+    D = maitre(drv, T, f, x0, 12800, fpos=(2600, 0), wrap=22, noms=False)
+    Mo = maitre(mpp, Mrep, f, x0 - 800, 16400, noms=False)
     DRV[T] = D
     for p in ("A+", "A-", "B+", "B-"):
         W(f, [D[p], Mo[p]], "DC")
@@ -679,11 +699,12 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     CMD32[(T, "0V")] = W(f, [(xbus, D["PUL-"].y), (xbus, D["ENA-"].y + 800)], "0V")
 renvoi("31", d31["0V32a"], f, CMD32[("T322", "0V")], "0V")
 renvoi("31", d31["0V32b"], f, CMD32[("T323", "0V")], "0V")
-# un fil par driver depuis les borniers (un seul croisement)
-W(f, [x34["5"], (x34["5"].x, 12400), (DRV["T322"]["+V"].x, 12400), DRV["T322"]["+V"]], "DC")
-W(f, [x34["6"], (x34["6"].x, 11600), (DRV["T323"]["+V"].x, 11600), DRV["T323"]["+V"]], "DC")
-W(f, [x35["4"], (x35["4"].x, 12000), (DRV["T322"]["-V"].x, 12000), DRV["T322"]["-V"]], "0V")
-W(f, [x35["5"], (x35["5"].x, 11200), (DRV["T323"]["-V"].x, 11200), DRV["T323"]["-V"]], "0V")
+# un fil par driver : les fils de -U4 passent au-dessus de ceux de -U3 (un seul croisement, 0 V 48 de -U3)
+W(f, [q423p["4/T2"], (q423p["4/T2"].x, 8400), (DRV["T323"]["+V"].x, 8400), DRV["T323"]["+V"]], "DC")
+W(f, [q423p["2/T1"], (q423p["2/T1"].x, 9200), (DRV["T322"]["+V"].x, 9200), DRV["T322"]["+V"]], "DC")
+W(f, [(24000, 2800), DRV["T323"]["-V"]], "0V")
+renvoi("13", d48["-U3"], f, (XL, 10000), "0V")
+W(f, [(XL, 10000), (DRV["T322"]["-V"].x, 10000), DRV["T322"]["-V"]], "0V")
 
 # ======================================================================== 40 RELAIS DE SECURITE
 f = "40"
@@ -1061,10 +1082,11 @@ MEMES = [
     ["Q102:N", "Q132:N", "Q134:1", "H2:X2", "Q136:N", "Q137:N", "Q131:N"],
     ["Q132:2", "T301:L"], ["Q133:2", "T302:L"], ["Q134:4", "T321:L"], ["Q134:2", "T321:N"],
     ["KM1:2/T1", "T201:X1:L1"], ["KM2:6/T3", "T211:X1:L3"],
-    ["Q423:2/T1", "X34:1", "T322:+V", "T323:+V"], ["T321:-V", "X35:1", "T322:-V", "T323:-V"],
+    ["T321:+V", "Q423:1/L1"], ["T321:+V", "Q423:3/L2"], ["Q423:2/T1", "T322:+V"], ["Q423:4/T2", "T323:+V"],
+    ["T321:-V", "T322:-V"], ["T321:-V", "T323:-V"],
     ["T301:-V", "T302:-V", "X312:1", "X36.1:1"], ["T302:+V", "X311:1"], ["T301:+V", "X313:1"],
 ]
-DIFFERENTS = ["X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "X711.20:2", "K401:14", "K401:24", "K401:34", "Q423:2/T1",
+DIFFERENTS = ["X311:1", "X312:1", "X313:1", "X711.8:2", "X711.10:2", "X711.20:2", "K401:14", "K401:24", "K401:34", "Q423:2/T1", "Q423:4/T2",
               "Q121:1/L1", "Q121:3/L2", "Q121:5/L3", "Q134:1", "K401:S11", "K401:S12", "K401:S21", "K401:S22",
               "K401:Y1", "K401:Y2", "K501:I0.2", "K501:I0.3", "K501:I0.0", "K501:I0.1"]
 
