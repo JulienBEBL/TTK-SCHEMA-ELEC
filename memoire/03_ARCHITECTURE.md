@@ -6,7 +6,7 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
 - W1 → X11 → QS1 → QF1 (f10). Les sorties de QF1 partent en **renvois directs** vers le bus 400 V (f11). Le répartiteur X12 et la barrette de terre X13 existent dans l'armoire mais **ne sont plus dessinés** [D 29/10].
 - **Bus tétra L1 L2 L3 N** en haut des folios, enchaîné par renvois : f10 (QF1) → f11 → f12 → f13 (L3 et N seulement).
 - **f11 (400 V)** : piquages QM1 / QM2 (L1 L2 L3) → KM1 / KM2 → U1 / U2 ; QF2 (L1 L2) / QF3 (L1 L3) → KF1 / KF2 → freins (alimentés côté CA, indépendamment du variateur).
-- **f22 (230 V alimentations, ancien f13 + ancien f30)** : QF4 (L1+N) → T1, QF5 (L1+N) → T2 ; QF6 (L2+N) → renvoi vers T3 (f24) ; voyant H2 (L3+N). Sorties 24VELEC, 24VSEC, 0 V commun → renvois vers f25 ; liaison PELV X36.1.
+- **f12 (230 V alimentations, anciens f13 + f30 internes)** : QF4 (L1+N) → T1, QF5 (L1+N) → T2 ; QF6 (L2+N) → T3 48 V (4 départs vers f20) ; voyant H2 (L3+N). Sorties 24VELEC, 24VSEC, 0 V commun → renvois vers f21 ; liaison PELV X12.11.
 - **f13 (230 V services)** : QF8 → EL1 / EL2 (l'une sous l'autre) ; QF7 → EV1 / EV2 (l'un sous l'autre, N contourne à gauche, L à droite : 0 croisement) ; QF9 → QF10 → X14 dans l'axe.
 - Phases : 24 V = L1, 48 V = L2, 230 V auxiliaires et voyant = L3 (visible par les piquages du bus et les numéros de fil).
 - **Terre (règle C partout, 29/10)** : chaque appareil a un fil PE court + renvoi vers la terre de l'arrivée (f10). Au f10, le PE de X11 descend dans le faisceau puis se divise en un départ par appareil (T1, T2, X36.1, X14, T3, U1 X1, U2 X1, P1 FE, K1 FE). Moteur : PE → X2 PE du variateur (f31 / f32), sans renvoi.
