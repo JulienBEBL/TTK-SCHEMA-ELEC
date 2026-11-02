@@ -6,7 +6,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q8 | Retours sur la v9 | en attente |
+| Q8 | Retours sur la v12 (Julien la regarde dans WinRelais depuis le 02/11 au soir) | en attente |
 | Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
@@ -17,8 +17,8 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q16 | f20 « Pour simplifier le » | réglé : rien à ajouter |
 | Q17 | Plan de folios et repérage des bornes | réglé le 02/11 : appliqué en v12 (1 seul point dans le repère) |
 | Q18 | Prise de service X14 → XD1 | réglé le 02/11 : oui |
-| Q20 | f32 : Julien a écrit « 2G1 blindé » sur le câble du frein ; la décision du 26/10 dit 2G1,5 (gardé) | à confirmer |
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
+| Q20 | f32 : Julien a écrit « 2G1 blindé » sur le câble du frein ; la décision du 26/10 dit 2G1,5 (gardé) | à confirmer |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.

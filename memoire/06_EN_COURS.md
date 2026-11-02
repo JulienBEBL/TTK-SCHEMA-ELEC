@@ -1,7 +1,8 @@
 # 06 · Travail en cours (version actuelle et suite)
 
 ## Version actuelle : v12 (02/11/2026, soir)
-`schema/generes/release/TTK_2026-11-02_v12.xrs` : 25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **En attente des retours de Julien (Q8).**
+`schema/generes/release/TTK_2026-11-02_v12.xrs` : 25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **Julien la regarde dans WinRelais (02/11 au soir) : attendre ses retours (Q8).** Questions encore ouvertes pour lui : Q13 (f62 « PROPOSITION A VALIDER »), Q19 (bornes thermocouple), Q20 (câble du frein).
+Pas encore vu à l'écran : première ouverture avec les repères X<folio>.<n> et les câbles en ovale. S'il renvoie un .xrs, l'archiver dans `schema/recus/` et le comparer à la v12 avant de toucher au script.
 Rangement (02/11) : `schema/generes/release/` = la dernière version seule ; `schema/generes/old/` = toutes les précédentes.
 La v11 réenregistrée par Julien est archivée (`schema/recus/2026-11-02_v11_ouverte_WinRelais.xrs`) : câbles du f32 replacés à la main, repris dans le script pour f31 et f32.
 

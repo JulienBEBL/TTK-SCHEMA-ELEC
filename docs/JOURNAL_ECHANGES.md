@@ -132,3 +132,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien valide le plan de folios et XD1, corrige la règle des bornes (un seul point), replace les câbles du f32 à la main, demande f70 / f71 à jour et le rangement release / old.
 - v12 : `schema/generes/release/TTK_2026-11-02_v12.xrs` (25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement ; sommaire = folios, même ordre).
 - Mémoire : numéros de folio des fichiers memoire/ passés aux numéros v12 ; règle des bornes ; rangement release / old.
+- Julien annonce qu'il regarde la v12 dans WinRelais. Mémoire mise à jour (Q8 → v12, questions ouvertes Q13, Q19, Q20). Pas de changement du schéma.
