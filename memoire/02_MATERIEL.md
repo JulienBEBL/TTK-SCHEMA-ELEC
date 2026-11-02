@@ -55,7 +55,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | S3 | Eaton T0-4-8223/E, 2 positions | **4 NO par position, 8 en tout** [C 27/10] ; Auto = position 1, Manu = position 2 ; numérotation des bornes provisoire |
 | S4 | BP lumineux bleu, réarmement | |
 | B1 | RS PRO 902-6874, interrupteur de position (capot mécanique) | |
-| B2 | ifm MN508S (RS 016-3138), capteur magnétique **codé** | 2 NO + 1 NF, M12, 24 V 50 mA ; homologation sécurité et actionneur à vérifier |
+| B2 | ifm MN508S (RS 016-3138), capteur magnétique **codé** (confirmé par Julien le 02/11) | 2 NO + 1 NF, M12, 24 V 50 mA ; homologation sécurité et actionneur à vérifier |
 | B3 à B6 | Fins de course (NF) | symbole posé = NO, à corriger |
 | H1 | RS PRO 199-9760, colonne 3 couleurs | |
 | H3 / H4 | Voyants 24 V ELEC présent / défaut | |

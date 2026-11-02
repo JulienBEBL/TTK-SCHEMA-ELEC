@@ -19,13 +19,13 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q18 | Prise de service X14 → XD1 | réglé le 02/11 : oui |
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
 | Q20 | Câbles M1 / M2 | réglé le 02/11 : frein 2G1,5, sonde TF 2x0,75 blindé |
-| Q21 | v12 retouchée dans WinRelais (archivée `schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) : R1 décalé de 2000 à gauche au f31 (pas au f32), étiquette « Distribution » du f10 et texte « AI1 à AI7 » du f63 déplacés | à reprendre dans le script ? |
-| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | proposition : en ajouter un |
-| Q23 | f40, Z1 (diagnostic) non câblée ; I1.5 prévue | proposition : Z1 → I1.5, décodage des trames à confirmer sur S7 |
-| Q24 | B2 (capot) : la base XPSUAF dit « magnétique non codé », le matériel retenu est l'ifm MN508S codé | lequel ? |
+| Q21 | Retouches de Julien dans la v12 (`schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) : R1 décalé de 2000 à gauche au f31, étiquette « Distribution » du f10, texte « AI1 à AI7 » du f63 | **OUI le 02/11 : à reprendre, et R1 aussi au f32** ; à faire après la relecture de la v13 |
+| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | Julien demande si c'est obligatoire. Réponse : prescription de la notice Schneider (pouvoir de coupure en court-circuit des contacts garanti avec gG ≤ 10 A) ; sans elle, un court-circuit côté charge peut souder un contact = perte de la fonction de sécurité. Décision de Julien attendue |
+| Q23 | f40, Z1 (diagnostic) → I1.5 | **OK le 02/11** ; à faire après la relecture de la v13 ; décodage des trames à confirmer dans TIA |
+| Q24 | Capteur de capot B2 codé ou non | **réglé le 02/11 : codé** (ifm MN508S). La base XPSUAF (§14.1, « non codé ») est fausse sur ce point |
 
 ## Sécurité
-1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 à valider (Q23). B2 raccordée au 0 V en v13.
+1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 validé (Q23), à faire. B2 raccordée au 0 V en v13.
 1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A en parallèle à lire (SEW).
 1 ter. Capot à deux technologies (B1 mécanique voie 1, B2 magnétique voie 2) : écart d'ouverture > 200 ms = alerte (R-16), à essayer au banc.
 2. Charge de la sortie 13-14 (3 bobines LC1D09BD) à comparer aux 3 A en DC-13 de la notice.

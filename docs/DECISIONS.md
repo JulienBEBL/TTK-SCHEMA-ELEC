@@ -168,3 +168,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f31 / f32 : noms de broches du bloc moteur masqués ; câble sonde TF 2x0,75 blindé ; superposition des fils du frein corrigée. Frein : 2G1,5 confirmé (Q20 réglé).
 - [D] f40 : B2 du relais au 0 V (R-02). [C] Réglage FUNCTION 1, START 3 validé au banc par Julien.
 - [?] Propositions f40 : fusible gG ≤ 10 A en amont des contacts (R-33), Z1 → I1.5, capteur magnétique codé ou non (Q22 à Q24).
+
+## 02/11/2026 (nuit, suite)
+- [D] Retouches de Julien dans la v12 à reprendre dans le script, R1 décalé aussi au f32 (Q21).
+- [D] Z1 du KA1 → I1.5 (Q23).
+- [D] Capteur de capot B2 : codé (ifm MN508S) (Q24).
+- [D] Dossier `folios/` (vide depuis le 29/10) supprimé.
+- [?] R-33 : fusible gG ≤ 10 A en amont des contacts du KA1, décision de Julien attendue (Q22).
+- Modifications du schéma en attente : Julien relit d'abord la v13.

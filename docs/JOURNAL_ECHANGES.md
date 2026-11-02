@@ -138,3 +138,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Retours de Julien sur la v12 : f11 neutre, couleurs de tous les fils, f20 drivers + câble blindé, f31 / f32 broches, câble TF, superposition frein, f40 B2 + base de connaissances XPSUAF13AP (copiée dans `docs/references/`).
 - Constat : la v12 de `release/` avait été réenregistrée par WinRelais (Julien l'a ouverte) ; archivée dans `schema/recus/`, 3 retouches relevées (Q21). Règle ajoutée dans `memoire/07_METHODE_TRAVAIL.md`.
 - v13 : `schema/generes/release/TTK_2026-11-02_v13.xrs` (25 folios, 159 symboles, 631 fils, 93 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement).
+
+## 02/11/2026 (nuit, suite)
+- Réponses de Julien : Q21 oui (+ R1 au f32), Q23 oui, Q24 capteur codé ; Q22 : « est-ce obligatoire ? » (réponse : prescription de la notice Schneider).
+- Dossier `folios/` supprimé. Aucune modification du schéma : Julien relit la v13.

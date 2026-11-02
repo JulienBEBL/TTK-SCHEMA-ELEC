@@ -1,8 +1,8 @@
 # 06 · Travail en cours (version actuelle et suite)
 
 ## Version actuelle : v13 (02/11/2026, nuit)
-`schema/generes/release/TTK_2026-11-02_v13.xrs` : 25 folios, 159 symboles, 631 fils, 93 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **En attente : retours de Julien (Q8) et réponses Q21 à Q24.**
-La v12 réenregistrée par Julien dans WinRelais est archivée (`schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) ; ses 3 retouches ne sont pas reprises (Q21).
+`schema/generes/release/TTK_2026-11-02_v13.xrs` : 25 folios, 159 symboles, 631 fils, 93 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **Julien ouvre la v13 dans WinRelais (02/11 nuit) : ne rien modifier au schéma avant son retour.** Avant la v14 : `git status` (WinRelais réenregistre la release), archiver dans `schema/recus/` si modifiée.
+La v12 réenregistrée par Julien dans WinRelais est archivée (`schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) ; ses 3 retouches sont à reprendre en v14 (Q21).
 
 ### Fait en v13 — numéros affichés
 | Folio | Changement |
@@ -18,7 +18,7 @@ La v12 réenregistrée par Julien dans WinRelais est archivée (`schema/recus/20
 - 0 V 48 en noir comme le +48 V (puissance CC) : la polarité se lit par les renvois et les bornes.
 
 ## À faire ensuite
-1. Q22 / Q23 : fusible en amont des contacts du KA1, Z1 → I1.5 (si Julien valide).
+1. **v14, validé par Julien le 02/11, après son retour sur la v13** : reprendre ses retouches de la v12 (R1 à gauche de 2000 au f31 **et** au f32, étiquette « Distribution » du f10, texte « AI1 à AI7 » du f63) ; câbler Z1 → I1.5. Q22 (fusible R-33) : attendre sa décision.
 2. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien.
 3. Type de conducteur PROFINET.
 4. Liste d'E/S (f60 à f62) : seulement après validation de Julien.
