@@ -11,7 +11,7 @@ Numéros de folio : ceux **affichés depuis la v9** (ordre du 30/10). Correspond
 - Phases : 24 V = L1, 48 V = L2, 230 V auxiliaires et voyant = L3 (visible par les piquages du bus et les numéros de fil).
 - **Terre (règle C partout, 29/10)** : chaque appareil a un fil PE court + renvoi vers la terre de l'arrivée (f20). Au f20, le PE de X11 descend dans le faisceau puis se divise en un départ par appareil (T1, T2, X36.1, X14, T3, U1 X1, U2 X1, P1 FE, K1 FE). Moteur : PE → X2 PE du variateur (f31 / f32), sans renvoi.
 - Parafoudre **supprimé** [D 28/10].
-- Moteurs, freins et TF **via le bornier X70** [D 28/10] : pas encore câblé aux f31 / f32 (v9).
+- Moteurs, freins et TF **via un bornier** [D 28/10, redemandé le 02/11] : fait en v11 aux f31 / f32 (8 bornes par moteur : PE, U, V, W, 1b, 2b, 2, 3) et au f24 (4 bornes par moteur pas-à-pas), numéros provisoires X70.17 à X70.40. Thermocouple B7 : 2 bornes X70.41 / X70.42, type à définir (pas encore acheté). Symbole moteur SEW modifié par Julien le 02/11 (moteur + sonde TF + frein BE5 dans un cadre, broches PE U1 V1 W1 1b 2b 2 3).
 
 ## 24 V : deux alimentations, 0 V commun
 | 24VELEC (T2, bornier X31) | 24VSEC (T1, bornier X33) |
@@ -31,7 +31,7 @@ Numéros de folio : ceux **affichés depuis la v9** (ordre du 30/10). Correspond
 - **Barres 24VELEC et 0 V en haut** des folios de commande (f25, f30, f40 à f42, f45, f50 à f53), enchaînées par renvois dans l'ordre des pages ; X31 et X32 (f25) s'y piquent [D 29/10]. Les appareils dont le 0 V est en bas (bobines f12, voyants et colonne f51) rejoignent la barre par un collecteur remonté à gauche.
 
 ## 48 V (f24)
-- **T3 au f22 sous QF6** [D 02/11], ses 4 bornes de sortie utilisées : 2 x +48 V, 2 x 0 V 48, un + et un - par driver, **sans bornier** (X34 / X35 supprimés) [D 02/11]. Au f24 : 4 arrivées ; chaque +48 V passe par **un pôle de KA2** (1-2 → U3, 3-4 → U4) [D 02/11] ; 0 V 48 en direct. Un seul croisement (0 V 48 de U3). Le message de Julien s'arrête sur « Pour simplifier le » : suite à demander.
+- **T3 au f22 sous QF6** [D 02/11], ses 4 bornes de sortie utilisées : 2 x +48 V, 2 x 0 V 48, un + et un - par driver, **sans bornier** (X34 / X35 supprimés) [D 02/11]. Au f24 : 4 arrivées ; chaque +48 V passe par **un pôle de KA2** (1-2 → U3, 3-4 → U4) [D 02/11] ; 0 V 48 en direct. Un seul croisement (0 V 48 de U3). 
 - **KA2** (ex KM3, renommé le 29/10) : contacteur LC1D09BD utilisé en contacteur auxiliaire, pas un contacteur moteur.
 - Bobine KA2 alimentée **uniquement en Manu** (Manu-D), depuis KA1 13-14 : le 48 V est coupé par l'AU et absent en Auto.
 

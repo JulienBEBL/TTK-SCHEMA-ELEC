@@ -12,9 +12,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
 | Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f20, f23, f50). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
 | Q13 | f52 : mention rouge « PROPOSITION A VALIDER » conservée (Julien l'a retirée aux f50 et f51 seulement) | à confirmer |
-| Q14 | f20 : câble client W1 absent du .xrs renvoyé le 02/11 (supprimé volontairement ?) ; gardé dans la v10 | à confirmer |
-| Q15 | Notes laissées par Julien dans son .xrs du 02/11 : f25 « mettre les borniers sur la même page alims », f41 « dégager 24 en haut si pas besoin », f53 « rajouter bornier spécial TH blindé » ; pas encore faites | à confirmer |
-| Q16 | f24 : message coupé « Pour simplifier le » | à compléter |
+| Q14 | W1 au f20 | réglé le 02/11 : on le garde |
+| Q15 | Notes du .xrs du 02/11 | réglé : f41 barres retirées ; f53 bornes TC posées (type à définir) ; f25 « borniers sur la page alims » **en pause** |
+| Q16 | f24 « Pour simplifier le » | réglé : rien à ajouter |
+| Q17 | **Plan de folios et repérage des borniers** (`docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md`) | à valider ; test WinRelais d'un repère à 2 points avant renommage |
+| Q18 | Prise de service X14 → -XD1 (IEC 81346-2) ? | à confirmer |
+| Q19 | Référence des bornes thermocouple (f53) | à définir à l'achat |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.

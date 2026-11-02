@@ -266,11 +266,11 @@ def contacteur(xsy, rep, f, x, y, **kw):
     return g.place(xsy, rep, F[f], x, y, champs=champs, ref=(), loc=loc(rep), wrap=24, **kw)
 
 
-def borne(rep, f, x, y):
-    """Borne 4 mm verticale : broche 1 en (x, y), broche 2 en (x, y + 400)."""
+def borne(rep, f, x, y, fpos=(100, -250)):
+    """Borne 4 mm verticale : broche 1 en (x, y), broche 2 en (x, y + 400). fpos = repère (à droite par défaut)."""
     bornier = rep.split(".")[0]
     return g.place(BORNE, rep, F[f], x, y, champs={2: REP.get(bornier, {}).get("des", "")}, ref=(),
-                   compact=True, rep_size=150, fpos=(100, -250), loc="A1", prefix="X")
+                   compact=True, rep_size=150, fpos=fpos, loc="A1", prefix="X")
 
 
 def W(f, pts, t):
@@ -427,18 +427,18 @@ B = {r: borne(r, f, x, 3600) for r, x in xb.items()}
 for r, x in xb.items():
     W(f, [(x, 2000), B[r]["1"]], "PE" if r.endswith("VJ") else ("N" if x == 5200 else "L"))
 g.cable(F[f], 4000, 8000, 3200, "W101", "5G4", "Câble client", [4400, 5200, 6000, 6800, 7600])
-q101 = maitre(C + "Legrand_Vistop_022515_4P_63A.xsy", "Q101", f, 5200, 5200)
-q102 = maitre(C + "Hager_NFT820_disjoncteur_3P+N_20A.xsy", "Q102", f, 5200, 8000)
+q101 = maitre(C + "Legrand_Vistop_022515_4P_63A.xsy", "Q101", f, 5200, 6000)
+q102 = maitre(C + "Hager_NFT820_disjoncteur_3P+N_20A.xsy", "Q102", f, 5200, 10000)
 for r, p in (("X101.1", ("N", 0)), ("X101.2", "1/L1"), ("X101.3", "3/L2"), ("X101.4", "5/L3")):
     W(f, [B[r]["2"], q101[p]], "N" if r == "X101.1" else "L")
 for a, b, t in ((("N", 1), ("N", 0), "N"), ("2/T1", "1", "L"), ("4/T2", "3", "L"), ("6/T3", "5", "L")):
     W(f, [q101[a], q102[b]], t)
 # sorties de -QF1 : renvois directs vers le bus 400 V (f12), sans répartiteur dessiné (29/10)
-ends10 = {pin: W(f, [q102[pin], (q102[pin].x, 12000)], "N" if pin == ("N", 1) else "L")
+ends10 = {pin: W(f, [q102[pin], (q102[pin].x, 15200)], "N" if pin == ("N", 1) else "L")
           for pin in (("N", 1), "2", "4", "6")}
-etiquette(f, [q102[p_].x for p_ in (("N", 1), "2", "4", "6")], 13800, "Distribution (f12)", 260)
+etiquette(f, [q102[p_].x for p_ in (("N", 1), "2", "4", "6")], 17000, "Distribution (f12)", 260)
 # terre : PE dans le faisceau (option A), puis une dérivation courte par appareil (renvois posés à la fin)
-PE10 = W(f, [B["X101.VJ"]["2"], (4400, 4400), (3600, 4400), (3600, 14800)], "PE")
+PE10 = W(f, [B["X101.VJ"]["2"], (4400, 4400), (3600, 4400), (3600, 18000)], "PE")   # peigne en bas, renvois à droite
 # variante USA : déplacée à gauche par Julien dans WinRelais (v7 du 29/10), reprise ici
 t101 = maitre(C + "TEMCo_TT1041_transformateur_480D_400Y230_15kVA.xsy", "T101", f, 18000, 4800, wrap=24, noms=False)
 g.cadre(F[f], 15200, 2000, 25600, 9200, width=20, dashed=True)
@@ -586,6 +586,9 @@ W(f, [(12800, 8000), (13600, 8000), (13600, 12800), (12800, 12800), g132["L"]], 
 
 # ======================================================================== 20 / 21 VARIATEURS
 mcx = C + "SEW_Variateur_MCX91A-0055-5E3_CSO_CFN.xsy"
+# bornes armoire -> machine (02/11), numéros provisoires de -X701 (repérage des borniers à valider par Julien)
+BORNES_MOT = {"M201": [f"X701.{n}" for n in range(17, 25)], "M211": [f"X701.{n}" for n in range(25, 33)],
+              "M321": [f"X701.{n}" for n in range(33, 37)], "M322": [f"X701.{n}" for n in range(37, 41)]}
 mot = C + "SEW_K39-DRN100LS4-BE5-TF_motoreducteur_frein.xsy"
 res = C + "SEW_BW100-001_resistance_freinage.xsy"
 VAR = {}
@@ -593,33 +596,38 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
                                        ("21", "T211", "R211", "M211", "W211", "W212", "W213", "KM2", "Q422")):
     # variateur remonté, moteur dans l'axe de X2 (fils droits), câbles W sur une seule ligne (30/10)
     T = maitre(mcx, t, f, 4000, 5200, wrap=34)
-    R = maitre(res, r, f, 9600, 8800, shown=(2,), wrap=22)
-    M = maitre(mot, m, f, 4800, 15600, fpos=(10000, 0), wrap=36)   # textes à droite du moteur
-    YC = 13600                                                     # ligne des 3 câbles moteur
+    R = maitre(res, r, f, 10400, 8800, shown=(2,), wrap=22)
+    # symbole modifié par Julien le 02/11 : moteur, sonde TF, frein BE5 dans un même cadre, origine sur U1
+    M = maitre(mot, m, f, 4800, 15200, fpos=(10800, 0), wrap=36)   # textes à droite du symbole
+    YC = 14000                                                     # ligne des 3 câbles moteur
+    # bornier armoire -> machine (02/11) : une borne par conducteur, sur une ligne, dans l'axe des broches du moteur
+    BM = {p: borne(nb, f, M[p].x, 12800) for p, nb in zip(("PE", "U1", "V1", "W1", "1b", "2b", "2", "3"), BORNES_MOT[m])}
+    for p in BM:
+        W(f, [BM[p]["2"], M[p]], "PE" if p == "PE" else ("L" if p in ("U1", "V1", "W1", "2", "3") else "24"))
     for p, kp in (("X1:L1", "2/T1"), ("X1:L2", "4/T2"), ("X1:L3", "6/T3")):
         renvoi("12", out12[(km, kp)], f, stub(f, (T[p].x, 4000), T[p], "L"), "L")
     # terre (29/10) : PE moteur -> X2 PE du variateur ; X1 PE -> fil court + renvoi vers la terre (f10)
     PE_DEST.append((f, W(f, [T["X1:PE"], (4000, 4000)], "PE")))
-    W(f, [T["X2:PE"], M["PE"]], "PE")
-    W(f, [T["X2:U"], M["U1"]], "L")
-    W(f, [T["X2:V"], M["V1"]], "L")
-    W(f, [T["X2:W"], M["W1"]], "L")
+    W(f, [T["X2:PE"], BM["PE"]["1"]], "PE")
+    W(f, [T["X2:U"], BM["U1"]["1"]], "L")
+    W(f, [T["X2:V"], BM["V1"]["1"]], "L")
+    W(f, [T["X2:W"], BM["W1"]["1"]], "L")
     g.cable(F[f], 3600, 6600, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [4000, 4800, 5600, 6400],
             etiq=(1600, YC - 300), size=200)
-    W(f, [T["X2:-R"], (8000, 8400), (9600, 8400), R["1"]], "DC")
-    W(f, [T["X2:+R"], (7200, 10800), (9600, 10800), R["2"]], "DC")
-    # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, en direct (sans bornier), décision 26/10
-    # frein : pin 2 au-dessus de pin 3, sans croisement
-    renvoi("12", out12[(qf, "4/T2")], f, W(f, [M["2"], (M["2"].x, 12000), (13600, 12000)], "L"), "L")
-    renvoi("12", out12[(qf, "6/T3")], f, W(f, [M["3"], (M["3"].x, 12800), (13600, 12800)], "L"), "L")
+    W(f, [T["X2:-R"], (8000, 8400), (10400, 8400), R["1"]], "DC")
+    W(f, [T["X2:+R"], (7200, 10800), (10400, 10800), R["2"]], "DC")
+    # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, par le bornier (02/11)
+    # frein : borne de la broche 2 reprise au-dessus, borne de la broche 3 sortie à droite (sans croisement)
+    renvoi("12", out12[(qf, "4/T2")], f, W(f, [BM["2"]["1"], (M["2"].x, 12000), (13600, 12000)], "L"), "L")
+    renvoi("12", out12[(qf, "6/T3")], f, W(f, [BM["3"]["1"], (13600, 12800)], "L"), "L")
     # sonde TF : remonte à droite du variateur vers X10 (1b -> X10:1 impose un croisement)
-    W(f, [M["1b"], (M["1b"].x, 11600), (21600, 11600), (21600, 3600), (11600, 3600), T["X10:1"]], "24")
-    W(f, [M["2b"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
+    W(f, [BM["1b"]["1"], (M["1b"].x, 11600), (21600, 11600), (21600, 3600), (11600, 3600), T["X10:1"]], "24")
+    W(f, [BM["2b"]["1"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
     VAR[(f, "PN")] = W(f, [T["X40"], (13600, 4800), (16000, 4800)], "PN")
     g.cable(F[f], M["1b"].x - 200, M["2b"].x + 400, YC, w3, "2G1 blindé",
-            f"Sonde TF {m}", [M["1b"].x, M["2b"].x], etiq=(8600, YC - 300), size=200)
+            f"Sonde TF {m}", [M["1b"].x, M["2b"].x], etiq=(M["2b"].x + 600, YC - 300), size=200)
     g.cable(F[f], M["2"].x - 200, M["3"].x + 400, YC, w2, "2G1,5",
-            f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], etiq=(11400, YC - 300), size=200)
+            f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], etiq=(M["3"].x + 600, YC - 300), size=200)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
@@ -687,11 +695,15 @@ drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
 CMD32, DRV = {}, {}
 for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
-    D = maitre(drv, T, f, x0, 12800, fpos=(2600, 0), wrap=22, noms=False)
-    Mo = maitre(mpp, Mrep, f, x0 - 800, 16400, noms=False)
+    D = maitre(drv, T, f, x0, 11600, fpos=(2600, 0), wrap=22, noms=False)
+    Mo = maitre(mpp, Mrep, f, x0 - 800, 17200, noms=False)
     DRV[T] = D
-    for p in ("A+", "A-", "B+", "B-"):
-        W(f, [D[p], Mo[p]], "DC")
+    # moteurs hors armoire (02/11) : bornier entre driver et moteur ; broches à 400 -> bornes sur 2 niveaux
+    for p, nb in zip(("A+", "A-", "B+", "B-"), BORNES_MOT[Mrep]):
+        haut = p.endswith("+")
+        b = borne(nb, f, D[p].x, 15200 if haut else 16000, fpos=(-600, -250) if haut else (100, -250))
+        W(f, [D[p], b["1"]], "DC")
+        W(f, [b["2"], Mo[p]], "DC")
     xin, xbus = x0 - 4000, x0 - 3200
     for s in ("PUL", "DIR", "ENA"):
         CMD32[(T, s)] = W(f, [D[s + "+"], (xin, D[s + "+"].y)], "24")
@@ -982,9 +994,15 @@ W(f, [k531["L+"], (4800, RAIL24_Y)], "24")
 W(f, [k531["M"], (5600, RAIL0_Y)], "0V")
 REP["B531"]["fab"] = REP["B531"]["fab"] or "Type K"
 b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, 6800, 7200, prefix="B", fpos=(2000, 0))
-W(f, [b531["1"], (6800, 6400), (6000, 6400), (6000, 10400), (6800, 10400), k531["AI0+"]], "DC")
-W(f, [b531["2"], (7600, 6400), (8400, 6400), (8400, 10400), (7600, 10400), k531["AI0-"]], "DC")
-g.cable(F[f], 5800, 8800, 9600, "W531", "compensation type K", "", [6000, 8400])
+# 02/11 : 2 bornes pour thermocouple (référence à définir, pas encore achetée), entre le câble W8 et -K3
+REP["X701.41"] = REP["X701.42"] = {"des": "Borne pour thermocouple type K (à définir)", "fab": "", "carac": "", "loc": "+A1"}
+bt1, bt2 = borne("X701.41", f, 6000, 9600), borne("X701.42", f, 8400, 9600)
+W(f, [b531["1"], (6800, 6400), (6000, 6400), bt1["1"]], "DC")
+W(f, [bt1["2"], (6000, 10400), (6800, 10400), k531["AI0+"]], "DC")
+W(f, [b531["2"], (7600, 6400), (8400, 6400), bt2["1"]], "DC")
+W(f, [bt2["2"], (8400, 10400), (7600, 10400), k531["AI0-"]], "DC")
+g.cable(F[f], 5800, 8800, 8800, "W531", "compensation type K", "", [6000, 8400])
+texte(f, 9000, 9700, "Bornes thermocouple : type à définir", 200)
 texte(f, 10400, 10400, "AI1 à AI7 : réserve", 200)
 
 # ======================================================================== 54 PROFINET
@@ -1248,15 +1266,16 @@ def ecrire_borniers(path):
 # dans l'ordre des folios (la barrette de terre -X13 n'est pas dessinée)
 f = "10"
 PE_DEST.sort(key=lambda d: NUMFOL.get(d[0], d[0]))
-xs = [PE10[0] + 800 * (i + 1) for i in range(len(PE_DEST))]
+# 02/11 : renvois à droite de la chaîne QS1 / QF1 (fils de la chaîne allongés), flèches vers le haut
+xs = [10400 + 800 * i for i in range(len(PE_DEST))]
 W(f, [PE10, (xs[-1], PE10[1])], "PE")
 for x, (fd, pt) in zip(xs, PE_DEST):
-    renvoi(f, W(f, [(x, PE10[1]), (x, PE10[1] + 800)], "PE"), fd, pt, "PE")
-etiquette(f, xs, PE10[1] + 2600, "Terre PE vers les appareils", 260)
+    renvoi(f, W(f, [(x, PE10[1]), (x, PE10[1] - 800)], "PE"), fd, pt, "PE")
+etiquette(f, xs, PE10[1] - 2800, "Terre PE vers les appareils", 260)
 
 # ======================================================================== barres 24 V / 0 V en haut (29/10)
 # contenu descendu pour laisser la place aux barres (après la pose de tous les renvois vers ces folios)
-for num_, dy_ in (("40", 800), ("41", 1200), ("42", 1200), ("50", 800)):
+for num_, dy_ in (("40", 800), ("42", 1200), ("50", 800)):
     g.decaler(F[num_], 0, dy_)
 f = "40"
 W(f, [k401["A1"], (k401["A1"].x, RAIL24_Y)], "24")
@@ -1273,7 +1292,7 @@ f = "50"
 W(f, [k501e["L+"], (k501e["L+"].x, RAIL24_Y)], "24")
 for p in ("M", "1M"):
     W(f, [k501e[p], (k501e[p].x, RAIL0_Y)], "0V")
-CH = sorted(["31", "40", "41", "42", "50", "51", "52", "53", "54", "60"], key=lambda n: NUMFOL.get(n, n))
+CH = sorted(["31", "40", "42", "50", "51", "52", "53", "54", "60"], key=lambda n: NUMFOL.get(n, n))   # f41 : pas de piquage
 FIN = {CH[-1]: (k531["L+"].x, k531["M"].x)}      # dernier folio : barres arrêtées au dernier piquage
 for i, f in enumerate(CH):
     x24, x0 = FIN.get(f, (XR, XR))

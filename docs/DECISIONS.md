@@ -142,3 +142,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] T3 (48 V) déplacée au f22. Borniers X34 / X35 supprimés : les 2 sorties + et les 2 sorties - de T3 vont directement aux drivers, les 2 +48 V passent par KA2.
 - [H] KA2 reste au f24 ; 1 pôle par driver (1-2 U3, 3-4 U4).
 - [C] Repris du fichier de Julien : texte « vers -X11 » de la variante USA retiré. [?] W1 absent de son fichier : gardé.
+
+## 02/11/2026 (après-midi) : v11
+- [D] Rien à ajouter au message coupé du f24. W1 gardé au f20.
+- [D] f41 : barres 24 V / 0 V retirées (pas de piquage). f25 « borniers sur la page alims » : en pause.
+- [D] f53 : bornes pour thermocouple, référence à définir (pas encore achetées).
+- [D] f20 : renvois de terre à droite, fils de la chaîne arrivée / QS1 / QF1 allongés (numérotation future).
+- [D] Bornier entre l'armoire et tout appareil extérieur : moteurs M1 / M2 (moteur, TF, frein) et M3 / M4.
+- [C] Nouveau symbole moteur SEW (Julien) repris : CUSTOM/SEW_K39-DRN100LS4-BE5-TF_motoreducteur_frein.xsy, copié dans outils/librairie.
+- [?] Plan de folios et repérage X<folio>.<groupe>.<borne> : proposition dans docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md (Q17).

@@ -1,28 +1,25 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v10 (02/11/2026)
-`schema/generes/TTK_2026-11-02_v10.xrs` : 25 folios, 133 symboles, 606 fils, 96 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **En attente des retours de Julien (Q8).**
-La v9 réenregistrée par Julien est archivée : `schema/recus/2026-11-02_v9_ouverte_WinRelais.xrs` (TR1, U3, M3 sans noms de broches ; f21 descendu de 700 ; W1 et le texte « vers -X11 » retirés au f20 ; 4 notes : Q15).
+## Version actuelle : v11 (02/11/2026, après-midi)
+`schema/generes/TTK_2026-11-02_v11.xrs` : 25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **En attente : Q17 (plan de folios + repérage des borniers), puis retours sur la v11.**
+La v10 réenregistrée par Julien est archivée (`schema/recus/2026-11-02_v10_ouverte_WinRelais.xrs`) : aucune différence de contenu.
 
-### Fait en v10 (retours du 02/11) — numéros affichés
+### Fait en v11 — numéros affichés
 | Folio | Changement |
 |---|---|
-| 02 | Sommaire sans le f03 ; contrôlé : 25 lignes = 25 folios, même ordre, numéros croissants |
-| 03 | Supprimé |
-| 04 | Synoptique refait en logigramme (16 cadres, flèches, PROFINET en pointillés) ; note du bas supprimée |
-| 20 | TR1 sans noms de broches ; texte « vers -X11 » retiré (comme dans le fichier de Julien) |
-| 21 | Composants descendus de 800 (Julien : 700, hors grille du script) |
-| 22 | Note « Présence tension » supprimée ; T3 sous QF6 ; 4 départs 48 V au-dessus des départs 24 V ; X36.1 et son PE en renvoi horizontal en bas |
-| 24 | Borniers X34 / X35 supprimés ; 4 arrivées ; 2 x +48 V par KA2 (1-2 → U3, 3-4 → U4) ; U3, U4, M3, M4 sans noms de broches ; 1 croisement nouveau |
+| 20 | QS1 descendu de 800, QF1 de 2000, départs allongés ; peigne de terre en bas, 9 renvois à droite de la chaîne (flèches vers le haut) |
+| 24 | Drivers remontés de 1200 ; bornier entre drivers et moteurs (X70.33 à X70.40), bornes en quinconce |
+| 31, 32 | Nouveau symbole moteur de Julien ; bornier de 8 bornes (X70.17 à X70.32) entre variateur et moteur / TF / frein ; résistance décalée à droite |
+| 41 | Barres 24 V / 0 V retirées (aucun piquage) |
+| 53 | 2 bornes thermocouple X70.41 / X70.42 (type à définir), câble W8 remonté |
 
 ### Choix faits par l'assistant, à valider
-- KA2 reste au f24 (les arrivées passent par lui avant les drivers).
-- f22 : ordre des départs 48 V de haut en bas : +U4, +U3, 0 V U4, 0 V U3 (aucun croisement) ; 24 V descendus de 2800.
-- W1 gardé au f20 (Q14).
+- Numéros de bornes provisoires dans X70 (en attendant Q17).
+- f31 : la borne du frein broche 3 part à droite directement (pas de croisement avec la broche 2).
 
 ## À faire ensuite
-1. Réponses Q13 à Q16.
-2. Câbler moteurs, freins et sondes TF par X70 aux f31 / f32 ; mettre à jour f70 et `MEMES`.
-3. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien.
-4. Type de conducteur PROFINET.
-5. Liste d'E/S (f50 à f52) : seulement après validation de Julien.
+1. Q17 : appliquer le plan de folios et le repérage des borniers une fois validés (dict `NUMFOL` + renommage des bornes dans le script ; plans f70 / f71 à refaire).
+2. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien.
+3. Type de conducteur PROFINET.
+4. Liste d'E/S (f50 à f52) : seulement après validation de Julien.
+5. f25 « borniers sur la page alims » : en pause (Julien, 02/11).

@@ -122,3 +122,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Dans son fichier : TR1 / U3 / M3 sans noms de broches, f21 descendu de 700, W1 et texte « vers -X11 » retirés au f20, 4 notes (f24, f25, f41, f53).
 - v10 : `schema/generes/TTK_2026-11-02_v10.xrs` (25 folios, 133 symboles, 606 fils, 96 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement ; f04 : 0 texte coupé par un cadre ou une flèche). Détail : `memoire/06_EN_COURS.md`.
 - Mémoire : règle des noms de broches, règle du synoptique, questions Q14 à Q16.
+
+## 02/11/2026 (après-midi) : v11
+- Retours de Julien : nouveau symbole moteur, réponses aux questions de la v10, f20, plan de folios, repérage des borniers, borniers f24 / f31.
+- v11 : `schema/generes/TTK_2026-11-02_v11.xrs` (25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement).
+- Proposition écrite : `docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md` (plan de folios par dizaines, repérage X<folio>.<groupe>.<borne>, avis de l'assistant, test WinRelais à faire).

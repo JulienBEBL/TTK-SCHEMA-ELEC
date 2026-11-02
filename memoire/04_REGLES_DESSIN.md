@@ -33,7 +33,8 @@ Le sommaire (f02) est généré à partir de cette liste : Julien veut qu'il soi
 5. **Rendu propre « comme un vrai schéma »** (29/10) : pas de longs fils qui font le tour du folio, pas de croisements inutiles. Appareils en parallèle : l'un sous l'autre (EL1 / EL2, EV1 / EV2 au f23). Les piquages d'un bus croisent les autres lignes du bus : normal.
 6. Un folio trop chargé se **sépare en deux** (29/10 : f13 → alimentations + services). Un folio inutile se supprime.
 7. **Fils assez longs** entre deux appareils (au moins 1600 à 2400) pour que le numéro de fil soit lisible (29/10, f22 / f23). Appareils d'une même chaîne **dans l'axe** (QF9 → QF10 → X14).
-8. Arrivée réseau : texte « ARRIVEE RESEAU ... » **dans un cadre** (29/10, f20).
+8. Arrivée réseau : texte « ARRIVEE RESEAU ... » **dans un cadre** (29/10, f20). Fils de la chaîne X11 → QS1 → QF1 → renvois **longs** (numérotation future) ; peigne de terre en bas, renvois à droite de la chaîne, flèches vers le haut (02/11).
+8 bis. **Barres 24 V / 0 V seulement sur les folios qui s'y piquent** (02/11 : retirées du f41).
 
 ## Composants
 9. Affichage : **fonction + caractéristiques** seulement. Marque et référence (champ 3) **masquées** sur tous les composants sauf les borniers (29/10) ; la donnée reste dans le symbole (nomenclature). Fait dans `_place_ren` (`shown=(2, 4)` par défaut).
@@ -52,8 +53,12 @@ Modèle à reprendre pour les folios d'E/S (`entree()` dans le script, coordonn�
 - Une colonne sans borne (KM1, KM2, KA2) garde les mêmes niveaux de contact.
 Julien a laissé S1 et S2 un peu décalés dans son fichier ; le script les aligne sur les mêmes niveaux.
 
+## Borniers vers l'extérieur (02/11)
+Tout appareil hors armoire (+M, +P1) passe par un bornier. Bornes sur une ligne, dans l'axe des broches de l'appareil ; broches espacées de 400 → bornes sur 2 niveaux en quinconce, repère à gauche en haut, à droite en bas (f24). Câble entre la borne et l'appareil.
+Repérage et numéros de folio : proposition en attente, `docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md`.
+
 ## Câbles variateur (f31, f32, 30/10)
-Moteur dans l'axe de X2 (fils droits, plus d'escalier). Les 3 câbles W sur **une seule ligne**, textes à côté de leur câble, sans chevauchement. Frein sans croisement.
+Moteur dans l'axe de X2 (fils droits, plus d'escalier). Depuis le 02/11 : X2 → bornier (y = 12800) → câble → moteur. Les 3 câbles W sur **une seule ligne**, textes à côté de leur câble, sans chevauchement. Frein sans croisement.
 
 ## Renvois
 11. Le texte de description d'un renvoi est **bien placé** (centré sur le renvoi ou le groupe de renvois) (23/10).
