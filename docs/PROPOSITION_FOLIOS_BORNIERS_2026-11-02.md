@@ -1,6 +1,6 @@
 # Proposition du 02/11/2026 : numéros de folio et repérage des borniers
 
-**Statut : proposition à valider par Julien. Rien n'est appliqué dans le schéma.**
+**Statut : appliqué en v12 (02/11), avec une correction de Julien : un seul point dans le repère (X31.11, pas X31.1.1), une dizaine par fonction. La règle à jour est dans `memoire/04_REGLES_DESSIN.md`.**
 Les deux vont ensemble : le repère d'un bornier contient le numéro de son folio. Il faut donc figer les folios d'abord.
 
 ## 1. Numéros de folio

@@ -2,49 +2,50 @@
 
 À appliquer sur **tous les folios**, à chaque version. Date = date de la demande.
 
-## Ordre des folios (v9, 30/10)
-Ordre voulu par Julien : alimentations (400, 230, 48, 24), switch, variateurs, sécurité, IHM, automate, borniers.
-Le 29/10 la sécurité a été mise en tête par erreur (« AU » compris comme tout le bloc sécurité) : **remise à sa place le 30/10, f40 à f42.**
-Le script garde les **anciens numéros en interne** (clés de `F`, textes « fNN ») ; le dict `NUMFOL` de `ttk_schema.py` donne le numéro affiché et `ren()` traduit les « fNN » des textes. **Dans le script, écrire toujours l'ancien numéro.**
+## Ordre et numéros des folios (v12, 02/11, plan validé par Julien)
+**Une dizaine par famille**, numéros qui se suivent dans la famille, trous entre familles pour ajouter des folios.
+Le script garde les **anciens numéros en interne** (clés de `F`, textes « fNN ») ; le dict `NUMFOL` de `ttk_schema.py` donne le numéro affiché et `ren()` traduit les « fNN » des textes. **Dans le script, écrire toujours le numéro interne.** Dans `memoire/`, les numéros sont les numéros affichés.
 
-| Affiché (v9) | Ancien (script) | Contenu |
+| Affiché (v12) | Interne (script) | Contenu |
 |---|---|---|
-| 01, 02, 04 | idem | garde, sommaire, synoptique en logigramme (f03 légende supprimé le 02/11) |
-| 20 | 10 | arrivée, QS1, QF1, départs PE, variante USA |
-| 21 | 12 | distribution 400 V (bus) |
-| 22 | 13 + 30 | 230 V alimentations : QF4 / QF5 → T1 / T2, QF6 → T3 48 V, H2, PELV X36.1 |
-| 23 | 14 | 230 V services : QF7 à QF10, X14, EL1 / EL2, EV1 / EV2 |
-| 24 | 32 | 48 V : 4 arrivées de T3, KA2 (2 pôles), drivers, moteurs pas-à-pas |
-| 25 | 31 | distribution 24 V : X31, X32, X33, voyant H3 |
-| 30 | 54 | switch PROFINET (avant les variateurs, demande de Julien) |
-| 31, 32 | 20, 21 | variateurs U1, U2 |
-| 40, 41, 42 | idem | sécurité : relais KA1, entrées (AU, capots, sélecteur, réarmement), sorties (bobines, STO) |
-| 45 | 60 | pupitre (IHM) |
-| 50 à 53, 70, 71, 80, 85, 90 | idem | automate, borniers, câbles, implantation, nomenclature |
+| 01, 02, 03 | 01, 02, 04 | garde, sommaire, synoptique en logigramme (légende supprimée le 02/11) |
+| 10 | 10 | arrivée, QS1, QF1, peigne de terre, variante USA |
+| 11 | 12 | distribution 400 V (bus) |
+| 12 | 13 + 30 | 230 V alimentations : QF4 / QF5 → T1 / T2, QF6 → T3 48 V, H2, PELV |
+| 13 | 14 | 230 V services : QF7 à QF10, prise XD1, EL1 / EL2, EV1 / EV2 |
+| 20 | 32 | 48 V : 4 arrivées de T3, KA2 (2 pôles), drivers, bornier, moteurs pas-à-pas |
+| 21 | 31 | distribution 24 V : X21.11 à X21.13, voyant H3 |
+| 30 | 54 | switch PROFINET |
+| 31, 32 | 20, 21 | variateurs U1, U2, bornier, moteurs M1, M2 |
+| 40, 41, 42 | 40, 41, 42 | sécurité : relais KA1, entrées, sorties |
+| 50 | 60 | pupitre (IHM) |
+| 60, 61, 62, 63 | 50, 51, 52, 53 | automate : CPU entrées, sorties, SM 1223, SM 1231 TC |
+| 70, 71 | 70, 71 | borniers : groupes vers machine / réseau (70), tableau des bornes pupitre (71) |
+| 80, 85, 90 | idem | câbles, implantation, nomenclature |
 
-Supprimés : f11 (répartiteur X12 et barrette de terre X13 : pas de symbole, demande du 29/10), f30 (fondu dans f22), f43.
+Supprimés (anciens numéros) : f11 (répartiteur et barrette de terre : pas de symbole, 29/10), f30 (fondu dans l'actuel f12), f43, f03 légende (02/11).
 Le sommaire (f02) est généré à partir de cette liste : Julien veut qu'il soit tenu à jour à chaque version.
 
 ## Mise en page
 1. **Aucune note encadrée** sur les folios (29/10). Les points à vérifier vont dans `05_POINTS_OUVERTS.md`.
-2. **Contenu centré** dans le cadre de chaque folio (23/10, redemandé le 29/10 pour f22) : `g.centrer` automatique. Exception (30/10) : bus, barres et variateurs restent **en haut, à la même hauteur d'un folio à l'autre**, centrés en largeur seulement (`HAUT` dans le script : f21, f22, f23, f25, f30, f31, f32, f40 à f42, f45, f50 à f53). Modèle : le f22.
+2. **Contenu centré** dans le cadre de chaque folio (23/10, redemandé le 29/10 pour f12) : `g.centrer` automatique. Exception (30/10) : bus, barres et variateurs restent **en haut, à la même hauteur d'un folio à l'autre**, centrés en largeur seulement (`HAUT` dans le script : f11, f12, f13, f21, f30, f31, f32, f40 à f42, f50, f60 à f63). Modèle : le f12.
 3. **Aucun texte qui se superpose** (23/10) : textes, étiquettes de câble, renvois. Le bloc d'information d'un composant peut être déplacé indépendamment du symbole (`fpos`).
 4. **Pas de pastille d'état** : le carré de couleur en haut des folios est supprimé (30/10).
-5. **Rendu propre « comme un vrai schéma »** (29/10) : pas de longs fils qui font le tour du folio, pas de croisements inutiles. Appareils en parallèle : l'un sous l'autre (EL1 / EL2, EV1 / EV2 au f23). Les piquages d'un bus croisent les autres lignes du bus : normal.
+5. **Rendu propre « comme un vrai schéma »** (29/10) : pas de longs fils qui font le tour du folio, pas de croisements inutiles. Appareils en parallèle : l'un sous l'autre (EL1 / EL2, EV1 / EV2 au f13). Les piquages d'un bus croisent les autres lignes du bus : normal.
 6. Un folio trop chargé se **sépare en deux** (29/10 : f13 → alimentations + services). Un folio inutile se supprime.
-7. **Fils assez longs** entre deux appareils (au moins 1600 à 2400) pour que le numéro de fil soit lisible (29/10, f22 / f23). Appareils d'une même chaîne **dans l'axe** (QF9 → QF10 → X14).
-8. Arrivée réseau : texte « ARRIVEE RESEAU ... » **dans un cadre** (29/10, f20). Fils de la chaîne X11 → QS1 → QF1 → renvois **longs** (numérotation future) ; peigne de terre en bas, renvois à droite de la chaîne, flèches vers le haut (02/11).
+7. **Fils assez longs** entre deux appareils (au moins 1600 à 2400) pour que le numéro de fil soit lisible (29/10, f12 / f13). Appareils d'une même chaîne **dans l'axe** (QF9 → QF10 → X14).
+8. Arrivée réseau : texte « ARRIVEE RESEAU ... » **dans un cadre** (29/10, f10). Fils de la chaîne X11 → QS1 → QF1 → renvois **longs** (numérotation future) ; peigne de terre en bas, renvois à droite de la chaîne, flèches vers le haut (02/11).
 8 bis. **Barres 24 V / 0 V seulement sur les folios qui s'y piquent** (02/11 : retirées du f41).
 
 ## Composants
 9. Affichage : **fonction + caractéristiques** seulement. Marque et référence (champ 3) **masquées** sur tous les composants sauf les borniers (29/10) ; la donnée reste dans le symbole (nomenclature). Fait dans `_place_ren` (`shown=(2, 4)` par défaut).
-9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. **Règle de Julien (02/11) : on ne masque pas par principe, cas par cas quand il le demande.** Masqués : TR1 (f20), U3, U4, M3, M4 (f24).
+9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. **Règle de Julien (02/11) : on ne masque pas par principe, cas par cas quand il le demande.** Masqués : TR1 (f10), U3, U4, M3, M4 (f20).
 10. Repérage : lettres de fonction + n° d'ordre, sens de l'énergie (28/10, `docs/NOMMAGE_2026-10-28.md`). Maître = référence fabricant ; esclaves = même repère, sans référence. Contacteur utilisé comme relais / contacteur auxiliaire = **KA** (KA2, 29/10), même si la référence est celle d'un contacteur moteur.
 
-## Synoptique (f04, 02/11)
+## Synoptique (f03, 02/11)
 Logigramme : blocs encadrés (titre en gras + 1 à 3 lignes, n° de folio dans le titre), flèches dans le sens de l'énergie, PROFINET en pointillés, variante USA en pointillés. Pas de note en bas. Un texte plus large que son cadre arrête le script.
 
-## Disposition d'une rangée de contacts (f50, alignement de Julien du 30/10)
+## Disposition d'une rangée de contacts (f60, alignement de Julien du 30/10)
 Modèle à reprendre pour les folios d'E/S (`entree()` dans le script, coordonnées du fichier) :
 - Pas entre colonnes : **800**. Trop étroit pour les textes à côté des contacts : d'où 2 niveaux en quinconce.
 - **Bornes alignées sur 2 lignes** : haut y = 4400, bas y = 11200, quelle que soit la colonne.
@@ -53,17 +54,20 @@ Modèle à reprendre pour les folios d'E/S (`entree()` dans le script, coordonn�
 - Une colonne sans borne (KM1, KM2, KA2) garde les mêmes niveaux de contact.
 Julien a laissé S1 et S2 un peu décalés dans son fichier ; le script les aligne sur les mêmes niveaux.
 
+## Repérage des bornes (02/11, règle de Julien)
+**X + n° du folio où la borne est dessinée + « . » + n° de borne**, une **dizaine par fonction** : X31.11 à X31.14 moteur M1, X31.21 / X31.22 sonde TF, X31.31 / X31.32 frein. Un seul point : WinRelais refuse X31.1.1 (« Erreur d'analyse », séparateur « . »). Liste dans `GROUPES` (script) ; la prise de service est **XD1** (IEC 81346-2). Blocs de distribution 24 V : X21.11 (24VELEC), X21.12 (0 V), X21.13 (24VSEC).
+
 ## Borniers vers l'extérieur (02/11)
-Tout appareil hors armoire (+M, +P1) passe par un bornier. Bornes sur une ligne, dans l'axe des broches de l'appareil ; broches espacées de 400 → bornes sur 2 niveaux en quinconce, repère à gauche en haut, à droite en bas (f24). Câble entre la borne et l'appareil.
-Repérage et numéros de folio : proposition en attente, `docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md`.
+Tout appareil hors armoire (+M, +P1) passe par un bornier. Bornes sur une ligne, dans l'axe des broches de l'appareil ; broches espacées de 400 → bornes sur 2 niveaux en quinconce, repère à gauche en haut, à droite en bas (f20). Câble entre la borne et l'appareil.
 
 ## Câbles variateur (f31, f32, 30/10)
+Présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale à gauche, composition dessous à gauche, désignation gardée mais masquée (`g.cable(..., ovale=True)`). Câbles numérotés de gauche à droite : moteur, sonde TF, frein (W2 W3 W4, W5 W6 W7).
 Moteur dans l'axe de X2 (fils droits, plus d'escalier). Depuis le 02/11 : X2 → bornier (y = 12800) → câble → moteur. Les 3 câbles W sur **une seule ligne**, textes à côté de leur câble, sans chevauchement. Frein sans croisement.
 
 ## Renvois
 11. Le texte de description d'un renvoi est **bien placé** (centré sur le renvoi ou le groupe de renvois) (23/10).
 12. Le renvoi ne doit **jamais** être dessiné sur le fil : flèche du côté opposé au fil (codes A/B, voir `07_METHODE_TRAVAIL.md`).
-13. Distribution de puissance (29/10) : **bus tétra L1 L2 L3 N** en haut des folios f21, f22, f23, enchaîné par renvois, chaque appareil se pique sur ses phases [D]. Points de jonction acceptés sur un bus.
+13. Distribution de puissance (29/10) : **bus tétra L1 L2 L3 N** en haut des folios f11, f12, f13, enchaîné par renvois, chaque appareil se pique sur ses phases [D]. Points de jonction acceptés sur un bus.
 
 ## Potentiels de commande
 14. **Barres 24VELEC et 0 V en haut** du folio (24 V au-dessus, 0 V dessous), « comme dans tous les schémas » (29/10), sur tous les folios de commande. Un piquage 24 V croise la barre 0 V : normal. Un appareil dont le 0 V est en bas remonte par un collecteur sur le côté.
@@ -72,8 +76,8 @@ Moteur dans l'axe de X2 (fils droits, plus d'escalier). Depuis le 02/11 : X2 →
 
 ## Fils
 17. **Numéros de fil** : les fils de puissance portent le nom de leur potentiel, **L1, L2, L3, N, PE** (et U, V, W en sortie de variateur), sur **chaque tronçon**, même court (28/10, précisé le 29/10). PE nommé sur les folios de puissance (pas les FE de l'automate / IHM). Les autres fils ne sont pas numérotés tant que le schéma n'est pas fini.
-18. Numéros **alignés et centrés** (29/10, « carré et propre ») : noms des fils parallèles voisins sur une même ligne ; nom d'un bus près de son extrémité gauche, aligné sur les autres lignes du bus. **Jamais sur le numéro de brin d'un câble** (30/10, f20) : WinRelais écrit le brin juste au-dessus du croisement, le nom du fil reste au moins 400 au-dessus ou 100 en dessous.
-19. **Terre, règle C partout** (29/10) : pas de PE qui descend en bas du folio. Chaque appareil : **fil PE court + renvoi** vers la terre de l'arrivée (f20), où le PE de X11 se divise en un départ par appareil. Moteur : PE → X2 PE du variateur, puis X1 PE du variateur en renvoi court.
+18. Numéros **alignés et centrés** (29/10, « carré et propre ») : noms des fils parallèles voisins sur une même ligne ; nom d'un bus près de son extrémité gauche, aligné sur les autres lignes du bus. **Jamais sur le numéro de brin d'un câble** (30/10, f10) : WinRelais écrit le brin juste au-dessus du croisement, le nom du fil reste au moins 400 au-dessus ou 100 en dessous.
+19. **Terre, règle C partout** (29/10) : pas de PE qui descend en bas du folio. Chaque appareil : **fil PE court + renvoi** vers la terre de l'arrivée (f10), où le PE de X11 se divise en un départ par appareil. Moteur : PE → X2 PE du variateur, puis X1 PE du variateur en renvoi court.
 20. Types de conducteur : `Puissance` (phases), `Neutre Puissance`, `Conducteur terre` (PE), `Commande 24VDC`, `0V`, `Autre tension DC` (48 V, TF ; PROFINET provisoire). Jamais `Commande 24V~` sur un circuit continu.
 
 ## Textes

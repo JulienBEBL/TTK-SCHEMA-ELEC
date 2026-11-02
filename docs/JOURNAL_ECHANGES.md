@@ -127,3 +127,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Retours de Julien : nouveau symbole moteur, réponses aux questions de la v10, f20, plan de folios, repérage des borniers, borniers f24 / f31.
 - v11 : `schema/generes/TTK_2026-11-02_v11.xrs` (25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement).
 - Proposition écrite : `docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md` (plan de folios par dizaines, repérage X<folio>.<groupe>.<borne>, avis de l'assistant, test WinRelais à faire).
+
+## 02/11/2026 (soir) : v12
+- Julien valide le plan de folios et XD1, corrige la règle des bornes (un seul point), replace les câbles du f32 à la main, demande f70 / f71 à jour et le rangement release / old.
+- v12 : `schema/generes/release/TTK_2026-11-02_v12.xrs` (25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement ; sommaire = folios, même ordre).
+- Mémoire : numéros de folio des fichiers memoire/ passés aux numéros v12 ; règle des bornes ; rangement release / old.

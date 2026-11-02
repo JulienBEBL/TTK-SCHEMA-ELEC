@@ -15,7 +15,8 @@
 | `docs/JOURNAL_ECHANGES.md` | Un paragraphe par échange |
 | `docs/` (autres) | Nommage, sécurité, passation, format .xrs (`docs/local/`) |
 | `outils/` | Scripts Python, librairie de symboles reconstruite |
-| `schema/generes/` | `TTK_AAAA-MM-JJ_vN.xrs` + `_verification.md` + `_nomenclature.csv` |
+| `schema/generes/release/` | **la dernière version seule** : `TTK_AAAA-MM-JJ_vN.xrs` + `_verification.md` + `_nomenclature.csv` |
+| `schema/generes/old/` | toutes les versions précédentes (on y déplace l'ancienne release avec `git mv` à chaque nouvelle version) |
 | `schema/recus/` | .xrs renvoyés par Julien, datés |
 | `livrables/` | Classeur Excel de Julien (non modifié par script), CSV, macros |
 
@@ -27,9 +28,9 @@
    cd outils
    set TTK_LIB=C:\Users\Public\Documents\Elec-CAO\sym_electrotech
    set TTK_DATE=JJ/MM/AAAA
-   python ttk_schema.py ..\schema\generes\TTK_AAAA-MM-JJ_vN.xrs
-   python xrs_tool.py verifier ..\schema\generes\TTK_AAAA-MM-JJ_vN.xrs
-   python xrs_chevauchements.py ..\schema\generes\TTK_AAAA-MM-JJ_vN.xrs
+   python ttk_schema.py ..\schema\generes\release\TTK_AAAA-MM-JJ_vN.xrs
+   python xrs_tool.py verifier ..\schema\generes\release\TTK_AAAA-MM-JJ_vN.xrs
+   python xrs_chevauchements.py ..\schema\generes\release\TTK_AAAA-MM-JJ_vN.xrs
    ```
    Attendu : « 0 problème(s) de contrôle », 0 erreur au verifier, « total 0 » aux chevauchements. Les 28 « attention » connues de la v9 sont normales (fils en attente de l'arrivée réseau et de la variante USA, début de barre au f25, références croisées à lancer dans WinRelais, 0 V / PE liés par X36.1).
 4. Mettre à jour `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md` et `memoire/`.

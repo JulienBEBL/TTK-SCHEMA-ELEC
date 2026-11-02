@@ -151,3 +151,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Bornier entre l'armoire et tout appareil extérieur : moteurs M1 / M2 (moteur, TF, frein) et M3 / M4.
 - [C] Nouveau symbole moteur SEW (Julien) repris : CUSTOM/SEW_K39-DRN100LS4-BE5-TF_motoreducteur_frein.xsy, copié dans outils/librairie.
 - [?] Plan de folios et repérage X<folio>.<groupe>.<borne> : proposition dans docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md (Q17).
+
+## 02/11/2026 (soir) : v12
+- [D] Plan de folios par dizaines appliqué (table dans memoire/04_REGLES_DESSIN.md).
+- [D] Repère des bornes : X + n° de folio + « . » + n° de borne, une dizaine par fonction (X31.11...). Un seul point : WinRelais refuse X.x.x (test de Julien).
+- [D] Prise de service : XD1.
+- [D] Câbles des moteurs présentés comme Julien les a placés au f32 (ovale à gauche, composition dessous).
+- [D] f70 : groupes de bornes avec leur repère ; f71 : à jour.
+- [D] Rangement : schema/generes/release (dernière version) et schema/generes/old (précédentes).
+- [H] Câbles numérotés de gauche à droite (moteur, TF, frein) comme dans le fichier de Julien. [?] Composition du frein : 2G1,5 gardé (Julien a écrit 2G1 blindé).

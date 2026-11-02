@@ -42,7 +42,7 @@ while i < len(L):
         rep = L[i + 6].split(SEP)[0]
         for j in (6, 7, 8):
             f = L[i + j].split(SEP)
-            if f[0]:
+            if f[0] and f[3] == "1":
                 s = int(f[6] or 200)
                 box[k].append((f"cable {rep}:{f[0][:24]}", (int(f[1]), int(f[2]), int(f[1]) + W(f[0], s), int(f[2]) + s)))
         j = i + 9

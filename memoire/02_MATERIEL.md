@@ -3,7 +3,7 @@
 Le matériel est **commandé et en grande partie reçu** ; l'armoire est en montage. On fait avec, on n'ajoute qu'en cas de vraie nécessité.
 Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10, décisions datées. « à vérifier » = non confirmé.
 
-## Puissance 400 / 230 V (f20 à f23)
+## Puissance 400 / 230 V (f10 à f13)
 | Repère | Matériel | Remarque |
 |---|---|---|
 | W1 | Câble client 5G4 mm² [D 28/10] | |
@@ -11,8 +11,8 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | QS1 | Legrand Vistop 022515, 4P 63 A | manœuvre armoire ouverte |
 | QF1 | Hager NFT820, 3P+N 20 A courbe C | disjoncteur de tête |
 | TR1 | TEMCo TT1041, 480 D / 400 Y-230, 15 kVA | variante US, hors armoire |
-| X12 | Répartiteur 4P 125 A 7 départs AEE300427 | non dessiné depuis le 29/10 (renvois directs QF1 → bus f21) |
-| X13 | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f20) |
+| X12 | Répartiteur 4P 125 A 7 départs AEE300427 | non dessiné depuis le 29/10 (renvois directs QF1 → bus f11) |
+| X13 | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) |
 | QM1 / QM2 | Schneider GV2ME14, réglés 6,5 A | amont variateurs |
 | KM1 / KM2 | Schneider LC1D09BD (bobine 24 V CC) | contacteurs variateurs |
 | QF2 / QF3 | Schneider iC60N A9F74202, 2P 2 A courbe C | freins ; calibre à confirmer avec le courant du BE5 |
@@ -25,7 +25,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | X14 | Legrand 004280, prise 2P+T 16 A | |
 | EV1 / EV2 | IDE VF92AC, ventilateurs 230 V | |
 | EL1 / EL2 | RS PRO 194-0417, éclairage LED armoire | |
-| H2 | Voyant 230 V présence tension | piqué sur L3 + N du bus (f22), câblé en 2,5 mm² |
+| H2 | Voyant 230 V présence tension | piqué sur L3 + N du bus (f12), câblé en 2,5 mm² |
 
 ## Variateurs et moteurs (f31, f32)
 | Repère | Matériel | Remarque |
@@ -37,7 +37,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | W3 / W6 | Frein 2G1,5, isolation ≥ 450/750 V [D 26/10] | à commander |
 | W4 / W7 | Sonde TF 2G1 blindé [D 26/10] | à commander |
 
-## Très basse tension (f22, f24, f25)
+## Très basse tension (f12, f20, f21)
 | Repère | Matériel | Remarque |
 |---|---|---|
 | T1 / T2 | RS PRO 284-0491, 24 V 240 W (10 A) | T1 = COMMANDE, T2 = ELEC (noms à changer, voir 03) |
@@ -47,7 +47,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA à vérifier |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 
-## Sécurité, commande (f40 à f42, f45)
+## Sécurité, commande (f40 à f42, f50)
 | Repère | Matériel | Remarque |
 |---|---|---|
 | KA1 | Schneider XPSUAF13AP | cat. 0, PL d visé, démarrage surveillé par S4 |
@@ -61,12 +61,12 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | H3 / H4 | Voyants 24 V ELEC présent / défaut | |
 | P1 | Siemens KTP700 Basic PN 6AV2123-2GB03-0AX0 | |
 
-## Automate et réseau (f50 à f53, switch f30)
+## Automate et réseau (f60 à f63, switch f30)
 | Repère | Matériel |
 |---|---|
 | K1 | CPU 1214C G2 DC/DC/DC 6ES7214-1AH50-0XB0 |
 | K2 | SM 1223 G2 8DI/8DQ 6ES7223-5BH50-0XB0 |
-| K3 | SM 1231 TC G2 6ES7231-5QF50-0XB0 (f53 validé par Julien le 23/10, à revalider après renommage) |
+| K3 | SM 1231 TC G2 6ES7231-5QF50-0XB0 (f63 validé par Julien le 23/10, à revalider après renommage) |
 | K4 | Switch Weidmüller 2682250000 IE-SW-AL05LM-5TX |
 | B7 / W8 | Thermocouple type K, câble de compensation en direct jusqu'à K3 [D 28/10] |
 

@@ -371,14 +371,21 @@ class Gen:
                                bold=1 if (entete and r == 0) else 0)
                 cx += c
 
-    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300):
+    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
-        sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais)."""
+        sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
+        ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
+        à gauche, composition dessous à gauche, désignation gardée mais masquée."""
+        if ovale:
+            x1, x2, etiq, size = brins_x[0], brins_x[-1], "ovale", 300
         self.cables.append((folio, x1, x2, y, rep, compo, desig, brins_x, etiq, size))
 
     def cable_textes(self, c):
         """[(texte, x, y, taille)] des 3 textes d'un câble, tels qu'écrits dans le fichier."""
         f, x1, x2, y, rep, compo, desig, brins, etiq, size = c
+        if etiq == "ovale":
+            w = int(len(rep) * size * 0.55)
+            return [(rep, x1 - 600 - w // 2, y - 150, size), (compo, x1 - 2000, y + 400, size), ("", x1, y + 700, size)]
         if etiq:
             ex, ey = etiq
             return [(rep, ex, ey, size), (compo, ex, ey + size + 100, size), (desig, ex, ey + 2 * (size + 100), size)]
@@ -498,7 +505,7 @@ class Gen:
         self.dessins = [(d[0], d[1] + dx, d[2] + dy, d[3] + dx, d[4] + dy) + d[5:] if d[0] == folio else d
                         for d in self.dessins]
         self.cables = [(c[0], c[1] + dx, c[2] + dx, c[3] + dy) + c[4:7] + ([b + dx for b in c[7]],)
-                       + ((c[8][0] + dx, c[8][1] + dy) if c[8] else None, c[9])
+                       + ((c[8][0] + dx, c[8][1] + dy) if isinstance(c[8], tuple) else c[8], c[9])
                        if c[0] == folio else c for c in self.cables]
         key = lambda n: ("P", n[1], n[2] + dx, n[3] + dy) if n[0] == "P" and n[1] == folio else n
         self.nets = {key(a): key(b) for a, b in self.nets.items()}
@@ -597,11 +604,14 @@ class Gen:
                 L.append("\u00a4#Autre\u00a4")
                 L.append(SEP.join(map(str, (f, x1, y, x2, y, 0, 0, 0, 0))) + SEP)
                 L.append("0\u00b740\u00b70\u00b70\u00b71\u00b716777215\u00b7")
-                L.append(f"802\u00b7500\u00b7{len(brins)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
+                ov = etiq == "ovale"
+                L.append(f"802\u00b7500\u00b7{3 if ov else len(brins)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
                 L.append("4\u00b70\u00b7400\u00b7400\u00b7400\u00b7400\u00b70\u00b7")
-                L.append(SEP.join(map(str, (rep, rx, ry, 1, 0 if etiq else 6, "Arial", size, 0, 0, 0, 0))) + SEP)
+                if ov:
+                    rx = x1 - 600            # repère centré (alignement 6) dans l'ovale
+                L.append(SEP.join(map(str, (rep, rx, ry, 1, 6 if ov or not etiq else 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 L.append(SEP.join(map(str, (compo, cx, cy, 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
-                L.append(SEP.join(map(str, (desig, dx_, dy_, 1 if desig else 0, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
+                L.append(SEP.join(map(str, (desig, dx_, dy_, 0 if ov or not desig else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 for k in range(4):
                     L.append(SEP.join(map(str, ("", x1, y + 1000 + 300 * k, 0, 2, "Arial", 300, 0, 0, 0, 0))) + SEP)
                 L.append("\u00a4#BrinCable\u00a4")

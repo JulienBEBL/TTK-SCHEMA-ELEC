@@ -10,14 +10,15 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
-| Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f20, f23, f50). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
-| Q13 | f52 : mention rouge « PROPOSITION A VALIDER » conservée (Julien l'a retirée aux f50 et f51 seulement) | à confirmer |
-| Q14 | W1 au f20 | réglé le 02/11 : on le garde |
-| Q15 | Notes du .xrs du 02/11 | réglé : f41 barres retirées ; f53 bornes TC posées (type à définir) ; f25 « borniers sur la page alims » **en pause** |
-| Q16 | f24 « Pour simplifier le » | réglé : rien à ajouter |
-| Q17 | **Plan de folios et repérage des borniers** (`docs/PROPOSITION_FOLIOS_BORNIERS_2026-11-02.md`) | à valider ; test WinRelais d'un repère à 2 points avant renommage |
-| Q18 | Prise de service X14 → -XD1 (IEC 81346-2) ? | à confirmer |
-| Q19 | Référence des bornes thermocouple (f53) | à définir à l'achat |
+| Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f10, f13, f60). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
+| Q13 | f62 : mention rouge « PROPOSITION A VALIDER » conservée (Julien l'a retirée aux f60 et f61 seulement) | à confirmer |
+| Q14 | W1 au f10 | réglé le 02/11 : on le garde |
+| Q15 | Notes du .xrs du 02/11 | réglé : f41 barres retirées ; f63 bornes TC posées (type à définir) ; f21 « borniers sur la page alims » **en pause** |
+| Q16 | f20 « Pour simplifier le » | réglé : rien à ajouter |
+| Q17 | Plan de folios et repérage des bornes | réglé le 02/11 : appliqué en v12 (1 seul point dans le repère) |
+| Q18 | Prise de service X14 → XD1 | réglé le 02/11 : oui |
+| Q20 | f32 : Julien a écrit « 2G1 blindé » sur le câble du frein ; la décision du 26/10 dit 2G1,5 (gardé) | à confirmer |
+| Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
 
 ## Sécurité
 1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
@@ -39,7 +40,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 13. Polarité de l'entrée ENA du DM860H.
 
 ## Automate
-14. Liste d'E/S à valider (f50 à f52 figés d'ici là).
+14. Liste d'E/S à valider (f60 à f62 figés d'ici là).
 15. Brochages G2 à confirmer (seuls ceux de la génération 1 ont été trouvés).
 16. PUL sur Q0.0 (U3) et Q0.2 (U4) : sorties 100 kHz d'après la fiche Siemens [C]. Affectation PTO (impulsion + direction) à vérifier dans TIA V21.
 
@@ -55,4 +56,4 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 23. Câble 27G1 : répartition machine / pupitre ; repères des câbles 19G1 / 27G1 et RJ45 du pupitre.
 24. Classeur Excel à mettre à jour avec le nommage du 28/10.
 25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f10 corrigés en v7).
-26. f25 : images des borniers à insérer par Julien. f01 : logos à insérer.
+26. f21 : images des borniers à insérer par Julien. f01 : logos à insérer.

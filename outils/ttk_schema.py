@@ -43,8 +43,10 @@ for f in FOL:
 # f03 (légende et conventions) supprimé le 02/11 : Julien n'en a pas besoin.
 # Le script garde les anciens numéros en interne ; NUMFOL donne le numéro affiché. Dans les textes du script,
 # « fNN » est toujours un ANCIEN numéro (traduit à l'écriture par ren()).
-NUMFOL = {"10": "20", "12": "21", "13": "22", "14": "23", "32": "24",
-          "31": "25", "54": "30", "20": "31", "21": "32", "60": "45"}
+# 02/11 : une dizaine par famille (plan validé par Julien) : 10-13 puissance, 20-21 très basse tension,
+# 30-32 réseau et variateurs, 40-42 sécurité, 50 pupitre, 60-63 automate, 70-71 borniers, 80-90 listes
+NUMFOL = {"04": "03", "12": "11", "13": "12", "14": "13", "32": "20", "31": "21", "54": "30", "20": "31", "21": "32",
+          "60": "50", "50": "60", "51": "61", "52": "62", "53": "63"}
 FOL = sorted((f for f in FOL if f["num"] not in ("03", "11", "30")), key=lambda f: NUMFOL.get(f["num"], f["num"]))
 g = Gen(MODELE)
 
@@ -58,8 +60,8 @@ RENOMME = {
     "Q121": "QM1", "Q122": "QM2", "Q123": "QF2", "Q124": "QF3", "Q421": "KF1", "Q422": "KF2", "Q423": "KA2",
     "Q132": "QF4", "Q133": "QF5", "Q134": "QF6", "Q136": "QF7", "Q137": "QF8", "Q131": "QF9", "Q135": "QF10",
     "X131": "X14", "G131": "EV1", "G132": "EV2", "E131": "EL1", "E132": "EL2",
-    "T201": "U1", "R201": "R1", "M201": "M1", "W201": "W2", "W202": "W3", "W203": "W4",
-    "T211": "U2", "R211": "R2", "M211": "M2", "W211": "W5", "W212": "W6", "W213": "W7",
+    "T201": "U1", "R201": "R1", "M201": "M1", "W201": "W2", "W203": "W3", "W202": "W4",
+    "T211": "U2", "R211": "R2", "M211": "M2", "W211": "W5", "W213": "W6", "W212": "W7",
     "T301": "T1", "T302": "T2", "T321": "T3", "X311": "X31", "X312": "X32", "X313": "X33",
     "T322": "U3", "T323": "U4", "M321": "M3", "M322": "M4",
     "K401": "KA1", "S411": "S1", "S412": "S2", "S413": "S3", "S414": "S4", "B411": "B1", "B412": "B2",
@@ -67,6 +69,39 @@ RENOMME = {
     "K521": "K2", "K531": "K3", "B531": "B7", "W531": "W8", "K541": "K4", "P601": "P1",
     "X701": "X70", "X711": "X71",
 }
+# Bornes (02/11) : X + n° du folio où elles sont dessinées + « . » + n° de borne, une dizaine par fonction
+# (X31.11 à X31.14 moteur M1, X31.21 / X31.22 sonde TF...). WinRelais n'accepte qu'un seul point.
+# (bornier, dizaine, folio interne, fonction, destination, [(borne interne, signal)])
+GROUPES = [
+    ("X10", 1, "10", "Arrivée réseau", "réseau", [("X101.VJ", "PE"), ("X101.1", "N"), ("X101.2", "L1"), ("X101.3", "L2"), ("X101.4", "L3")]),
+    ("X12", 1, "13", "Liaison PELV 0 V - PE", "A1", [("X36.1", "0V-PE")]),
+    ("X20", 1, "32", "Moteur pas-à-pas M3", "+M", [(f"X701.{33 + i}", p) for i, p in enumerate(("A+", "A-", "B+", "B-"))]),
+    ("X20", 2, "32", "Moteur pas-à-pas M4", "+M", [(f"X701.{37 + i}", p) for i, p in enumerate(("A+", "A-", "B+", "B-"))]),
+    ("X31", 1, "20", "Moteur M1", "+M", [(f"X701.{17 + i}", p) for i, p in enumerate(("PE", "U", "V", "W"))]),
+    ("X31", 2, "20", "Sonde TF M1", "+M", [("X701.21", "1b"), ("X701.22", "2b")]),
+    ("X31", 3, "20", "Frein M1", "+M", [("X701.23", "2"), ("X701.24", "3")]),
+    ("X32", 1, "21", "Moteur M2", "+M", [(f"X701.{25 + i}", p) for i, p in enumerate(("PE", "U", "V", "W"))]),
+    ("X32", 2, "21", "Sonde TF M2", "+M", [("X701.29", "1b"), ("X701.30", "2b")]),
+    ("X32", 3, "21", "Frein M2", "+M", [("X701.31", "2"), ("X701.32", "3")]),
+    ("X41", 1, "41", "AU -S1 / -S2, voies 1 et 2", "+P1", [(f"X711.{n}", "") for n in (1, 2, 3, 4)]),
+    ("X41", 2, "41", "Sélecteur -S3 Manu : shunt des capots", "+P1", [(f"X711.{n}", "") for n in (13, 14, 15, 16)]),
+    ("X41", 3, "41", "Capot -B1", "+M", [("X701.1", "11"), ("X701.2", "12"), ("X701.3", "23"), ("X701.4", "24")]),
+    ("X41", 4, "41", "Capot -B2", "+M", [("X701.5", "11"), ("X701.6", "12"), ("X701.7", "23"), ("X701.8", "24")]),
+    ("X42", 1, "42", "Sélecteur -S3 : Manu-D, Auto-A, Auto-B", "+P1", [(f"X711.{n}", "") for n in (19, 20, 7, 8, 9, 10)]),
+    ("X50", 1, "60", "Alimentation IHM -P1", "+P1", [("X711.21", "L+"), ("X711.22", "M"), ("X711.23", "FE")]),
+    ("X60", 1, "50", "AU pupitre -S2 (contact NO)", "+P1", [("X711.5", ""), ("X711.6", "")]),
+    ("X60", 2, "50", "Sélecteur -S3 Auto / Manu", "+P1", [(f"X711.{n}", "") for n in (11, 12, 17, 18)]),
+    ("X60", 3, "50", "Fins de course -B3 à -B6", "+M", [(f"X701.{9 + i}", f"B{3 + i // 2}") for i in range(8)]),
+    ("X63", 1, "53", "Thermocouple -B7", "+M", [("X701.41", "+"), ("X701.42", "-")]),
+]
+DES_BORNE = {}
+for b_, d_, _, fn_, _, bs_ in GROUPES:
+    for i_, (int_, _) in enumerate(bs_):
+        RENOMME[int_] = f"{b_}.{d_}{i_ + 1}"
+        DES_BORNE[int_] = fn_
+RENOMME.update({"X311": "X21.11", "X312": "X21.12", "X313": "X21.13", "X131": "XD1"})
+for k_ in ("X111", "X112"):          # répartiteur et barrette de terre non dessinés (29/10)
+    RENOMME.pop(k_)
 _RE = re.compile(r"(?<![A-Za-z0-9])(" + "|".join(sorted(map(re.escape, RENOMME), key=len, reverse=True))
                  + r")(?![0-9A-Za-z])")
 
@@ -269,7 +304,8 @@ def contacteur(xsy, rep, f, x, y, **kw):
 def borne(rep, f, x, y, fpos=(100, -250)):
     """Borne 4 mm verticale : broche 1 en (x, y), broche 2 en (x, y + 400). fpos = repère (à droite par défaut)."""
     bornier = rep.split(".")[0]
-    return g.place(BORNE, rep, F[f], x, y, champs={2: REP.get(bornier, {}).get("des", "")}, ref=(),
+    des = DES_BORNE.get(rep) or REP.get(rep, {}).get("des") or REP.get(bornier, {}).get("des", "")
+    return g.place(BORNE, rep, F[f], x, y, champs={2: des}, ref=(),
                    compact=True, rep_size=150, fpos=fpos, loc="A1", prefix="X")
 
 
@@ -350,7 +386,7 @@ def fleche(pts, dashed=False, tete=True):
 
 C1, C2, C3 = 5600, 14800, 24000                      # colonnes : 400 V moteurs, alimentations, services
 col = lambda c: (c - 3800, c + 3800)
-res = bloc(*col(C2)[:1], 1600, col(C2)[1], ["ARRIVEE RESEAU (f10)", "3 x 400 V + N + PE - câble client -W1, bornes -X11"])
+res = bloc(*col(C2)[:1], 1600, col(C2)[1], ["ARRIVEE RESEAU (f10)", "3 x 400 V + N + PE - câble client -W1, bornes -X10"])
 usa = bloc(*col(C3)[:1], 1600, col(C3)[1], ["VARIANTE USA (option, f10)", "3 x 480 V -> -TR1 15 kVA -> 400 V"], dashed=True)
 fleche([(usa[0], 2080), (res[2], 2080)], dashed=True)
 pro = bloc(*col(C2)[:1], 3200, col(C2)[1], ["SECTIONNEMENT ET PROTECTION (f10)", "-QS1, -QF1 20 A ; terre PE vers chaque appareil"])
@@ -363,12 +399,12 @@ texte("04", 15000, 4450, "3 x 400 V + N", 200)
 d400 = bloc(*col(C1)[:1], 5400, col(C1)[1], ["DISTRIBUTION 400 V (f12)", "-QM1 + -KM1 -> variateur 1", "-QM2 + -KM2 -> variateur 2",
                                              "-QF2 + -KF1, -QF3 + -KF2 -> freins"])
 ali = bloc(*col(C2)[:1], 5400, col(C2)[1], ["ALIMENTATIONS (f13)", "-QF4 -> -T1 24VSEC", "-QF5 -> -T2 24VELEC",
-                                            "-QF6 -> -T3 48 V ; voyant -H2 ; PELV -X36"])
+                                            "-QF6 -> -T3 48 V ; voyant -H2 ; PELV -X12"])
 srv = bloc(*col(C3)[:1], 5400, col(C3)[1], ["SERVICES 230 V (f14)", "-QF7 -> ventilateurs -EV1 -EV2", "-QF8 -> éclairage -EL1 -EL2",
-                                            "-QF9 -> -QF10 -> prise -X14"])
+                                            "-QF9 -> -QF10 -> prise -XD1"])
 var = bloc(*col(C1)[:1], 8400, col(C1)[1], ["VARIATEURS (f20, f21)", "-U1, -U2 MCX91A + résistances -R1 -R2", "STO commandé par la sécurité (f42)"])
 pap = bloc(*col(C2)[:1], 8400, col(C2)[1], ["48 V PAS-A-PAS (f32)", "-KA2 coupe les 2 x +48 V", "drivers -U3 / -U4"])
-d24 = bloc(*col(C3)[:1], 8400, col(C3)[1], ["DISTRIBUTION 24 V (f31)", "-X31 24VELEC, -X33 24VSEC", "-X32 0 V commun, voyant -H3"])
+d24 = bloc(*col(C3)[:1], 8400, col(C3)[1], ["DISTRIBUTION 24 V (f31)", "-X21.11 24VELEC, -X21.13 24VSEC", "-X21.12 0 V commun, voyant -H3"])
 fleche([(C1, d400[3]), (C1, var[1])])
 fleche([(C2, ali[3]), (C2, pap[1])])
 texte("04", C2 + 200, 7400, "48 V", 200)
@@ -396,8 +432,8 @@ fleche([(cx[1], 15200), (cx[3], 15200)], dashed=True, tete=False)
 fleche([(cx[1], 15200), (cx[1], api[3])], dashed=True)
 fleche([(cx[3], 15200), (cx[3], pup[3])], dashed=True)
 texte("04", 19000, 15300, "PROFINET (et -U1, -U2 : f20, f21)", 200)
-ter = bloc(2000, 16000, 28400, ["TERRAIN (f70, f71)", "-X70 : armoire <-> machine +M (fins de course -B3 à -B6, capots -B1 -B2)",
-                                 "-X71 : armoire <-> pupitre +P1"])
+ter = bloc(2000, 16000, 28400, ["BORNIERS (f70, f71)", "vers la machine +M : -X20, -X31, -X32, -X41, -X60, -X63",
+                                 "vers le pupitre +P1 : -X41, -X42, -X50, -X60"])
 fleche([(cx[0], sec[3]), (cx[0], ter[1])])
 fleche([(10400, api[3]), (10400, ter[1])])
 
@@ -612,8 +648,7 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [T["X2:U"], BM["U1"]["1"]], "L")
     W(f, [T["X2:V"], BM["V1"]["1"]], "L")
     W(f, [T["X2:W"], BM["W1"]["1"]], "L")
-    g.cable(F[f], 3600, 6600, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [4000, 4800, 5600, 6400],
-            etiq=(1600, YC - 300), size=200)
+    g.cable(F[f], 0, 0, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [M[p].x for p in ("PE", "U1", "V1", "W1")], ovale=True)
     W(f, [T["X2:-R"], (8000, 8400), (10400, 8400), R["1"]], "DC")
     W(f, [T["X2:+R"], (7200, 10800), (10400, 10800), R["2"]], "DC")
     # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, par le bornier (02/11)
@@ -624,10 +659,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [BM["1b"]["1"], (M["1b"].x, 11600), (21600, 11600), (21600, 3600), (11600, 3600), T["X10:1"]], "24")
     W(f, [BM["2b"]["1"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
     VAR[(f, "PN")] = W(f, [T["X40"], (13600, 4800), (16000, 4800)], "PN")
-    g.cable(F[f], M["1b"].x - 200, M["2b"].x + 400, YC, w3, "2G1 blindé",
-            f"Sonde TF {m}", [M["1b"].x, M["2b"].x], etiq=(M["2b"].x + 600, YC - 300), size=200)
-    g.cable(F[f], M["2"].x - 200, M["3"].x + 400, YC, w2, "2G1,5",
-            f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], etiq=(M["3"].x + 600, YC - 300), size=200)
+    g.cable(F[f], 0, 0, YC, w3, "2G1 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True)
+    g.cable(F[f], 0, 0, YC, w2, "2G1,5", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
@@ -1176,13 +1209,10 @@ def designations():
     return des
 
 
-def plan_bornier(path, bornier):
-    """Pour chaque borne : appareils raccordés côté armoire / côté terrain (broches 1 / 2)."""
-    import re
+def plan_bornier(path, noms):
+    """Pour chaque borne (noms, dans l'ordre) : appareils raccordés côté armoire / côté terrain (broches 1 / 2)."""
     net, membres = nets_par_broche(path, bornes_passantes=False)
     lignes = []
-    noms = sorted({p.split(":")[0] for p in net if p.startswith(bornier + ".")},
-                  key=lambda n: int(re.findall(r"\d+", n.split(".")[1])[0]))
     for nom in noms:
         cotes, terrain = [], []
         for pin in ("1", "2"):
@@ -1191,8 +1221,8 @@ def plan_bornier(path, bornier):
                 for rep, b, fo in membres[r]:
                     if rep == nom:
                         continue
-                    if rep.startswith(("X7", "X3")):
-                        ponts.append(f"-{rep.replace('.', ':')} (f{fo})")
+                    if re.match(r"X\d", rep):
+                        ponts.append(f"-{rep} (f{fo})")
                     else:
                         autres.append(f"-{rep}:{b} (f{fo})")
                         ext.append(rep.startswith(TERRAIN))
@@ -1210,55 +1240,56 @@ def plan_bornier(path, bornier):
         # le côté terrain est celui où tous les appareils sont hors armoire
         if terrain[0] and not terrain[1]:
             cotes.reverse()
-        lignes.append([nom.split(".", 1)[1], cotes[0], cotes[1]])
+        lignes.append([nom, cotes[0], cotes[1]])
     return lignes
 
 
 def organisation_x70():
-    """Folio 70 en construction : groupes de bornes prévus, non attribués (dessin seul, aucun symbole)."""
+    """Folio 70 : groupes de bornes vers la machine +M et le réseau, avec leur numéro (Julien, 02/11)."""
     f = "70"
-    texte(f, 2400, 1600, "BORNIER -X701 : ARMOIRE +A1 <-> MACHINE +M - ORGANISATION (EN CONSTRUCTION, NON ATTRIBUE)", 280, 0, 1)
-    n19 = [str(i) for i in range(1, 19)] + ["PE"]
-    n27 = [str(i) for i in range(1, 27)] + ["PE"]
-    groupes = [("Câble 19G1 : armoire <-> machine (18 + PE)", [n19]),
-               ("Câble 27G1 : machine <-> armoire (26 + PE), répartition non attribuée", [n27]),
-               ("Sondes thermiques TF : M1 / M2", [["1b", "2b"], ["1b", "2b"]]),
-               ("Moteurs M1 / M2", [["U", "V", "W", "PE"], ["U", "V", "W", "PE"]]),
-               ("Freins M1 / M2 (bornes BE 2-3)", [["2", "3"], ["2", "3"]]),
-               ("Capteur capot magnétique -B412 : câble M12 8 broches", [[str(i) for i in range(1, 9)]]),
-               ("Arrivée réseau (actuellement -X101, f10)", [["L1", "L2", "L3", "N", "PE"]])]
-    y = 2600
-    for titre, blocs in groupes:
-        texte(f, 2400, y, f"{titre} - {sum(len(b_) for b_ in blocs)} bornes", 220, 0, 1)
-        x = 2400
-        for b_ in blocs:
-            for lettre in b_:
-                g.cadre(F[f], x, y + 400, x + 600, y + 1600, width=15)
-                texte(f, x + 300 - int(len(lettre) * 200 * 0.55 / 2), y + 900, lettre, 200)
-                x += 800
-            x += 800
-        y += 2300
+    texte(f, 2400, 1500, "BORNIERS ARMOIRE +A1 <-> MACHINE +M ET RESEAU : GROUPES DE BORNES", 280, 0, 1)
+    texte(f, 2400, 1900, "Repère : X + n° du folio où la borne est dessinée + n° de borne ; une dizaine par fonction "
+                         "(X31.11 à X31.14 = moteur M1 au folio 31).", 200)
+    blocs = [(f"{b} . {d}1 à {d}{len(bs)} : {fn} (f{fi})", [f"{d}{i + 1}" for i in range(len(bs))], [sg for _, sg in bs])
+             for b, d, fi, fn, dest, bs in GROUPES if dest in ("+M", "réseau")]
+    blocs = [(t.replace(" . ", "."), n, sg) for t, n, sg in blocs]
+    blocs += [("Câble 19G1 armoire <-> machine (18 + PE) : à attribuer", [str(i) for i in range(1, 19)] + ["PE"], [""] * 19),
+              ("Câble 27G1 machine <-> armoire (26 + PE) : à attribuer", [str(i) for i in range(1, 27)] + ["PE"], [""] * 27)]
+    x, y = 2400, 2600
+    for titre, nums, sigs in blocs:
+        larg = max(len(nums) * 800, int(len(ren(titre)) * 220 * 0.55) + 400)
+        if x + larg > 28000:
+            x, y = 2400, y + 2400
+        texte(f, x, y, titre, 220, 0, 1)
+        for i, (n, sg) in enumerate(zip(nums, sigs)):
+            bx = x + 800 * i
+            g.cadre(F[f], bx, y + 400, bx + 600, y + 1200, width=15)
+            texte(f, bx + 300 - int(len(n) * 200 * 0.55 / 2), y + 700, n, 200)
+            if sg:
+                texte(f, bx + 300 - int(len(sg) * 180 * 0.55 / 2), y + 1300, sg, 180)
+        x += larg + 800
 
 
 def ecrire_borniers(path):
     global DES
     DES = designations()
     organisation_x70()
-    for num, bornier, titre in (("71", "X711", "BORNIER -X711 : ARMOIRE +A1 <-> PUPITRE +P1"),):
-        lignes = plan_bornier(path, ren(bornier))
+    # f71 : toutes les bornes vers le pupitre +P1, quel que soit leur folio
+    noms = [ren(i) for b, d, fi, fn, dest, bs in GROUPES if dest == "+P1" for i, _ in bs]
+    for num, titre in (("71", "BORNES ARMOIRE +A1 <-> PUPITRE +P1 (X41, X42, X50, X60)"),):
+        lignes = plan_bornier(path, noms)
         texte(num, 2400, 1600, titre, 300, 0, 1)
         # les lignes portent déjà les nouveaux numéros de folio (relus dans le fichier) : pas de 2e traduction
         g.texte = lambda folio, x, y, txt, *a, **k: _texte(folio, x, y, ren_rep(txt), *a, **k)
-        g.tableau(F[num], 1800, 2400, [1800, 12400, 12400], 600,
-                  [["Borne", "Côté armoire (intérieur)", "Côté terrain (extérieur)"]] + lignes, size=250)
+        g.tableau(F[num], 1800, 2400, [1800, 12400, 12400], 560,
+                  [["Borne", "Côté armoire (intérieur)", "Côté terrain (extérieur)"]] + lignes, size=230)
         g.texte = lambda folio, x, y, txt, *a, **k: _texte(folio, x, y, ren(txt), *a, **k)
-        y = 2400 + 600 * (len(lignes) + 1) + 400
-        for l in ("Méthode : 1 borne par conducteur qui sort de l'armoire, bornes regroupées par appareil / câble,",
-                  "côté armoire en haut de la borne sur le schéma, côté terrain en bas.",
-                  f"Bornier graphique : Optimisation / Générer / Bornier, onglet Automatique, extraire {bornier},",
-                  "folio visible, option Matériel connecté via un bornier + Pré-remplissage + filtre B,M,S412,S413,P601."):
-            texte(num, 2400, y, l, 220)
-            y += 400
+        y = 2400 + 560 * (len(lignes) + 1) + 300
+        for l in ("Méthode : 1 borne par conducteur qui sort de l'armoire, côté armoire en haut de la borne, côté terrain en bas.",
+                  "Bornier graphique : Optimisation / Générer / Bornier, onglet Automatique, extraire X41, X42, X50, X60,",
+                  "folio visible, option Matériel connecté via un bornier + Pré-remplissage + filtre B,M,S2,S3,P1."):
+            texte(num, 2400, y, l, 200)
+            y += 350
 
 
 # ======================================================================== terre : départs PE de l'arrivée (f10)
