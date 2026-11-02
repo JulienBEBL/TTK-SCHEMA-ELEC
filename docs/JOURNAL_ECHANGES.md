@@ -133,3 +133,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - v12 : `schema/generes/release/TTK_2026-11-02_v12.xrs` (25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement ; sommaire = folios, même ordre).
 - Mémoire : numéros de folio des fichiers memoire/ passés aux numéros v12 ; règle des bornes ; rangement release / old.
 - Julien annonce qu'il regarde la v12 dans WinRelais. Mémoire mise à jour (Q8 → v12, questions ouvertes Q13, Q19, Q20). Pas de changement du schéma.
+
+## 02/11/2026 (nuit) : v13
+- Retours de Julien sur la v12 : f11 neutre, couleurs de tous les fils, f20 drivers + câble blindé, f31 / f32 broches, câble TF, superposition frein, f40 B2 + base de connaissances XPSUAF13AP (copiée dans `docs/references/`).
+- Constat : la v12 de `release/` avait été réenregistrée par WinRelais (Julien l'a ouverte) ; archivée dans `schema/recus/`, 3 retouches relevées (Q21). Règle ajoutée dans `memoire/07_METHODE_TRAVAIL.md`.
+- v13 : `schema/generes/release/TTK_2026-11-02_v13.xrs` (25 folios, 159 symboles, 631 fils, 93 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement).

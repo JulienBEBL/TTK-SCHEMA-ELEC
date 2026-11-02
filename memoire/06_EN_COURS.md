@@ -1,26 +1,25 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v12 (02/11/2026, soir)
-`schema/generes/release/TTK_2026-11-02_v12.xrs` : 25 folios, 159 symboles, 628 fils, 94 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **Julien la regarde dans WinRelais (02/11 au soir) : attendre ses retours (Q8).** Questions encore ouvertes pour lui : Q13 (f62 « PROPOSITION A VALIDER »), Q19 (bornes thermocouple), Q20 (câble du frein).
-Pas encore vu à l'écran : première ouverture avec les repères X<folio>.<n> et les câbles en ovale. S'il renvoie un .xrs, l'archiver dans `schema/recus/` et le comparer à la v12 avant de toucher au script.
-Rangement (02/11) : `schema/generes/release/` = la dernière version seule ; `schema/generes/old/` = toutes les précédentes.
-La v11 réenregistrée par Julien est archivée (`schema/recus/2026-11-02_v11_ouverte_WinRelais.xrs`) : câbles du f32 replacés à la main, repris dans le script pour f31 et f32.
+## Version actuelle : v13 (02/11/2026, nuit)
+`schema/generes/release/TTK_2026-11-02_v13.xrs` : 25 folios, 159 symboles, 631 fils, 93 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **En attente : retours de Julien (Q8) et réponses Q21 à Q24.**
+La v12 réenregistrée par Julien dans WinRelais est archivée (`schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) ; ses 3 retouches ne sont pas reprises (Q21).
 
-### Fait en v12 — numéros affichés v12
+### Fait en v13 — numéros affichés
 | Folio | Changement |
 |---|---|
-| tous | Nouveaux numéros par dizaines (table dans `04_REGLES_DESSIN.md`) ; sommaire et synoptique à jour |
-| tous | Bornes renommées X + folio + n° par dizaine (ex. X31.11) ; prise X14 → XD1 ; X31 / X32 / X33 → X21.11 / X21.12 / X21.13 |
-| 31, 32 | Câbles présentés comme Julien au f32 (ovale à gauche, composition dessous) ; numérotés moteur, TF, frein de gauche à droite |
-| 70 | Groupes de bornes vers la machine et le réseau, avec leur repère (X31.11 à 14...) ; câbles 19G1 / 27G1 « à attribuer » |
-| 71 | Tableau de toutes les bornes vers le pupitre (X41, X42, X50, X60), 23 bornes |
+| tous | Couleurs revues selon IEC 60204-1 (table dans `04_REGLES_DESSIN.md`) : plus d'orange ; 48 V, phases pas-à-pas et résistance de freinage en noir ; thermocouple en vert |
+| 11 | Neutre retiré (rien ne s'y pique) ; le N part de QF1 (f10) directement vers le f12 |
+| 20 | Drivers remontés de 1600, bornes descendues de 400 ; un câble blindé par moteur pas-à-pas (W9, W10, « 4 cond. blindé ») |
+| 31, 32 | Noms de broches du bloc moteur / TF / frein masqués ; sonde TF en 2x0,75 blindé ; fils du frein remontés avant de partir à droite (plus de superposition sur X31.32) ; compositions TF et frein à droite du câble (pas de place à gauche) |
+| 40 | B2 du KA1 au 0 V ; texte « Réglage -KA1 : FUNCTION 1, START 3 » |
 
 ### Choix faits par l'assistant, à valider
-- Découpage des dizaines (table `GROUPES` du script), par exemple X60.11-12 AU pupitre, X60.21-24 sélecteur, X60.31-38 fins de course.
-- Frein : composition 2G1,5 gardée (Q20).
+- Fils du frein : broche 2 à y 12000 vers un renvoi décalé à droite, broche 3 à y 12400.
+- 0 V 48 en noir comme le +48 V (puissance CC) : la polarité se lit par les renvois et les bornes.
 
 ## À faire ensuite
-1. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien.
-2. Type de conducteur PROFINET.
-3. Liste d'E/S (f60 à f62) : seulement après validation de Julien.
-4. f21 « borniers sur la page alims » : en pause (Julien, 02/11).
+1. Q22 / Q23 : fusible en amont des contacts du KA1, Z1 → I1.5 (si Julien valide).
+2. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien.
+3. Type de conducteur PROFINET.
+4. Liste d'E/S (f60 à f62) : seulement après validation de Julien.
+5. f21 « borniers sur la page alims » : en pause (Julien, 02/11).

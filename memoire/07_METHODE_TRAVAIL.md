@@ -17,6 +17,7 @@
 | `outils/` | Scripts Python, librairie de symboles reconstruite |
 | `schema/generes/release/` | **la dernière version seule** : `TTK_AAAA-MM-JJ_vN.xrs` + `_verification.md` + `_nomenclature.csv` |
 | `schema/generes/old/` | toutes les versions précédentes (on y déplace l'ancienne release avec `git mv` à chaque nouvelle version) |
+| attention | **Julien ouvre la release directement dans WinRelais, qui la réenregistre.** Avant le `git mv`, faire `git status` : si la release est modifiée, la copier dans `schema/recus/AAAA-MM-JJ_vN_ouverte_WinRelais.xrs`, la comparer à la version générée (section par section), puis `git checkout` la version générée (constaté le 02/11 sur la v12). |
 | `schema/recus/` | .xrs renvoyés par Julien, datés |
 | `livrables/` | Classeur Excel de Julien (non modifié par script), CSV, macros |
 

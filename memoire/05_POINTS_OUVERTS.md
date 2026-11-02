@@ -6,7 +6,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q8 | Retours sur la v12 (Julien la regarde dans WinRelais depuis le 02/11 au soir) | en attente |
+| Q8 | Retours sur la v13 | en attente |
 | Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
@@ -18,10 +18,16 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q17 | Plan de folios et repérage des bornes | réglé le 02/11 : appliqué en v12 (1 seul point dans le repère) |
 | Q18 | Prise de service X14 → XD1 | réglé le 02/11 : oui |
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
-| Q20 | f32 : Julien a écrit « 2G1 blindé » sur le câble du frein ; la décision du 26/10 dit 2G1,5 (gardé) | à confirmer |
+| Q20 | Câbles M1 / M2 | réglé le 02/11 : frein 2G1,5, sonde TF 2x0,75 blindé |
+| Q21 | v12 retouchée dans WinRelais (archivée `schema/recus/2026-11-02_v12_ouverte_WinRelais.xrs`) : R1 décalé de 2000 à gauche au f31 (pas au f32), étiquette « Distribution » du f10 et texte « AI1 à AI7 » du f63 déplacés | à reprendre dans le script ? |
+| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | proposition : en ajouter un |
+| Q23 | f40, Z1 (diagnostic) non câblée ; I1.5 prévue | proposition : Z1 → I1.5, décodage des trames à confirmer sur S7 |
+| Q24 | B2 (capot) : la base XPSUAF dit « magnétique non codé », le matériel retenu est l'ifm MN508S codé | lequel ? |
 
 ## Sécurité
-1. Sortie de diagnostic statique du XPSUAF13AP : borne à lire sur la notice, à ajouter au symbole, puis câbler sur I1.5. B2 et Z1 non raccordées : à confirmer.
+1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 à valider (Q23). B2 raccordée au 0 V en v13.
+1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A en parallèle à lire (SEW).
+1 ter. Capot à deux technologies (B1 mécanique voie 1, B2 magnétique voie 2) : écart d'ouverture > 200 ms = alerte (R-16), à essayer au banc.
 2. Charge de la sortie 13-14 (3 bobines LC1D09BD) à comparer aux 3 A en DC-13 de la notice.
 3. Antiparasites des bobines LC1D09BD : pas de diode simple sur KF1 / KF2 (retard de serrage des freins) ; varistance ou RC. Module intégré ?
 4. Sélecteur Eaton : photo de la plaque (numérotation réelle) ; recouvrement Auto / Manu à la continuité ; courant minimal des contacts sous 24 V.
@@ -33,7 +39,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW).
 9. Bornes X6 (STO) et X10 (TF) du MCX91A (notice SEW).
 10. Nombre de mises sous tension par heure du MCX91A (KM1 / KM2 ne servent pas d'arrêt de service).
-11. Câbles frein 2G1,5 et TF 2G1 blindé : à commander, longueurs à définir.
+11. Câbles frein 2G1,5 et TF 2x0,75 blindé : à commander, longueurs à définir. Câbles pas-à-pas W9 / W10 (4 conducteurs blindés) : section et longueur à définir.
 
 ## Très basse tension
 12. DC-1 du LC1D09BD sous 48 V (KA2).

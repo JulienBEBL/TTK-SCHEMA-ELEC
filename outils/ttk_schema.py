@@ -66,7 +66,7 @@ RENOMME = {
     "T322": "U3", "T323": "U4", "M321": "M3", "M322": "M4",
     "K401": "KA1", "S411": "S1", "S412": "S2", "S413": "S3", "S414": "S4", "B411": "B1", "B412": "B2",
     "K501": "K1", "B501": "B3", "B502": "B4", "B503": "B5", "B504": "B6", "P511": "H1", "P512": "H3", "P513": "H4",
-    "K521": "K2", "K531": "K3", "B531": "B7", "W531": "W8", "K541": "K4", "P601": "P1",
+    "K521": "K2", "K531": "K3", "B531": "B7", "W531": "W8", "W321": "W9", "W322": "W10", "K541": "K4", "P601": "P1",
     "X701": "X70", "X711": "X71",
 }
 # Bornes (02/11) : X + n° du folio où elles sont dessinées + « . » + n° de borne, une dizaine par fonction
@@ -472,7 +472,7 @@ for a, b, t in ((("N", 1), ("N", 0), "N"), ("2/T1", "1", "L"), ("4/T2", "3", "L"
 # sorties de -QF1 : renvois directs vers le bus 400 V (f12), sans répartiteur dessiné (29/10)
 ends10 = {pin: W(f, [q102[pin], (q102[pin].x, 15200)], "N" if pin == ("N", 1) else "L")
           for pin in (("N", 1), "2", "4", "6")}
-etiquette(f, [q102[p_].x for p_ in (("N", 1), "2", "4", "6")], 17000, "Distribution (f12)", 260)
+etiquette(f, [q102[p_].x for p_ in (("N", 1), "2", "4", "6")], 17000, "Distribution (f12, N : f13)", 260)
 # terre : PE dans le faisceau (option A), puis une dérivation courte par appareil (renvois posés à la fin)
 PE10 = W(f, [B["X101.VJ"]["2"], (4400, 4400), (3600, 4400), (3600, 18000)], "PE")   # peigne en bas, renvois à droite
 # variante USA : déplacée à gauche par Julien dans WinRelais (v7 du 29/10), reprise ici
@@ -500,13 +500,13 @@ q124 = maitre(C + "Schneider_A9F74202_iC60N_2P_2A_C.xsy", "Q124", f, 24000, 3600
 q422p = contacteur(poles, "Q422", f, 23200, 8400 + DY12)
 # bus tétra L1 L2 L3 N : renvois depuis -QF1 (f10) à gauche, vers le bus 230 V (f13) à droite ;
 # chaque appareil se pique sur les phases qu'il utilise
-BUS12 = {"L1": 2400, "L2": 3200, "L3": 4000, "N": 4800}
+BUS12 = {"L1": 2400, "L2": 3200, "L3": 4000}      # N retiré le 02/11 : rien ne s'y pique, il part de QF1 vers f13
 for q, pins in ((q121, (("1/L1", "L1"), ("3/L2", "L2"), ("5/L3", "L3"))), (q122, (("1/L1", "L1"), ("3/L2", "L2"), ("5/L3", "L3"))),
                 (q123, (("1", "L1"), ("3", "L2"))), (q124, (("1", "L1"), ("3", "L3")))):
     for p, ph in pins:
         W(f, [(q[p].x, BUS12[ph]), q[p]], "L")
 for ph, y in BUS12.items():
-    W(f, [(XL, y), (XR, y)], "N" if ph == "N" else "L")
+    W(f, [(XL, y), (XR, y)], "L")
 for q, k in ((q121, km1p), (q122, km2p)):
     for a, b in (("2/T1", "1/L1"), ("4/T2", "3/L2"), ("6/T3", "5/L3")):
         W(f, [q[a], k[b]], "L")
@@ -523,8 +523,8 @@ for k in (q421p, q422p):
 for k, pins, t in ((km1p, ("2/T1", "4/T2", "6/T3"), "VARIATEUR 1"), (km2p, ("2/T1", "4/T2", "6/T3"), "VARIATEUR 2"),
                    (q421p, ("4/T2", "6/T3"), "FREIN M201"), (q422p, ("4/T2", "6/T3"), "FREIN M211")):
     etiquette(f, [k[p_].x for p_ in pins], 13600 + DY12, t)
-for q102pin, ph in ((("N", 1), "N"), ("2", "L1"), ("4", "L2"), ("6", "L3")):
-    renvoi("10", ends10[q102pin], "12", (XL, BUS12[ph]), "N" if ph == "N" else "L")
+for q102pin, ph in (("2", "L1"), ("4", "L2"), ("6", "L3")):
+    renvoi("10", ends10[q102pin], "12", (XL, BUS12[ph]), "L")
 
 # ======================================================================== 13 DISTRIBUTION 230 V - ALIMENTATIONS
 # bus L1 L2 L3 N depuis f12 ; -QF4 / -QF5 -> -T1 / -T2 (24 V, ancien f30 fondu ici le 29/10) ;
@@ -550,7 +550,10 @@ W(f, [h2["X2"], (21600, 8000), (20800, 8000), (20800, BUS13["N"])], "N")
 fin13 = {"L1": q133["1"].x, "L2": q134["3"].x, "L3": XR, "N": XR}
 for ph, y in BUS13.items():
     W(f, [(XL, y), (fin13[ph], y)], "N" if ph == "N" else "L")
-    renvoi("12", (XR, BUS12[ph]), f, (XL, y), "N" if ph == "N" else "L")
+    if ph == "N":
+        renvoi("10", ends10[("N", 1)], f, (XL, y), "N")
+    else:
+        renvoi("12", (XR, BUS12[ph]), f, (XL, y), "L")
 # alimentations 24 V sous leur disjoncteur, fils allongés (29/10)
 alim = C + "RSPRO_284-0491_alim_24V_240W.xsy"
 t301 = maitre(alim, "T301", f, 4000, 10400)
@@ -567,7 +570,7 @@ PE_DEST.append((f, W(f, [t321["PE"], (t321["PE"].x, 12400)], "PE")))
 # bornes de sortie de droite à gauche : +V (U4), +V (U3), -V (U4), -V (U3) ; chaque fil descend un cran plus bas
 d48 = {}
 for (pin, k), cle, y in ((("+V", 0), "+U4", 12400), (("+V", 1), "+U3", 13200), (("-V", 1), "-U4", 14000), (("-V", 0), "-U3", 14800)):
-    d48[cle] = W(f, [t321[(pin, k)], (t321[(pin, k)].x, y), (XR, y)], "DC" if cle[0] == "+" else "0V")
+    d48[cle] = W(f, [t321[(pin, k)], (t321[(pin, k)].x, y), (XR, y)], "PDC")
     texte(f, 22400, y - 400, ("+48 V" if cle[0] == "+" else "0 V 48") + " -> -" + {"U3": "T322", "U4": "T323"}[cle[1:]], 220)
 # sorties vers la distribution (f31) : 24VELEC (-T302), 24VSEC (-T301), 0 V commun (sous les départs 48 V)
 s24 = W(f, [t302[("+V", 0)], (t302[("+V", 0)].x, 15600), (XR, 15600)], "24")
@@ -634,7 +637,7 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     T = maitre(mcx, t, f, 4000, 5200, wrap=34)
     R = maitre(res, r, f, 10400, 8800, shown=(2,), wrap=22)
     # symbole modifié par Julien le 02/11 : moteur, sonde TF, frein BE5 dans un même cadre, origine sur U1
-    M = maitre(mot, m, f, 4800, 15200, fpos=(10800, 0), wrap=36)   # textes à droite du symbole
+    M = maitre(mot, m, f, 4800, 15200, fpos=(10800, 0), wrap=36, noms=False)   # textes à droite du symbole
     YC = 14000                                                     # ligne des 3 câbles moteur
     # bornier armoire -> machine (02/11) : une borne par conducteur, sur une ligne, dans l'axe des broches du moteur
     BM = {p: borne(nb, f, M[p].x, 12800) for p, nb in zip(("PE", "U1", "V1", "W1", "1b", "2b", "2", "3"), BORNES_MOT[m])}
@@ -649,18 +652,19 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [T["X2:V"], BM["V1"]["1"]], "L")
     W(f, [T["X2:W"], BM["W1"]["1"]], "L")
     g.cable(F[f], 0, 0, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [M[p].x for p in ("PE", "U1", "V1", "W1")], ovale=True)
-    W(f, [T["X2:-R"], (8000, 8400), (10400, 8400), R["1"]], "DC")
-    W(f, [T["X2:+R"], (7200, 10800), (10400, 10800), R["2"]], "DC")
-    # frein (2G1,5) et sonde TF (2G1 blindé) : câbles séparés, par le bornier (02/11)
-    # frein : borne de la broche 2 reprise au-dessus, borne de la broche 3 sortie à droite (sans croisement)
-    renvoi("12", out12[(qf, "4/T2")], f, W(f, [BM["2"]["1"], (M["2"].x, 12000), (13600, 12000)], "L"), "L")
-    renvoi("12", out12[(qf, "6/T3")], f, W(f, [BM["3"]["1"], (13600, 12800)], "L"), "L")
+    W(f, [T["X2:-R"], (8000, 8400), (10400, 8400), R["1"]], "PDC")
+    W(f, [T["X2:+R"], (7200, 10800), (10400, 10800), R["2"]], "PDC")
+    # frein (2G1,5) et sonde TF (2 x 0,75 blindé, Julien 02/11) : câbles séparés, par le bornier (02/11)
+    # frein (02/11) : les 2 fils remontent avant de partir à droite (plus de fil ni de renvoi sur le repère de la borne) ;
+    # broche 2 au-dessus de la broche 3, renvois décalés en x (pas de recouvrement des flèches)
+    renvoi("12", out12[(qf, "4/T2")], f, W(f, [BM["2"]["1"], (M["2"].x, 12000), (16800, 12000)], "L"), "L")
+    renvoi("12", out12[(qf, "6/T3")], f, W(f, [BM["3"]["1"], (M["3"].x, 12400), (14400, 12400)], "L"), "L")
     # sonde TF : remonte à droite du variateur vers X10 (1b -> X10:1 impose un croisement)
     W(f, [BM["1b"]["1"], (M["1b"].x, 11600), (21600, 11600), (21600, 3600), (11600, 3600), T["X10:1"]], "24")
     W(f, [BM["2b"]["1"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
     VAR[(f, "PN")] = W(f, [T["X40"], (13600, 4800), (16000, 4800)], "PN")
-    g.cable(F[f], 0, 0, YC, w3, "2G1 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True)
-    g.cable(F[f], 0, 0, YC, w2, "2G1,5", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True)
+    g.cable(F[f], 0, 0, YC, w3, "2x0,75 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True, compo_droite=200)
+    g.cable(F[f], 0, 0, YC, w2, "2G1,5", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True, compo_droite=400)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
@@ -719,24 +723,28 @@ W(f, [p512["X2"], (20800, 6400), (20000, 6400), (20000, RAIL0_Y)], "0V")
 f = "32"
 REP["Q423"]["des"] = "Contacteur auxiliaire : coupure du +48 V des drivers"
 q423p = contacteur(poles, "Q423", f, 5200, 5600)
-A48 = {"-U4": W(f, [(XL, 2800), (24000, 2800)], "0V"),
-       "+U4": W(f, [(XL, 3600), (q423p["3/L2"].x, 3600), q423p["3/L2"]], "DC"),
-       "+U3": W(f, [(XL, 4400), (q423p["1/L1"].x, 4400), q423p["1/L1"]], "DC")}
+A48 = {"-U4": W(f, [(XL, 2800), (24000, 2800)], "PDC"),
+       "+U4": W(f, [(XL, 3600), (q423p["3/L2"].x, 3600), q423p["3/L2"]], "PDC"),
+       "+U3": W(f, [(XL, 4400), (q423p["1/L1"].x, 4400), q423p["1/L1"]], "PDC")}
 for cle in ("-U4", "+U4", "+U3"):
-    renvoi("13", d48[cle], f, (XL, {"-U4": 2800, "+U4": 3600, "+U3": 4400}[cle]), "DC" if cle[0] == "+" else "0V")
+    renvoi("13", d48[cle], f, (XL, {"-U4": 2800, "+U4": 3600, "+U3": 4400}[cle]), "PDC")
 drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
 CMD32, DRV = {}, {}
 for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
-    D = maitre(drv, T, f, x0, 11600, fpos=(2600, 0), wrap=22, noms=False)
+    # drivers remontés de 1600 le 02/11 : place pour les fils driver -> bornier et pour le câble blindé bornier -> moteur
+    D = maitre(drv, T, f, x0, 10000, fpos=(2600, 0), wrap=22, noms=False)
     Mo = maitre(mpp, Mrep, f, x0 - 800, 17200, noms=False)
     DRV[T] = D
     # moteurs hors armoire (02/11) : bornier entre driver et moteur ; broches à 400 -> bornes sur 2 niveaux
     for p, nb in zip(("A+", "A-", "B+", "B-"), BORNES_MOT[Mrep]):
         haut = p.endswith("+")
-        b = borne(nb, f, D[p].x, 15200 if haut else 16000, fpos=(-600, -250) if haut else (100, -250))
-        W(f, [D[p], b["1"]], "DC")
-        W(f, [b["2"], Mo[p]], "DC")
+        b = borne(nb, f, D[p].x, 13200 if haut else 14000, fpos=(-600, -250) if haut else (100, -250))
+        W(f, [D[p], b["1"]], "PDC")
+        W(f, [b["2"], Mo[p]], "PDC")
+    # un câble blindé par moteur, du bornier au moteur (Julien 02/11) ; section à définir
+    g.cable(F[f], 0, 0, 15200, {"M321": "W321", "M322": "W322"}[Mrep], "4 cond. blindé",
+            f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")], ovale=True)
     xin, xbus = x0 - 4000, x0 - 3200
     for s in ("PUL", "DIR", "ENA"):
         CMD32[(T, s)] = W(f, [D[s + "+"], (xin, D[s + "+"].y)], "24")
@@ -745,11 +753,11 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
 renvoi("31", d31["0V32a"], f, CMD32[("T322", "0V")], "0V")
 renvoi("31", d31["0V32b"], f, CMD32[("T323", "0V")], "0V")
 # un fil par driver : les fils de -U4 passent au-dessus de ceux de -U3 (un seul croisement, 0 V 48 de -U3)
-W(f, [q423p["4/T2"], (q423p["4/T2"].x, 8400), (DRV["T323"]["+V"].x, 8400), DRV["T323"]["+V"]], "DC")
-W(f, [q423p["2/T1"], (q423p["2/T1"].x, 9200), (DRV["T322"]["+V"].x, 9200), DRV["T322"]["+V"]], "DC")
-W(f, [(24000, 2800), DRV["T323"]["-V"]], "0V")
-renvoi("13", d48["-U3"], f, (XL, 10000), "0V")
-W(f, [(XL, 10000), (DRV["T322"]["-V"].x, 10000), DRV["T322"]["-V"]], "0V")
+W(f, [q423p["4/T2"], (q423p["4/T2"].x, 8000), (DRV["T323"]["+V"].x, 8000), DRV["T323"]["+V"]], "PDC")
+W(f, [q423p["2/T1"], (q423p["2/T1"].x, 8400), (DRV["T322"]["+V"].x, 8400), DRV["T322"]["+V"]], "PDC")
+W(f, [(24000, 2800), DRV["T323"]["-V"]], "PDC")
+renvoi("13", d48["-U3"], f, (XL, 8800), "PDC")
+W(f, [(XL, 8800), (DRV["T322"]["-V"].x, 8800), DRV["T322"]["-V"]], "PDC")
 
 # ======================================================================== 40 RELAIS DE SECURITE
 f = "40"
@@ -1030,10 +1038,10 @@ b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, 6800, 7200, pref
 # 02/11 : 2 bornes pour thermocouple (référence à définir, pas encore achetée), entre le câble W8 et -K3
 REP["X701.41"] = REP["X701.42"] = {"des": "Borne pour thermocouple type K (à définir)", "fab": "", "carac": "", "loc": "+A1"}
 bt1, bt2 = borne("X701.41", f, 6000, 9600), borne("X701.42", f, 8400, 9600)
-W(f, [b531["1"], (6800, 6400), (6000, 6400), bt1["1"]], "DC")
-W(f, [bt1["2"], (6000, 10400), (6800, 10400), k531["AI0+"]], "DC")
-W(f, [b531["2"], (7600, 6400), (8400, 6400), bt2["1"]], "DC")
-W(f, [bt2["2"], (8400, 10400), (7600, 10400), k531["AI0-"]], "DC")
+W(f, [b531["1"], (6800, 6400), (6000, 6400), bt1["1"]], "TC")
+W(f, [bt1["2"], (6000, 10400), (6800, 10400), k531["AI0+"]], "TC")
+W(f, [b531["2"], (7600, 6400), (8400, 6400), bt2["1"]], "TC")
+W(f, [bt2["2"], (8400, 10400), (7600, 10400), k531["AI0-"]], "TC")
 g.cable(F[f], 5800, 8800, 8800, "W531", "compensation type K", "", [6000, 8400])
 texte(f, 9000, 9700, "Bornes thermocouple : type à définir", 200)
 texte(f, 10400, 10400, "AI1 à AI7 : réserve", 200)
@@ -1084,6 +1092,8 @@ for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par Wi
 
 # ======================================================================== spécification des liaisons
 MEMES = [
+    # B2 du relais de sécurité au 0 V commun (R-02, 02/11)
+    ["K401:B2", "K401:A2", "X312:1"],
     # chaîne d'arrêt d'urgence et capots (deux voies), pontage Manu par -S413
     ["K401:S11", "S411:1"], ["S411:2", "X711.1:1"], ["X711.1:2", "S412:1"], ["S412:2", "X711.2:1"],
     ["X711.2:2", "X701.1:1", "X711.13:1"], ["X701.1:2", "B411:11"], ["B411:12", "X701.2:1"],
@@ -1311,6 +1321,9 @@ for num_, dy_ in (("40", 800), ("42", 1200), ("50", 800)):
 f = "40"
 W(f, [k401["A1"], (k401["A1"].x, RAIL24_Y)], "24")
 W(f, [k401["A2"], (k401["A2"].x, k401["A2"].y + 400), (3600, k401["A2"].y + 400), (3600, RAIL0_Y)], "0V")
+# B2 : référence 0 V des signaux, au 0 V du 24 V PELV (règle R-02, 02/11)
+W(f, [k401["B2"], (k401["B2"].x, k401["B2"].y + 400), (k401["A2"].x, k401["A2"].y + 400)], "0V")
+texte(f, 4000, k401["A2"].y + 1200, "Réglage -KA1 : FUNCTION 1, START 3", 200)
 f = "42"
 ybas = max(k["A2"].y for k in COIL.values()) + 800          # collecteur 0 V sous les bobines, remonté à gauche
 for k in COIL.values():

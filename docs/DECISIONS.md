@@ -160,3 +160,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f70 : groupes de bornes avec leur repère ; f71 : à jour.
 - [D] Rangement : schema/generes/release (dernière version) et schema/generes/old (précédentes).
 - [H] Câbles numérotés de gauche à droite (moteur, TF, frein) comme dans le fichier de Julien. [?] Composition du frein : 2G1,5 gardé (Julien a écrit 2G1 blindé).
+
+## 02/11/2026 (nuit) : v13
+- [D] f11 : neutre retiré du bus (rien ne s'y pique).
+- [D] Couleurs des fils vérifiées par l'assistant à la demande de Julien. [C] IEC 60204-1 13.2.4 : noir puissance CA et CC, rouge commande CA, bleu commande CC, orange circuits exceptés, bleu clair neutre. Appliqué : plus d'orange (aucun circuit excepté) ; 48 V, pas-à-pas, résistance de freinage en noir ; thermocouple vert (IEC 60584-3).
+- [D] f20 : drivers remontés ; un câble blindé (au minimum) du bornier à chaque moteur pas-à-pas.
+- [D] f31 / f32 : noms de broches du bloc moteur masqués ; câble sonde TF 2x0,75 blindé ; superposition des fils du frein corrigée. Frein : 2G1,5 confirmé (Q20 réglé).
+- [D] f40 : B2 du relais au 0 V (R-02). [C] Réglage FUNCTION 1, START 3 validé au banc par Julien.
+- [?] Propositions f40 : fusible gG ≤ 10 A en amont des contacts (R-33), Z1 → I1.5, capteur magnétique codé ou non (Q22 à Q24).

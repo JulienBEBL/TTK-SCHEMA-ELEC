@@ -37,9 +37,23 @@ Le sommaire (f02) est généré à partir de cette liste : Julien veut qu'il soi
 8. Arrivée réseau : texte « ARRIVEE RESEAU ... » **dans un cadre** (29/10, f10). Fils de la chaîne X11 → QS1 → QF1 → renvois **longs** (numérotation future) ; peigne de terre en bas, renvois à droite de la chaîne, flèches vers le haut (02/11).
 8 bis. **Barres 24 V / 0 V seulement sur les folios qui s'y piquent** (02/11 : retirées du f41).
 
+## Couleurs des conducteurs (02/11, IEC 60204-1 13.2.4, vérifiées à la demande de Julien)
+| Fonction | Fil réel | Type dans le script (couleur affichée) |
+|---|---|---|
+| Puissance CA 400 / 230 V (phases, frein) | noir | `L` Puissance (noir) |
+| Neutre | bleu clair (réservé au neutre) | `N` (bleu clair) |
+| Terre | vert-jaune | `PE` |
+| Puissance CC : 48 V drivers (+ et -), phases pas-à-pas, résistance de freinage | noir | `PDC` Autre tension DC (noir) |
+| Commande CC +24 V (sécurité, STO, sonde TF, E/S) | bleu foncé | `24` Commande 24VDC (bleu foncé) |
+| 0 V commande | bleu foncé / blanc (usage courant) | `0V` (bleu) |
+| Thermocouple type K | vert (+) / blanc (-) (IEC 60584-3) | `TC` (vert) |
+| PROFINET | câble vert | `PN` (vert) |
+
+Orange = circuits exceptés (encore sous tension QS1 ouvert) : **aucun sur TTK**, donc plus d'orange (avant v13 : 48 V, résistance, thermocouple en orange). Rouge = commande en alternatif : aucune.
+
 ## Composants
 9. Affichage : **fonction + caractéristiques** seulement. Marque et référence (champ 3) **masquées** sur tous les composants sauf les borniers (29/10) ; la donnée reste dans le symbole (nomenclature). Fait dans `_place_ren` (`shown=(2, 4)` par défaut).
-9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. **Règle de Julien (02/11) : on ne masque pas par principe, cas par cas quand il le demande.** Masqués : TR1 (f10), U3, U4, M3, M4 (f20).
+9 bis. **Noms de broches** (30/10) : case WinRelais = champ 5 de la 2e ligne de `Autre` du symbole (1 = affichés, 0 = masqués). Dans le script : `noms=True / False` à la pose. **Règle de Julien (02/11) : on ne masque pas par principe, cas par cas quand il le demande.** Masqués : TR1 (f10), U3, U4, M3, M4 (f20), M1, M2 (f31, f32, demande du 02/11).
 10. Repérage : lettres de fonction + n° d'ordre, sens de l'énergie (28/10, `docs/NOMMAGE_2026-10-28.md`). Maître = référence fabricant ; esclaves = même repère, sans référence. Contacteur utilisé comme relais / contacteur auxiliaire = **KA** (KA2, 29/10), même si la référence est celle d'un contacteur moteur.
 
 ## Synoptique (f03, 02/11)

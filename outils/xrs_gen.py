@@ -34,6 +34,11 @@ TYPES = {
     "DC": ("1·20·4227327·0·Autre tension DC·0·0·0·0·0·", 20, 4227327),
     # PROFINET : type « Autre tension DC » affiché en vert, en attendant un type de conducteur dédié dans WinRelais
     "PN": ("1·20·32768·0·Autre tension DC·0·0·0·0·0·", 20, 32768),
+    # 02/11 (IEC 60204-1 13.2.4) : puissance en continu (48 V drivers, phases pas-à-pas, résistance de freinage) en noir ;
+    # l'orange est réservé aux circuits exceptés (sous tension après QS1 ouvert), il n'y en a pas sur TTK
+    "PDC": ("1·30·0·0·Autre tension DC·0·0·0·0·0·", 30, 0),
+    # thermocouple type K (IEC 60584-3 : + vert, - blanc), affiché en vert
+    "TC": ("1·20·32768·0·Autre tension DC·0·0·0·0·0·", 20, 32768),
 }
 
 
@@ -371,21 +376,26 @@ class Gen:
                                bold=1 if (entete and r == 0) else 0)
                 cx += c
 
-    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False):
+    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_droite=False):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
-        à gauche, composition dessous à gauche, désignation gardée mais masquée."""
+        à gauche, composition dessous à gauche, désignation gardée mais masquée.
+        compo_droite=dx : composition sous le trait, à dx à droite du dernier brin (pas de place à gauche)."""
         if ovale:
-            x1, x2, etiq, size = brins_x[0], brins_x[-1], "ovale", 300
+            x1, x2, etiq, size = brins_x[0], brins_x[-1], f"ovale-d{compo_droite}" if compo_droite else "ovale", 300
         self.cables.append((folio, x1, x2, y, rep, compo, desig, brins_x, etiq, size))
 
     def cable_textes(self, c):
         """[(texte, x, y, taille)] des 3 textes d'un câble, tels qu'écrits dans le fichier."""
         f, x1, x2, y, rep, compo, desig, brins, etiq, size = c
-        if etiq == "ovale":
+        if isinstance(etiq, str):
             w = int(len(rep) * size * 0.55)
-            return [(rep, x1 - 600 - w // 2, y - 150, size), (compo, x1 - 2000, y + 400, size), ("", x1, y + 700, size)]
+            # composition sous l'ovale, arrêtée avant le 1er brin (texte long : décalée à gauche, 02/11)
+            cx = min(x1 - 2000, (x1 - 300 - int(len(compo) * size * 0.55)) // 100 * 100)
+            if etiq.startswith("ovale-d"):
+                cx = x2 + int(etiq[7:])
+            return [(rep, x1 - 600 - w // 2, y - 150, size), (compo, cx, y + 400, size), ("", x1, y + 700, size)]
         if etiq:
             ex, ey = etiq
             return [(rep, ex, ey, size), (compo, ex, ey + size + 100, size), (desig, ex, ey + 2 * (size + 100), size)]
@@ -604,7 +614,7 @@ class Gen:
                 L.append("\u00a4#Autre\u00a4")
                 L.append(SEP.join(map(str, (f, x1, y, x2, y, 0, 0, 0, 0))) + SEP)
                 L.append("0\u00b740\u00b70\u00b70\u00b71\u00b716777215\u00b7")
-                ov = etiq == "ovale"
+                ov = isinstance(etiq, str)
                 L.append(f"802\u00b7500\u00b7{3 if ov else len(brins)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
                 L.append("4\u00b70\u00b7400\u00b7400\u00b7400\u00b7400\u00b70\u00b7")
                 if ov:

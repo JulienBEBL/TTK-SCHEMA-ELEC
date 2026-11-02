@@ -4,14 +4,14 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
 
 ## Puissance
 - W1 → X11 → QS1 → QF1 (f10). Les sorties de QF1 partent en **renvois directs** vers le bus 400 V (f11). Le répartiteur X12 et la barrette de terre X13 existent dans l'armoire mais **ne sont plus dessinés** [D 29/10].
-- **Bus tétra L1 L2 L3 N** en haut des folios, enchaîné par renvois : f10 (QF1) → f11 → f12 → f13 (L3 et N seulement).
+- **Bus** en haut des folios, enchaîné par renvois : f10 (QF1) → f11 (L1 L2 L3, **sans N** depuis le 02/11 : rien ne s'y pique) → f12 (L1 L2 L3 N ; le N vient directement de QF1 au f10) → f13 (L3 et N seulement).
 - **f11 (400 V)** : piquages QM1 / QM2 (L1 L2 L3) → KM1 / KM2 → U1 / U2 ; QF2 (L1 L2) / QF3 (L1 L3) → KF1 / KF2 → freins (alimentés côté CA, indépendamment du variateur).
 - **f12 (230 V alimentations, anciens f13 + f30 internes)** : QF4 (L1+N) → T1, QF5 (L1+N) → T2 ; QF6 (L2+N) → T3 48 V (4 départs vers f20) ; voyant H2 (L3+N). Sorties 24VELEC, 24VSEC, 0 V commun → renvois vers f21 ; liaison PELV X12.11.
 - **f13 (230 V services)** : QF8 → EL1 / EL2 (l'une sous l'autre) ; QF7 → EV1 / EV2 (l'un sous l'autre, N contourne à gauche, L à droite : 0 croisement) ; QF9 → QF10 → X14 dans l'axe.
 - Phases : 24 V = L1, 48 V = L2, 230 V auxiliaires et voyant = L3 (visible par les piquages du bus et les numéros de fil).
 - **Terre (règle C partout, 29/10)** : chaque appareil a un fil PE court + renvoi vers la terre de l'arrivée (f10). Au f10, le PE de X11 descend dans le faisceau puis se divise en un départ par appareil (T1, T2, X36.1, X14, T3, U1 X1, U2 X1, P1 FE, K1 FE). Moteur : PE → X2 PE du variateur (f31 / f32), sans renvoi.
 - Parafoudre **supprimé** [D 28/10].
-- Moteurs, freins et TF **via un bornier** [D 28/10, redemandé le 02/11] : fait en v11 aux f31 / f32 (8 bornes par moteur : PE, U, V, W, 1b, 2b, 2, 3) et au f20 (4 bornes par moteur pas-à-pas), repérées X31.1x à X31.3x, X32.1x à X32.3x, X20.1x / X20.2x (règle du 02/11). Thermocouple B7 : 2 bornes X63.11 / X63.12, type à définir (pas encore acheté). Symbole moteur SEW modifié par Julien le 02/11 (moteur + sonde TF + frein BE5 dans un cadre, broches PE U1 V1 W1 1b 2b 2 3).
+- Moteurs, freins et TF **via un bornier** [D 28/10, redemandé le 02/11] : fait en v11 aux f31 / f32 (8 bornes par moteur : PE, U, V, W, 1b, 2b, 2, 3) et au f20 (4 bornes par moteur pas-à-pas), repérées X31.1x à X31.3x, X32.1x à X32.3x, X20.1x / X20.2x (règle du 02/11). Thermocouple B7 : 2 bornes X63.11 / X63.12, type à définir (pas encore acheté). Symbole moteur SEW modifié par Julien le 02/11 (moteur + sonde TF + frein BE5 dans un cadre, broches PE U1 V1 W1 1b 2b 2 3), noms de broches masqués (v13). Câbles : moteur 4G2,5 blindé, sonde TF **2x0,75 blindé** [D 02/11], frein 2G1,5. Pas-à-pas : **un câble blindé par moteur** du bornier au moteur (W9 / W10, 4 conducteurs, section à définir) [D 02/11].
 
 ## 24 V : deux alimentations, 0 V commun
 | 24VELEC (T2, bornier X31) | 24VSEC (T1, bornier X33) |
@@ -41,6 +41,7 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
   - Voie 1 : S11 → S1 NF1 → X71.1 → S2 NF1 → X71.2 → [X70.1 → B1 → X70.2] // [X71.13 → Manu-A → X71.14] → S12.
   - Voie 2 : idem NF2, [X70.5 → B2 (1 NO) → X70.6] // [X71.15 → Manu-B → X71.16] → S22.
   - Un contact Manu par voie, jamais commun.
+- **B2 du KA1 au 0 V commun** (règle R-02 de la base XPSUAF13AP, fait en v13). Réglage FUNCTION 1, START 3 (validé au banc le 02/11), écrit au f40. Base de connaissances du relais : `docs/references/XPSUAF13AP_base_connaissances_cablage.md` (règles R-xx à respecter).
 - **Sorties (f42)** : 13-14 freins + 48 V (Manu-D) ; 23-24 Auto-A → KM1 / KM2 (pas d'ordre automate, option A) ; 33-34 Auto-B → STO des 2 MCX91A en parallèle (validé SEW).
 - **L'automate ne commande rien en sécurité** : il reçoit seulement des états (AU, capots, mode, retours contacteurs, diagnostic KA1).
 
