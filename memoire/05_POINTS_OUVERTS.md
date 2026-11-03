@@ -25,6 +25,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q24 | Capteur de capot B2 codé ou non | **réglé le 02/11 : codé** (ifm MN508S). La base XPSUAF (§14.1, « non codé ») est fausse sur ce point |
 | Q25 | Contacts des AU S1 / S2 : Julien pense « 3 NF » ; le schéma et la base XPSUAF disent 2 NF + 1 NO | à confirmer sur la commande (ZBE101 = NO, ZBE102 = NF) |
 | Q26 | W10 : brins « 1-2-3-3 » vus dans WinRelais après déplacement du câble à la main ; le fichier généré porte 1-2-3-4 | à revoir à l'ouverture de la v15 |
+| Q27 | Clôture des achats : manques, décisions et contrôles listés dans `docs/REVUE_ACHATS_2026-11-03.md` (A1 à A7, B1 à B6, C1 à C14) | en attente de Julien |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 validé (Q23), à faire. B2 raccordée au 0 V en v13.

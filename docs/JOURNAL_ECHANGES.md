@@ -148,3 +148,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - La v13 réenregistrée par Julien est archivée dans `schema/recus/` ; ses retouches (textes, tableaux f61 / f62, f41, câbles) sont relevées par comparaison et reprises.
 - Contrôle des chevauchements : largeur des textes avec la chasse Arial.
 - v15 : `schema/generes/release/TTK_2026-11-02_v15.xrs` (25 folios, 165 symboles, 642 fils, 92 renvois ; 0 problème, 0 erreur verifier, 28 attentions connues, 0 chevauchement). Pas de v14 publiée.
+
+## 03/11/2026 : revue des achats avant clôture
+- Demande de Julien : fin des commandes, plus d'achat possible ensuite. Croisement de `Sourcing_Composant_2.xlsx` avec la v15, `memoire/` et la mémoire du projet.
+- Résultat : `docs/REVUE_ACHATS_2026-11-03.md` (7 manques, 6 décisions conditionnant un achat, 14 contrôles, 9 incohérences, 9 risques). Q27 ouverte. Aucune modification du schéma.

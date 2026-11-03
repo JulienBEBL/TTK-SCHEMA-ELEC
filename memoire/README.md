@@ -26,4 +26,4 @@ Point d'entrée unique pour reprendre le projet sans relire tout l'historique.
 
 `CLAUDE.md` (racine du dépôt) renvoie ici : un nouveau chat Claude Code le lit au démarrage.
 
-Dernière mise à jour : 02/11/2026 nuit (v15).
+Dernière mise à jour : 03/11/2026 (revue des achats, v15 inchangée).
