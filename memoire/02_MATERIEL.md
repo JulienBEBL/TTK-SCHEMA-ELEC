@@ -25,7 +25,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | X14 | Legrand 004280, prise 2P+T 16 A | |
 | EV1 / EV2 | IDE VF92AC, ventilateurs 230 V | |
 | EL1 / EL2 | RS PRO 194-0417, éclairage LED armoire | |
-| H2 | Voyant 230 V présence tension | piqué sur L3 + N du bus (f12), câblé en 2,5 mm² |
+| H2 | Voyant 230 V présence tension | piqué sur L3 + N du bus (f12), câblé en 2,5 mm² ; ajouté au tableau le 03/11 (référence à relever) |
 
 ## Variateurs et moteurs (f31, f32)
 | Repère | Matériel | Remarque |
@@ -35,7 +35,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
 | W3 / W6 | Frein 2G1,5, isolation ≥ 450/750 V [D 26/10] | à commander |
-| W4 / W7 | Sonde TF 2G1 blindé [D 26/10] | à commander |
+| W4 / W7 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
 
 ## Très basse tension (f12, f20, f21)
 | Repère | Matériel | Remarque |
@@ -53,7 +53,8 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | KA1 | Schneider XPSUAF13AP | cat. 0, PL d visé, démarrage surveillé par S4 |
 | S1 / S2 | AU XB5AS8442 (armoire / pupitre) | ZBE101 / ZBE102 : NO ou NF ? à vérifier |
 | S3 | Eaton T0-4-8223/E, 2 positions | **4 NO par position, 8 en tout** [C 27/10] ; Auto = position 1, Manu = position 2 ; numérotation des bornes provisoire |
-| S4 | BP lumineux bleu, réarmement | |
+| S4 | Schneider XB4BA21, BP noir 1 NO, **non lumineux** [D 03/11] | voyant Q8.3 (f61) à retirer, Q8.3 en réserve |
+| FU1 (repère à valider) | Mersen CMC101 (RS 189-5333) + cartouche FR10GG50V4 gG 4 A (RS 188-6962) [D 03/11] | R-33, amont 13 / 23 / 33 de KA1 ; à dessiner |
 | B1 | RS PRO 902-6874, interrupteur de position (capot mécanique) | |
 | B2 | ifm MN508S (RS 016-3138), capteur magnétique **codé** (confirmé par Julien le 02/11) | 2 NO + 1 NF, M12, 24 V 50 mA ; homologation sécurité et actionneur à vérifier |
 | B3 à B6 | Fins de course (NF) | symbole posé = NO, à corriger |

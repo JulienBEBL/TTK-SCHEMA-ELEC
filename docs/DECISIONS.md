@@ -187,3 +187,13 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f61 / f62 : nom du module tout près, détails empilés proprement.
 - [D] Q21 et Q23 appliqués : R1 / R2 décalées, textes f10 / f63, Z1 → I1.5.
 - [?] Contacts des AU : Julien pense 3 NF ; schéma et base XPSUAF : 2 NF + 1 NO (Q25).
+
+## 03/11/2026 : clôture des achats (revue `docs/REVUE_ACHATS_2026-11-03.md`)
+- [D] Thermocouple K, câble de compensation K, embouts 4 mm², repères 4-6 mm² : déjà au tableau (lot N, à passer à Hugo).
+- [D] Bornes de terre vert/jaune ajoutées au tableau.
+- [D] 2e lampe d'armoire : déjà commandée.
+- [D] S4 sans voyant : XB4BA21 non lumineux conservé. Voyant Q8.3 (f61) à retirer, Q8.3 en réserve.
+- [D] Voyant H2 230 V ajouté au tableau.
+- [D] Pas de connecteur type K : thermocouple « en direct depuis la sonde ». [?] Jonction câble sonde 2 m / compensation 25 m (Q28).
+- [D] R-33 (Q22) : fusible gG en amont des contacts 13 / 23 / 33. Proposé : Mersen CMC101 (RS 189-5333, 1P 10x38, 32 A, 690 V CA/CC, sans voyant) + Mersen FR10GG50V4 gG 4 A, 500 V CA / 250 V CC (RS 188-6962, paquet de 10). Calibre : charge max 0,9 A (KM1, KM2, KF1, KF2 à 5,4 W), ≤ 10 A gG (notice). À dessiner.
+- [C] LC1D09BD : bobine 5,4 W (appel et maintien), antiparasite bidirectionnel intégré, NF miroir IEC 60947-4-1 (fiche Schneider). Point antiparasites clos.

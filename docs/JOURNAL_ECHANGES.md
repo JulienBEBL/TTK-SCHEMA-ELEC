@@ -152,3 +152,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 03/11/2026 : revue des achats avant clôture
 - Demande de Julien : fin des commandes, plus d'achat possible ensuite. Croisement de `Sourcing_Composant_2.xlsx` avec la v15, `memoire/` et la mémoire du projet.
 - Résultat : `docs/REVUE_ACHATS_2026-11-03.md` (7 manques, 6 décisions conditionnant un achat, 14 contrôles, 9 incohérences, 9 risques). Q27 ouverte. Aucune modification du schéma.
+
+## 03/11/2026 (suite) : réponses de Julien sur la revue des achats
+- Réponses sur A1 à A6 (voir DECISIONS). Demande : liste à commander refaite et 2 références RS (porte-fusible + fusible) pour R-33.
+- Références vérifiées sur fr.rs-online.com et fiches Mersen / NHP ; voyant du CMC101I écarté (seuil 50 V, inopérant en 24 V CC).
+- Schéma inchangé : fusible R-33 et suppression du voyant de S4 à faire dans la prochaine version.

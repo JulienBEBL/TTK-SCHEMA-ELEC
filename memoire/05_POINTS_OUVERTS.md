@@ -20,19 +20,20 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
 | Q20 | Câbles M1 / M2 | réglé le 02/11 : frein 2G1,5, sonde TF 2x0,75 blindé |
 | Q21 | Retouches de Julien dans la v12 | réglé : reprises en v15 (R1 et R2 décalées, textes f10 et f63) |
-| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | Julien demande si c'est obligatoire. Réponse : prescription de la notice Schneider (pouvoir de coupure en court-circuit des contacts garanti avec gG ≤ 10 A) ; sans elle, un court-circuit côté charge peut souder un contact = perte de la fonction de sécurité. Décision de Julien attendue |
+| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | **réglé le 03/11 : fusible retenu.** Proposé : porte-fusible Mersen CMC101 (RS 189-5333) + cartouche Mersen FR10GG50V4 gG 4 A 10x38, 250 V CC (RS 188-6962), entre 24VSEC et le départ commun 13 / 23 / 33. À dessiner (f40 / f21) dans la prochaine version |
 | Q23 | Z1 → I1.5 | fait en v15 ; décodage des trames à confirmer dans TIA |
 | Q24 | Capteur de capot B2 codé ou non | **réglé le 02/11 : codé** (ifm MN508S). La base XPSUAF (§14.1, « non codé ») est fausse sur ce point |
 | Q25 | Contacts des AU S1 / S2 : Julien pense « 3 NF » ; le schéma et la base XPSUAF disent 2 NF + 1 NO | à confirmer sur la commande (ZBE101 = NO, ZBE102 = NF) |
 | Q26 | W10 : brins « 1-2-3-3 » vus dans WinRelais après déplacement du câble à la main ; le fichier généré porte 1-2-3-4 | à revoir à l'ouverture de la v15 |
-| Q27 | Clôture des achats : manques, décisions et contrôles listés dans `docs/REVUE_ACHATS_2026-11-03.md` (A1 à A7, B1 à B6, C1 à C14) | en attente de Julien |
+| Q27 | Clôture des achats : `docs/REVUE_ACHATS_2026-11-03.md` | 03/11 : A1, A2, A4 au tableau ; A6 déjà commandé ; A3 et A5 sans achat ; B1 fusible retenu ; B2 sans objet (antiparasite intégré). Restent : A7, B3 à B6, C1 à C14 |
+| Q28 | Thermocouple « en direct depuis la sonde » : jonction entre le câble 2 m de la sonde et le câble de compensation 25 m, comment ? | à préciser |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 validé (Q23), à faire. B2 raccordée au 0 V en v13.
 1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A en parallèle à lire (SEW).
 1 ter. Capot à deux technologies (B1 mécanique voie 1, B2 magnétique voie 2) : écart d'ouverture > 200 ms = alerte (R-16), à essayer au banc.
-2. Charge de la sortie 13-14 (3 bobines LC1D09BD) à comparer aux 3 A en DC-13 de la notice.
-3. Antiparasites des bobines LC1D09BD : pas de diode simple sur KF1 / KF2 (retard de serrage des freins) ; varistance ou RC. Module intégré ?
+2. Charge de la sortie 13-14 : 3 bobines LC1D09BD à 5,4 W = 0,68 A sous 24 V, < 3 A DC-13 [C fiche Schneider LC1D09BD, 03/11]. 23-24 : 0,45 A.
+3. Antiparasites des bobines LC1D09BD : **réglé, rien à ajouter** : « Built-in bidirectional peak limiting diode suppressor » [C fiche Schneider, 03/11].
 4. Sélecteur Eaton : photo de la plaque (numérotation réelle) ; recouvrement Auto / Manu à la continuité ; courant minimal des contacts sous 24 V.
 5. ifm MN508S : homologation sécurité (EN 60947-5-3 / ISO 14119) ; actionneur codé commandé ? ; brochage M12 8 broches ; câble M12.
 6. AU XB5AS8442 : ZBE101 / ZBE102 NO ou NF ? (Q25)
