@@ -202,3 +202,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Câble frein W3 / W6 : LIYCY-JZ 5G1,5 de réserve (AEE261168). [C] 300/500 V CA, essai 2000 V, tresse Cu étamé ≤ 65 % (fiche Achat Electrique). Remplace le 2G1,5 ≥ 450/750 V du 26/10 : aucun achat.
 - [H] Jonction sonde K / câble de compensation : paire miniature type K RS 891-9031 (fiche + prise, 220 °C, câble ≤ Ø 4 mm), hors zone > 105 °C. À valider (Q28).
 - [?] Écrou 1/2 pouce de la sonde 350-398 contre « 12/Ø8 x 20 » Microdia (Q29). 50 m de 2XSLCY-K : 1 ou 2 machines (Q30).
+
+## 03/11/2026 (suite)
+- [D] AU S1 / S2 : 2 NF + 1 NO chacun ; Julien corrige la commande (Q25 réglé). Schéma inchangé.
+- [H] Repère du fusible R-33 : FA1 (IEC 81346-2:2019, FA = protection contre les surintensités), à valider ; autre choix FU1.
+- Décisions du 03/11 à dessiner en v16 : fusible R-33, S4 sans voyant (Q8.3 en réserve), frein 5G1,5, bornes de terre vert/jaune (X10.15, X31.11, X32.11, X50.13).

@@ -20,10 +20,10 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
 | Q20 | Câbles M1 / M2 | réglé le 02/11 : frein 2G1,5, sonde TF 2x0,75 blindé |
 | Q21 | Retouches de Julien dans la v12 | réglé : reprises en v15 (R1 et R2 décalées, textes f10 et f63) |
-| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | **réglé le 03/11 : fusible retenu.** Proposé : porte-fusible Mersen CMC101 (RS 189-5333) + cartouche Mersen FR10GG50V4 gG 4 A 10x38, 250 V CC (RS 188-6962), entre 24VSEC et le départ commun 13 / 23 / 33. À dessiner (f40 / f21) dans la prochaine version |
+| Q22 | f40, règle R-33 : aucun fusible gG ≤ 10 A en amont des contacts 13 / 23 / 33 (24VSEC direct de T1, 240 W) | **réglé le 03/11 : fusible retenu.** Proposé : porte-fusible Mersen CMC101 (RS 189-5333) + cartouche Mersen FR10GG50V4 gG 4 A 10x38, 250 V CC (RS 188-6962), entre 24VSEC et le départ commun 13 / 23 / 33. À dessiner (f40 / f21) dans la prochaine version | Repère proposé par l'assistant le 03/11 : **FA1** (IEC 81346-2:2019, classe F « protection », FA = surintensité) ; autre choix : FU1 (usage français). Validation de Julien attendue |
 | Q23 | Z1 → I1.5 | fait en v15 ; décodage des trames à confirmer dans TIA |
 | Q24 | Capteur de capot B2 codé ou non | **réglé le 02/11 : codé** (ifm MN508S). La base XPSUAF (§14.1, « non codé ») est fausse sur ce point |
-| Q25 | Contacts des AU S1 / S2 : Julien pense « 3 NF » ; le schéma et la base XPSUAF disent 2 NF + 1 NO | à confirmer sur la commande (ZBE101 = NO, ZBE102 = NF) |
+| Q25 | Contacts des AU S1 / S2 | **réglé le 03/11** : Julien change la commande, **2 NF + 1 NO** par AU (XB5AS8442 + ZBE102 + ZBE101) ; schéma inchangé |
 | Q26 | W10 : brins « 1-2-3-3 » vus dans WinRelais après déplacement du câble à la main ; le fichier généré porte 1-2-3-4 | à revoir à l'ouverture de la v15 |
 | Q27 | Clôture des achats : `docs/REVUE_ACHATS_2026-11-03.md` | 03/11 : A1, A2, A4 au tableau ; A6 déjà commandé ; A3 et A5 sans achat ; B1 fusible retenu ; B2 sans objet (antiparasite intégré). Restent : A7, B3 à B6, C1 à C14 |
 | Q28 | Jonction sonde K (câble 2 m) / câble de compensation 25 m | 03/11 : proposé RS 891-9031 (paire fiche + prise miniature type K, 220 °C, câble ≤ Ø 4 mm), à placer là où l'ambiance reste < 105 °C (limite du câble 236-3959). Diamètre du 236-3959 et terminaison de la sonde 350-398 non indiqués par RS. Validation de Julien attendue |
@@ -38,7 +38,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 3. Antiparasites des bobines LC1D09BD : **réglé, rien à ajouter** : « Built-in bidirectional peak limiting diode suppressor » [C fiche Schneider, 03/11].
 4. Sélecteur Eaton : photo de la plaque (numérotation réelle) ; recouvrement Auto / Manu à la continuité ; courant minimal des contacts sous 24 V.
 5. ifm MN508S : homologation sécurité (EN 60947-5-3 / ISO 14119) ; actionneur codé commandé ? ; brochage M12 8 broches ; câble M12.
-6. AU XB5AS8442 : ZBE101 / ZBE102 NO ou NF ? (Q25)
+6. AU XB5AS8442 : 2 NF + 1 NO (ZBE102 = NF, ZBE101 = NO), réglé le 03/11 (Q25).
 7. Fins de course : symbole « NF » (11-12) à poser, le symbole actuel est un NO.
 
 ## Puissance et variateurs

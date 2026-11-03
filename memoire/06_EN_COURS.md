@@ -20,9 +20,16 @@ But de Julien (02/11) : un schéma propre (borniers, sécurité, automate) **ava
 | 61, 62 | Repère K1 / K2 tout près du module ; tableaux remontés près des modules (comme Julien) |
 | 63 | « AI1 à AI7 : réserve » placé comme Julien (v12) |
 
+## À faire en v16 (décisions du 03/11, revue des achats, attendre le feu vert de Julien)
+1. Fusible R-33 entre 24VSEC et le départ commun 13 / 23 / 33 de KA1 (f40, sur la ligne qui vient de X21.13) : Mersen CMC101 + FR10GG50V4 gG 4 A. Repère proposé FA1 (Q22).
+2. S4 non lumineux (XB4BA21) : retirer le voyant de S4 au f61, Q8.3 en réserve (f62 et tableau).
+3. Câble frein W3 / W6 : composition « 5G1,5 blindé » (LIYCY-JZ de réserve) au lieu de « 2G1,5 » (f31, f32).
+4. X10.15, X31.11, X32.11, X50.13 : bornes de terre vert/jaune (symbole de borne PE).
+5. H2 : référence à reporter quand Julien l'aura.
+
 ## À faire ensuite
 1. Q22 : fusible gG ≤ 10 A en amont des contacts du KA1 (décision de Julien).
-2. Q25 : contacts réels des AU.
+2. (Q25 réglé le 03/11 : 2 NF + 1 NO par AU.)
 3. f70 / f71 : les bornes de porte (X41.5x, X60.4x) n'y figurent pas (destination « porte ») : à ajouter si Julien le veut.
 4. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien ; type de conducteur PROFINET.
 5. Liste d'E/S (f60 à f62) : seulement après validation de Julien. Numérotation des fils : après le schéma propre.

@@ -161,3 +161,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 03/11/2026 (soir) : câble frein, raccord thermocouple
 - Julien : câble frein sur le 5G1,5 de réserve (mémorisé) ; demande un raccord RS sonde / câble de compensation ; réponse « OUI » à la question 1 ou 2 machines pour le 2XSLCY-K (ambiguë, Q30).
 - Vérifié : LIYCY-JZ 300/500 V CA ; sonde 350-398 : câble fibre de verre 2 m, écrou 1/2 pouce, terminaison non indiquée ; RS 891-9031 retenu en proposition.
+
+## 03/11/2026 : reprise après la revue des achats
+- git pull des commits du 03/11 (revue des achats, décisions). Julien : AU en 2 NF + 1 NO, il corrige la commande.
+- Repère du fusible proposé : FA1. Liste des modifications de la v16 dans `memoire/06_EN_COURS.md` ; v16 pas encore générée.
