@@ -28,7 +28,7 @@ But de Julien (02/11) : un schéma propre (borniers, sécurité, automate) **ava
 5. H2 : référence à reporter quand Julien l'aura.
 
 ## À faire ensuite
-1. Q22 : fusible gG ≤ 10 A en amont des contacts du KA1 (décision de Julien).
+1. (Q22 réglé le 03/11 : fusible retenu, à dessiner en v16.)
 2. (Q25 réglé le 03/11 : 2 NF + 1 NO par AU.)
 3. f70 / f71 : les bornes de porte (X41.5x, X60.4x) n'y figurent pas (destination « porte ») : à ajouter si Julien le veut.
 4. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien ; type de conducteur PROFINET.
