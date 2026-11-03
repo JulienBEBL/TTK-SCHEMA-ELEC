@@ -157,3 +157,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Réponses sur A1 à A6 (voir DECISIONS). Demande : liste à commander refaite et 2 références RS (porte-fusible + fusible) pour R-33.
 - Références vérifiées sur fr.rs-online.com et fiches Mersen / NHP ; voyant du CMC101I écarté (seuil 50 V, inopérant en 24 V CC).
 - Schéma inchangé : fusible R-33 et suppression du voyant de S4 à faire dans la prochaine version.
+
+## 03/11/2026 (soir) : câble frein, raccord thermocouple
+- Julien : câble frein sur le 5G1,5 de réserve (mémorisé) ; demande un raccord RS sonde / câble de compensation ; réponse « OUI » à la question 1 ou 2 machines pour le 2XSLCY-K (ambiguë, Q30).
+- Vérifié : LIYCY-JZ 300/500 V CA ; sonde 350-398 : câble fibre de verre 2 m, écrou 1/2 pouce, terminaison non indiquée ; RS 891-9031 retenu en proposition.

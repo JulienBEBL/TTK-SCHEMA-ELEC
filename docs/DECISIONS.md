@@ -197,3 +197,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Pas de connecteur type K : thermocouple « en direct depuis la sonde ». [?] Jonction câble sonde 2 m / compensation 25 m (Q28).
 - [D] R-33 (Q22) : fusible gG en amont des contacts 13 / 23 / 33. Proposé : Mersen CMC101 (RS 189-5333, 1P 10x38, 32 A, 690 V CA/CC, sans voyant) + Mersen FR10GG50V4 gG 4 A, 500 V CA / 250 V CC (RS 188-6962, paquet de 10). Calibre : charge max 0,9 A (KM1, KM2, KF1, KF2 à 5,4 W), ≤ 10 A gG (notice). À dessiner.
 - [C] LC1D09BD : bobine 5,4 W (appel et maintien), antiparasite bidirectionnel intégré, NF miroir IEC 60947-4-1 (fiche Schneider). Point antiparasites clos.
+
+## 03/11/2026 (soir)
+- [D] Câble frein W3 / W6 : LIYCY-JZ 5G1,5 de réserve (AEE261168). [C] 300/500 V CA, essai 2000 V, tresse Cu étamé ≤ 65 % (fiche Achat Electrique). Remplace le 2G1,5 ≥ 450/750 V du 26/10 : aucun achat.
+- [H] Jonction sonde K / câble de compensation : paire miniature type K RS 891-9031 (fiche + prise, 220 °C, câble ≤ Ø 4 mm), hors zone > 105 °C. À valider (Q28).
+- [?] Écrou 1/2 pouce de la sonde 350-398 contre « 12/Ø8 x 20 » Microdia (Q29). 50 m de 2XSLCY-K : 1 ou 2 machines (Q30).

@@ -34,7 +34,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW | frein BE5 400 V CA |
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
-| W3 / W6 | Frein 2G1,5, isolation ≥ 450/750 V [D 26/10] | à commander |
+| W3 / W6 | Frein : LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) [D 03/11] | 300/500 V CA [C fiche Achat Electrique] : convient au 400 V entre phases, en dessous du ≥ 450/750 V du 26/10 ; 2 conducteurs + V/J utilisés, 2 en réserve. Composition « 2G1,5 » des folios 31 / 32 à passer en 5G1,5 |
 | W4 / W7 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
 
 ## Très basse tension (f12, f20, f21)
