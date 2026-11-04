@@ -18,7 +18,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q17 | Plan de folios et repérage des bornes | réglé le 02/11 : appliqué en v12 (1 seul point dans le repère) |
 | Q18 | Prise de service X14 → XD1 | réglé le 02/11 : oui |
 | Q19 | Référence des bornes thermocouple (f63) | à définir à l'achat |
-| Q20 | Câbles M1 / M2 | réglé le 02/11 : frein 2G1,5, sonde TF 2x0,75 blindé |
+| Q20 | Câbles M1 / M2 | réglé : frein LIYCY-JZ 5G1,5 blindé de réserve (03/11), sonde TF 2x0,75 blindé (02/11) |
 | Q21 | Retouches de Julien dans la v12 | réglé : reprises en v15 (R1 et R2 décalées, textes f10 et f63) |
 | Q22 | Fusible R-33 en amont des contacts 13 / 23 / 33 de KA1 | **réglé et dessiné en v16 (04/11)** : FA1 au f40, Mersen CMC101 + FR10GG50V4 gG 4 A ; repère FA1 validé par Julien |
 | Q23 | Z1 → I1.5 | fait en v15 ; décodage des trames à confirmer dans TIA |
@@ -32,7 +32,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) : conflit avec les bornes X12.11 | à fixer (question aussi posée par l'agent d'implantation) |
 
 ## Sécurité
-1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblage sur I1.5 validé (Q23), à faire. B2 raccordée au 0 V en v13.
+1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.
 1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A en parallèle à lire (SEW).
 1 ter. Capot à deux technologies (B1 mécanique voie 1, B2 magnétique voie 2) : écart d'ouverture > 200 ms = alerte (R-16), à essayer au banc.
 2. Charge de la sortie 13-14 : 3 bobines LC1D09BD à 5,4 W = 0,68 A sous 24 V, < 3 A DC-13 [C fiche Schneider LC1D09BD, 03/11]. 23-24 : 0,45 A.
@@ -46,7 +46,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW).
 9. Bornes X6 (STO) et X10 (TF) du MCX91A (notice SEW).
 10. Nombre de mises sous tension par heure du MCX91A (KM1 / KM2 ne servent pas d'arrêt de service).
-11. Câbles frein 2G1,5 et TF 2x0,75 blindé : à commander, longueurs à définir. Câbles pas-à-pas W9 / W10 (4 conducteurs blindés) : section et longueur à définir.
+11. Câbles frein 5G1,5 (réserve) et TF 2x0,75 blindé (acheté) : longueurs à définir. Câbles pas-à-pas W9 / W10 (4 conducteurs blindés) : section et longueur à définir.
 
 ## Très basse tension
 12. DC-1 du LC1D09BD sous 48 V (KA2).
