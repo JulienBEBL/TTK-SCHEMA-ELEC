@@ -43,6 +43,7 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
   - Un contact Manu par voie, jamais commun.
 - **AU armoire S1 sur la porte** [D 02/11] : raccordé **par des bornes en bas de l'armoire**, jamais en fil direct (X41.51 / X41.52 voie 1, X41.53 / X41.54 voie 2 au f41 ; X60.41 / X60.42 contact NO vers I0.1 au f60). Contacts de chaque AU : 2 NF (voies 1 et 2) + 1 NO (automate) ; matériel XB5AS8442 + ZBE102 + ZBE101 à confirmer par Julien (Q25).
 - **Réarmement S4 au f40** [D 02/11], au bout de la boucle Y1-Y2 (contacts miroir puis S4), retour vers Y2 au-dessus de Y1 (un croisement). **Z1 → I1.5** (diagnostic, non sécuritaire) [D 02/11].
+- **Fusible FA1 (R-33)** [D 03/11, dessiné en v16] : 24VSEC (renvoi de X21.13) → FA1 gG 4 A → départ commun des contacts 13 / 23 / 33 de KA1 (f40). Le 24VSEC arrive par le bas et remonte par FA1 (pas de symbole de fusible horizontal dans la librairie).
 - **B2 du KA1 au 0 V commun** (règle R-02 de la base XPSUAF13AP, fait en v13). Réglage FUNCTION 1, START 3 (validé au banc le 02/11), écrit au f40. Base de connaissances du relais : `docs/references/XPSUAF13AP_base_connaissances_cablage.md` (règles R-xx à respecter).
 - **Sorties (f42)** : 13-14 freins + 48 V (Manu-D) ; 23-24 Auto-A → KM1 / KM2 (pas d'ordre automate, option A) ; 33-34 Auto-B → STO des 2 MCX91A en parallèle (validé SEW).
 - **L'automate ne commande rien en sécurité** : il reçoit seulement des états (AU, capots, mode, retours contacteurs, diagnostic KA1).

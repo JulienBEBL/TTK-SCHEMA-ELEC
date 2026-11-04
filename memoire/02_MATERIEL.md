@@ -34,7 +34,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW | frein BE5 400 V CA |
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
-| W3 / W6 | Frein : LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) [D 03/11] | 300/500 V CA [C fiche Achat Electrique] : convient au 400 V entre phases, en dessous du ≥ 450/750 V du 26/10 ; 2 conducteurs + V/J utilisés, 2 en réserve. Composition « 2G1,5 » des folios 31 / 32 à passer en 5G1,5 |
+| W3 / W6 | Frein : LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) [D 03/11] | 300/500 V CA [C fiche Achat Electrique] : convient au 400 V entre phases, en dessous du ≥ 450/750 V du 26/10 ; 2 conducteurs + V/J utilisés, 2 en réserve. Composition « 5G1,5 blindé » aux f31 / f32 depuis la v16 |
 | W4 / W7 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
 
 ## Très basse tension (f12, f20, f21)
@@ -53,8 +53,8 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | KA1 | Schneider XPSUAF13AP | cat. 0, PL d visé, démarrage surveillé par S4 |
 | S1 / S2 | AU XB5AS8442 (armoire / pupitre) + ZBE102 (NF) + ZBE101 (NO) | **2 NF + 1 NO par AU** [D 03/11, Julien change la commande] |
 | S3 | Eaton T0-4-8223/E, 2 positions | **4 NO par position, 8 en tout** [C 27/10] ; Auto = position 1, Manu = position 2 ; numérotation des bornes provisoire |
-| S4 | Schneider XB4BA21, BP noir 1 NO, **non lumineux** [D 03/11] | voyant Q8.3 (f61) à retirer, Q8.3 en réserve |
-| FA1 (proposé, IEC 81346-2 ; à valider) | Mersen CMC101 (RS 189-5333) + cartouche FR10GG50V4 gG 4 A (RS 188-6962) [D 03/11] | R-33, amont 13 / 23 / 33 de KA1 ; à dessiner |
+| S4 | Schneider XB4BA21, BP noir 1 NO, **non lumineux** [D 03/11] | f40, symbole « BP Affleurant Noir » ; voyant retiré du f61 et Q8.3 en réserve (v16) |
+| FA1 (IEC 81346-2, validé par Julien le 04/11) | Mersen CMC101 (RS 189-5333) + cartouche FR10GG50V4 gG 4 A (RS 188-6962) [D 03/11] | R-33, amont 13 / 23 / 33 de KA1 ; dessiné au f40 en v16 |
 | B1 | RS PRO 902-6874, interrupteur de position (capot mécanique) | |
 | B2 | ifm MN508S (RS 016-3138), capteur magnétique **codé** (confirmé par Julien le 02/11) | 2 NO + 1 NF, M12, 24 V 50 mA ; homologation sécurité et actionneur à vérifier |
 | B3 à B6 | Fins de course (NF) | symbole posé = NO, à corriger |

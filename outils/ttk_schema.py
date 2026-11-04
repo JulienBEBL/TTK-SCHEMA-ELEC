@@ -64,7 +64,7 @@ RENOMME = {
     "T211": "U2", "R211": "R2", "M211": "M2", "W211": "W5", "W213": "W6", "W212": "W7",
     "T301": "T1", "T302": "T2", "T321": "T3", "X311": "X31", "X312": "X32", "X313": "X33",
     "T322": "U3", "T323": "U4", "M321": "M3", "M322": "M4",
-    "K401": "KA1", "S411": "S1", "S412": "S2", "S413": "S3", "S414": "S4", "B411": "B1", "B412": "B2",
+    "F401": "FA1", "K401": "KA1", "S411": "S1", "S412": "S2", "S413": "S3", "S414": "S4", "B411": "B1", "B412": "B2",
     "K501": "K1", "B501": "B3", "B502": "B4", "B503": "B5", "B504": "B6", "P511": "H1", "P512": "H3", "P513": "H4",
     "K521": "K2", "K531": "K3", "B531": "B7", "W531": "W8", "W321": "W9", "W322": "W10", "K541": "K4", "P601": "P1",
     "X701": "X70", "X711": "X71",
@@ -304,11 +304,18 @@ def contacteur(xsy, rep, f, x, y, **kw):
     return g.place(xsy, rep, F[f], x, y, champs=champs, ref=(), loc=loc(rep), wrap=24, **kw)
 
 
+# bornes de terre vert/jaune (achetées le 03/11) : PE arrivée, PE moteurs M1 / M2, FE de l'IHM
+BORNES_PE = {"X101.VJ", "X701.17", "X701.25", "X711.23"}
+BORNE_PE = os.path.join(ICI, "librairie", "CUSTOM", "Borne_4mm_terre_vert-jaune.xsy")
+
+
 def borne(rep, f, x, y, fpos=(100, -250)):
-    """Borne 4 mm verticale : broche 1 en (x, y), broche 2 en (x, y + 400). fpos = repère (à droite par défaut)."""
+    """Borne 4 mm verticale : broche 1 en (x, y), broche 2 en (x, y + 400). fpos = repère (à droite par défaut).
+    Borne de terre vert/jaune pour les repères de BORNES_PE (même géométrie)."""
     bornier = rep.split(".")[0]
     des = DES_BORNE.get(rep) or REP.get(rep, {}).get("des") or REP.get(bornier, {}).get("des", "")
-    return g.place(BORNE, rep, F[f], x, y, champs={2: des}, ref=(),
+    pe = rep in BORNES_PE
+    return g.place(BORNE_PE if pe else BORNE, rep, F[f], x, y, champs={2: des, 4: "borne de terre vert/jaune" if pe else ""}, ref=(),
                    compact=True, rep_size=150, fpos=fpos, loc="A1", prefix="X")
 
 
@@ -668,7 +675,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [BM["2b"]["1"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
     VAR[(f, "PN")] = W(f, [T["X40"], (13600, 4800), (16000, 4800)], "PN")
     g.cable(F[f], 0, 0, YC, w3, "2x0,75 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True, compo_dx=-1600)
-    g.cable(F[f], 0, 0, YC, w2, "2G1,5", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True, compo_dx=-1200)
+    # frein : LIYCY-JZ 5G1,5 blindé de réserve (03/11), 2 conducteurs utilisés ; texte plus long -> plus à gauche
+    g.cable(F[f], 0, 0, YC, w2, "5G1,5 blindé", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True, compo_dx=-1700)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
@@ -770,8 +778,15 @@ k401 = maitre(C + "Schneider_XPSUAF13AP_relais_securite.xsy", "K401", f, 4400, 8
 # A1 / A2 : raccordés aux barres du haut après le décalage du folio (voir « barres 24 V / 0 V »)
 for p in ("13", "23", "33"):
     W(f, [k401[p], (k401[p].x, 3600)], "24")
-CMD40 = W(f, [(k401["13"].x, 3600), (k401["33"].x + 2400, 3600)], "24")
-texte(f, k401["33"].x + 400, 3700, "24VSEC (f31)", 200)
+# fusible R-33 (03/11) : Mersen CMC101 + FR10GG50V4 gG 4 A ; le 24VSEC arrive par le bas (renvoi), remonte par FA1
+REP["F401"] = {"des": "Protection des contacts de sécurité KA1 (R-33)", "fab": "Mersen CMC101 + FR10GG50V4",
+               "carac": "gG 4 A 10x38", "loc": "+A1"}
+W(f, [(k401["13"].x, 3600), (k401["33"].x + 1200, 3600)], "24")
+f401 = maitre("Fusibles\\Fusible 1Ph.xsy", "F401", f, k401["33"].x + 1200, 4000, ref=("MERSEN", "", "CMC101"), prefix="F",
+              fpos=(400, 400), wrap=22)
+W(f, [(k401["33"].x + 1200, 3600), f401["1"]], "24")
+CMD40 = W(f, [f401["2"], (f401["2"].x, f401["2"].y + 800)], "24")
+texte(f, f401["2"].x + 400, f401["2"].y + 1200, "24VSEC (f31)", 200)
 S40 = {p: W(f, [k401[p], (k401[p].x, 4800)], "24") for p in ("S11", "S12", "S21", "S22")}
 O40 = {p: W(f, [k401[p], (k401[p].x, 11200)], "24") for p in ("14", "24", "34")}
 miroir = C + "Schneider_LC1D09BD_contact_aux_NC_21-22_miroir.xsy"
@@ -784,7 +799,9 @@ for i, rep in enumerate(DESC_KM):
     if i:
         W(f, [prev, c["21"]], "24")
     prev = c["22"]
-s414 = maitre("BP & Commut & Voyants\\BP lumineux NO.xsy", "S414", f, 20000, 15200, prefix="S", fpos=(-3600, 200), wrap=16)
+REP["S414"].update({"des": "Bouton de réarmement", "fab": "Schneider XB4BA21", "carac": "1 NO - noir - non lumineux"})   # 03/11
+s414 = maitre("BP & Commut & Voyants\\BP Affleurant Noir.xsy", "S414", f, 20000, 15200, prefix="S", fpos=(-3600, 200), wrap=16,
+              ref=("SCHNEIDER ELECTRIC", "", "XB4BA21"))
 W(f, [prev, s414["3"]], "24")
 # retour vers Y2 par la droite de la chaîne, au-dessus de Y1 (un seul croisement, avec Y1)
 W(f, [s414["4"], (20000, 17200), (21600, 17200), (21600, 2800), (9200, 2800), k401["Y2"]], "24")
@@ -1004,10 +1021,9 @@ COL51 = {c: stub(f, (col[c].x, 11200), col[c], "24") for c in ("RD", "OG", "GN")
 REP["P513"] = {"des": "Voyant porte : défaut machine", "fab": "À définir", "carac": "24 V CC - rouge", "loc": "+A1"}
 p513 = decrit(voyant, "P513", f, 7600, 12800, "Voyant porte : défaut machine", fpos=(600, 400), wrap=20, prefix="P")
 V513 = stub(f, (7600, 11200), p513["X1"], "24")
-voy = decrit(voyant, "S414", f, 12000, 12800, "Voyant du bouton de réarmement", fpos=(600, 400), wrap=20)
-V414 = stub(f, (12000, 11200), voy["X1"], "24")
+# S4 non lumineux (03/11) : plus de voyant de réarmement, Q8.3 en réserve
 # 0 V des voyants et de la colonne : un collecteur sous les appareils, remonté à gauche vers la barre 0 V
-for p in (p513["X2"], voy["X2"], col["COM"]):
+for p in (p513["X2"], col["COM"]):
     W(f, [p, (p.x, 15600)], "0V")
 W(f, [(col["COM"].x, 15600), (3600, 15600), (3600, 7600)], "0V")
 # PUL des 2 drivers obligatoirement en 100 kHz (Julien, 30/10) : Q0.0 à Q0.3 seulement, Q0.4 et suivantes = 20 kHz
@@ -1034,13 +1050,13 @@ k521s = maitre(C + "Siemens_6ES7223-5BH50-0XB0_SM1223_G2_sorties.xsy", "K521", f
 CMD52 = W(f, [k521s["3L+"], (4800, 16000)], "24")
 renvoi("31", d31["CMD52"], f, CMD52, "24")
 W(f, [k521s["3M"], (5600, 18000), (3600, 18000), (3600, RAIL0_Y)], "0V")
-for q, dest in (("Q8.0", COL51["RD"]), ("Q8.1", COL51["OG"]), ("Q8.2", COL51["GN"]), ("Q8.3", V414), ("Q8.4", V513)):
+for q, dest in (("Q8.0", COL51["RD"]), ("Q8.1", COL51["OG"]), ("Q8.2", COL51["GN"]), ("Q8.4", V513)):
     pt = W(f, [k521s[q], (k521s[q].x, 16000)], "24")
     renvoi(f, pt, "51", dest, "24")
 g.tableau(F[f], 16000, 12800, [2800, 1600, 5600], 300, [
     ["E/S", "Repère", "Fonction"], ["I8.0..I8.7", "", "réserve (alarme switch non câblée)"],
     ["Q8.0 / 8.1 / 8.2", "-P511", "colonne rouge / orange / vert"],
-    ["Q8.3", "-S414", "voyant réarmement requis"], ["Q8.4", "-P513", "voyant défaut machine"],
+    ["Q8.3", "", "réserve"], ["Q8.4", "-P513", "voyant défaut machine"],
     ["Q8.5..Q8.7", "", "réserve"],
 ], size=200)
 proposition(f, ["affectation des E/S du module SM 1223"], x=16000, y=12100)
@@ -1135,7 +1151,7 @@ MEMES = [
     ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.4", "T322:ENA+"],
     ["K501:Q0.2", "T323:PUL+"], ["K501:Q0.3", "T323:DIR+"], ["K501:Q0.5", "T323:ENA+"],
     ["K521:Q8.0", "P511:RD"], ["K521:Q8.1", "P511:OG"], ["K521:Q8.2", "P511:GN"],
-    ["K521:Q8.3", "S414:X1"], ["K521:Q8.4", "P513:X1"],
+    ["K521:Q8.4", "P513:X1"],
     # entrées automate
     ["K501:I0.0", "X711.6:2"], ["K501:I0.1", "S411:14"], ["K501:I0.2", "X701.4:2"], ["K501:I0.3", "X701.8:2"],
     ["K501:I0.4", "X711.12:2"], ["K501:I0.5", "X711.18:2"], ["K501:I0.6", "X701.10:2"], ["K501:I0.7", "X701.12:2"],
@@ -1143,11 +1159,11 @@ MEMES = [
     ["K501:I1.4", "Q423:14"],
     ["K501:L+ capt", "X701.3:1", "X701.7:1", "X701.9:1", "X701.11:1", "X701.13:1", "X701.15:1", "X711.5:1",
      "X711.11:1", "X711.17:1", "S411:13", "KM1:13", "KM2:13", "Q423:13"],
-    ["X313:1", "K401:13", "K401:23", "K401:33", "K521:3L+"],
+    ["X313:1", "K521:3L+", "F401:2"], ["F401:1", "K401:13", "K401:23", "K401:33"],
     ["X311:1", "K401:A1", "K501:L+", "K501:3L+", "K521:L+",
      "K531:L+", "K541:V1+", "P512:X1", "T201:X5:24V", "T211:X5:24V", "X711.21:2"],
     ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:3M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
-     "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "P511:COM", "P512:X2", "P513:X2", "S414:X2",
+     "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "P511:COM", "P512:X2", "P513:X2",
      "T201:X5:GND", "T211:X5:GND", "T201:X6:2", "T201:X6:4", "T211:X6:2", "T211:X6:4",
      "T322:PUL-", "T322:DIR-", "T322:ENA-", "T323:PUL-", "T323:DIR-", "T323:ENA-", "X711.22:2"],
     ["K501:FE", "P601:FE", "X101.VJ:2", "T301:PE", "T302:PE", "X36.1:2", "X131:PE", "T321:PE",

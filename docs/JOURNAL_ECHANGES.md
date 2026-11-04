@@ -165,3 +165,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 03/11/2026 : reprise après la revue des achats
 - git pull des commits du 03/11 (revue des achats, décisions). Julien : AU en 2 NF + 1 NO, il corrige la commande.
 - Repère du fusible proposé : FA1. Liste des modifications de la v16 dans `memoire/06_EN_COURS.md` ; v16 pas encore générée.
+
+## 04/11/2026 : v16
+- Julien valide FA1 et demande la v16.
+- v16 : `schema/generes/release/TTK_2026-11-04_v16.xrs` (25 folios, 165 symboles, 640 fils, 91 renvois ; 0 problème, 0 erreur verifier, 27 attentions connues, 0 chevauchement). Nouveau symbole `librairie/CUSTOM/Borne_4mm_terre_vert-jaune.xsy`.

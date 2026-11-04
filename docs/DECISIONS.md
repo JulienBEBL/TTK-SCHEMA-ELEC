@@ -207,3 +207,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] AU S1 / S2 : 2 NF + 1 NO chacun ; Julien corrige la commande (Q25 réglé). Schéma inchangé.
 - [H] Repère du fusible R-33 : FA1 (IEC 81346-2:2019, FA = protection contre les surintensités), à valider ; autre choix FU1.
 - Décisions du 03/11 à dessiner en v16 : fusible R-33, S4 sans voyant (Q8.3 en réserve), frein 5G1,5, bornes de terre vert/jaune (X10.15, X31.11, X32.11, X50.13).
+
+## 04/11/2026 : v16
+- [D] Repère du fusible R-33 : FA1 (IEC 81346-2). Dessiné au f40 entre 24VSEC et le départ commun 13 / 23 / 33.
+- [D] Appliqué : S4 XB4BA21 non lumineux (voyant retiré au f61, Q8.3 en réserve), frein W3 / W6 en 5G1,5 blindé, bornes de terre vert/jaune.
+- [C] La borne PE de l'arrivée est X10.11 (X10.15 = L3) : la revue des achats est corrigée.

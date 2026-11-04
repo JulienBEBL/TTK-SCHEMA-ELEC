@@ -7,7 +7,7 @@ Convention du tableau : quantités pour 1 machine, Hugo multiplie par 2. Excepti
 | # | Article | Constat |
 |---|---|---|
 | A1 | Thermocouple K RS 350-398, câble de compensation K RS 236-3959, embouts 4 mm² RS 157-1250, repères 4-6 mm² AEE300986 | colonne « Commandé à Hugo ? » = FALSE. La mémoire du 15/10 dit « thermocouple commandé » : à trancher |
-| A2 | Bornes de terre (vert/jaune, contact rail) | aucune achetée. Besoin : X10.15 (PE arrivée), X31.11 et X32.11 (PE moteurs), X50.13 (FE IHM), conducteurs V/J des câbles extérieurs. Une PT 4 grise n'est pas une borne PE |
+| A2 | Bornes de terre (vert/jaune, contact rail) | aucune achetée. Besoin : X10.11 (PE arrivée ; « X10.15 » corrigé le 04/11, X10.15 = L3), X31.11 et X32.11 (PE moteurs), X50.13 (FE IHM), conducteurs V/J des câbles extérieurs. Une PT 4 grise n'est pas une borne PE |
 | A3 | Raccord sonde K (câble 2 m) / câble de compensation 25 m | aucun connecteur ni boîte de jonction type K acheté |
 | A4 | Voyant H2 230 V CA blanc (f12, en porte) | seuls des voyants 24 V achetés (XB4BVB3 / B4 / B5) |
 | A5 | S4 bouton de réarmement lumineux bleu (f40, voyant Q8.3 f61) | acheté : XB4BA21 noir, non lumineux |

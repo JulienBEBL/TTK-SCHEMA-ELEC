@@ -1,35 +1,23 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v15 (02/11/2026, nuit)
-`schema/generes/release/TTK_2026-11-02_v15.xrs` : 25 folios, 165 symboles, 642 fils, 92 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (28 attentions connues), 0 chevauchement. **En attente : retours de Julien (Q8), Q22 (fusible R-33), Q25 (contacts des AU).**
-Pas de v14 publiée : ses changements (retouches v12, Z1) sont dans la v15. La v13 réenregistrée par Julien est archivée (`schema/recus/2026-11-02_v13_ouverte_WinRelais.xrs`) et ses retouches sont reprises.
-But de Julien (02/11) : un schéma propre (borniers, sécurité, automate) **avant** la numérotation des fils.
+## Version actuelle : v16 (04/11/2026)
+`schema/generes/release/TTK_2026-11-04_v16.xrs` : 25 folios, 165 symboles, 640 fils, 91 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (27 attentions connues), 0 chevauchement. **En attente : retours de Julien (Q8).**
+La v15 n'a pas été réenregistrée par WinRelais (rien à reprendre). But de Julien : un schéma propre (borniers, sécurité, automate) **avant** la numérotation des fils.
 
-### Fait en v15 — numéros affichés
+### Fait en v16 — décisions du 03/11 (revue des achats)
 | Folio | Changement |
 |---|---|
-| 10 | Cadre « ARRIVEE RESEAU » en pointillé ; étiquette « Distribution » placée comme Julien |
-| 11 | Étiquettes VARIATEUR 1 / 2, FREIN M1 placées comme Julien |
-| 20 | Bornes 800 sous les drivers, câbles W9 / W10 à mi-chemin bornes-moteurs, compositions à gauche de l'ovale |
-| 30 | « Port 5 : réserve » placé comme Julien |
-| 31, 32 | R1 / R2 décalées de 2000 à gauche ; compositions des câbles sous l'ovale comme Julien (moteur, TF, frein) |
-| 40 | Bouton de réarmement S4 (déplacé du f41) au bout de la boucle Y1-Y2 ; Z1 → I1.5 ; texte de réglage descendu |
-| 41 | AU armoire S1 par 4 bornes de porte (X41.51 à X41.54) ; chaîne descendue de 1600 ; tête de S3 placée comme Julien ; bornes X41.34 / X41.44 descendues de 400 |
-| 42 | « 0 V STO X6 » placé comme Julien |
-| 60 | Contact NO de S1 par 2 bornes (X60.41 / X60.42) ; I1.5 = diagnostic Z1 |
-| 61, 62 | Repère K1 / K2 tout près du module ; tableaux remontés près des modules (comme Julien) |
-| 63 | « AI1 à AI7 : réserve » placé comme Julien (v12) |
+| 40 | Fusible **FA1** (Mersen CMC101 + FR10GG50V4 gG 4 A) entre le 24VSEC et le départ commun 13 / 23 / 33 de KA1 ; S4 = XB4BA21 non lumineux (symbole BP affleurant noir, référence XB4BA21) |
+| 61 | Voyant de S4 retiré |
+| 62 | Q8.3 en réserve (sortie libre, tableau à jour) |
+| 31, 32 | Câble frein W3 / W6 : « 5G1,5 blindé » (LIYCY-JZ de réserve), texte décalé à gauche pour ne pas couper le 1er brin |
+| 10, 31, 32, 50 | Bornes de terre vert/jaune : X10.11, X31.11, X32.11, X50.13 |
 
-## À faire en v16 (décisions du 03/11, revue des achats, attendre le feu vert de Julien)
-1. Fusible R-33 entre 24VSEC et le départ commun 13 / 23 / 33 de KA1 (f40, sur la ligne qui vient de X21.13) : Mersen CMC101 + FR10GG50V4 gG 4 A. Repère proposé FA1 (Q22).
-2. S4 non lumineux (XB4BA21) : retirer le voyant de S4 au f61, Q8.3 en réserve (f62 et tableau).
-3. Câble frein W3 / W6 : composition « 5G1,5 blindé » (LIYCY-JZ de réserve) au lieu de « 2G1,5 » (f31, f32).
-4. X10.15, X31.11, X32.11, X50.13 : bornes de terre vert/jaune (symbole de borne PE).
-5. H2 : référence à reporter quand Julien l'aura.
+Positions de Julien (POS_JULIEN, tableaux f61 / f62) vérifiées par calcul : inchangées.
 
 ## À faire ensuite
-1. (Q22 réglé le 03/11 : fusible retenu, à dessiner en v16.)
-2. (Q25 réglé le 03/11 : 2 NF + 1 NO par AU.)
-3. f70 / f71 : les bornes de porte (X41.5x, X60.4x) n'y figurent pas (destination « porte ») : à ajouter si Julien le veut.
-4. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien ; type de conducteur PROFINET.
-5. Liste d'E/S (f60 à f62) : seulement après validation de Julien. Numérotation des fils : après le schéma propre.
+1. H2 : reporter la référence du voyant 230 V quand Julien l'aura.
+2. f70 / f71 : les bornes de porte (X41.5x, X60.4x) n'y figurent pas (destination « porte ») : à ajouter si Julien le veut.
+3. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien ; type de conducteur PROFINET.
+4. Liste d'E/S (f60 à f62) : seulement après validation de Julien. Numérotation des fils : après le schéma propre.
+5. Achats : Q28 à Q30 (raccord thermocouple, fixation sonde, câble moteur 50 m).
