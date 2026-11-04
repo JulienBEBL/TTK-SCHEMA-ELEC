@@ -212,3 +212,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Repère du fusible R-33 : FA1 (IEC 81346-2). Dessiné au f40 entre 24VSEC et le départ commun 13 / 23 / 33.
 - [D] Appliqué : S4 XB4BA21 non lumineux (voyant retiré au f61, Q8.3 en réserve), frein W3 / W6 en 5G1,5 blindé, bornes de terre vert/jaune.
 - [C] La borne PE de l'arrivée est X10.11 (X10.15 = L3) : la revue des achats est corrigée.
+
+## 04/11/2026 : agent d'implantation
+- [D] L'agent qui dessine l'implantation (draw.io) refait l'implantation selon la v16, pose ses questions à Julien et versionne son travail dans `implantation/` du dépôt (release / old / JOURNAL). Prompt : `docs/PROMPT_AGENT_IMPLANTATION_2026-11-04.md`.
+- [?] Repères du répartiteur 4P et du bornier de terre (anciens X12 / X13) : en conflit avec les bornes X12.11, à fixer.

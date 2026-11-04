@@ -169,3 +169,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 04/11/2026 : v16
 - Julien valide FA1 et demande la v16.
 - v16 : `schema/generes/release/TTK_2026-11-04_v16.xrs` (25 folios, 165 symboles, 640 fils, 91 renvois ; 0 problème, 0 erreur verifier, 27 attentions connues, 0 chevauchement). Nouveau symbole `librairie/CUSTOM/Borne_4mm_terre_vert-jaune.xsy`.
+
+## 04/11/2026 : prompt pour l'agent d'implantation
+- Julien demande un prompt de mise à jour pour son agent draw.io (implantation de l'armoire). Écrit : `docs/PROMPT_AGENT_IMPLANTATION_2026-11-04.md` ; dossier `implantation/` créé (README).
+- Mémoire : anciens repères corrigés dans `memoire/02_MATERIEL.md` ; conflit X12 / X13 (répartiteur, barrette de terre) contre X12.11 relevé.

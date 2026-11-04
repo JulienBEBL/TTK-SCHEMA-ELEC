@@ -7,12 +7,12 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | Repère | Matériel | Remarque |
 |---|---|---|
 | W1 | Câble client 5G4 mm² [D 28/10] | |
-| X11 | Bornes d'arrivée | |
+| X10.11 à X10.15 | Bornes d'arrivée (ancien X11) ; X10.11 = PE, borne de terre vert/jaune | |
 | QS1 | Legrand Vistop 022515, 4P 63 A | manœuvre armoire ouverte |
 | QF1 | Hager NFT820, 3P+N 20 A courbe C | disjoncteur de tête |
 | TR1 | TEMCo TT1041, 480 D / 400 Y-230, 15 kVA | variante US, hors armoire |
-| X12 | Répartiteur 4P 125 A 7 départs AEE300427 | non dessiné depuis le 29/10 (renvois directs QF1 → bus f11) |
-| X13 | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) |
+| (ancien X12) | Répartiteur 4P 125 A 7 départs AEE300427 | non dessiné depuis le 29/10 (renvois directs QF1 → bus f11) ; repère à fixer (X12 = bornes du f12 depuis le 02/11) |
+| (ancien X13) | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) ; repère à fixer |
 | QM1 / QM2 | Schneider GV2ME14, réglés 6,5 A | amont variateurs |
 | KM1 / KM2 | Schneider LC1D09BD (bobine 24 V CC) | contacteurs variateurs |
 | QF2 / QF3 | Schneider iC60N A9F74202, 2P 2 A courbe C | freins ; calibre à confirmer avec le courant du BE5 |
@@ -22,7 +22,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | QF7 / QF8 | **Hager NFT702, 1P+N 2 A courbe C, 6-10 kA, 1 module** [D 29/10] | QF7 ventilateurs, QF8 éclairage (symbole NFT706 à remplacer en v7) |
 | QF9 | IMO B6CR1N1630A, différentiel 1P+N 16 A 30 mA | prise |
 | QF10 | Schneider iDT40K A9P71606, 1P+N 6 A courbe C | limitation prise |
-| X14 | Legrand 004280, prise 2P+T 16 A | |
+| XD1 (ancien X14) | Legrand 004280, prise 2P+T 16 A | |
 | EV1 / EV2 | IDE VF92AC, ventilateurs 230 V | |
 | EL1 / EL2 | RS PRO 194-0417, éclairage LED armoire | |
 | H2 | Voyant 230 V présence tension | piqué sur L3 + N du bus (f12), câblé en 2,5 mm² ; ajouté au tableau le 03/11 (référence à relever) |
@@ -43,7 +43,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | T1 / T2 | RS PRO 284-0491, 24 V 240 W (10 A) | T1 = COMMANDE, T2 = ELEC (noms à changer, voir 03) |
 | T3 | Mean Well NDR-240-48, 48 V 240 W | |
 | KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire, 1 pôle (1-2) sur le +48 V | pouvoir de coupure DC-1 sous 48 V à vérifier |
-| X31 à X33 | Phoenix 3002781 PTFIX 6X1,5-BK (6 points, 17,5 A) | X36 = borne sectionnable PELV ; X34 / X35 (48 V) supprimés le 02/11 |
+| X21.11 à X21.13 (anciens X31 à X33) | Phoenix 3002781 PTFIX 6X1,5-BK (6 points, 17,5 A) | X12.11 (ancien X36) = borne sectionnable PELV ; X34 / X35 (48 V) supprimés le 02/11 |
 | U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA à vérifier |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 
