@@ -215,3 +215,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 05/11/2026 : retours implantation v8
 - Julien valide la porte sur R4 et les butées (stock suffisant). Il a généré une v20, pas encore ouverte : l'agent d'implantation attend.
+
+## 05/11/2026 : numérotation v2, réarmement
+- Julien : ses collègues conseillent de numéroter aussi L1 / L2 / L3 / N, 24 V et 0 V ; demande la convention refaite avec exemples ; doute sur l'appui puis le relâchement du bouton de réarmement.
+- Réponse : convention v2 (`memoire/04_REGLES_DESSIN.md`) ; séquence du réarmement START 3 expliquée, essai de banc proposé.

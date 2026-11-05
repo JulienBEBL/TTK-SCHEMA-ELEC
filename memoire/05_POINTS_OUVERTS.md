@@ -78,3 +78,6 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 24. Classeur Excel à mettre à jour avec le nommage du 28/10.
 25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f10 corrigés en v7).
 26. f21 : images des borniers à insérer par Julien. f01 : logos à insérer.
+
+## Essais de banc à prévoir (05/11)
+- Boucle Y1-Y2 avec un NF miroir de LC1D09BD en série avec le bouton (START 3) : réarmement normal accepté ; NF ouvert (fil retiré, contacteur tenu enclenché) : réarmement refusé. Déjà constaté le 02/11 : bouton enfoncé = START clignote, relâchement = sorties fermées (front descendant).
