@@ -8,10 +8,10 @@ Le schéma n'est pas dessiné à la main : il est **généré par un script Pyth
 ## État actuel (05/11/2026)
 | | |
 |---|---|
-| Dernière version | **v21**, `schema/generes/release/TTK_2026-11-05_v21.xrs` |
+| Dernière version | **v22**, `schema/generes/release/TTK_2026-11-05_v22.xrs` |
 | Contenu | 25 folios, 177 symboles, 654 fils, 91 renvois |
 | Contrôles | 0 problème, 0 erreur au verifier (28 attentions connues), 0 chevauchement |
-| En attente | relecture de Julien (v21), convention de numérotation des fils |
+| En attente | validation de Julien (sécurité, borniers), réponses SEW ; numérotation des fils en dernier |
 | Implantation de l'armoire | v7 (draw.io), `implantation/release/` |
 | Planning | J1 folios finis 05/11/2026 ; J2 bon pour câblage 13/11/2026 |
 

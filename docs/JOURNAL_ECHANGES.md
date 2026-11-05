@@ -222,3 +222,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : retient la convention v2, envisage un point au milieu ; numérotation à la fin, après ses validations sécu / automate / borniers ; demande un .md pour faire l'essai des contacts miroirs avec un nouveau chat.
 - Fait : `docs/ESSAI_BANC_BOUCLE_RETOUR.md` ; méthode de numérotation notée dans `memoire/04_REGLES_DESSIN.md`.
 - Julien : numéros sans point ; demande ce qu'il reste à valider sur la v21. Réponse : liste sécurité / automate / borniers (`memoire/06_EN_COURS.md`).
+
+## 05/11/2026 : v22
+- Julien : freins libres en Manu voulus ; demande un récap SEW, les bornes de porte sur R4, des butées partout, une passe complète sur les bornes et une liste de validation à jour.
+- v22 (`TTK_2026-11-05_v22.xrs`, 0 problème, 0 erreur, 0 chevauchement) ; `docs/QUESTIONS_SEW.md` ; liste de validation dans `memoire/06_EN_COURS.md`.

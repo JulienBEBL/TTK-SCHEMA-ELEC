@@ -290,3 +290,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Contacts miroirs dans la boucle Y1-Y2 : compris et validés par Julien ; essai de banc préparé (`docs/ESSAI_BANC_BOUCLE_RETOUR.md`).
 - [D] Numéros de fil sans point (1013).
 - [C] v21 : 89 bornes sur rail (85 bornes 4 mm + 4 de terre) pour 85 achetées : achat à compléter.
+
+## 05/11/2026 : v22
+- [D] Freins SEW libres en Manu : voulu (rotation de l'arbre à la clé pour la maintenance).
+- [D] Bornes de la porte sur le rail R4 ; butée de chaque côté de chaque appareil sur tous les rails (Julien). Bloc porte ajouté au f70.
+- [D] f62 : E/S validées, mention « PROPOSITION A VALIDER » retirée (Q13).
+- [C] Contrôle complet des bornes : conforme ; 89 bornes pour 85 achetées.
+- Questions à SEW regroupées : `docs/QUESTIONS_SEW.md`.

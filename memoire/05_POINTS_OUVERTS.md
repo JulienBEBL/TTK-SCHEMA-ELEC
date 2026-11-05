@@ -11,7 +11,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
 | Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f10, f13, f60). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
-| Q13 | f62 : mention rouge « PROPOSITION A VALIDER » conservée (Julien l'a retirée aux f60 et f61 seulement) | à confirmer |
+| Q13 | f62 : mention rouge « PROPOSITION A VALIDER » | **réglé le 05/11** : retirée en v22 (E/S validées) |
 | Q14 | W1 au f10 | réglé le 02/11 : on le garde |
 | Q15 | Notes du .xrs du 02/11 | réglé : f41 barres retirées ; f63 bornes TC posées (type à définir) ; f21 « borniers sur la page alims » **en pause** |
 | Q16 | f20 « Pour simplifier le » | réglé : rien à ajouter |
@@ -82,3 +82,6 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Essais de banc à prévoir (05/11)
 Procédure pour un nouveau chat : `docs/ESSAI_BANC_BOUCLE_RETOUR.md`.
 - Boucle Y1-Y2 avec un NF miroir de LC1D09BD en série avec le bouton (START 3) : réarmement normal accepté ; NF ouvert (fil retiré, contacteur tenu enclenché) : réarmement refusé. Déjà constaté le 02/11 : bouton enfoncé = START clignote, relâchement = sorties fermées (front descendant).
+
+## Questions à SEW
+Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO, frein BE5, frein alimenté moteur à l'arrêt, mises sous tension / h, longueur de câble.

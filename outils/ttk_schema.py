@@ -83,7 +83,7 @@ GROUPES = [
     ("X32", 1, "21", "Moteur M2", "+M", [(f"X701.{25 + i}", p) for i, p in enumerate(("PE", "U", "V", "W"))]),
     ("X32", 2, "21", "Sonde TF M2", "+M", [("X701.29", "1b"), ("X701.30", "2b")]),
     ("X32", 3, "21", "Frein M2", "+M", [("X701.31", "2"), ("X701.32", "3")]),
-    ("X41", 1, "41", "AU -S1 / -S2, voies 1 et 2", "+P1", [(f"X711.{n}", "") for n in (1, 2, 3, 4)]),
+    ("X41", 1, "41", "AU pupitre -S2, voies 1 et 2", "+P1", [(f"X711.{n}", "") for n in (1, 2, 3, 4)]),
     ("X41", 2, "41", "Sélecteur -S3 Manu : shunt des capots", "+P1", [(f"X711.{n}", "") for n in (13, 14, 15, 16)]),
     ("X41", 3, "41", "Capot -B1", "+M", [("X701.1", "11"), ("X701.2", "12"), ("X701.3", "23"), ("X701.4", "24")]),
     ("X41", 4, "41", "Capot -B2", "+M", [("X701.5", "11"), ("X701.6", "12"), ("X701.7", "23"), ("X701.8", "24")]),
@@ -1100,7 +1100,7 @@ g.tableau(F[f], 16000, 12800, [2800, 1600, 5600], 300, [
     ["Q8.3", "", "réserve"], ["Q8.4", "-P513", "voyant défaut machine"],
     ["Q8.5..Q8.7", "", "réserve"],
 ], size=200)
-proposition(f, ["affectation des E/S du module SM 1223"], x=16000, y=12100)
+# 05/11 : E/S validées par Julien, mention « PROPOSITION A VALIDER » retirée
 
 # ======================================================================== 53 MODULE SM 1231 TC
 f = "53"
@@ -1347,6 +1347,13 @@ CABLES_MULTI = [
         ("Fins de course -B3 à -B6", [f"X701.{n}" for n in range(9, 17)]),
         ("Colonne -H1", ["X701.43", "X701.44", "X701.45", "X701.46"]),
         ("Réserve", ["-", "-", "PE -XPE1"])]),
+    # bornes de la porte sur le rail R4 (Julien 05/11), une butée entre appareils ; H2 (230 V) à part, au bout
+    ("Bornes de la porte de l'armoire (rail R4)", [
+        ("AU -S1", ["X721.1", "X721.2", "X721.3", "X721.4", "X721.5", "X721.6"]),
+        ("Réarmement -S4", ["X721.7", "X721.8"]),
+        ("Voyant -H3", ["X721.11", "X721.12"]),
+        ("Voyant -H4", ["X721.13", "X721.14"]),
+        ("Voyant -H2 230 V", ["X721.9", "X721.10"])], False),
 ]
 
 
@@ -1361,7 +1368,8 @@ def organisation_x70():
     blocs = [(t.replace(" . ", "."), n, sg, []) for t, n, sg in blocs]
     # câbles multiconducteurs validés par Julien le 05/11 : conducteur n -> borne, rangés par composant,
     # une butée d'arrêt sur le rail entre deux fonctions (trait épais)
-    for titre, groupes in CABLES_MULTI:
+    for titre, groupes, *opt in CABLES_MULTI:
+        cable = not opt or opt[0]           # False : groupe de bornes sans câble (porte), pas de n° de conducteur
         nums, sigs, comps, k = [], [], [], 0
         for gi, (comp, bornes) in enumerate(groupes):
             if gi:
@@ -1374,7 +1382,7 @@ def organisation_x70():
                     sigs.append(b[3:])
                 else:
                     k += 1
-                    nums.append(str(k))
+                    nums.append(str(k) if cable else "")
                     sigs.append(b)
         blocs.append((titre, nums, sigs, comps))
     x, y = 2400, 2600
@@ -1390,7 +1398,8 @@ def organisation_x70():
                 g.cadre(F[f], bx - 50, y + 300, bx + 50, y + 1300, width=40)
                 continue
             g.cadre(F[f], bx, y + 400, bx + 600, y + 1200, width=15)
-            texte(f, bx + 300 - int(len(n) * 200 * 0.55 / 2), y + 700, n, 200)
+            if n:
+                texte(f, bx + 300 - int(len(n) * 200 * 0.55 / 2), y + 700, n, 200)
             if sg:
                 texte(f, bx + 300 - int(len(ren(sg)) * 180 * 0.55 / 2), y + 1300, sg, 180)
         for i0, comp in comps:

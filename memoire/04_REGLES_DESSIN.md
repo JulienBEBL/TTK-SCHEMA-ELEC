@@ -119,3 +119,7 @@ Julien : chiffres seuls (stock de repères presque sans lettres). Ses collègues
 5. **Sans point** : 1013, pas 10.13 [D 05/11, Julien] (confusion avec les bornes X41.11, point absent du stock en 2,5 et 4 mm²).
 6. **Quand** : la numérotation se fait **à la toute fin**, après la validation par Julien de la sécurité, de l'automate et des borniers (05/11).
 Méthode prévue (script) : potentiels calculés à partir des fils générés (union des extrémités, passage à travers les bornes et les blocs de distribution, renvois entre folios), folio de naissance = folio de la source, unité = conducteur ; écriture dans `¤#Numero` au format relevé le 28/10 (`x·y·texte·folio·0·Arial·300·angle·8388608·0·0·0·`), un numéro par tronçon, au milieu du segment, loin des brins de câble (07).
+
+## Montage (règles de Julien, 05/11)
+- Une butée d'arrêt de chaque côté de chaque appareil sur tous les rails DIN.
+- Bornes de la porte de l'armoire sur le rail R4.

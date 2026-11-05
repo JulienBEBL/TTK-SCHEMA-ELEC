@@ -101,3 +101,6 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 ## Bornes de porte et colonne (v17, 05/11)
 - Porte (règle de Julien : tous les appareils par des bornes ou aucun) : S1 X41.51-54 / X60.41-42, S4 X40.11-12, H2 X12.21-22 (230 V), H3 X21.21-22, H4 X61.21-22.
 - Colonne H1 (machine, par câble) : X61.11 RD, X61.12 OG, X61.13 GN, X61.14 COM.
+
+## Freins SEW en mode Manu (05/11)
+- KF1 / KF2 sont alimentés par KA1 13-14 sans passer par S3 : freins desserrés dès que KA1 est armé, **y compris en Manu**. **Voulu** [D 05/11, Julien] : en Manu, les opérateurs tournent l'arbre de sortie à la clé pour la maintenance.

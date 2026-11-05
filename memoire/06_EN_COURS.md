@@ -1,8 +1,19 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v21 (05/11/2026)
-`schema/generes/release/TTK_2026-11-05_v21.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti), 0 chevauchement. **En attente : retours de Julien (Q8).**
+## Version actuelle : v22 (05/11/2026)
+`schema/generes/release/TTK_2026-11-05_v22.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti), 0 chevauchement. **En attente : validation de Julien (liste ci-dessous).**
 
+### Fait en v22
+| Folio | Changement |
+|---|---|
+| 70 | Bloc « Bornes de la porte de l'armoire (rail R4) » : S1, S4, H3, H4, puis H2 230 V au bout, une butée entre appareils |
+| 62 | Mention « PROPOSITION A VALIDER » retirée (E/S validées) |
+| 70 | Désignation du groupe X41.1 corrigée : « AU pupitre -S2, voies 1 et 2 » (S1 est sur X41.5) |
+
+### Contrôle des bornes (v21 → v22, 05/11)
+89 bornes sur rail (85 bornes 4 mm + 4 de terre) + 3 blocs PTFIX : repères conformes (X + folio + . + n°), folio du repère = folio de dessin, numéros sans trou ni doublon dans chaque groupe, les 2 côtés de chaque borne câblés. Seuls les PTFIX ont des points libres (voulu).
+
+## Version précédente : v21 (05/11/2026)
 ### Fait en v21
 | Folio | Changement |
 |---|---|
@@ -63,7 +74,8 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 4. Liste d'E/S (f60 à f62) : seulement après validation de Julien. Numérotation des fils : après le schéma propre.
 5. Achats : Q28 à Q30 (raccord thermocouple, fixation sonde, câble moteur 50 m).
 
-## Validation de la v21 par Julien (liste donnée le 05/11)
-- Sécurité (f40 à f42) : freins KF1 / KF2 desserrés dès que KA1 est armé, **y compris en Manu** (KA1 14 sans S3) : voulu ? ; courant des entrées STO ≥ 10 mA (R-32, SEW) ; B1 voie 1 / B2 voie 2 sur le même capot (R-16, essai 200 ms) ; boucle Y1-Y2 (essai de banc).
-- Automate (f60 à f63) : E/S validées ; retirer « PROPOSITION A VALIDER » du f62 (Q13) à la prochaine version ; bornes du thermocouple (Q19).
-- Borniers (f70, f71) : 89 bornes sur rail en v21 (85 bornes 4 mm + 4 de terre) contre 85 achetées (70 PT 2,5 + 15 PT 4, si Hugo a doublé) : il en manque, sans réserve ; bornes de porte absentes des tableaux f70 / f71 ; butées autour de X31.2x / X32.2x non représentées.
+## Validation par Julien (liste mise à jour le 05/11, v22)
+- Sécurité : freins libres en Manu **voulus** (réglé) ; courant STO (SEW, `docs/QUESTIONS_SEW.md`) ; capot B1 / B2 écart 200 ms et boucle Y1-Y2 (essais de banc) ; relire f40 à f42 à l'écran.
+- Automate : réglé (E/S validées, mention f62 retirée) ; bornes du thermocouple à l'achat (Q19).
+- Borniers : 89 bornes pour 85 achetées (+ réserve 10 %, + 6 si les conducteurs de réserve des 27G1 / 19G1 sont bornés) ; type des 4 bornes de terre en stock ? ; 5 bornes PT 4 pour l'arrivée X10 (5G4) ; butées de chaque côté de chaque appareil sur tous les rails (règle de Julien) ; H2 230 V séparé des bornes 24 V sur R4 (butée, cloison ?).
+- Agent d'implantation : bornes de porte sur **R4** (bloc du f70), butées de chaque côté de chaque appareil sur tous les rails, câble frein W4, W13.

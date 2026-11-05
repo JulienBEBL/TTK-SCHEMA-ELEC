@@ -2,7 +2,7 @@
 
 Ce fichier est lu automatiquement au démarrage d'une session Claude Code dans ce dépôt.
 
-1. **Avant de répondre à Julien, lire `memoire/` en entier** (README puis 01 à 07). Tout le contexte du projet y est : machine, matériel, architecture, règles de dessin, points ouverts, travail en cours, méthode. Version actuelle : `memoire/06_EN_COURS.md` (v21 du 05/11/2026 à la dernière mise à jour de ce fichier).
+1. **Avant de répondre à Julien, lire `memoire/` en entier** (README puis 01 à 07). Tout le contexte du projet y est : machine, matériel, architecture, règles de dessin, points ouverts, travail en cours, méthode. Version actuelle : `memoire/06_EN_COURS.md` (v22 du 05/11/2026 à la dernière mise à jour de ce fichier).
 2. Le schéma est **généré** par `outils/ttk_schema.py`. Ne jamais modifier un .xrs à la main ; ne jamais toucher `schema/modele/SCHEMA_ELEC_TTK.xrs`.
    - Versions : la dernière est seule dans `schema/generes/release/`, les autres dans `schema/generes/old/`. Commandes de génération et de contrôle : `README.md`. Attendu : 0 problème, 0 erreur au verifier, 0 chevauchement.
    - Piège : les numéros de folio **affichés** (ceux de Julien) diffèrent des numéros **internes** du script (`NUMFOL`, table dans `memoire/04_REGLES_DESSIN.md`). Julien parle en numéros affichés ; le script s'écrit en anciens numéros.
