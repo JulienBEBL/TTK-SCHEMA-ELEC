@@ -239,3 +239,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Sélecteur Eaton T0-4-8223/E : 4 inverseurs à commun ponté (2-4, 6-8, 10-12, 14-16), pas 8 NO indépendants. Proposition « option D » dans `memoire/02_MATERIEL.md` (Q35).
 - [D] B2 par son propre câble M12 jusqu'à X41.41-44. Répartition 27G1 / 19G1 pas encore validée.
 - Script : textes des fins de course B3 à B6 passés en NO (prochaine version).
+
+## 05/11/2026 : suite (agent d'implantation)
+- [D] Câble frein unique M1 + M2 : repère W3, W6 supprimé. Pour Julien, l'essentiel est un seul câble pour les 4 fils frein (Q33).

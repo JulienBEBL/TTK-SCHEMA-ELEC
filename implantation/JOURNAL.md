@@ -94,3 +94,10 @@ Fichiers : `release/TTK_implantation_2026-11-05_v6.drawio` + `.pdf` ; v5 dans `o
 - R5 : groupe « Freins M1+M2 5G1,5 » (X31.31-32, X32.31-32 + 1 borne PE à créer au schéma).
 - Pupitre = W11 (27G1), boîte de jonction = W12 (19G1 : B1, B3-B6, colonne H1 X61.11-14 à créer), B2 par son câble M12 : proposition Q32 du schéma, en attente de validation.
 - Repères : XR1 (décision 05/11), XR2 (proposé), XPE1 (décision 05/11).
+
+**Statut** : commitée et poussée le 05/11 (a680718), remplacée par la v7.
+
+## v7 — 05/11/2026
+Fichiers : `release/TTK_implantation_2026-11-05_v7.drawio` + `.pdf` ; v6 dans `old/`.
+- Câble frein unique = W3 (W6 supprimé) ; -XR2 validé par Julien.
+- W11 / W12 (Q32) : toujours en attente de Julien.
