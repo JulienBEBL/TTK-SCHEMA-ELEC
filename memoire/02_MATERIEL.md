@@ -52,7 +52,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 |---|---|---|
 | KA1 | Schneider XPSUAF13AP | cat. 0, PL d visé, démarrage surveillé par S4 |
 | S1 / S2 | AU XB5AS8442 (armoire / pupitre) + ZBE102 (NF) + ZBE101 (NO) | **2 NF + 1 NO par AU** [D 03/11, Julien change la commande] |
-| S3 | Eaton T0-4-8223/E (RS 257-9558, 78627324), 2 positions 90°, sans 0, 20 A | **4 inverseurs** [C fiche Eaton 05/11] : pos. 1 ferme 1-2, 5-6, 9-10, 13-14 ; pos. 2 ferme 3-4, 7-8, 11-12, 15-16 ; ponts 2-4, 6-8, 10-12, 14-16 (communs). L'essai du 27/10 (« 4 NO par position ») ne voyait pas les ponts. Auto = position 1, Manu = position 2 ; 24 V CC / 10 mA fiable (< 10^-5), DC-13 10 A [C fiche Eaton 05/11] ; numérotation des bornes provisoire |
+| S3 | Eaton T0-4-8223/E (RS 257-9558, 78627324), 2 positions 90°, sans 0, 20 A | **4 inverseurs** [C fiche Eaton 05/11] : pos. 1 ferme 1-2, 5-6, 9-10, 13-14 ; pos. 2 ferme 3-4, 7-8, 11-12, 15-16 ; ponts 2-4, 6-8, 10-12, 14-16 (communs). Les ponts sont des fils montés d'usine sur les bornes paires : **Julien les a retirés** (photos du 05/11) → 8 NO indépendants, comme l'essai du 27/10. Auto = position 1, Manu = position 2 ; 24 V CC / 10 mA fiable (< 10^-5), DC-13 10 A [C fiche Eaton 05/11] ; numérotation des bornes provisoire |
 | S4 | Schneider XB4BA21, BP noir 1 NO, **non lumineux** [D 03/11] | f40, symbole « BP Affleurant Noir » ; voyant retiré du f61 et Q8.3 en réserve (v16) |
 | FA1 (IEC 81346-2, validé par Julien le 04/11) | Mersen CMC101 (RS 189-5333) + cartouche FR10GG50V4 gG 4 A (RS 188-6962) [D 03/11] | R-33, amont 13 / 23 / 33 de KA1 ; dessiné au f40 en v16 |
 | B1 | RS PRO 902-6874, interrupteur de position (capot mécanique) | |
@@ -80,7 +80,17 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 - Repères : 2 répartiteurs 4P AEE300427 = **-XR1 / -XR2** [D 05/11, Julien] ; bornier de terre Legrand 404839 = **-XPE1** [D 05/11].
 - LIYCY-JZ 5G1,5 (80 m) : **réserve** [D 27/10].
 
-## Sélecteur S3 : option D (proposition du 05/11, Q35)
+## Sélecteur S3 : vraie numérotation (proposition du 05/11)
+Ponts retirés : on garde les 8 contacts séparés du schéma, avec les vrais numéros. 1 bloc = 1 contact Auto + 1 contact Manu.
+| Bloc | Auto (position 1) | Manu (position 2) |
+|---|---|---|
+| 1 | 1-2 : Auto-A → KM1 / KM2 (provisoire 13-14) | 3-4 : Manu-D → KA2 (83-84) |
+| 2 | 5-6 : Auto-B → STO (23-24) | 7-8 : shunt capot voie 1 (53-54) |
+| 3 | 9-10 : info Auto → I0.4 (33-34) | 11-12 : info Manu → I0.5 (73-74) |
+| 4 | 13-14 : réserve (43-44) | 15-16 : shunt capot voie 2 (63-64) |
+Symboles : la librairie n'a pas « NO 1-2 », « 5-6 »... → symboles à créer dans `outils/librairie/CUSTOM/`.
+
+## Ancienne option D (05/11, abandonnée : ponts retirés)
 Le schéma actuel demande 5 potentiels séparés (L+ capteurs pour les infos, voie 1, voie 2, KA1 24, KA1 34) pour 4 communs. Les deux voies (shunts) ne peuvent pas partager un commun (court-circuit croisé vu par KA1, R-10). Option D :
 | Pôle | Commun | Position 1 Auto | Position 2 Manu |
 |---|---|---|---|
@@ -91,3 +101,13 @@ Le schéma actuel demande 5 potentiels séparés (L+ capteurs pour les infos, vo
 - KA1 14 n'alimente plus que KF1 / KF2 ; Manu-D passe de KA1 14 à KA1 24.
 - Les infos automate lisent les lignes après S3 : mode connu seulement quand KA1 est fermé.
 - Si les ponts sont amovibles, le schéma actuel (8 contacts séparés) reste possible.
+
+## Porte de l'armoire (rappel du 05/11)
+| Repère | Appareil | Folio |
+|---|---|---|
+| S1 | AU armoire (déjà par bornes X41.5x / X60.4x) | 41, 60 |
+| S4 | Bouton de réarmement XB4BA21 (boucle Y1-Y2 de KA1) | 40 |
+| H2 | Voyant « armoire sous tension » 230 V, blanc | 12 |
+| H3 | Voyant « 24VELEC présent » | 21 |
+| H4 | Voyant « défaut machine », rouge (sortie Q8.4) | 61 |
+H1 n'est pas sur la porte : c'est la colonne lumineuse de la machine.

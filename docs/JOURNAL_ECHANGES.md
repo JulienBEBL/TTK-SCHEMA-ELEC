@@ -187,3 +187,5 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 05/11/2026 : implantation v7
 - Julien : W3 pour le câble frein unique, XR2 validé, Q32 en attente. Implantation v7 (étiquettes W3 et XR2), mémoire à jour.
+- Julien (suite 2) : ponts Eaton retirés (3 photos) ; séparer les bornes TF ; butées entre fonctions du 27G1 ; qui sont S4 / H2 / H3 / H4 ; câble de terre seul vers le bâti.
+- Réponse : photos lues (ponts = fils sur bornes paires, côté impair sans pont) ; numérotation 1-16 proposée ; rappel des appareils de porte.

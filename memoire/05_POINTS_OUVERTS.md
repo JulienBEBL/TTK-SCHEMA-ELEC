@@ -33,10 +33,11 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien. 05/11 (agent d'implantation) : Julien veut un câble multiconducteur vers une boîte de dérivation machine (« dans tous les cas ») ; la proposition W12 est dessinée en implantation v6. Julien ne valide pas encore (05/11) ; B2 par son propre câble M12 : **oui** |
 | Q33 | Câble frein unique M1 + M2 (5G1,5) | repère **W3** [D 05/11], W6 supprimé. Reste au schéma : borne PE pour le V/J, dessin des 2 freins sur 1 câble aux f31 / f32 |
 | Q34 | Repère du 2e répartiteur : -XR2 | **réglé le 05/11** : XR1 et XR2 (Julien) |
-| Q35 | Sélecteur S3 : la fiche Eaton montre des ponts 2-4, 6-8, 10-12, 14-16 → 4 inverseurs (1 commun + 2 sorties), pas 8 NO indépendants. Le schéma (8 NO, 7 utilisés, chacun sur son potentiel) ne tient pas | ponts amovibles ? sinon option D (05/11, `02_MATERIEL.md`) |
-| Q36 | Porte : S4, H2, H3, H4 câblés en direct alors que S1 passe par des bornes en bas | à décider |
+| Q35 | Sélecteur S3 : la fiche Eaton montre des ponts 2-4, 6-8, 10-12, 14-16 → 4 inverseurs (1 commun + 2 sorties), pas 8 NO indépendants. Le schéma (8 NO, 7 utilisés, chacun sur son potentiel) ne tient pas | **réglé le 05/11** : les ponts sont des fils sur les bornes paires, **Julien les a retirés** (photos) → 8 contacts NO indépendants, option D abandonnée. Reste à poser la vraie numérotation (proposition dans `02_MATERIEL.md`) |
+| Q36 | Porte : S4 (réarmement, f40), H2 (voyant 230 V, f12), H3 (voyant 24VELEC, f21), H4 (voyant défaut, f61) câblés en direct alors que S1 passe par des bornes en bas | proposé le 05/11 : par des bornes aussi ; à décider |
 | Q37 | Sondes TF des moteurs SEW : livrées avec les moteurs ? (Julien appelle SEW) ; que faire à X10 sans sonde | en attente SEW |
-| Q38 | Liaison équipotentielle armoire ↔ bâti machine (en plus des PE des câbles moteur) | à décider |
+| Q38 | Liaison équipotentielle armoire ↔ bâti machine | **05/11 : Julien ajoute un câble de terre seul** (en plus des V/J des câbles et des blindages) ; section et repère à fixer |
+| Q39 | Butées d'arrêt sur rail DIN entre les fonctions d'un même câble (27G1 : AU / sélecteur / IHM / réserve) et autour des bornes TF X31.2x / X32.2x | **demandé par Julien le 05/11** ; à reporter dans l'implantation (agent) et le comptage des achats |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.
