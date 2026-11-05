@@ -29,10 +29,14 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q28 | Jonction sonde K (câble 2 m) / câble de compensation 25 m | 03/11 : proposé RS 891-9031 (paire fiche + prise miniature type K, 220 °C, câble ≤ Ø 4 mm), à placer là où l'ambiance reste < 105 °C (limite du câble 236-3959). Diamètre du 236-3959 et terminaison de la sonde 350-398 non indiqués par RS. Validation de Julien attendue |
 | Q29 | Fixation de la sonde 350-398 : écrou 1/2 pouce (RS) contre cote Microdia « 12/Ø8 x 20 » | compatibilité à confirmer avant commande (sonde encore à FALSE) |
 | Q30 | Câble moteur 2XSLCY-K 50 m : 1 machine ou 2 ? Julien a répondu « OUI » | à préciser |
-| Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) | **réglé le 05/11** : Julien laisse le choix ; **-XR1** (répartiteur) et **-XPE1** (bornier de terre), aucun autre repère ne commence ainsi |
-| Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien. 05/11 (agent d'implantation) : Julien veut un câble multiconducteur vers une boîte de dérivation machine (« dans tous les cas ») ; la proposition W12 est dessinée en implantation v6 |
+| Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) | **réglé le 05/11** : répartiteurs **-XR1 / -XR2** (Julien), bornier de terre **-XPE1** |
+| Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien. 05/11 (agent d'implantation) : Julien veut un câble multiconducteur vers une boîte de dérivation machine (« dans tous les cas ») ; la proposition W12 est dessinée en implantation v6. Julien ne valide pas encore (05/11) ; B2 par son propre câble M12 : **oui** |
 | Q33 | Câble frein unique M1 + M2 (5G1,5) : repère (W3 ?), borne PE pour le V/J, symbole des 2 freins sur 1 câble aux f31 / f32 | à fixer au schéma |
-| Q34 | Repère du 2e répartiteur : -XR2 (proposé) | à valider |
+| Q34 | Repère du 2e répartiteur : -XR2 | **réglé le 05/11** : XR1 et XR2 (Julien) |
+| Q35 | Sélecteur S3 : la fiche Eaton montre des ponts 2-4, 6-8, 10-12, 14-16 → 4 inverseurs (1 commun + 2 sorties), pas 8 NO indépendants. Le schéma (8 NO, 7 utilisés, chacun sur son potentiel) ne tient pas | ponts amovibles ? sinon option D (05/11, `02_MATERIEL.md`) |
+| Q36 | Porte : S4, H2, H3, H4 câblés en direct alors que S1 passe par des bornes en bas | à décider |
+| Q37 | Sondes TF des moteurs SEW : livrées avec les moteurs ? (Julien appelle SEW) ; que faire à X10 sans sonde | en attente SEW |
+| Q38 | Liaison équipotentielle armoire ↔ bâti machine (en plus des PE des câbles moteur) | à décider |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.
@@ -40,7 +44,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 1 ter. Capot à deux technologies (B1 mécanique voie 1, B2 magnétique voie 2) : écart d'ouverture > 200 ms = alerte (R-16), à essayer au banc.
 2. Charge de la sortie 13-14 : 3 bobines LC1D09BD à 5,4 W = 0,68 A sous 24 V, < 3 A DC-13 [C fiche Schneider LC1D09BD, 03/11]. 23-24 : 0,45 A.
 3. Antiparasites des bobines LC1D09BD : **réglé, rien à ajouter** : « Built-in bidirectional peak limiting diode suppressor » [C fiche Schneider, 03/11].
-4. Sélecteur Eaton T0-4-8223/E (RS 257-9558) : fiche reçue le 05/11 (`Documents/10. TTK/eaton_com_ttk.md`). Courant minimal **réglé** : fiabilité < 10^-5 à 24 V CC / 10 mA, DC-13 10 A [C fiche Eaton]. **Numérotation des contacts absente** du .md (le schéma « Contact sequence » est une image) : image du PDF ou photo des bornes à fournir. Recouvrement Auto / Manu à la continuité.
+4. Sélecteur Eaton T0-4-8223/E (RS 257-9558) : fiche reçue le 05/11 (`Documents/10. TTK/eaton_com_ttk.md`). Courant minimal **réglé** : fiabilité < 10^-5 à 24 V CC / 10 mA, DC-13 10 A [C fiche Eaton]. **Numérotation reçue le 05/11** (images du PDF) : position 1 ferme 1-2, 5-6, 9-10, 13-14 ; position 2 ferme 3-4, 7-8, 11-12, 15-16 ; ponts 2-4, 6-8, 10-12, 14-16 (Q35). Recouvrement Auto / Manu à la continuité.
 5. ifm MN508S : homologation sécurité (EN 60947-5-3 / ISO 14119) ; actionneur codé commandé ? ; brochage M12 8 broches ; câble M12.
 6. AU XB5AS8442 : 2 NF + 1 NO (ZBE102 = NF, ZBE101 = NO), réglé le 03/11 (Q25).
 7. Fins de course B3 à B6 : **réglé le 05/11, on garde le NO** (choix de Julien).
@@ -53,7 +57,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 
 ## Très basse tension
 12. DC-1 du LC1D09BD sous 48 V (KA2).
-13. ENA du DM860H : le câblage (ENA+ sur Q0.4 / Q0.5, ENA- au 0 V) est fait. Reste la logique : avec ENA alimenté, le driver est-il actif ou libéré (arbre libre) ? Notice ou essai au banc (forcer Q0.4).
+13. ENA du DM860H : **réglé le 05/11** (Julien) : ENA alimenté = moteur libre ; ENA non alimenté = driver actif. Q0.4 / Q0.5 à 1 pour libérer l'axe ; automate en STOP = axes tenus (le 48 V reste coupé par KA2 après un AU).
 
 ## Automate
 14. Liste d'E/S à valider (f60 à f62 figés d'ici là).

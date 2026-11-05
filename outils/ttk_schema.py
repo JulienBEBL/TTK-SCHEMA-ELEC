@@ -985,7 +985,7 @@ FDC = {"I0.6": ("B501", "Fin de course axe 1 min", 1, "X701.9", "X701.10"),
        "I1.0": ("B503", "Fin de course axe 2 min", 1, "X701.13", "X701.14"),
        "I1.1": ("B504", "Fin de course axe 2 max", 2, "X701.15", "X701.16")}
 for inp, (rep, des, row, t1, t2) in FDC.items():
-    REP[rep] = {"des": des, "fab": "À définir", "carac": "contact NF (0 = atteint ou fil coupé) - symbole NO provisoire", "loc": "+M"}
+    REP[rep] = {"des": des, "fab": "À définir", "carac": "contact NO (1 = fin de course atteinte), choix de Julien 05/11", "loc": "+M"}
     entree(inp, row, [("borne", t1, None, None, None), ("maitre", rep, fdc, "", ("13", "14")),
                       ("borne", t2, None, None, None)])
 for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amont variateur 1 (aux NO)"),
@@ -1004,8 +1004,8 @@ g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
     ["Entrée", "Repère", "Fonction"], ["I0.0", "-S412", "AU pupitre actionné (NO)"], ["I0.1", "-S411", "AU armoire actionné (NO)"],
     ["I0.2", "-B411", "capot ouvert, mécanique (NO aux.)"], ["I0.3", "-B412", "capot ouvert, magnétique (NF aux.)"],
     ["I0.4", "-S413", "mode Auto"], ["I0.5", "-S413", "mode Manu"],
-    ["I0.6 / I0.7", "-B501 / -B502", "fins de course axe 1 min / max (NF)"],
-    ["I1.0 / I1.1", "-B503 / -B504", "fins de course axe 2 min / max (NF)"],
+    ["I0.6 / I0.7", "-B501 / -B502", "fins de course axe 1 min / max (NO)"],
+    ["I1.0 / I1.1", "-B503 / -B504", "fins de course axe 2 min / max (NO)"],
     ["I1.2 / I1.3", "-KM1 / -KM2", "retour contacteurs amont variateurs"],
     ["I1.4", "-Q423", "retour contacteur 48 V"], ["I1.5", "-K401", "diagnostic relais sécu (Z1, trames)"],
 ], size=200)

@@ -52,7 +52,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 |---|---|---|
 | KA1 | Schneider XPSUAF13AP | cat. 0, PL d visé, démarrage surveillé par S4 |
 | S1 / S2 | AU XB5AS8442 (armoire / pupitre) + ZBE102 (NF) + ZBE101 (NO) | **2 NF + 1 NO par AU** [D 03/11, Julien change la commande] |
-| S3 | Eaton T0-4-8223/E (RS 257-9558, 78627324), 2 positions 90°, sans 0, 20 A | **4 NO par position, 8 en tout** [C 27/10] ; Auto = position 1, Manu = position 2 ; 24 V CC / 10 mA fiable (< 10^-5), DC-13 10 A [C fiche Eaton 05/11] ; numérotation des bornes provisoire |
+| S3 | Eaton T0-4-8223/E (RS 257-9558, 78627324), 2 positions 90°, sans 0, 20 A | **4 inverseurs** [C fiche Eaton 05/11] : pos. 1 ferme 1-2, 5-6, 9-10, 13-14 ; pos. 2 ferme 3-4, 7-8, 11-12, 15-16 ; ponts 2-4, 6-8, 10-12, 14-16 (communs). L'essai du 27/10 (« 4 NO par position ») ne voyait pas les ponts. Auto = position 1, Manu = position 2 ; 24 V CC / 10 mA fiable (< 10^-5), DC-13 10 A [C fiche Eaton 05/11] ; numérotation des bornes provisoire |
 | S4 | Schneider XB4BA21, BP noir 1 NO, **non lumineux** [D 03/11] | f40, symbole « BP Affleurant Noir » ; voyant retiré du f61 et Q8.3 en réserve (v16) |
 | FA1 (IEC 81346-2, validé par Julien le 04/11) | Mersen CMC101 (RS 189-5333) + cartouche FR10GG50V4 gG 4 A (RS 188-6962) [D 03/11] | R-33, amont 13 / 23 / 33 de KA1 ; dessiné au f40 en v16 |
 | B1 | RS PRO 902-6874, interrupteur de position (capot mécanique) | |
@@ -74,7 +74,20 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 ## Câbles multiconducteurs
 - 19G1 et 27G1 : **proposition du 05/11, à valider (Q32)**. Julien veut utiliser le 27G1 en priorité, ranger par fonction ; conducteur n° = ordre des bornes.
   - **27G1 (repère proposé -W11) armoire → pupitre +P1** : 1-4 X41.11-14 (AU S2 voies 1 et 2), 5-8 X41.21-24 (S3 Manu, shunt des capots), 9-14 X42.11-16 (Manu-D, Auto-A, Auto-B : après KA1), 15-16 X60.11-12 (S2 NO → I0.0), 17-20 X60.21-24 (S3 → I0.4 / I0.5), 21-22 X50.11-12 (IHM L+ / M), PE → X50.13 (FE de l'IHM, masse du pupitre), 23-26 réserve.
-  - **19G1 (-W12) armoire → boîte de jonction machine** : 1-4 X41.31-34 (B1), 5-12 X60.31-38 (B3 à B6), 13-16 colonne H1 (bornes à créer, X61.11-14), 17-18 réserve, PE → masse de la boîte. B2 (M12) par son propre câble jusqu'aux bornes X41.41-44.
+  - **19G1 (-W12) armoire → boîte de jonction machine** : 1-4 X41.31-34 (B1), 5-12 X60.31-38 (B3 à B6), 13-16 colonne H1 (bornes à créer, X61.11-14), 17-18 réserve, PE → masse de la boîte. B2 (M12) par son propre câble jusqu'aux bornes X41.41-44 [D 05/11].
+  - 27G1 rangé par composant (05/11) : S2 = 1-6 (X41.11-14 voies 1 et 2, X60.11-12 NO → I0.0) ; S3 = 7-20 (X41.21-24 shunts, X42.11-16 Manu-D / Auto-A / Auto-B, X60.21-24 infos) ; IHM = 21-22 (L+ / M seulement) + PE ; réserve 23-26. S3 passe à 9 fils avec l'option D.
   - Risque du 03/11 (revue, risque 1) : il ne vient pas seulement de l'IHM. Le +24 V permanent (L+ capteurs de K1) passe aussi sur X60.11, X60.21, X60.23. Le sortir du câble demande un 3e câble pour 8 fils. Mais un seul court-circuit ne neutralise qu'une des 2 voies : KM1 / KM2 (Auto-A) ou STO (Auto-B). Un KM collé est vu par la boucle de retour Y1-Y2 au réarmement ; un STO ponté ne l'est pas. Proposé : câble fixe et protégé (exclusion de défaut, ISO 13849-2 annexe D, à relire), décision de Julien.
-- Repères : répartiteur 4P AEE300427 = **-XR1**, bornier de terre Legrand 404839 = **-XPE1** [D 05/11, Q31].
+- Repères : 2 répartiteurs 4P AEE300427 = **-XR1 / -XR2** [D 05/11, Julien] ; bornier de terre Legrand 404839 = **-XPE1** [D 05/11].
 - LIYCY-JZ 5G1,5 (80 m) : **réserve** [D 27/10].
+
+## Sélecteur S3 : option D (proposition du 05/11, Q35)
+Le schéma actuel demande 5 potentiels séparés (L+ capteurs pour les infos, voie 1, voie 2, KA1 24, KA1 34) pour 4 communs. Les deux voies (shunts) ne peuvent pas partager un commun (court-circuit croisé vu par KA1, R-10). Option D :
+| Pôle | Commun | Position 1 Auto | Position 2 Manu |
+|---|---|---|---|
+| 1 (2/4) | KA1 24 | 1 → KM1 / KM2 (Auto-A) + I0.4 | 3 → KA2 (Manu-D) + I0.5 |
+| 2 (6/8) | KA1 34 | 5 → STO (Auto-B) | 7 : réserve |
+| 3 (10/12) | voie 1 (après les AU) | 9 : libre | 11 → S12 (shunt B1) |
+| 4 (14/16) | voie 2 | 13 : libre | 15 → S22 (shunt B2) |
+- KA1 14 n'alimente plus que KF1 / KF2 ; Manu-D passe de KA1 14 à KA1 24.
+- Les infos automate lisent les lignes après S3 : mode connu seulement quand KA1 est fermé.
+- Si les ponts sont amovibles, le schéma actuel (8 contacts séparés) reste possible.

@@ -232,3 +232,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Bornier R5 groupé par câble (implantation v5 / v6). QS1 mesure environ 140 mm de large (Julien).
 - [D] Distribution 400 V : 2 AEE300427, fil 4 mm², QF1 → XR1, ponts XR1 → XR2 (04/11). [H] Repère XR2 (Q34).
 - [D] Drivers U3 / U4 vissés sur la plaque. Cotes réelles des rails : Julien ajuste au montage.
+
+## 05/11/2026 : retours de Julien (suite)
+- [D] Répartiteurs 4P = -XR1 / -XR2 (Julien, Q34 réglé) ; bornier de terre = -XPE1.
+- [C] ENA du DM860H : alimenté = moteur libre, non alimenté = driver actif (Julien).
+- [C] Sélecteur Eaton T0-4-8223/E : 4 inverseurs à commun ponté (2-4, 6-8, 10-12, 14-16), pas 8 NO indépendants. Proposition « option D » dans `memoire/02_MATERIEL.md` (Q35).
+- [D] B2 par son propre câble M12 jusqu'à X41.41-44. Répartition 27G1 / 19G1 pas encore validée.
+- Script : textes des fins de course B3 à B6 passés en NO (prochaine version).

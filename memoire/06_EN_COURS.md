@@ -17,7 +17,8 @@ Positions de Julien (POS_JULIEN, tableaux f61 / f62) vérifiées par calcul : in
 
 ## Prêt pour la v17 (script modifié, pas encore généré)
 - f31 / f32 : texte rouge réduit à « TF X10 : bornes à confirmer » (X6 confirmé le 05/11).
-- En attente de Julien : répartition 27G1 / 19G1 (Q32) ; si validée, bornes de la colonne H1 (X61.11-14) et repères -W11 / -W12 au f70.
+- Fins de course B3 à B6 : textes en NO (désignation et tableau d'E/S).
+- En attente de Julien : S3 option D (Q35), porte (Q36), répartition 27G1 / 19G1 (Q32) ; si validée, bornes de la colonne H1 (X61.11-14) et repères -W11 / -W12 au f70.
 - Décision du 05/11 à dessiner : freins M1 + M2 sur **un seul câble 5G1,5** (W6 supprimé), borne PE pour son V/J (Q33).
 - Implantation v6 (05/11) : bornier R5 groupé par câble, ordre dans `implantation/JOURNAL.md`.
 

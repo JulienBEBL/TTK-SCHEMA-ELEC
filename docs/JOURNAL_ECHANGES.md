@@ -182,3 +182,5 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : implantation v4, v5, v6
 - v4 commitée et poussée (accord de Julien). v5 : QS1 à 140 mm, XR2 sur R4, R5 groupé par câble. v6 : frein en un seul 5G1,5 + PE à créer, W11 / W12 de la proposition Q32, B2 par son câble M12, repères XR1 / XR2 / XPE1.
 - Julien : cotes de montage gérées par lui ; boîte de dérivation machine ; mise à jour de `memoire/` et `docs/` demandée.
+- Julien (suite) : XR1 / XR2 ; images des contacts Eaton ; ENA alimenté = moteur libre ; tableau 27G1 par composant demandé ; 21-22 = IHM seulement ? ; quels fils oubliés ? ; sondes TF à voir avec SEW ; B2 par son câble M12 : oui.
+- Réponse : ponts Eaton → 4 inverseurs, schéma S3 à revoir (option D) ; tableau par composant ; oublis possibles : bornes H1, appareils de porte S4 / H2 / H3 / H4, liaison équipotentielle, frein unique à dessiner.
