@@ -31,7 +31,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q30 | Câble moteur 2XSLCY-K 50 m : 1 machine ou 2 ? Julien a répondu « OUI » | à préciser |
 | Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) | **réglé le 05/11** : répartiteurs **-XR1 / -XR2** (Julien), bornier de terre **-XPE1** |
 | Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien. 05/11 (agent d'implantation) : Julien veut un câble multiconducteur vers une boîte de dérivation machine (« dans tous les cas ») ; la proposition W12 est dessinée en implantation v6. Julien ne valide pas encore (05/11) ; B2 par son propre câble M12 : **oui** |
-| Q33 | Câble frein unique M1 + M2 (5G1,5) : repère (W3 ?), borne PE pour le V/J, symbole des 2 freins sur 1 câble aux f31 / f32 | à fixer au schéma |
+| Q33 | Câble frein unique M1 + M2 (5G1,5) | repère **W3** [D 05/11], W6 supprimé. Reste au schéma : borne PE pour le V/J, dessin des 2 freins sur 1 câble aux f31 / f32 |
 | Q34 | Repère du 2e répartiteur : -XR2 | **réglé le 05/11** : XR1 et XR2 (Julien) |
 | Q35 | Sélecteur S3 : la fiche Eaton montre des ponts 2-4, 6-8, 10-12, 14-16 → 4 inverseurs (1 commun + 2 sorties), pas 8 NO indépendants. Le schéma (8 NO, 7 utilisés, chacun sur son potentiel) ne tient pas | ponts amovibles ? sinon option D (05/11, `02_MATERIEL.md`) |
 | Q36 | Porte : S4, H2, H3, H4 câblés en direct alors que S1 passe par des bornes en bas | à décider |
