@@ -74,13 +74,13 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 ## Câbles multiconducteurs
 - 19G1 et 27G1 : **proposition du 05/11, à valider (Q32)**. Julien veut utiliser le 27G1 en priorité, ranger par fonction ; conducteur n° = ordre des bornes.
   - **27G1 (repère proposé -W11) armoire → pupitre +P1** : 1-4 X41.11-14 (AU S2 voies 1 et 2), 5-8 X41.21-24 (S3 Manu, shunt des capots), 9-14 X42.11-16 (Manu-D, Auto-A, Auto-B : après KA1), 15-16 X60.11-12 (S2 NO → I0.0), 17-20 X60.21-24 (S3 → I0.4 / I0.5), 21-22 X50.11-12 (IHM L+ / M), PE → X50.13 (FE de l'IHM, masse du pupitre), 23-26 réserve.
-  - **19G1 (-W12) armoire → boîte de jonction machine** : 1-4 X41.31-34 (B1), 5-12 X60.31-38 (B3 à B6), 13-16 colonne H1 (bornes à créer, X61.11-14), 17-18 réserve, PE → masse de la boîte. B2 (M12) par son propre câble jusqu'aux bornes X41.41-44 [D 05/11].
+  - **19G1 (-W12) armoire → boîte de jonction machine** : 1-4 X41.31-34 (B1), 5-12 X60.31-38 (B3 à B6), 13-16 colonne H1 (X61.11-14, v17), 17-18 réserve, PE → masse de la boîte. B2 (M12) par son propre câble jusqu'aux bornes X41.41-44 [D 05/11].
   - 27G1 rangé par composant (05/11) : S2 = 1-6 (X41.11-14 voies 1 et 2, X60.11-12 NO → I0.0) ; S3 = 7-20 (X41.21-24 shunts, X42.11-16 Manu-D / Auto-A / Auto-B, X60.21-24 infos) ; IHM = 21-22 (L+ / M seulement) + PE ; réserve 23-26. S3 passe à 9 fils avec l'option D.
   - Risque du 03/11 (revue, risque 1) : il ne vient pas seulement de l'IHM. Le +24 V permanent (L+ capteurs de K1) passe aussi sur X60.11, X60.21, X60.23. Le sortir du câble demande un 3e câble pour 8 fils. Mais un seul court-circuit ne neutralise qu'une des 2 voies : KM1 / KM2 (Auto-A) ou STO (Auto-B). Un KM collé est vu par la boucle de retour Y1-Y2 au réarmement ; un STO ponté ne l'est pas. Proposé : câble fixe et protégé (exclusion de défaut, ISO 13849-2 annexe D, à relire), décision de Julien.
 - Repères : 2 répartiteurs 4P AEE300427 = **-XR1 / -XR2** [D 05/11, Julien] ; bornier de terre Legrand 404839 = **-XPE1** [D 05/11].
 - LIYCY-JZ 5G1,5 (80 m) : **réserve** [D 27/10].
 
-## Sélecteur S3 : vraie numérotation (proposition du 05/11)
+## Sélecteur S3 : vraie numérotation et noms (dessinés en v17, 05/11)
 Ponts retirés : on garde les 8 contacts séparés du schéma, avec les vrais numéros. 1 bloc = 1 contact Auto + 1 contact Manu.
 | Bloc | Auto (position 1) | Manu (position 2) |
 |---|---|---|
@@ -88,7 +88,7 @@ Ponts retirés : on garde les 8 contacts séparés du schéma, avec les vrais nu
 | 2 | 5-6 : Auto-B → STO (23-24) | 7-8 : shunt capot voie 1 (53-54) |
 | 3 | 9-10 : info Auto → I0.4 (33-34) | 11-12 : info Manu → I0.5 (73-74) |
 | 4 | 13-14 : réserve (43-44) | 15-16 : shunt capot voie 2 (63-64) |
-Symboles : la librairie n'a pas « NO 1-2 », « 5-6 »... → symboles à créer dans `outils/librairie/CUSTOM/`.
+Noms (Julien 05/11, lettre = bloc) : AUTO-A 1-2, MANU-A 3-4, AUTO-B 5-6, MANU-B 7-8, AUTO-C 9-10, MANU-C 11-12, AUTO-D 13-14 (réserve), MANU-D 15-16. Symboles `outils/librairie/CUSTOM/Eaton_T0_contact_NO_*.xsy` (copies de « RC Contact NO 13-14 »).
 
 ## Ancienne option D (05/11, abandonnée : ponts retirés)
 Le schéma actuel demande 5 potentiels séparés (L+ capteurs pour les infos, voie 1, voie 2, KA1 24, KA1 34) pour 4 communs. Les deux voies (shunts) ne peuvent pas partager un commun (court-circuit croisé vu par KA1, R-10). Option D :

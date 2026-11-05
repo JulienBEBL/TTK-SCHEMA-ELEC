@@ -245,3 +245,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Sélecteur S3 : les ponts 2-4, 6-8, 10-12, 14-16 sont des fils ; Julien les a retirés (photos) → 8 NO indépendants, option D abandonnée. Vraie numérotation à poser (proposition dans `memoire/02_MATERIEL.md`).
 - [D] Bornes TF X31.2x / X32.2x bien séparées des autres (Julien). Butées d'arrêt rail DIN entre les fonctions d'un même câble, ex. 27G1 entre AU (1-6) et sélecteur (7-20) (Q39).
 - [D] Liaison équipotentielle armoire ↔ bâti machine : un câble de terre seul en plus des V/J et des blindages (Q38, section et repère à fixer).
+
+## 05/11/2026 : v17
+- [D] Contacts du sélecteur S3 nommés AUTO-A à AUTO-D et MANU-A à MANU-D (Julien), vrais numéros Eaton 1-2 à 15-16.
+- [D] Porte : tous les appareils par des bornes, ou aucun (Julien). Dessinés : S4, H2, H3, H4 ; à retirer tous si la place manque.
+- [D] Colonne H1 par des bornes (câble) : X61.11-14.

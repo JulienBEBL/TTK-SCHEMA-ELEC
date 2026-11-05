@@ -97,3 +97,7 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - X70 (armoire ↔ machine) : en construction ; X70.1-4 B1, 5-8 B2, 9-16 fins de course.
 - X71 (armoire ↔ pupitre) : 1-4 AU, 5-6 AU pupitre → automate, 7-20 sélecteur, 21-23 IHM.
 - Méthode : `docs/local/METHODE_BORNIERS.md`. Sur f70 / f71 : description de la provenance du fil **des deux côtés** de la borne.
+
+## Bornes de porte et colonne (v17, 05/11)
+- Porte (règle de Julien : tous les appareils par des bornes ou aucun) : S1 X41.51-54 / X60.41-42, S4 X40.11-12, H2 X12.21-22 (230 V), H3 X21.21-22, H4 X61.21-22.
+- Colonne H1 (machine, par câble) : X61.11 RD, X61.12 OG, X61.13 GN, X61.14 COM.
