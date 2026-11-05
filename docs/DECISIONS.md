@@ -286,3 +286,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 05/11/2026 : numérotation v2, réarmement
 - [H] Numérotation des fils v2 (après l'avis des collègues de Julien) : tout numéroté, phases, N, 24 V et 0 V compris ; un numéro par potentiel ; FFNN, chiffre des unités = conducteur (1 L1, 2 L2, 3 L3, 4 N ; U V W ; + / 0 V). PE par la couleur. À valider. Remplace la convention A du 28/10.
 - [C] Réarmement START 3 : le relais lit la boucle Y1-Y2 bouton enfoncé et arme au relâchement (constat de banc du 02/11) ; les NF miroirs ne s'ouvrent qu'après, quand les contacteurs collent : pas de conflit.
+- [D] Numérotation des fils : convention v2 retenue par Julien. Point au milieu (10.13) envisagé, à trancher. Numérotation générée à la toute fin, après validation de la sécurité, de l'automate et des borniers.
+- [D] Contacts miroirs dans la boucle Y1-Y2 : compris et validés par Julien ; essai de banc préparé (`docs/ESSAI_BANC_BOUCLE_RETOUR.md`).

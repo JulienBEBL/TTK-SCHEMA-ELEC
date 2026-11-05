@@ -219,3 +219,5 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : numérotation v2, réarmement
 - Julien : ses collègues conseillent de numéroter aussi L1 / L2 / L3 / N, 24 V et 0 V ; demande la convention refaite avec exemples ; doute sur l'appui puis le relâchement du bouton de réarmement.
 - Réponse : convention v2 (`memoire/04_REGLES_DESSIN.md`) ; séquence du réarmement START 3 expliquée, essai de banc proposé.
+- Julien : retient la convention v2, envisage un point au milieu ; numérotation à la fin, après ses validations sécu / automate / borniers ; demande un .md pour faire l'essai des contacts miroirs avec un nouveau chat.
+- Fait : `docs/ESSAI_BANC_BOUCLE_RETOUR.md` ; méthode de numérotation notée dans `memoire/04_REGLES_DESSIN.md`.
