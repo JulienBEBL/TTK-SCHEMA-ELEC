@@ -82,3 +82,15 @@ Fichiers : `release/TTK_implantation_2026-11-05_v5.drawio` + `.pdf` ; v4 dans `o
 - Freins dessinés en 2 câbles W3 / W6 (schéma v16).
 
 **À trancher** : un câble frein unique pour M1 + M2 (boîte de dérivation côté machine) ; FdC B3-B6 : 2 ou 3 fils ; câbles capteurs (un par capteur ou multiconducteur) ; référence de la cloison.
+
+**Statut** : commitée et poussée le 05/11 (b46ddb3), remplacée par la v6.
+
+## v6 — 05/11/2026
+Fichiers : `release/TTK_implantation_2026-11-05_v6.drawio` + `.pdf` ; v5 dans `old/`.
+
+**Réponses de Julien (05/11)** : freins M1 + M2 dans un seul 5G1,5 ; boîte de dérivation dans la machine ; capteurs en câble multiconducteur ; FdC de translation : 2 bornes par contact ; cotes au montage gérées par Julien.
+
+**Changements**
+- R5 : groupe « Freins M1+M2 5G1,5 » (X31.31-32, X32.31-32 + 1 borne PE à créer au schéma).
+- Pupitre = W11 (27G1), boîte de jonction = W12 (19G1 : B1, B3-B6, colonne H1 X61.11-14 à créer), B2 par son câble M12 : proposition Q32 du schéma, en attente de validation.
+- Repères : XR1 (décision 05/11), XR2 (proposé), XPE1 (décision 05/11).

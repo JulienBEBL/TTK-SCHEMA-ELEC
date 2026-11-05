@@ -18,6 +18,8 @@ Positions de Julien (POS_JULIEN, tableaux f61 / f62) vérifiées par calcul : in
 ## Prêt pour la v17 (script modifié, pas encore généré)
 - f31 / f32 : texte rouge réduit à « TF X10 : bornes à confirmer » (X6 confirmé le 05/11).
 - En attente de Julien : répartition 27G1 / 19G1 (Q32) ; si validée, bornes de la colonne H1 (X61.11-14) et repères -W11 / -W12 au f70.
+- Décision du 05/11 à dessiner : freins M1 + M2 sur **un seul câble 5G1,5** (W6 supprimé), borne PE pour son V/J (Q33).
+- Implantation v6 (05/11) : bornier R5 groupé par câble, ordre dans `implantation/JOURNAL.md`.
 
 ## À faire ensuite
 1. H2 : reporter la référence du voyant 230 V quand Julien l'aura.

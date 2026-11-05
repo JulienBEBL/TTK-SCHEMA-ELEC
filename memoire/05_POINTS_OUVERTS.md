@@ -30,7 +30,9 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q29 | Fixation de la sonde 350-398 : écrou 1/2 pouce (RS) contre cote Microdia « 12/Ø8 x 20 » | compatibilité à confirmer avant commande (sonde encore à FALSE) |
 | Q30 | Câble moteur 2XSLCY-K 50 m : 1 machine ou 2 ? Julien a répondu « OUI » | à préciser |
 | Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) | **réglé le 05/11** : Julien laisse le choix ; **-XR1** (répartiteur) et **-XPE1** (bornier de terre), aucun autre repère ne commence ainsi |
-| Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien |
+| Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien. 05/11 (agent d'implantation) : Julien veut un câble multiconducteur vers une boîte de dérivation machine (« dans tous les cas ») ; la proposition W12 est dessinée en implantation v6 |
+| Q33 | Câble frein unique M1 + M2 (5G1,5) : repère (W3 ?), borne PE pour le V/J, symbole des 2 freins sur 1 câble aux f31 / f32 | à fixer au schéma |
+| Q34 | Repère du 2e répartiteur : -XR2 (proposé) | à valider |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.

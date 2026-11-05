@@ -224,3 +224,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] STO du MCX91A (Julien, notice SEW) : X6.1 / X6.3 = +24 V, X6.2 / X6.4 = 0 V ; X6.5 / X6.6 non utilisés. Câblage conforme ; texte rouge du f31 / f32 réduit à « TF X10 : bornes à confirmer » (script, prochaine version).
 - [C] Sélecteur Eaton T0-4-8223/E : 24 V CC / 10 mA fiable, DC-13 10 A. Numérotation des contacts absente de la fiche convertie.
 - [H] Proposition 27G1 (-W11) → pupitre, 19G1 (-W12) → boîte de jonction machine, B2 par son câble M12 ; détail dans `memoire/02_MATERIEL.md`. À valider (Q32).
+
+## 05/11/2026 : agent d'implantation (v5, v6)
+- [D] Freins M1 + M2 : un seul câble 5G1,5 (4 conducteurs + V/J), boîte de dérivation côté machine. Remplace W3 / W6. Borne PE et repère à fixer (Q33).
+- [D] Boîte de dérivation dans la machine dans tous les cas ; capteurs et capots par un câble multiconducteur (cohérent avec la proposition W12, Q32).
+- [D] Fins de course de translation B3 à B6 : 2 bornes par contact.
+- [D] Bornier R5 groupé par câble (implantation v5 / v6). QS1 mesure environ 140 mm de large (Julien).
+- [D] Distribution 400 V : 2 AEE300427, fil 4 mm², QF1 → XR1, ponts XR1 → XR2 (04/11). [H] Repère XR2 (Q34).
+- [D] Drivers U3 / U4 vissés sur la plaque. Cotes réelles des rails : Julien ajuste au montage.

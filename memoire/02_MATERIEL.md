@@ -11,7 +11,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | QS1 | Legrand Vistop 022515, 4P 63 A | manœuvre armoire ouverte |
 | QF1 | Hager NFT820, 3P+N 20 A courbe C | disjoncteur de tête |
 | TR1 | TEMCo TT1041, 480 D / 400 Y-230, 15 kVA | variante US, hors armoire |
-| (ancien X12) | Répartiteur 4P 125 A 7 départs AEE300427 | non dessiné depuis le 29/10 (renvois directs QF1 → bus f11) ; repère à fixer (X12 = bornes du f12 depuis le 02/11) |
+| -XR1, -XR2 (ancien X12) | 2 répartiteurs 4P 125 A 7 départs AEE300427 par armoire | non dessinés depuis le 29/10 (renvois directs QF1 → bus f11). Fil 4 mm² seulement : seuls les 5 petits départs (1,5-6 mm²) serrent. QF1 → XR1, puis 1 pont 4 mm² par pôle XR1 → XR2 (la borne de QF1 n'accepte pas 2 × 4 mm²) [D 04/11]. Repère XR1 [D 05/11] ; XR2 proposé par l'agent d'implantation. Affectation des départs : `implantation/` page 5 |
 | (ancien X13) | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) ; repère à fixer |
 | QM1 / QM2 | Schneider GV2ME14, réglés 6,5 A | amont variateurs |
 | KM1 / KM2 | Schneider LC1D09BD (bobine 24 V CC) | contacteurs variateurs |
@@ -34,7 +34,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW | frein BE5 400 V CA |
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
-| W3 / W6 | Frein : LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) [D 03/11] | 300/500 V CA [C fiche Achat Electrique] : convient au 400 V entre phases, en dessous du ≥ 450/750 V du 26/10 ; 2 conducteurs + V/J utilisés, 2 en réserve. Composition « 5G1,5 blindé » aux f31 / f32 depuis la v16 |
+| W3 (W6 supprimé) | Freins M1 + M2 : **un seul** LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) [D 05/11, remplace W3 / W6 du 03/11] | 300/500 V CA [C fiche Achat Electrique]. 4 conducteurs (2 par frein) + V/J ; boîte de dérivation côté machine [D 05/11]. V/J : borne PE à créer au bornier (Q33). Repère du câble à fixer (Q33) |
 | W4 / W7 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
 
 ## Très basse tension (f12, f20, f21)

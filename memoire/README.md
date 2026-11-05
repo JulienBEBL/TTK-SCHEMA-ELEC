@@ -26,4 +26,4 @@ Point d'entrée unique pour reprendre le projet sans relire tout l'historique.
 
 `CLAUDE.md` (racine du dépôt) renvoie ici : un nouveau chat Claude Code le lit au démarrage.
 
-Dernière mise à jour : 04/11/2026 (v16) ; avant : 03/11/2026 (clôture des achats, v15 inchangée).
+Dernière mise à jour : 05/11/2026 (agent d'implantation : câble frein unique, XR1 / XR2, bornier R5 par câble) ; 04/11/2026 (v16) ; avant : 03/11/2026 (clôture des achats, v15 inchangée).
