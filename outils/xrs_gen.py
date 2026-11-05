@@ -120,6 +120,7 @@ class Gen:
         self.dessins = []
         self.cables = []
         self.cable_nums = {}      # index du câble -> numéros des brins (câble sur 2 folios)
+        self.cable_type = {}      # index du câble -> type WinRelais (0 simple, 3 blindé ellipse + trait)
         self.nets = {}              # union-find des équipotentielles voulues
         self.net_names = {}
         self.tee_issues = []
@@ -393,7 +394,7 @@ class Gen:
                                bold=1 if (entete and r == 0) else 0)
                 cx += c
 
-    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None):
+    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None, blinde=None):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
@@ -403,6 +404,9 @@ class Gen:
             x1, x2, etiq, size = brins_x[0], brins_x[-1], "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
         if nums:
             self.cable_nums[len(self.cables)] = list(nums)
+        # type (relu sur le .xrs de Julien du 05/11) : 0 Simple, 1 Rectangle, 2 Blindé (Ellipse), 3 Blindé (Ellipse + Trait),
+        # 4 / 5 Blindé (Rectangle arrondi / + Trait). Par défaut : présentation ovale = blindé, sinon simple
+        self.cable_type[len(self.cables)] = 3 if (ovale if blinde is None else blinde) else 0
         self.cables.append((folio, x1, x2, y, rep, compo, desig, brins_x, etiq, size))
 
     def cable_textes(self, c):
@@ -634,7 +638,7 @@ class Gen:
                 L.append(SEP.join(map(str, (f, x1, y, x2, y, 0, 0, 0, 0))) + SEP)
                 L.append("0\u00b740\u00b70\u00b70\u00b71\u00b716777215\u00b7")
                 ov = isinstance(etiq, str)
-                L.append(f"802\u00b7500\u00b7{3 if ov else len(brins)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
+                L.append(f"802\u00b7500\u00b7{self.cable_type.get(n, 0)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
                 L.append("4\u00b70\u00b7400\u00b7400\u00b7400\u00b7400\u00b70\u00b7")
                 if ov:
                     rx = x1 - 600            # repère centré (alignement 6) dans l'ovale

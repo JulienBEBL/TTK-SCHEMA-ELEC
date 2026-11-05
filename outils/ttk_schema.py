@@ -713,31 +713,37 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
 # ======================================================================== 31 DISTRIBUTION 24 V
 # barres 24VELEC / 0 V en haut (tracées avec la chaîne, plus bas) ; -X31 et -X32 s'y piquent
 f = "31"
-ptf = C + "Phoenix_3002781_PTFIX_6x1.5_BK.xsy"
-DESC31 = {"X311": "Distribution 24VELEC", "X312": "Distribution 0 V", "X313": "Distribution 24VSEC"}
+# 05/11 (Julien) : 3 blocs Phoenix PTFIX 6/12X2,5 (3273354) à la place des PTFIX 6X1,5 : 1 entrée E + 12 départs
+# (1 à 6 en haut, 7 à 12 en bas) ; couleurs prises dans le stock de Julien (RD, BK, GY, BU)
+ptf = os.path.join(ICI, "librairie", "CUSTOM", "Phoenix_3273354_PTFIX_6-12x2.5.xsy")
+DESC31 = {"X311": ("Distribution 24VELEC", "rouge"), "X312": ("Distribution 0 V", "bleu"),
+          "X313": ("Distribution 24VSEC", "gris")}
 P31 = {}
 for rep_, x, y in (("X311", 6000, 4800), ("X313", 6000, 9600), ("X312", 6000, 14400)):
-    P31[rep_] = g.place(ptf, rep_, F[f], x, y, champs={2: DESC31[rep_], 3: "Phoenix 3002781 PTFIX 6X1,5-BK",
-                                                     4: "6 points - 17,5 A"}, loc="A1", wrap=34)
-    g.cadre(F[f], 12000, y - 1200, 18400, y + 1800, width=10, dashed=True)
-    texte(f, 12200, y - 1100, f"Image du bornier -{rep_} (à insérer)", 180)
+    P31[rep_] = g.place(ptf, rep_, F[f], x, y, champs={2: DESC31[rep_][0], 3: "Phoenix 3273354 PTFIX 6/12X2,5",
+                                                     4: f"1 entrée + 12 départs - {DESC31[rep_][1]}"}, loc="A1", wrap=34,
+                        ref=("PHOENIX CONTACT", "", "3273354"))
+    g.cadre(F[f], 13200, y - 1200, 19600, y + 1800, width=10, dashed=True)
+    texte(f, 13400, y - 1100, f"Image du bornier -{rep_} (à insérer)", 180)
 x311, x312, x313 = P31["X311"], P31["X312"], P31["X313"]
-W(f, [(XL, 4400), (6000, 4400), x311["1"]], "24")
-W(f, [(XL, 9200), (6000, 9200), x313["1"]], "24")
-W(f, [(XL, 13200), (6000, 13200), x312["1"]], "0V")
+W(f, [(XL, 4400), (6000, 4400), x311["E"]], "24")
+W(f, [(XL, 9200), (6000, 9200), x313["E"]], "24")
+W(f, [(XL, 13200), (6000, 13200), x312["E"]], "0V")
 renvoi("13", s24, f, (XL, 4400), "24")
 renvoi("13", a24, f, (XL, 9200), "24")
 renvoi("13", z30, f, (XL, 13200), "0V")
-W(f, [x311["2"], (6400, RAIL24_Y)], "24")
-W(f, [x312["2"], (6400, 13600), (10800, 13600), (10800, RAIL0_Y)], "0V")
-d31 = {"24V20": W(f, [x311["6"], (6800, 6400), (8800, 6400)], "24"),
-       "24V21": W(f, [x311["5"], (6400, 7200), (8800, 7200)], "24"),
-       "0V32a": W(f, [x312["3"], (6800, 14000), (8800, 14000)], "0V"),
-       "0V20": W(f, [x312["6"], (6800, 16000), (8800, 16000)], "0V"),
-       "0V21": W(f, [x312["5"], (6400, 16800), (8800, 16800)], "0V"),
-       "0V32b": W(f, [x312["4"], (6000, 17600), (8800, 17600)], "0V")}
-d31["CMD40"] = W(f, [x313["6"], (6800, 11200), (8800, 11200)], "24")
-d31["CMD52"] = W(f, [x313["5"], (6400, 12000), (8800, 12000)], "24")
+W(f, [x311["1"], (x311["1"].x, RAIL24_Y)], "24")
+W(f, [x312["1"], (x312["1"].x, 13600), (12400, 13600), (12400, RAIL0_Y)], "0V")     # à droite des textes des blocs
+
+
+d31 = {"24V20": W(f, [x311["12"], (x311["12"].x, 6400), (8800, 6400)], "24"),
+       "24V21": W(f, [x311["11"], (x311["11"].x, 7200), (8800, 7200)], "24"),
+       "0V32a": W(f, [x312["6"], (x312["6"].x, 14000), (8800, 14000)], "0V"),
+       "0V20": W(f, [x312["12"], (x312["12"].x, 16000), (8800, 16000)], "0V"),
+       "0V21": W(f, [x312["11"], (x312["11"].x, 16800), (8800, 16800)], "0V"),
+       "0V32b": W(f, [x312["10"], (x312["10"].x, 17600), (8800, 17600)], "0V")}
+d31["CMD40"] = W(f, [x313["12"], (x313["12"].x, 11200), (8800, 11200)], "24")
+d31["CMD52"] = W(f, [x313["11"], (x313["11"].x, 12000), (8800, 12000)], "24")
 for ff in ("20", "21"):
     renvoi(f, d31["24V" + ff], ff, VAR[(ff, "24")], "24")
     renvoi(f, d31["0V" + ff], ff, VAR[(ff, "0V")], "0V")
@@ -1429,7 +1435,7 @@ etiquette(f, xs, PE10[1] - 2800, "Terre PE vers les appareils", 260)
 xb_ = xs[-1] + 2400
 W(f, [(xs[-1], PE10[1]), (xb_, PE10[1]), (xb_, PE10[1] - 1600)], "PE")
 g.cable(F[f], 0, 0, PE10[1] - 1200, "W13", "1 x 4 mm² V/J", "Liaison équipotentielle armoire -> bâti machine +M", [xb_],
-        ovale=True, compo_dx=400)
+        ovale=True, compo_dx=400, blinde=False)
 texte(f, xb_ - 1200, PE10[1] - 2400, "Bâti machine +M", 220, 0, 1)
 
 # ======================================================================== barres 24 V / 0 V en haut (29/10)

@@ -1,8 +1,15 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v19 (05/11/2026)
-`schema/generes/release/TTK_2026-11-05_v19.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu du fil vers le bâti, f10), 0 chevauchement. **En attente : retours de Julien (Q8).**
+## Version actuelle : v20 (05/11/2026)
+`schema/generes/release/TTK_2026-11-05_v20.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti), 0 chevauchement. La v19 renvoyée par Julien (archivée `schema/recus/2026-11-05_v19_ouverte_WinRelais.xrs`) n'avait aucune retouche de position. **En attente : retours de Julien (Q8).**
 
+### Fait en v20
+| Folio | Changement |
+|---|---|
+| 21 | X21.11 / .12 / .13 : **PTFIX 6/12X2,5** (3273354), symbole `librairie/CUSTOM/Phoenix_3273354_PTFIX_6-12x2.5.xsy` (entrée E, départs 1-6 en haut, 7-12 en bas) ; couleurs rouge / bleu / gris ; montée du 0 V vers la barre déplacée à x = 12400 ; cadres « image du bornier » décalés à droite |
+| tous | Type des câbles : blindé (ellipse + trait) pour W2 à W6, W9, W10 ; simple pour W1, W8, W13 |
+
+## Version précédente : v19 (05/11/2026)
 ### Fait en v19
 | Folio | Changement |
 |---|---|

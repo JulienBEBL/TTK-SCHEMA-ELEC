@@ -204,3 +204,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 05/11/2026 : implantation v8
 - Julien : « regarde le repo et les mises à jour, fais les modifs, plan complet ». Implantation v8 selon la v19 : W11 / W12 avec butées, TF W3 / W6 isolés, freins W4, H1 X61.1x, porte sur R4, passe-câbles W4 / W13.
+
+## 05/11/2026 : v20
+- Julien : f21 en PTFIX 6/12X2,5 (3273354) avec couleurs du stock ; TF blanc / marron ; .xrs de test (blindé, numéros U3 / U4) ; type PROFINET créé en personnalisé ; demande une convention de numérotation simple, un tableau d'E/S d'ensemble, et pourquoi des contacts miroirs dans la boucle de réarmement.
+- v20 générée ; tableau `docs/LISTE_ES_AUTOMATE.md` ; explication R-22 (boucle de retour) ; convention proposée.

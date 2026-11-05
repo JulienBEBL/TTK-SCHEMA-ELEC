@@ -35,7 +35,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
 | **W4** (W7 supprimé) [D 05/11, v18] | Freins M1 + M2 : **un seul** LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) | 300/500 V CA [C fiche Achat Electrique]. Conducteurs 1-2 = frein M1 (f31), 3-4 = frein M2 (f32), V/J → bornier de terre -XPE1 et boîte de dérivation côté machine (pas de borne sur rail). **Correction du 05/11** : le schéma appelle W4 / W7 les freins et W3 / W6 les sondes TF depuis la v11 ; « W3 » noté le 05/11 par l'agent d'implantation était faux (Julien : « le numéro m'importe peu ») |
-| W3 / W6 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
+| W3 / W6 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté ; conducteurs **blanc et marron** (Julien 05/11) |
 | W13 | Liaison équipotentielle armoire → bâti machine : conducteur V/J seul **4 mm²** [D 05/11, v18] | depuis la terre de l'arrivée (f10) ; Julien hésitait 2,5 / 4 : 4 retenu (conducteur seul, pas protégé mécaniquement) |
 - **Stock de câble (Julien 05/11)** : seulement du 5G1,5 ; pas de 5G2,5 ni de 5G1.
 
@@ -45,7 +45,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | T1 / T2 | RS PRO 284-0491, 24 V 240 W (10 A) | T1 = COMMANDE, T2 = ELEC (noms à changer, voir 03) |
 | T3 | Mean Well NDR-240-48, 48 V 240 W | |
 | KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire, 1 pôle (1-2) sur le +48 V | pouvoir de coupure DC-1 sous 48 V à vérifier |
-| X21.11 à X21.13 (anciens X31 à X33) | Phoenix 3002781 PTFIX 6X1,5-BK (6 points, 17,5 A) | X12.11 (ancien X36) = borne sectionnable PELV ; X34 / X35 (48 V) supprimés le 02/11 |
+| X21.11 à X21.13 (anciens X31 à X33) | **Phoenix PTFIX 6/12X2,5 (3273354)**, 1 entrée + 12 départs [D 05/11, v20] : X21.11 24VELEC **rouge**, X21.12 0 V **bleu**, X21.13 24VSEC **gris** (stock de Julien : RD, BK, GY, BU ; référence exacte par couleur à vérifier) | remplace les PTFIX 6X1,5 (3002781) ; X12.11 (ancien X36) = borne sectionnable PELV |
 | U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA à vérifier |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 

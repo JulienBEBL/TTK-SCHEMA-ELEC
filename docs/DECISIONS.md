@@ -265,3 +265,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] Bornes de porte (S1, S4, H2, H3, H4 : 14 bornes) sur R4, à droite de XR2 : avec les butées (Q39), R5 manque de place (tronçon 1 : 286 / 320 mm sans la porte). H2 230 V séparé du TBTP par une butée. À valider par Julien.
 - [H] Pas de butée entre deux câbles différents d'un même tronçon (B2 / B7, W9 / W10) : capot de fin + repère, faute de place.
 - Passe-câbles : W4 freins = 1 CEM M20 (manque 1 CEM M20), W13 = 1 M16 non CEM à acheter.
+
+## 05/11/2026 : v20
+- [D] f21 : blocs de distribution Phoenix PTFIX 6/12X2,5 (3273354) à la place des 6X1,5 ; couleurs du stock : 24VELEC rouge, 0 V bleu, 24VSEC gris [H, choix de l'assistant, à valider].
+- [C] Câble TF 2x0,75 blindé : conducteurs blanc et marron.
+- [C] Fichier de test de Julien : champ type de câble (3 = blindé ellipse + trait) et champ « afficher les numéros » identifiés ; le type de conducteur PROFINET n'est pas dans le .xrs.
+- [H] Liste d'E/S d'ensemble : `docs/LISTE_ES_AUTOMATE.md`, à valider.
+- [H] Convention de numérotation des fils proposée : un numéro par potentiel, folio + n° d'ordre en chiffres seuls, potentiels fixes réservés ; à valider.
