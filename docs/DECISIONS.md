@@ -250,3 +250,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Contacts du sélecteur S3 nommés AUTO-A à AUTO-D et MANU-A à MANU-D (Julien), vrais numéros Eaton 1-2 à 15-16.
 - [D] Porte : tous les appareils par des bornes, ou aucun (Julien). Dessinés : S4, H2, H3, H4 ; à retirer tous si la place manque.
 - [D] Colonne H1 par des bornes (câble) : X61.11-14.
+
+## 05/11/2026 : v18
+- [D] Câble frein unique M1 + M2 = **-W4** (5G1,5 blindé), W7 supprimé. Correction : W3 / W6 sont les sondes TF dans le schéma depuis la v11 ; « W3 » noté pour le frein le 05/11 était une erreur.
+- [D] Liaison équipotentielle armoire → bâti : -W13, conducteur V/J seul 4 mm² (Julien : 2,5 ou 4 ; 4 retenu, conducteur seul non protégé).
+- [C] Stock de Julien : seulement du 5G1,5 (ni 5G2,5 ni 5G1).
+- Répartition 27G1 / 19G1 redonnée complète avec les butées entre fonctions ; toujours à valider (Q32).

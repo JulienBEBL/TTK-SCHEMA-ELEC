@@ -426,7 +426,7 @@ fleche([(C2, ali[3]), (C2, pap[1])])
 texte("04", C2 + 200, 7400, "48 V", 200)
 fleche([(17800, ali[3]), (17800, 7800), (22400, 7800), (22400, d24[1])])
 texte("04", 19200, 7400, "24 V", 200)
-mot = bloc(*col(C1)[:1], 10800, col(C1)[1], ["MOTOREDUCTEURS -M1 / -M2 (+M)", "câbles -W2 à -W7 : moteur, frein, sonde TF"])
+mot = bloc(*col(C1)[:1], 10800, col(C1)[1], ["MOTOREDUCTEURS -M1 / -M2 (+M)", "câbles -W2 à -W6 : moteur, frein, sonde TF"])
 mpp = bloc(*col(C2)[:1], 10800, col(C2)[1], ["MOTEURS PAS-A-PAS -M3 / -M4 (+M)", "Nema 34 - 6 A"])
 fleche([(C1, var[3]), (C1, mot[1])])
 fleche([(C2, pap[3]), (C2, mpp[1])])
@@ -686,8 +686,10 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [BM["2b"]["1"], (M["2b"].x, 11200), (21200, 11200), (21200, 4000), (12000, 4000), T["X10:2"]], "24")
     VAR[(f, "PN")] = W(f, [T["X40"], (13600, 4800), (16000, 4800)], "PN")
     g.cable(F[f], 0, 0, YC, w3, "2x0,75 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True, compo_dx=-1600)
-    # frein : LIYCY-JZ 5G1,5 blindé de réserve (03/11), 2 conducteurs utilisés ; texte plus long -> plus à gauche
-    g.cable(F[f], 0, 0, YC, w2, "5G1,5 blindé", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True, compo_dx=-1700)
+    # freins M1 + M2 : UN SEUL câble -W4 (W202) LIYCY-JZ 5G1,5 blindé (05/11, W7 supprimé) : conducteurs 1-2 au f31,
+    # 3-4 au f32 ; V/J vers le bornier de terre -XPE1 et la boîte de dérivation côté machine
+    g.cable(F[f], 0, 0, YC, "W202", "5G1,5 blindé", f"Freins M1 + M2 (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True,
+            compo_dx=-1700, nums=(1, 2) if f == "20" else (3, 4))
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     # X6 confirmé par Julien (05/11, notice SEW) : X6.1 / X6.3 = F_STO_P (+24 V), X6.2 / X6.4 = F_STO_M (0 V),
@@ -704,6 +706,9 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     texte(f, 22400, 6400, f"{w1} / {w3} blindés : blindage repris à 360°", 200)
     texte(f, 22400, 6800, "(presse-étoupe CEM côté moteur,", 200)
     texte(f, 22400, 7200, "collier de masse côté variateur)", 200)
+    texte(f, 22400, 8000, "-W4 : un seul câble 5G1,5 blindé pour les 2 freins,", 200)
+    texte(f, 22400, 8400, "conducteurs 1-2 = M1 (f31), 3-4 = M2 (f32),", 200)
+    texte(f, 22400, 8800, "V/J -> -XPE1 et boîte de dérivation (machine)", 200)
 
 # ======================================================================== 31 DISTRIBUTION 24 V
 # barres 24VELEC / 0 V en haut (tracées avec la chaîne, plus bas) ; -X31 et -X32 s'y piquent
@@ -1145,7 +1150,7 @@ texte(f, 10000, 13600, "Bornes -X711 (armoire)", 220)
 
 # ======================================================================== 80 - 90 (générés par WinRelais)
 for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par WinRelais (carnet de câbles)",
-                            "-W101, -W201, -W202, -W203, -W211, -W212, -W213, -W531, -W711."]),
+                            "-W101, -W201, -W202, -W203, -W211, -W213, -W531, -W711."]),
                     ("85", ["Implantation armoire +A1 : à réaliser sous WinArmoire",
                             "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."]),
                     ("90", ["Nomenclature : à générer par WinRelais (Optimisation / Générer / Nomenclature),",
@@ -1382,6 +1387,12 @@ W(f, [PE10, (xs[-1], PE10[1])], "PE")
 for x, (fd, pt) in zip(xs, PE_DEST):
     renvoi(f, W(f, [(x, PE10[1]), (x, PE10[1] - 800)], "PE"), fd, pt, "PE")
 etiquette(f, xs, PE10[1] - 2800, "Terre PE vers les appareils", 260)
+# liaison équipotentielle armoire -> bâti machine (Julien 05/11) : un conducteur V/J seul, 4 mm², repère -W13
+xb_ = xs[-1] + 2400
+W(f, [(xs[-1], PE10[1]), (xb_, PE10[1]), (xb_, PE10[1] - 1600)], "PE")
+g.cable(F[f], 0, 0, PE10[1] - 1200, "W13", "1 x 4 mm² V/J", "Liaison équipotentielle armoire -> bâti machine +M", [xb_],
+        ovale=True, compo_dx=400)
+texte(f, xb_ - 1200, PE10[1] - 2400, "Bâti machine +M", 220, 0, 1)
 
 # ======================================================================== barres 24 V / 0 V en haut (29/10)
 # contenu descendu pour laisser la place aux barres (après la pose de tous les renvois vers ces folios)

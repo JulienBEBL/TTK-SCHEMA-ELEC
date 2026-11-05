@@ -119,6 +119,7 @@ class Gen:
         self.textes = []
         self.dessins = []
         self.cables = []
+        self.cable_nums = {}      # index du câble -> numéros des brins (câble sur 2 folios)
         self.nets = {}              # union-find des équipotentielles voulues
         self.net_names = {}
         self.tee_issues = []
@@ -392,7 +393,7 @@ class Gen:
                                bold=1 if (entete and r == 0) else 0)
                 cx += c
 
-    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None):
+    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
@@ -400,6 +401,8 @@ class Gen:
         compo_dx : abscisse de la composition par rapport au 1er brin (placement de Julien, f31 du 02/11)."""
         if ovale:
             x1, x2, etiq, size = brins_x[0], brins_x[-1], "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
+        if nums:
+            self.cable_nums[len(self.cables)] = list(nums)
         self.cables.append((folio, x1, x2, y, rep, compo, desig, brins_x, etiq, size))
 
     def cable_textes(self, c):
@@ -641,11 +644,12 @@ class Gen:
                 for k in range(4):
                     L.append(SEP.join(map(str, ("", x1, y + 1000 + 300 * k, 0, 2, "Arial", 300, 0, 0, 0, 0))) + SEP)
                 L.append("\u00a4#BrinCable\u00a4")
-                L.append("-".join(str(i + 1) for i in range(len(brins))) + SEP)
+                nums = self.cable_nums.get(n) or [i + 1 for i in range(len(brins))]
+                L.append("-".join(str(k) for k in nums) + SEP)
                 L.append("Arial\u00b7300\u00b70\u00b70\u00b70\u00b7")
                 L.append("1\u00b710\u00b70\u00b7")
                 for i, bx in enumerate(brins):
-                    L.append(SEP.join(map(str, (bx, y, i + 1, 0))) + SEP)
+                    L.append(SEP.join(map(str, (bx, y, nums[i], 0))) + SEP)
                 L.append("\u00a4#FIN\u00a4")
         L.append("\u00a4#FIN\u00a4")
         L.append("")

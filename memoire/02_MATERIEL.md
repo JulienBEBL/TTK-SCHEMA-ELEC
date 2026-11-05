@@ -34,8 +34,10 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW | frein BE5 400 V CA |
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
-| W3 (W6 supprimé) [D 05/11] | Freins M1 + M2 : **un seul** LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) [D 05/11, remplace W3 / W6 du 03/11] | 300/500 V CA [C fiche Achat Electrique]. 4 conducteurs (2 par frein) + V/J ; boîte de dérivation côté machine [D 05/11]. V/J : borne PE à créer au bornier (Q33). Repère W3 [D 05/11, « le numéro m'importe peu, l'important : 1 seul câble pour les 4 fils frein »] |
-| W4 / W7 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
+| **W4** (W7 supprimé) [D 05/11, v18] | Freins M1 + M2 : **un seul** LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) | 300/500 V CA [C fiche Achat Electrique]. Conducteurs 1-2 = frein M1 (f31), 3-4 = frein M2 (f32), V/J → bornier de terre -XPE1 et boîte de dérivation côté machine (pas de borne sur rail). **Correction du 05/11** : le schéma appelle W4 / W7 les freins et W3 / W6 les sondes TF depuis la v11 ; « W3 » noté le 05/11 par l'agent d'implantation était faux (Julien : « le numéro m'importe peu ») |
+| W3 / W6 | Sonde TF 2x0,75 blindé (LIYCY PPMM0180) [D 02/11] | acheté |
+| W13 | Liaison équipotentielle armoire → bâti machine : conducteur V/J seul **4 mm²** [D 05/11, v18] | depuis la terre de l'arrivée (f10) ; Julien hésitait 2,5 / 4 : 4 retenu (conducteur seul, pas protégé mécaniquement) |
+- **Stock de câble (Julien 05/11)** : seulement du 5G1,5 ; pas de 5G2,5 ni de 5G1.
 
 ## Très basse tension (f12, f20, f21)
 | Repère | Matériel | Remarque |

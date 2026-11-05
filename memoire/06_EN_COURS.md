@@ -1,6 +1,16 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v17 (05/11/2026)
+## Version actuelle : v18 (05/11/2026)
+`schema/generes/release/TTK_2026-11-05_v18.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, **28** attentions (27 connues + le bout libre voulu du fil vers le bâti, f10), 0 chevauchement. **En attente : retours de Julien (Q8).**
+
+### Fait en v18
+| Folio | Changement |
+|---|---|
+| 31, 32 | Freins M1 + M2 sur **un seul câble -W4** 5G1,5 blindé : brins 1-2 au f31, 3-4 au f32 (même repère sur les 2 folios ; paramètre `nums` de `g.cable`) ; W7 supprimé ; 3 lignes de texte sur le V/J (-XPE1, boîte de dérivation) |
+| 10 | Liaison équipotentielle **-W13** (V/J 4 mm²) : départ du peigne de terre vers « Bâti machine +M » |
+| 02 | Liste des câbles : -W212 retiré ; bloc « câbles -W2 à -W6 » |
+
+## Version précédente : v17 (05/11/2026)
 `schema/generes/release/TTK_2026-11-05_v17.xrs` : 25 folios, 177 symboles, 652 fils, 91 renvois ; 0 problème au contrôle interne, 0 erreur au verifier (27 attentions connues), 0 chevauchement. v16 non réenregistrée par WinRelais (rien à reprendre), passée dans old/. **En attente : retours de Julien (Q8).**
 But de Julien : un schéma propre (borniers, sécurité, automate) **avant** la numérotation des fils.
 

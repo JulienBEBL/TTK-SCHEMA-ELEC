@@ -193,3 +193,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : v17
 - Julien : nommer les contacts AUTO-A, AUTO-B... avec leur fonction ; porte : bornes pour tous ou pour aucun ; colonne par des bornes.
 - v17 : `schema/generes/release/TTK_2026-11-05_v17.xrs` (25 folios, 177 symboles, 652 fils, 91 renvois ; 0 problème, 0 erreur verifier, 27 attentions connues, 0 chevauchement).
+
+## 05/11/2026 : v18
+- Julien : redonner la répartition 27G1 / 19G1 complète ; câble frein 5G1,5 (seul câble en stock) ; terre du bâti 2,5 ou 4 mm², repère au choix.
+- v18 : `schema/generes/release/TTK_2026-11-05_v18.xrs` (0 problème, 0 erreur, 28 attentions, 0 chevauchement). Frein unique -W4, terre du bâti -W13. Erreur W3 / W4 de la mémoire corrigée ; l'agent d'implantation doit passer son câble frein de W3 à W4.

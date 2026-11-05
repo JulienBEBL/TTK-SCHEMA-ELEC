@@ -31,12 +31,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q30 | Câble moteur 2XSLCY-K 50 m : 1 machine ou 2 ? Julien a répondu « OUI » | à préciser |
 | Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) | **réglé le 05/11** : répartiteurs **-XR1 / -XR2** (Julien), bornier de terre **-XPE1** |
 | Q32 | Répartition des câbles 27G1 / 19G1 (proposition du 05/11 dans `02_MATERIEL.md`) | à valider par Julien. 05/11 (agent d'implantation) : Julien veut un câble multiconducteur vers une boîte de dérivation machine (« dans tous les cas ») ; la proposition W12 est dessinée en implantation v6. Julien ne valide pas encore (05/11) ; B2 par son propre câble M12 : **oui** |
-| Q33 | Câble frein unique M1 + M2 (5G1,5) | repère **W3** [D 05/11], W6 supprimé. Reste au schéma : borne PE pour le V/J, dessin des 2 freins sur 1 câble aux f31 / f32 |
+| Q33 | Câble frein unique M1 + M2 (5G1,5) | **réglé, dessiné en v18** : repère **W4** (W7 supprimé ; W3 / W6 = sondes TF), V/J → -XPE1 et boîte de dérivation |
 | Q34 | Repère du 2e répartiteur : -XR2 | **réglé le 05/11** : XR1 et XR2 (Julien) |
 | Q35 | Sélecteur S3 : la fiche Eaton montre des ponts 2-4, 6-8, 10-12, 14-16 → 4 inverseurs (1 commun + 2 sorties), pas 8 NO indépendants. Le schéma (8 NO, 7 utilisés, chacun sur son potentiel) ne tient pas | **réglé le 05/11** : les ponts sont des fils sur les bornes paires, **Julien les a retirés** (photos) → 8 contacts NO indépendants, option D abandonnée. Vraie numérotation et noms AUTO-A à MANU-D **dessinés en v17** |
 | Q36 | Porte : S4 (réarmement, f40), H2 (voyant 230 V, f12), H3 (voyant 24VELEC, f21), H4 (voyant défaut, f61) câblés en direct alors que S1 passe par des bornes en bas | **réglé le 05/11** : tous par des bornes (X40.11-12, X12.21-22, X21.21-22, X61.21-22), dessiné en v17 ; règle « tous ou aucun » selon la place sur R5 |
 | Q37 | Sondes TF des moteurs SEW : livrées avec les moteurs ? (Julien appelle SEW) ; que faire à X10 sans sonde | en attente SEW |
-| Q38 | Liaison équipotentielle armoire ↔ bâti machine | **05/11 : Julien ajoute un câble de terre seul** (en plus des V/J des câbles et des blindages) ; section et repère à fixer |
+| Q38 | Liaison équipotentielle armoire ↔ bâti machine | **réglé, dessiné en v18** : -W13, V/J seul 4 mm², au f10 |
 | Q39 | Butées d'arrêt sur rail DIN entre les fonctions d'un même câble (27G1 : AU / sélecteur / IHM / réserve) et autour des bornes TF X31.2x / X32.2x | **demandé par Julien le 05/11** ; à reporter dans l'implantation (agent) et le comptage des achats |
 
 ## Sécurité
