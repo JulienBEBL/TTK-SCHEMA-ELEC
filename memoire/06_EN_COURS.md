@@ -50,7 +50,7 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 1. **Julien relit la v19 dans WinRelais** (Q8) : journal à l'ouverture, références croisées automatiques, f31 / f32 (Q12), f40 à f42 (S3, S4), f61 (H1, H4), f70. Aucune version depuis la v16 n'a été vue à l'écran.
 2. **.xrs de test** de Julien : champ « câble blindé », « afficher les numéros », type PROFINET (points 17 à 20).
 3. **Liste d'E/S f60 à f62** à valider ; puis retirer « PROPOSITION A VALIDER » du f62 (Q13).
-4. **Numérotation des fils** : convention v2 **retenue** le 05/11 (`04_REGLES_DESSIN.md`), point au milieu à trancher ; à générer **en dernier**, après validation sécu, automate, borniers par Julien. Détail : (chiffres seuls, tout numéroté y compris phases, N, 24 V, 0 V ; FFNN, unité = conducteur) ; à valider par Julien. Ancien libellé : (revue C7 : repères en stock A L R S U X Z / . seulement, 0,5-1,5 mm², rien en 2,5 et 4 mm²), puis numérotation générée.
+4. **Numérotation des fils** : convention v2 **retenue** le 05/11 (`04_REGLES_DESSIN.md`), sans point (1013) ; à générer **en dernier**, après validation sécu, automate, borniers par Julien. Détail : (chiffres seuls, tout numéroté y compris phases, N, 24 V, 0 V ; FFNN, unité = conducteur) ; à valider par Julien. Ancien libellé : (revue C7 : repères en stock A L R S U X Z / . seulement, 0,5-1,5 mm², rien en 2,5 et 4 mm²), puis numérotation générée.
 5. Données à obtenir : SEW (sondes TF livrées ? bornes X10, courant STO ≥ 10 mA, courant frein BE5 pour QF2 / QF3, mises sous tension / h) ; ifm MN508S (homologation, actionneur codé) ; DC-1 du LC1D09BD sous 48 V ; brochages G2 Siemens.
 6. Achats : raccord thermocouple (Q28), fixation sonde (Q29), câble moteur 50 m pour un besoin de 60 m (Q30, C1), câble V/J 4 mm² (W13), câble M12 de B2, butées (Q39), presse-étoupes CEM et boîte de dérivation (C2, C5). Longueurs des câbles W3 à W6, W9 à W12.
 7. Agent d'implantation : **fait en implantation v8** (05/11) : W4 freins, W3 / W6 TF, bornes de porte sur R4 (manque de place sur R5), H1 X61.1x, butées (20), W13 (passe-câble E15). À valider par Julien.
@@ -62,3 +62,8 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 3. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien ; type de conducteur PROFINET.
 4. Liste d'E/S (f60 à f62) : seulement après validation de Julien. Numérotation des fils : après le schéma propre.
 5. Achats : Q28 à Q30 (raccord thermocouple, fixation sonde, câble moteur 50 m).
+
+## Validation de la v21 par Julien (liste donnée le 05/11)
+- Sécurité (f40 à f42) : freins KF1 / KF2 desserrés dès que KA1 est armé, **y compris en Manu** (KA1 14 sans S3) : voulu ? ; courant des entrées STO ≥ 10 mA (R-32, SEW) ; B1 voie 1 / B2 voie 2 sur le même capot (R-16, essai 200 ms) ; boucle Y1-Y2 (essai de banc).
+- Automate (f60 à f63) : E/S validées ; retirer « PROPOSITION A VALIDER » du f62 (Q13) à la prochaine version ; bornes du thermocouple (Q19).
+- Borniers (f70, f71) : 89 bornes sur rail en v21 (85 bornes 4 mm + 4 de terre) contre 85 achetées (70 PT 2,5 + 15 PT 4, si Hugo a doublé) : il en manque, sans réserve ; bornes de porte absentes des tableaux f70 / f71 ; butées autour de X31.2x / X32.2x non représentées.

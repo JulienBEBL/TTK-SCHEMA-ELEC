@@ -221,3 +221,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Réponse : convention v2 (`memoire/04_REGLES_DESSIN.md`) ; séquence du réarmement START 3 expliquée, essai de banc proposé.
 - Julien : retient la convention v2, envisage un point au milieu ; numérotation à la fin, après ses validations sécu / automate / borniers ; demande un .md pour faire l'essai des contacts miroirs avec un nouveau chat.
 - Fait : `docs/ESSAI_BANC_BOUCLE_RETOUR.md` ; méthode de numérotation notée dans `memoire/04_REGLES_DESSIN.md`.
+- Julien : numéros sans point ; demande ce qu'il reste à valider sur la v21. Réponse : liste sécurité / automate / borniers (`memoire/06_EN_COURS.md`).

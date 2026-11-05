@@ -288,3 +288,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Réarmement START 3 : le relais lit la boucle Y1-Y2 bouton enfoncé et arme au relâchement (constat de banc du 02/11) ; les NF miroirs ne s'ouvrent qu'après, quand les contacteurs collent : pas de conflit.
 - [D] Numérotation des fils : convention v2 retenue par Julien. Point au milieu (10.13) envisagé, à trancher. Numérotation générée à la toute fin, après validation de la sécurité, de l'automate et des borniers.
 - [D] Contacts miroirs dans la boucle Y1-Y2 : compris et validés par Julien ; essai de banc préparé (`docs/ESSAI_BANC_BOUCLE_RETOUR.md`).
+- [D] Numéros de fil sans point (1013).
+- [C] v21 : 89 bornes sur rail (85 bornes 4 mm + 4 de terre) pour 85 achetées : achat à compléter.
