@@ -37,7 +37,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q36 | Porte : S4 (réarmement, f40), H2 (voyant 230 V, f12), H3 (voyant 24VELEC, f21), H4 (voyant défaut, f61) câblés en direct alors que S1 passe par des bornes en bas | **réglé le 05/11** : tous par des bornes (X40.11-12, X12.21-22, X21.21-22, X61.21-22), dessiné en v17 ; règle « tous ou aucun » selon la place sur R5 |
 | Q37 | Sondes TF des moteurs SEW : livrées avec les moteurs ? (Julien appelle SEW) ; que faire à X10 sans sonde | en attente SEW |
 | Q38 | Liaison équipotentielle armoire ↔ bâti machine | **réglé, dessiné en v18** : -W13, V/J seul 4 mm², au f10 |
-| Q39 | Butées d'arrêt sur rail DIN entre les fonctions d'un même câble (27G1 : AU / sélecteur / IHM / réserve) et autour des bornes TF X31.2x / X32.2x | **demandé par Julien le 05/11** ; à reporter dans l'implantation (agent) et le comptage des achats |
+| Q39 | Butées d'arrêt sur rail DIN entre les fonctions d'un même câble (27G1 : AU / sélecteur / IHM / réserve) et autour des bornes TF X31.2x / X32.2x | **demandé par Julien le 05/11** ; dessiné en implantation v8 : 20 butées (R5 + porte). Référence et nombre en stock à confirmer (achats) |
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.

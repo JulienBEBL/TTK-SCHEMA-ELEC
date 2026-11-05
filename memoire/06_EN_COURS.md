@@ -40,7 +40,7 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 4. **Convention de numérotation des fils** à choisir (revue C7 : repères en stock A L R S U X Z / . seulement, 0,5-1,5 mm², rien en 2,5 et 4 mm²), puis numérotation générée.
 5. Données à obtenir : SEW (sondes TF livrées ? bornes X10, courant STO ≥ 10 mA, courant frein BE5 pour QF2 / QF3, mises sous tension / h) ; ifm MN508S (homologation, actionneur codé) ; DC-1 du LC1D09BD sous 48 V ; brochages G2 Siemens.
 6. Achats : raccord thermocouple (Q28), fixation sonde (Q29), câble moteur 50 m pour un besoin de 60 m (Q30, C1), câble V/J 4 mm² (W13), câble M12 de B2, butées (Q39), presse-étoupes CEM et boîte de dérivation (C2, C5). Longueurs des câbles W3 à W6, W9 à W12.
-7. Agent d'implantation : frein W3 → **W4**, bornes de porte (tous ou aucun selon la place), H1 X61.1x, butées, W13.
+7. Agent d'implantation : **fait en implantation v8** (05/11) : W4 freins, W3 / W6 TF, bornes de porte sur R4 (manque de place sur R5), H1 X61.1x, butées (20), W13 (passe-câble E15). À valider par Julien.
 8. Après J2 : câblage, essais au banc (capot B1 / B2 écart 200 ms, essais KA1 restants), programme TIA (PTO, ENA, trames Z1).
 
 ## À faire ensuite (détail)

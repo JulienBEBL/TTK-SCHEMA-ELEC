@@ -260,3 +260,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 05/11/2026 : v19
 - [D] Répartition 27G1 (-W11) / 19G1 (-W12) validée par Julien ; dessinée au f70 avec les butées entre fonctions.
 - [D] Risque du 03/11 (+24 V permanent dans le 27G1 avec les fils après KA1) : pas un risque pour Julien, chaque conducteur a sa gaine ; il soigne le cheminement du câble.
+
+## 05/11/2026 : implantation v8 (schéma v19)
+- [H] Bornes de porte (S1, S4, H2, H3, H4 : 14 bornes) sur R4, à droite de XR2 : avec les butées (Q39), R5 manque de place (tronçon 1 : 286 / 320 mm sans la porte). H2 230 V séparé du TBTP par une butée. À valider par Julien.
+- [H] Pas de butée entre deux câbles différents d'un même tronçon (B2 / B7, W9 / W10) : capot de fin + repère, faute de place.
+- Passe-câbles : W4 freins = 1 CEM M20 (manque 1 CEM M20), W13 = 1 M16 non CEM à acheter.

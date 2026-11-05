@@ -101,3 +101,19 @@ Fichiers : `release/TTK_implantation_2026-11-05_v6.drawio` + `.pdf` ; v5 dans `o
 Fichiers : `release/TTK_implantation_2026-11-05_v7.drawio` + `.pdf` ; v6 dans `old/`.
 - Câble frein unique = W3 (W6 supprimé) ; -XR2 validé par Julien.
 - W11 / W12 (Q32) : toujours en attente de Julien.
+
+**Statut** : commitée et poussée le 05/11 (9483376), remplacée par la v8.
+
+## v8 — 05/11/2026 (schéma v19)
+Fichiers : `release/TTK_implantation_2026-11-05_v8.drawio` + `.pdf` ; v7 dans `old/`.
+
+**Prises en compte (v17 à v19)** : freins = W4 (W7 supprimé), TF = W3 / W6 ; W11 (27G1) et W12 (19G1) validés, ordre des bornes = n° de conducteur ; colonne H1 X61.11-14 ; bornes de porte X40.11-12, X12.21-22, X21.21-22, X61.21-22 ; butées entre fonctions et autour des TF (Q39) ; W13 V/J 4 mm² vers le bâti (sur XPE1).
+
+**Bornier** : 88 bornes (R5 : 74, R4 : 14), 20 butées, 18 capots.
+- R5 t1 : W11 (AU S2 | S3 | IHM) | W12 (B1 | B3-B6 | H1) — 286 / 320 mm.
+- R5 t2 : B2, B7 | TF W3 + W6 | — 89 / 95 mm. t3 : W9, W10 — 66 / 70 mm.
+- R5 t4 : W4 (M1 | M2) | W2 | W5 | W1 — 169 / 220 mm.
+- R4 à droite de XR2 : H2 230 V | porte S1, S4, H3, H4 — 97 / 113 mm.
+
+**Choix à valider** : porte sur R4 (plus de place sur R5 avec les butées) ; pas de butée entre B2 / B7 et entre W9 / W10.
+**Passe-câbles** : W4 en CEM M20 (1 à acheter), W3 / W6 en CEM M16, W13 en M16 (à acheter).

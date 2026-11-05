@@ -201,3 +201,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : v19
 - Julien : le 24 V à côté des fils de KA1 n'est pas un risque (gaine par conducteur, cheminement soigné) ; valide la répartition 27G1 / 19G1.
 - v19 : `schema/generes/release/TTK_2026-11-05_v19.xrs` (0 problème, 0 erreur, 28 attentions, 0 chevauchement) ; f70 : W11 / W12 conducteur par conducteur, butées.
+
+## 05/11/2026 : implantation v8
+- Julien : « regarde le repo et les mises à jour, fais les modifs, plan complet ». Implantation v8 selon la v19 : W11 / W12 avec butées, TF W3 / W6 isolés, freins W4, H1 X61.1x, porte sur R4, passe-câbles W4 / W13.
