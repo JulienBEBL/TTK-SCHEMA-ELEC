@@ -109,3 +109,11 @@ Moteur dans l'axe de X2 (fils droits, plus d'escalier). Depuis le 02/11 : X2 →
 21. Phase de chaque départ 230 V : visible par le piquage sur le bus et le numéro de fil (les petits textes « L1 / L2 / L3 » du 23/10 sont retirés en v8).
 22. Borniers f70 / f71 : provenance du fil écrite **des deux côtés** de la borne (23/10).
 23. Folio PROFINET : texte sur chaque fil indiquant le composant de destination (23/10).
+
+## Numérotation des fils (proposition du 05/11, à valider)
+Julien aime le principe « chiffres seuls » (stock de repères : presque pas de lettres).
+1. Un numéro par potentiel : tous les fils reliés sans traverser d'appareil portent le même numéro ; une borne ne change pas le numéro.
+2. Format FFNN : FF = folio (affiché) où le potentiel prend naissance (sa source), NN = 01 à 99 dans l'ordre gauche → droite, haut → bas. Un potentiel garde son numéro sur les autres folios.
+3. Potentiels fixes (2 chiffres, pas de conflit avec FFNN) : 0 = 0 V, 24 = +24VELEC, 25 = +24VSEC, 48 = +48 V avant KA2, 49 = 0 V du 48 V.
+4. Puissance : L1, L2, L3, N au schéma (convention A du 28/10), couleur sur le fil ; PE : vert/jaune, sans numéro.
+Exemples : FA1 → KA1 13/23/33 = 4001 ; KA1 14 → KF1 / KF2 / X42.11 → S3 15 = 4002 ; S3 16 → X42.12 → KA2 = 4201 ; L+ capteurs de la CPU = 6001 ; B3 → X60.32 → I0.6 = 6002 ; Q8.0 → X61.11 → H1 rouge = 6201 ; U1 X2 U → X31.12 → M1 = 3101.

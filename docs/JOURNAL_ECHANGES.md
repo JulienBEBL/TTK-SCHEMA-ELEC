@@ -208,3 +208,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : v20
 - Julien : f21 en PTFIX 6/12X2,5 (3273354) avec couleurs du stock ; TF blanc / marron ; .xrs de test (blindé, numéros U3 / U4) ; type PROFINET créé en personnalisé ; demande une convention de numérotation simple, un tableau d'E/S d'ensemble, et pourquoi des contacts miroirs dans la boucle de réarmement.
 - v20 générée ; tableau `docs/LISTE_ES_AUTOMATE.md` ; explication R-22 (boucle de retour) ; convention proposée.
+
+## 05/11/2026 : v21
+- Julien : type Profinet (rose foncé, +10 %) ; valide les E/S si l'assistant les valide ; veut des exemples de numérotation ; doute sur les contacts miroirs (le NC revient-il ?) ; la SM 1223 peut-elle piloter les drivers (PUL rapides) ?
+- Réponse : v21 (fils Profinet) ; E/S revues, cohérentes ; drivers sur la CPU, pas sur la SM 1223 ; explication du retour des NC miroirs après un AU ; exemples de numéros.

@@ -1,8 +1,14 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v20 (05/11/2026)
-`schema/generes/release/TTK_2026-11-05_v20.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti), 0 chevauchement. La v19 renvoyée par Julien (archivée `schema/recus/2026-11-05_v19_ouverte_WinRelais.xrs`) n'avait aucune retouche de position. **En attente : retours de Julien (Q8).**
+## Version actuelle : v21 (05/11/2026)
+`schema/generes/release/TTK_2026-11-05_v21.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti), 0 chevauchement. **En attente : retours de Julien (Q8).**
 
+### Fait en v21
+| Folio | Changement |
+|---|---|
+| 30, 31, 32, 50 | Fils PROFINET (10 tronçons) : type « Profinet », rose foncé, épaisseur 44 |
+
+## Version précédente : v20 (05/11/2026)
 ### Fait en v20
 | Folio | Changement |
 |---|---|
@@ -44,7 +50,7 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 1. **Julien relit la v19 dans WinRelais** (Q8) : journal à l'ouverture, références croisées automatiques, f31 / f32 (Q12), f40 à f42 (S3, S4), f61 (H1, H4), f70. Aucune version depuis la v16 n'a été vue à l'écran.
 2. **.xrs de test** de Julien : champ « câble blindé », « afficher les numéros », type PROFINET (points 17 à 20).
 3. **Liste d'E/S f60 à f62** à valider ; puis retirer « PROPOSITION A VALIDER » du f62 (Q13).
-4. **Convention de numérotation des fils** à choisir (revue C7 : repères en stock A L R S U X Z / . seulement, 0,5-1,5 mm², rien en 2,5 et 4 mm²), puis numérotation générée.
+4. **Convention de numérotation des fils** : proposée le 05/11 (chiffres seuls, un numéro par potentiel, folio + n° d'ordre, potentiels fixes 0 / 24 / 25 / 48 / 49), exemples donnés ; à valider par Julien. Ancien libellé : (revue C7 : repères en stock A L R S U X Z / . seulement, 0,5-1,5 mm², rien en 2,5 et 4 mm²), puis numérotation générée.
 5. Données à obtenir : SEW (sondes TF livrées ? bornes X10, courant STO ≥ 10 mA, courant frein BE5 pour QF2 / QF3, mises sous tension / h) ; ifm MN508S (homologation, actionneur codé) ; DC-1 du LC1D09BD sous 48 V ; brochages G2 Siemens.
 6. Achats : raccord thermocouple (Q28), fixation sonde (Q29), câble moteur 50 m pour un besoin de 60 m (Q30, C1), câble V/J 4 mm² (W13), câble M12 de B2, butées (Q39), presse-étoupes CEM et boîte de dérivation (C2, C5). Longueurs des câbles W3 à W6, W9 à W12.
 7. Agent d'implantation : **fait en implantation v8** (05/11) : W4 freins, W3 / W6 TF, bornes de porte sur R4 (manque de place sur R5), H1 X61.1x, butées (20), W13 (passe-câble E15). À valider par Julien.

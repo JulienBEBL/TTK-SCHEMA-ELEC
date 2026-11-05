@@ -1,4 +1,4 @@
-# Liste des E/S de l'automate (schéma v20, 05/11/2026)
+# Liste des E/S de l'automate (schéma v21, 05/11/2026) : validée par Julien le 05/11
 
 Vue d'ensemble pour validation par Julien (point 14 de `memoire/05_POINTS_OUVERTS.md`). Source : tableaux des f60 à f63 du script.
 Numéros de folio = numéros affichés. « 1 » = signal présent (24 V sur l'entrée, sortie active).

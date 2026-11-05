@@ -61,14 +61,14 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 13. ENA du DM860H : **réglé le 05/11** (Julien) : ENA alimenté = moteur libre ; ENA non alimenté = driver actif. Q0.4 / Q0.5 à 1 pour libérer l'axe ; automate en STOP = axes tenus (le 48 V reste coupé par KA2 après un AU).
 
 ## Automate
-14. Liste d'E/S à valider : vue d'ensemble dans `docs/LISTE_ES_AUTOMATE.md` (05/11). Entrées de la CPU toutes prises (14 / 14).
+14. Liste d'E/S : **validée par Julien le 05/11** (`docs/LISTE_ES_AUTOMATE.md`), revue par l'assistant : logique cohérente. Reste à vérifier au banc : I0.2 / I0.3 à 1 quand le capot est ouvert ; décodage des trames Z1 (I1.5) dans TIA.
 15. Brochages G2 à confirmer (seuls ceux de la génération 1 ont été trouvés).
-16. PUL sur Q0.0 (U3) et Q0.2 (U4) : sorties 100 kHz d'après la fiche Siemens [C]. Affectation PTO (impulsion + direction) à vérifier dans TIA V21.
+16. PUL sur Q0.0 (U3) et Q0.2 (U4) : sorties 100 kHz de la CPU d'après la fiche Siemens [C] ; la SM 1223 ne pilote **aucun** driver (colonne et voyant seulement). Fréquence utile = vitesse (tr/s) × pas par tour réglés sur le DM860H : choisir le micro-pas pour rester sous 100 kHz. Affectation PTO (impulsion + direction) à vérifier dans TIA V21.
 
 ## WinRelais (champs du format .xrs inconnus)
 17. Champ « câble blindé » : **réglé le 05/11** (.xrs de Julien) : 3e valeur de la ligne `802·500·n` du DefCable = type : 0 Simple, 1 Rectangle, 2 Blindé (Ellipse), 3 Blindé (Ellipse + Trait), 4 / 5 Blindé (Rectangle arrondi / + Trait). v20 : 3 pour W2 à W6, W9, W10 ; 0 pour W1, W8, W13 (paramètre `blinde` de `g.cable`). Avant la v20, W1 et W8 portaient 5 et 2 par erreur.
 18. Champ « afficher les numéros » des broches : **réglé le 05/11** : 6e champ (index 5) de la 3e ligne du symbole, déjà piloté par `noms=` dans `g.place` (Julien : U4 mis à 1 dans son test, U3 à 0). U3 / U4 restent à 0 dans la v20 (à changer si Julien le veut).
-19. Type de conducteur PROFINET : Julien l'a créé en « personnalisé » (rose, plus épais). Les types de conducteur ne sont **pas** dans le .xrs (préférences WinRelais) : chaque fil porte son nom, sa couleur et son épaisseur. Il faut le nom exact, la couleur et l'épaisseur du type pour l'appliquer aux fils PROFINET.
+19. Type de conducteur PROFINET : **réglé le 05/11, appliqué en v21** : nom « Profinet » (type personnalisé de Julien), rose foncé RGB(199, 21, 133) = 8721863, épaisseur 44 (puissance 40 + 10 %). Type `PN` de `xrs_gen.TYPES`.
 20. Numéros de fil générés : reconnus par WinRelais comme numéros ou comme texte libre ? Messages du Journal à l'ouverture ?
 21. Symbole Hager NFT702 : créé par copie du NFT706 dans `outils/librairie/CUSTOM/`, pas dans la librairie WinRelais du PC. À copier dans `sym_electrotech\CUSTOM` si Julien veut le poser à la main.
 

@@ -272,3 +272,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Fichier de test de Julien : champ type de câble (3 = blindé ellipse + trait) et champ « afficher les numéros » identifiés ; le type de conducteur PROFINET n'est pas dans le .xrs.
 - [H] Liste d'E/S d'ensemble : `docs/LISTE_ES_AUTOMATE.md`, à valider.
 - [H] Convention de numérotation des fils proposée : un numéro par potentiel, folio + n° d'ordre en chiffres seuls, potentiels fixes réservés ; à valider.
+
+## 05/11/2026 : v21
+- [D] Type de fil PROFINET : « Profinet », rose foncé RGB(199, 21, 133), épaisseur 44 (puissance + 10 %). Appliqué en v21.
+- [D] Liste d'E/S CPU / SM 1223 / SM 1231 validée par Julien (et revue par l'assistant).
+- [C] Drivers : PUL / DIR / ENA sur les sorties de la CPU (100 kHz sur Q0.0 et Q0.2) ; la SM 1223 ne pilote aucun driver.
+- [H] Numérotation des fils : exemples donnés (`memoire/04_REGLES_DESSIN.md`), à valider.

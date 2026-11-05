@@ -33,7 +33,8 @@ TYPES = {
     "0V": ("1·20·16744448·0·0V·0·0·0·0·0·", 20, 16744448),
     "DC": ("1·20·4227327·0·Autre tension DC·0·0·0·0·0·", 20, 4227327),
     # PROFINET : type « Autre tension DC » affiché en vert, en attendant un type de conducteur dédié dans WinRelais
-    "PN": ("1·20·32768·0·Autre tension DC·0·0·0·0·0·", 20, 32768),
+    # type « Profinet » de Julien (05/11) : rose foncé RGB(199, 21, 133), 10 % plus épais que la puissance (40 -> 44)
+    "PN": ("1·44·8721863·0·Profinet·0·0·0·0·0·", 44, 8721863),
     # 02/11 (IEC 60204-1 13.2.4) : puissance en continu (48 V drivers, phases pas-à-pas, résistance de freinage) en noir ;
     # l'orange est réservé aux circuits exceptés (sous tension après QS1 ouvert), il n'y en a pas sur TTK
     "PDC": ("1·30·0·0·Autre tension DC·0·0·0·0·0·", 30, 0),
