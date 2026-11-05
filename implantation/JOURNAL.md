@@ -117,3 +117,5 @@ Fichiers : `release/TTK_implantation_2026-11-05_v8.drawio` + `.pdf` ; v7 dans `o
 
 **Choix à valider** : porte sur R4 (plus de place sur R5 avec les butées) ; pas de butée entre B2 / B7 et entre W9 / W10.
 **Passe-câbles** : W4 en CEM M20 (1 à acheter), W3 / W6 en CEM M16, W13 en M16 (à acheter).
+
+**Retours de Julien (05/11)** : porte sur R4 validée ; butées 10 mm, stock suffisant. Schéma v20 généré par Julien, pas encore ouvert : implantation en attente.

@@ -278,3 +278,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Liste d'E/S CPU / SM 1223 / SM 1231 validée par Julien (et revue par l'assistant).
 - [C] Drivers : PUL / DIR / ENA sur les sorties de la CPU (100 kHz sur Q0.0 et Q0.2) ; la SM 1223 ne pilote aucun driver.
 - [H] Numérotation des fils : exemples donnés (`memoire/04_REGLES_DESSIN.md`), à valider.
+
+## 05/11/2026 : retours sur l'implantation v8
+- [D] Bornes de porte sur R4, à droite de XR2 : validé (« sépare bien visuellement »).
+- [C] Butées : 10 mm chacune ; stock suffisant pour la 1re armoire (50 + 60 + 50, tous projets).

@@ -212,3 +212,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : v21
 - Julien : type Profinet (rose foncé, +10 %) ; valide les E/S si l'assistant les valide ; veut des exemples de numérotation ; doute sur les contacts miroirs (le NC revient-il ?) ; la SM 1223 peut-elle piloter les drivers (PUL rapides) ?
 - Réponse : v21 (fils Profinet) ; E/S revues, cohérentes ; drivers sur la CPU, pas sur la SM 1223 ; explication du retour des NC miroirs après un AU ; exemples de numéros.
+
+## 05/11/2026 : retours implantation v8
+- Julien valide la porte sur R4 et les butées (stock suffisant). Il a généré une v20, pas encore ouverte : l'agent d'implantation attend.
