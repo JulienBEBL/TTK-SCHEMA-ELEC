@@ -74,11 +74,11 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | B7 / W8 | Thermocouple type K, câble de compensation en direct jusqu'à K3 [D 28/10] |
 
 ## Câbles multiconducteurs
-- 19G1 et 27G1 : **proposition du 05/11, à valider (Q32)**. Julien veut utiliser le 27G1 en priorité, ranger par fonction ; conducteur n° = ordre des bornes.
+- 19G1 et 27G1 : **validés par Julien le 05/11 (Q32)**, dessinés au f70 en v19 (table `CABLES_MULTI` du script). Julien veut utiliser le 27G1 en priorité, ranger par fonction ; conducteur n° = ordre des bornes.
   - **27G1 (repère proposé -W11) armoire → pupitre +P1** : 1-4 X41.11-14 (AU S2 voies 1 et 2), 5-8 X41.21-24 (S3 Manu, shunt des capots), 9-14 X42.11-16 (Manu-D, Auto-A, Auto-B : après KA1), 15-16 X60.11-12 (S2 NO → I0.0), 17-20 X60.21-24 (S3 → I0.4 / I0.5), 21-22 X50.11-12 (IHM L+ / M), PE → X50.13 (FE de l'IHM, masse du pupitre), 23-26 réserve.
   - **19G1 (-W12) armoire → boîte de jonction machine** : 1-4 X41.31-34 (B1), 5-12 X60.31-38 (B3 à B6), 13-16 colonne H1 (X61.11-14, v17), 17-18 réserve, PE → masse de la boîte. B2 (M12) par son propre câble jusqu'aux bornes X41.41-44 [D 05/11].
   - 27G1 rangé par composant (05/11) : S2 = 1-6 (X41.11-14 voies 1 et 2, X60.11-12 NO → I0.0) ; S3 = 7-20 (X41.21-24 shunts, X42.11-16 Manu-D / Auto-A / Auto-B, X60.21-24 infos) ; IHM = 21-22 (L+ / M seulement) + PE ; réserve 23-26. S3 passe à 9 fils avec l'option D.
-  - Risque du 03/11 (revue, risque 1) : il ne vient pas seulement de l'IHM. Le +24 V permanent (L+ capteurs de K1) passe aussi sur X60.11, X60.21, X60.23. Le sortir du câble demande un 3e câble pour 8 fils. Mais un seul court-circuit ne neutralise qu'une des 2 voies : KM1 / KM2 (Auto-A) ou STO (Auto-B). Un KM collé est vu par la boucle de retour Y1-Y2 au réarmement ; un STO ponté ne l'est pas. Proposé : câble fixe et protégé (exclusion de défaut, ISO 13849-2 annexe D, à relire), décision de Julien.
+  - Risque du 03/11 (revue, risque 1) : **écarté par Julien le 05/11** : chaque conducteur a sa propre gaine dans le câble ; il soigne le cheminement.
 - Repères : 2 répartiteurs 4P AEE300427 = **-XR1 / -XR2** [D 05/11, Julien] ; bornier de terre Legrand 404839 = **-XPE1** [D 05/11].
 - LIYCY-JZ 5G1,5 (80 m) : **réserve** [D 27/10].
 

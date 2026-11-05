@@ -26,4 +26,4 @@ Point d'entrée unique pour reprendre le projet sans relire tout l'historique.
 
 `CLAUDE.md` (racine du dépôt) renvoie ici : un nouveau chat Claude Code le lit au démarrage.
 
-Dernière mise à jour : 05/11/2026 (v18 : frein unique -W4, terre du bâti -W13) ; 05/11/2026 (v17 : S3 AUTO-A à MANU-D, bornes de porte et de la colonne) ; 05/11/2026 (agent d'implantation : câble frein unique, XR1 / XR2, bornier R5 par câble) ; 04/11/2026 (v16) ; avant : 03/11/2026 (clôture des achats, v15 inchangée).
+Dernière mise à jour : 05/11/2026 (v19 : W11 / W12 au f70) ; 05/11/2026 (v18 : frein unique -W4, terre du bâti -W13) ; 05/11/2026 (v17 : S3 AUTO-A à MANU-D, bornes de porte et de la colonne) ; 05/11/2026 (agent d'implantation : câble frein unique, XR1 / XR2, bornier R5 par câble) ; 04/11/2026 (v16) ; avant : 03/11/2026 (clôture des achats, v15 inchangée).

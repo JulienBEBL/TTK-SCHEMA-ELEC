@@ -197,3 +197,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : v18
 - Julien : redonner la répartition 27G1 / 19G1 complète ; câble frein 5G1,5 (seul câble en stock) ; terre du bâti 2,5 ou 4 mm², repère au choix.
 - v18 : `schema/generes/release/TTK_2026-11-05_v18.xrs` (0 problème, 0 erreur, 28 attentions, 0 chevauchement). Frein unique -W4, terre du bâti -W13. Erreur W3 / W4 de la mémoire corrigée ; l'agent d'implantation doit passer son câble frein de W3 à W4.
+
+## 05/11/2026 : v19
+- Julien : le 24 V à côté des fils de KA1 n'est pas un risque (gaine par conducteur, cheminement soigné) ; valide la répartition 27G1 / 19G1.
+- v19 : `schema/generes/release/TTK_2026-11-05_v19.xrs` (0 problème, 0 erreur, 28 attentions, 0 chevauchement) ; f70 : W11 / W12 conducteur par conducteur, butées.

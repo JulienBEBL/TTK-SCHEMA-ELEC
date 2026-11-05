@@ -256,3 +256,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Liaison équipotentielle armoire → bâti : -W13, conducteur V/J seul 4 mm² (Julien : 2,5 ou 4 ; 4 retenu, conducteur seul non protégé).
 - [C] Stock de Julien : seulement du 5G1,5 (ni 5G2,5 ni 5G1).
 - Répartition 27G1 / 19G1 redonnée complète avec les butées entre fonctions ; toujours à valider (Q32).
+
+## 05/11/2026 : v19
+- [D] Répartition 27G1 (-W11) / 19G1 (-W12) validée par Julien ; dessinée au f70 avec les butées entre fonctions.
+- [D] Risque du 03/11 (+24 V permanent dans le 27G1 avec les fils après KA1) : pas un risque pour Julien, chaque conducteur a sa gaine ; il soigne le cheminement du câble.

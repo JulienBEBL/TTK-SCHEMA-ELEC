@@ -1328,6 +1328,22 @@ def plan_bornier(path, noms):
     return lignes
 
 
+# Câbles armoire <-> pupitre / machine (proposition du 05/11, validée par Julien le 05/11) : bornes en repère interne
+CABLES_MULTI = [
+    ("Câble -W11 (27G1 : 26 + PE) armoire -> pupitre +P1", [
+        ("AU -S2", ["X711.1", "X711.2", "X711.3", "X711.4", "X711.5", "X711.6"]),
+        ("Sélecteur -S3", ["X711.13", "X711.14", "X711.15", "X711.16", "X711.19", "X711.20", "X711.7", "X711.8",
+                           "X711.9", "X711.10", "X711.11", "X711.12", "X711.17", "X711.18"]),
+        ("IHM -P1", ["X711.21", "X711.22", "PE X711.23"]),
+        ("Réserve", ["-", "-", "-", "-"])]),
+    ("Câble -W12 (19G1 : 18 + PE) armoire -> boîte de dérivation machine", [
+        ("Capot -B1", ["X701.1", "X701.2", "X701.3", "X701.4"]),
+        ("Fins de course -B3 à -B6", [f"X701.{n}" for n in range(9, 17)]),
+        ("Colonne -H1", ["X701.43", "X701.44", "X701.45", "X701.46"]),
+        ("Réserve", ["-", "-", "PE -XPE1"])]),
+]
+
+
 def organisation_x70():
     """Folio 70 : groupes de bornes vers la machine +M et le réseau, avec leur numéro (Julien, 02/11)."""
     f = "70"
@@ -1336,21 +1352,43 @@ def organisation_x70():
                          "(X31.11 à X31.14 = moteur M1 au folio 31).", 200)
     blocs = [(f"{b} . {d}1 à {d}{len(bs)} : {fn} (f{fi})", [f"{d}{i + 1}" for i in range(len(bs))], [sg for _, sg in bs])
              for b, d, fi, fn, dest, bs in GROUPES if dest in ("+M", "réseau")]
-    blocs = [(t.replace(" . ", "."), n, sg) for t, n, sg in blocs]
-    blocs += [("Câble 19G1 armoire <-> machine (18 + PE) : à attribuer", [str(i) for i in range(1, 19)] + ["PE"], [""] * 19),
-              ("Câble 27G1 machine <-> armoire (26 + PE) : à attribuer", [str(i) for i in range(1, 27)] + ["PE"], [""] * 27)]
+    blocs = [(t.replace(" . ", "."), n, sg, []) for t, n, sg in blocs]
+    # câbles multiconducteurs validés par Julien le 05/11 : conducteur n -> borne, rangés par composant,
+    # une butée d'arrêt sur le rail entre deux fonctions (trait épais)
+    for titre, groupes in CABLES_MULTI:
+        nums, sigs, comps, k = [], [], [], 0
+        for gi, (comp, bornes) in enumerate(groupes):
+            if gi:
+                nums.append(None)
+                sigs.append(None)
+            comps.append((len(nums), comp))
+            for b in bornes:
+                if b.startswith("PE"):
+                    nums.append("PE")
+                    sigs.append(b[3:])
+                else:
+                    k += 1
+                    nums.append(str(k))
+                    sigs.append(b)
+        blocs.append((titre, nums, sigs, comps))
     x, y = 2400, 2600
-    for titre, nums, sigs in blocs:
-        larg = max(len(nums) * 800, int(len(ren(titre)) * 220 * 0.55) + 400)
+    for titre, nums, sigs, comps in blocs:
+        pas = [400 if n is None else 800 for n in nums]
+        larg = max(sum(pas), int(len(ren(titre)) * 220 * 0.55) + 400)
         if x + larg > 28000:
             x, y = 2400, y + 2400
         texte(f, x, y, titre, 220, 0, 1)
-        for i, (n, sg) in enumerate(zip(nums, sigs)):
-            bx = x + 800 * i
+        xs_ = [x + sum(pas[:i]) for i in range(len(nums))]
+        for bx, n, sg in zip(xs_, nums, sigs):
+            if n is None:                      # butée d'arrêt
+                g.cadre(F[f], bx - 50, y + 300, bx + 50, y + 1300, width=40)
+                continue
             g.cadre(F[f], bx, y + 400, bx + 600, y + 1200, width=15)
             texte(f, bx + 300 - int(len(n) * 200 * 0.55 / 2), y + 700, n, 200)
             if sg:
-                texte(f, bx + 300 - int(len(sg) * 180 * 0.55 / 2), y + 1300, sg, 180)
+                texte(f, bx + 300 - int(len(ren(sg)) * 180 * 0.55 / 2), y + 1300, sg, 180)
+        for i0, comp in comps:
+            texte(f, xs_[i0], y + 1700, comp, 180, 0, 1)
         x += larg + 800
 
 

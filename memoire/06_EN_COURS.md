@@ -1,8 +1,14 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v18 (05/11/2026)
-`schema/generes/release/TTK_2026-11-05_v18.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, **28** attentions (27 connues + le bout libre voulu du fil vers le bâti, f10), 0 chevauchement. **En attente : retours de Julien (Q8).**
+## Version actuelle : v19 (05/11/2026)
+`schema/generes/release/TTK_2026-11-05_v19.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu du fil vers le bâti, f10), 0 chevauchement. **En attente : retours de Julien (Q8).**
 
+### Fait en v19
+| Folio | Changement |
+|---|---|
+| 70 | Câbles **-W11** (27G1, armoire → pupitre) et **-W12** (19G1, armoire → boîte de dérivation machine) validés : conducteur n → borne, nom du composant sous chaque groupe, **butée d'arrêt** (trait épais) entre deux fonctions. Table `CABLES_MULTI` du script |
+
+## Version précédente : v18 (05/11/2026)
 ### Fait en v18
 | Folio | Changement |
 |---|---|
