@@ -66,7 +66,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 16. PUL sur Q0.0 (U3) et Q0.2 (U4) : sorties 100 kHz d'après la fiche Siemens [C]. Affectation PTO (impulsion + direction) à vérifier dans TIA V21.
 
 ## WinRelais (champs du format .xrs inconnus)
-17. Champ « câble blindé » (W2, W4, W5, W7) : Julien coche « blindé » sur W2, enregistre, envoie le .xrs.
+17. Champ « câble blindé » (W2 à W6, W9, W10, W11, W12) : Julien coche « blindé » sur W2, enregistre, envoie le .xrs.
 18. Champ « afficher les numéros » des broches (U3, U4) : idem, décoché sur U3.
 19. Type de conducteur PROFINET à créer (Préférences / Conducteurs).
 20. Numéros de fil générés : reconnus par WinRelais comme numéros ou comme texte libre ? Messages du Journal à l'ouverture ?

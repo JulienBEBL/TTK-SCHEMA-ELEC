@@ -32,7 +32,18 @@ But de Julien : un schéma propre (borniers, sécurité, automate) **avant** la 
 | 60 | Fins de course B3 à B6 : désignation et tableau en NO |
 Règle de Julien (05/11) pour la porte : **tous les appareils par des bornes, ou aucun**. Tous dessinés ; si le rail R5 manque de place (agent d'implantation), on les retire tous.
 
-## À faire ensuite
+## Feuille de route (05/11, après la v19)
+Jalon J2 « bon pour câblage » : 13/11/2026.
+1. **Julien relit la v19 dans WinRelais** (Q8) : journal à l'ouverture, références croisées automatiques, f31 / f32 (Q12), f40 à f42 (S3, S4), f61 (H1, H4), f70. Aucune version depuis la v16 n'a été vue à l'écran.
+2. **.xrs de test** de Julien : champ « câble blindé », « afficher les numéros », type PROFINET (points 17 à 20).
+3. **Liste d'E/S f60 à f62** à valider ; puis retirer « PROPOSITION A VALIDER » du f62 (Q13).
+4. **Convention de numérotation des fils** à choisir (revue C7 : repères en stock A L R S U X Z / . seulement, 0,5-1,5 mm², rien en 2,5 et 4 mm²), puis numérotation générée.
+5. Données à obtenir : SEW (sondes TF livrées ? bornes X10, courant STO ≥ 10 mA, courant frein BE5 pour QF2 / QF3, mises sous tension / h) ; ifm MN508S (homologation, actionneur codé) ; DC-1 du LC1D09BD sous 48 V ; brochages G2 Siemens.
+6. Achats : raccord thermocouple (Q28), fixation sonde (Q29), câble moteur 50 m pour un besoin de 60 m (Q30, C1), câble V/J 4 mm² (W13), câble M12 de B2, butées (Q39), presse-étoupes CEM et boîte de dérivation (C2, C5). Longueurs des câbles W3 à W6, W9 à W12.
+7. Agent d'implantation : frein W3 → **W4**, bornes de porte (tous ou aucun selon la place), H1 X61.1x, butées, W13.
+8. Après J2 : câblage, essais au banc (capot B1 / B2 écart 200 ms, essais KA1 restants), programme TIA (PTO, ENA, trames Z1).
+
+## À faire ensuite (détail)
 1. H2 : reporter la référence du voyant 230 V quand Julien l'aura.
 2. f70 / f71 : les bornes de porte (X41.5x, X60.4x) n'y figurent pas (destination « porte ») : à ajouter si Julien le veut.
 3. Champs « câble blindé » et « afficher les numéros » dès réception du .xrs de test de Julien ; type de conducteur PROFINET.
