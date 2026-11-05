@@ -216,3 +216,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 04/11/2026 : agent d'implantation
 - [D] L'agent qui dessine l'implantation (draw.io) refait l'implantation selon la v16, pose ses questions à Julien et versionne son travail dans `implantation/` du dépôt (release / old / JOURNAL). Prompt : `docs/PROMPT_AGENT_IMPLANTATION_2026-11-04.md`.
 - [?] Repères du répartiteur 4P et du bornier de terre (anciens X12 / X13) : en conflit avec les bornes X12.11, à fixer.
+
+
+## 05/11/2026 : retours de Julien
+- [D] Fins de course B3 à B6 : on garde le contact NO (choix de Julien).
+- [D] Repères : répartiteur 4P AEE300427 = -XR1, bornier de terre Legrand 404839 = -XPE1 (Q31).
+- [C] STO du MCX91A (Julien, notice SEW) : X6.1 / X6.3 = +24 V, X6.2 / X6.4 = 0 V ; X6.5 / X6.6 non utilisés. Câblage conforme ; texte rouge du f31 / f32 réduit à « TF X10 : bornes à confirmer » (script, prochaine version).
+- [C] Sélecteur Eaton T0-4-8223/E : 24 V CC / 10 mA fiable, DC-13 10 A. Numérotation des contacts absente de la fiche convertie.
+- [H] Proposition 27G1 (-W11) → pupitre, 19G1 (-W12) → boîte de jonction machine, B2 par son câble M12 ; détail dans `memoire/02_MATERIEL.md`. À valider (Q32).

@@ -173,3 +173,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 04/11/2026 : prompt pour l'agent d'implantation
 - Julien demande un prompt de mise à jour pour son agent draw.io (implantation de l'armoire). Écrit : `docs/PROMPT_AGENT_IMPLANTATION_2026-11-04.md` ; dossier `implantation/` créé (README).
 - Mémoire : anciens repères corrigés dans `memoire/02_MATERIEL.md` ; conflit X12 / X13 (répartiteur, barrette de terre) contre X12.11 relevé.
+
+
+## 05/11/2026 : prochains points, câbles 27G1 / 19G1
+- Julien : garder le NO sur B3 à B6 ; repères du répartiteur et du bornier de terre au choix (→ -XR1, -XPE1) ; brochage X6 du MCX91A ; question sur ENA (DIR+ / DIR- ?) ; fiche Eaton (`Documents/10. TTK/eaton_com_ttk.md`) ; demande quoi mettre dans le 27G1 (en priorité) et le 19G1.
+- Réponse : X6 conforme au schéma ; ENA = question de logique (actif ou libéré quand alimenté), pas de câblage ; Eaton sans numérotation des contacts ; proposition de répartition 27G1 / 19G1 et analyse du risque du 03/11.

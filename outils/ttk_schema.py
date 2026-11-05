@@ -679,6 +679,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     g.cable(F[f], 0, 0, YC, w2, "5G1,5 blindé", f"Frein {m} (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True, compo_dx=-1700)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
+    # X6 confirmé par Julien (05/11, notice SEW) : X6.1 / X6.3 = F_STO_P (+24 V), X6.2 / X6.4 = F_STO_M (0 V),
+    # X6.5 VO24_STO / X6.6 GND (alimentation interne, seulement si le réseau est présent) : non utilisés
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
     VAR[(f, "STO2")] = W(f, [T["X6:3"], (9600, 3200)], "24")
     W(f, [T["X6:2"], (9200, 4800), (10400, 4800)], "0V")
@@ -686,7 +688,7 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     VAR[(f, "STO0")] = W(f, [(10400, 4800), (10400, 4000)], "0V")
     texte(f, 22400, 4400, "X40 : PROFINET (f54)", 200)
     texte(f, 22400, 4800, "X5 : 24VELEC (f31) - X6 : STO (f42)", 200)
-    texte(f, 22400, 5200, "STO X6 et TF X10 : bornes à confirmer", 200, ROUGE)
+    texte(f, 22400, 5200, "TF X10 : bornes à confirmer", 200, ROUGE)
     texte(f, 22400, 5600, "(notice SEW MCX91A)", 200, ROUGE)
     texte(f, 22400, 6400, f"{w1} / {w3} blindés : blindage repris à 360°", 200)
     texte(f, 22400, 6800, "(presse-étoupe CEM côté moteur,", 200)
