@@ -67,3 +67,18 @@ Fichiers : `release/TTK_implantation_2026-11-04_v4.drawio` + `.pdf` ; v3 dans `o
 - U3 / U4 : « vissé sur la plaque », position à relever.
 
 **À vérifier** : courant admissible par petit départ AEE300427 (le trou d'arrivée de RÉP1 porte tout le courant de QF1) ; calibre de QF1.
+
+**Statut** : commitée et poussée le 05/11 (2f35189), remplacée par la v5.
+
+## v5 — 05/11/2026
+Fichiers : `release/TTK_implantation_2026-11-05_v5.drawio` + `.pdf` ; v4 dans `old/`.
+
+**Demandes de Julien (05/11)** : QS1 deux fois plus large que dessiné ; borniers R5 groupés par câble ; place réservée pour le thermocouple B7. Cotes réelles des rails : non disponibles.
+
+**Changements**
+- QS1 : 140 mm (à mesurer). R2 tronçon droit : QF1 + QS1. RÉP1 sur le tronçon précédent de R2. RÉP2 déplacé sur R4 (tronçon libre, à côté des QF4-QF10 qu'il alimente) ; ponts RÉP1 → RÉP2 par la goulotte verticale.
+- R5 : un groupe par câble, capot de fin + repère de câble entre groupes, renforts aux bouts de tronçon seulement.
+  Ordre : porte S1, +P1, capots B1 / B2, FdC B3 à B6, H1 (réserve) | B7 (réserve) | W9, W10 | W4, W7, cloison TBTP / 400 V, W3, W6, W2, W5, W1.
+- Freins dessinés en 2 câbles W3 / W6 (schéma v16).
+
+**À trancher** : un câble frein unique pour M1 + M2 (boîte de dérivation côté machine) ; FdC B3-B6 : 2 ou 3 fils ; câbles capteurs (un par capteur ou multiconducteur) ; référence de la cloison.
