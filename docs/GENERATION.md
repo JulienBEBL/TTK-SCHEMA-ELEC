@@ -2,7 +2,7 @@
 
 Le `.xrs` est **généré par script** (décision de Julien, 27/10/2026). Boucle de travail :
 
-1. Claude modifie `outils/ttk_schema.py` et régénère : `cd outils && python3 ttk_schema.py ../schema/generes/TTK_AAAA-MM-JJ_vN.xrs`
+1. Claude modifie `outils/ttk_schema.py` et régénère : `cd outils && python ttk_schema.py ../schema/generes/release/TTK_AAAA-MM-JJ_vN.xrs` (commandes complètes à jour : `README.md`)
 2. Julien télécharge le `.xrs` (GitHub ou chat), l'ouvre dans WinRelais, lit le Journal à l'ouverture.
 3. Julien renvoie ses retours (captures, texte). Claude corrige le script et régénère.
 
