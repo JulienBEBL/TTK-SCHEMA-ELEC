@@ -694,11 +694,18 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     # X6 confirmé par Julien (05/11, notice SEW) : X6.1 / X6.3 = F_STO_P (+24 V), X6.2 / X6.4 = F_STO_M (0 V),
     # X6.5 VO24_STO / X6.6 GND (alimentation interne, seulement si le réseau est présent) : non utilisés
+    # STO en chaîne (Julien 06/11, validé SEW) : KA1 (AUTO-B) -> -U1 X6.1, 0 V -> -U1 X6.2 ;
+    # -U1 X6.3 / X6.4 repartent vers -U2 X6.1 / X6.2 ; -U2 X6.3 / X6.4 libres (fin de chaîne)
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
-    VAR[(f, "STO2")] = W(f, [T["X6:3"], (9600, 3200)], "24")
-    W(f, [T["X6:2"], (9200, 4800), (10400, 4800)], "0V")
-    W(f, [T["X6:4"], (10000, 4800)], "0V")
-    VAR[(f, "STO0")] = W(f, [(10400, 4800), (10400, 4000)], "0V")
+    if f == "20":
+        W(f, [T["X6:2"], (9200, 4800), (10400, 4800)], "0V")
+        VAR[(f, "STO0")] = W(f, [(10400, 4800), (10400, 4000)], "0V")
+        VAR[(f, "STOout+")] = W(f, [T["X6:3"], (9600, 3200)], "24")
+        VAR[(f, "STOout0")] = W(f, [T["X6:4"], (10000, 4400), (11200, 4400), (11200, 3600)], "0V")   # renvoi écarté des autres
+    else:
+        VAR[(f, "STOin0")] = W(f, [T["X6:2"], (9200, 4800), (10400, 4800), (10400, 4000)], "0V")
+        renvoi("20", VAR[("20", "STOout+")], f, VAR[(f, "STO1")], "24")
+        renvoi("20", VAR[("20", "STOout0")], f, VAR[(f, "STOin0")], "0V")
     texte(f, 22400, 4400, "X40 : PROFINET (f54)", 200)
     texte(f, 22400, 4800, "X5 : 24VELEC (f31) - X6 : STO (f42)", 200)
     texte(f, 22400, 5200, "TF X10 : bornes à confirmer", 200, ROUGE)
@@ -906,7 +913,7 @@ maitre("Poussoirs et commutateurs\\Tête 2 pos fixes NO.xsy", "S413", f, 24400, 
 # Architecture du 27/10 (fiche de Julien) :
 #   sortie 1 (13-14) -> bobines freins -Q421 / -Q422, et via Manu-D -> bobine -Q423 (48 V en Manu seulement)
 #   sortie 2 (23-24) -> Auto-A -> bobines -KM1 / -KM2 (pas d'ordre automate, option A du 27/10)
-#   sortie 3 (33-34) -> Auto-B -> STO des 2 variateurs en parallèle
+#   sortie 3 (33-34) -> Auto-B -> STO de -U1, puis -U2 en chaîne par X6.3 / X6.4 de -U1 (06/11)
 f = "42"
 bob = C + "Schneider_LC1D09BD_contacteur_bobine.xsy"
 YC = 12800                                  # ligne des bobines
@@ -948,17 +955,11 @@ texte(f, 15600, 3000, "Sortie 2 (23-24) : -KM1 / -KM2", 220, 0, 1)
 t1, t2 = chaine_s413(21600, "X711.9", "X711.10", 5, "AUTO-B : autorisation STO")
 s3 = stub(f, (21600, 4000), t1["1"], "24")
 W(f, [t2["2"], (21600, 10400)], "24")
-W(f, [(21600, 9200), (24000, 9200)], "24")
-for xx in (22400, 23200, 24000):
-    W(f, [(xx, 9200), (xx, 10400)], "24")
 renvoi("40", O40["34"], f, s3, "24")
 renvoi(f, (21600, 10400), "20", VAR[("20", "STO1")], "24")
-renvoi(f, (22400, 10400), "20", VAR[("20", "STO2")], "24")
-renvoi(f, (23200, 10400), "21", VAR[("21", "STO1")], "24")
-renvoi(f, (24000, 10400), "21", VAR[("21", "STO2")], "24")
 texte(f, 22000, 3000, "Sortie 3 (33-34) : STO", 220, 0, 1)
-texte(f, 21200, 12400, "STO X6 des 2 variateurs", 200)
-texte(f, 21200, 12700, "en parallèle (validé SEW)", 200)
+texte(f, 21200, 12400, "STO : -U1 X6.1 / X6.2, puis -U2", 200)
+texte(f, 21200, 12700, "en chaîne par -U1 X6.3 / X6.4 (validé SEW)", 200)
 # 0 V des STO (X6:2 / X6:4) : piqués sur la barre 0 V du haut, après le décalage du folio
 
 # ======================================================================== 50 AUTOMATE ENTREES
@@ -1187,7 +1188,7 @@ MEMES = [
     ["X711.20:2", "Q423:A1"],
     ["K401:24", "X711.7:1"], ["X711.7:2", "S413:1"], ["S413:2", "X711.8:1"], ["X711.8:2", "KM1:A1", "KM2:A1"],
     ["K401:34", "X711.9:1"], ["X711.9:2", "S413:5"], ["S413:6", "X711.10:1"],
-    ["X711.10:2", "T201:X6:1", "T201:X6:3", "T211:X6:1", "T211:X6:3"],
+    ["X711.10:2", "T201:X6:1"], ["T201:X6:3", "T211:X6:1"], ["T201:X6:4", "T211:X6:2"],
     # sorties automate
     ["K501:Q0.0", "T322:PUL+"], ["K501:Q0.1", "T322:DIR+"], ["K501:Q0.4", "T322:ENA+"],
     ["K501:Q0.2", "T323:PUL+"], ["K501:Q0.3", "T323:DIR+"], ["K501:Q0.5", "T323:ENA+"],
@@ -1207,7 +1208,7 @@ MEMES = [
      "K531:L+", "K541:V1+", "X721.11:1", "T201:X5:24V", "T211:X5:24V", "X711.21:2"],
     ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:3M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
      "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "X701.46:2", "X721.12:2", "X721.14:2",
-     "T201:X5:GND", "T211:X5:GND", "T201:X6:2", "T201:X6:4", "T211:X6:2", "T211:X6:4",
+     "T201:X5:GND", "T211:X5:GND", "T201:X6:2",
      "T322:PUL-", "T322:DIR-", "T322:ENA-", "T323:PUL-", "T323:DIR-", "T323:ENA-", "X711.22:2"],
     ["K501:FE", "P601:FE", "X101.VJ:2", "T301:PE", "T302:PE", "X36.1:2", "X131:PE", "T321:PE",
      "T201:X1:PE", "T211:X1:PE"],
@@ -1281,8 +1282,7 @@ POTENTIELS = [("-K501:L+ capt", "+24 V capteurs (-K501 L+ capt, f50)"),
               ("-K401:13", "24VSEC (-X313, f31)"),
               ("-K401:A2", "0 V commande (-X312, f31)"),
               ("-X101.VJ:2", "Terre PE / FE (arrivée -X101, f10)"),
-              ("-T201:X6:1", "STO voie 1 des variateurs -T201 (f20) / -T211 (f21)"),
-              ("-T201:X6:3", "STO voie 2 des variateurs -T201 (f20) / -T211 (f21)"),
+              ("-T201:X6:1", "STO de -T201 (f20), puis -T211 (f21) en chaîne"),
               ("-K501:3L+", "+24 V sorties automate -K501 / -K521 (3L+, f51-f52)")]
 
 
@@ -1360,10 +1360,15 @@ CABLES_MULTI = [
 def organisation_x70():
     """Folio 70 : groupes de bornes vers la machine +M et le réseau, avec leur numéro (Julien, 02/11)."""
     f = "70"
-    texte(f, 2400, 1500, "BORNIERS ARMOIRE +A1 <-> MACHINE +M ET RESEAU : GROUPES DE BORNES", 280, 0, 1)
+    texte(f, 2400, 1500, "BORNIERS DE L'ARMOIRE +A1 : GROUPES DE BORNES, CABLES ET PORTE", 280, 0, 1)
     texte(f, 2400, 1900, "Repère : X + n° du folio où la borne est dessinée + n° de borne ; une dizaine par fonction "
                          "(X31.11 à X31.14 = moteur M1 au folio 31).", 200)
-    blocs = [(f"{b} . {d}1 à {d}{len(bs)} : {fn} (f{fi})", [f"{d}{i + 1}" for i in range(len(bs))], [sg for _, sg in bs])
+    # câble de chaque groupe (06/11) : repères affichés
+    cab = {("X10", 1): "W1", ("X20", 1): "W9", ("X20", 2): "W10", ("X31", 1): "W2", ("X31", 2): "W3", ("X31", 3): "W4",
+           ("X32", 1): "W5", ("X32", 2): "W6", ("X32", 3): "W4", ("X41", 3): "W12", ("X41", 4): "câble M12",
+           ("X60", 3): "W12", ("X63", 1): "W8", ("X61", 1): "W12"}
+    blocs = [(f"{b} . {d}1 à {d}{len(bs)} : {fn} (f{fi})" + (f" - {cab[(b, d)]}" if (b, d) in cab else ""),
+              [f"{d}{i + 1}" for i in range(len(bs))], [sg for _, sg in bs])
              for b, d, fi, fn, dest, bs in GROUPES if dest in ("+M", "réseau")]
     blocs = [(t.replace(" . ", "."), n, sg, []) for t, n, sg in blocs]
     # câbles multiconducteurs validés par Julien le 05/11 : conducteur n -> borne, rangés par composant,
@@ -1462,9 +1467,8 @@ ybas = max(k["A2"].y for k in COIL.values()) + 800          # collecteur 0 V sou
 for k in COIL.values():
     W(f, [k["A2"], (k["A2"].x, ybas)], "0V")
 W(f, [(max(k["A2"].x for k in COIL.values()), ybas), (3600, ybas), (3600, RAIL0_Y)], "0V")
-for ff, x in (("20", 26000), ("21", 26800)):
-    renvoi(f, W(f, [(x, RAIL0_Y), (x, 4400)], "0V"), ff, VAR[(ff, "STO0")], "0V")
-texte(f, 23600, 6400, "0 V STO X6 (f20, f21)", 200)
+renvoi(f, W(f, [(26000, RAIL0_Y), (26000, 4400)], "0V"), "20", VAR[("20", "STO0")], "0V")
+texte(f, 23600, 6400, "0 V STO X6.2 de -U1 (f20)", 200)
 f = "50"
 W(f, [k501e["L+"], (k501e["L+"].x, RAIL24_Y)], "24")
 for p in ("M", "1M"):
@@ -1491,7 +1495,7 @@ for num in F:                       # contenu centré dans le cadre (pas la gard
 # retouches de Julien dans WinRelais (v12, v13 du 02/11), reprises en coordonnées finales
 POS_JULIEN = {("10", "Distribution (f12, N : f13)"): (6000, 17600), ("12", "VARIATEUR 1"): (4900, 16400),
               ("12", "VARIATEUR 2"): (12000, 16400), ("12", "FREIN M201"): (18300, 16400),
-              ("54", "Port 5 : réserve"): (13800, 11500), ("42", "0 V STO X6 (f20, f21)"): (25700, 6200),
+              ("54", "Port 5 : réserve"): (13800, 11500), ("42", "0 V STO X6.2 de -U1 (f20)"): (25700, 6200),
               ("53", "AI1 à AI7 : réserve"): (17400, 11200)}
 g.textes = [(t[0], *POS_JULIEN[nf]) + tuple(t[3:])
             if (nf := next((n for n in POS_JULIEN if F.get(n[0]) == t[0] and t[3] in (n[1], ren(n[1]))), None)) else t

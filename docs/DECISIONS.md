@@ -302,3 +302,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] PTFIX 6/12X2,5 dessinés à 41 mm le long du rail (sens de pose à vérifier). X21.11 / X21.12 + X12.11 sur R3 à gauche (129 / 130 mm), X21.13 (24VSEC) devant FA1 et KA1.
 - [H] Butée de chaque côté de chaque appareil appliquée partout où elle tient. Exceptions : R2 QM1-KM1-QM2-KM2 (il faudrait 230 mm pour 205), K1-K3 (modules reliés par le bus).
 - [H] Porte : S1, S4, H3, H4 à droite de XR2 (111 / 113 mm), H2 230 V seul sur le tronçon suivant de R4, après la vis.
+
+## 06/11/2026 : v23
+- [D] STO en chaîne U1 → U2 par X6.3 / X6.4 de U1 (Julien, validé SEW). Dessiné en v23.
+- [D] Partie sécurité validée par Julien.
+- [C] SEW : frein alimenté moteur à l'arrêt = admissible ; MCX91A : « 1 » mise sous tension (unité à confirmer, par heure ?) ; sondes TF : pas d'information.
+- f70 : titre élargi, câble indiqué pour chaque groupe.
+- Bilan 24 V : `docs/BILAN_24V.md` (connu : 0,66 A sur T2, 0,90 A max sur T1, pour 10 A chacune).

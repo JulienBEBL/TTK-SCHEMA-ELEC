@@ -1,8 +1,16 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v22 (05/11/2026)
-`schema/generes/release/TTK_2026-11-05_v22.xrs` : 25 folios, 177 symboles, 654 fils, 91 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti), 0 chevauchement. **En attente : validation de Julien (liste ci-dessous).**
+## Version actuelle : v23 (06/11/2026)
+`schema/generes/release/TTK_2026-11-06_v23.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur au verifier, 28 attentions, 0 chevauchement. La v22 a été réenregistrée par WinRelais (copie `schema/recus/2026-11-06_v22_ouverte_WinRelais.xrs`, aucune retouche de texte, de symbole ni de fil). **Sécurité validée par Julien le 06/11** (après le STO en chaîne).
 
+### Fait en v23
+| Folio | Changement |
+|---|---|
+| 42, 31, 32 | STO **en chaîne** (Julien, validé SEW) : AUTO-B → -U1 X6.1, 0 V → -U1 X6.2 ; -U1 X6.3 / X6.4 → -U2 X6.1 / X6.2 ; -U2 X6.3 / X6.4 libres. Plus de peigne de 4 renvois au f42, un seul 0 V STO |
+| 70 | Titre « BORNIERS DE L'ARMOIRE +A1 : GROUPES DE BORNES, CABLES ET PORTE » ; câble de chaque groupe dans son titre (W1, W2… W12, câble M12) |
+Bilan des consommations 24 V : `docs/BILAN_24V.md`.
+
+## Version précédente : v22 (05/11/2026)
 ### Fait en v22
 | Folio | Changement |
 |---|---|
@@ -75,7 +83,7 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 5. Achats : Q28 à Q30 (raccord thermocouple, fixation sonde, câble moteur 50 m).
 
 ## Validation par Julien (liste mise à jour le 05/11, v22)
-- Sécurité : freins libres en Manu **voulus** (réglé) ; courant STO (SEW, `docs/QUESTIONS_SEW.md`) ; capot B1 / B2 écart 200 ms et boucle Y1-Y2 (essais de banc) ; relire f40 à f42 à l'écran.
+- Sécurité : **validée par Julien le 06/11** ; restent le courant STO (SEW) et les essais de banc (boucle Y1-Y2, écart B1 / B2).
 - Automate : réglé (E/S validées, mention f62 retirée) ; bornes du thermocouple à l'achat (Q19).
 - Borniers : 89 bornes pour 85 achetées (+ réserve 10 %, + 6 si les conducteurs de réserve des 27G1 / 19G1 sont bornés) ; type des 4 bornes de terre en stock ? ; 5 bornes PT 4 pour l'arrivée X10 (5G4) ; butées de chaque côté de chaque appareil sur tous les rails (règle de Julien) ; H2 230 V séparé des bornes 24 V sur R4 (butée, cloison ?).
 - Agent d'implantation : bornes de porte sur **R4** (bloc du f70), butées de chaque côté de chaque appareil sur tous les rails, câble frein W4, W13.

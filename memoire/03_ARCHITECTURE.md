@@ -104,3 +104,7 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 
 ## Freins SEW en mode Manu (05/11)
 - KF1 / KF2 sont alimentés par KA1 13-14 sans passer par S3 : freins desserrés dès que KA1 est armé, **y compris en Manu**. **Voulu** [D 05/11, Julien] : en Manu, les opérateurs tournent l'arbre de sortie à la clé pour la maintenance.
+
+## STO en chaîne (06/11, v23)
+- KA1 33-34 → AUTO-B (S3 5-6) → -U1 X6.1 (+24 V) ; 0 V → -U1 X6.2 ; -U1 X6.3 → -U2 X6.1 ; -U1 X6.4 → -U2 X6.2 ; -U2 X6.3 / X6.4 libres. Validé par SEW (Julien). Un seul départ +24 V et un seul 0 V depuis l'armoire de sécurité.
+- Rappel f42 : KA1 13-14 → KF1 / KF2 (freins, toujours) + MANU-D (S3 15-16) → KA2 ; KA1 23-24 → AUTO-A (S3 1-2) → KM1 / KM2 ; KA1 33-34 → AUTO-B → STO.
