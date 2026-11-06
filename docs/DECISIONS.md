@@ -309,3 +309,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] SEW : frein alimenté moteur à l'arrêt = admissible ; MCX91A : « 1 » mise sous tension (unité à confirmer, par heure ?) ; sondes TF : pas d'information.
 - f70 : titre élargi, câble indiqué pour chaque groupe.
 - Bilan 24 V : `docs/BILAN_24V.md` (connu : 0,66 A sur T2, 0,90 A max sur T1, pour 10 A chacune).
+
+## 06/11/2026 : implantation v10 (schéma v23)
+- [D] R2 : tout est fixé par Julien, hors périmètre de l'implantation.
+- [C] PTFIX 6/12X2,5 posés en long sur le rail (41 mm).
+- [D] Livrable d'implantation réduit à 2 pages : plaque + détail des borniers (Julien).

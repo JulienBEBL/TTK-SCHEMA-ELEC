@@ -134,3 +134,11 @@ Fichiers : `release/TTK_implantation_2026-11-06_v9.drawio` + `.pdf` ; v8 dans `o
 - R5 inchangé depuis la v8.
 
 **À vérifier** : sens de pose et largeur des PTFIX 6/12 sur rail (41 ou 28,6 mm) ; références RD / GY ; 4 bornes 4 mm à acheter (89 pour 85).
+
+**Statut** : commitée et poussée le 06/11 (214bb78), remplacée par la v10.
+
+## v10 — 06/11/2026 (schéma v23)
+Fichiers : `release/TTK_implantation_2026-11-06_v10.drawio` + `.pdf` (2 pages) ; v9 dans `old/`.
+- Julien : PTFIX 6/12 en long (41 mm) ; R2 déjà fixé (trait épais, hors étude) ; seulement le plan et le détail des borniers.
+- v23 : aucune borne modifiée (STO en chaîne interne à l'armoire).
+- Page 2 refaite : bornes à l'échelle ≈ 1:0,22, repère, fonction, n° de conducteur (W11 / W12), butées, capots, bandeau par câble (repère, composition, destination), étiquette par fonction.

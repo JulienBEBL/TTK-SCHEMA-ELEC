@@ -233,3 +233,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 06/11/2026 : v23
 - Julien : réponses SEW (TF : pas d'info ; frein permanent : oui ; 1 mise sous tension / h) ; explication des chaînes MANU-D et AUTO-A du f42 ; STO en chaîne U1 → U2 ; sécurité validée sinon ; bilan 24VSEC / 24VELEC ; revoir l'affichage du f70.
 - v23 générée ; `docs/BILAN_24V.md` ; `docs/QUESTIONS_SEW.md` complété.
+
+## 06/11/2026 : implantation v10
+- Julien : PTFIX en long ; R2 fixé ; plan 1 page + détail des borniers comme au montage, groupes par câble et fonction. Fait (v10, schéma v23 sans changement de bornes).
