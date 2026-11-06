@@ -119,3 +119,18 @@ Fichiers : `release/TTK_implantation_2026-11-05_v8.drawio` + `.pdf` ; v7 dans `o
 **Passe-câbles** : W4 en CEM M20 (1 à acheter), W3 / W6 en CEM M16, W13 en M16 (à acheter).
 
 **Retours de Julien (05/11)** : porte sur R4 validée ; butées 10 mm, stock suffisant. Schéma v20 généré par Julien, pas encore ouvert : implantation en attente.
+
+**Statut** : commitée et poussée le 05/11 (f622e2b), remplacée par la v9.
+
+## v9 — 06/11/2026 (schéma v22)
+Fichiers : `release/TTK_implantation_2026-11-06_v9.drawio` + `.pdf` ; v8 dans `old/`.
+
+**Prises en compte (v20 à v22)** : X21.11-13 = PTFIX 6/12X2,5 (RD / BU / GY) ; porte dans l'ordre du f70 (S1, S4, H3, H4, H2 au bout) ; règle « une butée de chaque côté de chaque appareil sur tous les rails » ; 89 bornes (88 sur R5 / R4 + X12.11).
+
+**Placement**
+- R2 : QF2-KF1 | QF3-KF2 (192 / 205) ; QM1-KM1-QM2-KM2 sans butée intérieure (200 / 205 ; avec butées : 230) ; XR1 ; QF1 | QS1 (223 / 230).
+- R3 : X21.11 | X21.12 | X12.11 (129 / 130) ; X21.13 | FA1 | KA1 ; K1-K3 (bus) ; K4 ; KA2.
+- R4 : QF4 | QF5 | QF6 | QF7 | QF8 ; QF9 | QF10 | XD1 ; XR2 | S1 | S4 | H3 | H4 (111 / 113) ; H2 seul après la vis (33 / 55).
+- R5 inchangé depuis la v8.
+
+**À vérifier** : sens de pose et largeur des PTFIX 6/12 sur rail (41 ou 28,6 mm) ; références RD / GY ; 4 bornes 4 mm à acheter (89 pour 85).

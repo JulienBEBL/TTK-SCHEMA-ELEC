@@ -297,3 +297,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f62 : E/S validées, mention « PROPOSITION A VALIDER » retirée (Q13).
 - [C] Contrôle complet des bornes : conforme ; 89 bornes pour 85 achetées.
 - Questions à SEW regroupées : `docs/QUESTIONS_SEW.md`.
+
+## 06/11/2026 : implantation v9 (schéma v22)
+- [H] PTFIX 6/12X2,5 dessinés à 41 mm le long du rail (sens de pose à vérifier). X21.11 / X21.12 + X12.11 sur R3 à gauche (129 / 130 mm), X21.13 (24VSEC) devant FA1 et KA1.
+- [H] Butée de chaque côté de chaque appareil appliquée partout où elle tient. Exceptions : R2 QM1-KM1-QM2-KM2 (il faudrait 230 mm pour 205), K1-K3 (modules reliés par le bus).
+- [H] Porte : S1, S4, H3, H4 à droite de XR2 (111 / 113 mm), H2 230 V seul sur le tronçon suivant de R4, après la vis.

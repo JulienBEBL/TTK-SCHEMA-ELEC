@@ -226,3 +226,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 05/11/2026 : v22
 - Julien : freins libres en Manu voulus ; demande un récap SEW, les bornes de porte sur R4, des butées partout, une passe complète sur les bornes et une liste de validation à jour.
 - v22 (`TTK_2026-11-05_v22.xrs`, 0 problème, 0 erreur, 0 chevauchement) ; `docs/QUESTIONS_SEW.md` ; liste de validation dans `memoire/06_EN_COURS.md`.
+
+## 06/11/2026 : implantation v9
+- Julien : « reprends à partir de la v21 » (release = v22). Implantation v9 : PTFIX 6/12 au f21, ordre de porte du f70 v22, butée de chaque côté de chaque appareil.
