@@ -236,3 +236,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 06/11/2026 : implantation v10
 - Julien : PTFIX en long ; R2 fixé ; plan 1 page + détail des borniers comme au montage, groupes par câble et fonction. Fait (v10, schéma v23 sans changement de bornes).
+
+## 09/11/2026 : v24
+- Julien (retour le 09/11) : reposer la question SEW ; bilan 24 V bon ; f70 comme en vrai avec le rail ; il attaque la relecture de l'automate puis revient ; mise à jour complète des mémoires avant compaction.
+- v24 (`TTK_2026-11-09_v24.xrs`, 0 problème, 0 erreur, 0 chevauchement) ; v23 réenregistrée archivée, sans retouche.

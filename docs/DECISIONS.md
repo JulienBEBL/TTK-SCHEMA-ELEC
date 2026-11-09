@@ -314,3 +314,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] R2 : tout est fixé par Julien, hors périmètre de l'implantation.
 - [C] PTFIX 6/12X2,5 posés en long sur le rail (41 mm).
 - [D] Livrable d'implantation réduit à 2 pages : plaque + détail des borniers (Julien).
+
+## 09/11/2026 : v24
+- [D] f70 rangé rail par rail comme dans l'implantation (Julien) ; rail indiqué ; textes et cases réduits.
+- [?] SEW : « 1 » mise sous tension du MCX91A : par heure ou par minute ? Question reposée à Julien.

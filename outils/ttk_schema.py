@@ -1334,82 +1334,81 @@ def plan_bornier(path, noms):
     return lignes
 
 
-# Câbles armoire <-> pupitre / machine (proposition du 05/11, validée par Julien le 05/11) : bornes en repère interne
-CABLES_MULTI = [
-    ("Câble -W11 (27G1 : 26 + PE) armoire -> pupitre +P1", [
-        ("AU -S2", ["X711.1", "X711.2", "X711.3", "X711.4", "X711.5", "X711.6"]),
-        ("Sélecteur -S3", ["X711.13", "X711.14", "X711.15", "X711.16", "X711.19", "X711.20", "X711.7", "X711.8",
-                           "X711.9", "X711.10", "X711.11", "X711.12", "X711.17", "X711.18"]),
-        ("IHM -P1", ["X711.21", "X711.22", "PE X711.23"]),
-        ("Réserve", ["-", "-", "-", "-"])]),
-    ("Câble -W12 (19G1 : 18 + PE) armoire -> boîte de dérivation machine", [
-        ("Capot -B1", ["X701.1", "X701.2", "X701.3", "X701.4"]),
-        ("Fins de course -B3 à -B6", [f"X701.{n}" for n in range(9, 17)]),
-        ("Colonne -H1", ["X701.43", "X701.44", "X701.45", "X701.46"]),
-        ("Réserve", ["-", "-", "PE -XPE1"])]),
-    # bornes de la porte sur le rail R4 (Julien 05/11), une butée entre appareils ; H2 (230 V) à part, au bout
-    ("Bornes de la porte de l'armoire (rail R4)", [
-        ("AU -S1", ["X721.1", "X721.2", "X721.3", "X721.4", "X721.5", "X721.6"]),
-        ("Réarmement -S4", ["X721.7", "X721.8"]),
-        ("Voyant -H3", ["X721.11", "X721.12"]),
-        ("Voyant -H4", ["X721.13", "X721.14"]),
-        ("Voyant -H2 230 V", ["X721.9", "X721.10"])], False),
+# f70 (09/11, Julien) : borniers rangés comme en vrai, rail par rail, dans l'ordre de l'implantation v10
+# (implantation/JOURNAL.md). Une ligne par tronçon (ou par câble) ; butée (trait épais) de chaque côté de chaque groupe.
+# Case : n° de conducteur (câbles W11 / W12) ou signal ; dessous : repère de la borne, puis nom du groupe.
+# Les conducteurs de réserve des 27G1 / 19G1 ne sont pas bornés.
+def _n(prefix, bornes, nums):
+    return [(b, str(n)) for b, n in zip(bornes, nums)]
+
+
+_SIG = {i: sg for _, _, _, _, _, bs in GROUPES for i, sg in bs}
+
+
+def _g(nom, bornes):
+    return (nom, [(b, _SIG.get(b, "")) for b in bornes])
+
+
+RAILS_X70 = [
+    ("R5, tronçon 1 : câble -W11 (27G1 : 26 + PE, 4 de réserve non bornés) -> pupitre +P1", [
+        ("AU -S2", _n("", [f"X711.{n}" for n in (1, 2, 3, 4, 5, 6)], range(1, 7))),
+        ("Sélecteur -S3", _n("", [f"X711.{n}" for n in (13, 14, 15, 16, 19, 20, 7, 8, 9, 10, 11, 12, 17, 18)], range(7, 21))),
+        ("IHM -P1", [("X711.21", "21"), ("X711.22", "22"), ("X711.23", "PE")])]),
+    ("R5, tronçon 1 (suite) : câble -W12 (19G1 : 18 + PE, 2 de réserve non bornés, V/J -> -XPE1) -> boîte machine", [
+        ("Capot -B1", _n("", [f"X701.{n}" for n in (1, 2, 3, 4)], range(1, 5))),
+        ("Fins de course -B3 à -B6", _n("", [f"X701.{n}" for n in range(9, 17)], range(5, 13))),
+        ("Colonne -H1", _n("", [f"X701.{n}" for n in (43, 44, 45, 46)], range(13, 17)))]),
+    ("R5, tronçon 2 : capteurs et sondes", [
+        _g("Capot -B2 (câble M12)", [f"X701.{n}" for n in (5, 6, 7, 8)]),
+        _g("Thermocouple -B7 (W8)", ["X701.41", "X701.42"]),
+        _g("Sonde TF M1 (W3)", ["X701.21", "X701.22"]),
+        _g("Sonde TF M2 (W6)", ["X701.29", "X701.30"])]),
+    ("R5, tronçon 3 : moteurs pas-à-pas", [
+        _g("M3 (W9)", [f"X701.{n}" for n in range(33, 37)]),
+        _g("M4 (W10)", [f"X701.{n}" for n in range(37, 41)])]),
+    ("R5, tronçon 4 : puissance", [
+        _g("Freins M1 + M2 (W4)", ["X701.23", "X701.24", "X701.31", "X701.32"]),
+        _g("Moteur M1 (W2)", [f"X701.{n}" for n in range(17, 21)]),
+        _g("Moteur M2 (W5)", [f"X701.{n}" for n in range(25, 29)]),
+        _g("Arrivée réseau (W1)", ["X101.VJ", "X101.1", "X101.2", "X101.3", "X101.4"])]),
+    ("R4, à droite de -XR2 : porte de l'armoire", [
+        ("AU -S1", [(f"X721.{n}", "") for n in range(1, 7)]),
+        ("Réarmement -S4", [("X721.7", ""), ("X721.8", "")]),
+        ("Voyant -H3", [("X721.11", ""), ("X721.12", "")]),
+        ("Voyant -H4", [("X721.13", ""), ("X721.14", "")]),
+        ("Voyant -H2 230 V", [("X721.9", ""), ("X721.10", "")])]),
+    ("R3 : distribution 24 V et liaison PELV (internes)", [
+        ("24VELEC", [("X311", "+")]), ("0 V", [("X312", "0V")]), ("PELV 0 V - PE", [("X36.1", "PE")]),
+        ("24VSEC", [("X313", "+")])]),
 ]
 
 
 def organisation_x70():
-    """Folio 70 : groupes de bornes vers la machine +M et le réseau, avec leur numéro (Julien, 02/11)."""
+    """Folio 70 : borniers rangés rail par rail comme dans l'implantation (Julien, 09/11)."""
     f = "70"
-    texte(f, 2400, 1500, "BORNIERS DE L'ARMOIRE +A1 : GROUPES DE BORNES, CABLES ET PORTE", 280, 0, 1)
-    texte(f, 2400, 1900, "Repère : X + n° du folio où la borne est dessinée + n° de borne ; une dizaine par fonction "
-                         "(X31.11 à X31.14 = moteur M1 au folio 31).", 200)
-    # câble de chaque groupe (06/11) : repères affichés
-    cab = {("X10", 1): "W1", ("X20", 1): "W9", ("X20", 2): "W10", ("X31", 1): "W2", ("X31", 2): "W3", ("X31", 3): "W4",
-           ("X32", 1): "W5", ("X32", 2): "W6", ("X32", 3): "W4", ("X41", 3): "W12", ("X41", 4): "câble M12",
-           ("X60", 3): "W12", ("X63", 1): "W8", ("X61", 1): "W12"}
-    blocs = [(f"{b} . {d}1 à {d}{len(bs)} : {fn} (f{fi})" + (f" - {cab[(b, d)]}" if (b, d) in cab else ""),
-              [f"{d}{i + 1}" for i in range(len(bs))], [sg for _, sg in bs])
-             for b, d, fi, fn, dest, bs in GROUPES if dest in ("+M", "réseau")]
-    blocs = [(t.replace(" . ", "."), n, sg, []) for t, n, sg in blocs]
-    # câbles multiconducteurs validés par Julien le 05/11 : conducteur n -> borne, rangés par composant,
-    # une butée d'arrêt sur le rail entre deux fonctions (trait épais)
-    for titre, groupes, *opt in CABLES_MULTI:
-        cable = not opt or opt[0]           # False : groupe de bornes sans câble (porte), pas de n° de conducteur
-        nums, sigs, comps, k = [], [], [], 0
-        for gi, (comp, bornes) in enumerate(groupes):
-            if gi:
-                nums.append(None)
-                sigs.append(None)
-            comps.append((len(nums), comp))
-            for b in bornes:
-                if b.startswith("PE"):
-                    nums.append("PE")
-                    sigs.append(b[3:])
-                else:
-                    k += 1
-                    nums.append(str(k) if cable else "")
-                    sigs.append(b)
-        blocs.append((titre, nums, sigs, comps))
-    x, y = 2400, 2600
-    for titre, nums, sigs, comps in blocs:
-        pas = [400 if n is None else 800 for n in nums]
-        larg = max(sum(pas), int(len(ren(titre)) * 220 * 0.55) + 400)
-        if x + larg > 28000:
-            x, y = 2400, y + 2400
-        texte(f, x, y, titre, 220, 0, 1)
-        xs_ = [x + sum(pas[:i]) for i in range(len(nums))]
-        for bx, n, sg in zip(xs_, nums, sigs):
-            if n is None:                      # butée d'arrêt
-                g.cadre(F[f], bx - 50, y + 300, bx + 50, y + 1300, width=40)
-                continue
-            g.cadre(F[f], bx, y + 400, bx + 600, y + 1200, width=15)
-            if n:
-                texte(f, bx + 300 - int(len(n) * 200 * 0.55 / 2), y + 700, n, 200)
-            if sg:
-                texte(f, bx + 300 - int(len(ren(sg)) * 180 * 0.55 / 2), y + 1300, sg, 180)
-        for i0, comp in comps:
-            texte(f, xs_[i0], y + 1700, comp, 180, 0, 1)
-        x += larg + 800
+    texte(f, 2400, 1300, "BORNIERS DE L'ARMOIRE +A1, RAIL PAR RAIL (ORDRE DE L'IMPLANTATION)", 280, 0, 1)
+    texte(f, 2400, 1700, "Repère : X + n° du folio de la borne + n° de borne. Case : n° de conducteur (W11, W12) ou signal. "
+                         "Trait épais : butée.", 180)
+    PAS, BUT, DY = 640, 320, 2300
+    y = 2300
+    for titre, groupes in RAILS_X70:
+        texte(f, 2400, y, titre, 200, 0, 1)
+        x = 2400
+        for nom, bornes in groupes:
+            g.cadre(F[f], x - 40, y + 250, x + 40, y + 1050, width=40)          # butée avant le groupe
+            x += BUT
+            x0 = x
+            for rep_, txt in bornes:
+                g.cadre(F[f], x, y + 300, x + 520, y + 950, width=15)
+                if txt:
+                    texte(f, x + 260 - int(len(txt) * 180 * 0.55 / 2), y + 550, txt, 180)
+                lab = ren(rep_)
+                texte(f, x + 260 - int(len(lab) * 150 * 0.55 / 2), y + 1050, rep_, 150)
+                x += PAS
+            texte(f, x0, y + 1350, nom, 160, 0, 1)
+            x += BUT - (PAS - 520)
+        g.cadre(F[f], x - 40, y + 250, x + 40, y + 1050, width=40)              # butée de fin
+        y += DY
 
 
 def ecrire_borniers(path):

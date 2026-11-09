@@ -1,8 +1,21 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v23 (06/11/2026)
-`schema/generes/release/TTK_2026-11-06_v23.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur au verifier, 28 attentions, 0 chevauchement. La v22 a été réenregistrée par WinRelais (copie `schema/recus/2026-11-06_v22_ouverte_WinRelais.xrs`, aucune retouche de texte, de symbole ni de fil). **Sécurité validée par Julien le 06/11** (après le STO en chaîne).
+## Version actuelle : v24 (09/11/2026)
+`schema/generes/release/TTK_2026-11-09_v24.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti, f10), 0 chevauchement. La v23 réenregistrée par WinRelais (`schema/recus/2026-11-09_v23_ouverte_WinRelais.xrs`) n'avait aucune retouche.
 
+### Où on en est (09/11, avant compaction)
+- **Validé par Julien** : sécurité (06/11, avec STO en chaîne), E/S de l'automate (05/11), répartition 27G1 / 19G1, convention de numérotation v2 sans point.
+- **En cours** : Julien relit la partie **automate** (f60 à f63) sur la v24 et revient avec ses remarques ; ensuite les **borniers** (f70 / f71).
+- **En dernier** : numérotation des fils (méthode dans `04_REGLES_DESSIN.md`), après validation automate + borniers.
+- **Question SEW posée à nouveau** : la réponse « 1 » sur les mises sous tension du MCX91A : 1 par heure ou par minute ? Si 1 par heure, chaque AU et chaque passage Auto → Manu (KM1 / KM2) consomme le quota : point bloquant (`docs/QUESTIONS_SEW.md`, Q6).
+- Bilan 24 V (`docs/BILAN_24V.md`) : Julien le juge bon ; calculs refaits, valeurs Siemens de copies distributeurs à recouper.
+
+### Fait en v24
+| Folio | Changement |
+|---|---|
+| 70 | Refait **rail par rail, dans l'ordre de l'implantation v10** (Julien 09/11) : R5 t1 W11 (S2 / S3 / IHM) ; R5 t1 suite W12 (B1 / B3-B6 / H1) ; R5 t2 B2, B7, TF M1, TF M2 ; R5 t3 W9, W10 ; R5 t4 freins W4, M1 W2, M2 W5, arrivée W1 ; R4 porte S1, S4, H3, H4, H2 ; R3 X21.11, X21.12, X12.11, X21.13. Cases réduites (520 de large, pas 640), butée de chaque côté de chaque groupe, conducteurs de réserve non bornés. Table `RAILS_X70` du script ; à tenir à jour avec `implantation/JOURNAL.md` |
+
+## Version précédente : v23 (06/11/2026)
 ### Fait en v23
 | Folio | Changement |
 |---|---|

@@ -123,3 +123,6 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 ## Montage (règles de Julien, 05/11)
 - Une butée d'arrêt de chaque côté de chaque appareil sur tous les rails DIN.
 - Bornes de la porte de l'armoire sur le rail R4.
+
+## Folio 70 (09/11)
+- Les borniers y sont rangés **comme en vrai** : une ligne par rail / tronçon, dans l'ordre de l'implantation (agent draw.io, `implantation/JOURNAL.md`), rail indiqué dans le titre de ligne. Si l'implantation change l'ordre, mettre à jour `RAILS_X70`.

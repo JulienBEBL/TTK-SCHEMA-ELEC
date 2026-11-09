@@ -65,3 +65,7 @@
 - Au plus 3-4 questions numérotées, groupées dans un message.
 - Contester un choix une fois (raison + alternative), puis respecter sa décision.
 - Faire avec le matériel commandé. Travailler par blocs validés.
+
+## WinRelais réenregistre la release (rappel 06/11 et 09/11)
+- Julien ouvre la release : WinRelais la réenregistre (fichier modifié dans git). Toujours : copier dans `schema/recus/AAAA-MM-JJ_vN_ouverte_WinRelais.xrs`, comparer textes / symboles / fils à la version générée (`git show HEAD:...`), reprendre les retouches éventuelles, puis `git checkout` du fichier généré, **avant** tout `git mv` vers old/.
+- Le 06/11, une 2e réécriture de la v22 a été écrasée sans comparaison (seule la 1re copie est archivée) : faire la copie juste avant le `git mv`, même si une copie existe déjà.
