@@ -53,7 +53,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Puissance et variateurs
 8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW).
 9. X6 (STO) **réglé le 05/11** (Julien, notice SEW) : X6.1 / X6.3 = F_STO_P +24 V, X6.2 / X6.4 = F_STO_M 0 V, X6.5 VO24_STO / X6.6 GND non utilisés ; câblage du schéma conforme. Reste X10 (TF) et le courant des entrées STO (point 1 bis).
-10. Mises sous tension du MCX91A : réponse « 1 » (Julien, 06/11), **unité à confirmer** (par heure ?). KM1 / KM2 coupent le réseau à chaque AU et à chaque passage Auto → Manu (AUTO-A) : **à prendre en compte à l'exploitation** (si c'est 1 par heure, chaque AU et chaque passage Auto → Manu consomme ce quota : point bloquant à revoir avec SEW).
+10. Mises sous tension du MCX91A (= fermeture de KM1 / KM2, 400 V sur L1-L3) : réponse SEW « 1 » (06/11). Usage (Julien, 09/11) : environ **1 mise sous tension toutes les 8 h** (passage en Manu pour la maintenance, puis retour en Auto) ; l'AU est réservé aux urgences, pas d'usage normal. Compatible avec la réponse « 1 » de SEW : **on garde KM1 / KM2**, point clos.
 11. Câbles frein 5G1,5 (réserve) et TF 2x0,75 blindé (acheté) : longueurs à définir. Câbles pas-à-pas W9 / W10 (4 conducteurs blindés) : section et longueur à définir.
 
 ## Très basse tension
@@ -77,7 +77,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 23. Câbles 27G1 / 19G1 : proposition du 05/11 (Q32) dans `02_MATERIEL.md`.
 24. Classeur Excel à mettre à jour avec le nommage du 28/10.
 25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f10 corrigés en v7).
-26. f21 : images des borniers à insérer par Julien. f01 : logos à insérer.
+26. f21 : images des borniers à insérer par Julien. f01 : logos **insérés par Julien en v24** (09/11), repris par le script (`schema/images/`).
 
 ## Essais de banc à prévoir (05/11)
 Procédure pour un nouveau chat : `docs/ESSAI_BANC_BOUCLE_RETOUR.md`.

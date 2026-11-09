@@ -7,7 +7,8 @@
 - **Validé par Julien** : sécurité (06/11, avec STO en chaîne), E/S de l'automate (05/11), répartition 27G1 / 19G1, convention de numérotation v2 sans point.
 - **En cours** : Julien relit la partie **automate** (f60 à f63) sur la v24 et revient avec ses remarques ; ensuite les **borniers** (f70 / f71).
 - **En dernier** : numérotation des fils (méthode dans `04_REGLES_DESSIN.md`), après validation automate + borniers.
-- **Question SEW posée à nouveau** : la réponse « 1 » sur les mises sous tension du MCX91A : 1 par heure ou par minute ? Si 1 par heure, chaque AU et chaque passage Auto → Manu (KM1 / KM2) consomme le quota : point bloquant (`docs/QUESTIONS_SEW.md`, Q6).
+- **Mises sous tension MCX91A : réglé (09/11)**. Usage (Julien, 09/11) : environ **1 mise sous tension toutes les 8 h** (passage en Manu pour la maintenance, puis retour en Auto) ; l'AU est réservé aux urgences, pas d'usage normal. Compatible avec la réponse « 1 » de SEW : **on garde KM1 / KM2**, point clos.
+- **Retouches de Julien dans la v24 (09/11), reprises dans le script, pas encore générées** (Julien : ne pas modifier le schéma pour le moment) : logos TTK / BEBL / LEVERT INDUSTRIE au f01 (section `¤#Logo¤`, images `schema/images/logo_*.jpg`, textes « Logo ... » retirés) ; f10 « Bâti machine +M » déplacé (19300, 15700) ; f40 « Réglage -KA1 » déplacé (6600, 15300) ; f40 texte « Boucle de retour Y1-Y2 ... » supprimé. Essai de génération = identique à sa v24 (0 écart texte / symbole / fil). La release v24 gardée est **celle de Julien** (avec logos) ; copie `schema/recus/2026-11-09_v24_ouverte_WinRelais.xrs`.
 - Bilan 24 V (`docs/BILAN_24V.md`) : Julien le juge bon ; calculs refaits, valeurs Siemens de copies distributeurs à recouper.
 
 ### Fait en v24

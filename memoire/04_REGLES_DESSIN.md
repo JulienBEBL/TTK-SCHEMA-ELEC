@@ -126,3 +126,6 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 
 ## Folio 70 (09/11)
 - Les borniers y sont rangés **comme en vrai** : une ligne par rail / tronçon, dans l'ordre de l'implantation (agent draw.io, `implantation/JOURNAL.md`), rail indiqué dans le titre de ligne. Si l'implantation change l'ordre, mettre à jour `RAILS_X70`.
+
+## Images (09/11)
+- Les images (logos f01) sont dans `schema/images/` et écrites par le script dans la section `¤#Logo¤` : `x·y·largeur·hauteur·chemin absolu·1·ratio de l'image x 1000·index du folio·0·`. Le chemin est absolu : il est recalculé à chaque génération depuis le dépôt.

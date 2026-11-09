@@ -369,7 +369,12 @@ g.tableau(F["01"], 4000, 7600, [6000, 10000], 500, [
 for i, logo in enumerate(("TTK", "BEBL", "LEVERT INDUSTRIE")):
     x = 4000 + 7200 * i
     g.cadre(F["01"], x, 12400, x + 6400, 16400, width=20)
-    texte("01", x + 200, 12500, f"Logo {logo}", 250)
+
+# logos insérés par Julien dans la v24 (09/11), positions et tailles relevées ; images dans schema/images
+IMG = os.path.join(os.path.dirname(ICI), "schema", "images")
+for nom_, x_, y_, w_, h_, r_ in (("logo_TTK.jpg", 4500, 12700, 5480, 3480, 1575), ("logo_BEBL.jpg", 11500, 13100, 5806, 2615, 2221),
+                             ("logo_LEVERT_INDUSTRIE.jpg", 18600, 13700, 6000, 1308, 4588)):
+    g.logos.append((F["01"], x_, y_, w_, h_, os.path.join(IMG, nom_), r_))
 
 rows = [["N°", "Titre", "Description"]] + [[NUMFOL.get(f["num"], f["num"]), f["titre"], ren(f["desc"])] for f in FOL]
 g.tableau(F["02"], 1600, 1600, [1600, 9200, 16800], (19200 - 1600) // len(rows), rows, size=260)
@@ -843,7 +848,6 @@ W(f, [bs4a["2"], s414["3"]], "24")
 # retour vers Y2 par la droite de la chaîne, au-dessus de Y1 (un seul croisement, avec Y1)
 W(f, [s414["4"], (20000, 17600), (21600, 17600), bs4b["2"]], "24")
 W(f, [bs4b["1"], (21600, 2800), (9200, 2800), k401["Y2"]], "24")
-texte(f, 12400, 17600, "Boucle de retour Y1-Y2 : contacts miroir + réarmement -S414", 200)
 # Z1 (diagnostic, non sécuritaire) -> I1.5 de l'automate (Julien 02/11)
 Z1_40 = W(f, [k401["Z1"], (k401["Z1"].x, k401["Z1"].y + 800)], "24")
 renvoi("31", d31["CMD40"], f, CMD40, "24")
@@ -1495,7 +1499,8 @@ for num in F:                       # contenu centré dans le cadre (pas la gard
 POS_JULIEN = {("10", "Distribution (f12, N : f13)"): (6000, 17600), ("12", "VARIATEUR 1"): (4900, 16400),
               ("12", "VARIATEUR 2"): (12000, 16400), ("12", "FREIN M201"): (18300, 16400),
               ("54", "Port 5 : réserve"): (13800, 11500), ("42", "0 V STO X6.2 de -U1 (f20)"): (25700, 6200),
-              ("53", "AI1 à AI7 : réserve"): (17400, 11200)}
+              ("53", "AI1 à AI7 : réserve"): (17400, 11200),
+              ("10", "Bâti machine +M"): (19300, 15700), ("40", "Réglage -KA1 : FUNCTION 1, START 3"): (6600, 15300)}
 g.textes = [(t[0], *POS_JULIEN[nf]) + tuple(t[3:])
             if (nf := next((n for n in POS_JULIEN if F.get(n[0]) == t[0] and t[3] in (n[1], ren(n[1]))), None)) else t
             for t in g.textes]

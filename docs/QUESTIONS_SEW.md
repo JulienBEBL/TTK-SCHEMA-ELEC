@@ -10,7 +10,7 @@ Câblage prévu : réseau coupé par un contacteur KM1 / KM2 en amont de chaque 
 | 3 | Courant consommé par les entrées STO X6.1 / X6.3 d'un MCX91A | Les 2 variateurs sont en parallèle sur un contact du relais KA1, qui demande au moins 10 mA (et 15 V) |
 | 4 | Frein BE5 400 V CA : courant d'appel et de maintien, redresseur fourni (type, emplacement) ? | Calibre et courbe des disjoncteurs QF2 / QF3 ; section du câble frein (5G1,5) |
 | 5 | Frein alimenté en permanence alors que le moteur est à l'arrêt et non alimenté (mode Manu : arbre tourné à la clé pour la maintenance) : admissible ? **06/11 : OUI** | Choix de Julien : moteurs libres en Manu |
-| 6 | Nombre maximal de mises sous tension par heure du MCX91A **06/11 : « 1 » (réponse relayée par Julien), unité à confirmer : par heure ou par minute ?** | KM1 / KM2 coupent le réseau du variateur à chaque arrêt d'urgence |
+| 6 | Nombre maximal de mises sous tension par heure du MCX91A **06/11 : « 1 » (réponse relayée par Julien), unité à confirmer : par heure ou par minute ?** **09/11 : sans objet**, usage réel ≈ 1 toutes les 8 h (Manu pour maintenance), AU exceptionnel : KM1 / KM2 gardés | KM1 / KM2 coupent le réseau du variateur à chaque arrêt d'urgence |
 | 7 | Longueur maximale de câble moteur blindé sans self ni filtre ; reprise du blindage conseillée | Câble 2XSLCY-K 4G2,5, environ 15 m par moteur |
 | 8 | Consommation de l'électronique 24 V (X5) d'un MCX91A-0055-5E3 avec CSO et CFN | Bilan 24VELEC (`docs/BILAN_24V.md`) ; la page SEW « Power consumption of the 24 V supply » n'est pas lisible en ligne |
 | 9 | STO en chaîne : 24 V et 0 V sur X6.1 / X6.2 de U1, puis X6.3 / X6.4 de U1 vers X6.1 / X6.2 de U2 : **validé par SEW (Julien, 06/11)** | Câblage dessiné en v23 |

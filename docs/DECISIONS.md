@@ -318,3 +318,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 09/11/2026 : v24
 - [D] f70 rangé rail par rail comme dans l'implantation (Julien) ; rail indiqué ; textes et cases réduits.
 - [?] SEW : « 1 » mise sous tension du MCX91A : par heure ou par minute ? Question reposée à Julien.
+
+## 09/11/2026 : retouches v24 et mises sous tension
+- [D] Mises sous tension des MCX91A : ≈ 1 toutes les 8 h (Manu pour maintenance), AU = urgences seulement. Compatible avec « 1 » de SEW : KM1 / KM2 gardés.
+- [D] Logos au f01 (Julien) ; f10 / f40 textes déplacés, texte boucle Y1-Y2 du f40 supprimé (Julien). Repris dans le script, pas encore générés.

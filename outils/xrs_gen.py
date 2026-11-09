@@ -119,6 +119,7 @@ class Gen:
         self.renvois = []
         self.textes = []
         self.dessins = []
+        self.logos = []           # (index folio, x, y, largeur, hauteur, chemin absolu, ratio de l'image x 1000)
         self.cables = []
         self.cable_nums = {}      # index du câble -> numéros des brins (câble sur 2 folios)
         self.cable_type = {}      # index du câble -> type WinRelais (0 simple, 3 blindé ellipse + trait)
@@ -628,6 +629,10 @@ class Gen:
             L.append("\u00a4#DSansTexte\u00a4")
             for f, x1, y1, x2, y2, forme, color, width, style in self.dessins:
                 L.append(SEP.join(map(str, (x1, y1, x2, y2, forme, f, color, width, 0, style, 1, 16777215, 0, 0))) + SEP)
+        if self.logos:
+            L.append("\u00a4#Logo\u00a4")
+            for f, x, y, w, h, chemin, ratio in self.logos:
+                L.append(SEP.join(map(str, (x, y, w, h, chemin, 1, ratio, f, 0))) + SEP)
         if self.cables:
             L.append("\u00a4#NombreDefCable\u00a4")
             L.append(f"{len(self.cables)}{SEP}")
