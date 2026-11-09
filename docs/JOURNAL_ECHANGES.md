@@ -240,3 +240,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 09/11/2026 : v24
 - Julien (retour le 09/11) : reposer la question SEW ; bilan 24 V bon ; f70 comme en vrai avec le rail ; il attaque la relecture de l'automate puis revient ; mise à jour complète des mémoires avant compaction.
 - v24 (`TTK_2026-11-09_v24.xrs`, 0 problème, 0 erreur, 0 chevauchement) ; v23 réenregistrée archivée, sans retouche.
+- Julien : « qu'appelles-tu mise sous tension ? je ne comprends pas le problème ». Expliqué : mise sous tension = fermeture de KM1 / KM2 (400 V sur L1-L3 du variateur, charge des condensateurs internes) ; chaque AU puis réarmement, et chaque Manu -> Auto, en fait une. Demandé la phrase exacte de SEW.
