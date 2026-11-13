@@ -88,3 +88,7 @@ Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO,
 
 ## Contrôle des fils v26 (13/11)
 - **H2 voyant 230 V de porte** : piqué directement sur L3 / N du bus, seule protection QF1 20 A. **Julien (13/11) : il garde ce branchement.** Rappel fait une fois (NF EN 60204-1, 7.2) : pas de disjoncteur obligatoire pour un voyant, mais chaque fil doit être protégé contre les surintensités ; les fils de H2 (jusqu'à la porte) doivent donc tenir les 20 A de QF1 (1,5 mm² ne convient pas ; 2,5 mm² à vérifier selon le mode de pose dans le tableau de la norme), sinon un fusible 2 A sur L3. Numéros : 1023 / 1024. Détail : `docs/CONTROLE_FILS_v26.md`.
+
+## v27 (13/11)
+- Bornes : 93 dessinées (+ 4 bornes 230 V éclairage / ventilation) pour 85 achetées.
+- EL1 / EL2 (RS 194-0417) et EV1 / EV2 (IDE VF92AC) : borne PE nécessaire ? (classe de l'appareil à vérifier).

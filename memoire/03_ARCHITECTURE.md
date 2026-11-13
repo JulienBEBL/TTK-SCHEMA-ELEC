@@ -113,3 +113,9 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - **13/11 (Julien, monté)** : XR1 et XR2 **collés côte à côte sur le même rail que QS1 / QF1 (R2)** ; ce rail est plein. XR2 n'est plus sur le R4. Électriquement rien ne change (QF1 → XR1 → XR2, toujours non dessinés : renvois QF1 → bus f11). Ponts XR1 → XR2 : 1 pont 4 mm² par pôle, sauf indication contraire de Julien.
 - Conséquence : R4 = disjoncteurs QF4 à QF10, XD1, puis bornes de porte S1, S4, H3, H4, H2 (plus de XR2 devant). Rien ne peut plus être ajouté sur R2.
 - À reporter par l'agent d'implantation (draw.io) dans sa prochaine version : XR2 déplacé de R4 vers R2.
+
+## Bornes éclairage et ventilation (13/11, v27)
+- Julien : l'éclairage EL1 / EL2 et les ventilateurs EV1 / EV2 passent par des bornes. Une borne L et une borne N par fonction : **X13.11 (L) / X13.12 (N) éclairage**, **X13.21 (L) / X13.22 (N) ventilation** (f13). EL2 / EV2 restent repiqués sur EL1 / EV1, comme avant.
+- **Position : rail R4, à la place laissée par XR2**, après XD1 et avant les bornes de porte, une butée de chaque côté de chaque groupe. Ordre R4 : QF4 … QF10, XD1 | X13.11-12 | X13.21-22 | S1, S4, H3, H4, H2.
+- 4 bornes de plus : 93 bornes pour 85 achetées. Pas de PE dessinée pour ces appareils (symboles sans PE) : à vérifier sur les appareils.
+- À reporter par l'agent d'implantation (draw.io).

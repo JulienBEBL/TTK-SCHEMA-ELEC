@@ -154,3 +154,14 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Un numéro = un potentiel, pas un fil : tous les fils de ce potentiel portent le même numéro, un repère à chaque bout.
 - 1021 / 1022 / 1023 / 1024 : QF1 → XR1, pont XR1 → XR2, et chaque départ de XR1 / XR2 vers un appareil (L1 1021 : QM1, QM2, QF2, QF3, QF4, QF5 ; L2 1022 : QM1, QM2, QF2, QF6 ; L3 1023 : QM1, QM2, QF3, QF7, QF8, QF9, H2 ; N 1024 : QF4, QF5, QF6, QF7, QF8, QF9, H2). Le numéro change à la sortie de l'appareil suivant (ex. QM1 → KM1 = 1101).
 - 0 V commun 1230 : T1 -V → X21.12 (entrée E), T2 -V → T1 (2e borne -V) ou une sortie de X21.12, X21.12 → X12.11 (côté 0 V), et tous les départs 0 V de X21.12. Le fil X12.11 → PE est vert/jaune, sans numéro. Jamais 2 fils dans un même trou push-in sans l'accord de la notice. 24VELEC 1241 (T2 → X21.11 → départs), 24VSEC 1231 (T1 → X21.13 → départs, dont l'entrée de FA1). +48 V 1251, 0 V 48 1250.
+
+## Numérotation f20, f21, f30 et câbles PROFINET (13/11, v27)
+- f20 : KA2 pôle 1-2 → U3 +48 V **2001**, pôle 3-4 → U4 **2011** ; U3 → X20.11-14 → M3 **2021-2024**, U4 → M4 **2031-2034** (A+ 1, A- 2, B+ 3, B- 4) ; +48 V avant KA2 1251, 0 V 48 1250 ; PUL- / DIR- / ENA- au 0 V commun 1230.
+- Sorties CPU vers les drivers (nées au f61, numérotées dès la v27 parce qu'elles passent au f20) : Q0.0 **6101** (PUL U3), Q0.1 6102 (DIR U3), Q0.2 6103 (PUL U4), Q0.3 6104 (DIR U4), Q0.4 6105 (ENA U3), Q0.5 6106 (ENA U4). À garder quand le f61 sera numéroté.
+- f21 : 24VELEC 1241 (X21.11, H3 via X21.21), 24VSEC 1231 (X21.13), 0 V commun 1230 (X21.12, H3 via X21.22).
+- f30 : switch K4 V1+ 1241, V1- 1230.
+- **Câbles PROFINET : repères PN1 à PN4** (pas de numéro FFNN, Julien 13/11) : PN1 CPU K1 → switch K4 (P1), PN2 K4 P2 → U1, PN3 K4 P3 → U2, PN4 K4 P4 → IHM P1. Écrits sur chaque tronçon PROFINET, sur tous les folios (table `CABLES_PN`).
+- Les 2 bornes +V (et -V) d'une alimentation T1 à T3 sont reliées en interne : même potentiel, même numéro.
+- Placement : sur les folios numérotés, le numéro va sur la plus longue partie du fil libre de tout fil croisé et de tout texte de symbole (`troncon_libre`).
+- **Contrôle** : `python outils/xrs_numeros.py <fichier.xrs> 10,11,12,13,20,21,30` (relit le fichier : un numéro = un potentiel, chaque tronçon numéroté, 0 V en unité 0, câbles PN). v27 : 0 problème.
+- Restent à numéroter : f31, f32 (ils affichent encore L1 / L2 / L3 pour 1141-1153 et 1161-1173), f40 à f42, f50, f60 à f63.

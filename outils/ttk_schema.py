@@ -102,6 +102,9 @@ GROUPES = [
     ("X12", 2, "13", "Voyant -H2 230 V (porte)", "porte", [("X721.9", ""), ("X721.10", "")]),
     ("X21", 2, "31", "Voyant -H3 (porte)", "porte", [("X721.11", ""), ("X721.12", "")]),
     ("X61", 2, "51", "Voyant -H4 (porte)", "porte", [("X721.13", ""), ("X721.14", "")]),
+    # 13/11 (Julien) : éclairage et ventilateurs par des bornes, rail R4 à la place laissée par XR2
+    ("X13", 1, "14", "Eclairage armoire -EL1 / -EL2", "A1", [("X141.1", "L"), ("X141.2", "N")]),
+    ("X13", 2, "14", "Ventilation -EV1 / -EV2", "A1", [("X142.1", "L"), ("X142.2", "N")]),
 ]
 DES_BORNE = {}
 for b_, d_, _, fn_, _, bs_ in GROUPES:
@@ -156,7 +159,7 @@ POLES = [("1", "2"), ("3", "4"), ("5", "6"), ("1/L1", "2/T1"), ("3/L2", "4/T2"),
 # 0 = 0 V). Un potentiel garde son numéro à travers les bornes et les blocs de distribution, et d'un folio à l'autre.
 # Le PE garde « PE » (repéré par sa couleur). Les folios non encore numérotés gardent L1 / L2 / L3 / N.
 UNITE = {"L1": 1, "L2": 2, "L3": 3, "N": 4}
-NUMEROTES = {"10", "12", "13", "14"}          # folios internes (affichés 10, 11, 12, 13)
+NUMEROTES = {"10", "12", "13", "14", "32", "31", "54"}   # folios internes (affichés 10 à 13, 20, 21, 30)
 # (folio interne, repère interne, broches de sortie [(broche, rang, unité imposée ou None = phase)], dizaine)
 _S = lambda *pins: [(p_, 0, None) if isinstance(p_, str) else p_ for p_ in pins]
 SOURCES_NUM = [
@@ -178,7 +181,16 @@ SOURCES_NUM = [
     # f13 : QF8, QF7, QF9 (en haut), QF10 (sous QF9)
     ("14", "Q137", _S("2", ("N", 1, None)), 0), ("14", "Q136", _S("2", ("N", 1, None)), 10),
     ("14", "Q131", _S("2", ("N", 1, None)), 20), ("14", "Q135", _S("2", ("N", 1, None)), 30),
+    # f20 (13/11) : KA2 pôle 1-2 -> U3 +48 V 2001, pôle 3-4 -> U4 2011 ; U3 -> M3 2021-2024, U4 -> M4 2031-2034
+    # (A+ 1, A- 2, B+ 3, B- 4) ; 0 V 48 = 1250, +48 V avant KA2 = 1251
+    ("32", "Q423", [("2/T1", 0, 1)], 0), ("32", "Q423", [("4/T2", 0, 1)], 10),
+    ("32", "T322", [("A+", 0, 1), ("A-", 0, 2), ("B+", 0, 3), ("B-", 0, 4)], 20),
+    ("32", "T323", [("A+", 0, 1), ("A-", 0, 2), ("B+", 0, 3), ("B-", 0, 4)], 30),
+    # sorties CPU (f61) vers les drivers, numérotées dès maintenant pour le f20 (commande : un numéro par fil)
+    ("51", "K501", [("Q0.0", 0, 1), ("Q0.1", 0, 2), ("Q0.2", 0, 3), ("Q0.3", 0, 4), ("Q0.4", 0, 5), ("Q0.5", 0, 6)], 0),
 ]
+# câbles PROFINET (13/11, Julien) : repère de câble PN1 à PN4, distinct des numéros de fil
+CABLES_PN = {("K541", "P1"): "PN1", ("K541", "P2"): "PN2", ("K541", "P3"): "PN3", ("K541", "P4"): "PN4"}
 NUM_ALERTES = []
 
 
@@ -196,6 +208,11 @@ def numeros_potentiels(phase):
             pts = [g._find(("P", s_.folio) + tuple(xy)) for lst in s_.pins.values() for xy in lst]
             for q_ in pts[1:]:
                 pere[r(pts[0])] = r(q_)
+        if s_.rep in ("T301", "T302", "T321"):    # alimentations : bornes +V (et -V) reliées en interne
+            for nom in ("+V", "-V"):
+                pts = [g._find(("P", s_.folio) + (xy[0], xy[1])) for xy in s_.pins.get(nom, [])]
+                for q_ in pts[1:]:
+                    pere[r(pts[0])] = r(q_)
     num = {}
     for fol, rep_, pins_, dizaine in SOURCES_NUM:
         s_ = next((x for x in g.symbols if x.rep == rep_ and x.folio == F[fol]), None)
@@ -215,6 +232,33 @@ def numeros_potentiels(phase):
             if num.setdefault(r(g_), n_) != n_:
                 NUM_ALERTES.append(f"numérotation : {rep_}:{nom} -> {n_}, potentiel déjà numéroté {num[r(g_)]}")
     return num, (lambda f_, x, y: r(g._find(("P", f_, x, y))))
+
+
+def troncon_libre(f_, vertical, pos, lo, hi):
+    """Plus longue partie [lo, hi] d'un fil où son numéro (bande de 300 à droite / sous le fil, comme le relit
+    xrs_chevauchements) ne touche ni un fil perpendiculaire ni un texte de symbole (13/11)."""
+    bloc = []
+    for w in g.wires:
+        if w[0] != f_:
+            continue
+        if vertical and w[2] == w[4] and min(w[1], w[3]) < pos + 300 and max(w[1], w[3]) > pos:
+            bloc.append((w[2] - 100, w[2] + 100))
+        if not vertical and w[1] == w[3] and min(w[2], w[4]) < pos + 300 and max(w[2], w[4]) > pos:
+            bloc.append((w[1] - 100, w[1] + 100))
+    for s_ in g.symbols:
+        if s_.folio != f_:
+            continue
+        for _, b in s_.texts:
+            x1, x2, y1, y2 = min(b[0], b[2]), max(b[0], b[2]), min(b[1], b[3]), max(b[1], b[3])
+            if vertical and x1 < pos + 300 and x2 > pos:
+                bloc.append((y1 - 100, y2 + 100))
+            if not vertical and y1 < pos + 300 and y2 > pos:
+                bloc.append((x1 - 100, x2 + 100))
+    segs = [(lo, hi)]
+    for a, b in bloc:
+        segs = [z for c, d in segs for z in ((c, d),) if b <= c or a >= d] + \
+               [z for c, d in segs if not (b <= c or a >= d) for z in ((c, a), (b, d)) if z[1] > z[0]]
+    return max(segs, key=lambda z: z[1] - z[0]) if segs else (lo, hi)
 
 
 def nommer_phases():
@@ -257,7 +301,13 @@ def nommer_phases():
     puissance = {F[n_] for n_ in F if "10" <= n_ <= "32"}       # PE nommé sur les folios de puissance
     num_pot, racine_pot = numeros_potentiels(phase)
     numerotes = {F[n_] for n_ in NUMEROTES}
-    fils = [w for w in g.wires if w[5] in ("L", "N") or (w[5] == "PE" and w[0] in puissance) or w[0] in numerotes]
+    fils = [w for w in g.wires if w[5] in ("L", "N", "PN") or (w[5] == "PE" and w[0] in puissance) or w[0] in numerotes]
+    pn = {}
+    for s_ in g.symbols:
+        for nom, pts in s_.pins.items():
+            if (s_.rep, nom) in CABLES_PN:
+                pn[g._find(("P", s_.folio) + (pts[0][0], pts[0][1]))] = CABLES_PN[(s_.rep, nom)]
+    vus = {}                                  # contrôle global : un numéro <-> un seul potentiel
     pere = {}
 
     def racine(k):
@@ -274,10 +324,17 @@ def nommer_phases():
     for ws in troncons.values():
         f_ = ws[0][0]
         ph = "PE" if ws[0][5] == "PE" else phase.get(g._find(("P", f_, ws[0][1], ws[0][2])))
-        if f_ in numerotes and ws[0][5] != "PE":
-            n_ = num_pot.get(racine_pot(f_, ws[0][1], ws[0][2]))
+        if ws[0][5] == "PN":
+            ph = pn.get(g._find(("P", f_, ws[0][1], ws[0][2])))
+            if not ph:
+                NUM_ALERTES.append(f"câble PROFINET sans repère : folio {g.num(f_)} en {ws[0][1:5]}")
+        elif f_ in numerotes and ws[0][5] != "PE":
+            rac_ = racine_pot(f_, ws[0][1], ws[0][2])
+            n_ = num_pot.get(rac_)
             if not n_:
                 NUM_ALERTES.append(f"numérotation : folio {g.num(f_)}, fil sans numéro en {ws[0][1:5]}")
+            elif vus.setdefault(n_, rac_) != rac_:
+                NUM_ALERTES.append(f"numérotation : {n_} porté par deux potentiels différents (folio {g.num(f_)})")
             ph = n_ or ph
         if not ph:
             continue
@@ -297,6 +354,8 @@ def nommer_phases():
             continue
         if w[1] == w[3]:
             lo, hi = min(w[2], w[4]), max(w[2], w[4])
+            if f_ in numerotes:
+                lo, hi = troncon_libre(f_, True, w[1], lo, hi)
             # le numéro de brin d'un câble s'écrit juste au-dessus du croisement (f20, 30/10) : on reste à l'écart
             for c_ in g.cables:
                 if c_[0] == f_ and w[1] in c_[7] and lo < c_[3] < hi:
@@ -304,6 +363,8 @@ def nommer_phases():
             poses.append([f_, w[1], lo, hi, ph, 90, (lo + hi) // 2])
         else:
             lo, hi = min(w[1], w[3]), max(w[1], w[3])
+            if f_ in numerotes:
+                lo, hi = troncon_libre(f_, False, w[2], lo, hi)
             poses.append([f_, w[2], lo, hi, ph, 0, (lo + hi) // 2])
     # alignement (29/10) : fils parallèles voisins (<= 1200) qui se recouvrent sur au moins 400 -> même ligne
     for ang in (0, 90):
@@ -638,17 +699,17 @@ q133 = maitre(nft, "Q133", f, 9600, 5600)
 q134 = maitre(C + "Schneider_A9F75204_iC60N_2P_4A_D.xsy", "Q134", f, 15200, 5600)
 REP["H2"] = {"des": "Voyant porte : armoire sous tension (230 V)", "fab": "À définir", "carac": "230 V CA - blanc",
             "loc": "+A1"}
-h2 = maitre("Signalisation et voyants\\Voyant.xsy", "H2", f, 21600, 6400, fpos=(600, 400), wrap=22)
+h2 = maitre("Signalisation et voyants\\Voyant.xsy", "H2", f, 21600, 6800, fpos=(600, 400), wrap=22)   # 6400 -> 6800 (Julien, v26)
 # piquages : 24 V sur L1, 48 V sur L2, voyant sur L3
 for q, pin, ph in ((q132, ("N", 0), "N"), (q132, "1", "L1"), (q133, ("N", 0), "N"), (q133, "1", "L1"),
                    (q134, "1", "N"), (q134, "3", "L2")):
     W(f, [(q[pin].x, BUS13[ph]), q[pin]], "N" if ph == "N" else "L")
 # H2 sur la porte : une borne de chaque côté (05/11)
-bh2a, bh2b = borne("X721.9", f, 21600, 5200), borne("X721.10", f, 21600, 8400, fpos=(-700, -250))
+bh2a, bh2b = borne("X721.9", f, 21600, 5200), borne("X721.10", f, 21600, 10000, fpos=(-700, -250))   # 8400 -> 10000 (Julien, v26)
 W(f, [(21600, BUS13["L3"]), bh2a["1"]], "L")
 W(f, [bh2a["2"], h2["X1"]], "L")
 W(f, [h2["X2"], bh2b["1"]], "N")
-W(f, [bh2b["2"], (21600, 9600), (20800, 9600), (20800, BUS13["N"])], "N")
+W(f, [bh2b["2"], (21600, 11200), (20800, 11200), (20800, BUS13["N"])], "N")
 fin13 = {"L1": q133["1"].x, "L2": q134["3"].x, "L3": XR, "N": XR}
 for ph, y in BUS13.items():
     W(f, [(XL, y), (fin13[ph], y)], "N" if ph == "N" else "L")
@@ -710,20 +771,31 @@ W(f, [q135["2"], x131["L"]], "L")
 PE_DEST.append((f, W(f, [x131["PE"], (x131["PE"].x, x131["PE"].y + 800)], "PE")))   # PE : renvoi court
 # éclairage : lampes l'une sous l'autre, N à gauche, L à droite (pas de croisement)
 lampe = C + "RSPRO_194-0417_eclairage_armoire_LED.xsy"
-e131 = maitre(lampe, "E131", f, 4400, 8400, fpos=(2400, -300))
-e132 = maitre(lampe, "E132", f, 4400, 12800, fpos=(2400, -300))
-W(f, [q137[("N", 1)], e131["N"]], "N")
+# 13/11 (Julien) : une borne L et une borne N par fonction (X13.11-12 éclairage, X13.21-22 ventilation), appareils
+# descendus de 800 ; EL2 / EV2 toujours repiqués sur EL1 / EV1 comme avant
+e131 = maitre(lampe, "E131", f, 4400, 9200, fpos=(2400, -300))
+e132 = maitre(lampe, "E132", f, 4400, 13600, fpos=(2400, -300))
+yt14 = q137["2"].y + 1200
+bEL = borne("X141.1", f, e131["L"].x, yt14)
+bEN = borne("X141.2", f, q137[("N", 1)].x, yt14, fpos=(-700, -250))
+W(f, [q137[("N", 1)], bEN["1"]], "N")
+W(f, [bEN["2"], e131["N"]], "N")
 W(f, [e131["N"], e132["N"]], "N")
-W(f, [q137["2"], (q137["2"].x, 7600), (e131["L"].x, 7600), e131["L"]], "L")
+W(f, [q137["2"], (q137["2"].x, yt14 - 400), (bEL["1"].x, yt14 - 400), bEL["1"]], "L")
+W(f, [bEL["2"], e131["L"]], "L")
 W(f, [e131["L"], e132["L"]], "L")
 # ventilateurs l'un sous l'autre : N contourne par la gauche, L par la droite (pas de croisement)
 vent = C + "IDE_VF92AC_ventilateur_230V.xsy"
-g131 = maitre(vent, "G131", f, 12000, 8800, fpos=(2000, 400))
-g132 = maitre(vent, "G132", f, 12000, 13200, fpos=(2000, 400))
-W(f, [q136[("N", 1)], g131["N"]], "N")
-W(f, [q136["2"], g131["L"]], "L")
-W(f, [(12000, 8400), (11200, 8400), (11200, 12800), (12000, 12800), g132["N"]], "N")
-W(f, [(12800, 8000), (13600, 8000), (13600, 12800), (12800, 12800), g132["L"]], "L")
+g131 = maitre(vent, "G131", f, 12000, 9600, fpos=(2000, 400))
+g132 = maitre(vent, "G132", f, 12000, 14000, fpos=(2000, 400))
+bVL = borne("X142.1", f, q136["2"].x, yt14)
+bVN = borne("X142.2", f, q136[("N", 1)].x, yt14, fpos=(-700, -250))
+W(f, [q136[("N", 1)], bVN["1"]], "N")
+W(f, [bVN["2"], g131["N"]], "N")
+W(f, [q136["2"], bVL["1"]], "L")
+W(f, [bVL["2"], g131["L"]], "L")
+W(f, [(12000, 9200), (11200, 9200), (11200, 13600), (12000, 13600), g132["N"]], "N")
+W(f, [(12800, 8800), (13600, 8800), (13600, 13600), (12800, 13600), g132["L"]], "L")
 
 # ======================================================================== 20 / 21 VARIATEURS
 mcx = C + "SEW_Variateur_MCX91A-0055-5E3_CSO_CFN.xsy"
@@ -813,7 +885,11 @@ for rep_, x, y in (("X311", 6000, 4800), ("X313", 6000, 9600), ("X312", 6000, 14
                         ref=("PHOENIX CONTACT", "", "3273354"))
     g.cadre(F[f], 13200, y - 1200, 19600, y + 1800, width=10, dashed=True)
     # image du bornier (Julien, v25 du 13/11 : 2997 x 3000 en (14900, haut du cadre)) ; même bloc pour les 3
-    g.logos.append((F[f], 14900, y - 1200, 2997, 3000, os.path.join(os.path.dirname(ICI), "schema", "images", "Phoenix_PTFIX_6-12x2.5.jpg"), 999))
+    img_, ratio_ = {"X311": ("Phoenix_PTFIX_6-12x2.5_rouge.jpg", 1233), "X313": ("Phoenix_PTFIX_6-12x2.5_gris.jpg", 1166),
+                    "X312": ("Phoenix_PTFIX_6-12x2.5.jpg", 999)}[rep_]          # rouge 24VELEC, gris 24VSEC, bleu 0 V
+    h_ = 2600
+    w_ = h_ * ratio_ // 1000
+    g.logos.append((F[f], 16400 - w_ // 2, y - 1000, w_, h_, os.path.join(os.path.dirname(ICI), "schema", "images", img_), ratio_))
 x311, x312, x313 = P31["X311"], P31["X312"], P31["X313"]
 W(f, [(XL, 4400), (6000, 4400), x311["E"]], "24")
 W(f, [(XL, 9200), (6000, 9200), x313["E"]], "24")
@@ -839,11 +915,11 @@ for ff in ("20", "21"):
 REP["P512"] = {"des": "Voyant porte : tension de commande présente", "fab": "À définir", "carac": "24 V CC - blanc ou vert", "loc": "+A1"}
 p512 = decrit("Signalisation et voyants\\Voyant.xsy", "P512", f, 20800, 4400, "Voyant porte : 24VELEC présent",
               fpos=(600, 400), wrap=20, prefix="P")
-bh3a, bh3b = borne("X721.11", f, 20800, 3200), borne("X721.12", f, 20800, 6400)     # porte (05/11)
+bh3a, bh3b = borne("X721.11", f, 20800, 3200), borne("X721.12", f, 20800, 7200)     # porte (05/11) ; 13/11 : 6400 -> 7200 (place du n° 1230)
 W(f, [(20800, RAIL24_Y), bh3a["1"]], "24")
 W(f, [bh3a["2"], p512["X1"]], "24")
 W(f, [p512["X2"], bh3b["1"]], "0V")
-W(f, [bh3b["2"], (20800, 7200), (20000, 7200), (20000, RAIL0_Y)], "0V")
+W(f, [bh3b["2"], (20800, 8000), (20000, 8000), (20000, RAIL0_Y)], "0V")
 
 # ======================================================================== 32 48 V ET PAS-A-PAS
 # 02/11 : -T3 sur f13 ; ici 2 arrivées +48 V et 2 arrivées 0 V 48 (un + et un - par driver), sans bornier.
@@ -868,7 +944,7 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     for p, nb in zip(("A+", "A-", "B+", "B-"), BORNES_MOT[Mrep]):
         haut = p.endswith("+")
         # 02/11 : bornes à 800 sous le driver, câble à mi-chemin entre les bornes et le moteur
-        b = borne(nb, f, D[p].x, 13600 if haut else 14400, fpos=(-600, -250) if haut else (100, -250))
+        b = borne(nb, f, D[p].x, 14000 if haut else 14800, fpos=(-600, -250) if haut else (100, -250))   # 13/11 : +400 (place des numéros)
         W(f, [D[p], b["1"]], "PDC")
         W(f, [b["2"], Mo[p]], "PDC")
     # un câble blindé par moteur, du bornier au moteur (Julien 02/11) ; section à définir
@@ -1452,7 +1528,9 @@ RAILS_X70 = [
         _g("Moteur M1 (W2)", [f"X701.{n}" for n in range(17, 21)]),
         _g("Moteur M2 (W5)", [f"X701.{n}" for n in range(25, 29)]),
         _g("Arrivée réseau (W1)", ["X101.VJ", "X101.1", "X101.2", "X101.3", "X101.4"])]),
-    ("R4 : porte de l'armoire", [
+    ("R4 : services 230 V (à la place laissée par XR2), puis porte de l'armoire", [
+        _g("Eclairage EL1 / EL2", ["X141.1", "X141.2"]),
+        _g("Ventilation EV1 / EV2", ["X142.1", "X142.2"]),
         ("AU -S1", [(f"X721.{n}", "") for n in range(1, 7)]),
         ("Réarmement -S4", [("X721.7", ""), ("X721.8", "")]),
         ("Voyant -H3", [("X721.11", ""), ("X721.12", "")]),

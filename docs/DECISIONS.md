@@ -335,3 +335,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [?] Protection du voyant H2 230 V (sur le bus, QF1 20 A seulement) : à décider par Julien.
 - [D] 13/11 : Julien garde H2 sur le bus (sans disjoncteur propre) ; condition rappelée : fils de H2 protégés par QF1 20 A (section adaptée), sinon fusible.
 - [D] 13/11 : pas de v27 avant les retours de Julien ; il câble avec la numérotation v26.
+
+## 13/11/2026 : v27
+- [D] Câbles PROFINET repérés PN1 à PN4 (Julien : repère simple, distinct des fils).
+- [D] Bornes éclairage X13.11-12 et ventilation X13.21-22, sur R4 à la place de XR2 (Julien : bornes à ajouter, implantation peu modifiée).
+- [D] Numérotation f20, f21, f30 ; sorties CPU vers les drivers 6101-6106 ; contrôle global par `outils/xrs_numeros.py`.
+- [D] f21 : images des blocs aux bonnes couleurs (Julien), centrées ; f12 : H2 / X12.22 déplacés (Julien).

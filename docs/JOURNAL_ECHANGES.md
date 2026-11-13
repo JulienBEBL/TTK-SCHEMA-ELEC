@@ -250,3 +250,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Fait : v26 (`TTK_2026-11-13_v26.xrs`, 0 erreur, 0 chevauchement) ; `docs/CONTROLE_FILS_v26.md`.
 - Julien : garde H2 sur le bus (disjoncteur obligatoire ?) ; câble avec la numérotation v26 ; pas de v27 ; demande ce qui reste à valider. Répondu : pas de disjoncteur obligatoire mais fils de H2 à dimensionner pour 20 A (sinon fusible) ; bilan « reste à valider » dans `06_EN_COURS.md`.
 - Julien : comment poser 1021-1024 et le 0 V des 2 alims en vrai ? Expliqué (un numéro = un potentiel, repère aux 2 bouts de chaque fil) ; noté dans 04_REGLES_DESSIN.
+- Julien : numéros des câbles PROFINET ; bornes pour ventilateurs et éclairage avec leur position ; numéros f20, f21, f30 ; contrôle global des numéros ; images des blocs 24 V aux bonnes couleurs ; v27. Fait : v27 (`TTK_2026-11-13_v27.xrs`, 0 erreur, 0 chevauchement, numéros 0 problème).

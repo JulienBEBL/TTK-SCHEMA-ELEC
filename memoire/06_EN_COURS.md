@@ -1,6 +1,24 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v26 (13/11/2026)
+## Version actuelle : v27 (13/11/2026)
+`schema/generes/release/TTK_2026-11-13_v27.xrs` : 25 folios, 181 symboles, 647 fils, 89 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, contrôle des numéros 0 problème. v26 réenregistrée par Julien (copie `schema/recus/2026-11-13_v26_ouverte_WinRelais.xrs`) : H2 descendu à 6800 et X12.22 à 10000 au f12, nouvelles images des blocs au f21 ; repris.
+
+### Fait en v27
+| Folio | Changement |
+|---|---|
+| 12 | H2 et X12.22 déplacés (Julien) |
+| 13 | Bornes X13.11-12 (éclairage) et X13.21-22 (ventilation), appareils descendus de 800 |
+| 20, 21, 30 | Numérotation des fils (table dans `04_REGLES_DESSIN.md`) ; bornes X20 descendues de 400, X21.22 de 800 (place des numéros) |
+| 21 | Images des blocs : rouge X21.11, gris X21.13, bleu X21.12, centrées, hauteur 2600 |
+| tous | Câbles PROFINET repérés PN1 à PN4 |
+| 70 | R4 : bornes éclairage et ventilation avant la porte |
+
+### Où on en est (13/11, v27)
+- Numérotation : f10 à f13, f20, f21, f30 faits ; contrôle `outils/xrs_numeros.py` : 0 problème. Suite : f31 / f32 (encore L1 / L2 / L3 pour les potentiels du f11), puis sécurité, pupitre, automate.
+- H2 : Julien garde le branchement sur le bus (fils à dimensionner pour 20 A).
+- Toujours en attente : relecture automate (f60 à f63) puis borniers (f70 / f71) ; implantation : XR2 sur R2 et bornes X13 sur R4 à reporter.
+
+## Version précédente : v26 (13/11/2026)
 `schema/generes/release/TTK_2026-11-13_v26.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement. La v25 réenregistrée par Julien (copie `schema/recus/2026-11-13_v25_ouverte_WinRelais.xrs`) : seule retouche = image du bornier au f21, reprise.
 
 ### Fait en v26
