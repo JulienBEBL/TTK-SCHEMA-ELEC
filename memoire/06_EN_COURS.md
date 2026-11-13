@@ -1,6 +1,23 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v25 (13/11/2026)
+## Version actuelle : v26 (13/11/2026)
+`schema/generes/release/TTK_2026-11-13_v26.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement. La v25 réenregistrée par Julien (copie `schema/recus/2026-11-13_v25_ouverte_WinRelais.xrs`) : seule retouche = image du bornier au f21, reprise.
+
+### Fait en v26
+| Folio | Changement |
+|---|---|
+| 10 | Arrivée aérée ; W13 câble simple de 800 (plus de câble de longueur nulle : bug d'export PDF) |
+| 11, 12, 13 | Numérotation des fils (table dans `04_REGLES_DESSIN.md`) |
+| 21 | Image du bornier PTFIX dans les 3 cadres, textes « à insérer » retirés |
+| 31, 32 | Fils TF en « Autre tension DC » |
+| tous | Contrôle complet de la logique des fils hors E/S automate : `docs/CONTROLE_FILS_v26.md` (conforme ; 1 point : protection de H2) |
+
+### Où on en est (13/11, v26)
+- Numérotation : f10 à f13 faits ; suite folio par folio sur demande de Julien.
+- À décider par Julien : protection du voyant H2 230 V (piqué sur le bus, QF1 20 A seulement).
+- Toujours en attente : relecture automate (f60 à f63) puis borniers (f70 / f71).
+
+## Version précédente : v25 (13/11/2026)
 `schema/generes/release/TTK_2026-11-13_v25.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement. v24 et ses logos collés dans `old/`. La v24 réouverte le 13/11 (copie `schema/recus/2026-11-13_v24_ouverte_WinRelais.xrs`) n'avait que des fils du f10 retournés (mêmes extrémités) : aucune retouche.
 
 ### Fait en v25

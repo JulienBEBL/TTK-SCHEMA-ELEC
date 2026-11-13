@@ -8,7 +8,7 @@ Le schéma n'est pas dessiné à la main : il est **généré par un script Pyth
 ## État actuel (13/11/2026)
 | | |
 |---|---|
-| Dernière version | **v25**, `schema/generes/release/TTK_2026-11-13_v25.xrs` |
+| Dernière version | **v26**, `schema/generes/release/TTK_2026-11-13_v26.xrs` |
 | Contenu | 25 folios, 177 symboles, 654 fils, 91 renvois |
 | Contrôles | 0 problème, 0 erreur au verifier (28 attentions connues), 0 chevauchement |
 | En attente | relecture automate puis borniers par Julien ; réponse SEW (mises sous tension) ; numérotation des fils en dernier |

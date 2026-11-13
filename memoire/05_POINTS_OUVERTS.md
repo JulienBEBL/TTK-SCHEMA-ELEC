@@ -85,3 +85,6 @@ Procédure pour un nouveau chat : `docs/ESSAI_BANC_BOUCLE_RETOUR.md`.
 
 ## Questions à SEW
 Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO, frein BE5, frein alimenté moteur à l'arrêt, mises sous tension / h, longueur de câble.
+
+## Contrôle des fils v26 (13/11)
+- **H2 voyant 230 V de porte** : piqué directement sur L3 / N du bus, seule protection QF1 20 A. À décider par Julien : fils de H2 dimensionnés pour 20 A, ou H2 derrière un disjoncteur / fusible. Détail : `docs/CONTROLE_FILS_v26.md`.

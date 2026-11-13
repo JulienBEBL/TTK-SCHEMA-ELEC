@@ -135,3 +135,17 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Script : `numero_fil()` et `ETAGES_F10` dans `ttk_schema.py` (appareil amont du tronçon → dizaine ; phase → unité). Les autres folios gardent L1 / L2 / L3 / N tant qu'ils ne sont pas faits.
 - f10 (v25) : arrivée (câble client W1, bornes X10, entrée QS1) **1001 L1, 1002 L2, 1003 L3, 1004 N** ; QS1 → QF1 **1011-1014** ; QF1 → XR1 / XR2 → bus f11 **1021-1024** ; variante USA : primaire TR1 **1031-1033**, secondaire **1041-1044**. PE : « PE » (vert/jaune, pas de numéro).
 - Suite : le potentiel 1021-1024 continue sur le bus du f11 : à numéroter avec le f11 (aujourd'hui L1 / L2 / L3 / N).
+
+## Numérotation f11 à f13 (13/11, v26)
+- Script : table `SOURCES_NUM` (folio, appareil, broches de sortie, dizaine) et `numeros_potentiels()` ; un potentiel garde son numéro à travers bornes et blocs PTFIX et d'un folio à l'autre ; `NUMEROTES` = folios déjà faits. Alertes affichées à la génération (« ATTENTION numérotation »).
+- Dizaines dans l'ordre de lecture du folio (gauche → droite, puis ligne suivante).
+- f11 : QM1 1101-1103, QM2 1111-1113, QF2 1121 / 1122, QF3 1131 / 1133, KM1 → U1 1141-1143, KM2 → U2 1151-1153, KF1 → frein M1 1161 / 1162, KF2 → frein M2 1171 / 1173. Bus : 1021-1023 (de QF1).
+- f12 : QF4 → T1 1201 / 1204, QF5 → T2 1211 / 1214, QF6 → T3 1222 / 1224 ; T1 24VSEC 1231, 0 V commun (T1 + T2) 1230, T2 24VELEC 1241, T3 +48 V 1251, 0 V 48 1250. H2 sur le bus : 1023 / 1024.
+- f13 : QF8 → EL1 / EL2 1303 / 1304, QF7 → EV1 / EV2 1313 / 1314, QF9 → QF10 1323 / 1324, QF10 → XD1 1333 / 1334. Bus : 1023 / 1024.
+- Ces potentiels continuent sur des folios pas encore numérotés (f20, f21, f31, f32, f40...) : ils y gardent L1 / L2 / L3 ou rien, jusqu'à leur tour.
+- Placement : un numéro horizontal reste entier sur son fil (13/11) ; les étiquettes PE ne s'alignent plus avec les numéros.
+
+## Câbles (13/11)
+- Jamais de câble de longueur nulle (début = fin, ovale sur un seul brin) : rendu faux et export PDF qui déborde sur toute la page (W13, v25). Câble d'un seul conducteur : trait de 800 centré sur le fil, textes à droite.
+- f10 : arrivée aérée (bornes X10 à 4400, câble client juste sous le cadre, numéros de fil sous le câble) (Julien, v25 trop serré).
+- f21 : image du bornier PTFIX 6/12 (`schema/images/Phoenix_PTFIX_6-12x2.5.jpg`, fournie par Julien) dans chacun des 3 cadres, sans texte. Les images suivent maintenant le centrage du folio (`decaler`).

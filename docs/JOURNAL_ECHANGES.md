@@ -246,3 +246,5 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 13/11/2026 : v25
 - Julien : repères 4 mm² reçus, numéroter les fils (f10 pour commencer) ; XR1 et XR2 collés sur le rail de QS1, rail plein, à noter et à reporter au schéma si besoin ; v25 avec les retouches de la v24.
 - Fait : f10 numéroté, titre R4 du f70 corrigé, v25 générée (0 problème, 0 erreur, 0 chevauchement), mémoires à jour.
+- Julien (v25) : numéroter f11, f12, f13 ; W13 au f10 bizarre ; arrivée trop serrée ; export PDF : un câble déborde sur toute la page ; f21 image du bornier, retirer les textes ; v26 avec contrôle complet des fils (sauf E/S automate).
+- Fait : v26 (`TTK_2026-11-13_v26.xrs`, 0 erreur, 0 chevauchement) ; `docs/CONTROLE_FILS_v26.md`.

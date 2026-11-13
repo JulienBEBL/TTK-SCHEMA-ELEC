@@ -327,3 +327,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Numérotation des fils commencée (Julien, repères 4 mm² reçus), folio par folio : f10 fait (1001-1004, 1011-1014, 1021-1024, USA 1031-1033 / 1041-1044).
 - [D] XR1 et XR2 collés sur le même rail que QS1 (R2), rail plein (Julien). Électrique inchangé ; f70 : titre R4 corrigé.
 - v25 : retouches v24 de Julien incluses (logos f01, textes f10 / f40).
+
+## 13/11/2026 : v26
+- [D] Numérotation f11 à f13 (même convention, dizaines dans l'ordre de lecture).
+- [D] f10 aéré ; W13 en câble simple (le câble de longueur nulle faisait déborder l'export PDF) ; f21 image du bornier (Julien).
+- [C] Contrôle complet des fils hors E/S automate : conforme ; fils TF passés en « Autre tension DC ».
+- [?] Protection du voyant H2 230 V (sur le bus, QF1 20 A seulement) : à décider par Julien.

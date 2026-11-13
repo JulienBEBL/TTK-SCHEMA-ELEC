@@ -539,6 +539,7 @@ class Gen:
                        for t in self.textes]
         self.dessins = [(d[0], d[1] + dx, d[2] + dy, d[3] + dx, d[4] + dy) + d[5:] if d[0] == folio else d
                         for d in self.dessins]
+        self.logos = [(l[0], l[1] + dx, l[2] + dy) + tuple(l[3:]) if l[0] == folio else l for l in self.logos]
         self.cables = [(c[0], c[1] + dx, c[2] + dx, c[3] + dy) + c[4:7] + ([b + dx for b in c[7]],)
                        + ((c[8][0] + dx, c[8][1] + dy) if isinstance(c[8], tuple) else c[8], c[9])
                        if c[0] == folio else c for c in self.cables]
