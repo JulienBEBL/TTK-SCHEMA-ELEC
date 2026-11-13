@@ -249,3 +249,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien (v25) : numéroter f11, f12, f13 ; W13 au f10 bizarre ; arrivée trop serrée ; export PDF : un câble déborde sur toute la page ; f21 image du bornier, retirer les textes ; v26 avec contrôle complet des fils (sauf E/S automate).
 - Fait : v26 (`TTK_2026-11-13_v26.xrs`, 0 erreur, 0 chevauchement) ; `docs/CONTROLE_FILS_v26.md`.
 - Julien : garde H2 sur le bus (disjoncteur obligatoire ?) ; câble avec la numérotation v26 ; pas de v27 ; demande ce qui reste à valider. Répondu : pas de disjoncteur obligatoire mais fils de H2 à dimensionner pour 20 A (sinon fusible) ; bilan « reste à valider » dans `06_EN_COURS.md`.
+- Julien : comment poser 1021-1024 et le 0 V des 2 alims en vrai ? Expliqué (un numéro = un potentiel, repère aux 2 bouts de chaque fil) ; noté dans 04_REGLES_DESSIN.

@@ -149,3 +149,8 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Jamais de câble de longueur nulle (début = fin, ovale sur un seul brin) : rendu faux et export PDF qui déborde sur toute la page (W13, v25). Câble d'un seul conducteur : trait de 800 centré sur le fil, textes à droite.
 - f10 : arrivée aérée (bornes X10 à 4400, câble client juste sous le cadre, numéros de fil sous le câble) (Julien, v25 trop serré).
 - f21 : image du bornier PTFIX 6/12 (`schema/images/Phoenix_PTFIX_6-12x2.5.jpg`, fournie par Julien) dans chacun des 3 cadres, sans texte. Les images suivent maintenant le centrage du folio (`decaler`).
+
+## Numérotation : comment la poser en vrai (expliqué à Julien le 13/11)
+- Un numéro = un potentiel, pas un fil : tous les fils de ce potentiel portent le même numéro, un repère à chaque bout.
+- 1021 / 1022 / 1023 / 1024 : QF1 → XR1, pont XR1 → XR2, et chaque départ de XR1 / XR2 vers un appareil (L1 1021 : QM1, QM2, QF2, QF3, QF4, QF5 ; L2 1022 : QM1, QM2, QF2, QF6 ; L3 1023 : QM1, QM2, QF3, QF7, QF8, QF9, H2 ; N 1024 : QF4, QF5, QF6, QF7, QF8, QF9, H2). Le numéro change à la sortie de l'appareil suivant (ex. QM1 → KM1 = 1101).
+- 0 V commun 1230 : T1 -V → X21.12 (entrée E), T2 -V → T1 (2e borne -V) ou une sortie de X21.12, X21.12 → X12.11 (côté 0 V), et tous les départs 0 V de X21.12. Le fil X12.11 → PE est vert/jaune, sans numéro. Jamais 2 fils dans un même trou push-in sans l'accord de la notice. 24VELEC 1241 (T2 → X21.11 → départs), 24VSEC 1231 (T1 → X21.13 → départs, dont l'entrée de FA1). +48 V 1251, 0 V 48 1250.
