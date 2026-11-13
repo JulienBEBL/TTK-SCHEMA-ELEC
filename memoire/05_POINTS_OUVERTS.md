@@ -87,4 +87,4 @@ Procédure pour un nouveau chat : `docs/ESSAI_BANC_BOUCLE_RETOUR.md`.
 Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO, frein BE5, frein alimenté moteur à l'arrêt, mises sous tension / h, longueur de câble.
 
 ## Contrôle des fils v26 (13/11)
-- **H2 voyant 230 V de porte** : piqué directement sur L3 / N du bus, seule protection QF1 20 A. À décider par Julien : fils de H2 dimensionnés pour 20 A, ou H2 derrière un disjoncteur / fusible. Détail : `docs/CONTROLE_FILS_v26.md`.
+- **H2 voyant 230 V de porte** : piqué directement sur L3 / N du bus, seule protection QF1 20 A. **Julien (13/11) : il garde ce branchement.** Rappel fait une fois (NF EN 60204-1, 7.2) : pas de disjoncteur obligatoire pour un voyant, mais chaque fil doit être protégé contre les surintensités ; les fils de H2 (jusqu'à la porte) doivent donc tenir les 20 A de QF1 (1,5 mm² ne convient pas ; 2,5 mm² à vérifier selon le mode de pose dans le tableau de la norme), sinon un fusible 2 A sur L3. Numéros : 1023 / 1024. Détail : `docs/CONTROLE_FILS_v26.md`.

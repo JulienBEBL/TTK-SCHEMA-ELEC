@@ -333,3 +333,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f10 aéré ; W13 en câble simple (le câble de longueur nulle faisait déborder l'export PDF) ; f21 image du bornier (Julien).
 - [C] Contrôle complet des fils hors E/S automate : conforme ; fils TF passés en « Autre tension DC ».
 - [?] Protection du voyant H2 230 V (sur le bus, QF1 20 A seulement) : à décider par Julien.
+- [D] 13/11 : Julien garde H2 sur le bus (sans disjoncteur propre) ; condition rappelée : fils de H2 protégés par QF1 20 A (section adaptée), sinon fusible.
+- [D] 13/11 : pas de v27 avant les retours de Julien ; il câble avec la numérotation v26.

@@ -134,3 +134,12 @@ Jalon J2 « bon pour câblage » : 13/11/2026.
 - Automate : réglé (E/S validées, mention f62 retirée) ; bornes du thermocouple à l'achat (Q19).
 - Borniers : 89 bornes pour 85 achetées (+ réserve 10 %, + 6 si les conducteurs de réserve des 27G1 / 19G1 sont bornés) ; type des 4 bornes de terre en stock ? ; 5 bornes PT 4 pour l'arrivée X10 (5G4) ; butées de chaque côté de chaque appareil sur tous les rails (règle de Julien) ; H2 230 V séparé des bornes 24 V sur R4 (butée, cloison ?).
 - Agent d'implantation : bornes de porte sur **R4** (bloc du f70), butées de chaque côté de chaque appareil sur tous les rails, câble frein W4, W13.
+
+## Reste à valider sur tout le schéma (bilan du 13/11, après la v26)
+Julien câble l'armoire avec la numérotation v26 ; **pas de v27 avant ses retours**.
+- **Folios** : automate f60 à f63 (relecture de Julien en cours) ; borniers f70 / f71 ; f71, f80, f85, f90 n'ont que leur cartouche (remplir ou supprimer ?) ; contrôle à l'écran de f31 / f32 (Q12), des brins de W10 (Q26) et de l'export PDF (W13).
+- **Numérotation** : faite f10 à f13 ; restent f20, f21, f30, f31, f32, f40 à f42, f50, f60 à f63.
+- **Composants** (valeurs ou références manquantes) : H2, H3, H4 (références des voyants) ; bornes du thermocouple (Q19) ; bornes X10 de la sonde TF (SEW) ; courant des entrées STO, courant du frein BE5 (calibre de QF2 / QF3), consommation X5 (SEW) ; ifm MN508S (homologation, actionneur codé) ; DC-1 du LC1D09BD sous 48 V ; brochages G2 Siemens.
+- **Fils et câbles** : section des fils de H2 (20 A) ; longueurs W3 à W6, W9 à W12 ; section W9 / W10 ; câble moteur 50 m pour 60 m (Q30) ; bornes : 89 pour 85 achetées, type des bornes de terre, séparation H2 230 V / 24 V sur R4.
+- **Fonctions, au banc** : boucle Y1-Y2 (`docs/ESSAI_BANC_BOUCLE_RETOUR.md`) ; écart d'ouverture B1 / B2 (200 ms) ; I0.2 / I0.3 à 1 capot ouvert ; trames Z1 (I1.5) ; PTO dans TIA et micro-pas des DM860H (< 100 kHz).
+- **Implantation** : XR2 déplacé sur R2 à reporter par l'agent draw.io.
