@@ -108,3 +108,8 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 ## STO en chaîne (06/11, v23)
 - KA1 33-34 → AUTO-B (S3 5-6) → -U1 X6.1 (+24 V) ; 0 V → -U1 X6.2 ; -U1 X6.3 → -U2 X6.1 ; -U1 X6.4 → -U2 X6.2 ; -U2 X6.3 / X6.4 libres. Validé par SEW (Julien). Un seul départ +24 V et un seul 0 V depuis l'armoire de sécurité.
 - Rappel f42 : KA1 13-14 → KF1 / KF2 (freins, toujours) + MANU-D (S3 15-16) → KA2 ; KA1 23-24 → AUTO-A (S3 1-2) → KM1 / KM2 ; KA1 33-34 → AUTO-B → STO.
+
+## Implantation : répartiteurs (13/11)
+- **13/11 (Julien, monté)** : XR1 et XR2 **collés côte à côte sur le même rail que QS1 / QF1 (R2)** ; ce rail est plein. XR2 n'est plus sur le R4. Électriquement rien ne change (QF1 → XR1 → XR2, toujours non dessinés : renvois QF1 → bus f11). Ponts XR1 → XR2 : 1 pont 4 mm² par pôle, sauf indication contraire de Julien.
+- Conséquence : R4 = disjoncteurs QF4 à QF10, XD1, puis bornes de porte S1, S4, H3, H4, H2 (plus de XR2 devant). Rien ne peut plus être ajouté sur R2.
+- À reporter par l'agent d'implantation (draw.io) dans sa prochaine version : XR2 déplacé de R4 vers R2.

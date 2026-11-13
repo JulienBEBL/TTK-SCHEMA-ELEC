@@ -129,3 +129,9 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 
 ## Images (09/11)
 - Les images (logos f01) sont dans `schema/images/` et écrites par le script dans la section `¤#Logo¤` : `x·y·largeur·hauteur·chemin absolu·1·ratio de l'image x 1000·index du folio·0·`. Le chemin est absolu : il est recalculé à chaque génération depuis le dépôt.
+
+## Numérotation des fils : mise en application (13/11, v25)
+- Julien a reçu des repères pour le 4 mm². Numérotation appliquée **folio par folio**, f10 d'abord (v25), à sa demande, avant la validation complète de l'automate et des borniers.
+- Script : `numero_fil()` et `ETAGES_F10` dans `ttk_schema.py` (appareil amont du tronçon → dizaine ; phase → unité). Les autres folios gardent L1 / L2 / L3 / N tant qu'ils ne sont pas faits.
+- f10 (v25) : arrivée (câble client W1, bornes X10, entrée QS1) **1001 L1, 1002 L2, 1003 L3, 1004 N** ; QS1 → QF1 **1011-1014** ; QF1 → XR1 / XR2 → bus f11 **1021-1024** ; variante USA : primaire TR1 **1031-1033**, secondaire **1041-1044**. PE : « PE » (vert/jaune, pas de numéro).
+- Suite : le potentiel 1021-1024 continue sur le bus du f11 : à numéroter avec le f11 (aujourd'hui L1 / L2 / L3 / N).

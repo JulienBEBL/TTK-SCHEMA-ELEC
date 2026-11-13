@@ -1,6 +1,22 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v24 (09/11/2026)
+## Version actuelle : v25 (13/11/2026)
+`schema/generes/release/TTK_2026-11-13_v25.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement. v24 et ses logos collés dans `old/`. La v24 réouverte le 13/11 (copie `schema/recus/2026-11-13_v24_ouverte_WinRelais.xrs`) n'avait que des fils du f10 retournés (mêmes extrémités) : aucune retouche.
+
+### Fait en v25
+| Folio | Changement |
+|---|---|
+| 01, 10, 40 | Retouches de Julien dans la v24 reprises : logos (`schema/images/`), textes f10 / f40 déplacés, texte boucle Y1-Y2 du f40 retiré |
+| 10 | **Numérotation des fils** (convention v2) : 1001-1004, 1011-1014, 1021-1024, variante USA 1031-1033 / 1041-1044 ; PE inchangé |
+| 70 | Titre R4 : « R4 : porte de l'armoire » (XR2 n'y est plus) |
+
+### Où on en est (13/11)
+- **Numérotation des fils commencée** (Julien a les repères 4 mm²) : f10 fait ; suite folio par folio sur demande (f11 ensuite : bus 1021-1024).
+- **Répartiteurs** : XR1 et XR2 collés sur le rail de QS1 (R2), rail plein (Julien, monté). Voir `03_ARCHITECTURE.md`.
+- Toujours en attente : relecture automate (f60 à f63) puis borniers (f70 / f71) par Julien.
+- Mises sous tension MCX91A : réglé (≈ 1 / 8 h, KM1 / KM2 gardés).
+
+## Version précédente : v24 (09/11/2026)
 `schema/generes/release/TTK_2026-11-09_v24.xrs` : 25 folios, 177 symboles, 643 fils, 89 renvois ; 0 problème, 0 erreur au verifier, 28 attentions (27 connues + bout libre voulu vers le bâti, f10), 0 chevauchement. La v23 réenregistrée par WinRelais (`schema/recus/2026-11-09_v23_ouverte_WinRelais.xrs`) n'avait aucune retouche.
 
 ### Où on en est (09/11, avant compaction)
@@ -8,7 +24,7 @@
 - **En cours** : Julien relit la partie **automate** (f60 à f63) sur la v24 et revient avec ses remarques ; ensuite les **borniers** (f70 / f71).
 - **En dernier** : numérotation des fils (méthode dans `04_REGLES_DESSIN.md`), après validation automate + borniers.
 - **Mises sous tension MCX91A : réglé (09/11)**. Usage (Julien, 09/11) : environ **1 mise sous tension toutes les 8 h** (passage en Manu pour la maintenance, puis retour en Auto) ; l'AU est réservé aux urgences, pas d'usage normal. Compatible avec la réponse « 1 » de SEW : **on garde KM1 / KM2**, point clos.
-- **Retouches de Julien dans la v24 (09/11), reprises dans le script, pas encore générées** (Julien : ne pas modifier le schéma pour le moment) : logos TTK / BEBL / LEVERT INDUSTRIE au f01 (section `¤#Logo¤`, images `schema/images/logo_*.jpg`, textes « Logo ... » retirés) ; f10 « Bâti machine +M » déplacé (19300, 15700) ; f40 « Réglage -KA1 » déplacé (6600, 15300) ; f40 texte « Boucle de retour Y1-Y2 ... » supprimé. Essai de génération = identique à sa v24 (0 écart texte / symbole / fil). La release v24 gardée est **celle de Julien** (avec logos) ; copie `schema/recus/2026-11-09_v24_ouverte_WinRelais.xrs`.
+- **Retouches de Julien dans la v24 (09/11), reprises dans le script, générées en v25** (Julien : ne pas modifier le schéma pour le moment) : logos TTK / BEBL / LEVERT INDUSTRIE au f01 (section `¤#Logo¤`, images `schema/images/logo_*.jpg`, textes « Logo ... » retirés) ; f10 « Bâti machine +M » déplacé (19300, 15700) ; f40 « Réglage -KA1 » déplacé (6600, 15300) ; f40 texte « Boucle de retour Y1-Y2 ... » supprimé. Essai de génération = identique à sa v24 (0 écart texte / symbole / fil). La release v24 gardée est **celle de Julien** (avec logos) ; copie `schema/recus/2026-11-09_v24_ouverte_WinRelais.xrs`.
 - Bilan 24 V (`docs/BILAN_24V.md`) : Julien le juge bon ; calculs refaits, valeurs Siemens de copies distributeurs à recouper.
 
 ### Fait en v24

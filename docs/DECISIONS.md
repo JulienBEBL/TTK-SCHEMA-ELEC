@@ -322,3 +322,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 09/11/2026 : retouches v24 et mises sous tension
 - [D] Mises sous tension des MCX91A : ≈ 1 toutes les 8 h (Manu pour maintenance), AU = urgences seulement. Compatible avec « 1 » de SEW : KM1 / KM2 gardés.
 - [D] Logos au f01 (Julien) ; f10 / f40 textes déplacés, texte boucle Y1-Y2 du f40 supprimé (Julien). Repris dans le script, pas encore générés.
+
+## 13/11/2026 : v25
+- [D] Numérotation des fils commencée (Julien, repères 4 mm² reçus), folio par folio : f10 fait (1001-1004, 1011-1014, 1021-1024, USA 1031-1033 / 1041-1044).
+- [D] XR1 et XR2 collés sur le même rail que QS1 (R2), rail plein (Julien). Électrique inchangé ; f70 : titre R4 corrigé.
+- v25 : retouches v24 de Julien incluses (logos f01, textes f10 / f40).

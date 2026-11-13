@@ -242,3 +242,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - v24 (`TTK_2026-11-09_v24.xrs`, 0 problème, 0 erreur, 0 chevauchement) ; v23 réenregistrée archivée, sans retouche.
 - Julien : « qu'appelles-tu mise sous tension ? je ne comprends pas le problème ». Expliqué : mise sous tension = fermeture de KM1 / KM2 (400 V sur L1-L3 du variateur, charge des condensateurs internes) ; chaque AU puis réarmement, et chaque Manu -> Auto, en fait une. Demandé la phrase exacte de SEW.
 - Julien : logos des 3 entreprises au f01 et 2-3 retouches sur la v24, à reprendre ; mises sous tension ≈ 1 toutes les 8 h (Manu pour maintenance), AU seulement en urgence ; ne pas modifier le schéma pour le moment. Fait : comparaison (logos, 2 textes déplacés, 1 supprimé), reprise dans le script, essai identique, pas de nouvelle version.
+
+## 13/11/2026 : v25
+- Julien : repères 4 mm² reçus, numéroter les fils (f10 pour commencer) ; XR1 et XR2 collés sur le rail de QS1, rail plein, à noter et à reporter au schéma si besoin ; v25 avec les retouches de la v24.
+- Fait : f10 numéroté, titre R4 du f70 corrigé, v25 générée (0 problème, 0 erreur, 0 chevauchement), mémoires à jour.

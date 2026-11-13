@@ -150,6 +150,32 @@ def _place_ren(xsy, rep, folio, x, y, champs=None, **kw):
 POLES = [("1", "2"), ("3", "4"), ("5", "6"), ("1/L1", "2/T1"), ("3/L2", "4/T2"), ("5/L3", "6/T3")]
 
 
+# Numérotation des fils, convention v2 sans point (04_REGLES_DESSIN, Julien 05/11), appliquée folio par folio
+# (13/11 : f10 d'abord). Numéro FFNN : FF = folio de naissance, NN = dizaine de l'appareil amont + conducteur
+# (1 L1, 2 L2, 3 L3, 4 N). Une borne ne change pas le numéro. Le PE garde « PE » (repéré par sa couleur).
+UNITE = {"L1": 1, "L2": 2, "L3": 3, "N": 4}
+# f10 : appareil amont du tronçon -> dizaine ; rien d'autre = arrivée réseau (câble client, bornes X10, entrée QS1)
+ETAGES_F10 = [("Q102", ("2", "4", "6", ("N", 1)), 20),            # sortie QF1 -> XR1 / XR2 -> bus f11 : 1021-1024
+              ("Q101", ("2/T1", "4/T2", "6/T3", ("N", 1)), 10),   # sortie QS1 -> QF1 : 1011-1014
+              ("T101", ("H1", "H2", "H3"), 30),                   # variante USA, primaire 480 V : 1031-1033
+              ("T101", ("X0", "X1", "X2", "X3"), 40)]             # variante USA, secondaire : 1041-1044
+
+
+def numero_fil(f_, ws, ph):
+    """Numéro du tronçon ws (folio f_) de phase ph, ou None si le folio n'est pas encore numéroté."""
+    if f_ != F["10"] or ph not in UNITE:
+        return None
+    bouts = {(w[1], w[2]) for w in ws} | {(w[3], w[4]) for w in ws}
+    for rep_, pins_, dizaine in ETAGES_F10:
+        s_ = next(x for x in g.symbols if x.rep == rep_ and x.folio == f_)
+        for pin in pins_:
+            nom, k = pin if isinstance(pin, tuple) else (pin, 0)
+            pts = s_.pins.get(nom, [])
+            if len(pts) > k and (pts[k][0], pts[k][1]) in bouts:
+                return f"10{dizaine + UNITE[ph]:02d}"
+    return f"10{UNITE[ph]:02d}"
+
+
 def nommer_phases():
     """Fils de puissance (L, N) : nom de la phase (L1, L2, L3, N) au lieu d'un numéro (choix de Julien, 28/10).
     Phase connue aux bornes d'arrivée -X101 (1 = N, 2 = L1, 3 = L2, 4 = L3), propagée à travers les pôles
@@ -207,6 +233,7 @@ def nommer_phases():
         ph = "PE" if ws[0][5] == "PE" else phase.get(g._find(("P", f_, ws[0][1], ws[0][2])))
         if not ph:
             continue
+        ph = numero_fil(f_, ws, ph) or ph
         # bus (horizontale de plus de 6000) : nom près de l'extrémité gauche, aligné avec les autres lignes du bus
         lignes = defaultdict(int)
         for w in ws:
@@ -1375,7 +1402,7 @@ RAILS_X70 = [
         _g("Moteur M1 (W2)", [f"X701.{n}" for n in range(17, 21)]),
         _g("Moteur M2 (W5)", [f"X701.{n}" for n in range(25, 29)]),
         _g("Arrivée réseau (W1)", ["X101.VJ", "X101.1", "X101.2", "X101.3", "X101.4"])]),
-    ("R4, à droite de -XR2 : porte de l'armoire", [
+    ("R4 : porte de l'armoire", [
         ("AU -S1", [(f"X721.{n}", "") for n in range(1, 7)]),
         ("Réarmement -S4", [("X721.7", ""), ("X721.8", "")]),
         ("Voyant -H3", [("X721.11", ""), ("X721.12", "")]),

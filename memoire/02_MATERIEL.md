@@ -11,7 +11,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | QS1 | Legrand Vistop 022515, 4P 63 A | manœuvre armoire ouverte |
 | QF1 | Hager NFT820, 3P+N 20 A courbe C | disjoncteur de tête |
 | TR1 | TEMCo TT1041, 480 D / 400 Y-230, 15 kVA | variante US, hors armoire |
-| -XR1, -XR2 (ancien X12) | 2 répartiteurs 4P 125 A 7 départs AEE300427 par armoire | non dessinés depuis le 29/10 (renvois directs QF1 → bus f11). Fil 4 mm² seulement : seuls les 5 petits départs (1,5-6 mm²) serrent. QF1 → XR1, puis 1 pont 4 mm² par pôle XR1 → XR2 (la borne de QF1 n'accepte pas 2 × 4 mm²) [D 04/11]. Repères XR1 et XR2 [D 05/11]. Affectation des départs : `implantation/` page 5 |
+| -XR1, -XR2 (ancien X12) | 2 répartiteurs 4P 125 A 7 départs AEE300427 par armoire | non dessinés depuis le 29/10 (renvois directs QF1 → bus f11). Fil 4 mm² seulement : seuls les 5 petits départs (1,5-6 mm²) serrent. QF1 → XR1, puis 1 pont 4 mm² par pôle XR1 → XR2 (la borne de QF1 n'accepte pas 2 × 4 mm²) [D 04/11]. Repères XR1 et XR2 [D 05/11]. Affectation des départs : `implantation/` page 5 ; **13/11 (Julien, monté)** : XR1 et XR2 **collés côte à côte sur le même rail que QS1 / QF1 (R2)** ; ce rail est plein. XR2 n'est plus sur le R4. Électriquement rien ne change (QF1 → XR1 → XR2, toujours non dessinés : renvois QF1 → bus f11). Ponts XR1 → XR2 : 1 pont 4 mm² par pôle, sauf indication contraire de Julien |
 | (ancien X13) | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) ; repère à fixer |
 | QM1 / QM2 | Schneider GV2ME14, réglés 6,5 A | amont variateurs |
 | KM1 / KM2 | Schneider LC1D09BD (bobine 24 V CC) | contacteurs variateurs |
