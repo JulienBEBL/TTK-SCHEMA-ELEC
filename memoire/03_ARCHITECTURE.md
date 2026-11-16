@@ -99,8 +99,8 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - Méthode : `docs/local/METHODE_BORNIERS.md`. Sur f70 / f71 : description de la provenance du fil **des deux côtés** de la borne.
 
 ## Bornes de porte et colonne (v17, 05/11)
-- Porte (règle de Julien : tous les appareils par des bornes ou aucun) : S1 X41.51-54 / X60.41-42, S4 X40.11-12, H2 X12.21-22 (230 V), H3 X21.21-22, H4 X61.21-22.
-- Colonne H1 (machine, par câble) : X61.11 RD, X61.12 OG, X61.13 GN, X61.14 COM.
+- Porte (règle de Julien : tous les appareils par des bornes ou aucun) : S1 X41.51-54 / X60.41-42, S4 X40.11-12, H2 X12.21-22 (230 V), H3 X21.21-22, H4 X62.21-22.
+- Colonne H1 (machine, par câble) : X62.11 RD, X62.12 OG, X62.13 GN, X62.14 COM.
 
 ## Freins SEW en mode Manu (05/11)
 - KF1 / KF2 sont alimentés par KA1 13-14 sans passer par S3 : freins desserrés dès que KA1 est armé, **y compris en Manu**. **Voulu** [D 05/11, Julien] : en Manu, les opérateurs tournent l'arbre de sortie à la clé pour la maintenance.
@@ -119,3 +119,7 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - **Position : rail R4, à la place laissée par XR2**, après XD1 et avant les bornes de porte, une butée de chaque côté de chaque groupe. Ordre R4 : QF4 … QF10, XD1 | X13.11-12 | X13.21-22 | S1, S4, H3, H4, H2.
 - 4 bornes de plus : 93 bornes pour 85 achetées. Pas de PE dessinée pour ces appareils (symboles sans PE) : à vérifier sur les appareils.
 - À reporter par l'agent d'implantation (draw.io).
+
+## 24 V capteurs et signalisation (16/11, v28)
+- L+ capt de la CPU → bloc PTFIX 6/12 **noir -X21.14** (4e bloc, R3, à côté de X21.11 / X21.12 / X21.13 ; place à confirmer par l'implantation) → 12 départs vers les 13 points d'entrée (KM1 13 et KM2 13 pontés). Choix de Julien 16/11 (reste limité à 400 mA et protégé par la CPU). Potentiel 6001.
+- Colonne H1 et voyant défaut H4 au f62 (avec la SM 1223) ; bornes renommées **X62.11-14** et **X62.21-22** (Julien 16/11, règle X + folio).

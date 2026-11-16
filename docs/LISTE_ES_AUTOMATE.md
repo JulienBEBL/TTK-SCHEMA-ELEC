@@ -37,11 +37,11 @@ Numéros de folio = numéros affichés. « 1 » = signal présent (24 V sur l'en
 | E/S | Repère | Fonction |
 |---|---|---|
 | I8.0 à I8.7 | | réserve (alarme du switch non câblée) |
-| Q8.0 | H1 | Colonne rouge (X61.11) |
-| Q8.1 | H1 | Colonne orange (X61.12) |
-| Q8.2 | H1 | Colonne verte (X61.13) |
+| Q8.0 | H1 | Colonne rouge (X62.11) |
+| Q8.1 | H1 | Colonne orange (X62.12) |
+| Q8.2 | H1 | Colonne verte (X62.13) |
 | Q8.3 | | réserve (ancien voyant de S4) |
-| Q8.4 | H4 | Voyant porte « défaut machine » (X61.21-22) |
+| Q8.4 | H4 | Voyant porte « défaut machine » (X62.21-22) |
 | Q8.5 à Q8.7 | | réserve |
 
 ## K3 : SM 1231 TC G2 (6ES7231-5QF50-0XB0), f63
@@ -61,3 +61,8 @@ Numéros de folio = numéros affichés. « 1 » = signal présent (24 V sur l'en
 
 Les entrées de la CPU sont toutes prises : une nouvelle entrée ira sur la SM 1223 (I8.x).
 Hors E/S : PROFINET (switch K4) vers U1, U2 (variateurs), P1 (IHM) ; la commande des moteurs SEW passe par PROFINET, pas par des E/S.
+
+## Mise à jour du 16/11/2026 (v28)
+- 24 V des capteurs : L+ capt de la CPU (24 V, 400 mA max, protégé) → bloc PTFIX 6/12 **noir -X21.14** (R3, f21) → 12 départs, un fil par point (S1 13, S2 13, S3 9 et 11, B1 23, B2 23, B3 à B6 13, KA2 13, KM1 13 + KM2 13 par un pont). Potentiel **6001**.
+- Colonne H1 et voyant H4 dessinés au f62 avec la SM 1223 ; bornes **X62.11-14** (H1) et **X62.21-22** (H4), ex-X61.
+- Tableaux f60 / f61 / f62 vérifiés contre les liaisons : conformes. Corrigé : B1 / B2 « contact aux. 23-24 » (le tableau disait NO / NF) ; f61 « SM 1223 : colonne, voyant défaut » (l'alarme switch n'est pas câblée).

@@ -92,3 +92,7 @@ Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO,
 ## v27 (13/11)
 - Bornes : 93 dessinées (+ 4 bornes 230 V éclairage / ventilation) pour 85 achetées.
 - EL1 / EL2 (RS 194-0417) et EV1 / EV2 (IDE VF92AC) : borne PE nécessaire ? (classe de l'appareil à vérifier).
+
+## v28 (16/11)
+- Achat / implantation : 4e bloc PTFIX 6/12 noir (-X21.14) sur R3 : en stock ? place sur R3 à confirmer (R3 était plein sur sa 1re partie).
+- f80 / f85 / f90 : gardés (Julien 16/11), à remplir par WinRelais.

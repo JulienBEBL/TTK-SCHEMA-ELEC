@@ -341,3 +341,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Bornes éclairage X13.11-12 et ventilation X13.21-22, sur R4 à la place de XR2 (Julien : bornes à ajouter, implantation peu modifiée).
 - [D] Numérotation f20, f21, f30 ; sorties CPU vers les drivers 6101-6106 ; contrôle global par `outils/xrs_numeros.py`.
 - [D] f21 : images des blocs aux bonnes couleurs (Julien), centrées ; f12 : H2 / X12.22 déplacés (Julien).
+
+## 16/11/2026 : v28
+- [D] 24 V capteurs : bloc PTFIX 6/12 noir -X21.14 alimenté par L+ capt de la CPU (Julien).
+- [D] H1 / H4 au f62, bornes X62.11-14 / X62.21-22 (Julien).
+- [D] f80 / f85 / f90 gardés (Julien).
+- [C] Tableaux f60-f62 vérifiés ; réserves en accolade ; titres et descriptions revus ; f63 remis en forme.

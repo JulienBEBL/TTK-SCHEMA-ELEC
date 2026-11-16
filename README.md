@@ -5,10 +5,10 @@ BE Bailly Levert (BEBL), dessinateur Julien Thro (THRO.J).
 
 Le schéma n'est pas dessiné à la main : il est **généré par un script Python** (`outils/ttk_schema.py`), puis ouvert et relu dans WinRelais.
 
-## État actuel (13/11/2026)
+## État actuel (16/11/2026)
 | | |
 |---|---|
-| Dernière version | **v27**, `schema/generes/release/TTK_2026-11-13_v27.xrs` |
+| Dernière version | **v28**, `schema/generes/release/TTK_2026-11-16_v28.xrs` |
 | Contenu | 25 folios, 177 symboles, 654 fils, 91 renvois |
 | Contrôles | 0 problème, 0 erreur au verifier (28 attentions connues), 0 chevauchement |
 | En attente | relecture automate puis borniers par Julien ; réponse SEW (mises sous tension) ; numérotation des fils en dernier |

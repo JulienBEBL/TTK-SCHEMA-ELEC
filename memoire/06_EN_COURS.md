@@ -1,6 +1,24 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v27 (13/11/2026)
+## Version actuelle : v28 (16/11/2026)
+`schema/generes/release/TTK_2026-11-16_v28.xrs` : 25 folios, 182 symboles, 654 fils, 87 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v27 réenregistrée par Julien (copie `schema/recus/2026-11-16_v27_ouverte_WinRelais.xrs`) : seule retouche, les textes de S4 au f40 (repris : fpos (-2000, 0)).
+
+### Fait en v28 (décisions de Julien du 16/11)
+| Folio | Changement |
+|---|---|
+| 21, 60 | Bloc PTFIX noir **-X21.14** = 24 V capteurs, alimenté par L+ capt ; bus des capteurs = ses départs |
+| 61, 62 | Colonne H1 et voyant H4 passés au f62 (bornes **X62.11-14**, **X62.21-22**) ; f61 = sorties vers les drivers seulement |
+| 60, 61, 62 | Tableaux vérifiés ; corrigés : B1 / B2 « aux. 23-24 », ligne SM 1223 du f61 |
+| 61, 62, 63 | Réserves : accolade + « Réserve » |
+| tous | Titres et descriptions revus ; textes périmés corrigés (f03 PELV X12.11 et X13, f31 / f32 n° de folio des freins, f50 bornes X50, f80 liste des câbles) |
+| 63 | Mise en forme (W8, réserve) |
+| 70, 71 | f70 centrage ; f71 potentiels nommés justes |
+
+### Où on en est (16/11, v28)
+- Numérotation : f10-f13, f20, f21, f30 + 6001 ; restent f31, f32, f40-f42, f50, f60-f63.
+- À confirmer : bloc noir en stock et place sur R3 ; implantation à mettre à jour (XR2 sur R2, X13 sur R4, X21.14 sur R3).
+
+## Version précédente : v27 (13/11/2026)
 `schema/generes/release/TTK_2026-11-13_v27.xrs` : 25 folios, 181 symboles, 647 fils, 89 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, contrôle des numéros 0 problème. v26 réenregistrée par Julien (copie `schema/recus/2026-11-13_v26_ouverte_WinRelais.xrs`) : H2 descendu à 6800 et X12.22 à 10000 au f12, nouvelles images des blocs au f21 ; repris.
 
 ### Fait en v27

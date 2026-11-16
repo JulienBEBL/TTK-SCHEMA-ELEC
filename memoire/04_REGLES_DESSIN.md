@@ -165,3 +165,11 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Placement : sur les folios numérotés, le numéro va sur la plus longue partie du fil libre de tout fil croisé et de tout texte de symbole (`troncon_libre`).
 - **Contrôle** : `python outils/xrs_numeros.py <fichier.xrs> 10,11,12,13,20,21,30` (relit le fichier : un numéro = un potentiel, chaque tronçon numéroté, 0 V en unité 0, câbles PN). v27 : 0 problème.
 - Restent à numéroter : f31, f32 (ils affichent encore L1 / L2 / L3 pour 1141-1153 et 1161-1173), f40 à f42, f50, f60 à f63.
+
+## Réserves et revue des folios (16/11, v28)
+- E/S de réserve : plus de phrase « ... : réserve » ; un trait fin le long des broches libres, deux petits retours, et « Réserve » centré (fonction `reserve()`), du côté des fils. Les tableaux gardent la ligne « réserve ».
+- Titres et descriptions de tous les folios revus (tables `DESC_FOL` et `TITRES_FOL`, n° internes).
+- f63 : câble W8 avec repère et composition à droite (plus sur les fils), accolade de réserve AI1 à AI7.
+- f70 : textes des cases centrés à la chasse Arial (`largeur`).
+- f71 : potentiels nommés justes (24VELEC, 24VSEC, 24 V capteurs) ; l'ancien libellé « +24 V sorties automate » sur X50.11 était faux.
+- Numérotation : L+ capteurs **6001** (source K1 L+ capt).
