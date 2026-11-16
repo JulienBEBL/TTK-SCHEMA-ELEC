@@ -32,16 +32,22 @@ pb = []
 
 
 def fil_du_numero(n):
+    """Fil le plus proche du numéro, dans son sens (16/11 : entre deux bornes rapprochées, le plus proche, pas le 1er)."""
     vert = _ang.get((n["folio"], n["x"], n["y"], n["texte"])) == 90
+    best, d_best = None, 801
     for w in m["fils"]:
         if w["folio"] != n["folio"]:
             continue
         x1, x2, y1, y2 = min(w["x1"], w["x2"]), max(w["x1"], w["x2"]), min(w["y1"], w["y2"]), max(w["y1"], w["y2"])
-        if vert and x1 == x2 == n["x"] and y1 - 800 <= n["y"] <= y2 + 800:
-            return w
-        if not vert and y1 == y2 == n["y"] and x1 - 800 <= n["x"] <= x2 + 800:
-            return w
-    return None
+        if vert and x1 == x2 == n["x"]:
+            d = max(y1 - n["y"], n["y"] - y2, 0)
+        elif not vert and y1 == y2 == n["y"]:
+            d = max(x1 - n["x"], n["x"] - x2, 0)
+        else:
+            continue
+        if d < d_best:
+            best, d_best = w, d
+    return best
 
 
 par_num, par_pot, troncon_ok = defaultdict(set), defaultdict(set), set()

@@ -8,11 +8,11 @@ Le schéma n'est pas dessiné à la main : il est **généré par un script Pyth
 ## État actuel (16/11/2026)
 | | |
 |---|---|
-| Dernière version | **v29**, `schema/generes/release/TTK_2026-11-16_v29.xrs` |
-| Contenu | 25 folios, 182 symboles, 654 fils, 87 renvois |
+| Dernière version | **v30**, `schema/generes/release/TTK_2026-11-16_v30.xrs` |
+| Contenu | 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros de fil |
 | Contrôles | 0 erreur au verifier (28 attentions connues), 0 chevauchement, numéros 0 problème |
-| Revue complète | `docs/REVUE_COMPLETE_v29.md` : cohérent électriquement ; **pas encore prêt pour le stagiaire** (numérotation de 10 folios, références de nomenclature, références croisées WinRelais) |
-| Numérotation des fils | faite : f10 à f13, f20, f21, f30 ; reste : f31, f32, f40 à f42, f50, f60 à f63 |
+| Revue complète | `docs/REVUE_COMPLETE_v29.md` : cohérent électriquement ; **pas encore prêt pour le stagiaire** (reste : références de nomenclature, références croisées WinRelais ; numérotation faite en v30) |
+| Numérotation des fils | **faite sur tous les folios** (f10 à f63, v30) ; contrôle `outils/xrs_numeros.py` : 0 problème |
 | Implantation de l'armoire | v10 (draw.io), `implantation/release/` ; à mettre à jour : `docs/A_FAIRE_IMPLANTATION_2026-11-16.md` |
 
 Détail de la version, points ouverts et suite : `memoire/06_EN_COURS.md` et `memoire/05_POINTS_OUVERTS.md`.

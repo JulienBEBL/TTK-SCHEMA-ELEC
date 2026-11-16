@@ -85,9 +85,7 @@ Aucune erreur de connexion trouvée.
 ## 6. Prêt pour le stagiaire ?
 **Pas encore.** Le schéma est cohérent électriquement : aucune erreur de connexion, tous les contrôles à 0. Il manque :
 
-1. **Numérotation des fils** :
-   - faite sur f10 à f13, f20, f21, f30 ;
-   - **manque f31, f32, f40 à f42, f50, f60 à f63** : un câbleur en a besoin partout.
+1. **Numérotation des fils** : **faite en v30 sur tous les folios** (16/11).
 2. **Nomenclature** : références manquantes.
    - B3 à B6 (fins de course), B7 (sonde) et câble W8.
    - Voyants H2, H3, H4.

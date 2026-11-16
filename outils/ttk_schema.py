@@ -177,7 +177,8 @@ POLES = [("1", "2"), ("3", "4"), ("5", "6"), ("1/L1", "2/T1"), ("3/L2", "4/T2"),
 # 0 = 0 V). Un potentiel garde son numéro à travers les bornes et les blocs de distribution, et d'un folio à l'autre.
 # Le PE garde « PE » (repéré par sa couleur). Les folios non encore numérotés gardent L1 / L2 / L3 / N.
 UNITE = {"L1": 1, "L2": 2, "L3": 3, "N": 4}
-NUMEROTES = {"10", "12", "13", "14", "32", "31", "54"}   # folios internes (affichés 10 à 13, 20, 21, 30)
+NUMEROTES = {"10", "12", "13", "14", "32", "31", "54", "20", "21", "40", "41", "42", "60", "50", "51", "52", "53"}
+# folios internes : tous les folios dessinés (affichés 10 à 13, 20, 21, 30 le 13/11 ; 31, 32, 40 à 42, 50, 60 à 63 le 16/11)
 # (folio interne, repère interne, broches de sortie [(broche, rang, unité imposée ou None = phase)], dizaine)
 _S = lambda *pins: [(p_, 0, None) if isinstance(p_, str) else p_ for p_ in pins]
 SOURCES_NUM = [
@@ -207,6 +208,27 @@ SOURCES_NUM = [
     # sorties CPU (f61) vers les drivers, numérotées dès maintenant pour le f20 (commande : un numéro par fil)
     ("50", "K501", [("L+ capt", 0, 1)], 0),            # 24 V capteurs (L+ capt CPU -> -X21.14) : 6001
     ("51", "K501", [("Q0.0", 0, 1), ("Q0.1", 0, 2), ("Q0.2", 0, 3), ("Q0.3", 0, 4), ("Q0.4", 0, 5), ("Q0.5", 0, 6)], 0),
+    # 16/11 : f31 / f32 (variateurs) : U1 / U2 -> moteur U V W (01-03), résistance de freinage +R / -R (11 / 12),
+    # chaîne STO X6:3 -> U2 X6:1 (21) et X6:4 -> U2 X6:2 (20, 0 V), sonde TF X10:1 / X10:2 (31 / 32)
+    ("20", "T201", [("X2:U", 0, 1), ("X2:V", 0, 2), ("X2:W", 0, 3)], 0), ("20", "T201", [("X2:+R", 0, 1), ("X2:-R", 0, 2)], 10),
+    ("20", "T201", [("X6:3", 0, 1), ("X6:4", 0, 0)], 20), ("20", "T201", [("X10:1", 0, 1), ("X10:2", 0, 2)], 30),
+    ("21", "T211", [("X2:U", 0, 1), ("X2:V", 0, 2), ("X2:W", 0, 3)], 0), ("21", "T211", [("X2:+R", 0, 1), ("X2:-R", 0, 2)], 10),
+    ("21", "T211", [("X10:1", 0, 1), ("X10:2", 0, 2)], 30),
+    # f40 : KA1 (sorties de gauche à droite, rangée du haut puis du bas ; Z1 = entrée I1.5, voir f60), FA1, puis la boucle de retour Y1 -> Y2
+    ("40", "K401", [("S11", 0, 1), ("S21", 0, 2), ("Y1", 0, 3), ("14", 0, 4), ("24", 0, 5), ("34", 0, 6)], 0),
+    ("40", "F401", [("1", 0, 1)], 10), ("40", "KM1", [("22", 0, 1)], 20), ("40", "KM2", [("22", 0, 1)], 30),
+    ("40", "Q421", [("22", 0, 1)], 40), ("40", "Q422", [("22", 0, 1)], 50), ("40", "Q423", [("22", 0, 1)], 60),
+    ("40", "S414", [("4", 0, 1)], 70),
+    # f41 : AU / capot, voie 1 puis voie 2 : S3 (retour vers S12 / S22), S1, S2
+    ("41", "S413", [("4", 0, 1), ("8", 0, 2)], 0), ("41", "S411", [("2", 0, 1), ("22", 0, 2)], 10),
+    ("41", "S412", [("2", 0, 1), ("22", 0, 2)], 20),
+    # f42 : S3 vers les bobines (16 -> KA2, 2 -> KM1 / KM2) et vers le STO (6 -> U1 X6:1)
+    ("42", "S413", [("16", 0, 1), ("2", 0, 2), ("6", 0, 3)], 0),
+    # f60 : fils d'entrée de la CPU = n° de l'entrée (comme les sorties) : I0.n -> 601(n+1), I1.n -> 602(n+1),
+    # y compris I0.2 / I0.3 (B1 / B2, f41) et I1.5 (Z1 de KA1, f40) : 11 appareils sources, trop pour une dizaine chacun
+    ("50", "K501", [(f"I0.{n}", 0, n + 1) for n in range(8)], 10), ("50", "K501", [(f"I1.{n}", 0, n + 1) for n in range(6)], 20),
+    # f62 : SM 1223 Q8.n -> 620(n+1) ; f63 : thermocouple B7 + / - -> 6301 / 6302
+    ("52", "K521", [(f"Q8.{n}", 0, n + 1) for n in range(8)], 0), ("53", "B531", [("1", 0, 1), ("2", 0, 2)], 0),
 ]
 # câbles PROFINET (13/11, Julien) : repère de câble PN1 à PN4, distinct des numéros de fil
 CABLES_PN = {("K541", "P1"): "PN1", ("K541", "P2"): "PN2", ("K541", "P3"): "PN3", ("K541", "P4"): "PN4"}
@@ -233,27 +255,36 @@ def numeros_potentiels(phase):
                 for q_ in pts[1:]:
                     pere[r(pts[0])] = r(q_)
     num = {}
+    cables = {g._find(("P", w[0], w[i], w[i + 1])) for w in g.wires for i in (1, 3)}
     for fol, rep_, pins_, dizaine in SOURCES_NUM:
-        s_ = next((x for x in g.symbols if x.rep == rep_ and x.folio == F[fol]), None)
-        if s_ is None:
+        insts = [x for x in g.symbols if x.rep == rep_ and x.folio == F[fol]]
+        if not insts:
             NUM_ALERTES.append(f"numérotation : {rep_} absent du folio {NUMFOL.get(fol, fol)}")
             continue
         for nom, k, unite in pins_:
-            pts = s_.pins.get(nom, [])
-            if len(pts) <= k:
+            # 16/11 : un appareil peut être dessiné en plusieurs morceaux sur le folio (S1 voie 1 / voie 2)
+            ss_ = [x for x in insts if len(x.pins.get(nom, [])) > k]
+            if not ss_:
                 NUM_ALERTES.append(f"numérotation : broche {rep_}:{nom}/{k} absente")
                 continue
-            g_ = g._find(("P", s_.folio) + (pts[k][0], pts[k][1]))
-            u = unite if unite is not None else UNITE.get(phase.get(g_))
-            if u is None:
-                continue                      # broche non câblée
-            n_ = f"{NUMFOL.get(fol, fol)}{dizaine + u:02d}"
-            if num.setdefault(r(g_), n_) != n_:
-                NUM_ALERTES.append(f"numérotation : {rep_}:{nom} -> {n_}, potentiel déjà numéroté {num[r(g_)]}")
+            for s_ in ss_:
+                pts = s_.pins[nom]
+                g_ = g._find(("P", s_.folio) + (pts[k][0], pts[k][1]))
+                if g_ not in cables:
+                    continue                  # broche non câblée
+                u = unite if unite is not None else UNITE.get(phase.get(g_))
+                if u is None:
+                    continue
+                n_ = f"{NUMFOL.get(fol, fol)}{dizaine + u:02d}"
+                if num.setdefault(r(g_), n_) != n_:
+                    NUM_ALERTES.append(f"numérotation : {rep_}:{nom} -> {n_}, potentiel déjà numéroté {num[r(g_)]}")
     return num, (lambda f_, x, y: r(g._find(("P", f_, x, y))))
 
 
-def troncon_libre(f_, vertical, pos, lo, hi):
+NOUVEAUX_NUM = {"20", "21", "40", "41", "42", "60", "50", "51", "52", "53"}   # folios internes numérotés le 16/11
+
+
+def troncon_libre(f_, vertical, pos, lo, hi, renv=False, tous=False):
     """Plus longue partie [lo, hi] d'un fil où son numéro (bande de 300 à droite / sous le fil, comme le relit
     xrs_chevauchements) ne touche ni un fil perpendiculaire ni un texte de symbole (13/11)."""
     bloc = []
@@ -273,10 +304,22 @@ def troncon_libre(f_, vertical, pos, lo, hi):
                 bloc.append((y1 - 100, y2 + 100))
             if not vertical and y1 < pos + 300 and y2 > pos:
                 bloc.append((x1 - 100, x2 + 100))
+    if renv:                                  # 16/11 : flèches et textes des renvois
+        for fa, pa, fb, pb, _, _ in g.renvois:
+            for fr, pt in ((fa, pa), (fb, pb)):
+                if fr != f_:
+                    continue
+                x1, y1, x2, y2 = g.renvoi_box(fr, pt)
+                if vertical and x1 < pos + 300 and x2 > pos:
+                    bloc.append((y1 - 100, y2 + 100))
+                if not vertical and y1 < pos + 300 and y2 > pos:
+                    bloc.append((x1 - 100, x2 + 100))
     segs = [(lo, hi)]
     for a, b in bloc:
         segs = [z for c, d in segs for z in ((c, d),) if b <= c or a >= d] + \
                [z for c, d in segs if not (b <= c or a >= d) for z in ((c, a), (b, d)) if z[1] > z[0]]
+    if tous:
+        return sorted(segs)
     return max(segs, key=lambda z: z[1] - z[0]) if segs else (lo, hi)
 
 
@@ -320,6 +363,8 @@ def nommer_phases():
     puissance = {F[n_] for n_ in F if "10" <= n_ <= "32"}       # PE nommé sur les folios de puissance
     num_pot, racine_pot = numeros_potentiels(phase)
     numerotes = {F[n_] for n_ in NUMEROTES}
+    nouveaux = {F[n_] for n_ in NOUVEAUX_NUM}
+    from xrs_gen import largeur
     fils = [w for w in g.wires if w[5] in ("L", "N", "PN") or (w[5] == "PE" and w[0] in puissance) or w[0] in numerotes]
     pn = {}
     for s_ in g.symbols:
@@ -366,15 +411,29 @@ def nommer_phases():
         if yb is not None and lignes[yb] >= 6000:
             w = min((w for w in ws if w[2] == w[4] == yb), key=lambda w_: min(w_[1], w_[3]))
             lo, hi = min(w[1], w[3]), max(w[1], w[3])
+            if f_ in nouveaux:                # 16/11 : 1er morceau libre du bus entier (renvoi, descentes)
+                lo = min(min(w_[1], w_[3]) for w_ in ws if w_[2] == w_[4] == yb)
+                hi = max(max(w_[1], w_[3]) for w_ in ws if w_[2] == w_[4] == yb)
+                lg = largeur(ph, 300) + 400
+                lo, hi = next(((a, b) for a, b in troncon_libre(f_, False, yb, lo, hi, True, True) if b - a >= lg), (lo, hi))
+                poses.append([f_, yb, lo, hi, ph, 0, lo + 200 + lg // 2])
+                continue
             poses.append([f_, yb, lo, hi, ph, 0, lo + 800])
             continue
         w = max(ws, key=lambda w_: abs(w_[3] - w_[1]) + abs(w_[4] - w_[2]))
+        if f_ in nouveaux:                    # 16/11 : le fil du tronçon qui a le plus de place libre
+            def libre(w_):
+                v_ = w_[1] == w_[3]
+                a, b = (min(w_[2], w_[4]), max(w_[2], w_[4])) if v_ else (min(w_[1], w_[3]), max(w_[1], w_[3]))
+                c, d = troncon_libre(f_, v_, w_[1] if v_ else w_[2], a, b, True)
+                return d - c
+            w = max((w_ for w_ in ws if w_[1:3] != w_[3:5]), key=libre, default=w)
         if w[1:3] == w[3:5]:
             continue
         if w[1] == w[3]:
             lo, hi = min(w[2], w[4]), max(w[2], w[4])
             if f_ in numerotes:
-                lo, hi = troncon_libre(f_, True, w[1], lo, hi)
+                lo, hi = troncon_libre(f_, True, w[1], lo, hi, f_ in nouveaux)
             # le numéro de brin d'un câble s'écrit juste au-dessus du croisement (f20, 30/10) : on reste à l'écart
             for c_ in g.cables:
                 if c_[0] == f_ and w[1] in c_[7] and lo < c_[3] < hi:
@@ -383,7 +442,7 @@ def nommer_phases():
         else:
             lo, hi = min(w[1], w[3]), max(w[1], w[3])
             if f_ in numerotes:
-                lo, hi = troncon_libre(f_, False, w[2], lo, hi)
+                lo, hi = troncon_libre(f_, False, w[2], lo, hi, f_ in nouveaux)
             poses.append([f_, w[2], lo, hi, ph, 0, (lo + hi) // 2])
     # alignement (29/10) : fils parallèles voisins (<= 1200) qui se recouvrent sur au moins 400 -> même ligne
     for ang in (0, 90):
@@ -396,7 +455,14 @@ def nommer_phases():
                     break
             else:
                 groupes.append([p])
-        for c in groupes:
+        groupes2 = []
+        for c in groupes:                     # 16/11 : groupe sans place commune -> chaque numéro sur son fil
+            demi = max(len(q[4]) for q in c) * 300 * 0.55 / 2
+            if len(c) > 1 and c[0][0] in nouveaux and max(q[2] for q in c) + 200 + demi > min(q[3] for q in c) - 200 - demi:
+                groupes2 += [[q] for q in c]
+            else:
+                groupes2.append(c)
+        for c in groupes2:
             lo, hi = max(q[2] for q in c) + 200, min(q[3] for q in c) - 200
             voulu = sum(q[6] for q in c) // len(c)
             demi = max(len(q[4]) for q in c) * 300 * 0.55 / 2     # texte centré (l'ancre est au début du texte)
@@ -471,9 +537,13 @@ BORNES_PE = {"X101.VJ", "X701.17", "X701.25", "X711.23"}
 BORNE_PE = os.path.join(ICI, "librairie", "CUSTOM", "Borne_4mm_terre_vert-jaune.xsy")
 
 
-def borne(rep, f, x, y, fpos=(100, -250)):
+def borne(rep, f, x, y, fpos=None):
     """Borne 4 mm verticale : broche 1 en (x, y), broche 2 en (x, y + 400). fpos = repère (à droite par défaut).
-    Borne de terre vert/jaune pour les repères de BORNES_PE (même géométrie)."""
+    Borne de terre vert/jaune pour les repères de BORNES_PE (même géométrie).
+    16/11 : sur les folios de sécurité (40 à 42), repère à côté du corps de la borne, pour laisser le fil libre
+    au numéro de fil (bornes à 400 l'une de l'autre) ; idem au f62 (interne 52)."""
+    if fpos is None:
+        fpos = (150, 125) if f in ("40", "41", "42", "52") else (100, -250)
     bornier = rep.split(".")[0]
     des = DES_BORNE.get(rep) or REP.get(rep, {}).get("des") or REP.get(bornier, {}).get("des", "")
     pe = rep in BORNES_PE
@@ -879,13 +949,14 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     # 3-4 au f32 ; V/J vers le bornier de terre -XPE1 et la boîte de dérivation côté machine
     g.cable(F[f], 0, 0, YC, "W202", "5G1,5 blindé", f"Freins M1 + M2 (2-3), 400 V CA -> {qf}", [M["2"].x, M["3"].x], ovale=True,
             compo_dx=-1700, nums=(1, 2) if f == "20" else (3, 4))
-    VAR[(f, "24")] = W(f, [T["X5:24V"], (7600, 4800)], "24")
+    x5_ = T["X5:24V"].x   # 16/11 : renvoi décalé de 400 à gauche et remonté (place du numéro de fil)
+    VAR[(f, "24")] = W(f, [T["X5:24V"], (x5_, 4800), (x5_ - 400, 4800), (x5_ - 400, 3600)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (8000, 3200)], "0V")
     # X6 confirmé par Julien (05/11, notice SEW) : X6.1 / X6.3 = F_STO_P (+24 V), X6.2 / X6.4 = F_STO_M (0 V),
     # X6.5 VO24_STO / X6.6 GND (alimentation interne, seulement si le réseau est présent) : non utilisés
     # STO en chaîne (Julien 06/11, validé SEW) : KA1 (AUTO-B) -> -U1 X6.1, 0 V -> -U1 X6.2 ;
     # -U1 X6.3 / X6.4 repartent vers -U2 X6.1 / X6.2 ; -U2 X6.3 / X6.4 libres (fin de chaîne)
-    VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4800)], "24")
+    VAR[(f, "STO1")] = W(f, [T["X6:1"], (8800, 4400)], "24")   # 16/11 : idem
     if f == "20":
         W(f, [T["X6:2"], (9200, 4800), (10400, 4800)], "0V")
         VAR[(f, "STO0")] = W(f, [(10400, 4800), (10400, 4000)], "0V")
@@ -1069,7 +1140,7 @@ for voie, x, s1, s2, cap, capxsy, bornes, src, ret, byp, porte in (
     # AU armoire -S1 sur la porte (02/11) : une borne avant et une après son contact ; le reste descend de 1200
     D = 1600
     da = borne(porte[0], f, x, 4400)
-    top = stub(f, (x, 4000), da["1"], "24")
+    top = stub(f, (x, 3600), da["1"], "24")   # 16/11 : 4000 -> 3600 (place du numéro)
     if voie == 1:
         c1 = maitre(au, s1, f, x, 5200, prefix="S", ref=("SCHNEIDER ELECTRIC", "", "XB5AS8442 + ZBE102 + ZBE101"))   # AU : réf. du 03/11
         c2 = maitre(au, s2, f, x, 8000 + D, prefix="S", ref=("SCHNEIDER ELECTRIC", "", "XB5AS8442 + ZBE102 + ZBE101"))
@@ -1146,14 +1217,14 @@ renvoi("40", O40["14"], f, s1, "24")
 texte(f, 4800, 3000, "Sortie 1 (13-14) : freins + 48 V", 220, 0, 1)
 # --- sortie 2 : Auto-A -> -KM1 / -KM2 (pas d'ordre automate, décision du 27/10, option A)
 t1, t2 = chaine_s413(15200, "X711.7", "X711.8", 1, "AUTO-A : commande -KM1 / -KM2")
-s2 = stub(f, (15200, 4000), t1["1"], "24")
+s2 = stub(f, (15200, 3600), t1["1"], "24")   # 16/11 : 4000 -> 3600 (place du numéro)
 W(f, [t2["2"], COIL["KM1"]["A1"]], "24")
 W(f, [(15200, 12000), (18400, 12000), COIL["KM2"]["A1"]], "24")
 renvoi("40", O40["24"], f, s2, "24")
 texte(f, 15600, 3000, "Sortie 2 (23-24) : -KM1 / -KM2", 220, 0, 1)
 # --- sortie 3 : Auto-B -> STO des 2 variateurs (validé SEW)
 t1, t2 = chaine_s413(21600, "X711.9", "X711.10", 5, "AUTO-B : autorisation STO")
-s3 = stub(f, (21600, 4000), t1["1"], "24")
+s3 = stub(f, (21600, 3600), t1["1"], "24")   # 16/11 : idem
 W(f, [t2["2"], (21600, 10400)], "24")
 renvoi("40", O40["34"], f, s3, "24")
 renvoi(f, (21600, 10400), "20", VAR[("20", "STO1")], "24")
@@ -1228,7 +1299,7 @@ for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amo
                                  ("I1.3", "KM2", "KM", 2, "Retour contacteur amont variateur 2 (aux NO)"),
                                  ("I1.4", "Q423", "Q", 1, "Retour contacteur 48 V (aux NO)")):
     entree(inp, row, [("esclave", rep, nom, des, ("13", "14"))])
-I50 = {inp: stub(f, (k501e[inp].x, 11200), k501e[inp], "24") for inp in ("I0.2", "I0.3")}
+I50 = {inp: stub(f, (k501e[inp].x, 10800), k501e[inp], "24") for inp in ("I0.2", "I0.3")}   # 16/11 : 11200 -> 10800
 # I1.5 : renvoi à droite (au-dessus, il chevaucherait le repère de la borne de I0.1)
 I50["I1.5"] = W(f, [k501e["I1.5"], (k501e["I1.5"].x, 11600), (k501e["I1.5"].x + 1600, 11600)], "24")
 renvoi("40", Z1_40, f, I50["I1.5"], "24")

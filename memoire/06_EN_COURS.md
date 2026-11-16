@@ -1,6 +1,24 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v29 (16/11/2026)
+## Version actuelle : v30 (16/11/2026)
+`schema/generes/release/TTK_2026-11-16_v30.xrs` : 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème (tous les folios). v29 non réenregistrée.
+
+### Fait en v30
+| Folio | Changement |
+|---|---|
+| 31, 32, 40-42, 50, 60-63 | Numérotation des fils (détail : `04_REGLES_DESSIN.md`, « Numérotation f31... ») : tous les folios sont numérotés |
+| 60 | Fils d'entrée de la CPU = n° de l'entrée (6011-6018, 6021-6026) : **à confirmer par Julien** |
+| 31, 32, 41, 42, 60 | Bouts de fil de 400 allongés (place des numéros) ; f41 descendu de 400 |
+| 40-42, 62 | Repère des bornes à côté de la borne |
+
+### Où on en est (16/11, v30)
+- Suite proposée :
+  1. Références de nomenclature manquantes (à fournir par Julien : B3-B6, B7, W8, H2-H4, bornes, butées, PTFIX, câbles).
+  2. Noms de broche 2L+ / 2M de la CPU (accord de Julien : symbole de sa librairie).
+  3. Côté WinRelais (Julien) : références croisées, f80 / f90, relecture à l'écran.
+- Implantation : brief `docs/A_FAIRE_IMPLANTATION_2026-11-16.md` (inchangé en v30 : aucune borne ajoutée).
+
+## Version précédente : v29 (16/11/2026)
 `schema/generes/release/TTK_2026-11-16_v29.xrs` : 25 folios, 182 symboles, 654 fils, 87 renvois ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v28 réouverte par Julien sans retouche (copie `schema/recus/2026-11-16_v28_ouverte_WinRelais.xrs`).
 
 ### Fait en v29

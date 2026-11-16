@@ -72,7 +72,7 @@ for r in m["renvois"]:
         else: b = (x - RENVOI_W, y, x + RENVOI_W, y + RENVOI_L)
         box[k].append((f"renvoi {t}@{x},{y}", b))
 ov = lambda a, b: a[0] < b[2] and b[0] < a[2] and a[1] < b[3] and b[1] < a[3]
-only = sys.argv[2:]
+only = [a for a in sys.argv[2:] if a != "-v"]
 tot = 0
 for k, lst in box.items():
     if only and num[k] not in only:
@@ -83,7 +83,7 @@ for k, lst in box.items():
     for a in range(len(lst)):
         for b in range(a + 1, len(lst)):
             if ov(lst[a][1], lst[b][1]):
-                out.append(f"  {lst[a][0]} x {lst[b][0]}")
+                out.append(f"  {lst[a][0]} x {lst[b][0]}" + (f" {lst[a][1]} {lst[b][1]}" if "-v" in sys.argv else ""))
     # textes traversés par un fil
     for n, b in lst:
         if n.startswith(("renvoi",)):

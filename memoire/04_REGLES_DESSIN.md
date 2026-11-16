@@ -164,7 +164,7 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Les 2 bornes +V (et -V) d'une alimentation T1 à T3 sont reliées en interne : même potentiel, même numéro.
 - Placement : sur les folios numérotés, le numéro va sur la plus longue partie du fil libre de tout fil croisé et de tout texte de symbole (`troncon_libre`).
 - **Contrôle** : `python outils/xrs_numeros.py <fichier.xrs> 10,11,12,13,20,21,30` (relit le fichier : un numéro = un potentiel, chaque tronçon numéroté, 0 V en unité 0, câbles PN). v27 : 0 problème.
-- Restent à numéroter : f31, f32 (ils affichent encore L1 / L2 / L3 pour 1141-1153 et 1161-1173), f40 à f42, f50, f60 à f63.
+- Restaient à numéroter : f31, f32, f40 à f42, f50, f60 à f63 (faits en v30, 16/11).
 
 ## Réserves et revue des folios (16/11, v28)
 - E/S de réserve : plus de phrase « ... : réserve » ; un trait fin le long des broches libres, deux petits retours, et « Réserve » centré (fonction `reserve()`), du côté des fils. Les tableaux gardent la ligne « réserve ».
@@ -176,3 +176,21 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 
 ## f70 agrandi (16/11, v29)
 - Cases de 820 x 1000, pas 1000, butées 400, textes 250 (signal) / 200 (repère, groupe), 7 rails sur tout le folio (x 2800 à 27100, y 1300 à 18900).
+
+## Numérotation f31, f32, f40 à f42, f50, f60 à f63 (16/11, v30) : tous les folios sont numérotés
+| Folio | Numéros |
+|---|---|
+| 31 / 32 | U1 / U2 : moteur U V W **3101-3103** / **3201-3203** ; résistance de freinage +R / -R 3111 / 3112 (3211 / 3212) ; chaîne STO U1 X6:3 -> U2 X6:1 **3121**, X6:4 -> U2 X6:2 **3120** (0 V) ; sonde TF X10:1 / X10:2 3131 / 3132 (3231 / 3232). Frein : 1161-1173 (nés au f11). |
+| 40 | KA1 : S11 **4001**, S21 4002, Y1 4003, 14 4004, 24 4005, 34 4006 ; FA1 -> KA1 13 / 23 / 33 **4011** ; boucle de retour : KM1 22 4021, KM2 22 4031, KF1 22 4041, KF2 22 4051, KA2 22 4061, S4 4 4071 (-> Y2) |
+| 41 | voie 1 / voie 2 : S3 4 / 8 -> S12 / S22 **4101 / 4102** ; S1 2 / 22 4111 / 4112 ; S2 2 / 22 4121 / 4122 |
+| 42 | S3 16 -> KA2 A1 **4201** ; S3 2 -> KM1 / KM2 A1 4202 ; S3 6 -> STO U1 X6:1 4203 |
+| 60 | **fils d'entrée = n° de l'entrée** : I0.n -> 601(n+1) (I0.0 6011 ... I0.7 6018), I1.n -> 602(n+1) (I1.0 6021 ... I1.5 6026), y compris I0.2 / I0.3 (B1 / B2, f41) et I1.5 (Z1 de KA1, f40). L+ capt 6001. |
+| 61 | Q0.0-Q0.5 6101-6106 (inchangé) |
+| 62 | SM 1223 Q8.n -> 620(n+1) : Q8.0 **6201** (H1 rouge), Q8.1 6202, Q8.2 6203, Q8.4 6205 (H4) |
+| 63 | thermocouple B7 + / - -> K3 AI0 : **6301 / 6302** |
+| 50 | potentiels nés ailleurs seulement (1241, 1230, PN4) |
+- Écart à la règle « dizaine = appareil » au f60 : 11 appareils sources (trop pour 10 dizaines). Choix de l'assistant (16/11), à confirmer par Julien : numéro de l'entrée, comme les sorties.
+- Script : `NUMEROTES` = tous les folios ; `SOURCES_NUM` complétée ; une source peut être dessinée en plusieurs morceaux (S1 voie 1 / voie 2) ; seules les broches câblées sont numérotées.
+- Placement sur les folios numérotés le 16/11 (`NOUVEAUX_NUM` ; f10 à f30 inchangés) : fil du tronçon le plus dégagé, renvois évités, bus numéroté sur son 1er morceau libre, numéros d'un groupe sans place commune posés chacun sur son fil.
+- Géométrie : repère des bornes à côté du corps de la borne aux f40 à f42 et f62 (fil libre pour le numéro) ; bouts de 400 allongés à 800 (renvoi 24 V X5 de U1 / U2 décalé de 400 à gauche, renvois du f41 en haut, f42 sorties 2 et 3, f60 I0.2 / I0.3) ; contenu du f41 descendu de 400 (centrage).
+- Contrôle `xrs_numeros.py` : rattache un numéro au fil le plus proche (deux bornes à 400 l'une de l'autre).
