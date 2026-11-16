@@ -8,7 +8,7 @@ Le schéma n'est pas dessiné à la main : il est **généré par un script Pyth
 ## État actuel (16/11/2026)
 | | |
 |---|---|
-| Dernière version | **v30**, `schema/generes/release/TTK_2026-11-16_v30.xrs` |
+| Dernière version | **v31**, `schema/generes/release/TTK_2026-11-16_v31.xrs` |
 | Contenu | 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros de fil |
 | Contrôles | 0 erreur au verifier (28 attentions connues), 0 chevauchement, numéros 0 problème |
 | Revue complète | `docs/REVUE_COMPLETE_v29.md` : cohérent électriquement ; **pas encore prêt pour le stagiaire** (reste : références de nomenclature, références croisées WinRelais ; numérotation faite en v30) |

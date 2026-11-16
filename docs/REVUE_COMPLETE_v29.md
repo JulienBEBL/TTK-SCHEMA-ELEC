@@ -96,6 +96,6 @@ Aucune erreur de connexion trouvée.
    - lancer les références croisées automatiques (KM1, KM2, KF1, KF2, KA2, S1 à S3, K1, K2 apparaissent sur plusieurs folios) ;
    - générer f80 et f90 ;
    - relire tous les folios à l'écran.
-4. **Nom de broche** 3L+ / 3M à corriger en 2L+ / 2M (§ 1).
+4. **Nom de broche** 3L+ / 3M : **corrigé en 2L+ / 2M en v31** (16/11) ; SM 1223 à vérifier.
 5. **Implantation** à mettre à jour : XR2, X13, X21.14 (`docs/A_FAIRE_IMPLANTATION_2026-11-16.md`).
 6. Les inconnus du § 3 ne bloquent pas le câblage, sauf les n° 1 (calibre QF2 / QF3) et 2 (bornes X10 de la sonde TF), à fixer avant la mise sous tension.

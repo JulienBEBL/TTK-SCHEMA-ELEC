@@ -128,5 +128,5 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - X80 : 1re rangée L+ / M = alimentation de la CPU (24VELEC / 0 V) ; 2e rangée « Sensor power » GND (= FE, masse châssis), L+ (= L+ capt), M (= M capt).
 - Sortie capteurs : 400 mA max, protégée court-circuit, L+ - 4 V min, **non isolée** (M capt = M CPU), fils 0,2-1,5 mm². C'est une sortie : ne jamais la relier à un 24 V extérieur. M capt seulement pour des capteurs 3 fils : libre ici (contacts secs).
 - Entrées X10 : 14, sink/source, commun 1M (2 broches) **au 0 V** (note ② Siemens) ; 6 mA (Ia.0-Ia.5), 4 mA (Ia.6-Ib.5). Charge de -X21.14 ≈ 64 mA (16 %).
-- Sorties X11 : transistor sourcing 0,5 A ; PTO 100 kHz Qa.0-Qa.3, 20 kHz Qa.4-Qb.1. **Alimentation des sorties nommée 2L+ / 2M en G2** : le symbole porte 3L+ / 3M (noms G1), à corriger dans le symbole CUSTOM (librairie de Julien), câblage juste.
+- Sorties X11 : transistor sourcing 0,5 A ; PTO 100 kHz Qa.0-Qa.3, 20 kHz Qa.4-Qb.1. **Alimentation des sorties nommée 2L+ / 2M en G2** : symbole CUSTOM corrigé en v31 (accord de Julien 16/11, librairie du PC + copie du dépôt).
 - Note ① Siemens (pont M - châssis) : **ne pas le faire**, la liaison 0 V - PE unique est X12.11 (PELV, mesure d'isolement).

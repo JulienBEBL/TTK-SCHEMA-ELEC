@@ -99,7 +99,7 @@ Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO,
 
 ## Revue complète v29 (16/11)
 Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§ 3 à 6). Nouveaux :
-- Nom des broches d'alimentation des sorties de la CPU : 2L+ / 2M en G2 (symbole : 3L+ / 3M) : à corriger dans le symbole CUSTOM avec l'accord de Julien.
+- Nom des broches d'alimentation des sorties de la CPU : corrigé en 2L+ / 2M (v31). Reste : SM 1223 (K2) porte encore 3L+ / 3M, nom G2 à vérifier dans la doc Siemens.
 - Réglage de QM1 / QM2 (GV2ME14 6-10 A) sur le courant d'entrée réel du MCX91A ; T3 240 W pour les 2 axes ; DC-1 du LC1D09BD sous 48 V.
 - Nomenclature : références manquantes B3-B6, B7, W8, H2-H4, bornes, butées, PTFIX, câbles. S1 / S2 / S3 ajoutées en v29.
 - PTFIX noir : en stock, place sur R3 OK (Julien 16/11).

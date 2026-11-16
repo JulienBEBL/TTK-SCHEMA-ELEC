@@ -119,6 +119,7 @@ class Gen:
         self.renvois = []
         self.textes = []
         self.dessins = []
+        self.tableaux_bruts = []  # (index folio, lignes) : tableaux WinRelais recopiés tels quels (un bloc ¤#Tableau·n¤ chacun)
         self.logos = []           # (index folio, x, y, largeur, hauteur, chemin absolu, ratio de l'image x 1000)
         self.cables = []
         self.cable_nums = {}      # index du câble -> numéros des brins (câble sur 2 folios)
@@ -634,6 +635,15 @@ class Gen:
             L.append("\u00a4#Logo\u00a4")
             for f, x, y, w, h, chemin, ratio in self.logos:
                 L.append(SEP.join(map(str, (x, y, w, h, chemin, 1, ratio, f, 0))) + SEP)
+        if self.tableaux_bruts:
+            L.append("\u00a4#NombreTableau\u00a4")
+            L.append(f"{len(self.tableaux_bruts)}{SEP}")
+            for n, (f, lignes) in enumerate(self.tableaux_bruts):
+                L.append(f"\u00a4#Tableau\u00b7{n}\u00a4")
+                for i, l in enumerate(lignes):
+                    if i and lignes[i - 1] == "\u00a4#TableauAutre\u00a4":
+                        l = str(f) + l[l.index(SEP):]   # 1er champ = index du folio
+                    L.append(l)
         if self.cables:
             L.append("\u00a4#NombreDefCable\u00a4")
             L.append(f"{len(self.cables)}{SEP}")

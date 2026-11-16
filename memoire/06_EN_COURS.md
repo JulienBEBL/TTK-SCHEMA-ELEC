@@ -1,6 +1,23 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v30 (16/11/2026)
+## Version actuelle : v31 (16/11/2026)
+`schema/generes/release/TTK_2026-11-16_v31.xrs` : 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v30 réenregistrée par Julien (copie `schema/recus/2026-11-16_v30_ouverte_WinRelais.xrs`).
+
+### Fait en v31
+| Folio | Changement |
+|---|---|
+| 80 | Tableau des câbles fait par Julien sous WinRelais, recopié par le script (`outils/blocs/`) |
+| 85 | Textes remontés (Julien) |
+| 60, 61 | Broches de la CPU 3L+ / 3M renommées **2L+ / 2M** (noms G2) dans le symbole CUSTOM et le script |
+
+### Où on en est (16/11, v31)
+- Suite :
+  1. Références de nomenclature manquantes (Julien : B3-B6, B7, H2-H4, bornes, butées, câbles W1-W13 / PN1-PN4).
+  2. Nom G2 des broches du SM 1223 (K2 porte 3L+ / 3M) : à vérifier.
+  3. Implantation sous WinArmoire (f85) : procédure expliquée à Julien le 16/11 (transfert WinRelais -> fichier .wali -> WinArmoire .wavu -> export image / PDF -> f85). Doublon possible avec l'implantation draw.io (`implantation/`).
+  4. Côté WinRelais (Julien) : références croisées, f90, relecture à l'écran.
+
+## Version précédente : v30 (16/11/2026)
 `schema/generes/release/TTK_2026-11-16_v30.xrs` : 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème (tous les folios). v29 non réenregistrée.
 
 ### Fait en v30

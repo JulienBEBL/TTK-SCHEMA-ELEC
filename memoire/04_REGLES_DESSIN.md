@@ -194,3 +194,8 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Placement sur les folios numérotés le 16/11 (`NOUVEAUX_NUM` ; f10 à f30 inchangés) : fil du tronçon le plus dégagé, renvois évités, bus numéroté sur son 1er morceau libre, numéros d'un groupe sans place commune posés chacun sur son fil.
 - Géométrie : repère des bornes à côté du corps de la borne aux f40 à f42 et f62 (fil libre pour le numéro) ; bouts de 400 allongés à 800 (renvoi 24 V X5 de U1 / U2 décalé de 400 à gauche, renvois du f41 en haut, f42 sorties 2 et 3, f60 I0.2 / I0.3) ; contenu du f41 descendu de 400 (centrage).
 - Contrôle `xrs_numeros.py` : rattache un numéro au fil le plus proche (deux bornes à 400 l'une de l'autre).
+
+## f80 et f85 (16/11, v31)
+- f80 : la liste des câbles est un **tableau WinRelais** fait par Julien (v30). Le script le recopie tel quel depuis `outils/blocs/f80_liste_cables_WinRelais.txt` (`g.tableaux_bruts`, section `¤#NombreTableau¤` avant `¤#NombreDefCable¤`, 1er champ de `¤#TableauAutre¤` = index du folio). Si les câbles changent : Julien régénère le tableau dans WinRelais, puis on recopie le bloc.
+- Le bloc contient 2 tableaux (Tableau 0 = en-tête seul, Tableau 1 = 7 câbles) : le 0 semble en trop (à confirmer par Julien).
+- f85 : textes remontés en (1600, 1700) / (1600, 2300) (Julien, v30).

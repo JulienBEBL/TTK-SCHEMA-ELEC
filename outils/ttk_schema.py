@@ -1321,8 +1321,8 @@ g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
 f = "51"
 k501s = maitre(C + "Siemens_6ES7214-1AH50-0XB0_CPU1214C_G2_sorties.xsy", "K501", f, 4800, 6400, ref=(),
                base="K501", compact=True, rep_size=300, fpos=(-400, -2000))     # repère près du module (Julien)
-W(f, [k501s["3L+"], (4800, 7200), (4000, 7200), (4000, RAIL24_Y)], "24")
-W(f, [k501s["3M"], (5600, 7600), (3600, 7600), (3600, RAIL0_Y)], "0V")
+W(f, [k501s["2L+"], (4800, 7200), (4000, 7200), (4000, RAIL24_Y)], "24")
+W(f, [k501s["2M"], (5600, 7600), (3600, 7600), (3600, RAIL0_Y)], "0V")
 Q51 = {q: W(f, [k501s[q], (k501s[q].x, 8000)], "24") for q in ("Q0.0", "Q0.1", "Q0.2", "Q0.3", "Q0.4", "Q0.5")}
 # 16/11 (Julien) : colonne -H1 et voyant -H4 dessinés au f62, avec la SM 1223 qui les commande
 # PUL des 2 drivers obligatoirement en 100 kHz (Julien, 30/10) : Q0.0 à Q0.3 seulement, Q0.4 et suivantes = 20 kHz
@@ -1437,6 +1437,12 @@ texte(f, 4200, 13300, "24VELEC", 220)
 texte(f, 10000, 13600, "Bornes -X50.11 à -X50.13 (armoire)", 220)
 
 # ======================================================================== 80 - 90 (générés par WinRelais)
+# f80 : tableaux de câbles générés par Julien sous WinRelais (v30, 16/11), recopiés tels quels
+with open(os.path.join(ICI, "blocs", "f80_liste_cables_WinRelais.txt"), encoding="utf-8") as fh_:
+    blocs_ = fh_.read().rstrip("\n").split("\n")
+debuts_ = [i for i, l in enumerate(blocs_) if l.startswith("\u00a4#Tableau\u00b7")] + [len(blocs_)]
+for i_, j_ in zip(debuts_, debuts_[1:]):
+    g.tableaux_bruts.append((F["80"], blocs_[i_ + 1:j_]))
 for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par WinRelais (carnet de câbles)",
                             "-W101, -W201 à -W203, -W211, -W213, -W321, -W322, -W531, -W11, -W12, -W13 ; PROFINET PN1 à PN4."]),
                     ("85", ["Implantation armoire +A1 : à réaliser sous WinArmoire",
@@ -1444,7 +1450,10 @@ for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par Wi
                     ("90", ["Nomenclature : à générer par WinRelais (Optimisation / Générer / Nomenclature),",
                             "seuls les symboles maîtres portent une référence fabricant."])):
     for i, l in enumerate(lignes):
-        texte(num, 3200, 4000 + 600 * i, l, 300)
+        if num == "85":   # textes remontés par Julien (v30)
+            texte(num, 1600, 1700 + 600 * i, l, 300)
+        else:
+            texte(num, 3200, 4000 + 600 * i, l, 300)
 
 # ======================================================================== spécification des liaisons
 MEMES = [
@@ -1485,9 +1494,9 @@ MEMES = [
     ["K501:L+ capt", "X314:E", "X701.3:1", "X701.7:1", "X701.9:1", "X701.11:1", "X701.13:1", "X701.15:1", "X711.5:1",
      "X711.11:1", "X711.17:1", "S411:13", "KM1:13", "KM2:13", "Q423:13"],
     ["X313:1", "K521:3L+", "F401:2"], ["F401:1", "K401:13", "K401:23", "K401:33"],
-    ["X311:1", "K401:A1", "K501:L+", "K501:3L+", "K521:L+",
+    ["X311:1", "K401:A1", "K501:L+", "K501:2L+", "K521:L+",
      "K531:L+", "K541:V1+", "X721.11:1", "T201:X5:24V", "T211:X5:24V", "X711.21:2"],
-    ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:3M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
+    ["X312:1", "K401:A2", "K501:M", "K501:1M", "K501:2M", "K521:M", "K521:3M", "K531:M", "K541:V1-",
      "KM1:A2", "KM2:A2", "Q421:A2", "Q422:A2", "Q423:A2", "X701.46:2", "X721.12:2", "X721.14:2",
      "T201:X5:GND", "T211:X5:GND", "T201:X6:2",
      "T322:PUL-", "T322:DIR-", "T322:ENA-", "T323:PUL-", "T323:DIR-", "T323:ENA-", "X711.22:2"],
