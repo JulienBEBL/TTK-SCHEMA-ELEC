@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Office / WinRelais : fichiers temporaires et sauvegardes
+~$*
+*.bak
+*.tmp
+*.~*
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Images collées par WinRelais dans le dossier release (les images du projet sont dans schema/images/)
+schema/generes/release/Image_Coll*.jpg

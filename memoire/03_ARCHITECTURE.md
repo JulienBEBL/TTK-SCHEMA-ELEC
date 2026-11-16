@@ -123,3 +123,10 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 ## 24 V capteurs et signalisation (16/11, v28)
 - L+ capt de la CPU → bloc PTFIX 6/12 **noir -X21.14** (4e bloc, R3, à côté de X21.11 / X21.12 / X21.13 ; place à confirmer par l'implantation) → 12 départs vers les 13 points d'entrée (KM1 13 et KM2 13 pontés). Choix de Julien 16/11 (reste limité à 400 mA et protégé par la CPU). Potentiel 6001.
 - Colonne H1 et voyant défaut H4 au f62 (avec la SM 1223) ; bornes renommées **X62.11-14** et **X62.21-22** (Julien 16/11, règle X + folio).
+
+## CPU 1214C G2 : alimentation, sortie capteurs, entrées, sorties (manuel Siemens S7-1200 G2 V1.0.1, 16/11)
+- X80 : 1re rangée L+ / M = alimentation de la CPU (24VELEC / 0 V) ; 2e rangée « Sensor power » GND (= FE, masse châssis), L+ (= L+ capt), M (= M capt).
+- Sortie capteurs : 400 mA max, protégée court-circuit, L+ - 4 V min, **non isolée** (M capt = M CPU), fils 0,2-1,5 mm². C'est une sortie : ne jamais la relier à un 24 V extérieur. M capt seulement pour des capteurs 3 fils : libre ici (contacts secs).
+- Entrées X10 : 14, sink/source, commun 1M (2 broches) **au 0 V** (note ② Siemens) ; 6 mA (Ia.0-Ia.5), 4 mA (Ia.6-Ib.5). Charge de -X21.14 ≈ 64 mA (16 %).
+- Sorties X11 : transistor sourcing 0,5 A ; PTO 100 kHz Qa.0-Qa.3, 20 kHz Qa.4-Qb.1. **Alimentation des sorties nommée 2L+ / 2M en G2** : le symbole porte 3L+ / 3M (noms G1), à corriger dans le symbole CUSTOM (librairie de Julien), câblage juste.
+- Note ① Siemens (pont M - châssis) : **ne pas le faire**, la liaison 0 V - PE unique est X12.11 (PELV, mesure d'isolement).

@@ -347,3 +347,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] H1 / H4 au f62, bornes X62.11-14 / X62.21-22 (Julien).
 - [D] f80 / f85 / f90 gardés (Julien).
 - [C] Tableaux f60-f62 vérifiés ; réserves en accolade ; titres et descriptions revus ; f63 remis en forme.
+
+## 16/11/2026 : v29
+- [C] L+ / M capt de la CPU : sortie capteurs 400 mA (manuel Siemens G2) ; M capt libre (contacts secs) ; 1M au 0 V ; pas de pont M - châssis (PELV unique X12.11).
+- [D] PTFIX noir : en stock, place sur R3 OK (Julien).
+- [D] f70 agrandi (Julien).
+- [C] Revue complète : cohérent ; pas encore prêt pour le stagiaire (`docs/REVUE_COMPLETE_v29.md`).

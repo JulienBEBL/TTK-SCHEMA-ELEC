@@ -1,6 +1,24 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v28 (16/11/2026)
+## Version actuelle : v29 (16/11/2026)
+`schema/generes/release/TTK_2026-11-16_v29.xrs` : 25 folios, 182 symboles, 654 fils, 87 renvois ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v28 réouverte par Julien sans retouche (copie `schema/recus/2026-11-16_v28_ouverte_WinRelais.xrs`).
+
+### Fait en v29
+| Folio | Changement |
+|---|---|
+| 70 | Borniers agrandis sur tout le folio (Julien) |
+| 41 | Références S1 / S2 (XB5AS8442 + ZBE102 + ZBE101) et S3 (Eaton T0-4-8223/E) pour la nomenclature |
+| dépôt | `.gitignore` (pycache, temporaires, images collées), README à jour, `docs/REVUE_COMPLETE_v29.md`, `docs/A_FAIRE_IMPLANTATION_2026-11-16.md` |
+
+### Où on en est (16/11, v29, avant compaction)
+- Revue complète faite : **cohérent électriquement, pas encore prêt pour le stagiaire** (détail `docs/REVUE_COMPLETE_v29.md` § 6).
+- Suite proposée, dans l'ordre :
+  1. Numérotation des fils de f31, f32, f40 à f42, f50, f60 à f63 (outil de contrôle `outils/xrs_numeros.py`, sources dans `SOURCES_NUM`).
+  2. Références de nomenclature manquantes (à fournir par Julien).
+  3. Noms de broche 2L+ / 2M de la CPU (accord de Julien : symbole de sa librairie).
+- Julien relance un chat pour l'implantation : brief `docs/A_FAIRE_IMPLANTATION_2026-11-16.md` (XR2 sur R2, X13 sur R4, X21.14 noir sur R3, X62).
+
+## Version précédente : v28 (16/11/2026)
 `schema/generes/release/TTK_2026-11-16_v28.xrs` : 25 folios, 182 symboles, 654 fils, 87 renvois ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v27 réenregistrée par Julien (copie `schema/recus/2026-11-16_v27_ouverte_WinRelais.xrs`) : seule retouche, les textes de S4 au f40 (repris : fpos (-2000, 0)).
 
 ### Fait en v28 (décisions de Julien du 16/11)

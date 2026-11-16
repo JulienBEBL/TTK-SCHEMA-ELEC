@@ -1071,8 +1071,8 @@ for voie, x, s1, s2, cap, capxsy, bornes, src, ret, byp, porte in (
     da = borne(porte[0], f, x, 4400)
     top = stub(f, (x, 4000), da["1"], "24")
     if voie == 1:
-        c1 = maitre(au, s1, f, x, 5200, prefix="S")
-        c2 = maitre(au, s2, f, x, 8000 + D, prefix="S")
+        c1 = maitre(au, s1, f, x, 5200, prefix="S", ref=("SCHNEIDER ELECTRIC", "", "XB5AS8442 + ZBE102 + ZBE101"))   # AU : réf. du 03/11
+        c2 = maitre(au, s2, f, x, 8000 + D, prefix="S", ref=("SCHNEIDER ELECTRIC", "", "XB5AS8442 + ZBE102 + ZBE101"))
         p1, p2 = ("1", "2"), ("1", "2")
     else:
         c1 = decrit(nc2, s1, f, x, 5200, "AU armoire - 2e contact NF (voie 2)")
@@ -1107,7 +1107,7 @@ for voie, x, s1, s2, cap, capxsy, bornes, src, ret, byp, porte in (
     entree = W(f, [t2["2"], (x + 800, 16400 + D), (x + 2800, 16400 + D)], "24")
     VOIES[cap] = (plus, entree)
 # -S414 (réarmement) déplacé au f40 (Julien 02/11) ; tête du sélecteur placée comme Julien (v13)
-maitre("Poussoirs et commutateurs\\Tête 2 pos fixes NO.xsy", "S413", f, 24400, 10800, prefix="S", fpos=(600, 0))
+maitre("Poussoirs et commutateurs\\Tête 2 pos fixes NO.xsy", "S413", f, 24400, 10800, prefix="S", fpos=(600, 0), ref=("EATON", "", "T0-4-8223/E"))
 
 # ======================================================================== 42 SECURITE - SORTIES
 # Architecture du 27/10 (fiche de Julien) :
@@ -1599,28 +1599,29 @@ def organisation_x70():
     """Folio 70 : borniers rangés rail par rail comme dans l'implantation (Julien, 09/11)."""
     from xrs_gen import largeur
     f = "70"
-    texte(f, 2400, 1300, "BORNIERS DE L'ARMOIRE +A1, RAIL PAR RAIL (ORDRE DE L'IMPLANTATION)", 280, 0, 1)
-    texte(f, 2400, 1700, "Repère : X + n° du folio de la borne + n° de borne. Case : n° de conducteur (W11, W12) ou signal. "
-                         "Trait épais : butée.", 180)
-    PAS, BUT, DY = 640, 320, 2300
-    y = 2300
+    texte(f, 2400, 1300, "BORNIERS DE L'ARMOIRE +A1, RAIL PAR RAIL (ORDRE DE L'IMPLANTATION)", 300, 0, 1)
+    texte(f, 2400, 1750, "Repère : X + n° du folio de la borne + n° de borne. Case : n° de conducteur (W11, W12) ou signal. "
+                         "Trait épais : butée.", 200)
+    # 16/11 (Julien) : cases agrandies pour occuper tout le folio (pas 1000, case 820 x 1000)
+    PAS, CASE, BUT, DY = 1000, 820, 400, 2450
+    y = 2400
     for titre, groupes in RAILS_X70:
-        texte(f, 2400, y, titre, 200, 0, 1)
+        texte(f, 2400, y, titre, 240, 0, 1)
         x = 2400
         for nom, bornes in groupes:
-            g.cadre(F[f], x - 40, y + 250, x + 40, y + 1050, width=40)          # butée avant le groupe
+            g.cadre(F[f], x - 50, y + 350, x + 50, y + 1450, width=40)          # butée avant le groupe
             x += BUT
             x0 = x
             for rep_, txt in bornes:
-                g.cadre(F[f], x, y + 300, x + 520, y + 950, width=15)
+                g.cadre(F[f], x, y + 400, x + CASE, y + 1400, width=15)
                 if txt:
-                    texte(f, x + 260 - largeur(txt, 180) // 2, y + 535, txt, 180)
+                    texte(f, x + CASE // 2 - largeur(txt, 250) // 2, y + 775, txt, 250)
                 lab = ren(rep_)
-                texte(f, x + 260 - largeur(lab, 150) // 2, y + 1050, rep_, 150)
+                texte(f, x + CASE // 2 - largeur(lab, 200) // 2, y + 1480, rep_, 200)
                 x += PAS
-            texte(f, x0, y + 1350, nom, 160, 0, 1)
-            x += BUT - (PAS - 520)
-        g.cadre(F[f], x - 40, y + 250, x + 40, y + 1050, width=40)              # butée de fin
+            texte(f, x0, y + 1780, nom, 200, 0, 1)
+            x += BUT - (PAS - CASE)
+        g.cadre(F[f], x - 50, y + 350, x + 50, y + 1450, width=40)              # butée de fin
         y += DY
 
 

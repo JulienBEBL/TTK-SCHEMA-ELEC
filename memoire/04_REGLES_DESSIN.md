@@ -173,3 +173,6 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - f70 : textes des cases centrés à la chasse Arial (`largeur`).
 - f71 : potentiels nommés justes (24VELEC, 24VSEC, 24 V capteurs) ; l'ancien libellé « +24 V sorties automate » sur X50.11 était faux.
 - Numérotation : L+ capteurs **6001** (source K1 L+ capt).
+
+## f70 agrandi (16/11, v29)
+- Cases de 820 x 1000, pas 1000, butées 400, textes 250 (signal) / 200 (repère, groupe), 7 rails sur tout le folio (x 2800 à 27100, y 1300 à 18900).

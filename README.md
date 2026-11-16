@@ -8,12 +8,12 @@ Le schéma n'est pas dessiné à la main : il est **généré par un script Pyth
 ## État actuel (16/11/2026)
 | | |
 |---|---|
-| Dernière version | **v28**, `schema/generes/release/TTK_2026-11-16_v28.xrs` |
-| Contenu | 25 folios, 177 symboles, 654 fils, 91 renvois |
-| Contrôles | 0 problème, 0 erreur au verifier (28 attentions connues), 0 chevauchement |
-| En attente | relecture automate puis borniers par Julien ; réponse SEW (mises sous tension) ; numérotation des fils en dernier |
-| Implantation de l'armoire | v7 (draw.io), `implantation/release/` |
-| Planning | J1 folios finis 05/11/2026 ; J2 bon pour câblage 13/11/2026 |
+| Dernière version | **v29**, `schema/generes/release/TTK_2026-11-16_v29.xrs` |
+| Contenu | 25 folios, 182 symboles, 654 fils, 87 renvois |
+| Contrôles | 0 erreur au verifier (28 attentions connues), 0 chevauchement, numéros 0 problème |
+| Revue complète | `docs/REVUE_COMPLETE_v29.md` : cohérent électriquement ; **pas encore prêt pour le stagiaire** (numérotation de 10 folios, références de nomenclature, références croisées WinRelais) |
+| Numérotation des fils | faite : f10 à f13, f20, f21, f30 ; reste : f31, f32, f40 à f42, f50, f60 à f63 |
+| Implantation de l'armoire | v10 (draw.io), `implantation/release/` ; à mettre à jour : `docs/A_FAIRE_IMPLANTATION_2026-11-16.md` |
 
 Détail de la version, points ouverts et suite : `memoire/06_EN_COURS.md` et `memoire/05_POINTS_OUVERTS.md`.
 
@@ -33,8 +33,9 @@ Détail de la version, points ouverts et suite : `memoire/06_EN_COURS.md` et `me
 | 30-32 | Switch PROFINET, variateurs et moteurs M1 / M2 |
 | 40-42 | Sécurité : relais KA1, entrées, sorties |
 | 50 | Pupitre (IHM) |
-| 60-63 | Automate : entrées, sorties, SM 1223, thermocouple |
-| 70-71 | Borniers machine / réseau et pupitre |
+| 60-63 | Automate : entrées, sorties (drivers), SM 1223 (colonne, voyant défaut), thermocouple |
+| 70-71 | Borniers rail par rail (f70), tableau du bornier pupitre (f71) |
+| 80-90 | Liste des câbles, implantation, nomenclature : à générer par WinRelais |
 
 Le script garde d'anciens numéros en interne (table `NUMFOL`, voir `memoire/04_REGLES_DESSIN.md`).
 
@@ -48,7 +49,8 @@ Le script garde d'anciens numéros en interne (table `NUMFOL`, voir `memoire/04_
 |---|---|
 | `memoire/` | **Mémoire du projet** : à lire en premier (README puis 01 à 07) |
 | `docs/` | Décisions datées (`DECISIONS.md`), journal des échanges, revue des achats, références (relais de sécurité) |
-| `outils/` | `ttk_schema.py` (le schéma), `xrs_gen.py` (écriture .xrs), `xrs_tool.py` (vérification, nomenclature), `xrs_chevauchements.py`, `librairie/CUSTOM/` (symboles créés pour le projet) |
+| `outils/` | `ttk_schema.py` (le schéma), `xrs_gen.py` (écriture .xrs), `xrs_tool.py` (vérification, nomenclature), `xrs_chevauchements.py`, `xrs_numeros.py` (contrôle des numéros de fil), `librairie/CUSTOM/` (symboles créés pour le projet) |
+| `schema/images/` | Images posées par le script (logos f01, blocs PTFIX f21) |
 | `schema/modele/` | `SCHEMA_ELEC_TTK.xrs` : modèle (en-tête, cartouche), **à ne jamais modifier** |
 | `schema/generes/release/` | La dernière version seule (+ vérification, nomenclature) |
 | `schema/generes/old/` | Versions précédentes |

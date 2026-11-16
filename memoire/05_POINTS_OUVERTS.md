@@ -96,3 +96,10 @@ Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO,
 ## v28 (16/11)
 - Achat / implantation : 4e bloc PTFIX 6/12 noir (-X21.14) sur R3 : en stock ? place sur R3 à confirmer (R3 était plein sur sa 1re partie).
 - f80 / f85 / f90 : gardés (Julien 16/11), à remplir par WinRelais.
+
+## Revue complète v29 (16/11)
+Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§ 3 à 6). Nouveaux :
+- Nom des broches d'alimentation des sorties de la CPU : 2L+ / 2M en G2 (symbole : 3L+ / 3M) : à corriger dans le symbole CUSTOM avec l'accord de Julien.
+- Réglage de QM1 / QM2 (GV2ME14 6-10 A) sur le courant d'entrée réel du MCX91A ; T3 240 W pour les 2 axes ; DC-1 du LC1D09BD sous 48 V.
+- Nomenclature : références manquantes B3-B6, B7, W8, H2-H4, bornes, butées, PTFIX, câbles. S1 / S2 / S3 ajoutées en v29.
+- PTFIX noir : en stock, place sur R3 OK (Julien 16/11).

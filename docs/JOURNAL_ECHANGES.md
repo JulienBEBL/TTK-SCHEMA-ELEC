@@ -255,3 +255,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 16/11/2026 : v28
 - Julien : L+ capt seul pour toutes les entrées ? ; vérifier les tableaux f60-f62 ; réserves plus propres ; H1 / H4 sur leur folio ; revoir noms, descriptions, contenu ; f63 propre ; f70 / f71 ; questions avant v28.
 - Réponses : bloc noir X21.14 ; bornes X62 ; f80 / f85 / f90 gardés. v28 générée (0 erreur, 0 chevauchement, numéros 0 problème).
+- Julien (16/11, après v28) : PTFIX noir en stock et place OK ; à quoi servent L+ / M capt ? ; f70 plus grand ; revue complète et état pour le stagiaire ; mise à jour du dépôt ; puis compaction. Fait : v29, `docs/REVUE_COMPLETE_v29.md`, `docs/A_FAIRE_IMPLANTATION_2026-11-16.md`, `.gitignore`, README.
