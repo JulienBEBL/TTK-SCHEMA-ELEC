@@ -259,3 +259,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 16/11/2026 : v30
 - Julien (après compaction) : OUI pour numéroter les folios restants. Fait : v30, tous les folios numérotés (333 numéros), 0 erreur, 0 chevauchement, numéros 0 problème.
+- Julien : « Oui, garder » la numérotation des entrées CPU par l'entrée (6011-6026).

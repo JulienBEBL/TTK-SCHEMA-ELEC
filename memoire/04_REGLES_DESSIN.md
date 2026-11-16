@@ -189,7 +189,7 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 | 62 | SM 1223 Q8.n -> 620(n+1) : Q8.0 **6201** (H1 rouge), Q8.1 6202, Q8.2 6203, Q8.4 6205 (H4) |
 | 63 | thermocouple B7 + / - -> K3 AI0 : **6301 / 6302** |
 | 50 | potentiels nés ailleurs seulement (1241, 1230, PN4) |
-- Écart à la règle « dizaine = appareil » au f60 : 11 appareils sources (trop pour 10 dizaines). Choix de l'assistant (16/11), à confirmer par Julien : numéro de l'entrée, comme les sorties.
+- Écart à la règle « dizaine = appareil » au f60 : 11 appareils sources (trop pour 10 dizaines). Numéro de l'entrée, comme les sorties : proposé par l'assistant, **validé par Julien le 16/11**.
 - Script : `NUMEROTES` = tous les folios ; `SOURCES_NUM` complétée ; une source peut être dessinée en plusieurs morceaux (S1 voie 1 / voie 2) ; seules les broches câblées sont numérotées.
 - Placement sur les folios numérotés le 16/11 (`NOUVEAUX_NUM` ; f10 à f30 inchangés) : fil du tronçon le plus dégagé, renvois évités, bus numéroté sur son 1er morceau libre, numéros d'un groupe sans place commune posés chacun sur son fil.
 - Géométrie : repère des bornes à côté du corps de la borne aux f40 à f42 et f62 (fil libre pour le numéro) ; bouts de 400 allongés à 800 (renvoi 24 V X5 de U1 / U2 décalé de 400 à gauche, renvois du f41 en haut, f42 sorties 2 et 3, f60 I0.2 / I0.3) ; contenu du f41 descendu de 400 (centrage).

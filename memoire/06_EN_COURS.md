@@ -7,7 +7,7 @@
 | Folio | Changement |
 |---|---|
 | 31, 32, 40-42, 50, 60-63 | Numérotation des fils (détail : `04_REGLES_DESSIN.md`, « Numérotation f31... ») : tous les folios sont numérotés |
-| 60 | Fils d'entrée de la CPU = n° de l'entrée (6011-6018, 6021-6026) : **à confirmer par Julien** |
+| 60 | Fils d'entrée de la CPU = n° de l'entrée (6011-6018, 6021-6026) : **validé par Julien (16/11)** |
 | 31, 32, 41, 42, 60 | Bouts de fil de 400 allongés (place des numéros) ; f41 descendu de 400 |
 | 40-42, 62 | Repère des bornes à côté de la borne |
 

@@ -356,5 +356,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 ## 16/11/2026 : v30
 - [D] Numéroter les folios restants (Julien : OUI).
-- [C] Fils d'entrée de la CPU numérotés par l'entrée (I0.n -> 601(n+1), I1.n -> 602(n+1)) : 11 appareils sources au f60, trop pour une dizaine chacun. À confirmer par Julien.
+- [C] Fils d'entrée de la CPU numérotés par l'entrée (I0.n -> 601(n+1), I1.n -> 602(n+1)) : 11 appareils sources au f60, trop pour une dizaine chacun.
+- [D] Julien valide : fils d'entrée CPU = n° de l'entrée (16/11).
 - [C] f31 / f32 : U V W 3101-3103 / 3201-3203 ; f40 KA1 40xx ; f41 41xx ; f42 42xx ; f62 Q8.n 620(n+1) ; f63 6301 / 6302.
