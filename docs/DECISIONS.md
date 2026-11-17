@@ -385,3 +385,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Mémoire : le stock câbles / bornes a son fichier `memoire/09_STOCK.md` (17/11).
 - [H] 17/11 : méthode câbles / bornes en 5 étapes, tableau des liaisons généré depuis le .xrs (en attente de l'accord de Julien).
 - [D] 17/11 : vérité des câbles sortants et des bornes dans `cablage/TTK_CABLES.xlsx`, indépendante du schéma ; le schéma suit. Portée : câbles qui sortent de l'armoire. Ordre : stock câbles → liaisons par fonction → conducteurs → références des bornes (une par une).
+- [D] 17/11 : câbles raisonnés en type et fonction, jamais en mètres ; s'il manque des mètres, Julien rachète. Statuts d'une liaison : en stock attribué / en stock à attribuer / pas de câble prévu.
+- [C] 17/11 : stock câbles de Julien : 2 x 0,75 PPMM0180, 4G2,5 blindé AEE261757, 5G1,5 LIYCY-JZ AEE261168, 27G1 AEE261165, 19G1 AEE261164, compensation K (RS 236-3959 d'après la commande).

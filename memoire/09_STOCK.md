@@ -7,12 +7,17 @@ Statuts : [C] confirmé par Julien ou document ; [?] à vérifier. Ce fichier es
 ## Méthode (Julien, 17/11) [D]
 - La vérité est fixée **hors du schéma**, dans le classeur `cablage/TTK_CABLES.xlsx` (Excel, importable dans Google Sheets). Le schéma est ensuite corrigé pour le suivre (script `ttk_schema.py`).
 - Portée : **seulement les câbles qui sortent de l'armoire**.
+- On raisonne en **type de câble et fonction, jamais en mètres** (Julien 17/11) : s'il manque des mètres, Julien rachète. Distinguer un manque de longueur (hors sujet) d'un **câble non prévu ou non attribué** (vrai manque). Statuts d'une liaison : « En stock, attribué », « En stock, à attribuer », « Pas de câble prévu ».
 - Ordre : 1) les câbles en stock (onglet « Stock câbles », d'après le fichier de suivi de commande de Julien) ; 2) la répartition par fonction (onglet « Liaisons » : moteur, frein, sonde, pas-à-pas, capteurs, signalisation, pupitre, réseau, terre) ; 3) conducteur → borne ; 4) références réelles des bornes, données une par une par Julien.
 - Un onglet validé (colonne « Validé ») est exporté en CSV dans `cablage/` pour être lu par l'assistant, puis reporté au schéma.
 - Lecture du classeur par l'assistant : `outils/lire_tableau.py` (`lire_xlsx`, sans openpyxl).
 
 ## Câbles
-Tableau dans `cablage/TTK_CABLES.xlsx`, onglet « Stock câbles » (pré-rempli le 17/11 depuis la mémoire, valeurs inconnues = « ? », à valider par Julien).
+Tableau dans `cablage/TTK_CABLES.xlsx` (onglets « Stock câbles » et « Liaisons »), refait le 17/11 sans longueurs.
+- Stock donné par Julien le 17/11 [C] : 2 x 0,75 (PPMM0180), 4G2,5 blindé (moteurs), 5G1,5 LIYCY-JZ (2 commandes), 27G1, 19G1, câble de compensation K (Julien écrit « 2363958 », la commande dit **RS 236-3959**).
+- Fichier de commande : `Downloads/Demande de Commande Hugo.xlsx` (17/11). Câbles reçus mais absents de la liste de Julien : M12 SICK 285-9453, Roline 616-2586, fil V/J 4 mm² 811-4463 [?]. H05VV-F 2 x 1 (PPMM0114) et 2 x 0,75 (PPMM0104) : commandés, réception non notée [?].
+- Julien : 19G1 et 27G1 partent tous deux de l'armoire vers la machine ; l'affectation de leurs conducteurs est celle du schéma.
+- Pas de câble prévu : boîte +M-X1 → freins M1 / M2, B1, B3-B6, H1.
 
 ## Bornes et accessoires
 | Article | Référence | Stock | Dessinées au schéma (v31) | Statut |

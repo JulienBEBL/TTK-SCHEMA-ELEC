@@ -281,3 +281,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : classeur des câbles
 - Julien : format Excel / Google Sheet ; envoie son fichier de suivi de commande pour le stock ; seulement les câbles qui sortent ; références des bornes données une par une ; vérité dans un fichier indépendant du schéma, puis report au schéma ; d'abord les câbles en stock, puis la répartition par fonction.
 - Fait : `cablage/TTK_CABLES.xlsx` (Lisez-moi, Stock câbles pré-rempli depuis la mémoire avec « ? », Liaisons par fonction vide), `cablage/README.md`, `memoire/09_STOCK.md` (méthode, tableau câbles remplacé par un renvoi au classeur). Contestation faite une fois : risque d'écart entre le classeur et le schéma ; parade : comparaison automatique au moment du report.
+
+## 17/11/2026 : stock câbles (sans longueurs)
+- Julien : envoie `Demande de Commande Hugo.xlsx` ; pas de longueurs, on raisonne en type et fonction ; distinguer un manque de longueur d'un câble non prévu ou non attribué ; 19G1 et 27G1 sûrs (armoire → machine, fils au schéma) ; stock : 2 x 0,75, 4G2,5 blindé, 5G1,5 x 2, 27G1, 19G1, compensation « 2363958 ».
+- Fait : classeur refait (colonnes de longueur retirées ; stock croisé avec la commande ; onglet Liaisons pré-rempli depuis le schéma v31 avec 3 statuts) ; `memoire/09_STOCK.md`.
