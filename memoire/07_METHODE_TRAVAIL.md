@@ -16,7 +16,7 @@
 | `docs/` (autres) | Nommage, sécurité, passation, format .xrs (`docs/local/`) |
 | `outils/` | Scripts Python, librairie de symboles reconstruite |
 | `schema/generes/release/` | **la dernière version seule** : `TTK_AAAA-MM-JJ_vN.xrs` + `_verification.md` + `_nomenclature.csv` |
-| `implantation/` | **Dossier de l'agent d'implantation draw.io** (depuis le 04/11) : release / old / JOURNAL. Ne pas y toucher ; consignes dans `docs/PROMPT_AGENT_IMPLANTATION_2026-11-04.md`. Il pousse aussi sur `main` : `git pull --rebase` avant chaque push |
+| `implantation/` | Dossier d'implantation **généré** depuis le 17/11 (`implantation/generateur/`, PDF dans release/). Jusqu'à la v10 : agent draw.io. Commits préfixés par le PC ([PRO JULIEN], [PRO RIMANE], [perso]) ; pas de push sans accord de Julien |
 | `schema/generes/old/` | toutes les versions précédentes (on y déplace l'ancienne release avec `git mv` à chaque nouvelle version) |
 | attention | **Julien ouvre la release directement dans WinRelais, qui la réenregistre.** Avant le `git mv`, faire `git status` : si la release est modifiée, la copier dans `schema/recus/AAAA-MM-JJ_vN_ouverte_WinRelais.xrs`, la comparer à la version générée (section par section), puis `git checkout` la version générée (constaté le 02/11 sur la v12). |
 | `schema/recus/` | .xrs renvoyés par Julien, datés |

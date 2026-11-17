@@ -267,3 +267,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026
 - Julien (nouveau PC) : mettre les symboles CUSTOM sur git. Fait : `librairie_winrelais/sym_electrotech/CUSTOM` (42 fichiers, identiques au PC), README d'installation.
 - Julien : oui pour compléter. Fait : 11 symboles du script ajoutés (cp1252, CRLF), 53 en tout.
+
+## 17/11/2026 : dossier d'implantation, liste des câbles, synoptique
+- Julien : mission en étapes (étape 0, charte, implantation, câbles, synoptique, PDF unique). Étape 0 rendue (sources, écarts v10 / v31, incohérences, questions).
+- Julien : PC PRO JULIEN ; bornes X63 gardées ; W9 / W10 en 5G1,5 (« c'est quoi ces câbles ? » : câbles moteur pas-à-pas, driver → X20 → M3 / M4) ; sourcing pour 1 armoire ; bornes de terre en livraison ; +M-X1 validé ; blindage un seul côté ; méthode A ; travail dans `implantation/` ; « travaille en autonomie et propose la prochaine version ».
+- Fait : `implantation/generateur/` (extraire.py, saisie.json, donnees.json, svg.py, generer.py), PDF `implantation/release/TTK_implantation_2026-11-17_v11.pdf` (10 pages, indice A) + rapport de contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. v10 passée dans old/. v31 réenregistrée par WinRelais archivée dans `schema/recus/2026-11-17_v31_ouverte_WinRelais.xrs` (contenu identique), puis restaurée.

@@ -142,3 +142,11 @@ Fichiers : `release/TTK_implantation_2026-11-06_v10.drawio` + `.pdf` (2 pages) ;
 - Julien : PTFIX 6/12 en long (41 mm) ; R2 déjà fixé (trait épais, hors étude) ; seulement le plan et le détail des borniers.
 - v23 : aucune borne modifiée (STO en chaîne interne à l'armoire).
 - Page 2 refaite : bornes à l'échelle ≈ 1:0,22, repère, fonction, n° de conducteur (W11 / W12), butées, capots, bandeau par câble (repère, composition, destination), étiquette par fonction.
+
+## v11 (indice A) — 17/11/2026 (schéma v31)
+Fichiers : `release/TTK_implantation_2026-11-17_v11.pdf` (10 pages A3) + `_verification.md` ; v10 dans `old/`. Généré par `generateur/` (méthode A validée par Julien).
+- Reprises depuis la v10 : XR2 sur R2 à côté de XR1 ; X13.11-22 sur R4 après XD1 ; X61.1x / X61.2x → X62.1x / X62.2x ; -X21.14 noir proposé sur R3 à droite de K4.
+- Bornes : côté armoire, côté extérieur, n° de fil et n° de conducteur relus dans le .xrs. B2 / B7 et TF M1 / M2 sans butée intérieure (comme v10) pour tenir avant le support 45°.
+- Décisions du 17/11 : X63 gardées ; W9 / W10 en 5G1,5 ; +M-X1 ; blindage un côté ; W14 proposé (câble M12 de B2).
+- Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs ; pages rastérisées et relues.
+- Ouvert : manque 4 PT 2,5 (74 pour 70) ; liaisons boîte → appareils non définies.

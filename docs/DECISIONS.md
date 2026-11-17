@@ -367,3 +367,16 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 ## 17/11/2026
 - [D] Symboles CUSTOM de Julien versionnés dans `librairie_winrelais/` (nouveau PC).
+
+## 17/11/2026 : dossier d'implantation unique (v11, indice A)
+- [D] Ce PC = PRO JULIEN (hostname BEBL-15-LAFITE) ; commits préfixés [PRO JULIEN] ; pas de push sans accord de Julien.
+- [D] Thermocouple : bornes X63.11 / X63.12 gardées, même si non utilisées (Julien).
+- [D] W9 / W10 (pas-à-pas M3 / M4, A+ A- B+ B-) : LIYCY-JZ 5G1,5 (AEE261168), 4 conducteurs + V/J. Tableau V1 = 1 armoire.
+- [D] Boîte de dérivation machine : repère +M-X1 (IEC 81346-2, classe X).
+- [D] Blindage des câbles machine raccordé d'un seul côté (côté armoire, presse-étoupe CEM).
+- [D] Bornes de terre RS 708-1687 : en cours de livraison.
+- [D] Méthode A : un fichier de données (donnees.json, extrait du .xrs + saisie.json) → SVG → PDF A3 (Edge sans fenêtre). L'assistant reprend le dossier `implantation/` (sources : `implantation/generateur/`). Rastérisation du PDF autorisée pour le contrôle.
+- [H] W14 : repère proposé pour le câble M12 de B2 (RS 285-9453).
+- [H] X21.14 sur R3 à droite de K4 (FA1 / KA1 restent en place).
+- [H] X13.11-22 et X12.11 en PT 4 (les 5 PT 4 restants) ; il manque alors 4 PT 2,5 (74 pour 70).
+- [?] Liaisons boîte +M-X1 → freins BE5, B1, B3-B6, H1 : non définies au schéma.

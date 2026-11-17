@@ -1,0 +1,1631 @@
+{
+ "_lisez_moi": "Données hors schéma, saisies à la main. Coordonnées en mm sur la plaque, depuis le coin haut gauche. Source de la géométrie : implantation v10 (draw.io, 06/11), mises à jour indiquées par 'maj'. Statuts : fixe (déjà monté), a_poser, deplace, propose.",
+ "document": {
+  "titre": "Armoire +A1 : implantation, câbles et synoptique",
+  "machine": "Machine de tressage TTK, n° 001-EU",
+  "indice": "A",
+  "version": "v11",
+  "date": "17/11/2026",
+  "auteur": "THRO.J",
+  "societe": "BEBL",
+  "revisions": [
+   [
+    "A",
+    "17/11/2026",
+    "1re édition du dossier unique (implantation, liste des câbles, synoptique), schéma v31. Remplace l'implantation draw.io v10."
+   ]
+  ]
+ },
+ "plaque": {
+  "largeur": 1100,
+  "hauteur": 1670,
+  "armoire": "IDE 1800 x 1200 x 400"
+ },
+ "goulottes": [
+  [
+   "GV-G",
+   30,
+   30,
+   60,
+   1610,
+   "60x60"
+  ],
+  [
+   "GV-D",
+   1010,
+   30,
+   60,
+   1610,
+   "60x60"
+  ],
+  [
+   "GH0",
+   90,
+   30,
+   920,
+   40,
+   "40x40"
+  ],
+  [
+   "GH1",
+   90,
+   570,
+   920,
+   60,
+   "60x60"
+  ],
+  [
+   "GH2",
+   90,
+   830,
+   920,
+   60,
+   "60x60"
+  ],
+  [
+   "GH3",
+   90,
+   1110,
+   920,
+   40,
+   "40x40"
+  ],
+  [
+   "GH4",
+   90,
+   1350,
+   920,
+   60,
+   "60x60"
+  ],
+  [
+   "GH5",
+   90,
+   1580,
+   920,
+   60,
+   "60x60"
+  ]
+ ],
+ "rails": {
+  "R1": {
+   "x": 150,
+   "y": 302.5,
+   "l": 275,
+   "role": "alimentations",
+   "fixe": true,
+   "vis": [
+    152.5,
+    402.5
+   ]
+  },
+  "R2": {
+   "x": 100,
+   "y": 712.5,
+   "l": 900,
+   "role": "arrivée et puissance",
+   "fixe": true,
+   "vis": [
+    152.5,
+    377.5,
+    602.5,
+    727.5,
+    977.5
+   ]
+  },
+  "R3": {
+   "x": 100,
+   "y": 982.5,
+   "l": 900,
+   "role": "automate, sécurité, distribution 24 V",
+   "fixe": false,
+   "vis": [
+    102.5,
+    252.5,
+    427.5,
+    652.5,
+    852.5,
+    977.5
+   ]
+  },
+  "R4": {
+   "x": 100,
+   "y": 1232.5,
+   "l": 700,
+   "role": "auxiliaires 230 V et bornes de porte",
+   "fixe": false,
+   "vis": [
+    102.5,
+    302.5,
+    477.5,
+    702.5,
+    777.5
+   ]
+  },
+  "R5": {
+   "x": 100,
+   "y": 1477.5,
+   "l": 900,
+   "role": "borniers vers l'extérieur (incliné à 45°)",
+   "fixe": false,
+   "supports": [
+    127.5,
+    477.5,
+    602.5,
+    702.5,
+    952.5
+   ]
+  }
+ },
+ "appareils": [
+  [
+   "XPE1",
+   "plaque",
+   105,
+   122.5,
+   25,
+   300,
+   "fixe",
+   "Barrette de terre 27 (vissée sur la plaque)",
+   "Legrand 404839",
+   "alim"
+  ],
+  [
+   "T1",
+   "R1",
+   182.5,
+   257.5,
+   63,
+   125,
+   "fixe",
+   "Alimentation 24 V (24VSEC)",
+   "RS PRO 284-0491",
+   "alim"
+  ],
+  [
+   "T2",
+   "R1",
+   255.5,
+   257.5,
+   63,
+   125,
+   "fixe",
+   "Alimentation 24 V (24VELEC)",
+   "RS PRO 284-0491",
+   "alim"
+  ],
+  [
+   "T3",
+   "R1",
+   328.5,
+   257.5,
+   63,
+   125,
+   "fixe",
+   "Alimentation 48 V",
+   "Mean Well NDR-240-48",
+   "alim"
+  ],
+  [
+   "U1",
+   "plaque",
+   445,
+   170,
+   80,
+   300,
+   "fixe",
+   "Variateur M1",
+   "SEW MCX91A-0055-5E3",
+   "variateur"
+  ],
+  [
+   "U2",
+   "plaque",
+   565,
+   170,
+   80,
+   300,
+   "fixe",
+   "Variateur M2",
+   "SEW MCX91A-0055-5E3",
+   "variateur"
+  ],
+  [
+   "R1",
+   "plaque",
+   765,
+   170,
+   145,
+   85,
+   "fixe",
+   "Résistance de freinage U1",
+   "SEW BW100-001",
+   "variateur"
+  ],
+  [
+   "R2",
+   "plaque",
+   765,
+   355,
+   145,
+   85,
+   "fixe",
+   "Résistance de freinage U2",
+   "SEW BW100-001",
+   "variateur"
+  ],
+  [
+   "QF2",
+   "R2",
+   182.5,
+   687.5,
+   36,
+   85,
+   "fixe",
+   "Disjoncteur frein M1",
+   "Schneider A9F74202",
+   "puissance"
+  ],
+  [
+   "KF1",
+   "R2",
+   218.5,
+   687.5,
+   45,
+   85,
+   "fixe",
+   "Contacteur frein M1",
+   "Schneider LC1D09BD",
+   "puissance"
+  ],
+  [
+   "QF3",
+   "R2",
+   273.5,
+   687.5,
+   36,
+   85,
+   "fixe",
+   "Disjoncteur frein M2",
+   "Schneider A9F74202",
+   "puissance"
+  ],
+  [
+   "KF2",
+   "R2",
+   309.5,
+   687.5,
+   45,
+   85,
+   "fixe",
+   "Contacteur frein M2",
+   "Schneider LC1D09BD",
+   "puissance"
+  ],
+  [
+   "QM1",
+   "R2",
+   407.5,
+   685.5,
+   45,
+   89,
+   "fixe",
+   "Disjoncteur moteur U1",
+   "Schneider GV2ME14",
+   "puissance"
+  ],
+  [
+   "KM1",
+   "R2",
+   452.5,
+   687.5,
+   45,
+   85,
+   "fixe",
+   "Contacteur amont U1",
+   "Schneider LC1D09BD",
+   "puissance"
+  ],
+  [
+   "QM2",
+   "R2",
+   497.5,
+   685.5,
+   45,
+   89,
+   "fixe",
+   "Disjoncteur moteur U2",
+   "Schneider GV2ME14",
+   "puissance"
+  ],
+  [
+   "KM2",
+   "R2",
+   542.5,
+   687.5,
+   45,
+   85,
+   "fixe",
+   "Contacteur amont U2",
+   "Schneider LC1D09BD",
+   "puissance"
+  ],
+  [
+   "XR1",
+   "R2",
+   597.5,
+   685,
+   72,
+   90,
+   "fixe",
+   "Répartiteur 400 V n°1 (alimenté par QF1)",
+   "AEE300427",
+   "puissance"
+  ],
+  [
+   "XR2",
+   "R2",
+   669.5,
+   685,
+   72,
+   90,
+   "deplace",
+   "Répartiteur 400 V n°2 (ponts 4 mm² depuis XR1)",
+   "AEE300427",
+   "puissance"
+  ],
+  [
+   "QF1",
+   "R2",
+   765,
+   687.5,
+   52.5,
+   85,
+   "fixe",
+   "Disjoncteur de tête",
+   "Hager NFT820",
+   "puissance"
+  ],
+  [
+   "QS1",
+   "R2",
+   827.5,
+   682.5,
+   140,
+   95,
+   "fixe",
+   "Sectionneur général",
+   "Legrand 022515",
+   "puissance"
+  ],
+  [
+   "X21.11",
+   "R3",
+   132.5,
+   968.2,
+   41,
+   28.6,
+   "a_poser",
+   "Distribution 24VELEC (rouge)",
+   "Phoenix PTFIX 6/12X2,5 RD 3273356",
+   "distrib"
+  ],
+  [
+   "X21.12",
+   "R3",
+   183.5,
+   968.2,
+   41,
+   28.6,
+   "a_poser",
+   "Distribution 0 V (bleu)",
+   "Phoenix PTFIX 6/12X2,5 BU 3273354",
+   "distrib"
+  ],
+  [
+   "X12.11",
+   "R3",
+   234.5,
+   975,
+   6.2,
+   50,
+   "a_poser",
+   "Liaison PELV 0 V - PE",
+   "Phoenix PT 4 (voir comptage)",
+   "distrib"
+  ],
+  [
+   "X21.13",
+   "R3",
+   282.5,
+   968.2,
+   41,
+   28.6,
+   "a_poser",
+   "Distribution 24VSEC (gris)",
+   "Phoenix PTFIX 6/12X2,5 GY 3273352",
+   "distrib"
+  ],
+  [
+   "K1",
+   "R3",
+   457.5,
+   937.5,
+   80,
+   125,
+   "a_poser",
+   "CPU 1214C G2",
+   "Siemens 6ES7214-1AH50-0XB0",
+   "automate"
+  ],
+  [
+   "K2",
+   "R3",
+   537.5,
+   937.5,
+   45,
+   125,
+   "a_poser",
+   "SM 1223 G2 8DI/8DQ",
+   "Siemens 6ES7223-5BH50-0XB0",
+   "automate"
+  ],
+  [
+   "K3",
+   "R3",
+   582.5,
+   937.5,
+   45,
+   125,
+   "a_poser",
+   "SM 1231 TC G2",
+   "Siemens 6ES7231-5QF50-0XB0",
+   "automate"
+  ],
+  [
+   "K4",
+   "R3",
+   682.5,
+   930,
+   45,
+   140,
+   "a_poser",
+   "Switch PROFINET",
+   "Weidmüller 2682250000",
+   "automate"
+  ],
+  [
+   "FA1",
+   "R3",
+   333.5,
+   957.5,
+   17.5,
+   85,
+   "a_poser",
+   "Fusible R-33 amont KA1",
+   "Mersen CMC101 + FR10GG50V4 gG 4 A",
+   "securite"
+  ],
+  [
+   "KA1",
+   "R3",
+   361,
+   950.5,
+   22.5,
+   99,
+   "a_poser",
+   "Relais de sécurité",
+   "Schneider XPSUAF13AP",
+   "securite"
+  ],
+  [
+   "X21.14",
+   "R3",
+   737.5,
+   968.2,
+   41,
+   28.6,
+   "propose",
+   "Distribution 24 V capteurs (noir), L+ capt de K1",
+   "Phoenix PTFIX 6/12X2,5 BK 3273366",
+   "distrib"
+  ],
+  [
+   "KA2",
+   "R3",
+   922.5,
+   957.5,
+   45,
+   85,
+   "a_poser",
+   "Contacteur auxiliaire 48 V (Manu)",
+   "Schneider LC1D09BD",
+   "securite"
+  ],
+  [
+   "QF4",
+   "R4",
+   132.5,
+   1207.5,
+   17.5,
+   85,
+   "a_poser",
+   "Disjoncteur T1",
+   "Hager NFT706",
+   "puissance"
+  ],
+  [
+   "QF5",
+   "R4",
+   160,
+   1207.5,
+   17.5,
+   85,
+   "a_poser",
+   "Disjoncteur T2",
+   "Hager NFT706",
+   "puissance"
+  ],
+  [
+   "QF6",
+   "R4",
+   187.5,
+   1207.5,
+   36,
+   85,
+   "a_poser",
+   "Disjoncteur T3 48 V",
+   "Schneider A9F75204",
+   "puissance"
+  ],
+  [
+   "QF7",
+   "R4",
+   233.5,
+   1207.5,
+   17.5,
+   85,
+   "a_poser",
+   "Disjoncteur ventilateurs",
+   "Hager NFT702",
+   "puissance"
+  ],
+  [
+   "QF8",
+   "R4",
+   261,
+   1207.5,
+   17.5,
+   85,
+   "a_poser",
+   "Disjoncteur éclairage",
+   "Hager NFT702",
+   "puissance"
+  ],
+  [
+   "QF9",
+   "R4",
+   332.5,
+   1207.5,
+   36,
+   85,
+   "a_poser",
+   "Différentiel 30 mA prise",
+   "IMO B6CR1N1630A",
+   "puissance"
+  ],
+  [
+   "QF10",
+   "R4",
+   378.5,
+   1207.5,
+   18,
+   85,
+   "a_poser",
+   "Disjoncteur limitation prise",
+   "Schneider A9P71606",
+   "puissance"
+  ],
+  [
+   "XD1",
+   "R4",
+   406.5,
+   1207.5,
+   45,
+   85,
+   "a_poser",
+   "Prise de service 2P+T 16 A",
+   "Legrand 004280",
+   "puissance"
+  ],
+  [
+   "U3",
+   "plaque",
+   850,
+   1177.5,
+   40,
+   145,
+   "fixe",
+   "Driver pas-à-pas M3",
+   "Jkongmotor JKDM860H",
+   "alim"
+  ],
+  [
+   "U4",
+   "plaque",
+   910,
+   1177.5,
+   40,
+   145,
+   "fixe",
+   "Driver pas-à-pas M4",
+   "Jkongmotor JKDM860H",
+   "alim"
+  ]
+ ],
+ "hors_plaque": [
+  [
+   "EV1",
+   "Ventilateur d'entrée, paroi gauche en bas",
+   "IDE VF92AC"
+  ],
+  [
+   "EV2",
+   "Ventilateur de sortie, paroi droite en haut",
+   "IDE VF92AC"
+  ],
+  [
+   "EL1 / EL2",
+   "Éclairage d'armoire (hors plaque)",
+   "RS PRO 194-0417"
+  ],
+  [
+   "S1, S4, H2, H3, H4",
+   "Porte gauche : raccordés par les bornes de porte du rail R4",
+   ""
+  ]
+ ],
+ "borniers": [
+  {
+   "rail": "R5",
+   "troncon": "tronçon 1",
+   "x0": 162.5,
+   "groupes": [
+    {
+     "cable": "W11",
+     "fonction": "AU pupitre S2",
+     "bornes": [
+      "X41.11",
+      "X41.12",
+      "X41.13",
+      "X41.14",
+      "X60.11",
+      "X60.12"
+     ]
+    },
+    {
+     "cable": "W11",
+     "fonction": "Sélecteur S3",
+     "bornes": [
+      "X41.21",
+      "X41.22",
+      "X41.23",
+      "X41.24",
+      "X42.11",
+      "X42.12",
+      "X42.13",
+      "X42.14",
+      "X42.15",
+      "X42.16",
+      "X60.21",
+      "X60.22",
+      "X60.23",
+      "X60.24"
+     ]
+    },
+    {
+     "cable": "W11",
+     "fonction": "Alimentation IHM P1",
+     "bornes": [
+      "X50.11",
+      "X50.12",
+      "X50.13"
+     ]
+    },
+    {
+     "cable": "W12",
+     "fonction": "Capot mécanique B1",
+     "bornes": [
+      "X41.31",
+      "X41.32",
+      "X41.33",
+      "X41.34"
+     ]
+    },
+    {
+     "cable": "W12",
+     "fonction": "Fins de course B3 à B6",
+     "bornes": [
+      "X60.31",
+      "X60.32",
+      "X60.33",
+      "X60.34",
+      "X60.35",
+      "X60.36",
+      "X60.37",
+      "X60.38"
+     ]
+    },
+    {
+     "cable": "W12",
+     "fonction": "Colonne lumineuse H1",
+     "bornes": [
+      "X62.11",
+      "X62.12",
+      "X62.13",
+      "X62.14"
+     ]
+    }
+   ]
+  },
+  {
+   "rail": "R5",
+   "troncon": "tronçons 2 et 3",
+   "x0": 512.5,
+   "groupes": [
+    {
+     "cable": "W14",
+     "fonction": "Capot magnétique B2",
+     "bornes": [
+      "X41.41",
+      "X41.42",
+      "X41.43",
+      "X41.44"
+     ]
+    },
+    {
+     "cable": "W8",
+     "fonction": "Thermocouple B7 (réserve)",
+     "bornes": [
+      "X63.11",
+      "X63.12"
+     ],
+     "sans_butee": true
+    },
+    {
+     "cable": "W3",
+     "fonction": "Sonde TF M1",
+     "bornes": [
+      "X31.21",
+      "X31.22"
+     ]
+    },
+    {
+     "cable": "W6",
+     "fonction": "Sonde TF M2",
+     "bornes": [
+      "X32.21",
+      "X32.22"
+     ],
+     "sans_butee": true
+    },
+    {
+     "cable": "W9",
+     "fonction": "Pas-à-pas M3",
+     "bornes": [
+      "X20.11",
+      "X20.12",
+      "X20.13",
+      "X20.14"
+     ]
+    },
+    {
+     "cable": "W10",
+     "fonction": "Pas-à-pas M4",
+     "bornes": [
+      "X20.21",
+      "X20.22",
+      "X20.23",
+      "X20.24"
+     ]
+    }
+   ]
+  },
+  {
+   "rail": "R5",
+   "troncon": "tronçon 4 (puissance)",
+   "x0": 788.1,
+   "groupes": [
+    {
+     "cable": "W4",
+     "fonction": "Frein M1",
+     "bornes": [
+      "X31.31",
+      "X31.32"
+     ]
+    },
+    {
+     "cable": "W4",
+     "fonction": "Frein M2",
+     "bornes": [
+      "X32.31",
+      "X32.32"
+     ]
+    },
+    {
+     "cable": "W2",
+     "fonction": "Moteur M1",
+     "bornes": [
+      "X31.11",
+      "X31.12",
+      "X31.13",
+      "X31.14"
+     ]
+    },
+    {
+     "cable": "W5",
+     "fonction": "Moteur M2",
+     "bornes": [
+      "X32.11",
+      "X32.12",
+      "X32.13",
+      "X32.14"
+     ]
+    },
+    {
+     "cable": "W1",
+     "fonction": "Arrivée réseau",
+     "bornes": [
+      "X10.11",
+      "X10.12",
+      "X10.13",
+      "X10.14",
+      "X10.15"
+     ]
+    }
+   ]
+  },
+  {
+   "rail": "R4",
+   "troncon": "après XD1 : services 230 V, puis porte",
+   "x0": 497.5,
+   "groupes": [
+    {
+     "cable": "int",
+     "fonction": "Éclairage EL1 / EL2",
+     "bornes": [
+      "X13.11",
+      "X13.12"
+     ]
+    },
+    {
+     "cable": "int",
+     "fonction": "Ventilation EV1 / EV2",
+     "bornes": [
+      "X13.21",
+      "X13.22"
+     ]
+    },
+    {
+     "cable": "porte",
+     "fonction": "AU armoire S1",
+     "bornes": [
+      "X41.51",
+      "X41.52",
+      "X41.53",
+      "X41.54",
+      "X60.41",
+      "X60.42"
+     ]
+    },
+    {
+     "cable": "porte",
+     "fonction": "Réarmement S4",
+     "bornes": [
+      "X40.11",
+      "X40.12"
+     ]
+    },
+    {
+     "cable": "porte",
+     "fonction": "Voyant H3",
+     "bornes": [
+      "X21.21",
+      "X21.22"
+     ]
+    },
+    {
+     "cable": "porte",
+     "fonction": "Voyant H4",
+     "bornes": [
+      "X62.21",
+      "X62.22"
+     ]
+    },
+    {
+     "cable": "porte230",
+     "fonction": "Voyant H2 230 V",
+     "bornes": [
+      "X12.21",
+      "X12.22"
+     ],
+     "apres_vis": 702.5
+    }
+   ]
+  }
+ ],
+ "types_bornes": {
+  "_source": "Tableau V1 (sourcing, 1 armoire) : PT 2,5 Phoenix 3209510 = 20 + 50 ; PT 4 Phoenix 3211757 = 15 ; bornes de terre RS 708-1687 (Phoenix 3211867) en cours de livraison (Julien 17/11). Largeurs : v10 (PT 2,5 = 5,2 mm, PT 4 = 6,2 mm).",
+  "achetes": {
+   "PT 2,5": 70,
+   "PT 4": 15,
+   "terre": 4
+  },
+  "largeur": {
+   "PT 2,5": 5.2,
+   "PT 4": 6.2,
+   "terre": 5.2
+  },
+  "PT 4": [
+   "X10.12",
+   "X10.13",
+   "X10.14",
+   "X10.15",
+   "X31.12",
+   "X31.13",
+   "X31.14",
+   "X32.12",
+   "X32.13",
+   "X32.14",
+   "X13.11",
+   "X13.12",
+   "X13.21",
+   "X13.22",
+   "X12.11"
+  ],
+  "terre": [
+   "X10.11",
+   "X31.11",
+   "X32.11",
+   "X50.13"
+  ]
+ },
+ "couleurs_cables": {
+  "W11": "#cfe2f3",
+  "W12": "#d9ead3",
+  "W14": "#e6f3e6",
+  "W8": "#fff2cc",
+  "W3": "#fce4d6",
+  "W6": "#fce4d6",
+  "W9": "#e1d5e7",
+  "W10": "#e1d5e7",
+  "W4": "#f8cecc",
+  "W2": "#f4b6b0",
+  "W5": "#f4b6b0",
+  "W1": "#ffe0b3",
+  "int": "#eeeeee",
+  "porte": "#fff9e0",
+  "porte230": "#f9d5e5"
+ },
+ "boite": {
+  "repere": "+M-X1",
+  "designation": "Boîte de dérivation machine (une seule)",
+  "statut": "repère proposé le 17/11, validé par Julien (IEC 81346-2, classe X)"
+ },
+ "cables": [
+  {
+   "repere": "W1",
+   "fonction": "Arrivée réseau 400 V 3P+N+PE",
+   "origine": "Réseau client (US : secondaire de TR1)",
+   "destination": "+A1 X10.11 à X10.15",
+   "type": "Câble client",
+   "reference": "fourni par le client",
+   "conducteurs": "5G4",
+   "blindage": "non blindé",
+   "longueur": "client",
+   "statut": "client",
+   "folio": "10"
+  },
+  {
+   "repere": "W2",
+   "fonction": "Moteur M1 (U V W PE)",
+   "origine": "+A1 X31.11 à X31.14 (U1 X2)",
+   "destination": "+M M1 : U1 V1 W1 PE",
+   "type": "2XSLCY-K",
+   "reference": "AEE261757",
+   "conducteurs": "4G2,5",
+   "blindage": "blindé, raccordé côté armoire (presse-étoupe CEM)",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "31"
+  },
+  {
+   "repere": "W3",
+   "fonction": "Sonde TF M1",
+   "origine": "+A1 X31.21 / X31.22 (U1 X10)",
+   "destination": "+M M1 : 1b / 2b",
+   "type": "LIYCY",
+   "reference": "PPMM0180",
+   "conducteurs": "2 x 0,75",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "31"
+  },
+  {
+   "repere": "W4",
+   "fonction": "Freins BE5 M1 + M2, 400 V CA",
+   "origine": "+A1 X31.31-32 (KF1), X32.31-32 (KF2)",
+   "destination": "+M-X1, puis M1 2-3 et M2 2-3",
+   "type": "LIYCY-JZ",
+   "reference": "AEE261168",
+   "conducteurs": "5G1,5 (4 + V/J)",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté (5G1,5)",
+   "folio": "31, 32"
+  },
+  {
+   "repere": "W5",
+   "fonction": "Moteur M2 (U V W PE)",
+   "origine": "+A1 X32.11 à X32.14 (U2 X2)",
+   "destination": "+M M2 : U1 V1 W1 PE",
+   "type": "2XSLCY-K",
+   "reference": "AEE261757",
+   "conducteurs": "4G2,5",
+   "blindage": "blindé, raccordé côté armoire (presse-étoupe CEM)",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "32"
+  },
+  {
+   "repere": "W6",
+   "fonction": "Sonde TF M2",
+   "origine": "+A1 X32.21 / X32.22 (U2 X10)",
+   "destination": "+M M2 : 1b / 2b",
+   "type": "LIYCY",
+   "reference": "PPMM0180",
+   "conducteurs": "2 x 0,75",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "32"
+  },
+  {
+   "repere": "W8",
+   "fonction": "Thermocouple K, tête Microdia",
+   "origine": "+A1 X63.11 / X63.12 (K3 AI0)",
+   "destination": "+M B7",
+   "type": "Câble de compensation type K",
+   "reference": "RS 236-3959",
+   "conducteurs": "2 cond. (7 x 0,2 mm)",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m (bobine 25 m)",
+   "statut": "à confirmer",
+   "folio": "63"
+  },
+  {
+   "repere": "W9",
+   "fonction": "Moteur pas-à-pas M3 (A+ A- B+ B-), 48 V",
+   "origine": "+A1 X20.11 à X20.14 (U3)",
+   "destination": "+M M3",
+   "type": "LIYCY-JZ",
+   "reference": "AEE261168",
+   "conducteurs": "5G1,5 (4 + V/J)",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté (5G1,5)",
+   "folio": "20"
+  },
+  {
+   "repere": "W10",
+   "fonction": "Moteur pas-à-pas M4 (A+ A- B+ B-), 48 V",
+   "origine": "+A1 X20.21 à X20.24 (U4)",
+   "destination": "+M M4",
+   "type": "LIYCY-JZ",
+   "reference": "AEE261168",
+   "conducteurs": "5G1,5 (4 + V/J)",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté (5G1,5)",
+   "folio": "20"
+  },
+  {
+   "repere": "W11",
+   "fonction": "Pupitre : AU S2, sélecteur S3, alimentation IHM",
+   "origine": "+A1 X41.1x, X41.2x, X42.1x, X50.1x, X60.1x, X60.2x",
+   "destination": "+P1 S2, S3, P1",
+   "type": "LIYCY-JZ",
+   "reference": "AEE261165",
+   "conducteurs": "27G1 (26 + V/J) : 22 + V/J utilisés, 4 réserve",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "41, 42, 50, 60, 70"
+  },
+  {
+   "repere": "W12",
+   "fonction": "Machine : capot B1, fins de course B3-B6, colonne H1",
+   "origine": "+A1 X41.3x, X60.3x, X62.1x",
+   "destination": "+M-X1",
+   "type": "LIYCY-JZ",
+   "reference": "AEE261164",
+   "conducteurs": "19G1 (18 + V/J) : 16 + V/J utilisés, 2 réserve",
+   "blindage": "blindé, raccordé côté armoire",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "41, 60, 62, 70"
+  },
+  {
+   "repere": "W13",
+   "fonction": "Liaison équipotentielle armoire → bâti",
+   "origine": "+A1 XPE1 (terre de l'arrivée)",
+   "destination": "+M bâti machine",
+   "type": "Fil V/J seul",
+   "reference": "RS 811-4463",
+   "conducteurs": "1 x 4 mm² V/J",
+   "blindage": "sans objet",
+   "longueur": "≤ 10 m",
+   "statut": "acheté",
+   "folio": "10"
+  },
+  {
+   "repere": "W14",
+   "fonction": "Capot magnétique codé B2",
+   "origine": "+A1 X41.41 à X41.44",
+   "destination": "+M B2 (connecteur M12)",
+   "type": "Câble M12 8 broches femelle, extrémité libre",
+   "reference": "RS 285-9453 (SICK)",
+   "conducteurs": "8 cond. (section à relever)",
+   "blindage": "à relever (fiche SICK)",
+   "longueur": "20 m (surmoulé, longueur fixe)",
+   "statut": "acheté",
+   "folio": "41, 70",
+   "propose": true
+  },
+  {
+   "repere": "PN1",
+   "fonction": "PROFINET CPU K1 → switch K4 (interne)",
+   "origine": "+A1 K1 X1 P1",
+   "destination": "+A1 K4 P1",
+   "type": "Cordon RJ45 Cat5e blindé",
+   "reference": "RS 843-6365",
+   "conducteurs": "RJ45",
+   "blindage": "par les fiches RJ45",
+   "longueur": "1 m",
+   "statut": "acheté",
+   "folio": "30, 60"
+  },
+  {
+   "repere": "PN2",
+   "fonction": "PROFINET switch K4 → U1 (interne)",
+   "origine": "+A1 K4 P2",
+   "destination": "+A1 U1 X40",
+   "type": "Cordon RJ45 Cat5e blindé",
+   "reference": "RS 843-6369",
+   "conducteurs": "RJ45",
+   "blindage": "par les fiches RJ45",
+   "longueur": "2 m",
+   "statut": "acheté",
+   "folio": "30, 31"
+  },
+  {
+   "repere": "PN3",
+   "fonction": "PROFINET switch K4 → U2 (interne)",
+   "origine": "+A1 K4 P3",
+   "destination": "+A1 U2 X40",
+   "type": "Cordon RJ45 Cat5e blindé",
+   "reference": "RS 843-6369",
+   "conducteurs": "RJ45",
+   "blindage": "par les fiches RJ45",
+   "longueur": "2 m",
+   "statut": "acheté",
+   "folio": "30, 32"
+  },
+  {
+   "repere": "PN4",
+   "fonction": "PROFINET switch K4 → IHM P1 (pupitre)",
+   "origine": "+A1 K4 P4",
+   "destination": "+P1 P1 X1",
+   "type": "Câble RJ45 Cat6 blindé (bleu)",
+   "reference": "RS 616-2586 (Roline)",
+   "conducteurs": "RJ45",
+   "blindage": "par les fiches RJ45",
+   "longueur": "20 m (surmoulé)",
+   "statut": "acheté",
+   "folio": "30, 50"
+  }
+ ],
+ "conducteurs": {
+  "W11": [
+   [
+    "1",
+    "X41.11"
+   ],
+   [
+    "2",
+    "X41.12"
+   ],
+   [
+    "3",
+    "X41.13"
+   ],
+   [
+    "4",
+    "X41.14"
+   ],
+   [
+    "5",
+    "X60.11"
+   ],
+   [
+    "6",
+    "X60.12"
+   ],
+   [
+    "7",
+    "X41.21"
+   ],
+   [
+    "8",
+    "X41.22"
+   ],
+   [
+    "9",
+    "X41.23"
+   ],
+   [
+    "10",
+    "X41.24"
+   ],
+   [
+    "11",
+    "X42.11"
+   ],
+   [
+    "12",
+    "X42.12"
+   ],
+   [
+    "13",
+    "X42.13"
+   ],
+   [
+    "14",
+    "X42.14"
+   ],
+   [
+    "15",
+    "X42.15"
+   ],
+   [
+    "16",
+    "X42.16"
+   ],
+   [
+    "17",
+    "X60.21"
+   ],
+   [
+    "18",
+    "X60.22"
+   ],
+   [
+    "19",
+    "X60.23"
+   ],
+   [
+    "20",
+    "X60.24"
+   ],
+   [
+    "21",
+    "X50.11"
+   ],
+   [
+    "22",
+    "X50.12"
+   ],
+   [
+    "V/J",
+    "X50.13"
+   ],
+   [
+    "23",
+    ""
+   ],
+   [
+    "24",
+    ""
+   ],
+   [
+    "25",
+    ""
+   ],
+   [
+    "26",
+    ""
+   ]
+  ],
+  "W12": [
+   [
+    "1",
+    "X41.31"
+   ],
+   [
+    "2",
+    "X41.32"
+   ],
+   [
+    "3",
+    "X41.33"
+   ],
+   [
+    "4",
+    "X41.34"
+   ],
+   [
+    "5",
+    "X60.31"
+   ],
+   [
+    "6",
+    "X60.32"
+   ],
+   [
+    "7",
+    "X60.33"
+   ],
+   [
+    "8",
+    "X60.34"
+   ],
+   [
+    "9",
+    "X60.35"
+   ],
+   [
+    "10",
+    "X60.36"
+   ],
+   [
+    "11",
+    "X60.37"
+   ],
+   [
+    "12",
+    "X60.38"
+   ],
+   [
+    "13",
+    "X62.11"
+   ],
+   [
+    "14",
+    "X62.12"
+   ],
+   [
+    "15",
+    "X62.13"
+   ],
+   [
+    "16",
+    "X62.14"
+   ],
+   [
+    "V/J",
+    "XPE1"
+   ],
+   [
+    "17",
+    ""
+   ],
+   [
+    "18",
+    ""
+   ]
+  ],
+  "W4": [
+   [
+    "1",
+    "X31.31"
+   ],
+   [
+    "2",
+    "X31.32"
+   ],
+   [
+    "3",
+    "X32.31"
+   ],
+   [
+    "4",
+    "X32.32"
+   ],
+   [
+    "V/J",
+    "XPE1"
+   ]
+  ],
+  "W9": [
+   [
+    "1",
+    "X20.11"
+   ],
+   [
+    "2",
+    "X20.12"
+   ],
+   [
+    "3",
+    "X20.13"
+   ],
+   [
+    "4",
+    "X20.14"
+   ],
+   [
+    "V/J",
+    "XPE1"
+   ]
+  ],
+  "W10": [
+   [
+    "1",
+    "X20.21"
+   ],
+   [
+    "2",
+    "X20.22"
+   ],
+   [
+    "3",
+    "X20.23"
+   ],
+   [
+    "4",
+    "X20.24"
+   ],
+   [
+    "V/J",
+    "XPE1"
+   ]
+  ],
+  "W2": [
+   [
+    "U",
+    "X31.12"
+   ],
+   [
+    "V",
+    "X31.13"
+   ],
+   [
+    "W",
+    "X31.14"
+   ],
+   [
+    "V/J",
+    "X31.11"
+   ]
+  ],
+  "W5": [
+   [
+    "U",
+    "X32.12"
+   ],
+   [
+    "V",
+    "X32.13"
+   ],
+   [
+    "W",
+    "X32.14"
+   ],
+   [
+    "V/J",
+    "X32.11"
+   ]
+  ],
+  "W3": [
+   [
+    "blanc",
+    "X31.21"
+   ],
+   [
+    "marron",
+    "X31.22"
+   ]
+  ],
+  "W6": [
+   [
+    "blanc",
+    "X32.21"
+   ],
+   [
+    "marron",
+    "X32.22"
+   ]
+  ],
+  "W8": [
+   [
+    "vert (+)",
+    "X63.11"
+   ],
+   [
+    "blanc (-)",
+    "X63.12"
+   ]
+  ],
+  "W14": [
+   [
+    "?",
+    "X41.41"
+   ],
+   [
+    "?",
+    "X41.42"
+   ],
+   [
+    "?",
+    "X41.43"
+   ],
+   [
+    "?",
+    "X41.44"
+   ]
+  ]
+ },
+ "notes_conducteurs": {
+  "W11": "LIYCY-JZ : conducteurs numérotés + V/J. N° de conducteur = ordre des bornes (validé le 05/11, f70). Réserve 23-26 non bornée.",
+  "W12": "N° de conducteur = ordre des bornes (f70). V/J : XPE1 côté armoire, masse de la boîte +M-X1. Réserve 17-18 non bornée.",
+  "W4": "Conducteurs 1-2 = frein M1, 3-4 = frein M2 (v18). V/J : XPE1 et boîte +M-X1.",
+  "W9": "Affectation du 5G1,5 décidée le 17/11. V/J : XPE1 ; côté moteur, masse de M3 si une borne existe (à vérifier).",
+  "W10": "Idem W9 pour M4.",
+  "W2": "Marquage des conducteurs du 2XSLCY-K à relever sur le câble.",
+  "W5": "Idem W2.",
+  "W3": "Conducteurs blanc et marron (Julien 05/11). Blanc = 1b : proposition.",
+  "W6": "Idem W3.",
+  "W8": "Couleurs IEC 60584-3 (vert +, blanc -). Bornes X63 gardées même si non utilisées (Julien 17/11).",
+  "W14": "Brochage M12 du MN508S : à relever (fiche ifm)."
+ },
+ "apres_boite": [
+  [
+   "+M-X1 → M1 frein (2-3)",
+   "W4 1-2",
+   "2 conducteurs 400 V CA"
+  ],
+  [
+   "+M-X1 → M2 frein (2-3)",
+   "W4 3-4",
+   "2 conducteurs 400 V CA"
+  ],
+  [
+   "+M-X1 → B1 (11-12, 23-24)",
+   "W12 1-4",
+   "4 conducteurs"
+  ],
+  [
+   "+M-X1 → B3, B4, B5, B6 (13-14)",
+   "W12 5-12",
+   "2 conducteurs par fin de course"
+  ],
+  [
+   "+M-X1 → H1 (RD, OG, GN, COM)",
+   "W12 13-16",
+   "4 conducteurs"
+  ]
+ ],
+ "stock_libre": [
+  [
+   "H05VVF 2 x 1 mm² blanc",
+   "PPMM0114",
+   "Tableau V1 : « câble capteur fin de course ↔ armoire »"
+  ],
+  [
+   "H05VVF 2 x 0,75 mm² blanc",
+   "PPMM0104",
+   "Tableau V1 : « câble sonde TF moteur »"
+  ]
+ ]
+}

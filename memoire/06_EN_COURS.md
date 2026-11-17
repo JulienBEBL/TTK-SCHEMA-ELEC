@@ -237,3 +237,9 @@ Julien câble l'armoire avec la numérotation v26 ; **pas de v27 avant ses retou
 - `librairie_winrelais/sym_electrotech/CUSTOM/` : copie octet pour octet des 42 symboles CUSTOM du PC (`.gitattributes` : pas de conversion). Installation sur un autre PC : `librairie_winrelais/README.md`.
 - Écart avec `outils/librairie/CUSTOM` (copie du script) : 10 symboles seulement dans le script (Eaton T0, PTFIX 3273354, borne terre, Hager NFT702), 5 seulement sur le PC.
 - Complété (Julien : oui) avec les 11 symboles présents seulement dans le script : 53 symboles dans `librairie_winrelais`.
+
+## 17/11/2026 : dossier d'implantation v11 (indice A), en attente des retours de Julien
+- PDF unique `implantation/release/TTK_implantation_2026-11-17_v11.pdf` : garde, charte, plaque 1:7, borniers R5 (2 pages), R4 + R3, liste des câbles, affectation des conducteurs (2 pages), synoptique. Remplace l'implantation draw.io v10 (old/).
+- Génération : `cd implantation/generateur` ; `python -I extraire.py` (lit la release .xrs + saisie.json → donnees.json) ; `python -I generer.py [--png dossier]`. Contrôle écrit dans `_verification.md` (textes trop larges, chevauchements, croisement bornes / câbles avec le .xrs). Attendu : 0 / 0 / 0.
+- Données hors schéma (rails, appareils, câbles achetés, conducteurs) : `implantation/generateur/saisie.json`. Géométrie de la plaque reprise de la v10 (indice K).
+- Points ouverts : manque 4 PT 2,5 ; X21.14 à droite de K4 (proposé) ; W14 (proposé) ; liaisons boîte +M-X1 → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du tableau f80.

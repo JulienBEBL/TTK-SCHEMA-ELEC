@@ -1,0 +1,6149 @@
+{
+ "source": "schema/generes/release/TTK_2026-11-16_v31.xrs",
+ "folios": {
+  "0": "01",
+  "1": "02",
+  "2": "03",
+  "3": "10",
+  "4": "11",
+  "5": "12",
+  "6": "13",
+  "7": "20",
+  "8": "21",
+  "9": "30",
+  "10": "31",
+  "11": "32",
+  "12": "40",
+  "13": "41",
+  "14": "42",
+  "15": "50",
+  "16": "60",
+  "17": "61",
+  "18": "62",
+  "19": "63",
+  "20": "70",
+  "21": "71",
+  "22": "80",
+  "23": "85",
+  "24": "90"
+ },
+ "bornes": {
+  "X10.11": {
+   "repere": "X10.11",
+   "folio": "10",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Arrivée réseau",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:FE",
+      "T1:PE",
+      "T2:PE",
+      "T3:PE",
+      "U1:X1:PE",
+      "U2:X1:PE",
+      "X12.11:2",
+      "X50.13:2",
+      "XD1:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "K1:FE",
+    "T1:PE",
+    "T2:PE",
+    "T3:PE",
+    "U1:X1:PE",
+    "U2:X1:PE",
+    "X12.11:2",
+    "X50.13:2",
+    "XD1:PE"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "PE"
+  },
+  "X10.12": {
+   "repere": "X10.12",
+   "folio": "10",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Arrivée réseau",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": [
+      "1004"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "QS1:N"
+     ],
+     "numeros": [
+      "1004"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "QS1:N"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1004"
+  },
+  "X10.13": {
+   "repere": "X10.13",
+   "folio": "10",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Arrivée réseau",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": [
+      "1001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "QS1:1/L1"
+     ],
+     "numeros": [
+      "1001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "QS1:1/L1"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1001"
+  },
+  "X10.14": {
+   "repere": "X10.14",
+   "folio": "10",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Arrivée réseau",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": [
+      "1002"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "QS1:3/L2"
+     ],
+     "numeros": [
+      "1002"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "QS1:3/L2"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1002"
+  },
+  "X10.15": {
+   "repere": "X10.15",
+   "folio": "10",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Arrivée réseau",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": [
+      "1003"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "QS1:5/L3"
+     ],
+     "numeros": [
+      "1003"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "QS1:5/L3"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1003"
+  },
+  "X12.11": {
+   "repere": "X12.11",
+   "folio": "12",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Liaison PELV 0 V - PE",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "T1:-V",
+      "T2:-V",
+      "X21.12:E"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:FE",
+      "T1:PE",
+      "T2:PE",
+      "T3:PE",
+      "U1:X1:PE",
+      "U2:X1:PE",
+      "X10.11:2",
+      "X50.13:2",
+      "XD1:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:FE",
+    "T1:-V",
+    "T1:PE",
+    "T2:-V",
+    "T2:PE",
+    "T3:PE",
+    "U1:X1:PE",
+    "U2:X1:PE",
+    "X10.11:2",
+    "X21.12:E",
+    "X50.13:2",
+    "XD1:PE"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1230/PE"
+  },
+  "X12.21": {
+   "repere": "X12.21",
+   "folio": "12",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Voyant -H2 230 V (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "QF1:6",
+      "QF3:3",
+      "QF7:1",
+      "QF8:1",
+      "QF9:1",
+      "QM1:5/L3",
+      "QM2:5/L3"
+     ],
+     "numeros": [
+      "1023"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H2:X1"
+     ],
+     "numeros": [
+      "1023"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "QF1:6",
+    "QF3:3",
+    "QF7:1",
+    "QF8:1",
+    "QF9:1",
+    "QM1:5/L3",
+    "QM2:5/L3"
+   ],
+   "cote_exterieur": [
+    "H2:X1"
+   ],
+   "numero_fil": "1023"
+  },
+  "X12.22": {
+   "repere": "X12.22",
+   "folio": "12",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Voyant -H2 230 V (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "H2:X2"
+     ],
+     "numeros": [
+      "1024"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "QF1:N",
+      "QF4:N",
+      "QF5:N",
+      "QF6:1",
+      "QF7:N",
+      "QF8:N",
+      "QF9:N"
+     ],
+     "numeros": [
+      "1024"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "QF1:N",
+    "QF4:N",
+    "QF5:N",
+    "QF6:1",
+    "QF7:N",
+    "QF8:N",
+    "QF9:N"
+   ],
+   "cote_exterieur": [
+    "H2:X2"
+   ],
+   "numero_fil": "1024"
+  },
+  "X13.11": {
+   "repere": "X13.11",
+   "folio": "13",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Eclairage armoire -EL1 /",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "QF8:2"
+     ],
+     "numeros": [
+      "1303"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "EL1:L",
+      "EL2:L"
+     ],
+     "numeros": [
+      "1303"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "EL1:L",
+    "EL2:L",
+    "QF8:2"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1303"
+  },
+  "X13.12": {
+   "repere": "X13.12",
+   "folio": "13",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Eclairage armoire -EL1 /",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "QF8:N"
+     ],
+     "numeros": [
+      "1304"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "EL1:N",
+      "EL2:N"
+     ],
+     "numeros": [
+      "1304"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "EL1:N",
+    "EL2:N",
+    "QF8:N"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1304"
+  },
+  "X13.21": {
+   "repere": "X13.21",
+   "folio": "13",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Ventilation -EV1 / -EV2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "QF7:2"
+     ],
+     "numeros": [
+      "1313"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "EV1:L",
+      "EV2:L"
+     ],
+     "numeros": [
+      "1313"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "EV1:L",
+    "EV2:L",
+    "QF7:2"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1313"
+  },
+  "X13.22": {
+   "repere": "X13.22",
+   "folio": "13",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Ventilation -EV1 / -EV2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "QF7:N"
+     ],
+     "numeros": [
+      "1314"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "EV1:N",
+      "EV2:N"
+     ],
+     "numeros": [
+      "1314"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "EV1:N",
+    "EV2:N",
+    "QF7:N"
+   ],
+   "cote_exterieur": [],
+   "numero_fil": "1314"
+  },
+  "X20.11": {
+   "repere": "X20.11",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M3",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U3:A+"
+     ],
+     "numeros": [
+      "2021"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:A+"
+     ],
+     "numeros": [
+      "2021"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U3:A+"
+   ],
+   "cote_exterieur": [
+    "M3:A+"
+   ],
+   "numero_fil": "2021"
+  },
+  "X20.12": {
+   "repere": "X20.12",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M3",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U3:A-"
+     ],
+     "numeros": [
+      "2022"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:A-"
+     ],
+     "numeros": [
+      "2022"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U3:A-"
+   ],
+   "cote_exterieur": [
+    "M3:A-"
+   ],
+   "numero_fil": "2022"
+  },
+  "X20.13": {
+   "repere": "X20.13",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M3",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U3:B+"
+     ],
+     "numeros": [
+      "2023"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:B+"
+     ],
+     "numeros": [
+      "2023"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U3:B+"
+   ],
+   "cote_exterieur": [
+    "M3:B+"
+   ],
+   "numero_fil": "2023"
+  },
+  "X20.14": {
+   "repere": "X20.14",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M3",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U3:B-"
+     ],
+     "numeros": [
+      "2024"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:B-"
+     ],
+     "numeros": [
+      "2024"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U3:B-"
+   ],
+   "cote_exterieur": [
+    "M3:B-"
+   ],
+   "numero_fil": "2024"
+  },
+  "X20.21": {
+   "repere": "X20.21",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M4",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U4:A+"
+     ],
+     "numeros": [
+      "2031"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:A+"
+     ],
+     "numeros": [
+      "2031"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U4:A+"
+   ],
+   "cote_exterieur": [
+    "M4:A+"
+   ],
+   "numero_fil": "2031"
+  },
+  "X20.22": {
+   "repere": "X20.22",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M4",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U4:A-"
+     ],
+     "numeros": [
+      "2032"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:A-"
+     ],
+     "numeros": [
+      "2032"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U4:A-"
+   ],
+   "cote_exterieur": [
+    "M4:A-"
+   ],
+   "numero_fil": "2032"
+  },
+  "X20.23": {
+   "repere": "X20.23",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M4",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U4:B+"
+     ],
+     "numeros": [
+      "2033"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:B+"
+     ],
+     "numeros": [
+      "2033"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U4:B+"
+   ],
+   "cote_exterieur": [
+    "M4:B+"
+   ],
+   "numero_fil": "2033"
+  },
+  "X20.24": {
+   "repere": "X20.24",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur pas-à-pas M4",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U4:B-"
+     ],
+     "numeros": [
+      "2034"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:B-"
+     ],
+     "numeros": [
+      "2034"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U4:B-"
+   ],
+   "cote_exterieur": [
+    "M4:B-"
+   ],
+   "numero_fil": "2034"
+  },
+  "X21.11": {
+   "repere": "X21.11",
+   "folio": "21",
+   "symbole": "borne distribution ptfix 6/12x2.5",
+   "reference": "3273354",
+   "fonction": "Distribution 24VELEC",
+   "cotes": [
+    {
+     "broche": "E",
+     "raccords": [
+      "T2:+V"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    },
+    {
+     "broche": "1",
+     "raccords": [
+      "K1:2L+",
+      "K1:L+",
+      "K2:L+",
+      "K3:L+",
+      "K4:V1+",
+      "KA1:A1",
+      "X21.21:1",
+      "X50.11:2"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "3",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "4",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "5",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "6",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "7",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "8",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "9",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "10",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "11",
+     "raccords": [
+      "U2:X5:24V"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    },
+    {
+     "broche": "12",
+     "raccords": [
+      "U1:X5:24V"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    }
+   ],
+   "type": "PTFIX"
+  },
+  "X21.12": {
+   "repere": "X21.12",
+   "folio": "21",
+   "symbole": "borne distribution ptfix 6/12x2.5",
+   "reference": "3273354",
+   "fonction": "Distribution 0 V",
+   "cotes": [
+    {
+     "broche": "E",
+     "raccords": [
+      "T1:-V",
+      "T2:-V",
+      "X12.11:1"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "1",
+     "raccords": [
+      "K1:1M",
+      "K1:2M",
+      "K1:M",
+      "K2:1M",
+      "K2:2M",
+      "K2:3M",
+      "K2:M",
+      "K3:M",
+      "K4:V1-",
+      "KA1:A2",
+      "KA1:B2",
+      "KA2:A2",
+      "KF1:A2",
+      "KF2:A2",
+      "KM1:A2",
+      "KM2:A2",
+      "U1:X6:2",
+      "X21.22:2",
+      "X50.12:2",
+      "X62.14:2",
+      "X62.22:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "3",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "4",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "5",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "6",
+     "raccords": [
+      "U3:DIR-",
+      "U3:ENA-",
+      "U3:PUL-"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "7",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "8",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "9",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "10",
+     "raccords": [
+      "U4:DIR-",
+      "U4:ENA-",
+      "U4:PUL-"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "11",
+     "raccords": [
+      "U2:X5:GND"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "12",
+     "raccords": [
+      "U1:X5:GND"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "PTFIX"
+  },
+  "X21.13": {
+   "repere": "X21.13",
+   "folio": "21",
+   "symbole": "borne distribution ptfix 6/12x2.5",
+   "reference": "3273354",
+   "fonction": "Distribution 24VSEC",
+   "cotes": [
+    {
+     "broche": "E",
+     "raccords": [
+      "T1:+V"
+     ],
+     "numeros": [
+      "1231"
+     ]
+    },
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "2",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "3",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "4",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "5",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "6",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "7",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "8",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "9",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "10",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "11",
+     "raccords": [
+      "K2:3L+"
+     ],
+     "numeros": [
+      "1231"
+     ]
+    },
+    {
+     "broche": "12",
+     "raccords": [
+      "FA1:2"
+     ],
+     "numeros": [
+      "1231"
+     ]
+    }
+   ],
+   "type": "PTFIX"
+  },
+  "X21.14": {
+   "repere": "X21.14",
+   "folio": "21",
+   "symbole": "borne distribution ptfix 6/12x2.5",
+   "reference": "3273354",
+   "fonction": "Distribution 24 V capteurs (L+",
+   "cotes": [
+    {
+     "broche": "E",
+     "raccords": [
+      "K1:L+ capt"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "1",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "2",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "3",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "4",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "5",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "6",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "7",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "8",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "9",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "10",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "11",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "12",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "PTFIX"
+  },
+  "X21.21": {
+   "repere": "X21.21",
+   "folio": "21",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Voyant -H3 (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "K1:2L+",
+      "K1:L+",
+      "K2:L+",
+      "K3:L+",
+      "K4:V1+",
+      "KA1:A1",
+      "X21.11:1",
+      "X50.11:2"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H3:X1"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:2L+",
+    "K1:L+",
+    "K2:L+",
+    "K3:L+",
+    "K4:V1+",
+    "KA1:A1",
+    "X21.11:1",
+    "X50.11:2"
+   ],
+   "cote_exterieur": [
+    "H3:X1"
+   ],
+   "numero_fil": "1241"
+  },
+  "X21.22": {
+   "repere": "X21.22",
+   "folio": "21",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Voyant -H3 (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "H3:X2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:1M",
+      "K1:2M",
+      "K1:M",
+      "K2:1M",
+      "K2:2M",
+      "K2:3M",
+      "K2:M",
+      "K3:M",
+      "K4:V1-",
+      "KA1:A2",
+      "KA1:B2",
+      "KA2:A2",
+      "KF1:A2",
+      "KF2:A2",
+      "KM1:A2",
+      "KM2:A2",
+      "U1:X6:2",
+      "X21.12:1",
+      "X50.12:2",
+      "X62.14:2",
+      "X62.22:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:1M",
+    "K1:2M",
+    "K1:M",
+    "K2:1M",
+    "K2:2M",
+    "K2:3M",
+    "K2:M",
+    "K3:M",
+    "K4:V1-",
+    "KA1:A2",
+    "KA1:B2",
+    "KA2:A2",
+    "KF1:A2",
+    "KF2:A2",
+    "KM1:A2",
+    "KM2:A2",
+    "U1:X6:2",
+    "X21.12:1",
+    "X50.12:2",
+    "X62.14:2",
+    "X62.22:2"
+   ],
+   "cote_exterieur": [
+    "H3:X2"
+   ],
+   "numero_fil": "1230"
+  },
+  "X31.11": {
+   "repere": "X31.11",
+   "folio": "31",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Moteur M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U1:X2:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "U1:X2:PE"
+   ],
+   "cote_exterieur": [
+    "M1:PE"
+   ],
+   "numero_fil": "PE"
+  },
+  "X31.12": {
+   "repere": "X31.12",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U1:X2:U"
+     ],
+     "numeros": [
+      "3101"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:U1"
+     ],
+     "numeros": [
+      "3101"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U1:X2:U"
+   ],
+   "cote_exterieur": [
+    "M1:U1"
+   ],
+   "numero_fil": "3101"
+  },
+  "X31.13": {
+   "repere": "X31.13",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U1:X2:V"
+     ],
+     "numeros": [
+      "3102"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:V1"
+     ],
+     "numeros": [
+      "3102"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U1:X2:V"
+   ],
+   "cote_exterieur": [
+    "M1:V1"
+   ],
+   "numero_fil": "3102"
+  },
+  "X31.14": {
+   "repere": "X31.14",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U1:X2:W"
+     ],
+     "numeros": [
+      "3103"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:W1"
+     ],
+     "numeros": [
+      "3103"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U1:X2:W"
+   ],
+   "cote_exterieur": [
+    "M1:W1"
+   ],
+   "numero_fil": "3103"
+  },
+  "X31.21": {
+   "repere": "X31.21",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sonde TF M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U1:X10:1"
+     ],
+     "numeros": [
+      "3131"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:1b"
+     ],
+     "numeros": [
+      "3131"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U1:X10:1"
+   ],
+   "cote_exterieur": [
+    "M1:1b"
+   ],
+   "numero_fil": "3131"
+  },
+  "X31.22": {
+   "repere": "X31.22",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sonde TF M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U1:X10:2"
+     ],
+     "numeros": [
+      "3132"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:2b"
+     ],
+     "numeros": [
+      "3132"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U1:X10:2"
+   ],
+   "cote_exterieur": [
+    "M1:2b"
+   ],
+   "numero_fil": "3132"
+  },
+  "X31.31": {
+   "repere": "X31.31",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Frein M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KF1:4/T2"
+     ],
+     "numeros": [
+      "1161"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:2"
+     ],
+     "numeros": [
+      "1161"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KF1:4/T2"
+   ],
+   "cote_exterieur": [
+    "M1:2"
+   ],
+   "numero_fil": "1161"
+  },
+  "X31.32": {
+   "repere": "X31.32",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Frein M1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KF1:6/T3"
+     ],
+     "numeros": [
+      "1162"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:3"
+     ],
+     "numeros": [
+      "1162"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KF1:6/T3"
+   ],
+   "cote_exterieur": [
+    "M1:3"
+   ],
+   "numero_fil": "1162"
+  },
+  "X32.11": {
+   "repere": "X32.11",
+   "folio": "32",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Moteur M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U2:X2:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "U2:X2:PE"
+   ],
+   "cote_exterieur": [
+    "M2:PE"
+   ],
+   "numero_fil": "PE"
+  },
+  "X32.12": {
+   "repere": "X32.12",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U2:X2:U"
+     ],
+     "numeros": [
+      "3201"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:U1"
+     ],
+     "numeros": [
+      "3201"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U2:X2:U"
+   ],
+   "cote_exterieur": [
+    "M2:U1"
+   ],
+   "numero_fil": "3201"
+  },
+  "X32.13": {
+   "repere": "X32.13",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U2:X2:V"
+     ],
+     "numeros": [
+      "3202"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:V1"
+     ],
+     "numeros": [
+      "3202"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U2:X2:V"
+   ],
+   "cote_exterieur": [
+    "M2:V1"
+   ],
+   "numero_fil": "3202"
+  },
+  "X32.14": {
+   "repere": "X32.14",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Moteur M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U2:X2:W"
+     ],
+     "numeros": [
+      "3203"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:W1"
+     ],
+     "numeros": [
+      "3203"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U2:X2:W"
+   ],
+   "cote_exterieur": [
+    "M2:W1"
+   ],
+   "numero_fil": "3203"
+  },
+  "X32.21": {
+   "repere": "X32.21",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sonde TF M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U2:X10:1"
+     ],
+     "numeros": [
+      "3231"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:1b"
+     ],
+     "numeros": [
+      "3231"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U2:X10:1"
+   ],
+   "cote_exterieur": [
+    "M2:1b"
+   ],
+   "numero_fil": "3231"
+  },
+  "X32.22": {
+   "repere": "X32.22",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sonde TF M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "U2:X10:2"
+     ],
+     "numeros": [
+      "3232"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:2b"
+     ],
+     "numeros": [
+      "3232"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U2:X10:2"
+   ],
+   "cote_exterieur": [
+    "M2:2b"
+   ],
+   "numero_fil": "3232"
+  },
+  "X32.31": {
+   "repere": "X32.31",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Frein M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KF2:4/T2"
+     ],
+     "numeros": [
+      "1171"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:2"
+     ],
+     "numeros": [
+      "1171"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KF2:4/T2"
+   ],
+   "cote_exterieur": [
+    "M2:2"
+   ],
+   "numero_fil": "1171"
+  },
+  "X32.32": {
+   "repere": "X32.32",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Frein M2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KF2:6/T3"
+     ],
+     "numeros": [
+      "1173"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:3"
+     ],
+     "numeros": [
+      "1173"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KF2:6/T3"
+   ],
+   "cote_exterieur": [
+    "M2:3"
+   ],
+   "numero_fil": "1173"
+  },
+  "X40.11": {
+   "repere": "X40.11",
+   "folio": "40",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Réarmement -S4 (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:22"
+     ],
+     "numeros": [
+      "4061"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S4:3"
+     ],
+     "numeros": [
+      "4061"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:22"
+   ],
+   "cote_exterieur": [
+    "S4:3"
+   ],
+   "numero_fil": "4061"
+  },
+  "X40.12": {
+   "repere": "X40.12",
+   "folio": "40",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Réarmement -S4 (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA1:Y2"
+     ],
+     "numeros": [
+      "4071"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S4:4"
+     ],
+     "numeros": [
+      "4071"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:Y2"
+   ],
+   "cote_exterieur": [
+    "S4:4"
+   ],
+   "numero_fil": "4071"
+  },
+  "X41.11": {
+   "repere": "X41.11",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU pupitre -S2, voies 1 et 2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.52:2"
+     ],
+     "numeros": [
+      "4111"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S2:1"
+     ],
+     "numeros": [
+      "4111"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.52:2"
+   ],
+   "cote_exterieur": [
+    "S2:1"
+   ],
+   "numero_fil": "4111"
+  },
+  "X41.12": {
+   "repere": "X41.12",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU pupitre -S2, voies 1 et 2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S2:2"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X41.21:1",
+      "X41.31:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.21:1",
+    "X41.31:1"
+   ],
+   "cote_exterieur": [
+    "S2:2"
+   ],
+   "numero_fil": "4121"
+  },
+  "X41.13": {
+   "repere": "X41.13",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU pupitre -S2, voies 1 et 2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.54:2"
+     ],
+     "numeros": [
+      "4112"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S2:21"
+     ],
+     "numeros": [
+      "4112"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.54:2"
+   ],
+   "cote_exterieur": [
+    "S2:21"
+   ],
+   "numero_fil": "4112"
+  },
+  "X41.14": {
+   "repere": "X41.14",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU pupitre -S2, voies 1 et 2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S2:22"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X41.23:1",
+      "X41.41:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.23:1",
+    "X41.41:1"
+   ],
+   "cote_exterieur": [
+    "S2:22"
+   ],
+   "numero_fil": "4122"
+  },
+  "X41.21": {
+   "repere": "X41.21",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.12:2",
+      "X41.31:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:3"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.12:2",
+    "X41.31:1"
+   ],
+   "cote_exterieur": [
+    "S3:3"
+   ],
+   "numero_fil": "4121"
+  },
+  "X41.22": {
+   "repere": "X41.22",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:4"
+     ],
+     "numeros": [
+      "4101"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S12",
+      "X41.32:2"
+     ],
+     "numeros": [
+      "4101"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S12",
+    "X41.32:2"
+   ],
+   "cote_exterieur": [
+    "S3:4"
+   ],
+   "numero_fil": "4101"
+  },
+  "X41.23": {
+   "repere": "X41.23",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.14:2",
+      "X41.41:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:7"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.14:2",
+    "X41.41:1"
+   ],
+   "cote_exterieur": [
+    "S3:7"
+   ],
+   "numero_fil": "4122"
+  },
+  "X41.24": {
+   "repere": "X41.24",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:8"
+     ],
+     "numeros": [
+      "4102"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S22",
+      "X41.42:2"
+     ],
+     "numeros": [
+      "4102"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S22",
+    "X41.42:2"
+   ],
+   "cote_exterieur": [
+    "S3:8"
+   ],
+   "numero_fil": "4102"
+  },
+  "X41.31": {
+   "repere": "X41.31",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.12:2",
+      "X41.21:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B1:11"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.12:2",
+    "X41.21:1"
+   ],
+   "cote_exterieur": [
+    "B1:11"
+   ],
+   "numero_fil": "4121"
+  },
+  "X41.32": {
+   "repere": "X41.32",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B1:12"
+     ],
+     "numeros": [
+      "4101"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S12",
+      "X41.22:2"
+     ],
+     "numeros": [
+      "4101"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S12",
+    "X41.22:2"
+   ],
+   "cote_exterieur": [
+    "B1:12"
+   ],
+   "numero_fil": "4101"
+  },
+  "X41.33": {
+   "repere": "X41.33",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B1:23"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "B1:23"
+   ],
+   "numero_fil": "6001"
+  },
+  "X41.34": {
+   "repere": "X41.34",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B1:24"
+     ],
+     "numeros": [
+      "6013"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.2"
+     ],
+     "numeros": [
+      "6013"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.2"
+   ],
+   "cote_exterieur": [
+    "B1:24"
+   ],
+   "numero_fil": "6013"
+  },
+  "X41.41": {
+   "repere": "X41.41",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.14:2",
+      "X41.23:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B2:11"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.14:2",
+    "X41.23:1"
+   ],
+   "cote_exterieur": [
+    "B2:11"
+   ],
+   "numero_fil": "4122"
+  },
+  "X41.42": {
+   "repere": "X41.42",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B2:12"
+     ],
+     "numeros": [
+      "4102"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S22",
+      "X41.24:2"
+     ],
+     "numeros": [
+      "4102"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S22",
+    "X41.24:2"
+   ],
+   "cote_exterieur": [
+    "B2:12"
+   ],
+   "numero_fil": "4102"
+  },
+  "X41.43": {
+   "repere": "X41.43",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B2:23"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "B2:23"
+   ],
+   "numero_fil": "6001"
+  },
+  "X41.44": {
+   "repere": "X41.44",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B2:24"
+     ],
+     "numeros": [
+      "6014"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.3"
+     ],
+     "numeros": [
+      "6014"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.3"
+   ],
+   "cote_exterieur": [
+    "B2:24"
+   ],
+   "numero_fil": "6014"
+  },
+  "X41.51": {
+   "repere": "X41.51",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU armoire -S1 (porte),",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA1:S11"
+     ],
+     "numeros": [
+      "4001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S1:1"
+     ],
+     "numeros": [
+      "4001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S11"
+   ],
+   "cote_exterieur": [
+    "S1:1"
+   ],
+   "numero_fil": "4001"
+  },
+  "X41.52": {
+   "repere": "X41.52",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU armoire -S1 (porte),",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S1:2"
+     ],
+     "numeros": [
+      "4111"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X41.11:1"
+     ],
+     "numeros": [
+      "4111"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.11:1"
+   ],
+   "cote_exterieur": [
+    "S1:2"
+   ],
+   "numero_fil": "4111"
+  },
+  "X41.53": {
+   "repere": "X41.53",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU armoire -S1 (porte),",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA1:S21"
+     ],
+     "numeros": [
+      "4002"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S1:21"
+     ],
+     "numeros": [
+      "4002"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S21"
+   ],
+   "cote_exterieur": [
+    "S1:21"
+   ],
+   "numero_fil": "4002"
+  },
+  "X41.54": {
+   "repere": "X41.54",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU armoire -S1 (porte),",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S1:22"
+     ],
+     "numeros": [
+      "4112"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X41.13:1"
+     ],
+     "numeros": [
+      "4112"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.13:1"
+   ],
+   "cote_exterieur": [
+    "S1:22"
+   ],
+   "numero_fil": "4112"
+  },
+  "X42.11": {
+   "repere": "X42.11",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 : MANU-D,",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA1:14",
+      "KF1:A1",
+      "KF2:A1"
+     ],
+     "numeros": [
+      "4004"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:15"
+     ],
+     "numeros": [
+      "4004"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:14",
+    "KF1:A1",
+    "KF2:A1"
+   ],
+   "cote_exterieur": [
+    "S3:15"
+   ],
+   "numero_fil": "4004"
+  },
+  "X42.12": {
+   "repere": "X42.12",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 : MANU-D,",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:16"
+     ],
+     "numeros": [
+      "4201"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA2:A1"
+     ],
+     "numeros": [
+      "4201"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:A1"
+   ],
+   "cote_exterieur": [
+    "S3:16"
+   ],
+   "numero_fil": "4201"
+  },
+  "X42.13": {
+   "repere": "X42.13",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 : MANU-D,",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA1:24"
+     ],
+     "numeros": [
+      "4005"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:1"
+     ],
+     "numeros": [
+      "4005"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:24"
+   ],
+   "cote_exterieur": [
+    "S3:1"
+   ],
+   "numero_fil": "4005"
+  },
+  "X42.14": {
+   "repere": "X42.14",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 : MANU-D,",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:2"
+     ],
+     "numeros": [
+      "4202"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KM1:A1",
+      "KM2:A1"
+     ],
+     "numeros": [
+      "4202"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KM1:A1",
+    "KM2:A1"
+   ],
+   "cote_exterieur": [
+    "S3:2"
+   ],
+   "numero_fil": "4202"
+  },
+  "X42.15": {
+   "repere": "X42.15",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 : MANU-D,",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA1:34"
+     ],
+     "numeros": [
+      "4006"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:5"
+     ],
+     "numeros": [
+      "4006"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:34"
+   ],
+   "cote_exterieur": [
+    "S3:5"
+   ],
+   "numero_fil": "4006"
+  },
+  "X42.16": {
+   "repere": "X42.16",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 : MANU-D,",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:6"
+     ],
+     "numeros": [
+      "4203"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "U1:X6:1"
+     ],
+     "numeros": [
+      "4203"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "U1:X6:1"
+   ],
+   "cote_exterieur": [
+    "S3:6"
+   ],
+   "numero_fil": "4203"
+  },
+  "X50.11": {
+   "repere": "X50.11",
+   "folio": "50",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Alimentation IHM -P1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "P1:L+"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:2L+",
+      "K1:L+",
+      "K2:L+",
+      "K3:L+",
+      "K4:V1+",
+      "KA1:A1",
+      "X21.11:1",
+      "X21.21:1"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:2L+",
+    "K1:L+",
+    "K2:L+",
+    "K3:L+",
+    "K4:V1+",
+    "KA1:A1",
+    "X21.11:1",
+    "X21.21:1"
+   ],
+   "cote_exterieur": [
+    "P1:L+"
+   ],
+   "numero_fil": "1241"
+  },
+  "X50.12": {
+   "repere": "X50.12",
+   "folio": "50",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Alimentation IHM -P1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "P1:M"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:1M",
+      "K1:2M",
+      "K1:M",
+      "K2:1M",
+      "K2:2M",
+      "K2:3M",
+      "K2:M",
+      "K3:M",
+      "K4:V1-",
+      "KA1:A2",
+      "KA1:B2",
+      "KA2:A2",
+      "KF1:A2",
+      "KF2:A2",
+      "KM1:A2",
+      "KM2:A2",
+      "U1:X6:2",
+      "X21.12:1",
+      "X21.22:2",
+      "X62.14:2",
+      "X62.22:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:1M",
+    "K1:2M",
+    "K1:M",
+    "K2:1M",
+    "K2:2M",
+    "K2:3M",
+    "K2:M",
+    "K3:M",
+    "K4:V1-",
+    "KA1:A2",
+    "KA1:B2",
+    "KA2:A2",
+    "KF1:A2",
+    "KF2:A2",
+    "KM1:A2",
+    "KM2:A2",
+    "U1:X6:2",
+    "X21.12:1",
+    "X21.22:2",
+    "X62.14:2",
+    "X62.22:2"
+   ],
+   "cote_exterieur": [
+    "P1:M"
+   ],
+   "numero_fil": "1230"
+  },
+  "X50.13": {
+   "repere": "X50.13",
+   "folio": "50",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Alimentation IHM -P1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "P1:FE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:FE",
+      "T1:PE",
+      "T2:PE",
+      "T3:PE",
+      "U1:X1:PE",
+      "U2:X1:PE",
+      "X10.11:2",
+      "X12.11:2",
+      "XD1:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "K1:FE",
+    "T1:PE",
+    "T2:PE",
+    "T3:PE",
+    "U1:X1:PE",
+    "U2:X1:PE",
+    "X10.11:2",
+    "X12.11:2",
+    "XD1:PE"
+   ],
+   "cote_exterieur": [
+    "P1:FE"
+   ],
+   "numero_fil": "PE"
+  },
+  "X60.11": {
+   "repere": "X60.11",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU pupitre -S2 (contact NO)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S2:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "S2:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.12": {
+   "repere": "X60.12",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU pupitre -S2 (contact NO)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S2:14"
+     ],
+     "numeros": [
+      "6011"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.0"
+     ],
+     "numeros": [
+      "6011"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.0"
+   ],
+   "cote_exterieur": [
+    "S2:14"
+   ],
+   "numero_fil": "6011"
+  },
+  "X60.21": {
+   "repere": "X60.21",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Auto / Manu",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:9"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "S3:9"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.22": {
+   "repere": "X60.22",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Auto / Manu",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:10"
+     ],
+     "numeros": [
+      "6015"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.4"
+     ],
+     "numeros": [
+      "6015"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.4"
+   ],
+   "cote_exterieur": [
+    "S3:10"
+   ],
+   "numero_fil": "6015"
+  },
+  "X60.23": {
+   "repere": "X60.23",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Auto / Manu",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:11"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "S3:11"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.24": {
+   "repere": "X60.24",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Auto / Manu",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:12"
+     ],
+     "numeros": [
+      "6016"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.5"
+     ],
+     "numeros": [
+      "6016"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.5"
+   ],
+   "cote_exterieur": [
+    "S3:12"
+   ],
+   "numero_fil": "6016"
+  },
+  "X60.31": {
+   "repere": "X60.31",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B3:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "B3:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.32": {
+   "repere": "X60.32",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B3:14"
+     ],
+     "numeros": [
+      "6017"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.6"
+     ],
+     "numeros": [
+      "6017"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.6"
+   ],
+   "cote_exterieur": [
+    "B3:14"
+   ],
+   "numero_fil": "6017"
+  },
+  "X60.33": {
+   "repere": "X60.33",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.35:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B4:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.35:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "B4:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.34": {
+   "repere": "X60.34",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B4:14"
+     ],
+     "numeros": [
+      "6018"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.7"
+     ],
+     "numeros": [
+      "6018"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.7"
+   ],
+   "cote_exterieur": [
+    "B4:14"
+   ],
+   "numero_fil": "6018"
+  },
+  "X60.35": {
+   "repere": "X60.35",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.37:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B5:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.37:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "B5:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.36": {
+   "repere": "X60.36",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B5:14"
+     ],
+     "numeros": [
+      "6021"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I1.0"
+     ],
+     "numeros": [
+      "6021"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I1.0"
+   ],
+   "cote_exterieur": [
+    "B5:14"
+   ],
+   "numero_fil": "6021"
+  },
+  "X60.37": {
+   "repere": "X60.37",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B6:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.41:1"
+   ],
+   "cote_exterieur": [
+    "B6:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.38": {
+   "repere": "X60.38",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Fins de course -B3 à -B6",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B6:14"
+     ],
+     "numeros": [
+      "6022"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I1.1"
+     ],
+     "numeros": [
+      "6022"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I1.1"
+   ],
+   "cote_exterieur": [
+    "B6:14"
+   ],
+   "numero_fil": "6022"
+  },
+  "X60.41": {
+   "repere": "X60.41",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU armoire -S1 (porte),",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:12",
+      "X41.33:1",
+      "X41.43:1",
+      "X60.11:1",
+      "X60.21:1",
+      "X60.23:1",
+      "X60.31:1",
+      "X60.33:1",
+      "X60.35:1",
+      "X60.37:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S1:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:12",
+    "X41.33:1",
+    "X41.43:1",
+    "X60.11:1",
+    "X60.21:1",
+    "X60.23:1",
+    "X60.31:1",
+    "X60.33:1",
+    "X60.35:1",
+    "X60.37:1"
+   ],
+   "cote_exterieur": [
+    "S1:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X60.42": {
+   "repere": "X60.42",
+   "folio": "60",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "AU armoire -S1 (porte),",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S1:14"
+     ],
+     "numeros": [
+      "6012"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.1"
+     ],
+     "numeros": [
+      "6012"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.1"
+   ],
+   "cote_exterieur": [
+    "S1:14"
+   ],
+   "numero_fil": "6012"
+  },
+  "X62.11": {
+   "repere": "X62.11",
+   "folio": "62",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Colonne -H1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "K2:Q8.0"
+     ],
+     "numeros": [
+      "6201"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:RD"
+     ],
+     "numeros": [
+      "6201"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K2:Q8.0"
+   ],
+   "cote_exterieur": [
+    "H1:RD"
+   ],
+   "numero_fil": "6201"
+  },
+  "X62.12": {
+   "repere": "X62.12",
+   "folio": "62",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Colonne -H1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "K2:Q8.1"
+     ],
+     "numeros": [
+      "6202"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:OG"
+     ],
+     "numeros": [
+      "6202"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K2:Q8.1"
+   ],
+   "cote_exterieur": [
+    "H1:OG"
+   ],
+   "numero_fil": "6202"
+  },
+  "X62.13": {
+   "repere": "X62.13",
+   "folio": "62",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Colonne -H1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "K2:Q8.2"
+     ],
+     "numeros": [
+      "6203"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:GN"
+     ],
+     "numeros": [
+      "6203"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K2:Q8.2"
+   ],
+   "cote_exterieur": [
+    "H1:GN"
+   ],
+   "numero_fil": "6203"
+  },
+  "X62.14": {
+   "repere": "X62.14",
+   "folio": "62",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Colonne -H1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "H1:COM"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:1M",
+      "K1:2M",
+      "K1:M",
+      "K2:1M",
+      "K2:2M",
+      "K2:3M",
+      "K2:M",
+      "K3:M",
+      "K4:V1-",
+      "KA1:A2",
+      "KA1:B2",
+      "KA2:A2",
+      "KF1:A2",
+      "KF2:A2",
+      "KM1:A2",
+      "KM2:A2",
+      "U1:X6:2",
+      "X21.12:1",
+      "X21.22:2",
+      "X50.12:2",
+      "X62.22:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:1M",
+    "K1:2M",
+    "K1:M",
+    "K2:1M",
+    "K2:2M",
+    "K2:3M",
+    "K2:M",
+    "K3:M",
+    "K4:V1-",
+    "KA1:A2",
+    "KA1:B2",
+    "KA2:A2",
+    "KF1:A2",
+    "KF2:A2",
+    "KM1:A2",
+    "KM2:A2",
+    "U1:X6:2",
+    "X21.12:1",
+    "X21.22:2",
+    "X50.12:2",
+    "X62.22:2"
+   ],
+   "cote_exterieur": [
+    "H1:COM"
+   ],
+   "numero_fil": "1230"
+  },
+  "X62.21": {
+   "repere": "X62.21",
+   "folio": "62",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Voyant -H4 (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "K2:Q8.4"
+     ],
+     "numeros": [
+      "6205"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H4:X1"
+     ],
+     "numeros": [
+      "6205"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K2:Q8.4"
+   ],
+   "cote_exterieur": [
+    "H4:X1"
+   ],
+   "numero_fil": "6205"
+  },
+  "X62.22": {
+   "repere": "X62.22",
+   "folio": "62",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Voyant -H4 (porte)",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "H4:X2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:1M",
+      "K1:2M",
+      "K1:M",
+      "K2:1M",
+      "K2:2M",
+      "K2:3M",
+      "K2:M",
+      "K3:M",
+      "K4:V1-",
+      "KA1:A2",
+      "KA1:B2",
+      "KA2:A2",
+      "KF1:A2",
+      "KF2:A2",
+      "KM1:A2",
+      "KM2:A2",
+      "U1:X6:2",
+      "X21.12:1",
+      "X21.22:2",
+      "X50.12:2",
+      "X62.14:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:1M",
+    "K1:2M",
+    "K1:M",
+    "K2:1M",
+    "K2:2M",
+    "K2:3M",
+    "K2:M",
+    "K3:M",
+    "K4:V1-",
+    "KA1:A2",
+    "KA1:B2",
+    "KA2:A2",
+    "KF1:A2",
+    "KF2:A2",
+    "KM1:A2",
+    "KM2:A2",
+    "U1:X6:2",
+    "X21.12:1",
+    "X21.22:2",
+    "X50.12:2",
+    "X62.14:2"
+   ],
+   "cote_exterieur": [
+    "H4:X2"
+   ],
+   "numero_fil": "1230"
+  },
+  "X63.11": {
+   "repere": "X63.11",
+   "folio": "63",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Thermocouple -B7",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B7:1"
+     ],
+     "numeros": [
+      "6301"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K3:AI0+"
+     ],
+     "numeros": [
+      "6301"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K3:AI0+"
+   ],
+   "cote_exterieur": [
+    "B7:1"
+   ],
+   "numero_fil": "6301"
+  },
+  "X63.12": {
+   "repere": "X63.12",
+   "folio": "63",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Thermocouple -B7",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B7:2"
+     ],
+     "numeros": [
+      "6302"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K3:AI0-"
+     ],
+     "numeros": [
+      "6302"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K3:AI0-"
+   ],
+   "cote_exterieur": [
+    "B7:2"
+   ],
+   "numero_fil": "6302"
+  }
+ },
+ "cables_schema": [
+  {
+   "repere": "W1",
+   "folio": "10",
+   "composition": "5G4",
+   "designation": "Câble client",
+   "brins": "1-2-3-4-5"
+  },
+  {
+   "repere": "W2",
+   "folio": "31",
+   "composition": "4G2,5 blindé",
+   "designation": "Moteur M1 -> U1 X2",
+   "brins": "1-2-3-4"
+  },
+  {
+   "repere": "W3",
+   "folio": "31",
+   "composition": "2x0,75 blindé",
+   "designation": "Sonde TF M1 (1b-2b) -> U1 X10",
+   "brins": "1-2"
+  },
+  {
+   "repere": "W4",
+   "folio": "31",
+   "composition": "5G1,5 blindé",
+   "designation": "Freins M1 + M2 (2-3), 400 V CA -> KF1",
+   "brins": "1-2"
+  },
+  {
+   "repere": "W5",
+   "folio": "32",
+   "composition": "4G2,5 blindé",
+   "designation": "Moteur M2 -> U2 X2",
+   "brins": "1-2-3-4"
+  },
+  {
+   "repere": "W6",
+   "folio": "32",
+   "composition": "2x0,75 blindé",
+   "designation": "Sonde TF M2 (1b-2b) -> U2 X10",
+   "brins": "1-2"
+  },
+  {
+   "repere": "W4",
+   "folio": "32",
+   "composition": "5G1,5 blindé",
+   "designation": "Freins M1 + M2 (2-3), 400 V CA -> KF2",
+   "brins": "3-4"
+  },
+  {
+   "repere": "W9",
+   "folio": "20",
+   "composition": "4 cond. blindé",
+   "designation": "Moteur pas-à-pas M3 -> U3",
+   "brins": "1-2-3-4"
+  },
+  {
+   "repere": "W10",
+   "folio": "20",
+   "composition": "4 cond. blindé",
+   "designation": "Moteur pas-à-pas M4 -> U4",
+   "brins": "1-2-3-4"
+  },
+  {
+   "repere": "W8",
+   "folio": "63",
+   "composition": "compensation type K",
+   "designation": "",
+   "brins": "1-2"
+  },
+  {
+   "repere": "W13",
+   "folio": "10",
+   "composition": "1 x 4 mm² V/J",
+   "designation": "Liaison équipotentielle",
+   "brins": "1"
+  }
+ ],
+ "appareils": {
+  "B1": {
+   "designation": "Interrupteur capot mécanique",
+   "reference": "Interrupteur de position poussoir a galet"
+  },
+  "B2": {
+   "designation": "Interrupteur capot",
+   "reference": "MN508S"
+  },
+  "B3": {
+   "designation": "Fin de course axe 1 min",
+   "reference": ""
+  },
+  "B4": {
+   "designation": "Fin de course axe 1 max",
+   "reference": ""
+  },
+  "B5": {
+   "designation": "Fin de course axe 2 min",
+   "reference": ""
+  },
+  "B6": {
+   "designation": "Fin de course axe 2 max",
+   "reference": ""
+  },
+  "B7": {
+   "designation": "Thermocouple tête",
+   "reference": ""
+  },
+  "EL1": {
+   "designation": "Éclairage armoire n°1",
+   "reference": "Lampe d'armoire LED 14 W"
+  },
+  "EL2": {
+   "designation": "Éclairage armoire n°2",
+   "reference": "Lampe d'armoire LED 14 W"
+  },
+  "EV1": {
+   "designation": "Ventilateur armoire",
+   "reference": "VF92AC"
+  },
+  "EV2": {
+   "designation": "Ventilateur armoire",
+   "reference": "VF92AC"
+  },
+  "FA1": {
+   "designation": "Protection des",
+   "reference": "CMC101"
+  },
+  "H1": {
+   "designation": "Colonne lumineuse 3 couleurs",
+   "reference": "Colonne lumineuse LED 3 feux"
+  },
+  "H2": {
+   "designation": "Voyant porte : armoire",
+   "reference": ""
+  },
+  "H3": {
+   "designation": "Voyant porte :",
+   "reference": ""
+  },
+  "H4": {
+   "designation": "Voyant porte :",
+   "reference": ""
+  },
+  "K1": {
+   "designation": "Automate CPU 1214C G2 DC/DC/DC",
+   "reference": "6ES7214-1AH50-0XB0"
+  },
+  "K2": {
+   "designation": "Module E/S SM 1223 G2 8DI/8DQ",
+   "reference": "6ES7223-5BH50-0XB0"
+  },
+  "K3": {
+   "designation": "Module SM 1231 TC G2",
+   "reference": "6ES7231-5QF50-0XB0"
+  },
+  "K4": {
+   "designation": "Switch PROFINET armoire",
+   "reference": "2682250000"
+  },
+  "KA1": {
+   "designation": "Relais de sécurité AU /",
+   "reference": "XPSUAF13AP"
+  },
+  "KA2": {
+   "designation": "Contacteur auxiliaire :",
+   "reference": "LC1D09BD"
+  },
+  "KF1": {
+   "designation": "Contacteur frein M1",
+   "reference": "LC1D09BD"
+  },
+  "KF2": {
+   "designation": "Contacteur frein M2",
+   "reference": "LC1D09BD"
+  },
+  "KM1": {
+   "designation": "Contacteur amont",
+   "reference": "LC1D09BD"
+  },
+  "KM2": {
+   "designation": "Contacteur amont",
+   "reference": "LC1D09BD"
+  },
+  "M1": {
+   "designation": "Motoréducteur frein",
+   "reference": "K39 DRN100LS4/BE5/TF"
+  },
+  "M2": {
+   "designation": "Motoréducteur frein",
+   "reference": "K39 DRN100LS4/BE5/TF"
+  },
+  "M3": {
+   "designation": "Moteur pas-à-pas translation",
+   "reference": "34IP65-85"
+  },
+  "M4": {
+   "designation": "Moteur pas-à-pas translation",
+   "reference": "34IP65-85"
+  },
+  "P1": {
+   "designation": "IHM pupitre",
+   "reference": "6AV2123-2GB03-0AX0"
+  },
+  "QF1": {
+   "designation": "Disjoncteur de tête",
+   "reference": "NFT820"
+  },
+  "QF10": {
+   "designation": "Disjoncteur limitation prise",
+   "reference": "A9P71606"
+  },
+  "QF2": {
+   "designation": "Disjoncteur départ frein M1",
+   "reference": "A9F74202"
+  },
+  "QF3": {
+   "designation": "Disjoncteur départ frein M2",
+   "reference": "A9F74202"
+  },
+  "QF4": {
+   "designation": "Disjoncteur alimentation 24",
+   "reference": "NFT706"
+  },
+  "QF5": {
+   "designation": "Disjoncteur alimentation 24",
+   "reference": "NFT706"
+  },
+  "QF6": {
+   "designation": "Disjoncteur alimentation 48",
+   "reference": "A9F75204"
+  },
+  "QF7": {
+   "designation": "Disjoncteur ventilateurs",
+   "reference": "NFT702"
+  },
+  "QF8": {
+   "designation": "Disjoncteur éclairage (2",
+   "reference": "NFT702"
+  },
+  "QF9": {
+   "designation": "Disjoncteur différentiel",
+   "reference": "B6CR1N1630A"
+  },
+  "QM1": {
+   "designation": "Disjoncteur moteur départ",
+   "reference": "GV2ME14"
+  },
+  "QM2": {
+   "designation": "Disjoncteur moteur départ",
+   "reference": "GV2ME14"
+  },
+  "QS1": {
+   "designation": "Sectionneur général",
+   "reference": "022515"
+  },
+  "R1": {
+   "designation": "Résistance de freinage",
+   "reference": "BW100-001"
+  },
+  "R2": {
+   "designation": "Résistance de freinage",
+   "reference": "BW100-001"
+  },
+  "S1": {
+   "designation": "Arrêt d'urgence armoire",
+   "reference": "XB5AS8442 + ZBE102 + ZBE101"
+  },
+  "S2": {
+   "designation": "Arrêt d'urgence pupitre",
+   "reference": "XB5AS8442 + ZBE102 + ZBE101"
+  },
+  "S3": {
+   "designation": "MANU-A :",
+   "reference": "T0-4-8223/E"
+  },
+  "S4": {
+   "designation": "Bouton de",
+   "reference": "XB4BA21"
+  },
+  "T1": {
+   "designation": "Alimentation 24 V CC n°1",
+   "reference": "Alimentation rail DIN 24 V 240 W"
+  },
+  "T2": {
+   "designation": "Alimentation 24 V CC n°2",
+   "reference": "Alimentation rail DIN 24 V 240 W"
+  },
+  "T3": {
+   "designation": "Alimentation 48 V CC",
+   "reference": "NDR-240-48"
+  },
+  "TR1": {
+   "designation": "Transformateur US -> UE",
+   "reference": "TT1041"
+  },
+  "U1": {
+   "designation": "Variateur M1",
+   "reference": "MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM"
+  },
+  "U2": {
+   "designation": "Variateur M2",
+   "reference": "MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM"
+  },
+  "U3": {
+   "designation": "Driver pas-à-pas axe 1",
+   "reference": "JKDM860H"
+  },
+  "U4": {
+   "designation": "Driver pas-à-pas axe 2",
+   "reference": "JKDM860H"
+  }
+ },
+ "saisie": {
+  "_lisez_moi": "Données hors schéma, saisies à la main. Coordonnées en mm sur la plaque, depuis le coin haut gauche. Source de la géométrie : implantation v10 (draw.io, 06/11), mises à jour indiquées par 'maj'. Statuts : fixe (déjà monté), a_poser, deplace, propose.",
+  "document": {
+   "titre": "Armoire +A1 : implantation, câbles et synoptique",
+   "machine": "Machine de tressage TTK, n° 001-EU",
+   "indice": "A",
+   "version": "v11",
+   "date": "17/11/2026",
+   "auteur": "THRO.J",
+   "societe": "BEBL",
+   "revisions": [
+    [
+     "A",
+     "17/11/2026",
+     "1re édition du dossier unique (implantation, liste des câbles, synoptique), schéma v31. Remplace l'implantation draw.io v10."
+    ]
+   ]
+  },
+  "plaque": {
+   "largeur": 1100,
+   "hauteur": 1670,
+   "armoire": "IDE 1800 x 1200 x 400"
+  },
+  "goulottes": [
+   [
+    "GV-G",
+    30,
+    30,
+    60,
+    1610,
+    "60x60"
+   ],
+   [
+    "GV-D",
+    1010,
+    30,
+    60,
+    1610,
+    "60x60"
+   ],
+   [
+    "GH0",
+    90,
+    30,
+    920,
+    40,
+    "40x40"
+   ],
+   [
+    "GH1",
+    90,
+    570,
+    920,
+    60,
+    "60x60"
+   ],
+   [
+    "GH2",
+    90,
+    830,
+    920,
+    60,
+    "60x60"
+   ],
+   [
+    "GH3",
+    90,
+    1110,
+    920,
+    40,
+    "40x40"
+   ],
+   [
+    "GH4",
+    90,
+    1350,
+    920,
+    60,
+    "60x60"
+   ],
+   [
+    "GH5",
+    90,
+    1580,
+    920,
+    60,
+    "60x60"
+   ]
+  ],
+  "rails": {
+   "R1": {
+    "x": 150,
+    "y": 302.5,
+    "l": 275,
+    "role": "alimentations",
+    "fixe": true,
+    "vis": [
+     152.5,
+     402.5
+    ]
+   },
+   "R2": {
+    "x": 100,
+    "y": 712.5,
+    "l": 900,
+    "role": "arrivée et puissance",
+    "fixe": true,
+    "vis": [
+     152.5,
+     377.5,
+     602.5,
+     727.5,
+     977.5
+    ]
+   },
+   "R3": {
+    "x": 100,
+    "y": 982.5,
+    "l": 900,
+    "role": "automate, sécurité, distribution 24 V",
+    "fixe": false,
+    "vis": [
+     102.5,
+     252.5,
+     427.5,
+     652.5,
+     852.5,
+     977.5
+    ]
+   },
+   "R4": {
+    "x": 100,
+    "y": 1232.5,
+    "l": 700,
+    "role": "auxiliaires 230 V et bornes de porte",
+    "fixe": false,
+    "vis": [
+     102.5,
+     302.5,
+     477.5,
+     702.5,
+     777.5
+    ]
+   },
+   "R5": {
+    "x": 100,
+    "y": 1477.5,
+    "l": 900,
+    "role": "borniers vers l'extérieur (incliné à 45°)",
+    "fixe": false,
+    "supports": [
+     127.5,
+     477.5,
+     602.5,
+     702.5,
+     952.5
+    ]
+   }
+  },
+  "appareils": [
+   [
+    "XPE1",
+    "plaque",
+    105,
+    122.5,
+    25,
+    300,
+    "fixe",
+    "Barrette de terre 27 (vissée sur la plaque)",
+    "Legrand 404839",
+    "alim"
+   ],
+   [
+    "T1",
+    "R1",
+    182.5,
+    257.5,
+    63,
+    125,
+    "fixe",
+    "Alimentation 24 V (24VSEC)",
+    "RS PRO 284-0491",
+    "alim"
+   ],
+   [
+    "T2",
+    "R1",
+    255.5,
+    257.5,
+    63,
+    125,
+    "fixe",
+    "Alimentation 24 V (24VELEC)",
+    "RS PRO 284-0491",
+    "alim"
+   ],
+   [
+    "T3",
+    "R1",
+    328.5,
+    257.5,
+    63,
+    125,
+    "fixe",
+    "Alimentation 48 V",
+    "Mean Well NDR-240-48",
+    "alim"
+   ],
+   [
+    "U1",
+    "plaque",
+    445,
+    170,
+    80,
+    300,
+    "fixe",
+    "Variateur M1",
+    "SEW MCX91A-0055-5E3",
+    "variateur"
+   ],
+   [
+    "U2",
+    "plaque",
+    565,
+    170,
+    80,
+    300,
+    "fixe",
+    "Variateur M2",
+    "SEW MCX91A-0055-5E3",
+    "variateur"
+   ],
+   [
+    "R1",
+    "plaque",
+    765,
+    170,
+    145,
+    85,
+    "fixe",
+    "Résistance de freinage U1",
+    "SEW BW100-001",
+    "variateur"
+   ],
+   [
+    "R2",
+    "plaque",
+    765,
+    355,
+    145,
+    85,
+    "fixe",
+    "Résistance de freinage U2",
+    "SEW BW100-001",
+    "variateur"
+   ],
+   [
+    "QF2",
+    "R2",
+    182.5,
+    687.5,
+    36,
+    85,
+    "fixe",
+    "Disjoncteur frein M1",
+    "Schneider A9F74202",
+    "puissance"
+   ],
+   [
+    "KF1",
+    "R2",
+    218.5,
+    687.5,
+    45,
+    85,
+    "fixe",
+    "Contacteur frein M1",
+    "Schneider LC1D09BD",
+    "puissance"
+   ],
+   [
+    "QF3",
+    "R2",
+    273.5,
+    687.5,
+    36,
+    85,
+    "fixe",
+    "Disjoncteur frein M2",
+    "Schneider A9F74202",
+    "puissance"
+   ],
+   [
+    "KF2",
+    "R2",
+    309.5,
+    687.5,
+    45,
+    85,
+    "fixe",
+    "Contacteur frein M2",
+    "Schneider LC1D09BD",
+    "puissance"
+   ],
+   [
+    "QM1",
+    "R2",
+    407.5,
+    685.5,
+    45,
+    89,
+    "fixe",
+    "Disjoncteur moteur U1",
+    "Schneider GV2ME14",
+    "puissance"
+   ],
+   [
+    "KM1",
+    "R2",
+    452.5,
+    687.5,
+    45,
+    85,
+    "fixe",
+    "Contacteur amont U1",
+    "Schneider LC1D09BD",
+    "puissance"
+   ],
+   [
+    "QM2",
+    "R2",
+    497.5,
+    685.5,
+    45,
+    89,
+    "fixe",
+    "Disjoncteur moteur U2",
+    "Schneider GV2ME14",
+    "puissance"
+   ],
+   [
+    "KM2",
+    "R2",
+    542.5,
+    687.5,
+    45,
+    85,
+    "fixe",
+    "Contacteur amont U2",
+    "Schneider LC1D09BD",
+    "puissance"
+   ],
+   [
+    "XR1",
+    "R2",
+    597.5,
+    685,
+    72,
+    90,
+    "fixe",
+    "Répartiteur 400 V n°1 (alimenté par QF1)",
+    "AEE300427",
+    "puissance"
+   ],
+   [
+    "XR2",
+    "R2",
+    669.5,
+    685,
+    72,
+    90,
+    "deplace",
+    "Répartiteur 400 V n°2 (ponts 4 mm² depuis XR1)",
+    "AEE300427",
+    "puissance"
+   ],
+   [
+    "QF1",
+    "R2",
+    765,
+    687.5,
+    52.5,
+    85,
+    "fixe",
+    "Disjoncteur de tête",
+    "Hager NFT820",
+    "puissance"
+   ],
+   [
+    "QS1",
+    "R2",
+    827.5,
+    682.5,
+    140,
+    95,
+    "fixe",
+    "Sectionneur général",
+    "Legrand 022515",
+    "puissance"
+   ],
+   [
+    "X21.11",
+    "R3",
+    132.5,
+    968.2,
+    41,
+    28.6,
+    "a_poser",
+    "Distribution 24VELEC (rouge)",
+    "Phoenix PTFIX 6/12X2,5 RD 3273356",
+    "distrib"
+   ],
+   [
+    "X21.12",
+    "R3",
+    183.5,
+    968.2,
+    41,
+    28.6,
+    "a_poser",
+    "Distribution 0 V (bleu)",
+    "Phoenix PTFIX 6/12X2,5 BU 3273354",
+    "distrib"
+   ],
+   [
+    "X12.11",
+    "R3",
+    234.5,
+    975,
+    6.2,
+    50,
+    "a_poser",
+    "Liaison PELV 0 V - PE",
+    "Phoenix PT 4 (voir comptage)",
+    "distrib"
+   ],
+   [
+    "X21.13",
+    "R3",
+    282.5,
+    968.2,
+    41,
+    28.6,
+    "a_poser",
+    "Distribution 24VSEC (gris)",
+    "Phoenix PTFIX 6/12X2,5 GY 3273352",
+    "distrib"
+   ],
+   [
+    "K1",
+    "R3",
+    457.5,
+    937.5,
+    80,
+    125,
+    "a_poser",
+    "CPU 1214C G2",
+    "Siemens 6ES7214-1AH50-0XB0",
+    "automate"
+   ],
+   [
+    "K2",
+    "R3",
+    537.5,
+    937.5,
+    45,
+    125,
+    "a_poser",
+    "SM 1223 G2 8DI/8DQ",
+    "Siemens 6ES7223-5BH50-0XB0",
+    "automate"
+   ],
+   [
+    "K3",
+    "R3",
+    582.5,
+    937.5,
+    45,
+    125,
+    "a_poser",
+    "SM 1231 TC G2",
+    "Siemens 6ES7231-5QF50-0XB0",
+    "automate"
+   ],
+   [
+    "K4",
+    "R3",
+    682.5,
+    930,
+    45,
+    140,
+    "a_poser",
+    "Switch PROFINET",
+    "Weidmüller 2682250000",
+    "automate"
+   ],
+   [
+    "FA1",
+    "R3",
+    333.5,
+    957.5,
+    17.5,
+    85,
+    "a_poser",
+    "Fusible R-33 amont KA1",
+    "Mersen CMC101 + FR10GG50V4 gG 4 A",
+    "securite"
+   ],
+   [
+    "KA1",
+    "R3",
+    361,
+    950.5,
+    22.5,
+    99,
+    "a_poser",
+    "Relais de sécurité",
+    "Schneider XPSUAF13AP",
+    "securite"
+   ],
+   [
+    "X21.14",
+    "R3",
+    737.5,
+    968.2,
+    41,
+    28.6,
+    "propose",
+    "Distribution 24 V capteurs (noir), L+ capt de K1",
+    "Phoenix PTFIX 6/12X2,5 BK 3273366",
+    "distrib"
+   ],
+   [
+    "KA2",
+    "R3",
+    922.5,
+    957.5,
+    45,
+    85,
+    "a_poser",
+    "Contacteur auxiliaire 48 V (Manu)",
+    "Schneider LC1D09BD",
+    "securite"
+   ],
+   [
+    "QF4",
+    "R4",
+    132.5,
+    1207.5,
+    17.5,
+    85,
+    "a_poser",
+    "Disjoncteur T1",
+    "Hager NFT706",
+    "puissance"
+   ],
+   [
+    "QF5",
+    "R4",
+    160,
+    1207.5,
+    17.5,
+    85,
+    "a_poser",
+    "Disjoncteur T2",
+    "Hager NFT706",
+    "puissance"
+   ],
+   [
+    "QF6",
+    "R4",
+    187.5,
+    1207.5,
+    36,
+    85,
+    "a_poser",
+    "Disjoncteur T3 48 V",
+    "Schneider A9F75204",
+    "puissance"
+   ],
+   [
+    "QF7",
+    "R4",
+    233.5,
+    1207.5,
+    17.5,
+    85,
+    "a_poser",
+    "Disjoncteur ventilateurs",
+    "Hager NFT702",
+    "puissance"
+   ],
+   [
+    "QF8",
+    "R4",
+    261,
+    1207.5,
+    17.5,
+    85,
+    "a_poser",
+    "Disjoncteur éclairage",
+    "Hager NFT702",
+    "puissance"
+   ],
+   [
+    "QF9",
+    "R4",
+    332.5,
+    1207.5,
+    36,
+    85,
+    "a_poser",
+    "Différentiel 30 mA prise",
+    "IMO B6CR1N1630A",
+    "puissance"
+   ],
+   [
+    "QF10",
+    "R4",
+    378.5,
+    1207.5,
+    18,
+    85,
+    "a_poser",
+    "Disjoncteur limitation prise",
+    "Schneider A9P71606",
+    "puissance"
+   ],
+   [
+    "XD1",
+    "R4",
+    406.5,
+    1207.5,
+    45,
+    85,
+    "a_poser",
+    "Prise de service 2P+T 16 A",
+    "Legrand 004280",
+    "puissance"
+   ],
+   [
+    "U3",
+    "plaque",
+    850,
+    1177.5,
+    40,
+    145,
+    "fixe",
+    "Driver pas-à-pas M3",
+    "Jkongmotor JKDM860H",
+    "alim"
+   ],
+   [
+    "U4",
+    "plaque",
+    910,
+    1177.5,
+    40,
+    145,
+    "fixe",
+    "Driver pas-à-pas M4",
+    "Jkongmotor JKDM860H",
+    "alim"
+   ]
+  ],
+  "hors_plaque": [
+   [
+    "EV1",
+    "Ventilateur d'entrée, paroi gauche en bas",
+    "IDE VF92AC"
+   ],
+   [
+    "EV2",
+    "Ventilateur de sortie, paroi droite en haut",
+    "IDE VF92AC"
+   ],
+   [
+    "EL1 / EL2",
+    "Éclairage d'armoire (hors plaque)",
+    "RS PRO 194-0417"
+   ],
+   [
+    "S1, S4, H2, H3, H4",
+    "Porte gauche : raccordés par les bornes de porte du rail R4",
+    ""
+   ]
+  ],
+  "borniers": [
+   {
+    "rail": "R5",
+    "troncon": "tronçon 1",
+    "x0": 162.5,
+    "groupes": [
+     {
+      "cable": "W11",
+      "fonction": "AU pupitre S2",
+      "bornes": [
+       "X41.11",
+       "X41.12",
+       "X41.13",
+       "X41.14",
+       "X60.11",
+       "X60.12"
+      ]
+     },
+     {
+      "cable": "W11",
+      "fonction": "Sélecteur S3",
+      "bornes": [
+       "X41.21",
+       "X41.22",
+       "X41.23",
+       "X41.24",
+       "X42.11",
+       "X42.12",
+       "X42.13",
+       "X42.14",
+       "X42.15",
+       "X42.16",
+       "X60.21",
+       "X60.22",
+       "X60.23",
+       "X60.24"
+      ]
+     },
+     {
+      "cable": "W11",
+      "fonction": "Alimentation IHM P1",
+      "bornes": [
+       "X50.11",
+       "X50.12",
+       "X50.13"
+      ]
+     },
+     {
+      "cable": "W12",
+      "fonction": "Capot mécanique B1",
+      "bornes": [
+       "X41.31",
+       "X41.32",
+       "X41.33",
+       "X41.34"
+      ]
+     },
+     {
+      "cable": "W12",
+      "fonction": "Fins de course B3 à B6",
+      "bornes": [
+       "X60.31",
+       "X60.32",
+       "X60.33",
+       "X60.34",
+       "X60.35",
+       "X60.36",
+       "X60.37",
+       "X60.38"
+      ]
+     },
+     {
+      "cable": "W12",
+      "fonction": "Colonne lumineuse H1",
+      "bornes": [
+       "X62.11",
+       "X62.12",
+       "X62.13",
+       "X62.14"
+      ]
+     }
+    ]
+   },
+   {
+    "rail": "R5",
+    "troncon": "tronçons 2 et 3",
+    "x0": 512.5,
+    "groupes": [
+     {
+      "cable": "W14",
+      "fonction": "Capot magnétique B2",
+      "bornes": [
+       "X41.41",
+       "X41.42",
+       "X41.43",
+       "X41.44"
+      ]
+     },
+     {
+      "cable": "W8",
+      "fonction": "Thermocouple B7 (réserve)",
+      "bornes": [
+       "X63.11",
+       "X63.12"
+      ],
+      "sans_butee": true
+     },
+     {
+      "cable": "W3",
+      "fonction": "Sonde TF M1",
+      "bornes": [
+       "X31.21",
+       "X31.22"
+      ]
+     },
+     {
+      "cable": "W6",
+      "fonction": "Sonde TF M2",
+      "bornes": [
+       "X32.21",
+       "X32.22"
+      ],
+      "sans_butee": true
+     },
+     {
+      "cable": "W9",
+      "fonction": "Pas-à-pas M3",
+      "bornes": [
+       "X20.11",
+       "X20.12",
+       "X20.13",
+       "X20.14"
+      ]
+     },
+     {
+      "cable": "W10",
+      "fonction": "Pas-à-pas M4",
+      "bornes": [
+       "X20.21",
+       "X20.22",
+       "X20.23",
+       "X20.24"
+      ]
+     }
+    ]
+   },
+   {
+    "rail": "R5",
+    "troncon": "tronçon 4 (puissance)",
+    "x0": 788.1,
+    "groupes": [
+     {
+      "cable": "W4",
+      "fonction": "Frein M1",
+      "bornes": [
+       "X31.31",
+       "X31.32"
+      ]
+     },
+     {
+      "cable": "W4",
+      "fonction": "Frein M2",
+      "bornes": [
+       "X32.31",
+       "X32.32"
+      ]
+     },
+     {
+      "cable": "W2",
+      "fonction": "Moteur M1",
+      "bornes": [
+       "X31.11",
+       "X31.12",
+       "X31.13",
+       "X31.14"
+      ]
+     },
+     {
+      "cable": "W5",
+      "fonction": "Moteur M2",
+      "bornes": [
+       "X32.11",
+       "X32.12",
+       "X32.13",
+       "X32.14"
+      ]
+     },
+     {
+      "cable": "W1",
+      "fonction": "Arrivée réseau",
+      "bornes": [
+       "X10.11",
+       "X10.12",
+       "X10.13",
+       "X10.14",
+       "X10.15"
+      ]
+     }
+    ]
+   },
+   {
+    "rail": "R4",
+    "troncon": "après XD1 : services 230 V, puis porte",
+    "x0": 497.5,
+    "groupes": [
+     {
+      "cable": "int",
+      "fonction": "Éclairage EL1 / EL2",
+      "bornes": [
+       "X13.11",
+       "X13.12"
+      ]
+     },
+     {
+      "cable": "int",
+      "fonction": "Ventilation EV1 / EV2",
+      "bornes": [
+       "X13.21",
+       "X13.22"
+      ]
+     },
+     {
+      "cable": "porte",
+      "fonction": "AU armoire S1",
+      "bornes": [
+       "X41.51",
+       "X41.52",
+       "X41.53",
+       "X41.54",
+       "X60.41",
+       "X60.42"
+      ]
+     },
+     {
+      "cable": "porte",
+      "fonction": "Réarmement S4",
+      "bornes": [
+       "X40.11",
+       "X40.12"
+      ]
+     },
+     {
+      "cable": "porte",
+      "fonction": "Voyant H3",
+      "bornes": [
+       "X21.21",
+       "X21.22"
+      ]
+     },
+     {
+      "cable": "porte",
+      "fonction": "Voyant H4",
+      "bornes": [
+       "X62.21",
+       "X62.22"
+      ]
+     },
+     {
+      "cable": "porte230",
+      "fonction": "Voyant H2 230 V",
+      "bornes": [
+       "X12.21",
+       "X12.22"
+      ],
+      "apres_vis": 702.5
+     }
+    ]
+   }
+  ],
+  "types_bornes": {
+   "_source": "Tableau V1 (sourcing, 1 armoire) : PT 2,5 Phoenix 3209510 = 20 + 50 ; PT 4 Phoenix 3211757 = 15 ; bornes de terre RS 708-1687 (Phoenix 3211867) en cours de livraison (Julien 17/11). Largeurs : v10 (PT 2,5 = 5,2 mm, PT 4 = 6,2 mm).",
+   "achetes": {
+    "PT 2,5": 70,
+    "PT 4": 15,
+    "terre": 4
+   },
+   "largeur": {
+    "PT 2,5": 5.2,
+    "PT 4": 6.2,
+    "terre": 5.2
+   },
+   "PT 4": [
+    "X10.12",
+    "X10.13",
+    "X10.14",
+    "X10.15",
+    "X31.12",
+    "X31.13",
+    "X31.14",
+    "X32.12",
+    "X32.13",
+    "X32.14",
+    "X13.11",
+    "X13.12",
+    "X13.21",
+    "X13.22",
+    "X12.11"
+   ],
+   "terre": [
+    "X10.11",
+    "X31.11",
+    "X32.11",
+    "X50.13"
+   ]
+  },
+  "couleurs_cables": {
+   "W11": "#cfe2f3",
+   "W12": "#d9ead3",
+   "W14": "#e6f3e6",
+   "W8": "#fff2cc",
+   "W3": "#fce4d6",
+   "W6": "#fce4d6",
+   "W9": "#e1d5e7",
+   "W10": "#e1d5e7",
+   "W4": "#f8cecc",
+   "W2": "#f4b6b0",
+   "W5": "#f4b6b0",
+   "W1": "#ffe0b3",
+   "int": "#eeeeee",
+   "porte": "#fff9e0",
+   "porte230": "#f9d5e5"
+  },
+  "boite": {
+   "repere": "+M-X1",
+   "designation": "Boîte de dérivation machine (une seule)",
+   "statut": "repère proposé le 17/11, validé par Julien (IEC 81346-2, classe X)"
+  },
+  "cables": [
+   {
+    "repere": "W1",
+    "fonction": "Arrivée réseau 400 V 3P+N+PE",
+    "origine": "Réseau client (US : secondaire de TR1)",
+    "destination": "+A1 X10.11 à X10.15",
+    "type": "Câble client",
+    "reference": "fourni par le client",
+    "conducteurs": "5G4",
+    "blindage": "non blindé",
+    "longueur": "client",
+    "statut": "client",
+    "folio": "10"
+   },
+   {
+    "repere": "W2",
+    "fonction": "Moteur M1 (U V W PE)",
+    "origine": "+A1 X31.11 à X31.14 (U1 X2)",
+    "destination": "+M M1 : U1 V1 W1 PE",
+    "type": "2XSLCY-K",
+    "reference": "AEE261757",
+    "conducteurs": "4G2,5",
+    "blindage": "blindé, raccordé côté armoire (presse-étoupe CEM)",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "31"
+   },
+   {
+    "repere": "W3",
+    "fonction": "Sonde TF M1",
+    "origine": "+A1 X31.21 / X31.22 (U1 X10)",
+    "destination": "+M M1 : 1b / 2b",
+    "type": "LIYCY",
+    "reference": "PPMM0180",
+    "conducteurs": "2 x 0,75",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "31"
+   },
+   {
+    "repere": "W4",
+    "fonction": "Freins BE5 M1 + M2, 400 V CA",
+    "origine": "+A1 X31.31-32 (KF1), X32.31-32 (KF2)",
+    "destination": "+M-X1, puis M1 2-3 et M2 2-3",
+    "type": "LIYCY-JZ",
+    "reference": "AEE261168",
+    "conducteurs": "5G1,5 (4 + V/J)",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté (5G1,5)",
+    "folio": "31, 32"
+   },
+   {
+    "repere": "W5",
+    "fonction": "Moteur M2 (U V W PE)",
+    "origine": "+A1 X32.11 à X32.14 (U2 X2)",
+    "destination": "+M M2 : U1 V1 W1 PE",
+    "type": "2XSLCY-K",
+    "reference": "AEE261757",
+    "conducteurs": "4G2,5",
+    "blindage": "blindé, raccordé côté armoire (presse-étoupe CEM)",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "32"
+   },
+   {
+    "repere": "W6",
+    "fonction": "Sonde TF M2",
+    "origine": "+A1 X32.21 / X32.22 (U2 X10)",
+    "destination": "+M M2 : 1b / 2b",
+    "type": "LIYCY",
+    "reference": "PPMM0180",
+    "conducteurs": "2 x 0,75",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "32"
+   },
+   {
+    "repere": "W8",
+    "fonction": "Thermocouple K, tête Microdia",
+    "origine": "+A1 X63.11 / X63.12 (K3 AI0)",
+    "destination": "+M B7",
+    "type": "Câble de compensation type K",
+    "reference": "RS 236-3959",
+    "conducteurs": "2 cond. (7 x 0,2 mm)",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m (bobine 25 m)",
+    "statut": "à confirmer",
+    "folio": "63"
+   },
+   {
+    "repere": "W9",
+    "fonction": "Moteur pas-à-pas M3 (A+ A- B+ B-), 48 V",
+    "origine": "+A1 X20.11 à X20.14 (U3)",
+    "destination": "+M M3",
+    "type": "LIYCY-JZ",
+    "reference": "AEE261168",
+    "conducteurs": "5G1,5 (4 + V/J)",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté (5G1,5)",
+    "folio": "20"
+   },
+   {
+    "repere": "W10",
+    "fonction": "Moteur pas-à-pas M4 (A+ A- B+ B-), 48 V",
+    "origine": "+A1 X20.21 à X20.24 (U4)",
+    "destination": "+M M4",
+    "type": "LIYCY-JZ",
+    "reference": "AEE261168",
+    "conducteurs": "5G1,5 (4 + V/J)",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté (5G1,5)",
+    "folio": "20"
+   },
+   {
+    "repere": "W11",
+    "fonction": "Pupitre : AU S2, sélecteur S3, alimentation IHM",
+    "origine": "+A1 X41.1x, X41.2x, X42.1x, X50.1x, X60.1x, X60.2x",
+    "destination": "+P1 S2, S3, P1",
+    "type": "LIYCY-JZ",
+    "reference": "AEE261165",
+    "conducteurs": "27G1 (26 + V/J) : 22 + V/J utilisés, 4 réserve",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "41, 42, 50, 60, 70"
+   },
+   {
+    "repere": "W12",
+    "fonction": "Machine : capot B1, fins de course B3-B6, colonne H1",
+    "origine": "+A1 X41.3x, X60.3x, X62.1x",
+    "destination": "+M-X1",
+    "type": "LIYCY-JZ",
+    "reference": "AEE261164",
+    "conducteurs": "19G1 (18 + V/J) : 16 + V/J utilisés, 2 réserve",
+    "blindage": "blindé, raccordé côté armoire",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "41, 60, 62, 70"
+   },
+   {
+    "repere": "W13",
+    "fonction": "Liaison équipotentielle armoire → bâti",
+    "origine": "+A1 XPE1 (terre de l'arrivée)",
+    "destination": "+M bâti machine",
+    "type": "Fil V/J seul",
+    "reference": "RS 811-4463",
+    "conducteurs": "1 x 4 mm² V/J",
+    "blindage": "sans objet",
+    "longueur": "≤ 10 m",
+    "statut": "acheté",
+    "folio": "10"
+   },
+   {
+    "repere": "W14",
+    "fonction": "Capot magnétique codé B2",
+    "origine": "+A1 X41.41 à X41.44",
+    "destination": "+M B2 (connecteur M12)",
+    "type": "Câble M12 8 broches femelle, extrémité libre",
+    "reference": "RS 285-9453 (SICK)",
+    "conducteurs": "8 cond. (section à relever)",
+    "blindage": "à relever (fiche SICK)",
+    "longueur": "20 m (surmoulé, longueur fixe)",
+    "statut": "acheté",
+    "folio": "41, 70",
+    "propose": true
+   },
+   {
+    "repere": "PN1",
+    "fonction": "PROFINET CPU K1 → switch K4 (interne)",
+    "origine": "+A1 K1 X1 P1",
+    "destination": "+A1 K4 P1",
+    "type": "Cordon RJ45 Cat5e blindé",
+    "reference": "RS 843-6365",
+    "conducteurs": "RJ45",
+    "blindage": "par les fiches RJ45",
+    "longueur": "1 m",
+    "statut": "acheté",
+    "folio": "30, 60"
+   },
+   {
+    "repere": "PN2",
+    "fonction": "PROFINET switch K4 → U1 (interne)",
+    "origine": "+A1 K4 P2",
+    "destination": "+A1 U1 X40",
+    "type": "Cordon RJ45 Cat5e blindé",
+    "reference": "RS 843-6369",
+    "conducteurs": "RJ45",
+    "blindage": "par les fiches RJ45",
+    "longueur": "2 m",
+    "statut": "acheté",
+    "folio": "30, 31"
+   },
+   {
+    "repere": "PN3",
+    "fonction": "PROFINET switch K4 → U2 (interne)",
+    "origine": "+A1 K4 P3",
+    "destination": "+A1 U2 X40",
+    "type": "Cordon RJ45 Cat5e blindé",
+    "reference": "RS 843-6369",
+    "conducteurs": "RJ45",
+    "blindage": "par les fiches RJ45",
+    "longueur": "2 m",
+    "statut": "acheté",
+    "folio": "30, 32"
+   },
+   {
+    "repere": "PN4",
+    "fonction": "PROFINET switch K4 → IHM P1 (pupitre)",
+    "origine": "+A1 K4 P4",
+    "destination": "+P1 P1 X1",
+    "type": "Câble RJ45 Cat6 blindé (bleu)",
+    "reference": "RS 616-2586 (Roline)",
+    "conducteurs": "RJ45",
+    "blindage": "par les fiches RJ45",
+    "longueur": "20 m (surmoulé)",
+    "statut": "acheté",
+    "folio": "30, 50"
+   }
+  ],
+  "conducteurs": {
+   "W11": [
+    [
+     "1",
+     "X41.11"
+    ],
+    [
+     "2",
+     "X41.12"
+    ],
+    [
+     "3",
+     "X41.13"
+    ],
+    [
+     "4",
+     "X41.14"
+    ],
+    [
+     "5",
+     "X60.11"
+    ],
+    [
+     "6",
+     "X60.12"
+    ],
+    [
+     "7",
+     "X41.21"
+    ],
+    [
+     "8",
+     "X41.22"
+    ],
+    [
+     "9",
+     "X41.23"
+    ],
+    [
+     "10",
+     "X41.24"
+    ],
+    [
+     "11",
+     "X42.11"
+    ],
+    [
+     "12",
+     "X42.12"
+    ],
+    [
+     "13",
+     "X42.13"
+    ],
+    [
+     "14",
+     "X42.14"
+    ],
+    [
+     "15",
+     "X42.15"
+    ],
+    [
+     "16",
+     "X42.16"
+    ],
+    [
+     "17",
+     "X60.21"
+    ],
+    [
+     "18",
+     "X60.22"
+    ],
+    [
+     "19",
+     "X60.23"
+    ],
+    [
+     "20",
+     "X60.24"
+    ],
+    [
+     "21",
+     "X50.11"
+    ],
+    [
+     "22",
+     "X50.12"
+    ],
+    [
+     "V/J",
+     "X50.13"
+    ],
+    [
+     "23",
+     ""
+    ],
+    [
+     "24",
+     ""
+    ],
+    [
+     "25",
+     ""
+    ],
+    [
+     "26",
+     ""
+    ]
+   ],
+   "W12": [
+    [
+     "1",
+     "X41.31"
+    ],
+    [
+     "2",
+     "X41.32"
+    ],
+    [
+     "3",
+     "X41.33"
+    ],
+    [
+     "4",
+     "X41.34"
+    ],
+    [
+     "5",
+     "X60.31"
+    ],
+    [
+     "6",
+     "X60.32"
+    ],
+    [
+     "7",
+     "X60.33"
+    ],
+    [
+     "8",
+     "X60.34"
+    ],
+    [
+     "9",
+     "X60.35"
+    ],
+    [
+     "10",
+     "X60.36"
+    ],
+    [
+     "11",
+     "X60.37"
+    ],
+    [
+     "12",
+     "X60.38"
+    ],
+    [
+     "13",
+     "X62.11"
+    ],
+    [
+     "14",
+     "X62.12"
+    ],
+    [
+     "15",
+     "X62.13"
+    ],
+    [
+     "16",
+     "X62.14"
+    ],
+    [
+     "V/J",
+     "XPE1"
+    ],
+    [
+     "17",
+     ""
+    ],
+    [
+     "18",
+     ""
+    ]
+   ],
+   "W4": [
+    [
+     "1",
+     "X31.31"
+    ],
+    [
+     "2",
+     "X31.32"
+    ],
+    [
+     "3",
+     "X32.31"
+    ],
+    [
+     "4",
+     "X32.32"
+    ],
+    [
+     "V/J",
+     "XPE1"
+    ]
+   ],
+   "W9": [
+    [
+     "1",
+     "X20.11"
+    ],
+    [
+     "2",
+     "X20.12"
+    ],
+    [
+     "3",
+     "X20.13"
+    ],
+    [
+     "4",
+     "X20.14"
+    ],
+    [
+     "V/J",
+     "XPE1"
+    ]
+   ],
+   "W10": [
+    [
+     "1",
+     "X20.21"
+    ],
+    [
+     "2",
+     "X20.22"
+    ],
+    [
+     "3",
+     "X20.23"
+    ],
+    [
+     "4",
+     "X20.24"
+    ],
+    [
+     "V/J",
+     "XPE1"
+    ]
+   ],
+   "W2": [
+    [
+     "U",
+     "X31.12"
+    ],
+    [
+     "V",
+     "X31.13"
+    ],
+    [
+     "W",
+     "X31.14"
+    ],
+    [
+     "V/J",
+     "X31.11"
+    ]
+   ],
+   "W5": [
+    [
+     "U",
+     "X32.12"
+    ],
+    [
+     "V",
+     "X32.13"
+    ],
+    [
+     "W",
+     "X32.14"
+    ],
+    [
+     "V/J",
+     "X32.11"
+    ]
+   ],
+   "W3": [
+    [
+     "blanc",
+     "X31.21"
+    ],
+    [
+     "marron",
+     "X31.22"
+    ]
+   ],
+   "W6": [
+    [
+     "blanc",
+     "X32.21"
+    ],
+    [
+     "marron",
+     "X32.22"
+    ]
+   ],
+   "W8": [
+    [
+     "vert (+)",
+     "X63.11"
+    ],
+    [
+     "blanc (-)",
+     "X63.12"
+    ]
+   ],
+   "W14": [
+    [
+     "?",
+     "X41.41"
+    ],
+    [
+     "?",
+     "X41.42"
+    ],
+    [
+     "?",
+     "X41.43"
+    ],
+    [
+     "?",
+     "X41.44"
+    ]
+   ]
+  },
+  "notes_conducteurs": {
+   "W11": "LIYCY-JZ : conducteurs numérotés + V/J. N° de conducteur = ordre des bornes (validé le 05/11, f70). Réserve 23-26 non bornée.",
+   "W12": "N° de conducteur = ordre des bornes (f70). V/J : XPE1 côté armoire, masse de la boîte +M-X1. Réserve 17-18 non bornée.",
+   "W4": "Conducteurs 1-2 = frein M1, 3-4 = frein M2 (v18). V/J : XPE1 et boîte +M-X1.",
+   "W9": "Affectation du 5G1,5 décidée le 17/11. V/J : XPE1 ; côté moteur, masse de M3 si une borne existe (à vérifier).",
+   "W10": "Idem W9 pour M4.",
+   "W2": "Marquage des conducteurs du 2XSLCY-K à relever sur le câble.",
+   "W5": "Idem W2.",
+   "W3": "Conducteurs blanc et marron (Julien 05/11). Blanc = 1b : proposition.",
+   "W6": "Idem W3.",
+   "W8": "Couleurs IEC 60584-3 (vert +, blanc -). Bornes X63 gardées même si non utilisées (Julien 17/11).",
+   "W14": "Brochage M12 du MN508S : à relever (fiche ifm)."
+  },
+  "apres_boite": [
+   [
+    "+M-X1 → M1 frein (2-3)",
+    "W4 1-2",
+    "2 conducteurs 400 V CA"
+   ],
+   [
+    "+M-X1 → M2 frein (2-3)",
+    "W4 3-4",
+    "2 conducteurs 400 V CA"
+   ],
+   [
+    "+M-X1 → B1 (11-12, 23-24)",
+    "W12 1-4",
+    "4 conducteurs"
+   ],
+   [
+    "+M-X1 → B3, B4, B5, B6 (13-14)",
+    "W12 5-12",
+    "2 conducteurs par fin de course"
+   ],
+   [
+    "+M-X1 → H1 (RD, OG, GN, COM)",
+    "W12 13-16",
+    "4 conducteurs"
+   ]
+  ],
+  "stock_libre": [
+   [
+    "H05VVF 2 x 1 mm² blanc",
+    "PPMM0114",
+    "Tableau V1 : « câble capteur fin de course ↔ armoire »"
+   ],
+   [
+    "H05VVF 2 x 0,75 mm² blanc",
+    "PPMM0104",
+    "Tableau V1 : « câble sonde TF moteur »"
+   ]
+  ]
+ }
+}

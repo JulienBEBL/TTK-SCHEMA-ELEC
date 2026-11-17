@@ -1,14 +1,18 @@
-# Implantation de l'armoire +A1 (draw.io)
+# Implantation de l'armoire +A1
 
-Dossier de l'agent qui dessine l'implantation de l'armoire sous draw.io. Consignes complètes : `docs/PROMPT_AGENT_IMPLANTATION_2026-11-04.md`.
+Depuis le 17/11/2026 (v11), le dossier est **généré** : un seul PDF A3 (implantation, borniers, liste des câbles, affectation des conducteurs, synoptique), tiré du schéma et d'un fichier de saisie.
 
 | Dossier / fichier | Contenu |
 |---|---|
-| `release/` | La dernière version seule : `TTK_implantation_AAAA-MM-JJ_vN.drawio` + export `.pdf` |
-| `old/` | Toutes les versions précédentes |
-| `JOURNAL.md` | Une entrée par version : date, changements, questions, réponses de Julien |
+| `release/` | La dernière version seule : `TTK_implantation_AAAA-MM-JJ_vN.pdf` + `_verification.md` |
+| `old/` | Versions précédentes (draw.io v1 à v10, indices A à K) |
+| `generateur/` | `extraire.py` (lit le .xrs de `schema/generes/release/` + `saisie.json` → `donnees.json`), `generer.py` + `svg.py` (PDF + contrôle) |
+| `JOURNAL.md` | Une entrée par version |
 
-Règles :
-- Seul l'agent d'implantation modifie ce dossier ; il ne touche à rien d'autre dans le dépôt.
-- `git pull --rebase` avant chaque `git push`, jamais de `--force`.
-- Les repères suivent la nomenclature du schéma (`schema/generes/release/*_nomenclature.csv`).
+Régénérer (Python sans module externe, Edge installé) :
+```
+cd implantation/generateur
+python -I extraire.py
+python -I generer.py --png <dossier temporaire>
+```
+Attendu dans `_verification.md` : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Avant de régénérer : passer l'ancien PDF dans `old/`, changer `version` / `indice` / `revisions` dans `saisie.json`.
