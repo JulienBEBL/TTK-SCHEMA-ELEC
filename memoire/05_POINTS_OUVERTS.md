@@ -109,8 +109,8 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 - M3 / M4 (Nema 34) : **réglé le 17/11**, pas de borne de terre ; Julien raccorde le V/J de W9 / W10 à la masse du moteur.
 - B2 (MN508S) : contact NF 33-34 non utilisé (réserve) ; W14 a 4 conducteurs libres.
 - S3 13-14 (AUTO-D) : réserve, non dessiné. B3-B6 : **RS 902-6874** (Julien 17/11), contact NF libre (n° des bornes NF à relever). B2 33-34 : réserve « bonus ».
-- Boîte machine +M-X1 (17/11, [H]) : 24 bornes de base (W12 + W4 : 22 PT 2,5 + 2 terre), 34 avec l'option pas-à-pas ; stock de PT 2,5 à confirmer (mémoire : 70 ; fichier de commande : 40 + 200) ; boîte elle-même non achetée ; câbles boîte → appareils non prévus.
+- Boîte de jonction machine +BJM (17/11) : tout passe par la boîte → 57 bornes (84 avec le pupitre W11) ; W11 par la boîte ou en direct ? blindage des tronçons boîte → appareil (côté boîte ?) ; W8 : 2 bornes cuivre acceptables si les deux sont à la même température ; W14 : câble M12 coupé en deux ; stock de PT 2,5 à confirmer (mémoire : 70 ; fichier de commande : 40 + 200) ; boîte elle-même non achetée ; câbles boîte → appareils non prévus.
 - W14 (M12) : couleurs des 4 conducteurs utilisés à relever ; W2 / W5 : marquage U V W à relever ; W3 / W6 : blanc = 1b proposé ; W9 / W10 : V/J côté moteur à vérifier.
 
 ## Implantation v11 (17/11)
-Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) ; X21.14 à droite de K4 [H] ; W14 [H] ; câbles +M-X1 → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du f80.
+Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) ; X21.14 à droite de K4 [H] ; W14 [H] ; câbles +BJM → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du f80.

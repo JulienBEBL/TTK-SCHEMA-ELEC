@@ -58,6 +58,9 @@ Méthode : étape 0 → charte → implantation → câbles → synoptique → a
 5. Au schéma (script, pas l'implantation) : W9 / W10 décrits « 4 cond. » → 5G1,5 ; W11 / W12 / W14 / PN1-PN4 absents du tableau f80.
 6. Sourcing : 236-3959 et 708-1687 notés non commandés (K = 0) ; PN4 20 m bleu.
 
+## Renommage (17/11)
+- La boîte +M-X1 s'appelle maintenant **+BJM** (boîte de jonction machine), bornier +BJM-X1 : `saisie.json` (`boite`, `apres_boite`) à mettre à jour à la prochaine version.
+
 ## Faire une nouvelle version
 1. `git pull` ; passer l'ancien PDF + son `_verification.md` dans `implantation/old/` (`git mv`).
 2. `saisie.json` : `version`, `indice` (lettre suivante), `date`, ligne dans `revisions`.

@@ -297,3 +297,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : boîte de dérivation machine
 - Julien : garder les 2 tableaux dans le dépôt ; liste des bornes d'un rail DIN côté machine (comme R5), nombre de bornes et longueur ; terre des pas-à-pas par le V/J ; B2 33-34 réserve ; B3-B6 = RS 902-6874.
 - Fait : `cablage/REFERENTIEL_CABLE.html` et `REFERENTIEL_COMPOSANT.html` (vérifiés dans le navigateur : 12 cartes chacun) ; onglet « Boîte machine » (34 lignes : base 24, option pas-à-pas 10) ; Composants mis à jour (M3 / M4, B3-B6).
+
+## 17/11/2026 : tout par la boîte de jonction machine
+- Julien : hypothèse « tous les fils de tous les câbles passent par la boîte machine » ; il rachète des PT si besoin ; nouveau nom clair pour la boîte ; câbles boîte → appareils : pas pour le moment.
+- Fait : onglet « Boîte BJM » (84 lignes, n° de borne +BJM-X1:1 à 84, pupitre W11 en fin de rail) ; renommage +M-X1 → +BJM dans le classeur, les 2 pages HTML et la mémoire.

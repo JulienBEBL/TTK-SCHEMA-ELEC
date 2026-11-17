@@ -399,3 +399,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] 17/11 : pas-à-pas M3 / M4 sans borne de terre : V/J de W9 / W10 à la masse du moteur. B3-B6 = RS 902-6874. B2 33-34 en réserve.
 - [D] 17/11 : référentiels câble et composant gardés dans `cablage/` (HTML + onglets).
 - [H] 17/11 : boîte machine +M-X1 sur un seul rail DIN : 24 bornes (base W12 + W4), 34 avec les pas-à-pas ; moteurs, TF, thermocouple, B2 et pupitre restent directs.
+
+- [D] 17/11 : hypothèse de travail : tous les conducteurs de tous les câbles sortants passent par la boîte de jonction machine (réserves comprises). Julien rachète des PT si besoin.
+- [H] 17/11 : boîte renommée **+BJM** (boîte de jonction machine), bornier +BJM-X1 (remplace +M-X1). 57 bornes sans W11, 84 avec.
