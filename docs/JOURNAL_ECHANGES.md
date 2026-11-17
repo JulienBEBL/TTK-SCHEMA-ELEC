@@ -263,3 +263,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 16/11/2026 : v31
 - Julien : OK pour renommer 2L+ / 2M ; a modifié la v30 (tableau des câbles au f80, textes du f85) ; demande comment faire le folio Vue armoire avec WinArmoire. Fait : v31 (retouches reportées, 2L+ / 2M), procédure WinArmoire expliquée.
+
+## 17/11/2026
+- Julien (nouveau PC) : mettre les symboles CUSTOM sur git. Fait : `librairie_winrelais/sym_electrotech/CUSTOM` (42 fichiers, identiques au PC), README d'installation.

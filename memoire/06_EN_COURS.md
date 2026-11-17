@@ -232,3 +232,7 @@ Julien câble l'armoire avec la numérotation v26 ; **pas de v27 avant ses retou
 - **Fils et câbles** : section des fils de H2 (20 A) ; longueurs W3 à W6, W9 à W12 ; section W9 / W10 ; câble moteur 50 m pour 60 m (Q30) ; bornes : 89 pour 85 achetées, type des bornes de terre, séparation H2 230 V / 24 V sur R4.
 - **Fonctions, au banc** : boucle Y1-Y2 (`docs/ESSAI_BANC_BOUCLE_RETOUR.md`) ; écart d'ouverture B1 / B2 (200 ms) ; I0.2 / I0.3 à 1 capot ouvert ; trames Z1 (I1.5) ; PTO dans TIA et micro-pas des DM860H (< 100 kHz).
 - **Implantation** : XR2 déplacé sur R2 à reporter par l'agent draw.io.
+
+## 17/11/2026 : librairie CUSTOM dans le dépôt (nouveau PC)
+- `librairie_winrelais/sym_electrotech/CUSTOM/` : copie octet pour octet des 42 symboles CUSTOM du PC (`.gitattributes` : pas de conversion). Installation sur un autre PC : `librairie_winrelais/README.md`.
+- Écart avec `outils/librairie/CUSTOM` (copie du script) : 10 symboles seulement dans le script (Eaton T0, PTFIX 3273354, borne terre, Hager NFT702), 5 seulement sur le PC.

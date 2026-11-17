@@ -1,0 +1,45 @@
+<< Symbole Winschem & WinRelais>>
+¤#Version¤
+1·2·
+BEBL·BEBL·
+Version 1.2 Béta ( 17 jan 2012 )·
+¤#Autre¤
+3200·2000·
+100·--- m contacteur·contacteur tri+1 no+1 nc lc1d09bd··Q·1·0·0·0·0·4·0·0·0·
+Q1·3900·2400·1·0·Arial·300·0·0·0·0·
+Contacteur·3900·2780·1·0·Arial·200·0·0·0·0·
+Schneider LC1D09BD·3900·3080·1·0·Arial·200·0·0·0·0·
+9 A AC-3 - bobine 24 V CC - 1NO+1NF·3900·3380·1·0·Arial·200·0·0·0·0·
+·3900·3800·0·0·Arial·300·0·0·0·0·
+·3900·4100·0·0·Arial·300·0·0·0·0·
+·3900·4400·0·0·Arial·300·0·0·0·0·
+·3900·4700·0·0·Arial·300·0·0·0·0·
+¤#Contour¤
+3650·3050·2750·3050·20·0·0·0·0·
+3650·2550·3650·3050·20·0·0·0·0·
+3650·2550·2750·2550·20·0·0·0·0·
+2750·3050·2750·2550·20·0·0·0·0·
+3200·2400·3200·2550·20·0·0·0·0·
+3200·3200·3200·3050·20·0·0·0·0·
+¤#Broche¤
+A1·3200·2000·3200·2400·3300·2050·Arial·300·0·0·0·Arial·200·0·0·0·0·0··400·2·0·0·0·0·
+A2·3200·3600·3200·2800·3300·3350·Arial·300·0·0·0·Arial·200·0·0·0·0·1··400·2·0·0·0·0·
+¤#RefCroise¤
+-1·1·-1·0·0·3200·4400·NC·NO·13·5·Arial·200·0·0·0·0·10·0·0·0·0·0·0·0·0·0·0·
+CUSTOM·Schneider_LC1D09BD_contacts_puissance_3P·1·0·0·5/L3-6/T3·0·0·0·0·
+CUSTOM·Schneider_LC1D09BD_contact_aux_NO_13-14·1·0·0·13-14·0·0·0·0·
+CUSTOM·Schneider_LC1D09BD_contact_aux_NC_21-22_miroir·1·0·0·21-22·0·0·0·0·
+¤#RefConstructeur¤
+SCHNEIDER ELECTRIC··LC1D09BD··0·
+¤#LienInternet¤
+····0·
+¤#VueArmoire¤
+A1·3200·2450·0·6·Arial·200·0·0·0·0·
+··1·1·0·255·····1··0·0·0·0·0·
+¤#RefBaseData¤
+··0·
+··0·
+··0·
+¤#VersionSymbole¤
+1·0·[Non défini]·1·0·
+¤#FIN¤

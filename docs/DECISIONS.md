@@ -364,3 +364,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Renommer les broches de la CPU 3L+ / 3M en 2L+ / 2M dans le symbole CUSTOM (Julien : OK).
 - [D] f80 : liste des câbles = tableau WinRelais fait par Julien, recopié tel quel par le script.
 - [D] f85 : textes remontés (Julien).
+
+## 17/11/2026
+- [D] Symboles CUSTOM de Julien versionnés dans `librairie_winrelais/` (nouveau PC).
