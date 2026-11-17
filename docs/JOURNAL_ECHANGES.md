@@ -266,3 +266,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 17/11/2026
 - Julien (nouveau PC) : mettre les symboles CUSTOM sur git. Fait : `librairie_winrelais/sym_electrotech/CUSTOM` (42 fichiers, identiques au PC), README d'installation.
+- Julien : oui pour compléter. Fait : 11 symboles du script ajoutés (cp1252, CRLF), 53 en tout.

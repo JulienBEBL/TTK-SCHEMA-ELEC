@@ -236,3 +236,4 @@ Julien câble l'armoire avec la numérotation v26 ; **pas de v27 avant ses retou
 ## 17/11/2026 : librairie CUSTOM dans le dépôt (nouveau PC)
 - `librairie_winrelais/sym_electrotech/CUSTOM/` : copie octet pour octet des 42 symboles CUSTOM du PC (`.gitattributes` : pas de conversion). Installation sur un autre PC : `librairie_winrelais/README.md`.
 - Écart avec `outils/librairie/CUSTOM` (copie du script) : 10 symboles seulement dans le script (Eaton T0, PTFIX 3273354, borne terre, Hager NFT702), 5 seulement sur le PC.
+- Complété (Julien : oui) avec les 11 symboles présents seulement dans le script : 53 symboles dans `librairie_winrelais`.
