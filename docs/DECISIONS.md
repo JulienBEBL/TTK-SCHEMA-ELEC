@@ -391,3 +391,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] 17/11 : en stock : M12 SICK 285-9453, Roline 616-2586, fil V/J 811-4463 ; pas en stock : H05VV-F 2 x 1 et 2 x 0,75. 27G1 = pupitre +P1.
 - [D] 17/11 : sorties de la boîte +M-X1 vers les appareils : pas de câble prévu pour l'instant.
 - [?] 17/11 : colonne H1 commandée « vert/rouge » (RS 199-9760) contre 3 couleurs au schéma.
+
+- [C] 17/11 : colonne H1 à 3 couleurs (Julien), conforme au schéma.
+- [D] 17/11 : vision élec pour les tableaux de câbles (PROFINET retiré de l'aperçu et de l'onglet Conducteurs).
+- [?] 17/11 : terre des pas-à-pas M3 / M4 (V/J de W9 / W10) : borne côté moteur à vérifier.

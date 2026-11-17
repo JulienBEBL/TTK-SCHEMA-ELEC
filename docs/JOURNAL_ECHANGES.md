@@ -289,3 +289,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : conducteurs des câbles
 - Julien : M12, Roline, V/J en stock ; H05VV-F pas en stock ; pas de câble après +M-X1 pour l'instant ; 27G1 au pupitre ; veut un aperçu clair des fonctions de chaque fil de chaque câble, avec les câbles et fonctions sans rien.
 - Fait : onglet « Conducteurs » (88 lignes) dans `cablage/TTK_CABLES.xlsx`, relevé du schéma v31 ; aperçu visuel (widget) par destination : pupitre, boîte +M-X1, direct. Point H1 (2 ou 3 couleurs) ajouté à 05.
+
+## 17/11/2026 : référentiels câble et composant
+- Julien : tableau très bien ; retirer la sortie de la boîte et PN4 (vision élec) ; H1 a bien 3 couleurs ; veut un visuel en référentiel câble et le même tableau en référentiel composant (chaque broche hors armoire raccordée).
+- Fait : broches relevées dans le .xrs v31 (équipotentielles, bornes non passantes) ; 2 aperçus (câble, composant) ; onglet « Composants » (76 lignes) ; Conducteurs sans PN4 ni sortie de boîte. Trouvé : terre M3 / M4 sans broche, B2 33-34 et S3 13-14 en réserve.

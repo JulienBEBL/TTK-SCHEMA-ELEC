@@ -20,6 +20,8 @@ Tableau dans `cablage/TTK_CABLES.xlsx` (onglets « Stock câbles » et « Liaiso
 - Pas de câble prévu : boîte +M-X1 → freins M1 / M2, B1, B3-B6, H1 (**Julien 17/11 : pas de câble prévu pour l'instant**).
 - Réponses du 17/11 [C] : M12 SICK 285-9453, Roline 616-2586 et fil V/J 4 mm² 811-4463 **en stock** ; H05VV-F 2 x 1 et 2 x 0,75 **pas en stock** ; 27G1 = pupitre +P1 (posé sur la machine).
 - Onglet « Conducteurs » (17/11) : un conducteur par ligne (câble, n°, borne, n° de fil, côté armoire, côté terrain, fonction, famille, statut), relevé du schéma v31. Libres : W11 23-26, W12 17-18, 4 conducteurs de W14.
+- Onglet « Composants » (17/11) : chaque broche de chaque appareil hors armoire (S2, S3, P1, B1-B7, H1, M1-M4), relevée dans le .xrs v31 par équipotentielles ; statut raccordée / via +M-X1 / réserve / à vérifier. Résultat : toutes les broches dessinées sont raccordées, sauf B2 33-34 (réserve).
+- Vision élec (Julien 17/11) : l'onglet Conducteurs et l'aperçu câbles ne montrent ni PN4 ni la sortie de la boîte (celle-ci reste dans l'onglet Liaisons, statut « Pas de câble prévu »).
 - Julien a demandé un aperçu visuel des câbles le 17/11 (widget dans le chat, pas un rendu du schéma) : exception à la règle « pas d'aperçu » quand il le demande.
 
 ## Bornes et accessoires

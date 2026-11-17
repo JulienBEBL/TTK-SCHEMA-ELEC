@@ -105,7 +105,10 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 - PTFIX noir : en stock, place sur R3 OK (Julien 16/11).
 
 ## Câbles sortants (17/11, `cablage/TTK_CABLES.xlsx`)
-- Colonne H1 : la commande dit RS 199-9760 « LED vert/rouge » ; le schéma câble 3 couleurs (rouge, orange, vert, Q8.0-Q8.2). À vérifier sur la colonne reçue.
+- Colonne H1 : **réglé le 17/11**, la colonne reçue a bien 3 couleurs (Julien) ; la désignation « vert/rouge » de la commande est fausse.
+- M3 / M4 (Nema 34) : pas de broche de terre dans le symbole ; le V/J de W9 / W10 n'arrive sur rien côté moteur. Le moteur a-t-il une borne de terre ?
+- B2 (MN508S) : contact NF 33-34 non utilisé (réserve) ; W14 a 4 conducteurs libres.
+- S3 13-14 (AUTO-D) : réserve, non dessiné. B3-B6 : référence à définir (si RS 902-6874 comme B1, le contact NF reste libre).
 - W14 (M12) : couleurs des 4 conducteurs utilisés à relever ; W2 / W5 : marquage U V W à relever ; W3 / W6 : blanc = 1b proposé ; W9 / W10 : V/J côté moteur à vérifier.
 
 ## Implantation v11 (17/11)
