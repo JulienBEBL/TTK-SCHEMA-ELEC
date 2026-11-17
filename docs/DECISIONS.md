@@ -381,3 +381,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] X13.11-22 et X12.11 en PT 4 (les 5 PT 4 restants) ; il manque alors 4 PT 2,5 (74 pour 70).
 - [?] Liaisons boîte +M-X1 → freins BE5, B1, B3-B6, H1 : non définies au schéma.
 - [D] Mémoire : le dossier d'implantation a son fichier `memoire/08_IMPLANTATION.md` (17/11).
+- [D] 17/11 : principe de Julien : plus aucune commande sauf urgence ou problème grave ; le schéma s'adapte au stock.
+- [D] Mémoire : le stock câbles / bornes a son fichier `memoire/09_STOCK.md` (17/11).
+- [H] 17/11 : méthode câbles / bornes en 5 étapes, tableau des liaisons généré depuis le .xrs (en attente de l'accord de Julien).
