@@ -384,3 +384,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] 17/11 : principe de Julien : plus aucune commande sauf urgence ou problème grave ; le schéma s'adapte au stock.
 - [D] Mémoire : le stock câbles / bornes a son fichier `memoire/09_STOCK.md` (17/11).
 - [H] 17/11 : méthode câbles / bornes en 5 étapes, tableau des liaisons généré depuis le .xrs (en attente de l'accord de Julien).
+- [D] 17/11 : vérité des câbles sortants et des bornes dans `cablage/TTK_CABLES.xlsx`, indépendante du schéma ; le schéma suit. Portée : câbles qui sortent de l'armoire. Ordre : stock câbles → liaisons par fonction → conducteurs → références des bornes (une par une).

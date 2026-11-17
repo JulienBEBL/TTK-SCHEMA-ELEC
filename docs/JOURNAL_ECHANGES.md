@@ -277,3 +277,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : méthode câbles / bornes selon le stock
 - Julien : fixer une méthode pour savoir comment le schéma est construit selon le stock ; d'abord les câbles, puis les références des bornes (réelles) ; un tableau borne / câble / direction / fonction ; on ne commande plus rien sauf urgence.
 - Fait : mémoire relue, méthode en 5 étapes proposée (stock → tableau des liaisons généré depuis le .xrs → contrôles → validation câble par câble → références des bornes au script). `memoire/09_STOCK.md` créé (stock épars dans 02, 05, 08 et saisie.json). Questions posées sur le format et le stock.
+
+## 17/11/2026 : classeur des câbles
+- Julien : format Excel / Google Sheet ; envoie son fichier de suivi de commande pour le stock ; seulement les câbles qui sortent ; références des bornes données une par une ; vérité dans un fichier indépendant du schéma, puis report au schéma ; d'abord les câbles en stock, puis la répartition par fonction.
+- Fait : `cablage/TTK_CABLES.xlsx` (Lisez-moi, Stock câbles pré-rempli depuis la mémoire avec « ? », Liaisons par fonction vide), `cablage/README.md`, `memoire/09_STOCK.md` (méthode, tableau câbles remplacé par un renvoi au classeur). Contestation faite une fois : risque d'écart entre le classeur et le schéma ; parade : comparaison automatique au moment du report.

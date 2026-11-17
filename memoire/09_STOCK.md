@@ -4,23 +4,15 @@ Créé le 17/11/2026. **Source unique** du matériel disponible pour les câbles
 Principe de Julien (17/11) : **on ne commande plus rien**, sauf urgence ou problème grave. Le schéma s'adapte au stock.
 Statuts : [C] confirmé par Julien ou document ; [?] à vérifier. Ce fichier est à valider ligne par ligne par Julien (méthode du 17/11, étape 1).
 
-## Câbles
-| Câble | Référence | Stock | Usage actuel au schéma | Statut |
-|---|---|---|---|---|
-| LIYCY-JZ 5G1,5 blindé | AEE261168 | 80 m | W4 (freins M1 + M2), W9, W10 (pas-à-pas) | [C 05/11, 17/11] |
-| 2XSLCY-K 4G2,5 blindé | AEE261757 | 50 m (1 ou 2 machines ? Q30) | W2, W5 (moteurs M1, M2) | [?] longueur par machine |
-| LIYCY 2 x 0,75 blindé (blanc, marron) | PPMM0180 | ? m | W3, W6 (sondes TF) | [C acheté] longueur [?] |
-| LIYCY-JZ 27G1 blindé | AEE261165 | ? m | W11 (pupitre) | [C] longueur [?] |
-| LIYCY-JZ 19G1 blindé | AEE261164 | ? m | W12 (boîte +M-X1) | [C] longueur [?] |
-| Câble de compensation type K | RS 236-3959 | noté non commandé au sourcing (K = 0) | W8 (thermocouple) | [?] |
-| Câble M12 8 broches, extrémité libre (SICK) | RS 285-9453 | 20 m | W14 [H] (capteur B2) | [C acheté] |
-| Fil V/J 4 mm² | RS 811-4463 | ? m | W13 (bâti machine) | [C acheté] |
-| Cordons RJ45 | RS 843-6365 (1 m), 843-6369 (2 m) x 2, Roline 616-2586 (20 m) | 4 | PN1 à PN4 | [C acheté] |
-| H05VVF 2 x 1 mm² blanc | PPMM0114 | ? m | aucun (sourcing : « fin de course ↔ armoire ») | [?] libre |
-| H05VVF 2 x 0,75 mm² blanc | PPMM0104 | ? m | aucun (sourcing : « sonde TF moteur ») | [?] libre |
-| 5G2,5, 5G1 | — | **aucun** | — | [C Julien 05/11] |
+## Méthode (Julien, 17/11) [D]
+- La vérité est fixée **hors du schéma**, dans le classeur `cablage/TTK_CABLES.xlsx` (Excel, importable dans Google Sheets). Le schéma est ensuite corrigé pour le suivre (script `ttk_schema.py`).
+- Portée : **seulement les câbles qui sortent de l'armoire**.
+- Ordre : 1) les câbles en stock (onglet « Stock câbles », d'après le fichier de suivi de commande de Julien) ; 2) la répartition par fonction (onglet « Liaisons » : moteur, frein, sonde, pas-à-pas, capteurs, signalisation, pupitre, réseau, terre) ; 3) conducteur → borne ; 4) références réelles des bornes, données une par une par Julien.
+- Un onglet validé (colonne « Validé ») est exporté en CSV dans `cablage/` pour être lu par l'assistant, puis reporté au schéma.
+- Lecture du classeur par l'assistant : `outils/lire_tableau.py` (`lire_xlsx`, sans openpyxl).
 
-Fil de câblage interne (sections, couleurs, longueurs) : à relever [?].
+## Câbles
+Tableau dans `cablage/TTK_CABLES.xlsx`, onglet « Stock câbles » (pré-rempli le 17/11 depuis la mémoire, valeurs inconnues = « ? », à valider par Julien).
 
 ## Bornes et accessoires
 | Article | Référence | Stock | Dessinées au schéma (v31) | Statut |
