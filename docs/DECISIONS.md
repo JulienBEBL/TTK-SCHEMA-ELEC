@@ -380,3 +380,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] X21.14 sur R3 à droite de K4 (FA1 / KA1 restent en place).
 - [H] X13.11-22 et X12.11 en PT 4 (les 5 PT 4 restants) ; il manque alors 4 PT 2,5 (74 pour 70).
 - [?] Liaisons boîte +M-X1 → freins BE5, B1, B3-B6, H1 : non définies au schéma.
+- [D] Mémoire : le dossier d'implantation a son fichier `memoire/08_IMPLANTATION.md` (17/11).

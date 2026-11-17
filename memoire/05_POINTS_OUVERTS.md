@@ -103,3 +103,6 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 - Réglage de QM1 / QM2 (GV2ME14 6-10 A) sur le courant d'entrée réel du MCX91A ; T3 240 W pour les 2 axes ; DC-1 du LC1D09BD sous 48 V.
 - Nomenclature : références manquantes B3-B6, B7, W8, H2-H4, bornes, butées, PTFIX, câbles. S1 / S2 / S3 ajoutées en v29.
 - PTFIX noir : en stock, place sur R3 OK (Julien 16/11).
+
+## Implantation v11 (17/11)
+Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) ; X21.14 à droite de K4 [H] ; W14 [H] ; câbles +M-X1 → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du f80.
