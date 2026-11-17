@@ -17,7 +17,10 @@ Tableau dans `cablage/TTK_CABLES.xlsx` (onglets « Stock câbles » et « Liaiso
 - Stock donné par Julien le 17/11 [C] : 2 x 0,75 (PPMM0180), 4G2,5 blindé (moteurs), 5G1,5 LIYCY-JZ (2 commandes), 27G1, 19G1, câble de compensation K (Julien écrit « 2363958 », la commande dit **RS 236-3959**).
 - Fichier de commande : `Downloads/Demande de Commande Hugo.xlsx` (17/11). Câbles reçus mais absents de la liste de Julien : M12 SICK 285-9453, Roline 616-2586, fil V/J 4 mm² 811-4463 [?]. H05VV-F 2 x 1 (PPMM0114) et 2 x 0,75 (PPMM0104) : commandés, réception non notée [?].
 - Julien : 19G1 et 27G1 partent tous deux de l'armoire vers la machine ; l'affectation de leurs conducteurs est celle du schéma.
-- Pas de câble prévu : boîte +M-X1 → freins M1 / M2, B1, B3-B6, H1.
+- Pas de câble prévu : boîte +M-X1 → freins M1 / M2, B1, B3-B6, H1 (**Julien 17/11 : pas de câble prévu pour l'instant**).
+- Réponses du 17/11 [C] : M12 SICK 285-9453, Roline 616-2586 et fil V/J 4 mm² 811-4463 **en stock** ; H05VV-F 2 x 1 et 2 x 0,75 **pas en stock** ; 27G1 = pupitre +P1 (posé sur la machine).
+- Onglet « Conducteurs » (17/11) : un conducteur par ligne (câble, n°, borne, n° de fil, côté armoire, côté terrain, fonction, famille, statut), relevé du schéma v31. Libres : W11 23-26, W12 17-18, 4 conducteurs de W14.
+- Julien a demandé un aperçu visuel des câbles le 17/11 (widget dans le chat, pas un rendu du schéma) : exception à la règle « pas d'aperçu » quand il le demande.
 
 ## Bornes et accessoires
 | Article | Référence | Stock | Dessinées au schéma (v31) | Statut |

@@ -285,3 +285,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : stock câbles (sans longueurs)
 - Julien : envoie `Demande de Commande Hugo.xlsx` ; pas de longueurs, on raisonne en type et fonction ; distinguer un manque de longueur d'un câble non prévu ou non attribué ; 19G1 et 27G1 sûrs (armoire → machine, fils au schéma) ; stock : 2 x 0,75, 4G2,5 blindé, 5G1,5 x 2, 27G1, 19G1, compensation « 2363958 ».
 - Fait : classeur refait (colonnes de longueur retirées ; stock croisé avec la commande ; onglet Liaisons pré-rempli depuis le schéma v31 avec 3 statuts) ; `memoire/09_STOCK.md`.
+
+## 17/11/2026 : conducteurs des câbles
+- Julien : M12, Roline, V/J en stock ; H05VV-F pas en stock ; pas de câble après +M-X1 pour l'instant ; 27G1 au pupitre ; veut un aperçu clair des fonctions de chaque fil de chaque câble, avec les câbles et fonctions sans rien.
+- Fait : onglet « Conducteurs » (88 lignes) dans `cablage/TTK_CABLES.xlsx`, relevé du schéma v31 ; aperçu visuel (widget) par destination : pupitre, boîte +M-X1, direct. Point H1 (2 ou 3 couleurs) ajouté à 05.

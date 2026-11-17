@@ -104,5 +104,9 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 - Nomenclature : références manquantes B3-B6, B7, W8, H2-H4, bornes, butées, PTFIX, câbles. S1 / S2 / S3 ajoutées en v29.
 - PTFIX noir : en stock, place sur R3 OK (Julien 16/11).
 
+## Câbles sortants (17/11, `cablage/TTK_CABLES.xlsx`)
+- Colonne H1 : la commande dit RS 199-9760 « LED vert/rouge » ; le schéma câble 3 couleurs (rouge, orange, vert, Q8.0-Q8.2). À vérifier sur la colonne reçue.
+- W14 (M12) : couleurs des 4 conducteurs utilisés à relever ; W2 / W5 : marquage U V W à relever ; W3 / W6 : blanc = 1b proposé ; W9 / W10 : V/J côté moteur à vérifier.
+
 ## Implantation v11 (17/11)
 Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) ; X21.14 à droite de K4 [H] ; W14 [H] ; câbles +M-X1 → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du f80.

@@ -387,3 +387,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] 17/11 : vérité des câbles sortants et des bornes dans `cablage/TTK_CABLES.xlsx`, indépendante du schéma ; le schéma suit. Portée : câbles qui sortent de l'armoire. Ordre : stock câbles → liaisons par fonction → conducteurs → références des bornes (une par une).
 - [D] 17/11 : câbles raisonnés en type et fonction, jamais en mètres ; s'il manque des mètres, Julien rachète. Statuts d'une liaison : en stock attribué / en stock à attribuer / pas de câble prévu.
 - [C] 17/11 : stock câbles de Julien : 2 x 0,75 PPMM0180, 4G2,5 blindé AEE261757, 5G1,5 LIYCY-JZ AEE261168, 27G1 AEE261165, 19G1 AEE261164, compensation K (RS 236-3959 d'après la commande).
+
+- [C] 17/11 : en stock : M12 SICK 285-9453, Roline 616-2586, fil V/J 811-4463 ; pas en stock : H05VV-F 2 x 1 et 2 x 0,75. 27G1 = pupitre +P1.
+- [D] 17/11 : sorties de la boîte +M-X1 vers les appareils : pas de câble prévu pour l'instant.
+- [?] 17/11 : colonne H1 commandée « vert/rouge » (RS 199-9760) contre 3 couleurs au schéma.
