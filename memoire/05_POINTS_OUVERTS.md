@@ -106,9 +106,10 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 
 ## Câbles sortants (17/11, `cablage/TTK_CABLES.xlsx`)
 - Colonne H1 : **réglé le 17/11**, la colonne reçue a bien 3 couleurs (Julien) ; la désignation « vert/rouge » de la commande est fausse.
-- M3 / M4 (Nema 34) : pas de broche de terre dans le symbole ; le V/J de W9 / W10 n'arrive sur rien côté moteur. Le moteur a-t-il une borne de terre ?
+- M3 / M4 (Nema 34) : **réglé le 17/11**, pas de borne de terre ; Julien raccorde le V/J de W9 / W10 à la masse du moteur.
 - B2 (MN508S) : contact NF 33-34 non utilisé (réserve) ; W14 a 4 conducteurs libres.
-- S3 13-14 (AUTO-D) : réserve, non dessiné. B3-B6 : référence à définir (si RS 902-6874 comme B1, le contact NF reste libre).
+- S3 13-14 (AUTO-D) : réserve, non dessiné. B3-B6 : **RS 902-6874** (Julien 17/11), contact NF libre (n° des bornes NF à relever). B2 33-34 : réserve « bonus ».
+- Boîte machine +M-X1 (17/11, [H]) : 24 bornes de base (W12 + W4 : 22 PT 2,5 + 2 terre), 34 avec l'option pas-à-pas ; stock de PT 2,5 à confirmer (mémoire : 70 ; fichier de commande : 40 + 200) ; boîte elle-même non achetée ; câbles boîte → appareils non prévus.
 - W14 (M12) : couleurs des 4 conducteurs utilisés à relever ; W2 / W5 : marquage U V W à relever ; W3 / W6 : blanc = 1b proposé ; W9 / W10 : V/J côté moteur à vérifier.
 
 ## Implantation v11 (17/11)

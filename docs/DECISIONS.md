@@ -395,3 +395,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] 17/11 : colonne H1 à 3 couleurs (Julien), conforme au schéma.
 - [D] 17/11 : vision élec pour les tableaux de câbles (PROFINET retiré de l'aperçu et de l'onglet Conducteurs).
 - [?] 17/11 : terre des pas-à-pas M3 / M4 (V/J de W9 / W10) : borne côté moteur à vérifier.
+
+- [D] 17/11 : pas-à-pas M3 / M4 sans borne de terre : V/J de W9 / W10 à la masse du moteur. B3-B6 = RS 902-6874. B2 33-34 en réserve.
+- [D] 17/11 : référentiels câble et composant gardés dans `cablage/` (HTML + onglets).
+- [H] 17/11 : boîte machine +M-X1 sur un seul rail DIN : 24 bornes (base W12 + W4), 34 avec les pas-à-pas ; moteurs, TF, thermocouple, B2 et pupitre restent directs.

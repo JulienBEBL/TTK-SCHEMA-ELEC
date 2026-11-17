@@ -293,3 +293,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : référentiels câble et composant
 - Julien : tableau très bien ; retirer la sortie de la boîte et PN4 (vision élec) ; H1 a bien 3 couleurs ; veut un visuel en référentiel câble et le même tableau en référentiel composant (chaque broche hors armoire raccordée).
 - Fait : broches relevées dans le .xrs v31 (équipotentielles, bornes non passantes) ; 2 aperçus (câble, composant) ; onglet « Composants » (76 lignes) ; Conducteurs sans PN4 ni sortie de boîte. Trouvé : terre M3 / M4 sans broche, B2 33-34 et S3 13-14 en réserve.
+
+## 17/11/2026 : boîte de dérivation machine
+- Julien : garder les 2 tableaux dans le dépôt ; liste des bornes d'un rail DIN côté machine (comme R5), nombre de bornes et longueur ; terre des pas-à-pas par le V/J ; B2 33-34 réserve ; B3-B6 = RS 902-6874.
+- Fait : `cablage/REFERENTIEL_CABLE.html` et `REFERENTIEL_COMPOSANT.html` (vérifiés dans le navigateur : 12 cartes chacun) ; onglet « Boîte machine » (34 lignes : base 24, option pas-à-pas 10) ; Composants mis à jour (M3 / M4, B3-B6).
