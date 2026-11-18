@@ -13,8 +13,13 @@
 | 90, 91, 92 | Nomenclature sur 3 folios (f92 ajouté), texte 280, tableau centré sur toute la zone utile, colonnes au prorata du contenu |
 | saisie.json | W4 / W12 vers « +BJM » ; B3-B6 en NF 11-12 dans `apres_boite` |
 
+### Retours de Julien sur la v33 (18/11)
+- f80 (liste des câbles) : OK. Nomenclature : OK ; nouvelle passe dans quelques jours.
+- v33 réenregistrée par WinRelais sur le PC Rimane, sans retouche (copie `schema/recus/2026-11-18_v33_ouverte_WinRelais.xrs`) ; **chemins d'images restés relatifs**.
+- Revue complète demandée (schéma seulement) : `docs/REVUE_SCHEMA_v33_2026-11-18.md` (zones d'ombre § 1, folio par folio § 2, corrections proposées § 3). Rien corrigé ; v34 après le go de Julien.
+
 ### Suite
-- Julien : relire la v33 (f30, f31 / f32, f71, f80, f90 à f92).
+- Julien : trancher les points A1 (+BJM : quels câbles ?), A5 (V/J de W9 / W10), A6 (bornes X63), f85 ; go pour la v34 (§ 3 de la revue).
 - Implantation : type PTFIX 2X4 (6 mm) à ajouter au générateur ; `boite` / `apres_boite` encore en « +M-X1 ».
 
 ## Version précédente : v32 (18/11/2026, PC PRO RIMANE)

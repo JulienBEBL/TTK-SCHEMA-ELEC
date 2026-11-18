@@ -115,13 +115,21 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 ## Implantation v11 (17/11)
 Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) ; X21.14 à droite de K4 [H] ; W14 [H] ; câbles +BJM → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du f80.
 
+## Revue v33 (18/11)
+Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (remplace `REVUE_COMPLETE_v29.md` § 3). Nouveaux :
+- **+BJM** : mémoire « tous les câbles par la boîte » (17/11), f80 : seuls W4 / W12 ; boîte non dessinée [?].
+- V/J de W9 / W10 côté armoire : non dessiné [?].
+- Bornes X63 : f63 « type à définir », nomenclature en PT 2,5 [?].
+- f85 : texte « à réaliser sous WinArmoire » périmé (implantation dans `implantation/`) [?].
+- À fermer (revue § 1.D) : Q8, Q12, Q26, § 11, § 21, § 25, § 26, v28 f80 / f90, symboles CUSTOM PC Rimane, chemin d'image relatif.
+
 ## Reprise PC PRO RIMANE (18/11)
 - Identité git du PC Rimane : **réglé le 18/11**, `--local` JulienBEBL / julien@bebl.fr.
 - Python sur le PC Rimane : **réglé le 18/11** (3.15.2, contrôles identiques au PC de Julien).
 - Symboles CUSTOM non installés dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (PC Rimane).
 - Nomenclature : **réglé le 18/11**, option B (script), S1 / S2 sur une ligne, TR1 gardé (EXT). Restent à compléter : références B7, H2, H3, H4, butées, +BJM.
 - Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, QF10 4,5 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, XD1 1,5 kW, S4 « Z000263594 ».
-- Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. **Réglé le 18/11** : chemin relatif, images visibles (Julien) ; v32 en relatif. Reste : le chemin reste-t-il relatif quand WinRelais réenregistre ? (à voir sur la prochaine copie reçue).
+- Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. **Réglé le 18/11** : chemin relatif, images visibles (Julien) ; v32 en relatif. **Réglé le 18/11** : la v33 réenregistrée garde le chemin relatif.
 - PTFIX 2X4 Phoenix 1028361 : 2 trous, 6 mm, 19 + 27 blocs (Julien 18/11). **Réglé le 18/11** : réserves non bornées, X50.13 reste une borne de terre vert/jaune ; 38 blocs dessinés.
 - Bornes PE X10.11, X31.11, X32.11, X50.13 en bornes de terre ; X12.11 en PT 4 : **confirmé par Julien le 18/11**.
 - Zoom écrit avec une virgule par WinRelais sur le PC Rimane (`0,749…`) : lecture par le WinRelais de Julien à vérifier.

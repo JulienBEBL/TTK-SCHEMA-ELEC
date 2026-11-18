@@ -325,3 +325,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : v33
 - Julien : réserves non bornées et X50.13 en terre ; OK pour f31 / f32 (2 lignes), f71 (1 ligne), f80 généré, f92 ; go v33.
 - Fait : f30 textes décalés (le contrôle a d'abord trouvé 4 chevauchements PN / texte, corrigés) ; f31 / f32, f71 épurés ; f80 et f90-f92 par `nomenclature.tableau_pages` ; contrôle de la liste des câbles ; v32 dans old/ ; v33 : 0 problème, 0 erreur, 0 chevauchement.
+
+## 18/11/2026 : revue v33
+- Julien : f80 et nomenclature OK ; demande deux passes (points en suspens, puis folio par folio) ; schéma seulement, rapport unique, rien corrigé.
+- Fait : v33 réenregistrée archivée (aucune retouche, images relatives gardées), release restaurée ; `docs/REVUE_SCHEMA_v33_2026-11-18.md` ; mémoire 05 / 06. Commit local, sans push.

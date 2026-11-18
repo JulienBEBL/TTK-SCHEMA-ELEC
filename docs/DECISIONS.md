@@ -436,3 +436,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f71 : une ligne « Côté armoire en haut de la borne, côté terrain en bas. » (Julien OK).
 - [D] f80 généré depuis saisie.json ; nomenclature sur 3 folios (f92) avec une police plus grande (Julien OK).
 - [C] v33 : 0 problème, 0 erreur, 0 chevauchement, numéros 0 problème.
+
+## 18/11/2026 : revue de la v33
+- [C] Liste des câbles f80 : OK (Julien). Nomenclature : OK, à repasser dans quelques jours (Julien).
+- [C] Chemin d'image relatif gardé par WinRelais à l'enregistrement (v33 réenregistrée sur le PC Rimane).
+- [D] Revue limitée au schéma (pas l'implantation, pas TIA) ; rapport seul, aucune correction avant le go (Julien).
