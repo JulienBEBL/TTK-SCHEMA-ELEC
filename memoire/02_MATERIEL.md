@@ -115,7 +115,7 @@ Le schéma actuel demande 5 potentiels séparés (L+ capteurs pour les infos, vo
 H1 n'est pas sur la porte : c'est la colonne lumineuse de la machine.
 
 ## Câbles et bornes : décisions du 17/11
-- W9 / W10 (pas-à-pas) : LIYCY-JZ 5G1,5 AEE261168 (4 + V/J) [D 17/11]. Le 5G1,5 sert à W4, W9, W10 (30 m pour 10 m chacun).
+- W9 / W10 (pas-à-pas) : LIYCY-JZ 5G1,5 AEE261168 (4 + V/J) [D 17/11] ; V/J sur borne de terre X20.15 / X20.25 côté armoire, non raccordé au moteur [D 18/11, v34]. Le 5G1,5 sert à W4, W9, W10 (30 m pour 10 m chacun).
 - Tableau V1 (sourcing, `Downloads/Sourcing Composant (3).xlsx`, 03/11) = **1 armoire** [D 17/11]. Bornes achetées : PT 2,5 70 (20 + 50), PT 4 15 ; bornes de terre RS 708-1687 en livraison.
 - Boîte de dérivation machine : **+BJM** [D 17/11]. Blindages raccordés d'un seul côté (armoire) [D 17/11].
 - Thermocouple : bornes X63.11 / X63.12 gardées [D 17/11] (la mémoire disait « en direct sur K3 »).

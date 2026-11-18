@@ -1,6 +1,24 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v33 (18/11/2026, PC PRO RIMANE)
+## Version actuelle : v34 (18/11/2026, PC PRO RIMANE)
+`schema/generes/release/TTK_2026-11-18_v34.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (28 connues + 2 fils V/J en attente, voulus), 0 chevauchement, numéros 0 problème. v33 dans old/ (copie WinRelais sans retouche dans `schema/recus/`).
+
+### Fait en v34 (revue v33 + réponses de Julien du 18/11)
+| Folio | Changement |
+|---|---|
+| 03 | Bloc 24 V : -X21.14 capteurs |
+| 20 | W9 / W10 « 5G1,5 blindé » ; V/J sur bornes de terre X20.15 / X20.25, « V/J non raccordé au moteur » |
+| 63 | Texte « type à définir » retiré (X63 en PT 2,5) ; W8 « compensation type K RS 236-3959 » |
+| 70 | « boîte +BJM » ; X20.15 / X20.25 dans le tronçon 3 |
+| 71 | Côté armoire : « +24 V capteurs (-X21.14 noir) », « Terre PE / FE (-XPE1) » |
+| 85 | « image du plan d'implantation à insérer quand il sera validé » |
+| 90-92 | B3-B6 « contact NF 11-12 (0 = fin de course atteinte) » ; PTFIX 2X4 « 2 trous - 6 mm » ; H3 / H4 avec caractéristiques ; terre 6 |
+
+### Suite
+- Julien : relire la v34 ; 2 bornes de terre à prévoir (6 dessinées, 4 achetées).
+- Implantation : régénérer (X20.15 / X20.25, PTFIX 2X4, +BJM).
+
+## Version précédente : v33 (18/11/2026, PC PRO RIMANE)
 `schema/generes/release/TTK_2026-11-18_v33.xrs` : 27 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v32 dans old/ (non réenregistrée).
 
 ### Fait en v33 (retours de Julien sur la v32)

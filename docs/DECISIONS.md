@@ -441,3 +441,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Liste des câbles f80 : OK (Julien). Nomenclature : OK, à repasser dans quelques jours (Julien).
 - [C] Chemin d'image relatif gardé par WinRelais à l'enregistrement (v33 réenregistrée sur le PC Rimane).
 - [D] Revue limitée au schéma (pas l'implantation, pas TIA) ; rapport seul, aucune correction avant le go (Julien).
+
+## 18/11/2026 : v34
+- [D] Boîte +BJM : pas dessinée (Julien).
+- [D] V/J de W9 / W10 : borne de terre côté armoire, pas de raccordement au moteur pas-à-pas (Julien).
+- [D] Bornes du thermocouple X63 : PT 2,5 (Julien).
+- [D] Fils de H2 : 2,5 mm² « normalement » (Julien) ; tenue sous 20 A à vérifier selon la pose (rappel fait une fois).
+- [D] f85 : image du plan d'implantation quand il sera validé (Julien).
+- [C] Courant du frein BE5 : inconnu (Julien).
+- [D] Go v34 (Julien) ; v34 : 0 problème, 0 erreur, 0 chevauchement.

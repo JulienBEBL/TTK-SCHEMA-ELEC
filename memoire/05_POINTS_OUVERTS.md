@@ -6,11 +6,11 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 ## Questions à Julien
 | # | Sujet | État |
 |---|---|---|
-| Q8 | Retours sur la v20 (v19 relue le 05/11 : aucune retouche de position) | en attente |
+| Q8 | Retours sur la v20 (v19 relue le 05/11 : aucune retouche de position) | **réglé le 18/11** : dépassé, v33 relue |
 | Q9 | Ordre interne du bloc sécurité | réglé le 30/10 : retour à l'ordre d'origine, f40 relais, f41 entrées, f42 sorties |
 | Q10 | X12 (répartiteur) et X13 (barrette de terre) hors nomenclature WinRelais (non dessinés) | réglé le 29/10 : Julien les ajoute lui-même à la nomenclature |
 | Q11 | Noms de broches | réglé le 02/11 : au cas par cas, à la demande de Julien |
-| Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f10, f13, f60). Corrigé par calcul ; à confirmer à l'écran | à vérifier |
+| Q12 | f31 / f32 : l'image du défaut d'affichage des câbles n'est pas arrivée (reçu : f10, f13, f60). Corrigé par calcul ; à confirmer à l'écran | **réglé le 18/11** : bloc de droite refait en v33 |
 | Q13 | f62 : mention rouge « PROPOSITION A VALIDER » | **réglé le 05/11** : retirée en v22 (E/S validées) |
 | Q14 | W1 au f10 | réglé le 02/11 : on le garde |
 | Q15 | Notes du .xrs du 02/11 | réglé : f41 barres retirées ; f63 bornes TC posées (type à définir) ; f21 « borniers sur la page alims » **en pause** |
@@ -24,7 +24,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q23 | Z1 → I1.5 | fait en v15 ; décodage des trames à confirmer dans TIA |
 | Q24 | Capteur de capot B2 codé ou non | **réglé le 02/11 : codé** (ifm MN508S). La base XPSUAF (§14.1, « non codé ») est fausse sur ce point |
 | Q25 | Contacts des AU S1 / S2 | **réglé le 03/11** : Julien change la commande, **2 NF + 1 NO** par AU (XB5AS8442 + ZBE102 + ZBE101) ; schéma inchangé |
-| Q26 | W10 : brins « 1-2-3-3 » vus dans WinRelais après déplacement du câble à la main ; le fichier généré porte 1-2-3-4 | à revoir à l'ouverture de la v15 |
+| Q26 | W10 : brins « 1-2-3-3 » vus dans WinRelais après déplacement du câble à la main ; le fichier généré porte 1-2-3-4 | **réglé le 18/11** : fichier généré juste (W10 en 5G1,5 depuis la v34) |
 | Q27 | Clôture des achats : `docs/REVUE_ACHATS_2026-11-03.md` | 03/11 : A1, A2, A4 au tableau ; A6 déjà commandé ; A3 et A5 sans achat ; B1 fusible retenu ; B2 sans objet (antiparasite intégré). Restent : A7, B3 à B6, C1 à C14 |
 | Q28 | Jonction sonde K (câble 2 m) / câble de compensation 25 m | 03/11 : proposé RS 891-9031 (paire fiche + prise miniature type K, 220 °C, câble ≤ Ø 4 mm), à placer là où l'ambiance reste < 105 °C (limite du câble 236-3959). Diamètre du 236-3959 et terminaison de la sonde 350-398 non indiqués par RS. Validation de Julien attendue |
 | Q29 | Fixation de la sonde 350-398 : écrou 1/2 pouce (RS) contre cote Microdia « 12/Ø8 x 20 » | compatibilité à confirmer avant commande (sonde encore à FALSE) |
@@ -54,7 +54,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW).
 9. X6 (STO) **réglé le 05/11** (Julien, notice SEW) : X6.1 / X6.3 = F_STO_P +24 V, X6.2 / X6.4 = F_STO_M 0 V, X6.5 VO24_STO / X6.6 GND non utilisés ; câblage du schéma conforme. Reste X10 (TF) et le courant des entrées STO (point 1 bis).
 10. Mises sous tension du MCX91A (= fermeture de KM1 / KM2, 400 V sur L1-L3) : réponse SEW « 1 » (06/11). Usage (Julien, 09/11) : environ **1 mise sous tension toutes les 8 h** (passage en Manu pour la maintenance, puis retour en Auto) ; l'AU est réservé aux urgences, pas d'usage normal. Compatible avec la réponse « 1 » de SEW : **on garde KM1 / KM2**, point clos.
-11. Câbles frein 5G1,5 (réserve) et TF 2x0,75 blindé (acheté) : longueurs à définir. Câbles pas-à-pas W9 / W10 (4 conducteurs blindés) : section et longueur à définir.
+11. Câbles frein 5G1,5 (réserve) et TF 2x0,75 blindé (acheté) : longueurs à définir. Câbles pas-à-pas W9 / W10 : **réglé le 17/11**, LIYCY-JZ 5G1,5 (étiquettes en v34).
 
 ## Très basse tension
 12. DC-1 du LC1D09BD sous 48 V (KA2).
@@ -70,14 +70,14 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 18. Champ « afficher les numéros » des broches : **réglé le 05/11** : 6e champ (index 5) de la 3e ligne du symbole, déjà piloté par `noms=` dans `g.place` (Julien : U4 mis à 1 dans son test, U3 à 0). U3 / U4 restent à 0 dans la v20 (à changer si Julien le veut).
 19. Type de conducteur PROFINET : **réglé le 05/11, appliqué en v21** : nom « Profinet » (type personnalisé de Julien), rose foncé RGB(199, 21, 133) = 8721863, épaisseur 44 (puissance 40 + 10 %). Type `PN` de `xrs_gen.TYPES`.
 20. Numéros de fil générés : reconnus par WinRelais comme numéros ou comme texte libre ? Messages du Journal à l'ouverture ?
-21. Symbole Hager NFT702 : créé par copie du NFT706 dans `outils/librairie/CUSTOM/`, pas dans la librairie WinRelais du PC. À copier dans `sym_electrotech\CUSTOM` si Julien veut le poser à la main.
+21. Symbole Hager NFT702 : créé par copie du NFT706 dans `outils/librairie/CUSTOM/`, pas dans la librairie WinRelais du PC. **Réglé le 18/11** : symboles CUSTOM installés sur les 2 PC.
 
 ## Divers
 22. (réglé le 29/10 : KM3 renommé KA2, contacteur auxiliaire.)
 23. Câbles 27G1 / 19G1 : proposition du 05/11 (Q32) dans `02_MATERIEL.md`.
 24. Classeur Excel à mettre à jour avec le nommage du 28/10.
-25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f10 corrigés en v7).
-26. f21 : images des borniers à insérer par Julien. f01 : logos **insérés par Julien en v24** (09/11), repris par le script (`schema/images/`).
+25. Description de cartouche obsolète du f51 « contacteurs, freins » (f51 figé ; f02, f10 corrigés en v7). **Réglé** : description du f61 juste (revue v33).
+26. f21 : images des borniers à insérer par Julien. f01 : logos **insérés par Julien en v24** (09/11), repris par le script (`schema/images/`). **Réglé** : images en chemin relatif (18/11).
 
 ## Essais de banc à prévoir (05/11)
 Procédure pour un nouveau chat : `docs/ESSAI_BANC_BOUCLE_RETOUR.md`.
@@ -95,7 +95,7 @@ Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO,
 
 ## v28 (16/11)
 - Achat / implantation : 4e bloc PTFIX 6/12 noir (-X21.14) sur R3 : en stock ? place sur R3 à confirmer (R3 était plein sur sa 1re partie).
-- f80 / f85 / f90 : gardés (Julien 16/11), à remplir par WinRelais.
+- f80 / f85 / f90 : **réglé** : f80 et f90-f92 générés par le script (v32 / v33) ; f85 = image du plan d'implantation quand il sera validé (Julien 18/11).
 
 ## Revue complète v29 (16/11)
 Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§ 3 à 6). Nouveaux :
@@ -106,7 +106,7 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 
 ## Câbles sortants (17/11, `cablage/TTK_CABLES.xlsx`)
 - Colonne H1 : **réglé le 17/11**, la colonne reçue a bien 3 couleurs (Julien) ; la désignation « vert/rouge » de la commande est fausse.
-- M3 / M4 (Nema 34) : **réglé le 17/11**, pas de borne de terre ; Julien raccorde le V/J de W9 / W10 à la masse du moteur.
+- M3 / M4 (Nema 34) : **réglé le 17/11**, pas de borne de terre ; Julien raccorde le V/J de W9 / W10 à la masse du moteur. **Changé le 18/11 (v34)** : V/J sur une borne de terre côté armoire (X20.15, X20.25), **non raccordé au moteur** (fil de terre en plus).
 - B2 (MN508S) : contact NF 33-34 non utilisé (réserve) ; W14 a 4 conducteurs libres.
 - S3 13-14 (AUTO-D) : réserve, non dessiné. B3-B6 : **RS 902-6874** (Julien 17/11), contact NF libre (n° des bornes NF à relever). B2 33-34 : réserve « bonus ».
 - Boîte de jonction machine +BJM (17/11) : tout passe par la boîte → 57 bornes (84 avec le pupitre W11) ; W11 par la boîte ou en direct ? blindage des tronçons boîte → appareil (côté boîte ?) ; W8 : 2 bornes cuivre acceptables si les deux sont à la même température ; W14 : câble M12 coupé en deux ; stock de PT 2,5 à confirmer (mémoire : 70 ; fichier de commande : 40 + 200) ; boîte elle-même non achetée ; câbles boîte → appareils non prévus.
@@ -117,16 +117,18 @@ Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) 
 
 ## Revue v33 (18/11)
 Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (remplace `REVUE_COMPLETE_v29.md` § 3). Nouveaux :
-- **+BJM** : mémoire « tous les câbles par la boîte » (17/11), f80 : seuls W4 / W12 ; boîte non dessinée [?].
-- V/J de W9 / W10 côté armoire : non dessiné [?].
-- Bornes X63 : f63 « type à définir », nomenclature en PT 2,5 [?].
-- f85 : texte « à réaliser sous WinArmoire » périmé (implantation dans `implantation/`) [?].
-- À fermer (revue § 1.D) : Q8, Q12, Q26, § 11, § 21, § 25, § 26, v28 f80 / f90, symboles CUSTOM PC Rimane, chemin d'image relatif.
+- **+BJM** : **réglé le 18/11**, la boîte n'est pas dessinée (Julien). f80 : W4 / W12 vers +BJM, les autres vers +M.
+- V/J de W9 / W10 : **réglé le 18/11 (v34)**, bornes de terre X20.15 / X20.25, non raccordé au moteur. **Stock : 6 bornes de terre dessinées pour 4 achetées** [?].
+- Bornes X63 : **PT 2,5** (Julien 18/11, v34).
+- f85 : **réglé le 18/11**, image du plan d'implantation à insérer quand il sera validé (Julien).
+- Fils de H2 : **2,5 mm²** (Julien 18/11, « normalement »). Rappel : tenue sous QF1 20 A à vérifier selon le mode de pose (NF EN 60204-1, tableau 6) [?].
+- Courant du frein BE5 : toujours inconnu (Julien 18/11).
+- Revue § 1.D fermée le 18/11 (go v34).
 
 ## Reprise PC PRO RIMANE (18/11)
 - Identité git du PC Rimane : **réglé le 18/11**, `--local` JulienBEBL / julien@bebl.fr.
 - Python sur le PC Rimane : **réglé le 18/11** (3.15.2, contrôles identiques au PC de Julien).
-- Symboles CUSTOM non installés dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (PC Rimane).
+- Symboles CUSTOM sur le PC Rimane : **réglé le 18/11** (54 symboles installés).
 - Nomenclature : **réglé le 18/11**, option B (script), S1 / S2 sur une ligne, TR1 gardé (EXT). Restent à compléter : références B7, H2, H3, H4, butées, +BJM.
 - Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, QF10 4,5 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, XD1 1,5 kW, S4 « Z000263594 ».
 - Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. **Réglé le 18/11** : chemin relatif, images visibles (Julien) ; v32 en relatif. **Réglé le 18/11** : la v33 réenregistrée garde le chemin relatif.

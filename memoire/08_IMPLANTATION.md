@@ -66,6 +66,8 @@ Méthode : étape 0 → charte → implantation → câbles → synoptique → a
 
 - 18/11 (v33) : `cables` W4 / W12 : destination « +BJM » ; `apres_boite` B3-B6 en NF 11-12. `boite` et les autres textes « +M-X1 » restent à renommer avec le générateur.
 
+- 18/11 (v34) : `types_bornes.terre` + X20.15, X20.25 (V/J de W9 / W10) ; origine de W9 / W10 jusqu'à X20.15 / X20.25. Implantation à régénérer (2 bornes de terre de plus sur R5).
+
 ## Faire une nouvelle version
 1. `git pull` ; passer l'ancien PDF + son `_verification.md` dans `implantation/old/` (`git mv`).
 2. `saisie.json` : `version`, `indice` (lettre suivante), `date`, ligne dans `revisions`.

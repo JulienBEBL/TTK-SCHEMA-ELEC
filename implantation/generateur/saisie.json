@@ -1028,7 +1028,9 @@
    "X10.11",
    "X31.11",
    "X32.11",
-   "X50.13"
+   "X50.13",
+   "X20.15",
+   "X20.25"
   ]
  },
  "couleurs_cables": {
@@ -1148,7 +1150,7 @@
   {
    "repere": "W9",
    "fonction": "Moteur pas-à-pas M3 (A+ A- B+ B-), 48 V",
-   "origine": "+A1 X20.11 à X20.14 (U3)",
+   "origine": "+A1 X20.11 à X20.15 (U3)",
    "destination": "+M M3",
    "type": "LIYCY-JZ",
    "reference": "AEE261168",
@@ -1161,7 +1163,7 @@
   {
    "repere": "W10",
    "fonction": "Moteur pas-à-pas M4 (A+ A- B+ B-), 48 V",
-   "origine": "+A1 X20.21 à X20.24 (U4)",
+   "origine": "+A1 X20.21 à X20.25 (U4)",
    "destination": "+M M4",
    "type": "LIYCY-JZ",
    "reference": "AEE261168",

@@ -329,3 +329,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : revue v33
 - Julien : f80 et nomenclature OK ; demande deux passes (points en suspens, puis folio par folio) ; schéma seulement, rapport unique, rien corrigé.
 - Fait : v33 réenregistrée archivée (aucune retouche, images relatives gardées), release restaurée ; `docs/REVUE_SCHEMA_v33_2026-11-18.md` ; mémoire 05 / 06. Commit local, sans push.
+
+## 18/11/2026 : v34
+- Julien : +BJM non dessinée ; V/J W9 / W10 sur borniers sans raccordement moteur ; X63 en PT 2,5 ; frein inconnu ; X10 pas compris ; H2 en 2,5 mm² ; f85 = image de l'implantation plus tard ; go v34.
+- Fait : v34 (f03, f20, f63, f70, f71, f85, nomenclature) ; v33 dans old/ ; 0 problème, 0 erreur, 30 attentions (2 fils V/J voulus), 0 chevauchement ; mémoire 02, 04, 05, 06, 08, 09. Commit local, sans push. Expliqué : X10 (bornes de la sonde TF sur le variateur) et H2.

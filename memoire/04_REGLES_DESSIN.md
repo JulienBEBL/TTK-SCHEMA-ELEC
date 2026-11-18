@@ -136,6 +136,12 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Les textes d'information sur un folio (f31 / f32 à droite, f71 en bas) : **seulement l'essentiel pour un schéma élec**, bien intégrés dans la page ; pas de méthode, pas de point ouvert (ils vont dans 05).
 - Un tableau occupe la place disponible du folio, centré, colonnes ajustées au contenu ; pas de texte d'explication autour (f80, f90, f91).
 
+## v34 (18/11)
+- f85 : une ligne « image du plan d'implantation à insérer quand il sera validé » ; ensuite, image (comme les logos du f01).
+- `decrit(..., nomenc=True)` : fabricant et caractéristiques écrits (non affichés) pour la nomenclature (H3, H4).
+- f71 : potentiels nommés « +24 V capteurs (-X21.14 noir) » et « Terre PE / FE (-XPE1) » (`POTENTIELS`).
+- Fil V/J de W9 / W10 laissé en attente côté moteur : 2 points d'attention de plus au verifier (30 au lieu de 28), voulus.
+
 ## Tableaux générés (v33, 18/11)
 - `nomenclature.tableau_pages` : tableau centré dans la zone utile (x 1500 à 29100, y 1500 à 19100), lignes réparties également sur les folios, taille de texte = la plus grande de 300 à 200 qui tient, colonnes élargies au prorata du contenu, en-tête sur chaque folio.
 - f80 : liste des câbles générée depuis `saisie.json` (Repère, Fonction, Origine, Destination, Type et référence, Conducteurs, Folio) ; le bloc `outils/blocs/f80_liste_cables_WinRelais.txt` n'est plus utilisé.

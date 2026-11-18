@@ -106,8 +106,8 @@ RENOMME = {
 GROUPES = [
     ("X10", 1, "10", "Arrivée réseau", "réseau", [("X101.VJ", "PE"), ("X101.1", "N"), ("X101.2", "L1"), ("X101.3", "L2"), ("X101.4", "L3")]),
     ("X12", 1, "13", "Liaison PELV 0 V - PE", "A1", [("X36.1", "0V-PE")]),
-    ("X20", 1, "32", "Moteur pas-à-pas M3", "+M", [(f"X701.{33 + i}", p) for i, p in enumerate(("A+", "A-", "B+", "B-"))]),
-    ("X20", 2, "32", "Moteur pas-à-pas M4", "+M", [(f"X701.{37 + i}", p) for i, p in enumerate(("A+", "A-", "B+", "B-"))]),
+    ("X20", 1, "32", "Moteur pas-à-pas M3", "+M", [(f"X701.{33 + i}", p) for i, p in enumerate(("A+", "A-", "B+", "B-"))] + [("X701.47", "PE")]),
+    ("X20", 2, "32", "Moteur pas-à-pas M4", "+M", [(f"X701.{37 + i}", p) for i, p in enumerate(("A+", "A-", "B+", "B-"))] + [("X701.48", "PE")]),
     ("X31", 1, "20", "Moteur M1", "+M", [(f"X701.{17 + i}", p) for i, p in enumerate(("PE", "U", "V", "W"))]),
     ("X31", 2, "20", "Sonde TF M1", "+M", [("X701.21", "1b"), ("X701.22", "2b")]),
     ("X31", 3, "20", "Frein M1", "+M", [("X701.23", "2"), ("X701.24", "3")]),
@@ -546,7 +546,7 @@ def contacteur(xsy, rep, f, x, y, **kw):
 
 
 # bornes de terre vert/jaune (achetées le 03/11) : PE arrivée, PE moteurs M1 / M2, FE de l'IHM
-BORNES_PE = {"X101.VJ", "X701.17", "X701.25", "X711.23"}
+BORNES_PE = {"X101.VJ", "X701.17", "X701.25", "X711.23", "X701.47", "X701.48"}   # + V/J de W9 / W10 (18/11)
 BORNE_PE = os.path.join(ICI, "librairie", "CUSTOM", "Borne_4mm_terre_vert-jaune.xsy")
 
 
@@ -683,7 +683,7 @@ srv = bloc(*col(C3)[:1], 5400, col(C3)[1], ["SERVICES 230 V (f14)", "-QF7 -> ven
                                             "-QF9 -> -QF10 -> prise -XD1"])
 var = bloc(*col(C1)[:1], 8400, col(C1)[1], ["VARIATEURS (f20, f21)", "-U1, -U2 MCX91A + résistances -R1 -R2", "STO commandé par la sécurité (f42)"])
 pap = bloc(*col(C2)[:1], 8400, col(C2)[1], ["48 V PAS-A-PAS (f32)", "-KA2 coupe les 2 x +48 V", "drivers -U3 / -U4"])
-d24 = bloc(*col(C3)[:1], 8400, col(C3)[1], ["DISTRIBUTION 24 V (f31)", "-X21.11 24VELEC, -X21.13 24VSEC", "-X21.12 0 V commun, voyant -H3"])
+d24 = bloc(*col(C3)[:1], 8400, col(C3)[1], ["DISTRIBUTION 24 V (f31)", "-X21.11 24VELEC, -X21.13 24VSEC, -X21.14 capteurs", "-X21.12 0 V commun, voyant -H3"])
 fleche([(C1, d400[3]), (C1, var[1])])
 fleche([(C2, ali[3]), (C2, pap[1])])
 texte("04", C2 + 200, 7400, "48 V", 200)
@@ -726,7 +726,10 @@ def decrit(xsy, rep, f, x, y, des, **kw):
     """Esclave affichant repère + description (pour savoir à quel appareil il appartient)."""
     kw.setdefault("rep_size", 200)
     kw.setdefault("wrap", 22)
-    return g.place(xsy, rep, F[f], x, y, champs={2: des}, ref=(), compact=False, shown=(2,),
+    champs = {2: des}
+    if kw.pop("nomenc", False):            # v34 : fabricant et caractéristiques écrits (non affichés) pour la nomenclature
+        champs.update({3: REP.get(rep, {}).get("fab", ""), 4: REP.get(rep, {}).get("carac", "")})
+    return g.place(xsy, rep, F[f], x, y, champs=champs, ref=(), compact=False, shown=(2,),
                    loc=loc(rep), **kw)
 
 
@@ -1036,7 +1039,7 @@ d31["LPC_E"] = W(f, [x314["E"], (21600, 10400)], "24")
 d31["LPC_S"] = W(f, [x314["12"], (x314["12"].x, 14400)], "24")
 REP["P512"] = {"des": "Voyant porte : tension de commande présente", "fab": "À définir", "carac": "24 V CC - blanc ou vert", "loc": "+A1"}
 p512 = decrit("Signalisation et voyants\\Voyant.xsy", "P512", f, 20800, 4400, "Voyant porte : 24VELEC présent",
-              fpos=(600, 400), wrap=20, prefix="P")
+              fpos=(600, 400), wrap=20, prefix="P", nomenc=True)
 bh3a, bh3b = borne("X721.11", f, 20800, 3200), borne("X721.12", f, 20800, 7200)     # porte (05/11) ; 13/11 : 6400 -> 7200 (place du n° 1230)
 W(f, [(20800, RAIL24_Y), bh3a["1"]], "24")
 W(f, [bh3a["2"], p512["X1"]], "24")
@@ -1070,8 +1073,14 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
         W(f, [D[p], b["1"]], "PDC")
         W(f, [b["2"], Mo[p]], "PDC")
     # un câble blindé par moteur, du bornier au moteur (Julien 02/11) ; section à définir
-    g.cable(F[f], 0, 0, 16000, {"M321": "W321", "M322": "W322"}[Mrep], "4 cond. blindé",
-            f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")], ovale=True, compo_dx=-2000)
+    # v34 (Julien 18/11) : V/J du 5G1,5 sur une borne de terre côté armoire, non raccordé au moteur pas-à-pas
+    xpe = max(D[p].x for p in ("A+", "A-", "B+", "B-")) + 800
+    bpe = borne({"M321": "X701.47", "M322": "X701.48"}[Mrep], f, xpe, 14000)
+    PE_DEST.append((f, W(f, [bpe["1"], (xpe, 13600), (xpe + 1200, 13600)], "PE")))   # renvoi vers la droite (sous le driver)
+    W(f, [bpe["2"], (xpe, 16800)], "PE")
+    texte(f, xpe + 200, 16700, "V/J non raccordé au moteur", 180)
+    g.cable(F[f], 0, 0, 16000, {"M321": "W321", "M322": "W322"}[Mrep], "5G1,5 blindé",
+            f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")] + [xpe], ovale=True, compo_dx=-2000)
     xin, xbus = x0 - 4000, x0 - 3200
     for s in ("PUL", "DIR", "ENA"):
         CMD32[(T, s)] = W(f, [D[s + "+"], (xin, D[s + "+"].y)], "24")
@@ -1302,7 +1311,7 @@ FDC = {"I0.6": ("B501", "Fin de course axe 1 min", 1, "X701.9", "X701.10"),
        "I1.0": ("B503", "Fin de course axe 2 min", 1, "X701.13", "X701.14"),
        "I1.1": ("B504", "Fin de course axe 2 max", 2, "X701.15", "X701.16")}
 for inp, (rep, des, row, t1, t2) in FDC.items():
-    REP[rep] = {"des": des, "fab": "RS PRO 902-6874", "carac": "contact NF (0 = fin de course atteinte), Julien 18/11", "loc": "+M"}
+    REP[rep] = {"des": des, "fab": "RS PRO 902-6874", "carac": "contact NF 11-12 (0 = fin de course atteinte)", "loc": "+M"}
     entree(inp, row, [("borne", t1, None, None, None), ("maitre", rep, fdc, "", ("11", "12")),
                       ("borne", t2, None, None, None)])
 for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amont variateur 1 (aux NO)"),
@@ -1365,7 +1374,7 @@ voyant = "Signalisation et voyants\\Voyant.xsy"
 col = maitre(C + "RSPRO_199-9760_colonne_lumineuse.xsy", "P511", f, 17600, 14400)
 BCOL = {c: borne(t, f, col[c].x, 13200) for c, t in (("RD", "X701.43"), ("OG", "X701.44"), ("GN", "X701.45"))}
 REP["P513"] = {"des": "Voyant porte : défaut machine", "fab": "À définir", "carac": "24 V CC - rouge", "loc": "+A1"}
-p513 = decrit(voyant, "P513", f, 25600, 14400, "Voyant porte : défaut machine", fpos=(600, 400), wrap=20, prefix="P")
+p513 = decrit(voyant, "P513", f, 25600, 14400, "Voyant porte : défaut machine", fpos=(600, 400), wrap=20, prefix="P", nomenc=True)
 bh4a, bh4b = borne("X721.13", f, 25600, 13200), borne("X721.14", f, 25600, 16400)     # porte (05/11)
 # sorties -> appareils : la sortie la plus à gauche descend le plus bas (aucun croisement)
 for q, dest, yh in (("Q8.0", BCOL["RD"]["1"], 12400), ("Q8.1", BCOL["OG"]["1"], 12000), ("Q8.2", BCOL["GN"]["1"], 11600),
@@ -1402,15 +1411,14 @@ REP["B531"]["fab"] = REP["B531"]["fab"] or "Type K"
 REP["B531"]["loc"] = "+M"                    # thermocouple de la tête d'extrusion, sur la machine (01_PROJET)
 b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, 6800, 7200, prefix="B", fpos=(2000, 0))
 # 02/11 : 2 bornes pour thermocouple (référence à définir, pas encore achetée), entre le câble W8 et -K3
-REP["X701.41"] = REP["X701.42"] = {"des": "Borne pour thermocouple type K (à définir)", "fab": "", "carac": "", "loc": "+A1"}
+REP["X701.41"] = REP["X701.42"] = {"des": "Borne thermocouple (PT 2,5, Julien 18/11)", "fab": "", "carac": "", "loc": "+A1"}
 bt1, bt2 = borne("X701.41", f, 6000, 9600), borne("X701.42", f, 8400, 9600)
 W(f, [b531["1"], (6800, 6400), (6000, 6400), bt1["1"]], "TC")
 W(f, [bt1["2"], (6000, 10400), (6800, 10400), k531["AI0+"]], "TC")
 W(f, [b531["2"], (7600, 6400), (8400, 6400), bt2["1"]], "TC")
 W(f, [bt2["2"], (8400, 10400), (7600, 10400), k531["AI0-"]], "TC")
 # 16/11 : repère et composition du câble à droite (plus sur les fils), réserve AI1 à AI7 par une accolade
-g.cable(F[f], 5600, 8800, 8800, "W531", "compensation type K", "", [6000, 8400], etiq=(9200, 8400), size=250)
-texte(f, 9200, 9800, "Bornes thermocouple : type à définir", 200)
+g.cable(F[f], 5600, 8800, 8800, "W531", "compensation type K RS 236-3959", "", [6000, 8400], etiq=(9200, 8400), size=250)
 reserve(f, [k531[p_] for p_ in ("AI1+", "AI7-")], False)
 
 # ======================================================================== 54 PROFINET
@@ -1451,9 +1459,8 @@ texte(f, 10000, 13600, "Bornes -X50.11 à -X50.13 (armoire)", 220)
 # ======================================================================== 80 - 92
 # v33 (Julien 18/11) : f80 (liste des câbles, saisie.json) et f90 à f92 (nomenclature) générés par le script, en fin
 # de script ; le tableau WinRelais du f80 (16/11) est abandonné : W11, W12, W14, PN1-PN4 absents, W9 / W10 « 4 cond. »
-for i, l in enumerate(["Implantation armoire +A1 : à réaliser sous WinArmoire",            # f85 : textes remontés (Julien, v30)
-                       "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."]):
-    texte("85", 1600, 1700 + 600 * i, l, 300)
+# v34 (Julien 18/11) : image du plan d'implantation (implantation/) à insérer quand il sera validé
+texte("85", 1600, 1700, "Implantation armoire +A1 : image du plan d'implantation à insérer quand il sera validé.", 300)
 
 # ======================================================================== spécification des liaisons
 MEMES = [
@@ -1569,6 +1576,8 @@ TERRAIN = ("B", "M", "S2", "S3", "P1")    # appareils hors armoire (+M, +P1), no
 
 # potentiels communs à plusieurs appareils : nommés dans les tableaux de bornier
 POTENTIELS = [("-K501:L+ capt", "+24 V capteurs (-X314 noir, L+ capt -K501, f31)"),
+              ("-Q423:13", "+24 V capteurs (-X314 noir, f31)"),           # v34 : départs du bloc X21.14
+              ("-T301:PE", "Terre PE / FE (-XPE1, f10)"),
               ("-F401:2", "24VSEC (-X313, f31)"),
               ("-K401:A2", "0 V commande (-X312, f31)"),
               ("-X101.VJ:2", "Terre PE / FE (arrivée -X101, f10)"),
@@ -1644,7 +1653,7 @@ RAILS_X70 = [
         ("AU -S2", _n("", [f"X711.{n}" for n in (1, 2, 3, 4, 5, 6)], range(1, 7))),
         ("Sélecteur -S3", _n("", [f"X711.{n}" for n in (13, 14, 15, 16, 19, 20, 7, 8, 9, 10, 11, 12, 17, 18)], range(7, 21))),
         ("IHM -P1", [("X711.21", "21"), ("X711.22", "22"), ("X711.23", "PE")])]),
-    ("R5, tronçon 1 (suite) : câble -W12 (19G1 : 18 + PE, 2 de réserve non bornés, V/J -> -XPE1) -> boîte machine", [
+    ("R5, tronçon 1 (suite) : câble -W12 (19G1 : 18 + PE, 2 de réserve non bornés, V/J -> -XPE1) -> boîte +BJM", [
         ("Capot -B1", _n("", [f"X701.{n}" for n in (1, 2, 3, 4)], range(1, 5))),
         ("Fins de course -B3 à -B6", _n("", [f"X701.{n}" for n in range(9, 17)], range(5, 13))),
         ("Colonne -H1", _n("", [f"X701.{n}" for n in (43, 44, 45, 46)], range(13, 17)))]),
@@ -1654,8 +1663,8 @@ RAILS_X70 = [
         _g("Sonde TF M1 (W3)", ["X701.21", "X701.22"]),
         _g("Sonde TF M2 (W6)", ["X701.29", "X701.30"])]),
     ("R5, tronçon 3 : moteurs pas-à-pas", [
-        _g("M3 (W9)", [f"X701.{n}" for n in range(33, 37)]),
-        _g("M4 (W10)", [f"X701.{n}" for n in range(37, 41)])]),
+        _g("M3 (W9)", [f"X701.{n}" for n in range(33, 37)] + ["X701.47"]),
+        _g("M4 (W10)", [f"X701.{n}" for n in range(37, 41)] + ["X701.48"])]),
     ("R5, tronçon 4 : puissance", [
         _g("Freins M1 + M2 (W4)", ["X701.23", "X701.24", "X701.31", "X701.32"]),
         _g("Moteur M1 (W2)", [f"X701.{n}" for n in range(17, 21)]),

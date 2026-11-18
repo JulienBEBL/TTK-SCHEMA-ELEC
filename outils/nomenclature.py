@@ -36,7 +36,7 @@ TYPES_BORNES = {
     "PTFIX 6/12": ("Bloc de distribution PTFIX 6/12X2,5", "Phoenix 3273354"),
     "PTFIX 2X4": ("Bloc distributeur PTFIX 2X4 (bornes W11 / W12)", "Phoenix 1028361"),
 }
-CARAC_BORNES = {"PTFIX 2X4": "nombre de blocs : " + A_VERIFIER}   # Qté = nombre de bornes dessinées
+CARAC_BORNES = {"PTFIX 2X4": "2 trous - 6 mm"}   # Julien 18/11   # Qté = nombre de bornes dessinées
 # Matériel acheté mais non dessiné (memoire/02_MATERIEL.md, 09_STOCK.md) : repère, désignation, marque et réf.,
 # caractéristiques, quantité, localisation
 HORS_SCHEMA = [
