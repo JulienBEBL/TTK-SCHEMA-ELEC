@@ -402,3 +402,13 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 - [D] 17/11 : hypothèse de travail : tous les conducteurs de tous les câbles sortants passent par la boîte de jonction machine (réserves comprises). Julien rachète des PT si besoin.
 - [H] 17/11 : boîte renommée **+BJM** (boîte de jonction machine), bornier +BJM-X1 (remplace +M-X1). 57 bornes sans W11, 84 avec.
+
+## 18/11/2026 : reprise sur le PC PRO RIMANE
+- [D] Ce PC = PRO RIMANE (DESKTOP-G68K9P5) ; clone `C:\Users\Rimane\Documents\10. TTK\TTK-SCHEMA-ELEC` ; commits préfixés [PRO RIMANE] ; aucun commit avant l'identité git ; pas de push sans accord de Julien.
+- [C] v31 ouverte dans WinRelais sur ce PC : seuls changements de contenu, f90 → f91 + f92 « Nomenclature » (tableaux WinRelais 8 colonnes). Copie `schema/recus/2026-11-18_v31_ouverte_WinRelais.xrs`.
+- [C] Nomenclature WinRelais : colonne Réf. = 2e champ de `RefConstructeur` ; le script écrit la référence dans le 3e. Qte = nombre de symboles du repère ; ligne = 1er symbole du fichier.
+- [C] Images : chemin absolu dans `¤#Logo¤` (pas `¤#ImageAP¤`), recalculé depuis le dossier du script.
+- [?] Identité git, Python, options nomenclature (A / B) et images : en attente de Julien.
+- [D] 18/11 : identité git du PC Rimane `--local` : JulienBEBL / julien@bebl.fr (Julien).
+- [C] 18/11 : Python 3.15.2 installé sur le PC Rimane ; contrôles de la v31 identiques au PC de Julien (0 erreur, 28 attentions, 0 chevauchement, numéros 0 problème).
+- [D] 18/11 : `CLAUDE.md` § 7 cite les 2 clones (Julien).

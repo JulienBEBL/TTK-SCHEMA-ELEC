@@ -1,5 +1,13 @@
 # 06 · Travail en cours (version actuelle et suite)
 
+## 18/11/2026 : reprise sur le PC PRO RIMANE (analyse, rien corrigé)
+- v31 ouverte dans WinRelais sur ce PC : copie `schema/recus/2026-11-18_v31_ouverte_WinRelais.xrs`. **Release pas encore restaurée** (`git checkout` en attente de l'accord de Julien).
+- Comparaison à `HEAD` : 26 folios ; f90 remplacé par **f91 et f92 « Nomenclature »** générés par WinRelais (tableaux 2 et 3, 8 colonnes) ; le reste identique (zoom et format seulement). Le sommaire f02 dit encore « 90 ».
+- Nomenclature : 8 causes dans le script (référence au 3e champ de `RefConstructeur` alors que WinRelais lit le 2e, champ 3 masqué tronqué, Qte = nb de symboles…). Options A (script + régénération WinRelais) / B (script génère le tableau). Détail : `docs/ANALYSE_PC_RIMANE_2026-11-18.md`.
+- PC : identité git `--local` JulienBEBL / julien@bebl.fr (Julien 18/11) ; Python 3.15.2 installé : sur la v31 de HEAD, verifier 0 erreur / 28 attentions, chevauchements 0, numéros 0 problème (comme sur le PC de Julien) ; symboles CUSTOM non installés ; push GitHub OK (compte JulienBEBL).
+- `CLAUDE.md` § 7 : les 2 clones (accord de Julien 18/11).
+- En attente de Julien : restauration de la release, push, copie des symboles CUSTOM, choix A / B (nomenclature), images.
+
 ## Version actuelle : v31 (16/11/2026)
 `schema/generes/release/TTK_2026-11-16_v31.xrs` : 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v30 réenregistrée par Julien (copie `schema/recus/2026-11-16_v30_ouverte_WinRelais.xrs`).
 

@@ -301,3 +301,11 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 17/11/2026 : tout par la boîte de jonction machine
 - Julien : hypothèse « tous les fils de tous les câbles passent par la boîte machine » ; il rachète des PT si besoin ; nouveau nom clair pour la boîte ; câbles boîte → appareils : pas pour le moment.
 - Fait : onglet « Boîte BJM » (84 lignes, n° de borne +BJM-X1:1 à 84, pupitre W11 en fin de rail) ; renommage +M-X1 → +BJM dans le classeur, les 2 pages HTML et la mémoire.
+
+## 18/11/2026 : reprise sur le PC PRO RIMANE
+- Julien : reprise du schéma sur le PC Rimane ; lire la mémoire ; archiver la v31 ouverte dans WinRelais ; la comparer à HEAD ; préparer identité git, chemins, nomenclature, images ; ne rien générer ni commiter.
+- Fait : mémoire relue ; v31 copiée dans `schema/recus/2026-11-18_v31_ouverte_WinRelais.xrs` (release non restaurée) ; comparaison section par section (Perl, Python absent) ; analyse `docs/ANALYSE_PC_RIMANE_2026-11-18.md` (nomenclature ligne par ligne, images, chemins, virgule) ; `memoire/07` (2 clones), 05, 06 mis à jour. Aucun commit (pas d'identité git).
+
+## 18/11/2026 : identité git, Python, CLAUDE.md
+- Julien : identité JulienBEBL / julien@bebl.fr en `--local` ; Python installé ; OK pour corriger `CLAUDE.md`.
+- Fait : `git config --local` (vérifié) ; contrôles Python sur la v31 de HEAD (mêmes résultats que sur le PC de Julien) ; `CLAUDE.md` § 7 ; mémoire 05, 06, 07. Commit local sans push. Release v31 toujours non restaurée.

@@ -12,4 +12,6 @@ Ce fichier est lu automatiquement au démarrage d'une session Claude Code dans c
 4. À chaque échange : mettre à jour `memoire/` (fichier du thème), `docs/DECISIONS.md` et `docs/JOURNAL_ECHANGES.md`, puis commit + push sur `main` (`git pull --rebase` avant, jamais de `--force`).
 5. Si le système de mémoire peut être amélioré (info manquante, mal rangée, en double), **le dire à Julien et le faire** (demande du 29/10).
 6. `implantation/` : dossier généré depuis le 17/11 (`implantation/generateur/`, voir son README). Préfixer chaque commit par le PC ([PRO JULIEN], [PRO RIMANE], [perso]) ; `git pull` avant d'éditer ; pas de push sans accord de Julien.
-7. Toujours utiliser des chemins absolus vers ce dépôt : le répertoire de travail revient parfois à l'ancien dossier `Documents\10. TTK\Schema Elec`, qui est **dépassé**.
+7. Toujours utiliser des chemins absolus vers ce dépôt : le répertoire de travail revient parfois à l'ancien dossier `Documents\10. TTK\Schema Elec`, qui est **dépassé**. Deux clones (détail : `memoire/07_METHODE_TRAVAIL.md`) :
+   - PC de Julien [PRO JULIEN] : `C:\Users\Julien\Documents\10. TTK\Repo_git\TTK-SCHEMA-ELEC`
+   - PC Rimane [PRO RIMANE] : `C:\Users\Rimane\Documents\10. TTK\TTK-SCHEMA-ELEC` (identité git `--local` : JulienBEBL / julien@bebl.fr)

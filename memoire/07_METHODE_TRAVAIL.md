@@ -1,7 +1,14 @@
 # 07 · Méthode de travail
 
 ## Source de vérité
-- **Dépôt** https://github.com/JulienBEBL/TTK-SCHEMA-ELEC, branche `main`. Clone local : `C:\Users\Julien\Documents\10. TTK\Repo_git\TTK-SCHEMA-ELEC`.
+- **Dépôt** https://github.com/JulienBEBL/TTK-SCHEMA-ELEC, branche `main`. Deux clones (18/11) :
+  | PC | Préfixe de commit | Clone |
+  |---|---|---|
+  | PC de Julien (BEBL-15-LAFITE) | [PRO JULIEN] | `C:\Users\Julien\Documents\10. TTK\Repo_git\TTK-SCHEMA-ELEC` |
+  | PC Rimane (DESKTOP-G68K9P5) | [PRO RIMANE] | `C:\Users\Rimane\Documents\10. TTK\TTK-SCHEMA-ELEC` |
+  - Identité git du PC Rimane : `--local` (ce dépôt seul), JulienBEBL / julien@bebl.fr, comme sur le PC de Julien (18/11).
+  - Toujours `git pull --rebase` avant de travailler : l'autre PC a pu pousser.
+  - Ce qui dépend du PC : chemins des images dans les .xrs (`¤#Logo¤`, chemin absolu), zoom écrit par WinRelais (virgule décimale sur le PC Rimane), Python (installé sur le PC Rimane le 18/11 : 3.15.2), symboles CUSTOM installés ou non. Détail : `docs/ANALYSE_PC_RIMANE_2026-11-18.md`.
 - Le schéma est **généré** par `outils/ttk_schema.py` (+ `outils/xrs_gen.py`). Toute retouche faite à la main dans WinRelais est écrasée à la régénération : elle doit être décrite à l'assistant.
 - L'ancien dossier `Documents\10. TTK\Schema Elec` n'est plus utilisé (29/10).
 - `schema/modele/SCHEMA_ELEC_TTK.xrs` : modèle (en-tête, cartouche). **Ne jamais le modifier.**
