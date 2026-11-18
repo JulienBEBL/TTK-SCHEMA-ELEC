@@ -1,5 +1,23 @@
 # 06 · Travail en cours (version actuelle et suite)
 
+## Version actuelle : v32 (18/11/2026, PC PRO RIMANE)
+`schema/generes/release/TTK_2026-11-18_v32.xrs` : 26 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v31 dans old/ (copie WinRelais du PC Rimane : `schema/recus/2026-11-18_v31_ouverte_WinRelais.xrs`).
+
+### Fait en v32
+| Folio | Changement |
+|---|---|
+| 90, 91 | Nomenclature générée par le script (89 lignes) + contrôle d'exhaustivité ; f91 ajouté |
+| 60 | Fins de course B3-B6 en **NF 11-12** (symbole CUSTOM `Fin_de_course_NF_11-12.xsy`), tableau « (NF) » |
+| 41 | S2 « 2 NF + 1 NO » |
+| 01, 21 | Images en chemin **relatif** `..\..\images\` (essai réussi dans WinRelais, 18/11) |
+| nomenclature | Types de bornes de Julien : PT 4 (arrivée, moteurs, freins), PTFIX 2X4 1028361 (W11 / W12), PT 2,5 (R4) ; références B1, B3-B6, H1, S1, S2 ; H1 et B7 en +M |
+
+### Suite
+- Julien : ouvrir la v32 dans WinRelais (f60 NF, f90 / f91, images).
+- PTFIX 2X4 : nombre de blocs, câblage d'un bloc (2 x 4 points ?), stock ; le symbole des bornes W11 / W12 reste « borne 4 mm ».
+- Programme TIA : B3-B6 lus à 0 en fin de course.
+- Implantation : `saisie.json` porte les nouveaux types (PT 4 freins, X13 en PT 2,5, PTFIX 2X4) ; le dossier d'implantation n'est pas régénéré (largeur des PTFIX 2X4 inconnue).
+
 ## 18/11/2026 : reprise sur le PC PRO RIMANE (analyse, rien corrigé)
 - v31 ouverte dans WinRelais sur ce PC : copie `schema/recus/2026-11-18_v31_ouverte_WinRelais.xrs`. **Release pas encore restaurée** (`git checkout` en attente de l'accord de Julien).
 - Comparaison à `HEAD` : 26 folios ; f90 remplacé par **f91 et f92 « Nomenclature »** générés par WinRelais (tableaux 2 et 3, 8 colonnes) ; le reste identique (zoom et format seulement). Le sommaire f02 dit encore « 90 ».

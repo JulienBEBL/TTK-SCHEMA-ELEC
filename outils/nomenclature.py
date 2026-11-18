@@ -33,8 +33,10 @@ TYPES_BORNES = {
     "PT 2,5": ("Borne de passage PT 2,5", "Phoenix 3209510"),
     "PT 4": ("Borne de passage PT 4", "Phoenix 3211757"),
     "terre": ("Borne de terre vert/jaune", "Phoenix 3211867 (RS 708-1687)"),
-    "PTFIX": ("Bloc de distribution PTFIX 6/12X2,5", "Phoenix 3273354"),
+    "PTFIX 6/12": ("Bloc de distribution PTFIX 6/12X2,5", "Phoenix 3273354"),
+    "PTFIX 2X4": ("Bloc distributeur PTFIX 2X4 (bornes W11 / W12)", "Phoenix 1028361"),
 }
+CARAC_BORNES = {"PTFIX 2X4": "nombre de blocs : " + A_VERIFIER}   # Qté = nombre de bornes dessinées
 # Matériel acheté mais non dessiné (memoire/02_MATERIEL.md, 09_STOCK.md) : repère, désignation, marque et réf.,
 # caractéristiques, quantité, localisation
 HORS_SCHEMA = [
@@ -56,13 +58,15 @@ def _saisie():
 
 
 # noms des symboles de borne du schéma (relevés le 18/11) ; un autre nom arrête le contrôle
-SYMBOLES_BORNES = {"borne 4 mm": "passage", "borne 4 mm terre": "terre", "borne distribution ptfix 6/12x2.5": "PTFIX"}
+SYMBOLES_BORNES = {"borne 4 mm": "passage", "borne 4 mm terre": "terre", "borne distribution ptfix 6/12x2.5": "PTFIX 6/12"}
 
 
 def type_borne(rep, symbole, tb):
     nature = SYMBOLES_BORNES.get(symbole.lower(), "?")
-    if nature in ("PTFIX", "terre"):
+    if nature in ("PTFIX 6/12", "terre"):
         return nature
+    if rep in tb.get("PTFIX 2X4", ()):
+        return "PTFIX 2X4"
     if rep in tb["PT 4"]:
         return "PT 4"
     return "PT 2,5"
@@ -109,10 +113,10 @@ def lignes(g):
         folios = sorted({g.num(s[0].folio) for s in syms}, key=_naturel)
         out.append(("appareil", [rep, des, marque, carac, "1", loc, ", ".join(folios)]))
     out.append(("titre", ["", "BORNES ET MATERIEL NON DESSINE", "", "", "", "", ""]))
-    for t in ("PT 2,5", "PT 4", "terre", "PTFIX"):
+    for t in TYPES_BORNES:
         if bornes[t]:
             d, m = TYPES_BORNES[t]
-            out.append(("borne", ["X", d, m, "", str(bornes[t]), "A1",
+            out.append(("borne", ["X", d, m, CARAC_BORNES.get(t, ""), str(bornes[t]), "A1",
                                   ", ".join(sorted(folios_bornes[t], key=_naturel))]))
     for rep, d, m, c, q, l in HORS_SCHEMA:
         out.append(("hors", [rep, d, m, c, q, l, "-"]))
@@ -213,8 +217,8 @@ def controle(chemin, numeros_folios):
     if lu != attendu:
         pb.append(f"nomenclature : bornes {dict(lu)} au tableau, {dict(attendu)} au schéma")
     noms_bornes = {s["nom"] for s in m["symboles"] if s["borne"]}
-    for t in ("PT 4", "terre"):
-        for rep in tb[t]:
+    for t in ("PT 4", "terre", "PTFIX 2X4"):
+        for rep in tb.get(t, ()):
             if rep not in noms_bornes:
                 pb.append(f"nomenclature : borne {rep} ({t}, saisie.json) absente du schéma")
     for s_ in m["symboles"]:
@@ -224,6 +228,9 @@ def controle(chemin, numeros_folios):
                 pb.append(f"nomenclature : borne {s_['nom']} : symbole « {s_['symbole']} » de type inconnu")
             if (nat == "terre") != (s_["nom"] in tb["terre"]):
                 pb.append(f"nomenclature : borne {s_['nom']} : symbole de terre et liste terre de saisie.json en désaccord")
+    for a_, b_ in (("PT 4", "terre"), ("PT 4", "PTFIX 2X4"), ("terre", "PTFIX 2X4")):
+        for rep in set(tb.get(a_, ())) & set(tb.get(b_, ())):
+            pb.append(f"nomenclature : borne {rep} à la fois {a_} et {b_} (saisie.json)")
     stock = []
     for t, n in sorted(lu.items()):
         achat = tb["achetes"].get(t)

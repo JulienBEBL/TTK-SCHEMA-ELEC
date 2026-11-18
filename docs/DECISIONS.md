@@ -417,3 +417,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] 18/11 : S1 / S2 sur une ligne ; TR1 gardé en localisation EXT (Julien : « à toi de choisir »).
 - [C] 18/11 : références B1, B3-B6, H1, S1, S2 reportées au champ 3 (02_MATERIEL, Julien 17/11) ; S2 « 2 NF + 1 NO » ; H1 et B7 localisés M.
 - [D] 18/11 : essai du chemin d'image relatif sur une copie de test (Julien OK) ; variable TTK_IMAGES.
+
+## 18/11/2026 : v32
+- [D] Fins de course B3-B6 en NF (mieux pour le programme). Contact NF 11-12 du RS 902-6874 (mêmes bornes que B1).
+- [D] Bornes : arrivée réseau, moteurs 1 / 2, freins 1 / 2 = PT 4 Phoenix 3211757 ; appareils des câbles 27G1 / 19G1 = PTFIX 2X4 Phoenix 1028361 ; rail R4 = PT 2,5 Phoenix 3209510.
+- [H] Bornes PE (X10.11, X31.11, X32.11, X50.13) gardées en terre ; X12.11 gardé en PT 4.
+- [C] Chemin d'image relatif : images affichées dans WinRelais (Julien). Défaut du script : ..\..\images.
+- [D] v32 générée, commit et push (Julien).

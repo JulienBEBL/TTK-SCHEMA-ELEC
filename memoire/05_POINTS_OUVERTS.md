@@ -48,7 +48,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 4. Sélecteur Eaton T0-4-8223/E (RS 257-9558) : fiche reçue le 05/11 (`Documents/10. TTK/eaton_com_ttk.md`). Courant minimal **réglé** : fiabilité < 10^-5 à 24 V CC / 10 mA, DC-13 10 A [C fiche Eaton]. **Numérotation reçue le 05/11** (images du PDF) : position 1 ferme 1-2, 5-6, 9-10, 13-14 ; position 2 ferme 3-4, 7-8, 11-12, 15-16 ; ponts 2-4, 6-8, 10-12, 14-16 (Q35). Recouvrement Auto / Manu à la continuité.
 5. ifm MN508S : homologation sécurité (EN 60947-5-3 / ISO 14119) ; actionneur codé commandé ? ; brochage M12 8 broches ; câble M12.
 6. AU XB5AS8442 : 2 NF + 1 NO (ZBE102 = NF, ZBE101 = NO), réglé le 03/11 (Q25).
-7. Fins de course B3 à B6 : **réglé le 05/11, on garde le NO** (choix de Julien).
+7. Fins de course B3 à B6 : NO le 05/11, **NF 11-12 depuis le 18/11 (v32, Julien)**.
 
 ## Puissance et variateurs
 8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW).
@@ -121,5 +121,7 @@ Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) 
 - Symboles CUSTOM non installés dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (PC Rimane).
 - Nomenclature : **réglé le 18/11**, option B (script), S1 / S2 sur une ligne, TR1 gardé (EXT). Restent à compléter : références B7, H2, H3, H4, butées, +BJM.
 - Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, QF10 4,5 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, XD1 1,5 kW, S4 « Z000263594 ».
-- Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. Essai du chemin relatif : `schema/generes/test_images/TEST_images_relatives.xrs` à ouvrir dans WinRelais (images visibles ? chemin gardé à l'enregistrement ?).
+- Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. **Réglé le 18/11** : chemin relatif, images visibles (Julien) ; v32 en relatif. Reste : le chemin reste-t-il relatif quand WinRelais réenregistre ? (à voir sur la prochaine copie reçue).
+- PTFIX 2X4 Phoenix 1028361 (bornes W11 / W12, Julien 18/11) : nombre de blocs, raccordement (2 x 4 points ?), stock, largeur pour l'implantation.
+- Bornes PE X10.11, X31.11, X32.11, X50.13 : gardées en bornes de terre (Julien n'en a pas parlé le 18/11) [H].
 - Zoom écrit avec une virgule par WinRelais sur le PC Rimane (`0,749…`) : lecture par le WinRelais de Julien à vérifier.

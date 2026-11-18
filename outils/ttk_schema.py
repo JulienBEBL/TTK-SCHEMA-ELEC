@@ -626,7 +626,8 @@ for i, logo in enumerate(("TTK", "BEBL", "LEVERT INDUSTRIE")):
 
 # logos insérés par Julien dans la v24 (09/11), positions et tailles relevées ; images dans schema/images
 # TTK_IMAGES (18/11, essai des 2 PC) : dossier des images écrit dans le .xrs (relatif ou absolu) ; défaut : schema/images du dépôt
-IMG = os.environ.get("TTK_IMAGES") or os.path.join(os.path.dirname(ICI), "schema", "images")
+# Défaut (18/11, essai réussi dans WinRelais) : chemin relatif au .xrs, valable pour release/ et old/ sur les 2 PC
+IMG = os.environ.get("TTK_IMAGES") or r"..\..\images"
 for nom_, x_, y_, w_, h_, r_ in (("logo_TTK.jpg", 4500, 12700, 5480, 3480, 1575), ("logo_BEBL.jpg", 11500, 13100, 5806, 2615, 2221),
                              ("logo_LEVERT_INDUSTRIE.jpg", 18600, 13700, 6000, 1308, 4588)):
     g.logos.append((F["01"], x_, y_, w_, h_, os.path.join(IMG, nom_), r_))
@@ -1258,7 +1259,9 @@ texte(f, 10000, 2600, "Départs du bloc -X314 (noir, f31) : un fil par point ; -
 W(f, [(22400, 3200), (22400, 4000)], "24")
 renvoi(f, (23600, 3200), "41", VOIES["B411"][0], "24")
 renvoi(f, (22400, 4000), "41", VOIES["B412"][0], "24")
-fdc = "Contacts Fin de course et rupteurs\\Fin de course NO.xsy"
+# 18/11 (Julien) : fins de course en NF (mieux pour le programme : fil coupé = fin de course vue) ; contact NF 11-12
+# du RS 902-6874 (mêmes bornes que -B411) ; symbole : copie de « Fin de course NC » de la librairie, broches 11 / 12
+fdc = os.path.join(ICI, "librairie", "CUSTOM", "Fin_de_course_NF_11-12.xsy")
 nom = "--- X Contact\\RC Contact NO 13-14.xsy"
 
 
@@ -1304,8 +1307,8 @@ FDC = {"I0.6": ("B501", "Fin de course axe 1 min", 1, "X701.9", "X701.10"),
        "I1.0": ("B503", "Fin de course axe 2 min", 1, "X701.13", "X701.14"),
        "I1.1": ("B504", "Fin de course axe 2 max", 2, "X701.15", "X701.16")}
 for inp, (rep, des, row, t1, t2) in FDC.items():
-    REP[rep] = {"des": des, "fab": "RS PRO 902-6874", "carac": "contact NO (1 = fin de course atteinte), choix de Julien 05/11", "loc": "+M"}
-    entree(inp, row, [("borne", t1, None, None, None), ("maitre", rep, fdc, "", ("13", "14")),
+    REP[rep] = {"des": des, "fab": "RS PRO 902-6874", "carac": "contact NF (0 = fin de course atteinte), Julien 18/11", "loc": "+M"}
+    entree(inp, row, [("borne", t1, None, None, None), ("maitre", rep, fdc, "", ("11", "12")),
                       ("borne", t2, None, None, None)])
 for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amont variateur 1 (aux NO)"),
                                  ("I1.3", "KM2", "KM", 2, "Retour contacteur amont variateur 2 (aux NO)"),
@@ -1323,8 +1326,8 @@ g.tableau(F[f], 13600, 14400, [1400, 1600, 8400], 300, [
     ["Entrée", "Repère", "Fonction"], ["I0.0", "-S412", "AU pupitre actionné (NO)"], ["I0.1", "-S411", "AU armoire actionné (NO)"],
     ["I0.2", "-B411", "capot ouvert, mécanique (aux. 23-24)"], ["I0.3", "-B412", "capot ouvert, magnétique (aux. 23-24)"],
     ["I0.4", "-S413", "mode Auto (AUTO-C)"], ["I0.5", "-S413", "mode Manu (MANU-C)"],
-    ["I0.6 / I0.7", "-B501 / -B502", "fins de course axe 1 min / max (NO)"],
-    ["I1.0 / I1.1", "-B503 / -B504", "fins de course axe 2 min / max (NO)"],
+    ["I0.6 / I0.7", "-B501 / -B502", "fins de course axe 1 min / max (NF)"],
+    ["I1.0 / I1.1", "-B503 / -B504", "fins de course axe 2 min / max (NF)"],
     ["I1.2 / I1.3", "-KM1 / -KM2", "retour contacteurs amont variateurs"],
     ["I1.4", "-Q423", "retour contacteur 48 V"], ["I1.5", "-K401", "diagnostic relais sécu (Z1, trames)"],
 ], size=200)

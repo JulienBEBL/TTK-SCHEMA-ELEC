@@ -129,6 +129,7 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 
 ## Images (09/11)
 - Les images (logos f01) sont dans `schema/images/` et écrites par le script dans la section `¤#Logo¤` : `x·y·largeur·hauteur·chemin absolu·1·ratio de l'image x 1000·index du folio·0·`. Le chemin est absolu : il est recalculé à chaque génération depuis le dépôt.
+- **18/11 (v32) : chemin relatif par défaut** `..\..\images\…` (relatif au .xrs, juste pour release/ et old/), essai réussi par Julien : images visibles sur les 2 PC. `TTK_IMAGES` le remplace si besoin.
 - 18/11 : variable `TTK_IMAGES` (dossier écrit dans le .xrs, relatif ou absolu ; défaut `schema/images` du dépôt). Essai en cours : copie `schema/generes/test_images/TEST_images_relatives.xrs` (chemins `..\..\images\…`, non versionnée), à ouvrir dans WinRelais par Julien.
 
 ## Nomenclature f90 / f91 (18/11, option B de Julien)

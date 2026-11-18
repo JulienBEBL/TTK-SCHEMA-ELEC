@@ -59,7 +59,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | FA1 (IEC 81346-2, validé par Julien le 04/11) | Mersen CMC101 (RS 189-5333) + cartouche FR10GG50V4 gG 4 A (RS 188-6962) [D 03/11] | R-33, amont 13 / 23 / 33 de KA1 ; dessiné au f40 en v16 |
 | B1 | RS PRO 902-6874, interrupteur de position (capot mécanique) | |
 | B2 | ifm MN508S (RS 016-3138), capteur magnétique **codé** (confirmé par Julien le 02/11) | 2 NO + 1 NF, M12, 24 V 50 mA ; homologation sécurité et actionneur à vérifier |
-| B3 à B6 | Fins de course, contact **NO** (choix de Julien 05/11) | référence à définir |
+| B3 à B6 | RS PRO 902-6874 (Julien 17/11), contact **NF 11-12** [D 18/11, v32 ; avant : NO] | 0 = fin de course atteinte (fil coupé vu comme fin de course) |
 | H1 | RS PRO 199-9760, colonne 3 couleurs | |
 | H3 / H4 | Voyants 24 V ELEC présent / défaut | |
 | P1 | Siemens KTP700 Basic PN 6AV2123-2GB03-0AX0 | |

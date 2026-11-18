@@ -313,3 +313,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : nomenclature générée, essai images
 - Julien : OK pour restaurer la release et copier les symboles ; option B pour la nomenclature, avec une étape de vérification après génération ; S1 / S2 et TR1 « à toi de choisir » ; OK pour la copie de test des images ; push du commit précédent.
 - Fait : push c542fcc ; release restaurée ; 53 symboles CUSTOM installés ; essai : le script reproduit la v31 à l'identique sur ce PC ; `outils/nomenclature.py` (f90 + f91, 88 lignes) et son contrôle (a trouvé puis fait corriger : PTFIX comptés en PT 2,5, cartouche FA1 en double) ; copie `schema/generes/test_images/TEST_images_relatives.xrs`. Pas de v32 en release (accord attendu).
+
+## 18/11/2026 : v32
+- Julien : fins de course en NF ; types des bornes (PT 4 arrivée / moteurs / freins, PTFIX 2X4 1028361 pour W11 / W12, PT 2,5 sur R4) ; test des images relatives réussi ; OK commit, push, v32.
+- Fait : symbole CUSTOM `Fin_de_course_NF_11-12.xsy` (copie de « Fin de course NC », broches 11 / 12), B3-B6 en NF ; `saisie.json` (types de bornes) ; nomenclature avec PTFIX 2X4 ; images relatives par défaut ; v31 dans old/ ; v32 générée : 0 problème, 0 erreur, 0 chevauchement, numéros 0 problème ; `LISTE_ES_AUTOMATE.md` en NF.
