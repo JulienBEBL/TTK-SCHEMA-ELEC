@@ -782,13 +782,8 @@ def ouverts():
         if rec["type"] != "PTFIX":
             besoin[type_borne(rep)] += 1
     manque = {k: besoin[k] - t["achetes"][k] for k in besoin}
-    OUVERTS.append("Bornes : " + " ; ".join(f"{k} {besoin[k]} pour {t['achetes'][k]}" for k in besoin)
-                   + " (dessinées au schéma / en stock). Manque : "
-                   + (", ".join(f"{manque[k]} {k}" for k in besoin if manque[k] > 0) or "aucun") + ".")
     OUVERTS.append("X21.14 (PTFIX noir) proposé à droite de K4 sur R3 : la place prévue à côté de X21.13 est occupée "
                    "par FA1 et KA1.")
-    OUVERTS.append("Câbles boîte +BJM → freins BE5, B1, B3-B6, H1 : non définis au schéma.")
-    OUVERTS.append("W14 : repère proposé pour le câble M12 de B2 ; brochage M12 du MN508S à relever.")
     return besoin, manque
 
 
@@ -877,8 +872,7 @@ def main():
            f"## Mise en page (textes trop larges, chevauchements) : {len(erreurs)}"] + [f"- {e}" for e in erreurs] + [
            "", f"## Croisement avec le .xrs : {len(ecarts)} écart(s)"] + [f"- {e}" for e in ecarts] + [
            "", "## Points ouverts (hors dessin)"] + [f"- {o}" for o in OUVERTS] + [
-           "", "## Comptage des bornes"] + [f"- {k} : {v} nécessaires, {S['types_bornes']['achetes'][k]} achetées, "
-                                           f"manque {max(manque[k], 0)}" for k, v in besoin.items()]
+           "", "## Comptage des bornes (dessinées au schéma, sans comparaison au stock : Julien 18/11)"] + [f"- {k} : {v}" for k, v in besoin.items()]
     open(os.path.join(ICI, "..", "release", nom + "_verification.md"), "w", encoding="utf-8", newline="\n").write(
         "\n".join(rap) + "\n")
     print("\n".join(rap))

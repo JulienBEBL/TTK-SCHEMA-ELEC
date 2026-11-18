@@ -161,3 +161,4 @@ Fichiers : `release/TTK_implantation_2026-11-18_v12.pdf` (**2 pages A3**) + `_ve
 - +M-X1 → +BJM ; XR2 « déjà fixé » (monté le 13/11).
 - Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Bornes : PT 2,5 36 / 70, PT 4 15 / 15, PTFIX 2X4 38 / 46, terre 6 / 4 (manque 2).
 - Retours de Julien (18/11) : W11 / W12 validés (marque « à valider » retirée, v12 régénérée) ; frein W4 ok ; push accordé.
+- Suite (18/11) : stock plus comparé (rapport : comptage des bornes dessinées seul) ; W14 validé ; câbles +BJM → appareils hors sujet (Julien plus tard). Reste ouvert : X21.14.

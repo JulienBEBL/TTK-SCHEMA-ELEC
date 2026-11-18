@@ -343,3 +343,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : incohérences du chat automate
 - Julien : 4 incohérences relevées par le chat automate (S12 unité SEW, S13 ENA, S14 titre liste d'E/S, S3 voyant S4).
 - Fait : les 4 vérifiées dans le dépôt et vraies ; corrigé 02, 03, 05, `LISTE_ES_AUTOMATE.md`, `QUESTIONS_SEW.md` (question 6 à reposer). Schéma inchangé (aucun folio concerné). Commit local.
+- Suite : Julien : oublier le stock ; W14 ok ; câbles +BJM → appareils plus tard. Fait : rapport v12 sans comparaison au stock, W14 non proposé ; mémoire 02, 05, 06, 08, 09.

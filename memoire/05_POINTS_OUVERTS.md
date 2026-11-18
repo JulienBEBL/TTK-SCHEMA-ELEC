@@ -113,9 +113,9 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 - W14 (M12) : couleurs des 4 conducteurs utilisés à relever ; W2 / W5 : marquage U V W à relever ; W3 / W6 : blanc = 1b proposé ; W9 / W10 : V/J côté moteur à vérifier.
 
 ## Implantation v12 (18/11)
-- Manque de PT 2,5 : **réglé** (types du 18/11 : PT 2,5 36 / 70, PTFIX 2X4 38 / 46, PT 4 15 / 15). Reste : **2 bornes de terre** (6 / 4, X20.15 / X20.25 en v34).
+- Stock (bornes, câbles) : **plus suivi** (Julien 18/11 : « oublie les histoires de stock »). L'implantation compte les bornes dessinées, sans comparaison au stock.
 - Q32 (W11 / W12) : **reconfirmée validée le 18/11** (la demande d'implantation la disait non validée : texte périmé).
-- X21.14 à droite de K4 [H] ; W14 [H] ; câbles +BJM → appareils non définis.
+- X21.14 à droite de K4 [H] (seul point ouvert de l'implantation). W14 **validé** (18/11). Câbles +BJM → appareils : **Julien les définira plus tard**, pas à traiter.
 
 ## Revue v33 (18/11)
 Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (remplace `REVUE_COMPLETE_v29.md` § 3). Nouveaux :

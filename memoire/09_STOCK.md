@@ -1,6 +1,6 @@
 # 09 · Stock : câbles et bornes (1 armoire)
 
-Créé le 17/11/2026. **Source unique** du matériel disponible pour les câbles et les bornes.
+Créé le 17/11/2026. **18/11 : Julien ne veut plus de suivi du stock (« oublie les histoires de stock ») ; fichier gardé pour mémoire, ne plus en tirer de « manque ».** **Source unique** du matériel disponible pour les câbles et les bornes.
 Principe de Julien (17/11) : **on ne commande plus rien**, sauf urgence ou problème grave. Le schéma s'adapte au stock.
 Statuts : [C] confirmé par Julien ou document ; [?] à vérifier. Ce fichier est à valider ligne par ligne par Julien (méthode du 17/11, étape 1).
 

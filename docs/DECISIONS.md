@@ -466,3 +466,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Polarité ENA : réglée le 05/11 ; `02_MATERIEL.md` corrigé (contradiction avec 05).
 - [C] Liste d'E/S : titre passé en v34.
 - [C] `03_ARCHITECTURE.md` : Q8.3 en réserve (plus de voyant S4).
+- [D] Stock (bornes, câbles) : plus suivi, ne plus signaler de manque (Julien 18/11).
+- [D] W14 = câble M12 de B2 (RS 285-9453) : validé (Julien 18/11).
+- [D] Câbles +BJM → appareils : Julien les définira plus tard ; pas à traiter.

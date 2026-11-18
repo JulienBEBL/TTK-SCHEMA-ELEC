@@ -15,7 +15,7 @@
 | 90-92 | B3-B6 « contact NF 11-12 (0 = fin de course atteinte) » ; PTFIX 2X4 « 2 trous - 6 mm » ; H3 / H4 avec caractéristiques ; terre 6 |
 
 ### Suite
-- Julien : relire la v34 ; 2 bornes de terre à prévoir (6 dessinées, 4 achetées).
+- Julien : relire la v34. (Stock des bornes : plus suivi, Julien 18/11.)
 - Implantation : **v12 faite le 18/11** (2 pages, schéma v34, PTFIX 2X4, X20.15 / X20.25, +BJM) : relecture de Julien attendue. Détail : `08_IMPLANTATION.md`.
 
 ## Version précédente : v33 (18/11/2026, PC PRO RIMANE)

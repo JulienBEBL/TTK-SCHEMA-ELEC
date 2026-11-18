@@ -8,6 +8,7 @@ Créé le 17/11/2026. Version actuelle : **v12, indice B** (18/11, schéma v34, 
 - Répartition W11 / W12 (Q32) : **validée** (05/11, reconfirmée le 18/11) ; plus de marque « à valider ».
 - Freins M1 + M2 : un seul 5G1,5, repère **W4** (Julien 18/11 : ok).
 - Push de la v12 : accord de Julien le 18/11.
+- 18/11 : **stock plus suivi** (le rapport ne compare plus au stock) ; W14 validé ; câbles +BJM → appareils définis plus tard par Julien. Seul point ouvert : X21.14 à droite de K4.
 
 ## Demande de Julien (17/11) [D]
 Un seul PDF, dans cet ordre :
@@ -64,7 +65,7 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 ## Décisions prises pour la v11 (17/11)
 - PC = PRO JULIEN [D]. Thermocouple : bornes X63.11 / X63.12 gardées même inutilisées [D].
 - W9 / W10 = LIYCY-JZ 5G1,5 [D]. Sourcing = 1 armoire [D]. Boîte machine = +M-X1 [D]. Blindage d'un seul côté (armoire) [D].
-- XR1 597,5 et XR2 669,5 sur R2 [C Julien 13/11]. X21.14 à droite de K4 sur R3 (737,5) [H]. W14 = câble M12 de B2 [H].
+- XR1 597,5 et XR2 669,5 sur R2 [C Julien 13/11]. X21.14 à droite de K4 sur R3 (737,5) [H]. W14 = câble M12 de B2 [D 18/11].
 
 ## Points ouverts (à trancher par Julien)
 1. **4 bornes PT 2,5 manquantes** (74 pour 70). a) éclairage + ventilation en direct (libère les 4 X13) ; b) H3 / H4 en direct (casse la règle « tout par bornes ou rien »).
