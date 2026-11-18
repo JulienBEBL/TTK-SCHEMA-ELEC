@@ -458,3 +458,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Freins M1 + M2 : un seul 5G1,5 (repère W4 inchangé).
 - [?] Répartition W11 / W12 (Q32) : demande du 18/11 « non validée, à marquer à valider », contre « validée le 05/11 » en mémoire. Marquée à valider en v12, question reposée.
 - [C] v12 : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs v34. Bornes de terre : 6 pour 4.
+- [D] Q32 : répartition W11 / W12 validée (Julien 18/11, confirme le 05/11) ; marque retirée de la v12.
+- [D] Frein : repère W4 ok (Julien 18/11).

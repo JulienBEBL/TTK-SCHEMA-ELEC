@@ -164,7 +164,7 @@ def disposer(bornier):
 
 # ------------------------------------------------------------------ dessin d'une rangée de bornes
 K = 1.2    # agrandissement des bornes (1 mm réel -> 1,2 mm sur la page) : tout le détail tient sur une A3
-A_VALIDER = {"W11", "W12"}   # répartition des conducteurs (Q32) marquée à valider (demande du 18/11)
+A_VALIDER = set()   # câbles dont la répartition est à valider (tireté rouge). W11 / W12 : validés (Julien 05/11, reconfirmé 18/11)
 
 
 def rangee(p, bornier, y, titre, x_page=16):
@@ -496,7 +496,7 @@ def page_plaque():
              "R2 est plein et monté (13/11) : XR1 et XR2 côte à côte, l'ordre est juste, les positions sont indicatives.",
              "X21.14 (proposé) : à droite de K4, près de K1 qui l'alimente (L+ capteurs) ; FA1 et KA1 restent en place.",
              "Rien sur les parois sauf les ventilateurs EV1 / EV2. U3 / U4 et -XPE1 vissés sur la plaque.",
-             "R5 tronçon 1 : bornes W11 / W12 en PTFIX 2X4 (6 mm) ; répartition des conducteurs à valider (page 2)."]
+             "R5 tronçon 1 : bornes W11 / W12 en PTFIX 2X4 (6 mm) ; répartition validée (Julien 05/11, 18/11)."]
     for n in notes:
         y = p.bloc(x0, y, "• " + n, 2.3, maxw=215) + 0.6
     return p
@@ -785,8 +785,6 @@ def ouverts():
     OUVERTS.append("Bornes : " + " ; ".join(f"{k} {besoin[k]} pour {t['achetes'][k]}" for k in besoin)
                    + " (dessinées au schéma / en stock). Manque : "
                    + (", ".join(f"{manque[k]} {k}" for k in besoin if manque[k] > 0) or "aucun") + ".")
-    OUVERTS.append("Répartition des conducteurs W11 (27G1) / W12 (19G1), Q32 : marquée à valider (demande du 18/11), "
-                   "dessinée telle quelle (f70, v19).")
     OUVERTS.append("X21.14 (PTFIX noir) proposé à droite de K4 sur R3 : la place prévue à côté de X21.13 est occupée "
                    "par FA1 et KA1.")
     OUVERTS.append("Câbles boîte +BJM → freins BE5, B1, B3-B6, H1 : non définis au schéma.")

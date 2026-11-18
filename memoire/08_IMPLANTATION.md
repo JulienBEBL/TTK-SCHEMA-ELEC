@@ -5,8 +5,9 @@ Créé le 17/11/2026. Version actuelle : **v12, indice B** (18/11, schéma v34, 
 ## Demande de Julien (18/11) [D]
 - **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). Générateur gardé, **draw.io abandonné**.
 - Travail limité à R3, R4, R5 (R1, R2, variateurs, résistances, alimentations déjà fixés). Ordre de R4 confirmé : QF4 … QF10, XD1 | X13 | S1, S4, H3, H4 | vis | H2.
-- Répartition W11 / W12 (Q32) à marquer « à valider » (voir 05, Q32 : contradiction avec la validation du 05/11, question posée le 18/11).
-- Freins M1 + M2 : un seul 5G1,5, repère W4 inchangé.
+- Répartition W11 / W12 (Q32) : **validée** (05/11, reconfirmée le 18/11) ; plus de marque « à valider ».
+- Freins M1 + M2 : un seul 5G1,5, repère **W4** (Julien 18/11 : ok).
+- Push de la v12 : accord de Julien le 18/11.
 
 ## Demande de Julien (17/11) [D]
 Un seul PDF, dans cet ordre :

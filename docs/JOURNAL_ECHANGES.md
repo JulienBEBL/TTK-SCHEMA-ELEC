@@ -338,3 +338,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Demande de Julien : nouvelle implantation +A1, 2 pages, R3 / R4 / R5 seulement, règles listées. Incohérences signalées avant de dessiner : format (généré depuis le 17/11), frein = W4 (pas W3), Q32 validée le 05/11, XR2 sur R2 (plus sur R4), B2 par son câble M12, thermocouple déjà borné X63.
 - Réponses : générateur, oublier draw.io ; ordre R4 oui ; les 2 freins dans un seul câble (question du repère mal comprise : W4 gardé) ; Q32 pas comprise (reformulée).
 - Fait : v12 (2 pages, schéma v34 commité pendant le travail), PTFIX 2X4 6 mm, X20.15 / X20.25, +BJM, W11 / W12 « à valider » ; v11 dans old/ ; 0 / 0 / 0 ; mémoire 05, 06, 08, README, journal d'implantation. Commit local, sans push.
+- Suite : Julien valide W11 / W12 et le repère W4, accorde le push. v12 régénérée sans la marque « à valider » (0 / 0 / 0) ; mémoire 05, 08 ; push.
