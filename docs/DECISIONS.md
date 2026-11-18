@@ -469,3 +469,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Stock (bornes, câbles) : plus suivi, ne plus signaler de manque (Julien 18/11).
 - [D] W14 = câble M12 de B2 (RS 285-9453) : validé (Julien 18/11).
 - [D] Câbles +BJM → appareils : Julien les définira plus tard ; pas à traiter.
+
+## 18/11/2026 : unité SEW
+- [C] MCX91A : 1 mise sous tension **par heure** (Julien). Programme : `T_SEW_ON` = 3600 s. Schéma inchangé.
+- [C] S13 (ENA), S14 (titre de la liste d'E/S), S3 (Q8.3 en réserve) : corrections validées (Julien).
