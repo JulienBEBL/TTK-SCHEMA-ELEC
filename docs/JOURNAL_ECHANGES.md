@@ -317,3 +317,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : v32
 - Julien : fins de course en NF ; types des bornes (PT 4 arrivée / moteurs / freins, PTFIX 2X4 1028361 pour W11 / W12, PT 2,5 sur R4) ; test des images relatives réussi ; OK commit, push, v32.
 - Fait : symbole CUSTOM `Fin_de_course_NF_11-12.xsy` (copie de « Fin de course NC », broches 11 / 12), B3-B6 en NF ; `saisie.json` (types de bornes) ; nomenclature avec PTFIX 2X4 ; images relatives par défaut ; v31 dans old/ ; v32 générée : 0 problème, 0 erreur, 0 chevauchement, numéros 0 problème ; `LISTE_ES_AUTOMATE.md` en NF.
+
+## 18/11/2026 : retours v32
+- Julien : PTFIX 2X4 = 19 et 27 blocs, 2 trous, 6 mm ; PE OK ; retours f30, f31 / f32, f71, f80, f90 / f91 (copies d'écran) ; mettre à jour la mémoire, poser les questions, attendre le go.
+- Fait : mémoire (04, 05, 06, 08, 09), questions posées. Aucune génération. Commit local, sans push.

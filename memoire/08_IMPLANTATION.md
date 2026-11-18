@@ -62,7 +62,7 @@ Méthode : étape 0 → charte → implantation → câbles → synoptique → a
 - La boîte +M-X1 s'appelle maintenant **+BJM** (boîte de jonction machine), bornier +BJM-X1 : `saisie.json` (`boite`, `apres_boite`) à mettre à jour à la prochaine version.
 
 ## Changé dans saisie.json le 18/11 (schéma v32)
-- Types de bornes : freins X31.31-32 / X32.31-32 en PT 4, X13 en PT 2,5, nouvelle liste « PTFIX 2X4 » (W11 / W12). Le générateur ne connaît pas encore ce type (largeur, couleur) : à faire avant la v12.
+- Types de bornes : freins X31.31-32 / X32.31-32 en PT 4, X13 en PT 2,5, nouvelle liste « PTFIX 2X4 » (W11 / W12). Le générateur ne connaît pas encore ce type : largeur **6 mm** (Julien 18/11), 2 trous ; couleur à choisir. À faire avant la v12.
 
 ## Faire une nouvelle version
 1. `git pull` ; passer l'ancien PDF + son `_verification.md` dans `implantation/old/` (`git mv`).

@@ -132,6 +132,10 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - **18/11 (v32) : chemin relatif par défaut** `..\..\images\…` (relatif au .xrs, juste pour release/ et old/), essai réussi par Julien : images visibles sur les 2 PC. `TTK_IMAGES` le remplace si besoin.
 - 18/11 : variable `TTK_IMAGES` (dossier écrit dans le .xrs, relatif ou absolu ; défaut `schema/images` du dépôt). Essai en cours : copie `schema/generes/test_images/TEST_images_relatives.xrs` (chemins `..\..\images\…`, non versionnée), à ouvrir dans WinRelais par Julien.
 
+## Retours v32 (18/11) : règles générales
+- Les textes d'information sur un folio (f31 / f32 à droite, f71 en bas) : **seulement l'essentiel pour un schéma élec**, bien intégrés dans la page ; pas de méthode, pas de point ouvert (ils vont dans 05).
+- Un tableau occupe la place disponible du folio, centré, colonnes ajustées au contenu ; pas de texte d'explication autour (f80, f90, f91).
+
 ## Nomenclature f90 / f91 (18/11, option B de Julien)
 - Générée par le script (`outils/nomenclature.py`), plus par WinRelais. Colonnes : Repère, Désignation, Marque et référence, Caractéristiques, Qté, Loc., Folio. Texte 200, lignes de 380, en-tête sur chaque folio.
 - **Une ligne par appareil** (repère), Qté 1 ; textes entiers (champs non coupés) du symbole qui porte la référence (sinon celui qui a des champs). Marque et référence = champ 3 ; s'il est vide ou « À définir » : `RefConstructeur`, sinon « à vérifier ».

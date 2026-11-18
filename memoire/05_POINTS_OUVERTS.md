@@ -122,6 +122,6 @@ Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) 
 - Nomenclature : **réglé le 18/11**, option B (script), S1 / S2 sur une ligne, TR1 gardé (EXT). Restent à compléter : références B7, H2, H3, H4, butées, +BJM.
 - Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, QF10 4,5 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, XD1 1,5 kW, S4 « Z000263594 ».
 - Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. **Réglé le 18/11** : chemin relatif, images visibles (Julien) ; v32 en relatif. Reste : le chemin reste-t-il relatif quand WinRelais réenregistre ? (à voir sur la prochaine copie reçue).
-- PTFIX 2X4 Phoenix 1028361 (bornes W11 / W12, Julien 18/11) : nombre de blocs, raccordement (2 x 4 points ?), stock, largeur pour l'implantation.
-- Bornes PE X10.11, X31.11, X32.11, X50.13 : gardées en bornes de terre (Julien n'en a pas parlé le 18/11) [H].
+- PTFIX 2X4 Phoenix 1028361 : **2 trous, 6 mm, 19 + 27 blocs** (Julien 18/11). Ouvert : réserves (W11 23-26, W12 17-18) et V/J bornés aussi ? (38 conducteurs bornés aujourd'hui pour 46 blocs) ; stock.
+- Bornes PE X10.11, X31.11, X32.11, X50.13 en bornes de terre ; X12.11 en PT 4 : **confirmé par Julien le 18/11**.
 - Zoom écrit avec une virgule par WinRelais sur le PC Rimane (`0,749…`) : lecture par le WinRelais de Julien à vérifier.

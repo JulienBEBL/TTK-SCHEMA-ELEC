@@ -424,3 +424,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] Bornes PE (X10.11, X31.11, X32.11, X50.13) gardées en terre ; X12.11 gardé en PT 4.
 - [C] Chemin d'image relatif : images affichées dans WinRelais (Julien). Défaut du script : ..\..\images.
 - [D] v32 générée, commit et push (Julien).
+
+## 18/11/2026 : retours sur la v32
+- [C] PTFIX 2X4 1028361 : bloc de passage classique, 2 trous, 6 mm ; 19 + 27 blocs (Julien).
+- [D] Bornes PE en terre et X12.11 en PT 4 : confirmé (Julien).
+- [D] À faire en v33 après le go : f30 textes PROFINET décalés ; f31 / f32 bloc de droite épuré ; f71 texte du bas épuré ; f80 liste des câbles revue et recadrée, sans texte ; f90 / f91 police plus grande, tableau centré sur toute la page.

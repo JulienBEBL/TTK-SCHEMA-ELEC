@@ -12,8 +12,18 @@
 | 01, 21 | Images en chemin **relatif** `..\..\images\` (essai réussi dans WinRelais, 18/11) |
 | nomenclature | Types de bornes de Julien : PT 4 (arrivée, moteurs, freins), PTFIX 2X4 1028361 (W11 / W12), PT 2,5 (R4) ; références B1, B3-B6, H1, S1, S2 ; H1 et B7 en +M |
 
+### Retours de Julien sur la v32 (18/11) : à faire en v33, **après son go**
+| Folio | Demande |
+|---|---|
+| 30 | Textes des fils PROFINET (« Port 1 -> K1 automate… ») superposés aux repères PN1-PN4 : les décaler |
+| 31, 32 | Bloc de texte à droite (X40, X5 / X6, « TF X10 : bornes à confirmer » en rouge, blindage W5 / W6, note W4) : mal intégré ; garder l'essentiel d'un schéma élec, bien placé dans la page |
+| 71 | Texte du bas (méthode, « Bornier graphique : Optimisation / Générer… ») : à intégrer proprement, garder l'essentiel |
+| 80 | Liste des câbles à revoir : recouper avec la mémoire (09_STOCK, saisie.json, cablage/) ; recadrer le tableau ; enlever le texte |
+| 90, 91 | Police plus grande, tableau centré, sur toute la place disponible, largeurs de colonnes réajustées |
+| bornes | PTFIX 2X4 : 1 bloc = 2 trous (bloc de passage classique), 19 + 27 blocs (W12 + W11), largeur 6 mm |
+
 ### Suite
-- Julien : ouvrir la v32 dans WinRelais (f60 NF, f90 / f91, images).
+- Julien : v32 ouverte dans WinRelais le 18/11 (images relatives affichées) ; retours ci-dessus.
 - PTFIX 2X4 : nombre de blocs, câblage d'un bloc (2 x 4 points ?), stock ; le symbole des bornes W11 / W12 reste « borne 4 mm ».
 - Programme TIA : B3-B6 lus à 0 en fin de course.
 - Implantation : `saisie.json` porte les nouveaux types (PT 4 freins, X13 en PT 2,5, PTFIX 2X4) ; le dossier d'implantation n'est pas régénéré (largeur des PTFIX 2X4 inconnue).
