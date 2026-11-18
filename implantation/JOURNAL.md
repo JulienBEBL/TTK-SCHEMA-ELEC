@@ -150,3 +150,13 @@ Fichiers : `release/TTK_implantation_2026-11-17_v11.pdf` (10 pages A3) + `_verif
 - Décisions du 17/11 : X63 gardées ; W9 / W10 en 5G1,5 ; +M-X1 ; blindage un côté ; W14 proposé (câble M12 de B2).
 - Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs ; pages rastérisées et relues.
 - Ouvert : manque 4 PT 2,5 (74 pour 70) ; liaisons boîte → appareils non définies.
+
+## v12 (indice B) — 18/11/2026 (schéma v34), PC PRO RIMANE
+Fichiers : `release/TTK_implantation_2026-11-18_v12.pdf` (**2 pages A3**) + `_verification.md` ; v11 dans `old/`.
+- Demande de Julien (18/11) : 2 pages seulement (plaque, détail des borniers) ; travail limité à R3, R4, R5 ; générateur gardé, draw.io abandonné.
+- Page 2 refaite : tous les borniers sur une page, de haut en bas comme sur la plaque (R4, R5 t1, t2-3, t4), bornes x 1,2 (au lieu de 1,35), rangées compactes ; R3 (PTFIX 6/12, X12.11, X21.14) en dessin réduit ; légende en colonne.
+- PTFIX 2X4 (Phoenix 1028361, 6 mm) pour les 38 bornes de W11 / W12 : R5 t1 finit à 469 mm (support à 477,5).
+- X20.15 / X20.25 (V/J de W9 / W10, v34) ajoutées : W10 passe après le support 702,5 (722,5 à 761 mm).
+- W11 / W12 : bandeau en tireté rouge « répartition à valider » (demande du 18/11).
+- +M-X1 → +BJM ; XR2 « déjà fixé » (monté le 13/11).
+- Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Bornes : PT 2,5 36 / 70, PT 4 15 / 15, PTFIX 2X4 38 / 46, terre 6 / 4 (manque 2).

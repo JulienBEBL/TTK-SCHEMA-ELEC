@@ -1,11 +1,11 @@
 # Implantation de l'armoire +A1
 
-Depuis le 17/11/2026 (v11), le dossier est **généré** : un seul PDF A3 (implantation, borniers, liste des câbles, affectation des conducteurs, synoptique), tiré du schéma et d'un fichier de saisie.
+Depuis le 17/11/2026 (v11), le dossier est **généré**, tiré du schéma et d'un fichier de saisie. Depuis la v12 (18/11) : **2 pages A3** seulement (plan de la plaque, détail des borniers). Les fonctions des pages câbles / conducteurs / synoptique restent dans `generer.py`, non imprimées.
 
 | Dossier / fichier | Contenu |
 |---|---|
 | `release/` | La dernière version seule : `TTK_implantation_AAAA-MM-JJ_vN.pdf` + `TTK_implantation_AAAA-MM-JJ_vN_verification.md` |
-| `old/` | Versions précédentes (draw.io v1 à v10, indices A à K) |
+| `old/` | Versions précédentes (draw.io v1 à v10, indices A à K ; PDF v11) |
 | `generateur/` | `extraire.py` (lit le .xrs de `schema/generes/release/` + `saisie.json` → `donnees.json`), `generer.py` + `svg.py` (PDF + contrôle) |
 | `JOURNAL.md` | Une entrée par version |
 
@@ -18,3 +18,5 @@ python -I extraire.py
 python -I generer.py --png <dossier temporaire>
 ```
 Attendu dans `_verification.md` : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Avant de régénérer : passer l'ancien PDF dans `old/`, changer `version` / `indice` / `revisions` dans `saisie.json`.
+
+PC Rimane (18/11) : Edge ne sort ni PDF ni PNG quand il est lancé depuis le bac à sable de l'assistant (code 13) : lancer `generer.py` hors bac à sable. `--screenshot` ne produit rien : contrôle visuel en ouvrant `build/dossier.html`.

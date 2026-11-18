@@ -1,6 +1,12 @@
 # 08 · Dossier d'implantation +A1 (généré)
 
-Créé le 17/11/2026. Version actuelle : **v11, indice A** (17/11, schéma v31), **en attente des retours de Julien**.
+Créé le 17/11/2026. Version actuelle : **v12, indice B** (18/11, schéma v34, PC PRO RIMANE), **2 pages**, en attente des retours de Julien. v11 (10 pages) dans `old/`.
+
+## Demande de Julien (18/11) [D]
+- **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). Générateur gardé, **draw.io abandonné**.
+- Travail limité à R3, R4, R5 (R1, R2, variateurs, résistances, alimentations déjà fixés). Ordre de R4 confirmé : QF4 … QF10, XD1 | X13 | S1, S4, H3, H4 | vis | H2.
+- Répartition W11 / W12 (Q32) à marquer « à valider » (voir 05, Q32 : contradiction avec la validation du 05/11, question posée le 18/11).
+- Freins M1 + M2 : un seul 5G1,5, repère W4 inchangé.
 
 ## Demande de Julien (17/11) [D]
 Un seul PDF, dans cet ordre :
@@ -12,7 +18,15 @@ Un seul PDF, dans cet ordre :
 
 Méthode : étape 0 → charte → implantation → câbles → synoptique → assemblage → vérification. Rien d'inventé (« ? » ou « à vérifier »), une seule livraison puis attente des retours. Méthode A retenue (SVG → PDF par Edge, rastérisation PNG permise pour le contrôle visuel).
 
-## Contenu de la v11 (10 pages A3 paysage)
+## Contenu de la v12 (2 pages A3)
+| Page | Contenu |
+|---|---|
+| 1 | Plaque 1100 × 1670 au 1:7 + liste des appareils (statut) |
+| 2 | Borniers R4, R5 t1, t2-3, t4 (de haut en bas), bornes x 1,2 ; R3 en dessin réduit ; légende |
+
+Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
+
+## Contenu de la v11 (10 pages A3 paysage, old/)
 | Page | Contenu |
 |---|---|
 | 1 | Garde, sommaire, révisions, points ouverts |
@@ -44,6 +58,7 @@ Méthode : étape 0 → charte → implantation → câbles → synoptique → a
 - Butée 10 mm de chaque côté de chaque groupe ; 2 groupes voisins partagent une butée. Embout 2,2 mm.
 - Zones des vis et supports à 45° : 20 mm, laissées libres.
 - R5 t1 x0 162,5 (W11, W12) ; R5 t2-t3 x0 512,5 (W14 B2, W8 X63, W3, W6, W9, W10) ; R5 t4 x0 788,1 (W4, W2, W5, W1) ; R4 x0 497,5 (X13, porte, H2 230 V après la vis 702,5).
+- v12 : largeurs PT 2,5 5,2 / PT 4 6,2 / PTFIX 2X4 6,0 / terre 5,2 mm. R5 t1 = 152,5 à 469 (support 477,5). W10 + X20.25 sauté après le support 702,5 (722,5 à 761). t4 à partir de 778.
 
 ## Décisions prises pour la v11 (17/11)
 - PC = PRO JULIEN [D]. Thermocouple : bornes X63.11 / X63.12 gardées même inutilisées [D].
@@ -68,9 +83,12 @@ Méthode : étape 0 → charte → implantation → câbles → synoptique → a
 
 - 18/11 (v34) : `types_bornes.terre` + X20.15, X20.25 (V/J de W9 / W10) ; origine de W9 / W10 jusqu'à X20.15 / X20.25. Implantation à régénérer (2 bornes de terre de plus sur R5).
 
+- 18/11 (v12) : `document` v12 / B ; `types_bornes` : PTFIX 2X4 (46 en stock, 6 mm) ; X20.15 / X20.25 dans les groupes W9 / W10 et V/J de leurs conducteurs ; `boite` = +BJM (plus aucun « +M-X1 ») ; XR2 « fixe ».
+
 ## Faire une nouvelle version
 1. `git pull` ; passer l'ancien PDF + son `_verification.md` dans `implantation/old/` (`git mv`).
 2. `saisie.json` : `version`, `indice` (lettre suivante), `date`, ligne dans `revisions`.
 3. `cd implantation/generateur` ; `python -I extraire.py` ; `python -I generer.py --png <scratchpad>`.
 4. Contrôle 0 / 0 / 0 dans le `_verification.md` ; regarder les PNG.
-5. `implantation/JOURNAL.md`, `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md`, ce fichier ; commit préfixé `[PRO JULIEN]` ; **push seulement avec l'accord de Julien**.
+5. `implantation/JOURNAL.md`, `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md`, ce fichier ; commit préfixé par le PC (`[PRO JULIEN]`, `[PRO RIMANE]`) ; **push seulement avec l'accord de Julien**.
+6. PC Rimane : lancer `generer.py` hors bac à sable de l'assistant (Edge sort sinon sans PDF) ; contrôle visuel dans `build/dossier.html`.

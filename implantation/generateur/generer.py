@@ -26,7 +26,7 @@ EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 FAMILLE = {"alim": "#fff2cc", "variateur": "#f8cecc", "puissance": "#fbe3d6", "distrib": "#eeeeee",
            "automate": "#d5e8d4", "securite": "#ffe6cc"}
 ETAT = {"fixe": "déjà fixé", "a_poser": "à poser", "deplace": "déplacé (13/11)", "propose": "proposé"}
-TYPE_FILL = {"PT 2,5": "#d9d9d9", "PT 4": "#a6a6a6", "terre": "#7fbf5f"}
+TYPE_FILL = {"PT 2,5": "#d9d9d9", "PT 4": "#a6a6a6", "terre": "#7fbf5f", "PTFIX 2X4": "#c9d6e8"}
 
 PAGES = []
 
@@ -102,6 +102,8 @@ def type_borne(rep):
         return "terre"
     if rep in t["PT 4"]:
         return "PT 4"
+    if rep in t.get("PTFIX 2X4", []):
+        return "PTFIX 2X4"
     return "PT 2,5"
 
 
@@ -161,27 +163,31 @@ def disposer(bornier):
 
 
 # ------------------------------------------------------------------ dessin d'une rangée de bornes
-K = 1.35   # agrandissement des bornes (1 mm réel -> 1,35 mm sur la page)
+K = 1.2    # agrandissement des bornes (1 mm réel -> 1,2 mm sur la page) : tout le détail tient sur une A3
+A_VALIDER = {"W11", "W12"}   # répartition des conducteurs (Q32) marquée à valider (demande du 18/11)
 
 
-def rangee(p, bornier, y, titre):
+def rangee(p, bornier, y, titre, x_page=16):
+    """Une rangée compacte (57 mm de haut). Retourne (y bas, x droit) sur la page."""
     pos, obst, xfin, fin = disposer(bornier)
     if xfin > fin + 0.01:
         p.erreurs.append(f"p{p.num} {titre} : le bornier dépasse le rail ({xfin:.0f} > {fin:.0f} mm)")
     xr0 = pos[0][1] - 4
-    X = lambda xr: 16 + (xr - xr0) * K   # noqa: E731
+    X = lambda xr: x_page + (xr - xr0) * K   # noqa: E731
     if X(xfin) > 410:
         p.erreurs.append(f"p{p.num} {titre} : rangée trop large pour la page ({X(xfin):.0f} mm)")
-    p.text(16, y, titre, 3.2, gras=True, maxw=390)
-    yb = y + 3
+    p.text(x_page, y, titre, 2.8, gras=True, maxw=max(X(xfin) - x_page, 230))
+    yb = y + 2.5
+    Y_CORPS = yb + 18
+    Y_COND, Y_BAS = Y_CORPS + 17.5, Y_CORPS + 20
     # rail (bande grise) et vis / supports
-    p.rect(X(xr0), yb + 32, X(min(xfin + 4, fin)) - X(xr0), 6, fill="#f2f2f2", stroke="#bfbfbf", sw=0.2)
+    p.rect(X(xr0), Y_CORPS + 2, X(min(xfin + 4, fin)) - X(xr0), 10, fill="#f2f2f2", stroke="#bfbfbf", sw=0.2)
     for o in obst:
         if xr0 <= o < xfin:
             lab = "support 45°" if bornier["rail"] == "R5" else "vis"
-            p.rect(X(o), yb + 30, ZONE * K, 10, fill="#e8e0f0" if lab != "vis" else "#dbe8f5",
+            p.rect(X(o), Y_CORPS, ZONE * K, 14, fill="#e8e0f0" if lab != "vis" else "#dbe8f5",
                    stroke="#7f7f7f", sw=0.2, dash="1,0.6")
-            p.text(X(o) + ZONE * K / 2, yb + 36, lab, 1.8, ancre="middle", coul="#555", maxw=ZONE * K - 0.5)
+            p.text(X(o) + ZONE * K / 2, Y_CORPS + 8, lab, 1.8, ancre="middle", coul="#555", maxw=ZONE * K - 0.5)
     # bandeaux de câble (groupes consécutifs du même câble)
     grp = []
     for g in bornier["groupes"]:
@@ -191,79 +197,79 @@ def rangee(p, bornier, y, titre):
             grp.append([g["cable"], g["_x"][0], g["_x"][1]])
     for cab, a, b in grp:
         coul = S["couleurs_cables"].get(cab, "#eeeeee")
-        p.rect(X(a), yb, X(b) - X(a), 6, fill=coul, stroke="#000", sw=0.25)
+        av = cab in A_VALIDER
+        p.rect(X(a), yb, X(b) - X(a), 5, fill=coul, stroke="#d00000" if av else "#000", sw=0.4 if av else 0.25,
+               dash="1.2,0.6" if av else None)
         if cab in CAB:
             c = CAB[cab]
-            lieu = {"W11": "+P1 pupitre", "W12": "+M-X1", "W4": "+M-X1", "W1": "réseau client"}.get(cab, "+M")
+            lieu = {"W11": "+P1 pupitre", "W12": "+BJM", "W4": "+BJM", "W1": "réseau client"}.get(cab, "+M")
             lab = f"{cab} · {c['conducteurs'].split(' (')[0]} · vers {lieu}"
+            if av:
+                lab += " · répartition à valider"
         else:
             lab = {"int": "Interne armoire (230 V)", "porte": "Porte de l'armoire (TBTP)",
                    "porte230": "Porte : 230 V"}.get(cab, cab)
         larg_dispo = X(b) - X(a) - 1
-        t = 2.4
-        while largeur(lab, t, True) > larg_dispo and t > 1.7:
-            t -= 0.1
-        if largeur(lab, t, True) > larg_dispo:
-            lab = lab.split(" · vers")[0]
-            t = 2.4
-            while largeur(lab, t, True) > larg_dispo and t > 1.7:
+        for essai in (lab, lab.split(" · vers")[0] + (" · à valider" if av else ""), cab):
+            t = 2.2
+            while largeur(essai, t, True) > larg_dispo and t > 1.6:
                 t -= 0.1
-        if largeur(lab, t, True) > larg_dispo:
-            lab = cab
-        p.text((X(a) + X(b)) / 2, yb + 4.3, lab, t, ancre="middle", gras=True, maxw=larg_dispo)
+            if largeur(essai, t, True) <= larg_dispo:
+                break
+        p.text((X(a) + X(b)) / 2, yb + 3.6, essai, t, ancre="middle", gras=True, maxw=larg_dispo,
+               coul="#c00000" if av else "#000")
     # bornes
-    Y_HAUT, Y_CORPS, Y_COND, Y_BAS = yb + 7, yb + 32, yb + 63, yb + 69
     for e in pos:
         if e[0] == "butee":
-            p.rect(X(e[1]), Y_CORPS - 3, e[2] * K, 36, fill="#262626", stroke="#000", sw=0.2)
+            p.rect(X(e[1]), Y_CORPS - 2, e[2] * K, 18, fill="#262626", stroke="#000", sw=0.2)
         elif e[0] == "capot":
-            p.rect(X(e[1]), Y_CORPS - 1, e[2] * K, 32, fill="#8c8c8c", stroke="#000", sw=0.2)
+            p.rect(X(e[1]), Y_CORPS - 1, e[2] * K, 16, fill="#8c8c8c", stroke="#000", sw=0.2)
         else:
             _, xr, w, rep, g = e
             rec = B[rep]
             tb = type_borne(rep)
             x0, ww = X(xr), w * K
             cx = x0 + ww / 2
-            p.rect(x0, Y_CORPS, ww, 30, fill=TYPE_FILL[tb], stroke="#000", sw=0.25)
+            p.rect(x0, Y_CORPS, ww, 14, fill=TYPE_FILL[tb], stroke="#000", sw=0.25)
             if tb == "terre":
-                for k in range(3):
-                    p.rect(x0 + 0.4, Y_CORPS + 3 + k * 9, ww - 0.8, 3, fill="#ffd200", stroke="none", sw=0)
-            p.rect(x0 + 1.2, Y_CORPS + 1, ww - 2.4, 2.2, fill="#ffffff", stroke="#000", sw=0.15)   # entrée haut
-            p.rect(x0 + 1.2, Y_CORPS + 26.8, ww - 2.4, 2.2, fill="#ffffff", stroke="#000", sw=0.15)  # entrée bas
-            p.text(cx - 0.9, Y_CORPS + 25.5, rep, 2.3, gras=True, rot=-90, maxw=21)
+                for k in range(2):
+                    p.rect(x0 + 0.4, Y_CORPS + 3 + k * 6, ww - 0.8, 2, fill="#ffd200", stroke="none", sw=0)
+            p.rect(x0 + 1.2, Y_CORPS + 0.6, ww - 2.4, 1.6, fill="#ffffff", stroke="#000", sw=0.15)   # entrée haut
+            p.rect(x0 + 1.2, Y_CORPS + 11.8, ww - 2.4, 1.6, fill="#ffffff", stroke="#000", sw=0.15)  # entrée bas
+            p.text(cx - 0.8, Y_CORPS + 11.3, rep, 2.0, gras=True, rot=-90, maxw=9)
             fil = rec.get("numero_fil", "")
             if fil:
-                p.text(cx + 1.9, Y_CORPS + 25.5, fil, 1.9, rot=-90, maxw=21, coul="#1f3f7f")
+                p.text(cx + 1.7, Y_CORPS + 11.3, fil, 1.7, rot=-90, maxw=9, coul="#1f3f7f")
             # côté armoire (haut) et côté extérieur (bas), lus de bas en haut
-            for i, l in enumerate(coupe(court_armoire(rec), 1.9, 24)[:2]):
-                p.text(cx - 0.9 + 1.9 * i, Y_CORPS - 1.5, l, 1.9, rot=-90, maxw=24)
+            for i, l in enumerate(coupe(court_armoire(rec), 1.7, 10.8)[:2]):
+                p.text(cx - 0.8 + 1.8 * i, Y_CORPS - 2.2, l, 1.7, rot=-90, maxw=10.8)
             n = conducteur(g["cable"], rep)
             n = {"vert (+)": "VE+", "blanc (-)": "BL-", "blanc": "BL", "marron": "MA"}.get(n, n)
             if n:
-                p.rect(x0 + 0.5, Y_COND - 3, ww - 1, 4.2, fill="#ffffff", stroke="#1f3f7f", sw=0.2, rx=1)
-                p.text(cx, Y_COND, n, 2.1 if len(n) < 3 else 1.8, ancre="middle", gras=True, coul="#1f3f7f",
-                       maxw=ww - 1.2)
+                p.rect(x0 + 0.4, Y_COND - 2.6, ww - 0.8, 3.6, fill="#ffffff", stroke="#1f3f7f", sw=0.2, rx=1)
+                p.text(cx, Y_COND, n, 2.0 if len(n) < 3 else 1.6, ancre="middle", gras=True, coul="#1f3f7f",
+                       maxw=ww - 1)
             ext = court_ext(rec)
-            if g["cable"] == "W12" and ext != "-":
-                ext = "+M-X1 → " + ext
+            if g["cable"] in ("W12", "W4") and ext != "-":
+                ext = "+BJM → " + ext
             if g["cable"] == "W1":
                 ext = "réseau client"
             if g["cable"] == "int":
                 ext = cote_appareil(rec)
-            for i, l in enumerate(coupe(ext, 1.9, 22)[:2]):
-                p.text(cx - 0.9 + 1.9 * i, Y_BAS + 0.5, l, 1.9, rot=-90, ancre="end", maxw=22)
+            for i, l in enumerate(coupe(ext, 1.7, 12.5)[:2]):
+                p.text(cx - 0.8 + 1.8 * i, Y_BAS + 0.8, l, 1.7, rot=-90, ancre="end", maxw=12.5)
     # nom des groupes (fonction)
     for g in bornier["groupes"]:
         a, b = X(g["_x"][0]), X(g["_x"][1])
-        yy = Y_BAS + 26
-        for l in coupe(g["fonction"], 2.2, max(b - a + 6, 10))[:3]:
-            p.text((a + b) / 2, yy, l, 2.2, ancre="middle", maxw=max(b - a + 6, 10))
-            yy += 2.7
-    return Y_BAS + 34
+        yy = Y_BAS + 16
+        for l in coupe(g["fonction"], 2.0, max(b - a + 6, 10))[:2]:
+            p.text((a + b) / 2, yy, l, 2.0, ancre="middle", maxw=max(b - a + 6, 10))
+            yy += 2.4
+    return Y_BAS + 21, X(xfin)
 
 
 def legende_borne(p, x, y):
-    """Légende de lecture d'une borne (reprise sur chaque page de borniers)."""
+    """Légende de lecture d'une borne."""
     p.text(x, y, "Lecture d'une borne", 2.6, gras=True)
     y += 3
     p.rect(x, y, 7, 22, fill=TYPE_FILL["PT 2,5"])
@@ -271,17 +277,17 @@ def legende_borne(p, x, y):
     p.text(x + 5, y + 19, "4111", 1.7, rot=-90, coul="#1f3f7f", maxw=18)
     items = ["Haut : côté armoire (appareil:broche, ou potentiel)", "Corps : repère de la borne (gras), n° de fil (bleu)",
              "Pastille : n° de conducteur du câble", "Bas : côté extérieur (appareil:broche)",
-             "Bandeau : repère du câble · composition · destination"]
+             "Bandeau : câble · composition · destination (tireté rouge : à valider)"]
     for i, it in enumerate(items):
-        p.text(x + 10, y + 3 + 4.2 * i, it, 2.1, maxw=95)
+        p.text(x + 10, y + 3 + 4.2 * i, it, 2.1, maxw=150)
     y += 25
     for i, (nom, f) in enumerate([("PT 2,5 (5,2 mm)", TYPE_FILL["PT 2,5"]), ("PT 4 (6,2 mm)", TYPE_FILL["PT 4"]),
-                                  ("Terre V/J (5,2 mm)", TYPE_FILL["terre"]), ("Butée 10 mm", "#262626"),
-                                  ("Capot de fin", "#8c8c8c")]):
-        xx = x + (i % 3) * 36
+                                  ("PTFIX 2X4 (6 mm)", TYPE_FILL["PTFIX 2X4"]), ("Terre V/J (5,2 mm)", TYPE_FILL["terre"]),
+                                  ("Butée 10 mm", "#262626"), ("Capot de fin", "#8c8c8c")]):
+        xx = x + (i % 3) * 42
         yy = y + (i // 3) * 5
         p.rect(xx, yy - 2.6, 4, 3, fill=f, stroke="#000", sw=0.2)
-        p.text(xx + 5, yy, nom, 2.1, maxw=30)
+        p.text(xx + 5, yy, nom, 2.1, maxw=36)
     return y + 10
 
 
@@ -322,7 +328,7 @@ def remplir_garde(p):
                "2. memoire/ et docs/ du dépôt (décisions datées).",
                "3. Sourcing Composant, feuille Tableau V1 (03/11, 1 armoire) : références et câbles achetés.",
                "4. Implantation draw.io v10 (06/11) : géométrie de la plaque, rails, vis, supports.",
-               "Décisions de Julien du 17/11 : bornes X63 gardées ; W9 / W10 en LIYCY-JZ 5G1,5 ; boîte +M-X1 ; "
+               "Décisions de Julien du 17/11 : bornes X63 gardées ; W9 / W10 en LIYCY-JZ 5G1,5 ; boîte +BJM ; "
                "blindage raccordé d'un seul côté."]
     y = 89
     for s in sources:
@@ -349,7 +355,7 @@ def page_charte():
             "Le dossier est généré par script depuis le schéma : une modification se fait dans le schéma ou dans "
             "saisie.json, jamais dans le PDF."]),
         ("Repérage (IEC 81346-2, comme le schéma)", [
-            "Lieux : +A1 armoire, +P1 pupitre, +M machine. Boîte de dérivation machine : +M-X1.",
+            "Lieux : +A1 armoire, +P1 pupitre, +M machine. Boîte de dérivation machine : +BJM.",
             "Appareils : lettre de fonction + n° (QF1, KA1, U1, K1, S1, B1, H1…), identiques au schéma.",
             "Bornes : X + n° du folio où la borne est dessinée + « . » + n° (X41.11 = folio 41, groupe 1, borne 1).",
             "Fils : n° de potentiel FFNN du schéma (ex. 4111), sans point. PE : vert/jaune, sans numéro.",
@@ -489,67 +495,75 @@ def page_plaque():
              "(v10). Pas de cote fine : ajustement au montage.",
              "R2 est plein et monté (13/11) : XR1 et XR2 côte à côte, l'ordre est juste, les positions sont indicatives.",
              "X21.14 (proposé) : à droite de K4, près de K1 qui l'alimente (L+ capteurs) ; FA1 et KA1 restent en place.",
-             "Rien sur les parois sauf les ventilateurs EV1 / EV2. U3 / U4 et -XPE1 vissés sur la plaque."]
+             "Rien sur les parois sauf les ventilateurs EV1 / EV2. U3 / U4 et -XPE1 vissés sur la plaque.",
+             "R5 tronçon 1 : bornes W11 / W12 en PTFIX 2X4 (6 mm) ; répartition des conducteurs à valider (page 2)."]
     for n in notes:
         y = p.bloc(x0, y, "• " + n, 2.3, maxw=215) + 0.6
     return p
 
 
-def pages_borniers():
+def page_borniers():
+    """Page 2 : tous les borniers, de haut en bas comme sur la plaque (R4, puis R5 tronçons 1 à 4), et R3."""
     br = {b["troncon"]: b for b in S["borniers"]}
-    p = nouvelle("Borniers R5, tronçon 1 : pupitre W11 et machine W12")
+    p = nouvelle("Détail des borniers R4 et R5 (vue de face, bornes x 1,2) et distribution 24 V du rail R3")
     cadre(p)
-    y = rangee(p, br["tronçon 1"], 27, "Rail R5 (45°), tronçon 1 : vue de face, de gauche à droite comme au montage")
-    y = legende_borne(p, 16, y + 8)
-    p.bloc(140, y - 30, CAB["W11"]["conducteurs"] + ". " + S["notes_conducteurs"]["W11"], 2.4, maxw=98)
-    p.bloc(140, y - 18, CAB["W12"]["conducteurs"] + ". " + S["notes_conducteurs"]["W12"], 2.4, maxw=98)
+    y, xd = rangee(p, br["après XD1 : services 230 V, puis porte"], 24,
+                   "Rail R4, après XD1 : éclairage, ventilation, porte (S1, S4, H3, H4, puis H2 230 V après la vis)")
+    legende_etroite(p, xd + 6, 30)
+    y, xd = rangee(p, br["tronçon 1"], y + 3, "Rail R5 (45°), tronçon 1 : pupitre W11, machine W12 (par +BJM)")
+    y, xd = rangee(p, br["tronçons 2 et 3"], y + 3, "Rail R5, tronçons 2 et 3 : B2, thermocouple, sondes TF, pas-à-pas")
+    y3, xd = rangee(p, br["tronçon 4 (puissance)"], y + 3, "Rail R5, tronçon 4 : freins, moteurs, arrivée W1 (près de QS1)")
+    r3(p, xd + 8, y + 3)
+    return p
 
-    p = nouvelle("Borniers R5, tronçons 2 à 4 : capteurs, sondes, pas-à-pas, puissance")
-    cadre(p)
-    y = rangee(p, br["tronçons 2 et 3"], 25, "Rail R5 (45°), tronçons 2 et 3 : capteur B2, thermocouple, sondes TF, "
-                                             "pas-à-pas")
-    rangee(p, br["tronçon 4 (puissance)"], y + 6, "Rail R5 (45°), tronçon 4 : freins, moteurs, arrivée réseau "
-                                                  "(W1 au bout droit, au plus près de QS1)")
 
-    p = nouvelle("Bornes du rail R4 (230 V et porte) et distribution 24 V du rail R3")
-    cadre(p)
-    y = rangee(p, br["après XD1 : services 230 V, puis porte"], 25,
-               "Rail R4, à droite de XD1 : éclairage, ventilation, puis bornes de la porte")
-    # R3 : blocs PTFIX et X12.11
-    y += 8
-    p.text(16, y, "Rail R3 : distribution 24 V (blocs PTFIX 6/12X2,5 posés en long, 41 mm) et liaison PELV",
-           3.2, gras=True, maxw=390)
-    y += 6
+def legende_etroite(p, x, y):
+    """Légende de lecture d'une borne, en colonne (à droite du rail R4)."""
+    w = 404 - x
+    p.text(x, y, "Lecture d'une borne", 2.6, gras=True, maxw=w)
+    y += 4.2
+    for it in ["Haut : côté armoire", "Corps : repère (gras), n° de fil (bleu)", "Pastille : n° de conducteur",
+               "Bas : côté extérieur", "Bandeau : câble, destination", "Tireté rouge : à valider"]:
+        p.text(x, y, it, 2.0, maxw=w)
+        y += 3.4
+    y += 1.6
+    for i, (nom, f) in enumerate([("PT 2,5 (5,2)", TYPE_FILL["PT 2,5"]), ("PT 4 (6,2)", TYPE_FILL["PT 4"]),
+                                  ("PTFIX 2X4 (6)", TYPE_FILL["PTFIX 2X4"]), ("Terre V/J (5,2)", TYPE_FILL["terre"]),
+                                  ("Butée (10)", "#262626"), ("Capot de fin", "#8c8c8c")]):
+        xx = x + (i % 2) * (w / 2)
+        yy = y + (i // 2) * 4.2
+        p.rect(xx, yy - 2.6, 4, 3, fill=f, stroke="#000", sw=0.2)
+        p.text(xx + 5, yy, nom, 2.0, maxw=w / 2 - 6)
+    p.text(x, y + 13, "Largeurs réelles en mm", 1.9, coul="#555", maxw=w)
+
+
+def r3(p, x, y):
+    """Rail R3 : blocs PTFIX 6/12X2,5 posés en long et liaison PELV (dessin réduit, ordre réel)."""
+    p.text(x, y, "Rail R3 : distribution 24 V (PTFIX 6/12X2,5 en long), PELV", 2.8, gras=True, maxw=404 - x)
+    y += 3.5
     blocs = [("X21.11", "24VELEC", "#e06666", "1241"), ("X21.12", "0 V", "#6fa8dc", "1230"),
-             ("X12.11", "PELV 0 V - PE", TYPE_FILL["PT 4"], "1230 / PE"), ("X21.13", "24VSEC", "#b7b7b7", "1231"),
-             ("X21.14", "24 V capteurs", "#434343", "6001")]
-    x = 16
+             ("X12.11", "PELV", TYPE_FILL["PT 4"], "1230 / PE"), ("X21.13", "24VSEC", "#b7b7b7", "1231"),
+             ("…", "", "", ""), ("X21.14", "24 V capteurs", "#434343", "6001")]
+    xx = x
     for rep, nom, f, fil in blocs:
-        w = 12 if rep == "X12.11" else 41 * 1.35
-        if rep == "X21.14":
-            p.text(x + 2, y + 14, "…  K1 K2 K3 · K4 …", 2.6, coul="#555")
-            x += 46
-        p.rect(x, y, w, 26, fill=f, stroke="#d00000" if rep == "X21.14" else "#000",
-               sw=0.35, dash="1.2,0.6" if rep == "X21.14" else None)
-        coul = "#ffffff" if rep in ("X21.14", "X21.11") else "#000"
+        if rep == "…":
+            p.text(xx, y + 10, "FA1 KA1 K1-K4", 2.0, coul="#555", maxw=22)
+            xx += 23
+            continue
+        w = 7.4 if rep == "X12.11" else 26
+        prop = rep == "X21.14"
+        p.rect(xx, y, w, 19, fill=f, stroke="#d00000" if prop else "#000", sw=0.35, dash="1.2,0.6" if prop else None)
+        coul = "#ffffff" if rep in ("X21.11", "X21.14") else "#000"
         if rep == "X12.11":
-            p.text(x + 6.8, y + 24, rep, 2.3, gras=True, rot=-90, maxw=22)
+            p.text(xx + 4.5, y + 18, rep, 2.1, gras=True, rot=-90, maxw=17)
         else:
-            p.text(x + w / 2, y + 8, rep, 3, gras=True, ancre="middle", coul=coul)
-            p.text(x + w / 2, y + 13, nom, 2.6, ancre="middle", coul=coul, maxw=w - 2)
-            p.text(x + w / 2, y + 18, "fil " + fil, 2.3, ancre="middle", coul=coul, maxw=w - 2)
-            p.text(x + w / 2, y + 23, "1 entrée + 12 départs", 2.0, ancre="middle", coul=coul, maxw=w - 2)
-        p.text(x + w / 2, y + 31, nom if rep == "X12.11" else "", 2.2, ancre="middle", maxw=40)
-        x += w + 6
-    y += 38
-    notes = ["Ordre R4 : QF4 … QF10, XD1 | X13.11-12 | X13.21-22 | S1 | S4 | H3 | H4 | vis | H2 (230 V seul après la vis).",
-             "X13 (230 V) et X12.11 en PT 4 : ce sont les PT 4 restants (15 achetés, 10 pour la puissance).",
-             "R3 : X21.11, X21.12, X12.11, X21.13 à gauche (inchangés) ; X21.14 proposé à droite de K4 (tireté rouge).",
-             "Porte (gauche) : S1, S4, H2, H3, H4 raccordés uniquement par ces bornes ; faisceau de porte TBTP et "
-             "faisceau 230 V (H2) séparés."]
-    for n in notes:
-        y = p.bloc(16, y, "• " + n, 2.5, maxw=220) + 0.8
-    legende_borne(p, 250, y - 26 if y - 26 > 200 else 200)
+            p.text(xx + w / 2, y + 5, rep, 2.5, gras=True, ancre="middle", coul=coul, maxw=w - 1)
+            p.text(xx + w / 2, y + 9.5, nom, 2.1, ancre="middle", coul=coul, maxw=w - 1.5)
+            p.text(xx + w / 2, y + 13.5, "fil " + fil, 1.9, ancre="middle", coul=coul, maxw=w - 1.5)
+            p.text(xx + w / 2, y + 17.3, "1 entrée + 12", 1.7, ancre="middle", coul=coul, maxw=w - 1.5)
+        xx += w + 2
+    p.bloc(x, y + 23.5, "X21.14 proposé (tireté rouge) : à droite de K4, près de K1 (L+ capteurs). "
+           "Dessin réduit, ordre réel de gauche à droite.", 2.0, maxw=404 - x)
 
 
 def page_cables():
@@ -620,10 +634,10 @@ def table_cond(p, cab, x, y, larg, titre_ext, t=2.0, pas=3.9):
             rec = B[rep]
             ext = court_ext(rec)
             if cab == "W12":
-                ext = "+M-X1 → " + ext
+                ext = "+BJM → " + ext
             vals = [n, rep, court_armoire(rec), rec.get("numero_fil", ""), ext]
         elif rep == "XPE1":
-            vals = [n, "-XPE1", "barrette de terre", "PE", "+M-X1 masse" if cab in ("W12", "W4") else "masse moteur ?"]
+            vals = [n, "-XPE1", "barrette de terre", "PE", "+BJM masse" if cab in ("W12", "W4") else "masse moteur ?"]
         else:
             vals = [n, "-", "réserve, non bornée", "", "-"]
         for v, (h, f), xc in zip(vals, cols, xs):
@@ -649,7 +663,7 @@ def pages_conducteurs():
     for cab in ("W3", "W6", "W8", "W14"):
         y2 = table_cond(p, cab, 152, y2, 128, "Côté machine")
     x, y = 290, 27
-    p.text(x, y, "Après la boîte +M-X1 : câbles à définir", 3, gras=True, maxw=120)
+    p.text(x, y, "Après la boîte +BJM : câbles à définir", 3, gras=True, maxw=120)
     y = p.bloc(x, y + 5, "Le schéma s'arrête aux bornes de l'armoire : les liaisons boîte → appareils n'y sont pas. "
                          "À définir avec Julien (aucun achat possible).", 2.2, maxw=120) + 1
     for liaison, cond, nature in S["apres_boite"]:
@@ -721,7 +735,7 @@ def page_synoptique():
     M2 = boite(xm + 70, 64, 56, 24, "M2 motoréducteur SEW", ["K39 DRN100LS4, 2,2 kW", "frein BE5 · sonde TF"])
     boite(xm + 70, 96, 56, 20, "M3 pas-à-pas", ["Nema 34, translation axe 1"])
     boite(xm + 70, 122, 56, 20, "M4 pas-à-pas", ["Nema 34, translation axe 2"])
-    boite(xm + 2, 150, 46, 50, "Boîte +M-X1", ["dérivation machine", "(une seule)"], fill="#fffbe6")
+    boite(xm + 2, 150, 46, 50, "Boîte +BJM", ["dérivation machine", "(une seule)"], fill="#fffbe6")
     boite(xm + 70, 150, 56, 13, "B1 capot mécanique", [])
     boite(xm + 70, 166, 56, 13, "B3 à B6 fins de course", [])
     boite(xm + 70, 182, 56, 13, "H1 colonne lumineuse", [])
@@ -754,7 +768,7 @@ def page_synoptique():
     p.text(16, y, "Lecture", 2.8, gras=True)
     p.text(16, y + 5, "Trait plein : câble de la liste (repère · composition). Tireté : PROFINET (PN4) et variante US.",
            2.4, maxw=222)
-    p.text(16, y + 14, "Pointillé fin : liaisons boîte +M-X1 → appareils (freins BE5, B1, B3-B6, H1), non définies au schéma.",
+    p.text(16, y + 14, "Pointillé fin : liaisons boîte +BJM → appareils (freins BE5, B1, B3-B6, H1), non définies au schéma.",
            2.4, maxw=222)
     p.text(16, y + 9.5, "Sens des flèches : sens de l'énergie ou du signal. Repères identiques à la liste des câbles.",
            2.4, maxw=222)
@@ -763,20 +777,20 @@ def page_synoptique():
 # ------------------------------------------------------------------ contrôles
 def ouverts():
     t = S["types_bornes"]
-    besoin = {"PT 2,5": 0, "PT 4": 0, "terre": 0}
+    besoin = {k: 0 for k in t["achetes"]}
     for rep, rec in B.items():
         if rec["type"] != "PTFIX":
             besoin[type_borne(rep)] += 1
     manque = {k: besoin[k] - t["achetes"][k] for k in besoin}
-    OUVERTS.append(f"Bornes : {sum(besoin.values())} dessinées au schéma ; PT 2,5 {besoin['PT 2,5']} pour "
-                   f"{t['achetes']['PT 2,5']} achetées, PT 4 {besoin['PT 4']} pour {t['achetes']['PT 4']}, terre "
-                   f"{besoin['terre']} (en livraison). Manque {max(manque['PT 2,5'], 0)} PT 2,5 : à décider "
-                   "(voir le compte rendu).")
+    OUVERTS.append("Bornes : " + " ; ".join(f"{k} {besoin[k]} pour {t['achetes'][k]}" for k in besoin)
+                   + " (dessinées au schéma / en stock). Manque : "
+                   + (", ".join(f"{manque[k]} {k}" for k in besoin if manque[k] > 0) or "aucun") + ".")
+    OUVERTS.append("Répartition des conducteurs W11 (27G1) / W12 (19G1), Q32 : marquée à valider (demande du 18/11), "
+                   "dessinée telle quelle (f70, v19).")
     OUVERTS.append("X21.14 (PTFIX noir) proposé à droite de K4 sur R3 : la place prévue à côté de X21.13 est occupée "
                    "par FA1 et KA1.")
-    OUVERTS.append("Câbles boîte +M-X1 → freins BE5, B1, B3-B6, H1 : non définis au schéma.")
+    OUVERTS.append("Câbles boîte +BJM → freins BE5, B1, B3-B6, H1 : non définis au schéma.")
     OUVERTS.append("W14 : repère proposé pour le câble M12 de B2 ; brochage M12 du MN508S à relever.")
-    OUVERTS.append("Schéma : W9 / W10 à renommer en 5G1,5 ; W11, W12, W14, PN1-PN4 absents du tableau f80.")
     return besoin, manque
 
 
@@ -805,9 +819,10 @@ def croisement():
         if c["repere"] not in CAB:
             ecarts.append(f"câble du schéma absent de la liste : {c['repere']}")
     syn = " ".join(PAGES[-1].textes)
-    for rep in CAB:
-        if not re.search(rf"\b{re.escape(rep)}\b", syn):
-            ecarts.append(f"câble {rep} absent du synoptique")
+    if PAGES[-1].titre.startswith("Synoptique"):
+        for rep in CAB:
+            if not re.search(rf"\b{re.escape(rep)}\b", syn):
+                ecarts.append(f"câble {rep} absent du synoptique")
     # bornes des tables de conducteurs = bornes du groupe du même câble
     for cab, lst in S["conducteurs"].items():
         bornes_cab = {r for br in S["borniers"] for g in br["groupes"] if g["cable"] == cab for r in g["bornes"]}
@@ -824,14 +839,10 @@ def croisement():
 
 def main():
     besoin, manque = ouverts()
-    garde = page_garde()
-    page_charte()
+    # v12 (Julien 18/11) : 2 pages seulement. Garde, charte, câbles, conducteurs et synoptique (v11) ne sont
+    # plus imprimés ; leurs fonctions restent dans ce fichier.
     page_plaque()
-    pages_borniers()
-    page_cables()
-    pages_conducteurs()
-    page_synoptique()
-    remplir_garde(garde)
+    page_borniers()
     n = len(PAGES)
     erreurs = []
     for q in PAGES:
@@ -867,6 +878,7 @@ def main():
            f"Pages : {n} générées, {nb_pages} dans le PDF (A3 paysage).", "",
            f"## Mise en page (textes trop larges, chevauchements) : {len(erreurs)}"] + [f"- {e}" for e in erreurs] + [
            "", f"## Croisement avec le .xrs : {len(ecarts)} écart(s)"] + [f"- {e}" for e in ecarts] + [
+           "", "## Points ouverts (hors dessin)"] + [f"- {o}" for o in OUVERTS] + [
            "", "## Comptage des bornes"] + [f"- {k} : {v} nécessaires, {S['types_bornes']['achetes'][k]} achetées, "
                                            f"manque {max(manque[k], 0)}" for k, v in besoin.items()]
     open(os.path.join(ICI, "..", "release", nom + "_verification.md"), "w", encoding="utf-8", newline="\n").write(

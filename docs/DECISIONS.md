@@ -450,3 +450,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f85 : image du plan d'implantation quand il sera validé (Julien).
 - [C] Courant du frein BE5 : inconnu (Julien).
 - [D] Go v34 (Julien) ; v34 : 0 problème, 0 erreur, 0 chevauchement.
+
+## 18/11/2026 : implantation v12
+- [D] Implantation : générateur gardé, draw.io abandonné (Julien).
+- [D] 2 pages seulement : plan de la plaque, détail des borniers (Julien). Travail limité à R3, R4, R5.
+- [D] Ordre de R4 : QF4 … QF10, XD1 | X13 | S1, S4, H3, H4 | vis | H2 (Julien : oui).
+- [D] Freins M1 + M2 : un seul 5G1,5 (repère W4 inchangé).
+- [?] Répartition W11 / W12 (Q32) : demande du 18/11 « non validée, à marquer à valider », contre « validée le 05/11 » en mémoire. Marquée à valider en v12, question reposée.
+- [C] v12 : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs v34. Bornes de terre : 6 pour 4.

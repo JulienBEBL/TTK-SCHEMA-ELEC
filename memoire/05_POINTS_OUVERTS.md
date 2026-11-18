@@ -30,7 +30,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 | Q29 | Fixation de la sonde 350-398 : écrou 1/2 pouce (RS) contre cote Microdia « 12/Ø8 x 20 » | compatibilité à confirmer avant commande (sonde encore à FALSE) |
 | Q30 | Câble moteur 2XSLCY-K 50 m : 1 machine ou 2 ? Julien a répondu « OUI » | à préciser |
 | Q31 | Repères du répartiteur 4P AEE300427 et du bornier de terre Legrand 404839 (anciens X12 / X13, non dessinés) | **réglé le 05/11** : répartiteurs **-XR1 / -XR2** (Julien), bornier de terre **-XPE1** |
-| Q32 | Répartition des câbles 27G1 (-W11) / 19G1 (-W12) | **validée par Julien le 05/11**, dessinée au f70 en v19 (conducteur → borne, butées entre fonctions). Risque du 03/11 (+24 V permanent à côté des fils après KA1) : **pas un risque pour Julien** (chaque conducteur a sa gaine, cheminement soigné) |
+| Q32 | Répartition des câbles 27G1 (-W11) / 19G1 (-W12) | **18/11 : remise « à valider » par la demande d'implantation v12, question reposée** ; avant : **validée par Julien le 05/11**, dessinée au f70 en v19 (conducteur → borne, butées entre fonctions). Risque du 03/11 (+24 V permanent à côté des fils après KA1) : **pas un risque pour Julien** (chaque conducteur a sa gaine, cheminement soigné) |
 | Q33 | Câble frein unique M1 + M2 (5G1,5) | **réglé, dessiné en v18** : repère **W4** (W7 supprimé ; W3 / W6 = sondes TF), V/J → -XPE1 et boîte de dérivation |
 | Q34 | Repère du 2e répartiteur : -XR2 | **réglé le 05/11** : XR1 et XR2 (Julien) |
 | Q35 | Sélecteur S3 : la fiche Eaton montre des ponts 2-4, 6-8, 10-12, 14-16 → 4 inverseurs (1 commun + 2 sorties), pas 8 NO indépendants. Le schéma (8 NO, 7 utilisés, chacun sur son potentiel) ne tient pas | **réglé le 05/11** : les ponts sont des fils sur les bornes paires, **Julien les a retirés** (photos) → 8 contacts NO indépendants, option D abandonnée. Vraie numérotation et noms AUTO-A à MANU-D **dessinés en v17** |
@@ -112,8 +112,10 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 - Boîte de jonction machine +BJM (17/11) : tout passe par la boîte → 57 bornes (84 avec le pupitre W11) ; W11 par la boîte ou en direct ? blindage des tronçons boîte → appareil (côté boîte ?) ; W8 : 2 bornes cuivre acceptables si les deux sont à la même température ; W14 : câble M12 coupé en deux ; stock de PT 2,5 à confirmer (mémoire : 70 ; fichier de commande : 40 + 200) ; boîte elle-même non achetée ; câbles boîte → appareils non prévus.
 - W14 (M12) : couleurs des 4 conducteurs utilisés à relever ; W2 / W5 : marquage U V W à relever ; W3 / W6 : blanc = 1b proposé ; W9 / W10 : V/J côté moteur à vérifier.
 
-## Implantation v11 (17/11)
-Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) ; X21.14 à droite de K4 [H] ; W14 [H] ; câbles +BJM → appareils ; au schéma : W9 / W10 « 4 cond. » → 5G1,5, W11 / W12 / W14 / PN absents du f80.
+## Implantation v12 (18/11)
+- Manque de PT 2,5 : **réglé** (types du 18/11 : PT 2,5 36 / 70, PTFIX 2X4 38 / 46, PT 4 15 / 15). Reste : **2 bornes de terre** (6 / 4, X20.15 / X20.25 en v34).
+- **Q32 contradictoire** : la demande du 18/11 dit « répartition W11 / W12 non validée, marquer à valider » ; la mémoire dit « validée le 05/11 » (f70 v19, PTFIX 2X4 du 18/11). Marquée « à valider » en v12 ; question reposée à Julien le 18/11.
+- X21.14 à droite de K4 [H] ; W14 [H] ; câbles +BJM → appareils non définis.
 
 ## Revue v33 (18/11)
 Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (remplace `REVUE_COMPLETE_v29.md` § 3). Nouveaux :

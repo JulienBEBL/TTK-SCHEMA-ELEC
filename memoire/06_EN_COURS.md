@@ -16,7 +16,7 @@
 
 ### Suite
 - Julien : relire la v34 ; 2 bornes de terre à prévoir (6 dessinées, 4 achetées).
-- Implantation : régénérer (X20.15 / X20.25, PTFIX 2X4, +BJM).
+- Implantation : **v12 faite le 18/11** (2 pages, schéma v34, PTFIX 2X4, X20.15 / X20.25, +BJM) : relecture de Julien attendue. Détail : `08_IMPLANTATION.md`.
 
 ## Version précédente : v33 (18/11/2026, PC PRO RIMANE)
 `schema/generes/release/TTK_2026-11-18_v33.xrs` : 27 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v32 dans old/ (non réenregistrée).

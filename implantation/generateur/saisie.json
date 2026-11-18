@@ -1,11 +1,11 @@
 {
  "_lisez_moi": "Données hors schéma, saisies à la main. Coordonnées en mm sur la plaque, depuis le coin haut gauche. Source de la géométrie : implantation v10 (draw.io, 06/11), mises à jour indiquées par 'maj'. Statuts : fixe (déjà monté), a_poser, deplace, propose.",
  "document": {
-  "titre": "Armoire +A1 : implantation, câbles et synoptique",
+  "titre": "Armoire +A1 : implantation et borniers",
   "machine": "Machine de tressage TTK, n° 001-EU",
-  "indice": "A",
-  "version": "v11",
-  "date": "17/11/2026",
+  "indice": "B",
+  "version": "v12",
+  "date": "18/11/2026",
   "auteur": "THRO.J",
   "societe": "BEBL",
   "revisions": [
@@ -13,6 +13,11 @@
     "A",
     "17/11/2026",
     "1re édition du dossier unique (implantation, liste des câbles, synoptique), schéma v31. Remplace l'implantation draw.io v10."
+   ],
+   [
+    "B",
+    "18/11/2026",
+    "2 pages (plaque, borniers), schéma v33. Bornes PTFIX 2X4 (6 mm) pour W11 / W12, boîte +BJM, XR2 monté sur R2, répartition W11 / W12 marquée à valider."
    ]
   ]
  },
@@ -369,7 +374,7 @@
    685,
    72,
    90,
-   "deplace",
+   "fixe",
    "Répartiteur 400 V n°2 (ponts 4 mm² depuis XR1)",
    "AEE300427",
    "puissance"
@@ -816,7 +821,8 @@
       "X20.11",
       "X20.12",
       "X20.13",
-      "X20.14"
+      "X20.14",
+      "X20.15"
      ]
     },
     {
@@ -826,7 +832,8 @@
       "X20.21",
       "X20.22",
       "X20.23",
-      "X20.24"
+      "X20.24",
+      "X20.25"
      ]
     }
    ]
@@ -959,12 +966,14 @@
   "achetes": {
    "PT 2,5": 70,
    "PT 4": 15,
-   "terre": 4
+   "terre": 4,
+   "PTFIX 2X4": 46
   },
   "largeur": {
    "PT 2,5": 5.2,
    "PT 4": 6.2,
-   "terre": 5.2
+   "terre": 5.2,
+   "PTFIX 2X4": 6.0
   },
   "_types_18_11": "Julien 18/11 : arrivée réseau, moteurs 1 / 2, freins 1 / 2 = PT 4 Phoenix 3211757 ; bornes des appareils des câbles 27G1 (W11) et 19G1 (W12) = PTFIX 2X4 Phoenix 1028361 ; rail R4 = PT 2,5 Phoenix 3209510 (X13 n'est plus en PT 4). Bornes PE inchangées (terre). X12.11 : PT 4 [H] inchangé.",
   "PT 4": [
@@ -1031,7 +1040,8 @@
    "X50.13",
    "X20.15",
    "X20.25"
-  ]
+  ],
+  "_ptfix_2x4": "Phoenix 1028361, 6 mm, 2 trous (Julien 18/11). Stock : « 19 et 27 » blocs (Julien 18/11)."
  },
  "couleurs_cables": {
   "W11": "#cfe2f3",
@@ -1051,9 +1061,9 @@
   "porte230": "#f9d5e5"
  },
  "boite": {
-  "repere": "+M-X1",
-  "designation": "Boîte de dérivation machine (une seule)",
-  "statut": "repère proposé le 17/11, validé par Julien (IEC 81346-2, classe X)"
+  "repere": "+BJM",
+  "designation": "Boîte de jonction machine (une seule), bornier +BJM-X1",
+  "statut": "nommée par Julien le 17/11 (ancien +M-X1)"
  },
  "cables": [
   {
@@ -1509,7 +1519,7 @@
    ],
    [
     "V/J",
-    "XPE1"
+    "X20.15"
    ]
   ],
   "W10": [
@@ -1531,7 +1541,7 @@
    ],
    [
     "V/J",
-    "XPE1"
+    "X20.25"
    ]
   ],
   "W2": [
@@ -1621,10 +1631,10 @@
  },
  "notes_conducteurs": {
   "W11": "LIYCY-JZ : conducteurs numérotés + V/J. N° de conducteur = ordre des bornes (validé le 05/11, f70). Réserve 23-26 non bornée.",
-  "W12": "N° de conducteur = ordre des bornes (f70). V/J : XPE1 côté armoire, masse de la boîte +M-X1. Réserve 17-18 non bornée.",
-  "W4": "Conducteurs 1-2 = frein M1, 3-4 = frein M2 (v18). V/J : XPE1 et boîte +M-X1.",
-  "W9": "Affectation du 5G1,5 décidée le 17/11. V/J : XPE1 ; côté moteur, masse de M3 si une borne existe (à vérifier).",
-  "W10": "Idem W9 pour M4.",
+  "W12": "N° de conducteur = ordre des bornes (f70). V/J : XPE1 côté armoire, masse de la boîte +BJM. Réserve 17-18 non bornée.",
+  "W4": "Conducteurs 1-2 = frein M1, 3-4 = frein M2 (v18). V/J : XPE1 et boîte +BJM.",
+  "W9": "Affectation du 5G1,5 décidée le 17/11. V/J sur la borne de terre X20.15 (v34), non raccordé côté moteur.",
+  "W10": "Idem W9 pour M4 (V/J sur X20.25).",
   "W2": "Marquage des conducteurs du 2XSLCY-K à relever sur le câble.",
   "W5": "Idem W2.",
   "W3": "Conducteurs blanc et marron (Julien 05/11). Blanc = 1b : proposition.",
@@ -1634,27 +1644,27 @@
  },
  "apres_boite": [
   [
-   "+M-X1 → M1 frein (2-3)",
+   "+BJM → M1 frein (2-3)",
    "W4 1-2",
    "2 conducteurs 400 V CA"
   ],
   [
-   "+M-X1 → M2 frein (2-3)",
+   "+BJM → M2 frein (2-3)",
    "W4 3-4",
    "2 conducteurs 400 V CA"
   ],
   [
-   "+M-X1 → B1 (11-12, 23-24)",
+   "+BJM → B1 (11-12, 23-24)",
    "W12 1-4",
    "4 conducteurs"
   ],
   [
-   "+M-X1 → B3, B4, B5, B6 (NF 11-12)",
+   "+BJM → B3, B4, B5, B6 (NF 11-12)",
    "W12 5-12",
    "2 conducteurs par fin de course"
   ],
   [
-   "+M-X1 → H1 (RD, OG, GN, COM)",
+   "+BJM → H1 (RD, OG, GN, COM)",
    "W12 13-16",
    "4 conducteurs"
   ]
