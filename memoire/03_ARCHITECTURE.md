@@ -19,7 +19,7 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
 | CPU K1 : L+ et sorties 3L+ (PUL / DIR / ENA des drivers) | KA1 13-14 → KF1, KF2 ; puis Manu-D → KA2 (48 V) |
 | K2, K3 : L+ | KA1 23-24 → Auto-A → KM1, KM2 |
 | Switch K4 | KA1 33-34 → Auto-B → STO de U1 / U2 |
-| IHM P1 (X71.21) | K2 : sorties 3L+ → colonne H1, voyant S4, voyant H4 |
+| IHM P1 (X71.21) | K2 : sorties 3L+ → colonne H1, voyant H4 (Q8.3 en réserve) |
 | KA1 : alimentation A1 | |
 | U1 / U2 : X5 (24 V de sauvegarde) | |
 | Voyant H3 | |
@@ -84,7 +84,7 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - **f60 à f62 figés** jusqu'à validation de la liste par Julien. f63 complet (validé le 23/10).
 - Entrées CPU : I0.0 AU pupitre, I0.1 AU armoire, I0.2 / I0.3 capots B1 / B2 (1 = ouvert), I0.4 Auto, I0.5 Manu, I0.6 / I0.7 / I1.0 / I1.1 fins de course, I1.2 / I1.3 retours KM1 / KM2, I1.4 retour KA2, I1.5 diagnostic KA1.
 - Sorties CPU [D 30/10] : **PUL des 2 drivers en 100 kHz obligatoire** : Q0.0 PUL U3, Q0.2 PUL U4. Q0.1 DIR U3, Q0.3 DIR U4, Q0.4 ENA U3, Q0.5 ENA U4. Q0.6, Q0.7, Q1.0, Q1.1 réserve. Source : fiche Siemens 6ES7214-1AH50-0XB0 : Qa.0-Qa.3 100 kHz max, Qa.4-Qb.1 20 kHz max.
-- SM 1223 : Q8.0-Q8.2 colonne, Q8.3 voyant S4, Q8.4 voyant H4 ; entrées en réserve ; alarme switch non câblée.
+- SM 1223 : Q8.0-Q8.2 colonne, Q8.3 réserve (S4 non lumineux depuis la v16), Q8.4 voyant H4 ; entrées en réserve ; alarme switch non câblée.
 - Proposition détaillée (non validée) : `PROPOSITION_ES_AUTOMATE.csv` (ancien dossier local).
 
 ## PROFINET (f30) et pupitre (f50)

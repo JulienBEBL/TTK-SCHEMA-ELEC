@@ -46,7 +46,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | T3 | Mean Well NDR-240-48, 48 V 240 W | |
 | KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire, 1 pôle (1-2) sur le +48 V | pouvoir de coupure DC-1 sous 48 V à vérifier |
 | X21.11 à X21.13 (anciens X31 à X33) | **Phoenix PTFIX 6/12X2,5 (3273354)**, 1 entrée + 12 départs [D 05/11, v20] : X21.11 24VELEC **rouge**, X21.12 0 V **bleu**, X21.13 24VSEC **gris** (stock de Julien : RD, BK, GY, BU ; référence exacte par couleur à vérifier) | remplace les PTFIX 6X1,5 (3002781) ; X12.11 (ancien X36) = borne sectionnable PELV |
-| U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA à vérifier |
+| U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA **réglée le 05/11** (voir 05 point 13 : ENA alimenté = moteur libre), à confirmer au banc |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 
 ## Sécurité, commande (f40 à f42, f50)

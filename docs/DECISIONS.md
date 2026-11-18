@@ -460,3 +460,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] v12 : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs v34. Bornes de terre : 6 pour 4.
 - [D] Q32 : répartition W11 / W12 validée (Julien 18/11, confirme le 05/11) ; marque retirée de la v12.
 - [D] Frein : repère W4 ok (Julien 18/11).
+
+## 18/11/2026 : incohérences relevées par le chat automate
+- [?] SEW « 1 » mise sous tension : unité à demander (AL04 / `T_SEW_ON` du programme). Schéma inchangé.
+- [C] Polarité ENA : réglée le 05/11 ; `02_MATERIEL.md` corrigé (contradiction avec 05).
+- [C] Liste d'E/S : titre passé en v34.
+- [C] `03_ARCHITECTURE.md` : Q8.3 en réserve (plus de voyant S4).
