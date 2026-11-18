@@ -309,3 +309,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : identité git, Python, CLAUDE.md
 - Julien : identité JulienBEBL / julien@bebl.fr en `--local` ; Python installé ; OK pour corriger `CLAUDE.md`.
 - Fait : `git config --local` (vérifié) ; contrôles Python sur la v31 de HEAD (mêmes résultats que sur le PC de Julien) ; `CLAUDE.md` § 7 ; mémoire 05, 06, 07. Commit local sans push. Release v31 toujours non restaurée.
+
+## 18/11/2026 : nomenclature générée, essai images
+- Julien : OK pour restaurer la release et copier les symboles ; option B pour la nomenclature, avec une étape de vérification après génération ; S1 / S2 et TR1 « à toi de choisir » ; OK pour la copie de test des images ; push du commit précédent.
+- Fait : push c542fcc ; release restaurée ; 53 symboles CUSTOM installés ; essai : le script reproduit la v31 à l'identique sur ce PC ; `outils/nomenclature.py` (f90 + f91, 88 lignes) et son contrôle (a trouvé puis fait corriger : PTFIX comptés en PT 2,5, cartouche FA1 en double) ; copie `schema/generes/test_images/TEST_images_relatives.xrs`. Pas de v32 en release (accord attendu).

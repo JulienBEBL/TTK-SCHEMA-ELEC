@@ -14,3 +14,6 @@ desktop.ini
 
 # Images collées par WinRelais dans le dossier release (les images du projet sont dans schema/images/)
 schema/generes/release/Image_Coll*.jpg
+
+# Copies de test (images relatives, 18/11) : non versionnées
+schema/generes/test_images/

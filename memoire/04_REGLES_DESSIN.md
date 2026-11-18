@@ -129,6 +129,14 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 
 ## Images (09/11)
 - Les images (logos f01) sont dans `schema/images/` et écrites par le script dans la section `¤#Logo¤` : `x·y·largeur·hauteur·chemin absolu·1·ratio de l'image x 1000·index du folio·0·`. Le chemin est absolu : il est recalculé à chaque génération depuis le dépôt.
+- 18/11 : variable `TTK_IMAGES` (dossier écrit dans le .xrs, relatif ou absolu ; défaut `schema/images` du dépôt). Essai en cours : copie `schema/generes/test_images/TEST_images_relatives.xrs` (chemins `..\..\images\…`, non versionnée), à ouvrir dans WinRelais par Julien.
+
+## Nomenclature f90 / f91 (18/11, option B de Julien)
+- Générée par le script (`outils/nomenclature.py`), plus par WinRelais. Colonnes : Repère, Désignation, Marque et référence, Caractéristiques, Qté, Loc., Folio. Texte 200, lignes de 380, en-tête sur chaque folio.
+- **Une ligne par appareil** (repère), Qté 1 ; textes entiers (champs non coupés) du symbole qui porte la référence (sinon celui qui a des champs). Marque et référence = champ 3 ; s'il est vide ou « À définir » : `RefConstructeur`, sinon « à vérifier ».
+- Puis : bornes par type (PT 2,5, PT 4, terre d'après `implantation/generateur/saisie.json` ; PTFIX d'après le symbole), matériel non dessiné (`HORS_SCHEMA` : XR1, XR2, XPE1, butées, +BJM), câbles (`saisie.json`).
+- **Contrôle** (demande de Julien) : `nomenclature.controle` relit le .xrs écrit : chaque appareil sur une seule ligne, rien d'inconnu, bornes recomptées par type, câbles du schéma et de `saisie.json` présents, quantités, textes dans leur colonne ; affiche les lignes à compléter et le stock dépassé. Ses problèmes s'ajoutent au « N problème(s) de contrôle ».
+- Choix de l'assistant (Julien : « à toi de choisir », 18/11) : S1 / S2 sur une ligne (XB5AS8442 + ZBE102 + ZBE101) ; TR1 gardé, localisation EXT.
 
 ## Numérotation des fils : mise en application (13/11, v25)
 - Julien a reçu des repères pour le 4 mm². Numérotation appliquée **folio par folio**, f10 d'abord (v25), à sa demande, avant la validation complète de l'automate et des borniers.

@@ -51,6 +51,7 @@
 - **Numéros de folio** : anciens numéros en interne (`F["13"]`, textes « (f13) ») ; `NUMFOL` donne le numéro affiché, `ren()` traduit les « fNN » des textes et les repères (`RENOMME`). Un texte qui contient déjà un nouveau numéro (relu dans le fichier, ex. tableaux de bornier f71) passe par `ren_rep()` seulement.
 - **Terre** : chaque fil PE court d'appareil est ajouté à `PE_DEST` ; les départs PE du f20 et leurs renvois sont tracés à la fin, triés par folio.
 - **Barres 24 V / 0 V** : tracées à la fin (liste `CH`, triée par numéro affiché) ; les folios 40, 41, 42, 50 (anciens numéros) sont d'abord descendus par `g.decaler` pour laisser la place, puis leurs liaisons aux barres sont tracées. Tout renvoi vers ces folios doit être posé **avant** le décalage.
+- **Nomenclature** (18/11) : `outils/nomenclature.py`, appelé après `renommer_symboles()` ; contrôle relu sur le fichier à la fin.
 - **Centrage** : `HAUT` liste les folios centrés en largeur seulement (bus, barres et variateurs à hauteur fixe).
 - **Noms de broches** : `noms=True / False` à la pose d'un symbole.
 - **Numéros de fil** : `nommer_phases()` (tronçon = fils reliés bout à bout sur le folio ; alignement des voisins ; nom des bus à gauche).

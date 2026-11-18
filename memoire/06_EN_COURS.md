@@ -6,7 +6,11 @@
 - Nomenclature : 8 causes dans le script (référence au 3e champ de `RefConstructeur` alors que WinRelais lit le 2e, champ 3 masqué tronqué, Qte = nb de symboles…). Options A (script + régénération WinRelais) / B (script génère le tableau). Détail : `docs/ANALYSE_PC_RIMANE_2026-11-18.md`.
 - PC : identité git `--local` JulienBEBL / julien@bebl.fr (Julien 18/11) ; Python 3.15.2 installé : sur la v31 de HEAD, verifier 0 erreur / 28 attentions, chevauchements 0, numéros 0 problème (comme sur le PC de Julien) ; symboles CUSTOM non installés ; push GitHub OK (compte JulienBEBL).
 - `CLAUDE.md` § 7 : les 2 clones (accord de Julien 18/11).
-- En attente de Julien : restauration de la release, push, copie des symboles CUSTOM, choix A / B (nomenclature), images.
+- Fait (Julien OK) : release v31 restaurée (`git checkout`), 53 symboles CUSTOM copiés dans `sym_electrotech\CUSTOM`, commit c542fcc poussé.
+- Nomenclature **option B** codée (`outils/nomenclature.py`, f90 + nouveau f91), avec contrôle d'exhaustivité. Essai de génération hors release : 26 folios, 0 problème ; verifier 0 erreur / 28 attentions (identiques) ; 0 chevauchement ; numéros 0 problème. 88 lignes : 59 appareils, 97 bornes (PT 2,5 74, PT 4 15, PTFIX 4, terre 4), 17 câbles. À compléter : B7, H2, H3, H4, butées, +BJM.
+- Autres changements dans le script : références B1, B3-B6 (RS PRO 902-6874), H1 (RS PRO 199-9760), S1 / S2 (XB5AS8442 + ZBE102 + ZBE101) au champ 3 ; S2 « 2 NF + 1 NO » (affiché au f41) ; localisation M pour H1 et B7 ; variable `TTK_IMAGES`.
+- Essai PC Rimane : le script génère la v31 à l'identique (seuls les chemins d'images changent).
+- En attente de Julien : générer la v32 en release ; ouvrir la copie de test des images ; push.
 
 ## Version actuelle : v31 (16/11/2026)
 `schema/generes/release/TTK_2026-11-16_v31.xrs` : 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v30 réenregistrée par Julien (copie `schema/recus/2026-11-16_v30_ouverte_WinRelais.xrs`).

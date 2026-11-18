@@ -13,6 +13,7 @@ import sys
 
 import lire_tableau
 from xrs_gen import Gen, check
+import nomenclature
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 SORTIE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ICI, "..", "schema", "generes", "TTK_genere.xrs")
@@ -24,10 +25,20 @@ FOL = lire_tableau.folios(TABLEAU)
 # décisions postérieures au classeur (27/10/2026) : le classeur de Julien n'est pas modifié, voir livrables/MAJ_Reperes_2026-10-27.csv
 REP["B412"].update({"fab": "ifm MN508S (RS 016-3138)", "carac": "codé - 2 NO + 1 NF - M12 - 24 V 50 mA"})
 REP["S413"].update({"fab": "Eaton T0-4-8223/E", "carac": "8 contacts NO 1-2 à 15-16 (ponts d'usine retirés)"})
+# 18/11 (nomenclature) : références connues mais restées « À définir » dans le classeur (memoire/02_MATERIEL.md)
+REP["B411"]["fab"] = "RS PRO 902-6874"
+REP["P511"]["fab"] = "RS PRO 199-9760"
+for k_ in ("S411", "S412"):
+    REP[k_]["fab"] = "Schneider XB5AS8442 + ZBE102 + ZBE101"
+REP["S412"]["carac"] = "2 NF + 1 NO"          # comme S1 (Julien 03/11)
+REP["P511"]["loc"] = "+M"                    # colonne lumineuse de la machine (02_MATERIEL)
 # f13 séparé en deux (29/10) : f13 alimentations, f14 services armoire ; f43 supprimé (29/10)
 FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "13") + 1,
            {"num": "14", "titre": "DISTRIBUTION 230 V - SERVICES", "desc": "VENTILATION, ECLAIRAGE, PRISE DE SERVICE",
             "loc": "+A1", "maitres": ""})
+# 18/11 : nomenclature générée sur deux folios (90, 91)
+FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "90") + 1,
+           {"num": "91", "titre": "NOMENCLATURE (2/2)", "desc": "LISTE DU MATERIEL : SUITE", "loc": "—", "maitres": None})
 DESC_FOL = {"02": "LISTE DES FOLIOS",
             "03": "COULEURS DES CONDUCTEURS",
             "10": "RACCORDEMENT RESEAU, SECTIONNEMENT, PROTECTION GENERALE",
@@ -51,7 +62,7 @@ DESC_FOL.update({
     "52": "SIGNALISATION : COLONNE LUMINEUSE -H1, VOYANT DEFAUT -H4",
     "70": "BORNES RAIL PAR RAIL : MACHINE, PUPITRE, PORTE, INTERNES",
 })
-TITRES_FOL = {"13": "DISTRIBUTION 230 V - ALIMENTATIONS", "32": "48 VDC ET MOTEURS PAS A PAS",
+TITRES_FOL = {"90": "NOMENCLATURE (1/2)", "13": "DISTRIBUTION 230 V - ALIMENTATIONS", "32": "48 VDC ET MOTEURS PAS A PAS",
               "51": "AUTOMATE - SORTIES TOR", "52": "MODULE SM 1223 - SIGNALISATION", "70": "BORNIERS DE L'ARMOIRE"}
 for f in FOL:
     f["titre"] = TITRES_FOL.get(f["num"], f["titre"])
@@ -614,7 +625,8 @@ for i, logo in enumerate(("TTK", "BEBL", "LEVERT INDUSTRIE")):
     g.cadre(F["01"], x, 12400, x + 6400, 16400, width=20)
 
 # logos insérés par Julien dans la v24 (09/11), positions et tailles relevées ; images dans schema/images
-IMG = os.path.join(os.path.dirname(ICI), "schema", "images")
+# TTK_IMAGES (18/11, essai des 2 PC) : dossier des images écrit dans le .xrs (relatif ou absolu) ; défaut : schema/images du dépôt
+IMG = os.environ.get("TTK_IMAGES") or os.path.join(os.path.dirname(ICI), "schema", "images")
 for nom_, x_, y_, w_, h_, r_ in (("logo_TTK.jpg", 4500, 12700, 5480, 3480, 1575), ("logo_BEBL.jpg", 11500, 13100, 5806, 2615, 2221),
                              ("logo_LEVERT_INDUSTRIE.jpg", 18600, 13700, 6000, 1308, 4588)):
     g.logos.append((F["01"], x_, y_, w_, h_, os.path.join(IMG, nom_), r_))
@@ -996,7 +1008,7 @@ for rep_, x, y in (("X311", 6000, 4800), ("X313", 6000, 9600), ("X312", 6000, 14
                     "X312": ("Phoenix_PTFIX_6-12x2.5.jpg", 999)}[rep_]          # rouge 24VELEC, gris 24VSEC, bleu 0 V
     h_ = 2600
     w_ = h_ * ratio_ // 1000
-    g.logos.append((F[f], 16400 - w_ // 2, y - 1000, w_, h_, os.path.join(os.path.dirname(ICI), "schema", "images", img_), ratio_))
+    g.logos.append((F[f], 16400 - w_ // 2, y - 1000, w_, h_, os.path.join(IMG, img_), ratio_))
 x311, x312, x313 = P31["X311"], P31["X312"], P31["X313"]
 W(f, [(XL, 4400), (6000, 4400), x311["E"]], "24")
 W(f, [(XL, 9200), (6000, 9200), x313["E"]], "24")
@@ -1292,7 +1304,7 @@ FDC = {"I0.6": ("B501", "Fin de course axe 1 min", 1, "X701.9", "X701.10"),
        "I1.0": ("B503", "Fin de course axe 2 min", 1, "X701.13", "X701.14"),
        "I1.1": ("B504", "Fin de course axe 2 max", 2, "X701.15", "X701.16")}
 for inp, (rep, des, row, t1, t2) in FDC.items():
-    REP[rep] = {"des": des, "fab": "À définir", "carac": "contact NO (1 = fin de course atteinte), choix de Julien 05/11", "loc": "+M"}
+    REP[rep] = {"des": des, "fab": "RS PRO 902-6874", "carac": "contact NO (1 = fin de course atteinte), choix de Julien 05/11", "loc": "+M"}
     entree(inp, row, [("borne", t1, None, None, None), ("maitre", rep, fdc, "", ("13", "14")),
                       ("borne", t2, None, None, None)])
 for inp, rep, pref, row, des in (("I1.2", "KM1", "KM", 1, "Retour contacteur amont variateur 1 (aux NO)"),
@@ -1389,6 +1401,7 @@ k531 = maitre(C + "Siemens_6ES7231-5QF50-0XB0_SM1231_TC_G2.xsy", "K531", f, 4800
 W(f, [k531["L+"], (4800, RAIL24_Y)], "24")
 W(f, [k531["M"], (5600, RAIL0_Y)], "0V")
 REP["B531"]["fab"] = REP["B531"]["fab"] or "Type K"
+REP["B531"]["loc"] = "+M"                    # thermocouple de la tête d'extrusion, sur la machine (01_PROJET)
 b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, 6800, 7200, prefix="B", fpos=(2000, 0))
 # 02/11 : 2 bornes pour thermocouple (référence à définir, pas encore achetée), entre le câble W8 et -K3
 REP["X701.41"] = REP["X701.42"] = {"des": "Borne pour thermocouple type K (à définir)", "fab": "", "carac": "", "loc": "+A1"}
@@ -1446,9 +1459,7 @@ for i_, j_ in zip(debuts_, debuts_[1:]):
 for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par WinRelais (carnet de câbles)",
                             "-W101, -W201 à -W203, -W211, -W213, -W321, -W322, -W531, -W11, -W12, -W13 ; PROFINET PN1 à PN4."]),
                     ("85", ["Implantation armoire +A1 : à réaliser sous WinArmoire",
-                            "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."]),
-                    ("90", ["Nomenclature : à générer par WinRelais (Optimisation / Générer / Nomenclature),",
-                            "seuls les symboles maîtres portent une référence fabricant."])):
+                            "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."])):
     for i, l in enumerate(lignes):
         if num == "85":   # textes remontés par Julien (v30)
             texte(num, 1600, 1700 + 600 * i, l, 300)
@@ -1805,12 +1816,19 @@ nommer_phases()
 for a_ in NUM_ALERTES:
     print("ATTENTION", a_)
 renommer_symboles()
+# nomenclature générée (option B, Julien 18/11) : une ligne par appareil, bornes par type, non dessiné, câbles (f90, f91)
+NOMENC_LIGNES = nomenclature.lignes(g)
+print("nomenclature : lignes par folio", nomenclature.dessiner(g, _texte, [F["90"], F["91"]], NOMENC_LIGNES))
 g.write(SORTIE)
 ecrire_borniers(SORTIE)
 for num in ("70", "71"):
     g.centrer(F[num])
 g.write(SORTIE)
-pb = check(g, SORTIE) + controle_specification(SORTIE)
+pb_nom, info_nom = nomenclature.controle(SORTIE, {"90", "91"})
+print("nomenclature :", info_nom[0])
+for i_ in info_nom[1:]:
+    print("   ", i_)
+pb = check(g, SORTIE) + controle_specification(SORTIE) + pb_nom
 print(f"{len(g.folios)} folios, {len(g.symbols)} symboles, {len(g.wires)} fils, {len(g.renvois)} renvois")
 print(f"{len(pb)} problème(s) de contrôle")
 for p in pb:

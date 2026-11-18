@@ -119,7 +119,7 @@ Détail : `08_IMPLANTATION.md` § Points ouverts. 4 PT 2,5 manquantes (74 / 70) 
 - Identité git du PC Rimane : **réglé le 18/11**, `--local` JulienBEBL / julien@bebl.fr.
 - Python sur le PC Rimane : **réglé le 18/11** (3.15.2, contrôles identiques au PC de Julien).
 - Symboles CUSTOM non installés dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (PC Rimane).
-- Nomenclature f91 / f92 : option A ou B (`docs/ANALYSE_PC_RIMANE_2026-11-18.md` § 3) ; S1 / S2 en 1 ou 3 lignes ; TR1 (variante US) dans la liste ou non.
+- Nomenclature : **réglé le 18/11**, option B (script), S1 / S2 sur une ligne, TR1 gardé (EXT). Restent à compléter : références B7, H2, H3, H4, butées, +BJM.
 - Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, QF10 4,5 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, XD1 1,5 kW, S4 « Z000263594 ».
-- Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane ; option à choisir (relatif à tester, dossier commun, régénération).
+- Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. Essai du chemin relatif : `schema/generes/test_images/TEST_images_relatives.xrs` à ouvrir dans WinRelais (images visibles ? chemin gardé à l'enregistrement ?).
 - Zoom écrit avec une virgule par WinRelais sur le PC Rimane (`0,749…`) : lecture par le WinRelais de Julien à vérifier.

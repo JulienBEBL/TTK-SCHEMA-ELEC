@@ -63,6 +63,7 @@ Le script garde d'anciens numéros en interne (table `NUMFOL`, voir `memoire/04_
 cd outils
 export PYTHONIOENCODING=utf-8 TTK_LIB='C:\Users\Public\Documents\Elec-CAO\sym_electrotech' TTK_DATE=JJ/MM/AAAA
 python ttk_schema.py ../schema/generes/release/TTK_AAAA-MM-JJ_vN.xrs
+# option : TTK_IMAGES=<dossier des images écrit dans le .xrs> (défaut : schema/images du dépôt)
 python xrs_tool.py verifier <fichier.xrs> > <fichier>_verification.md
 python xrs_tool.py nomenclature <fichier.xrs> > <fichier>_nomenclature.csv
 python xrs_chevauchements.py <fichier.xrs>

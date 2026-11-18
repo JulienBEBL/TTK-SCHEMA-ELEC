@@ -412,3 +412,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] 18/11 : identité git du PC Rimane `--local` : JulienBEBL / julien@bebl.fr (Julien).
 - [C] 18/11 : Python 3.15.2 installé sur le PC Rimane ; contrôles de la v31 identiques au PC de Julien (0 erreur, 28 attentions, 0 chevauchement, numéros 0 problème).
 - [D] 18/11 : `CLAUDE.md` § 7 cite les 2 clones (Julien).
+- [D] 18/11 : release v31 restaurée, symboles CUSTOM installés sur le PC Rimane, push du commit c542fcc (Julien).
+- [D] 18/11 : nomenclature option B : générée par le script, avec une étape de contrôle qui vérifie qu'elle n'a rien oublié (Julien).
+- [H] 18/11 : S1 / S2 sur une ligne ; TR1 gardé en localisation EXT (Julien : « à toi de choisir »).
+- [C] 18/11 : références B1, B3-B6, H1, S1, S2 reportées au champ 3 (02_MATERIEL, Julien 17/11) ; S2 « 2 NF + 1 NO » ; H1 et B7 localisés M.
+- [D] 18/11 : essai du chemin d'image relatif sur une copie de test (Julien OK) ; variable TTK_IMAGES.

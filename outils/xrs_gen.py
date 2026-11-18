@@ -220,6 +220,7 @@ class Gen:
             block[n] = SEP.join(c)
         block += ["¤#AuteurSymbole¤", f"Julien·Ingerea·{DATE}·1.0·0·"]
         p = Placed(self, folio, rep, block, self._bbox(block))
+        p.champs_complets = {k: v for k, v in champs.items() if v}   # textes entiers (non coupés) : nomenclature
         p.texts = []
         for c in ch:
             if c[3] == "1" and c[0]:
