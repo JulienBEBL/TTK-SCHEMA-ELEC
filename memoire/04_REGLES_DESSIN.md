@@ -136,6 +136,12 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - Les textes d'information sur un folio (f31 / f32 à droite, f71 en bas) : **seulement l'essentiel pour un schéma élec**, bien intégrés dans la page ; pas de méthode, pas de point ouvert (ils vont dans 05).
 - Un tableau occupe la place disponible du folio, centré, colonnes ajustées au contenu ; pas de texte d'explication autour (f80, f90, f91).
 
+## Tableaux générés (v33, 18/11)
+- `nomenclature.tableau_pages` : tableau centré dans la zone utile (x 1500 à 29100, y 1500 à 19100), lignes réparties également sur les folios, taille de texte = la plus grande de 300 à 200 qui tient, colonnes élargies au prorata du contenu, en-tête sur chaque folio.
+- f80 : liste des câbles générée depuis `saisie.json` (Repère, Fonction, Origine, Destination, Type et référence, Conducteurs, Folio) ; le bloc `outils/blocs/f80_liste_cables_WinRelais.txt` n'est plus utilisé.
+- f90 à f92 : nomenclature (titres « NOMENCLATURE (1/3) » à « (3/3) »).
+- f30 : texte des ports à droite du repère PN (le repère est posé sur le fil en x 8600).
+
 ## Nomenclature f90 / f91 (18/11, option B de Julien)
 - Générée par le script (`outils/nomenclature.py`), plus par WinRelais. Colonnes : Repère, Désignation, Marque et référence, Caractéristiques, Qté, Loc., Folio. Texte 200, lignes de 380, en-tête sur chaque folio.
 - **Une ligne par appareil** (repère), Qté 1 ; textes entiers (champs non coupés) du symbole qui porte la référence (sinon celui qui a des champs). Marque et référence = champ 3 ; s'il est vide ou « À définir » : `RefConstructeur`, sinon « à vérifier ».

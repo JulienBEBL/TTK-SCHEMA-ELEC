@@ -1097,7 +1097,7 @@
    "repere": "W4",
    "fonction": "Freins BE5 M1 + M2, 400 V CA",
    "origine": "+A1 X31.31-32 (KF1), X32.31-32 (KF2)",
-   "destination": "+M-X1, puis M1 2-3 et M2 2-3",
+   "destination": "+BJM, puis M1 2-3 et M2 2-3",
    "type": "LIYCY-JZ",
    "reference": "AEE261168",
    "conducteurs": "5G1,5 (4 + V/J)",
@@ -1188,7 +1188,7 @@
    "repere": "W12",
    "fonction": "Machine : capot B1, fins de course B3-B6, colonne H1",
    "origine": "+A1 X41.3x, X60.3x, X62.1x",
-   "destination": "+M-X1",
+   "destination": "+BJM",
    "type": "LIYCY-JZ",
    "reference": "AEE261164",
    "conducteurs": "19G1 (18 + V/J) : 16 + V/J utilisés, 2 réserve",
@@ -1647,7 +1647,7 @@
    "4 conducteurs"
   ],
   [
-   "+M-X1 → B3, B4, B5, B6 (13-14)",
+   "+M-X1 → B3, B4, B5, B6 (NF 11-12)",
    "W12 5-12",
    "2 conducteurs par fin de course"
   ],

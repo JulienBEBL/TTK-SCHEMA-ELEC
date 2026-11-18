@@ -36,9 +36,11 @@ REP["P511"]["loc"] = "+M"                    # colonne lumineuse de la machine (
 FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "13") + 1,
            {"num": "14", "titre": "DISTRIBUTION 230 V - SERVICES", "desc": "VENTILATION, ECLAIRAGE, PRISE DE SERVICE",
             "loc": "+A1", "maitres": ""})
-# 18/11 : nomenclature générée sur deux folios (90, 91)
+# 18/11 : nomenclature générée sur trois folios (90 à 92, police 300 en v33)
 FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "90") + 1,
-           {"num": "91", "titre": "NOMENCLATURE (2/2)", "desc": "LISTE DU MATERIEL : SUITE", "loc": "—", "maitres": None})
+           {"num": "91", "titre": "NOMENCLATURE (2/3)", "desc": "LISTE DU MATERIEL : SUITE", "loc": "—", "maitres": None})
+FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "91") + 1,
+           {"num": "92", "titre": "NOMENCLATURE (3/3)", "desc": "LISTE DU MATERIEL : FIN", "loc": "—", "maitres": None})
 DESC_FOL = {"02": "LISTE DES FOLIOS",
             "03": "COULEURS DES CONDUCTEURS",
             "10": "RACCORDEMENT RESEAU, SECTIONNEMENT, PROTECTION GENERALE",
@@ -62,7 +64,7 @@ DESC_FOL.update({
     "52": "SIGNALISATION : COLONNE LUMINEUSE -H1, VOYANT DEFAUT -H4",
     "70": "BORNES RAIL PAR RAIL : MACHINE, PUPITRE, PORTE, INTERNES",
 })
-TITRES_FOL = {"90": "NOMENCLATURE (1/2)", "13": "DISTRIBUTION 230 V - ALIMENTATIONS", "32": "48 VDC ET MOTEURS PAS A PAS",
+TITRES_FOL = {"90": "NOMENCLATURE (1/3)", "13": "DISTRIBUTION 230 V - ALIMENTATIONS", "32": "48 VDC ET MOTEURS PAS A PAS",
               "51": "AUTOMATE - SORTIES TOR", "52": "MODULE SM 1223 - SIGNALISATION", "70": "BORNIERS DE L'ARMOIRE"}
 for f in FOL:
     f["titre"] = TITRES_FOL.get(f["num"], f["titre"])
@@ -981,14 +983,7 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
         renvoi("20", VAR[("20", "STOout0")], f, VAR[(f, "STOin0")], "0V")
     texte(f, 22400, 4400, "X40 : PROFINET (f54)", 200)
     texte(f, 22400, 4800, "X5 : 24VELEC (f31) - X6 : STO (f42)", 200)
-    texte(f, 22400, 5200, "TF X10 : bornes à confirmer", 200, ROUGE)
-    texte(f, 22400, 5600, "(notice SEW MCX91A)", 200, ROUGE)
-    texte(f, 22400, 6400, f"{w1} / {w3} blindés : blindage repris à 360°", 200)
-    texte(f, 22400, 6800, "(presse-étoupe CEM côté moteur,", 200)
-    texte(f, 22400, 7200, "collier de masse côté variateur)", 200)
-    texte(f, 22400, 8000, "-W4 : un seul câble 5G1,5 blindé pour les 2 freins,", 200)
-    texte(f, 22400, 8400, "conducteurs 1-2 = M1 (f20), 3-4 = M2 (f21),", 200)
-    texte(f, 22400, 8800, "V/J -> -XPE1 et boîte de dérivation (machine)", 200)
+    # v33 (Julien 18/11) : seulement l'essentiel ; TF X10, blindage et W4 : mémoire (05) et repères des câbles
 
 # ======================================================================== 31 DISTRIBUTION 24 V
 # barres 24VELEC / 0 V en haut (tracées avec la chaîne, plus bas) ; -X31 et -X32 s'y piquent
@@ -1431,7 +1426,8 @@ for p_, t in (("P1", "Port 1 -> -K501 automate CPU 1214C, port X1 P1"),
     px, py = k541[p_].xy
     if p_ != "P5":
         PN54[p_] = W(f, [k541[p_], (8000, py)], "PN")
-    texte(f, 8000, py - 350, t, 220)
+    # v33 (Julien) : texte décalé à droite du repère PN1-PN4 (posé sur le fil en x 8600), au-dessus du fil
+    texte(f, 9600 if p_ != "P5" else 8000, py - 350, t, 220)
 renvoi(f, PN54["P1"], "50", PN50, "PN")
 renvoi(f, PN54["P2"], "20", VAR[("20", "PN")], "PN")
 renvoi(f, PN54["P3"], "21", VAR[("21", "PN")], "PN")
@@ -1452,22 +1448,12 @@ renvoi(f, W(f, [p601["X1"], (p601["X1"].x, 11600)], "PN"), "54", PN54["P4"], "PN
 texte(f, 4200, 13300, "24VELEC", 220)
 texte(f, 10000, 13600, "Bornes -X50.11 à -X50.13 (armoire)", 220)
 
-# ======================================================================== 80 - 90 (générés par WinRelais)
-# f80 : tableaux de câbles générés par Julien sous WinRelais (v30, 16/11), recopiés tels quels
-with open(os.path.join(ICI, "blocs", "f80_liste_cables_WinRelais.txt"), encoding="utf-8") as fh_:
-    blocs_ = fh_.read().rstrip("\n").split("\n")
-debuts_ = [i for i, l in enumerate(blocs_) if l.startswith("\u00a4#Tableau\u00b7")] + [len(blocs_)]
-for i_, j_ in zip(debuts_, debuts_[1:]):
-    g.tableaux_bruts.append((F["80"], blocs_[i_ + 1:j_]))
-for num, lignes in (("80", ["Liste des câbles extérieurs : à générer par WinRelais (carnet de câbles)",
-                            "-W101, -W201 à -W203, -W211, -W213, -W321, -W322, -W531, -W11, -W12, -W13 ; PROFINET PN1 à PN4."]),
-                    ("85", ["Implantation armoire +A1 : à réaliser sous WinArmoire",
-                            "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."])):
-    for i, l in enumerate(lignes):
-        if num == "85":   # textes remontés par Julien (v30)
-            texte(num, 1600, 1700 + 600 * i, l, 300)
-        else:
-            texte(num, 3200, 4000 + 600 * i, l, 300)
+# ======================================================================== 80 - 92
+# v33 (Julien 18/11) : f80 (liste des câbles, saisie.json) et f90 à f92 (nomenclature) générés par le script, en fin
+# de script ; le tableau WinRelais du f80 (16/11) est abandonné : W11, W12, W14, PN1-PN4 absents, W9 / W10 « 4 cond. »
+for i, l in enumerate(["Implantation armoire +A1 : à réaliser sous WinArmoire",            # f85 : textes remontés (Julien, v30)
+                       "(les symboles portent la localisation A1 / P1 / M dans Vue armoire)."]):
+    texte("85", 1600, 1700 + 600 * i, l, 300)
 
 # ======================================================================== spécification des liaisons
 MEMES = [
@@ -1734,11 +1720,7 @@ def ecrire_borniers(path):
                   [["Borne", "Côté armoire (intérieur)", "Côté terrain (extérieur)"]] + lignes, size=230)
         g.texte = lambda folio, x, y, txt, *a, **k: _texte(folio, x, y, ren(txt), *a, **k)
         y = 2400 + 560 * (len(lignes) + 1) + 300
-        for l in ("Méthode : 1 borne par conducteur qui sort de l'armoire, côté armoire en haut de la borne, côté terrain en bas.",
-                  "Bornier graphique : Optimisation / Générer / Bornier, onglet Automatique, extraire X41, X42, X50, X60,",
-                  "folio visible, option Matériel connecté via un bornier + Pré-remplissage + filtre B,M,S2,S3,P1."):
-            texte(num, 2400, y, l, 200)
-            y += 350
+        texte(num, 2400, y, "Côté armoire en haut de la borne, côté terrain en bas.", 250)   # v33 (Julien 18/11)
 
 
 # ======================================================================== terre : départs PE de l'arrivée (f10)
@@ -1821,13 +1803,16 @@ for a_ in NUM_ALERTES:
 renommer_symboles()
 # nomenclature générée (option B, Julien 18/11) : une ligne par appareil, bornes par type, non dessiné, câbles (f90, f91)
 NOMENC_LIGNES = nomenclature.lignes(g)
-print("nomenclature : lignes par folio", nomenclature.dessiner(g, _texte, [F["90"], F["91"]], NOMENC_LIGNES))
+print("nomenclature : taille, ligne, lignes par folio", nomenclature.dessiner(g, _texte, [F["90"], F["91"], F["92"]], NOMENC_LIGNES))
+print("liste des câbles : taille, ligne", nomenclature.tableau_pages(g, _texte, [F["80"]], nomenclature.ENTETE_CABLES,
+                                                                     nomenclature.lignes_cables()))
 g.write(SORTIE)
 ecrire_borniers(SORTIE)
 for num in ("70", "71"):
     g.centrer(F[num])
 g.write(SORTIE)
-pb_nom, info_nom = nomenclature.controle(SORTIE, {"90", "91"})
+pb_nom, info_nom = nomenclature.controle(SORTIE, {"90", "91", "92"})
+pb_nom += nomenclature.controle_cables(SORTIE, "80")
 print("nomenclature :", info_nom[0])
 for i_ in info_nom[1:]:
     print("   ", i_)

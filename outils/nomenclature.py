@@ -20,12 +20,12 @@ from xrs_gen import largeur
 ICI = os.path.dirname(os.path.abspath(__file__))
 SAISIE = os.path.join(ICI, "..", "implantation", "generateur", "saisie.json")
 SEP = "·"
-TAILLE = 200          # hauteur des textes du tableau
-LIGNE = 380           # hauteur d'une ligne (88 lignes sur 2 folios, 18/11)
-X0, Y0 = 1200, 1400   # coin haut gauche du tableau
-Y_MAX = 19300         # bas utile du folio (cartouche à 19700)
-LARGEUR_MAX = 27800   # largeur utile (cadre 29022, marge gauche 1200)
+# zone utile du folio : cadre repère A..N (x 1300 à 29300) et 1..9 (y 1300 à 19300), marge de 200 (v33, 18/11)
+ZONE = (1500, 1500, 29100, 19100)
+TAILLES = (300, 280, 260, 250, 240, 220, 200)   # plus grande taille qui tient en largeur (Julien : police plus grande)
+TAILLE_FOLIO = {}     # index du folio -> taille retenue au dessin (relue par le contrôle)
 ENTETE = ["Repère", "Désignation", "Marque et référence", "Caractéristiques", "Qté", "Loc.", "Folio"]
+ENTETE_CABLES = ["Repère", "Fonction", "Origine", "Destination", "Type et référence", "Conducteurs", "Folio"]
 A_VERIFIER = "à vérifier"
 
 # Bornes : désignation, marque et référence, source (memoire/09_STOCK.md, 17/11)
@@ -123,43 +123,84 @@ def lignes(g):
     out.append(("titre", ["", "CABLES", "", "", "", "", ""]))
     for c in _saisie()["cables"]:
         dest = re.search(r"\+([A-Z0-9]+)", c["destination"])
+        lieu = {"BJM": "M"}.get(dest.group(1), dest.group(1)) if dest else ""
         out.append(("cable", [c["repere"], c["fonction"], f"{c['type']} {c['reference']}".strip(),
-                              c["conducteurs"], "1", dest.group(1) if dest else "", c["folio"]]))
+                              c["conducteurs"], "1", lieu, c["folio"]]))
     return out
 
 
-def largeurs(rows):
-    w = [max(largeur(r[k], TAILLE) for r in [ENTETE] + [x[1] for x in rows]) + 300 for k in range(7)]
-    if sum(w) > LARGEUR_MAX:
-        raise ValueError(f"nomenclature trop large : {sum(w)} > {LARGEUR_MAX} ({w})")
-    return w
+def lignes_cables():
+    """Liste des câbles (f80, v33) : saisie.json, une ligne par câble."""
+    return [("cable", [c["repere"], c["fonction"], c["origine"], c["destination"],
+                       f"{c['type']} {c['reference']}".strip(), c["conducteurs"], c["folio"]])
+            for c in _saisie()["cables"]]
+
+
+def tableau_pages(g, texte, folios, entete, rows, ligne_max=900):
+    """Tableau centré sur toute la zone utile des folios (index), en-tête sur chaque folio, lignes réparties
+    également. Taille de texte = la plus grande de TAILLES qui tient en largeur ; colonnes élargies au prorata
+    du contenu jusqu'à la largeur utile. Retourne (taille, hauteur de ligne, lignes par folio)."""
+    xa, ya, xb, yb = ZONE
+    W = xb - xa
+    for taille in TAILLES:
+        pad = taille
+        cont = [max(largeur(r[k], taille) for r in [entete] + [x[1] for x in rows]) + pad for k in range(len(entete))]
+        if sum(cont) <= W:
+            break
+    else:
+        raise ValueError(f"tableau trop large même en {TAILLES[-1]} : {sum(cont)} > {W}")
+    reste = W - sum(cont)
+    w = [c + reste * c // sum(cont) for c in cont]
+    w[-1] += W - sum(w)
+    par = -(-len(rows) // len(folios))
+    ligne = min(ligne_max, (yb - ya) // (par + 1) // 20 * 20)
+    if ligne < taille + 100:
+        raise ValueError(f"tableau : {len(rows)} lignes sur {len(folios)} folios, lignes de {ligne} trop basses")
+    paquets = [rows[i:i + par] for i in range(0, len(rows), par)]
+    for f, paquet in zip(folios, paquets):
+        TAILLE_FOLIO[f] = taille
+        tab = [("entete", entete)] + paquet
+        H = ligne * len(tab)
+        y0 = ya + ((yb - ya) - H) // 2 // 100 * 100
+        g.cadre(f, xa, y0, xb, y0 + H, width=20)
+        for r in range(1, len(tab)):
+            g.ligne(f, xa, y0 + r * ligne, xb, y0 + r * ligne, width=20 if tab[r][0] == "titre" or r == 1 else 10)
+        cx = xa
+        for c in w[:-1]:
+            cx += c
+            g.ligne(f, cx, y0, cx, y0 + H, width=10)
+        for r, (fam, row) in enumerate(tab):
+            cx = xa
+            for c, txt in zip(w, row):
+                if txt:
+                    texte(f, cx + pad // 2, y0 + r * ligne + (ligne - taille) // 2, txt, taille, 0,
+                          1 if fam in ("entete", "titre") else 0)
+                cx += c
+    return taille, ligne, [len(p) for p in paquets]
 
 
 def dessiner(g, texte, folios, rows):
-    """Tableau sur les folios donnés (index), en-tête répété sur chaque folio. Retourne le nb de lignes par folio."""
-    w = largeurs(rows)
-    par_folio = (Y_MAX - Y0) // LIGNE - 1
-    paquets = [rows[i:i + par_folio] for i in range(0, len(rows), par_folio)]
-    if len(paquets) > len(folios):
-        raise ValueError(f"nomenclature : {len(rows)} lignes, {len(folios)} folios de {par_folio} lignes")
-    for f, paquet in zip(folios, paquets):
-        tab = [("entete", ENTETE)] + paquet
-        W, H = sum(w), LIGNE * len(tab)
-        g.cadre(f, X0, Y0, X0 + W, Y0 + H, width=20)
-        for r in range(1, len(tab)):
-            g.ligne(f, X0, Y0 + r * LIGNE, X0 + W, Y0 + r * LIGNE, width=20 if tab[r][0] == "titre" or r == 1 else 10)
-        cx = X0
-        for c in w[:-1]:
-            cx += c
-            g.ligne(f, cx, Y0, cx, Y0 + H, width=10)
-        for r, (fam, row) in enumerate(tab):
-            cx = X0
-            for c, txt in zip(w, row):
-                if txt:
-                    texte(f, cx + 150, Y0 + r * LIGNE + (LIGNE - TAILLE) // 2, txt, TAILLE, 0,
-                          1 if fam in ("entete", "titre") else 0)
-                cx += c
-    return [len(p) for p in paquets]
+    return tableau_pages(g, texte, folios, ENTETE, rows)
+
+
+def controle_cables(chemin, numero_folio):
+    """f80 (v33) : chaque câble du schéma (DefCable) et de saisie.json sur une seule ligne, rien d'autre."""
+    m = xrs_tool.parse(chemin)
+    idx = {f["index"] for f in m["folios"] if f["numero"] == numero_folio}
+    par_ligne = defaultdict(list)
+    for t in m["textes"]:
+        if t["folio"] in idx:
+            par_ligne[t["y"]].append((t["x"], t["texte"]))
+    reps = Counter(sorted(v)[0][1] for v in par_ligne.values())
+    pb = []
+    attendus = {c["repere"] for c in _saisie()["cables"]} | {c["nom"] for c in m["cables"] if c["nom"]}
+    for r in sorted(attendus, key=_naturel):
+        if reps[r] != 1:
+            pb.append(f"liste des câbles : {r} sur {reps[r]} ligne(s)")
+    for r in reps:
+        if r not in attendus and r != ENTETE_CABLES[0]:
+            pb.append(f"liste des câbles : ligne inconnue « {r} »")
+    return pb
 
 
 def controle(chemin, numeros_folios):
@@ -252,8 +293,9 @@ def controle(chemin, numeros_folios):
         xs = cols.get(f, [])
         for x, t in r:
             k = max(i for i, cx in enumerate(xs) if cx <= x + 1)
-            fin = xs[k + 1] - 150 if k + 1 < len(xs) else None
-            if fin and x + largeur(t, TAILLE) > fin:
+            tf = TAILLE_FOLIO.get(f, 200)
+            fin = xs[k + 1] - tf // 2 + 50 if k + 1 < len(xs) else None
+            if fin and x + largeur(t, tf) > fin:
                 pb.append(f"nomenclature : « {t} » déborde de sa colonne")
     # informations : lignes à compléter
     for r in lignes_:

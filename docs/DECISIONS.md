@@ -429,3 +429,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] PTFIX 2X4 1028361 : bloc de passage classique, 2 trous, 6 mm ; 19 + 27 blocs (Julien).
 - [D] Bornes PE en terre et X12.11 en PT 4 : confirmé (Julien).
 - [D] À faire en v33 après le go : f30 textes PROFINET décalés ; f31 / f32 bloc de droite épuré ; f71 texte du bas épuré ; f80 liste des câbles revue et recadrée, sans texte ; f90 / f91 police plus grande, tableau centré sur toute la page.
+
+## 18/11/2026 : v33
+- [D] PTFIX 2X4 : réserves non bornées, X50.13 reste une borne de terre vert/jaune (Julien).
+- [D] f31 / f32 : 2 lignes (X40, X5 / X6) ; TF X10, blindage et W4 retirés du folio (Julien OK).
+- [D] f71 : une ligne « Côté armoire en haut de la borne, côté terrain en bas. » (Julien OK).
+- [D] f80 généré depuis saisie.json ; nomenclature sur 3 folios (f92) avec une police plus grande (Julien OK).
+- [C] v33 : 0 problème, 0 erreur, 0 chevauchement, numéros 0 problème.

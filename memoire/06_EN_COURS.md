@@ -1,6 +1,23 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v32 (18/11/2026, PC PRO RIMANE)
+## Version actuelle : v33 (18/11/2026, PC PRO RIMANE)
+`schema/generes/release/TTK_2026-11-18_v33.xrs` : 27 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v32 dans old/ (non réenregistrée).
+
+### Fait en v33 (retours de Julien sur la v32)
+| Folio | Changement |
+|---|---|
+| 30 | Textes des ports PROFINET décalés à droite des repères PN1-PN4 (x 9600) |
+| 31, 32 | Bloc de droite réduit à 2 lignes : « X40 : PROFINET (f30) », « X5 : 24VELEC (f21) - X6 : STO (f42) » |
+| 71 | Texte du bas : une ligne « Côté armoire en haut de la borne, côté terrain en bas. » |
+| 80 | Liste des câbles générée par le script depuis `saisie.json` (17 câbles, 7 colonnes, texte 240) ; tableau WinRelais du 16/11 et texte retirés ; contrôle : chaque câble une fois |
+| 90, 91, 92 | Nomenclature sur 3 folios (f92 ajouté), texte 280, tableau centré sur toute la zone utile, colonnes au prorata du contenu |
+| saisie.json | W4 / W12 vers « +BJM » ; B3-B6 en NF 11-12 dans `apres_boite` |
+
+### Suite
+- Julien : relire la v33 (f30, f31 / f32, f71, f80, f90 à f92).
+- Implantation : type PTFIX 2X4 (6 mm) à ajouter au générateur ; `boite` / `apres_boite` encore en « +M-X1 ».
+
+## Version précédente : v32 (18/11/2026, PC PRO RIMANE)
 `schema/generes/release/TTK_2026-11-18_v32.xrs` : 26 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v31 dans old/ (copie WinRelais du PC Rimane : `schema/recus/2026-11-18_v31_ouverte_WinRelais.xrs`).
 
 ### Fait en v32
