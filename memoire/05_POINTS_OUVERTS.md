@@ -131,6 +131,7 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 - Règle : un fil doit tenir le calibre du disjoncteur juste en amont ; derrière une alimentation sans fusible, son courant maxi. Valeurs exactes : NF EN 60204-1, tableau 6, selon la pose [à vérifier].
 - Proposé : 1323 / 1324 (QF9 16 A → QF10) **2,5 mm²** ; 1333 / 1334 (QF10 2 A → XD1) **1,5 mm²** ; bus → QF4 / QF5 / QF6 (sous QF1 20 A) comme le reste du bus ; QF4 / QF5 6 A → T1 / T2 et QF6 4 A → T3 (1201 / 1204, 1211 / 1214, 1222 / 1224) **1,5 mm²** ; T1 / T2 (10 A) → X21.11 / X21.12 / X21.13 **2,5 mm²** ; T3 (5 A) → U3 / U4 **1,5 mm²** ; départs 24 V de commande 0,75-1 mm² [à valider par Julien].
 - Fils de la prise (Julien 20/11 : il parlait de 1323 / 1324 et 1333 / 1334, f13) : 1323 / 1324 en 2,5 mm² (sous QF9 16 A), 1333 / 1334 en 1,5 mm² (sous QF10 2 A). Sections non écrites sur les folios (pas de règle de dessin pour ça).
+- Fil de câblage intérieur (20/11) : **aucun stock noté dans la mémoire** (09 ne couvre que les câbles sortants). Besoin déduit du schéma et des couleurs (04) : 2,5 mm² noir, bleu clair, bleu foncé, vert-jaune ; 1,5 mm² noir, bleu clair, vert-jaune (+ bleu foncé si 24 V en 1,5). Stock réel à donner par Julien [?].
 
 ## Reprise PC PRO RIMANE (18/11)
 - Identité git du PC Rimane : **réglé le 18/11**, `--local` JulienBEBL / julien@bebl.fr.

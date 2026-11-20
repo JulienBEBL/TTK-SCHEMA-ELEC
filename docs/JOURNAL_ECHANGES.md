@@ -356,3 +356,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 20/11/2026 : v35
 - Julien : les fils sont 1323 / 1324 et 1333 / 1334 (QF9, QF10, XD1) ; relire la mémoire ; go v35 ; mettre à jour la mémoire et le dépôt.
 - Fait : référence A9P71602 vérifiée ; symbole 2 A créé ; v35 (f13 + nomenclature) : 0 problème, 0 erreur, 0 chevauchement ; v34 dans old/ ; mémoire 02, 05, 06, 08, README, CLAUDE.md ; `saisie.json`. Commit et push.
+
+## 20/11/2026 : fil de câblage 2,5 / 1,5 mm²
+- Julien : quel fil dois-je avoir en 2,5 et 1,5 mm², par couleur ?
+- Fait : pas de stock de fil intérieur dans la mémoire ; besoin déduit du schéma (sections du 20/11, couleurs du 02/11) ; questions posées (stock réel, départs du bus, couleur du 0 V).
