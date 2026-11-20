@@ -372,3 +372,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 20/11/2026 : passe de vérification
 - Julien : oublier les bobines sans identifiant ; mettre à jour la mémoire et le schéma si besoin ; vérifier le schéma puis la mémoire ; push.
 - Fait : contrôles v35 sans erreur ; anomalie trouvée : XD1 « limitée 1,5 kW » (faux avec QF10 en 2 A) → v36 (f13 + nomenclature), v35 dans old/ ; mémoire corrigée (README du dépôt, CLAUDE.md, 05, 06, 09) ; commit et push.
+
+## 20/11/2026 : implantation v13
+- Julien : refaire une implantation propre et à jour d'après la mémoire et les derniers commits.
+- Fait : v13 (2 pages, schéma v36) ; seuls changements : QF10 2 A, XD1 limitée à 2 A, renvoi page 2 ; bornes identiques à la v34 ; v12 dans old/ ; 0 / 0 / 0. Commit local, sans push.

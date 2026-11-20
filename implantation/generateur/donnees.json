@@ -1,5 +1,5 @@
 {
- "source": "schema/generes/release/TTK_2026-11-18_v34.xrs",
+ "source": "schema/generes/release/TTK_2026-11-20_v36.xrs",
  "folios": {
   "0": "01",
   "1": "02",
@@ -4528,7 +4528,7 @@
   },
   "QF10": {
    "designation": "Disjoncteur limitation prise",
-   "reference": "A9P71606"
+   "reference": "A9P71602"
   },
   "QF2": {
    "designation": "Disjoncteur départ frein M1",
@@ -4636,9 +4636,9 @@
   "document": {
    "titre": "Armoire +A1 : implantation et borniers",
    "machine": "Machine de tressage TTK, n° 001-EU",
-   "indice": "B",
-   "version": "v12",
-   "date": "18/11/2026",
+   "indice": "C",
+   "version": "v13",
+   "date": "20/11/2026",
    "auteur": "THRO.J",
    "societe": "BEBL",
    "revisions": [
@@ -4651,6 +4651,11 @@
      "B",
      "18/11/2026",
      "2 pages (plaque, borniers), schéma v33. Bornes PTFIX 2X4 (6 mm) pour W11 / W12, boîte +BJM, XR2 monté sur R2, répartition W11 / W12 validée (Julien 18/11)."
+    ],
+    [
+     "C",
+     "20/11/2026",
+     "Schéma v36 : QF10 Schneider A9P71602 2 A, XD1 limitée à 2 A par QF10. Bornes et câbles inchangés."
     ]
    ]
   },
@@ -5260,8 +5265,8 @@
     18,
     85,
     "a_poser",
-    "Disjoncteur limitation prise",
-    "Schneider A9P71606",
+    "Disjoncteur limitation prise 2 A",
+    "Schneider A9P71602",
     "puissance"
    ],
    [
@@ -5272,7 +5277,7 @@
     45,
     85,
     "a_poser",
-    "Prise de service 2P+T 16 A",
+    "Prise de service 2P+T 16 A, limitée à 2 A par QF10",
     "Legrand 004280",
     "puissance"
    ],

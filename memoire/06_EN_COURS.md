@@ -11,7 +11,7 @@
 
 ### Suite
 - Julien : relire la v36.
-- Implantation : régénérer pour QF10 (autre session).
+- Implantation : **v13 faite le 20/11** (schéma v36, QF10 2 A) ; relecture de Julien attendue.
 
 ## Version précédente : v35 (20/11/2026, PC PRO RIMANE)
 `schema/generes/old/TTK_2026-11-20_v35.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (comme la v34), 0 chevauchement, numéros 0 problème. v34 dans old/ (non réenregistrée).

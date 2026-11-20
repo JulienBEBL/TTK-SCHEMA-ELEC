@@ -494,3 +494,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Schéma v35 vérifié : 0 problème, 0 erreur, 30 attentions connues, 0 chevauchement, numéros 0 problème ; seule anomalie : XD1 (ligne ci-dessous). Le 0 V commun T1 / T2 reste dessiné en un point (même potentiel) ; au câblage, un fil par alimentation vers X21.12.
 - [C] Mémoire : README du dépôt remis à jour (v35, implantation v12), titre v31 de 06, chemin de la v34, source de QF10 4,5 kA ; XD1 1,5 kW à revoir (prise limitée à 2 A).
 - [C] Anomalie trouvée au schéma : XD1 « limitée 1,5 kW » alors que QF10 est en 2 A ; corrigé en v36 (« limitée à 2 A par -QF10 »).
+
+## 20/11/2026 : implantation v13
+- [C] Implantation v13 sur le schéma v36 : QF10 2 A, XD1 limitée à 2 A ; borniers inchangés ; 0 / 0 / 0.

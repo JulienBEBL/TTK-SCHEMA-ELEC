@@ -484,7 +484,7 @@ def page_plaque():
     for br in S["borniers"]:
         nb[br["rail"]] += sum(len(g["bornes"]) for g in br["groupes"])
     for rep, des, ref in S["hors_plaque"] + [["Borniers", f"R5 : {nb['R5']} bornes ; R4 : {nb['R4']} bornes "
-                                              "(détail pages suivantes)", ""]]:
+                                              "(détail page 2)", ""]]:
         y += 4.15
         p.text(x0, y, rep, 2.1, maxw=14 if len(rep) < 6 else 30)
         p.text(x0 + (15 if len(rep) < 6 else 31), y, des, 2.1, maxw=76 if len(rep) < 6 else 124)

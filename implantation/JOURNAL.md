@@ -162,3 +162,10 @@ Fichiers : `release/TTK_implantation_2026-11-18_v12.pdf` (**2 pages A3**) + `_ve
 - Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Bornes : PT 2,5 36 / 70, PT 4 15 / 15, PTFIX 2X4 38 / 46, terre 6 / 4 (manque 2).
 - Retours de Julien (18/11) : W11 / W12 validés (marque « à valider » retirée, v12 régénérée) ; frein W4 ok ; push accordé.
 - Suite (18/11) : stock plus comparé (rapport : comptage des bornes dessinées seul) ; W14 validé ; câbles +BJM → appareils hors sujet (Julien plus tard). Reste ouvert : X21.14.
+
+## v13 (indice C) — 20/11/2026 (schéma v36), PC PRO RIMANE
+Fichiers : `release/TTK_implantation_2026-11-20_v13.pdf` (2 pages A3) + `_verification.md` ; v12 dans `old/`.
+- Repris depuis les commits du 18 au 20/11 : QF10 Schneider iDT40K A9P71602 2 A (v35) ; XD1 limitée à 2 A par QF10 (v36).
+- Bornes et câbles du .xrs v36 identiques à la v34 : borniers inchangés.
+- Page 1 : renvoi « détail page 2 » (était « pages suivantes »).
+- Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Seul point ouvert : X21.14 à droite de K4.

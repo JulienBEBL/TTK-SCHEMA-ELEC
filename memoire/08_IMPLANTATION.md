@@ -1,6 +1,6 @@
 # 08 · Dossier d'implantation +A1 (généré)
 
-Créé le 17/11/2026. Version actuelle : **v12, indice B** (18/11, schéma v34, PC PRO RIMANE), **2 pages**, en attente des retours de Julien. v11 (10 pages) dans `old/`.
+Créé le 17/11/2026. Version actuelle : **v13, indice C** (20/11, schéma v36, PC PRO RIMANE), **2 pages**, en attente des retours de Julien. v12 et v11 dans `old/`.
 
 ## Demande de Julien (18/11) [D]
 - **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). Générateur gardé, **draw.io abandonné**.
@@ -87,7 +87,8 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 
 - 18/11 (v12) : `document` v12 / B ; `types_bornes` : PTFIX 2X4 (46 en stock, 6 mm) ; X20.15 / X20.25 dans les groupes W9 / W10 et V/J de leurs conducteurs ; `boite` = +BJM (plus aucun « +M-X1 ») ; XR2 « fixe ».
 
-- 20/11 (v35) : QF10 « Schneider A9P71602 » (2 A) dans `saisie.json` ; implantation à régénérer.
+- 20/11 (v35) : QF10 « Schneider A9P71602 » (2 A) dans `saisie.json`.
+- 20/11 (v13) : `document` v13 / C ; désignations QF10 « … 2 A » et XD1 « … limitée à 2 A par QF10 » (schéma v36). Bornes et câbles du .xrs v36 identiques à la v34 (comparaison de `donnees.json`).
 
 ## Faire une nouvelle version
 1. `git pull` ; passer l'ancien PDF + son `_verification.md` dans `implantation/old/` (`git mv`).
