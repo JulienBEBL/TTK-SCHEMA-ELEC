@@ -138,7 +138,7 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 - Python sur le PC Rimane : **réglé le 18/11** (3.15.2, contrôles identiques au PC de Julien).
 - Symboles CUSTOM sur le PC Rimane : **réglé le 18/11** (54 symboles installés).
 - Nomenclature : **réglé le 18/11**, option B (script), S1 / S2 sur une ligne, TR1 gardé (EXT). Restent à compléter : références B7, H2, H3, H4, butées, +BJM.
-- Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, QF10 4,5 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, XD1 1,5 kW, S4 « Z000263594 ».
+- Valeurs du script absentes de la mémoire (source à retrouver) : QF1 10 kA, QS1 690 V, QF9 6 kA, T3 5 A et RS 122-2229, R1 / R2 08281718, U1 5,5 A, U3 6,0 A, M3 6 A - 8,5 Nm, EL 14 W, EV 19 W, S4 « Z000263594 ». (QF10 4,5 kA : source trouvée le 20/11, fiches distributeurs de l'A9P71602.) XD1 « limitée 1,5 kW » : **corrigé en v36** (« limitée à 2 A par -QF10 »).
 - Images : chemin absolu `C:\Users\Julien\…` dans `¤#Logo¤`, cassé sur le PC Rimane. **Réglé le 18/11** : chemin relatif, images visibles (Julien) ; v32 en relatif. **Réglé le 18/11** : la v33 réenregistrée garde le chemin relatif.
 - PTFIX 2X4 Phoenix 1028361 : 2 trous, 6 mm, 19 + 27 blocs (Julien 18/11). **Réglé le 18/11** : réserves non bornées, X50.13 reste une borne de terre vert/jaune ; 38 blocs dessinés.
 - Bornes PE X10.11, X31.11, X32.11, X50.13 en bornes de terre ; X12.11 en PT 4 : **confirmé par Julien le 18/11**.

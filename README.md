@@ -5,15 +5,15 @@ BE Bailly Levert (BEBL), dessinateur Julien Thro (THRO.J).
 
 Le schéma n'est pas dessiné à la main : il est **généré par un script Python** (`outils/ttk_schema.py`), puis ouvert et relu dans WinRelais.
 
-## État actuel (16/11/2026)
+## État actuel (20/11/2026)
 | | |
 |---|---|
-| Dernière version | **v31**, `schema/generes/release/TTK_2026-11-16_v31.xrs` |
-| Contenu | 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros de fil |
-| Contrôles | 0 erreur au verifier (28 attentions connues), 0 chevauchement, numéros 0 problème |
-| Revue complète | `docs/REVUE_COMPLETE_v29.md` : cohérent électriquement ; **pas encore prêt pour le stagiaire** (reste : références de nomenclature, références croisées WinRelais ; numérotation faite en v30) |
+| Dernière version | **v36**, `schema/generes/release/TTK_2026-11-20_v36.xrs` |
+| Contenu | 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros de fil ; nomenclature (f90-f92) et liste des câbles (f80) générées |
+| Contrôles | 0 problème, 0 erreur au verifier (30 attentions connues), 0 chevauchement, numéros 0 problème |
+| Revue complète | `docs/REVUE_SCHEMA_v33_2026-11-18.md` (dernière revue, corrections faites en v34) ; avant : `docs/REVUE_COMPLETE_v29.md` |
 | Numérotation des fils | **faite sur tous les folios** (f10 à f63, v30) ; contrôle `outils/xrs_numeros.py` : 0 problème |
-| Implantation de l'armoire | v10 (draw.io), `implantation/release/` ; à mettre à jour : `docs/A_FAIRE_IMPLANTATION_2026-11-16.md` |
+| Implantation de l'armoire | v12 indice B (18/11, générée par `implantation/generateur/`), `implantation/release/` ; à régénérer pour QF10 en 2 A (v35 / v36) |
 
 Détail de la version, points ouverts et suite : `memoire/06_EN_COURS.md` et `memoire/05_POINTS_OUVERTS.md`.
 

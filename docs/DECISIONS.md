@@ -488,3 +488,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 20/11/2026 : couleurs du 24 V
 - [D] 24VELEC en rouge 1,5 mm², 24VSEC en gris, 0 V en bleu (comme les blocs X21) ; orange non utilisé ; 2,5 noir à la place du 1,5 noir (Julien).
 - [H] 0 V : chaque -V de T1 et T2 sur X21.12 par son propre fil (pas de T2 -V → T1 -V, sinon 20 A dans un seul fil).
+
+## 20/11/2026 : vérifications
+- [D] Bobines de fil non identifiées : oubliées (Julien).
+- [C] Schéma v35 vérifié : 0 problème, 0 erreur, 30 attentions connues, 0 chevauchement, numéros 0 problème ; seule anomalie : XD1 (ligne ci-dessous). Le 0 V commun T1 / T2 reste dessiné en un point (même potentiel) ; au câblage, un fil par alimentation vers X21.12.
+- [C] Mémoire : README du dépôt remis à jour (v35, implantation v12), titre v31 de 06, chemin de la v34, source de QF10 4,5 kA ; XD1 1,5 kW à revoir (prise limitée à 2 A).
+- [C] Anomalie trouvée au schéma : XD1 « limitée 1,5 kW » alors que QF10 est en 2 A ; corrigé en v36 (« limitée à 2 A par -QF10 »).

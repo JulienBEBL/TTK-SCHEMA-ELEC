@@ -368,3 +368,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 20/11/2026 : couleurs 24 V
 - Julien : bleus non identifiables ; pas d'orange ; 2,5 noir au lieu de 1,5 noir ; 24VDC en rouge 1,5 mm², sections max ? ; bobines noires avec une référence, bleues sans rien.
 - Fait : réponse sections (24VELEC, 24VSEC, 0 V), 04 et 09 mis à jour ; proposé de câbler les 0 V de T1 et T2 séparément sur X21.12.
+
+## 20/11/2026 : passe de vérification
+- Julien : oublier les bobines sans identifiant ; mettre à jour la mémoire et le schéma si besoin ; vérifier le schéma puis la mémoire ; push.
+- Fait : contrôles v35 sans erreur ; anomalie trouvée : XD1 « limitée 1,5 kW » (faux avec QF10 en 2 A) → v36 (f13 + nomenclature), v35 dans old/ ; mémoire corrigée (README du dépôt, CLAUDE.md, 05, 06, 09) ; commit et push.

@@ -1,7 +1,20 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v35 (20/11/2026, PC PRO RIMANE)
-`schema/generes/release/TTK_2026-11-20_v35.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (comme la v34), 0 chevauchement, numéros 0 problème. v34 dans old/ (non réenregistrée).
+## Version actuelle : v36 (20/11/2026, PC PRO RIMANE)
+`schema/generes/release/TTK_2026-11-20_v36.xrs` : mêmes chiffres que la v35 ; 0 problème, 0 erreur, 30 attentions connues, 0 chevauchement, numéros 0 problème. v35 dans old/ (non réenregistrée).
+
+### Fait en v36 (passe de vérification du 20/11)
+| Folio | Changement |
+|---|---|
+| 13 | XD1 : « 2P+T 16 A 250 V - limitée à 2 A par -QF10 » (était « limitée 1,5 kW », faux depuis QF10 en 2 A) ; `REP["X131"]` dans le script. Le folio se recentre : tout le contenu décalé de 400 vers la gauche, rien d'autre |
+| 90-92 | Nomenclature : caractéristique de XD1 |
+
+### Suite
+- Julien : relire la v36.
+- Implantation : régénérer pour QF10 (autre session).
+
+## Version précédente : v35 (20/11/2026, PC PRO RIMANE)
+`schema/generes/old/TTK_2026-11-20_v35.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (comme la v34), 0 chevauchement, numéros 0 problème. v34 dans old/ (non réenregistrée).
 
 ### Fait en v35 (Julien 20/11)
 | Folio | Changement |
@@ -15,7 +28,7 @@
 - Implantation : régénérer pour QF10 (autre session).
 
 ## Version précédente : v34 (18/11/2026, PC PRO RIMANE)
-`schema/generes/release/TTK_2026-11-18_v34.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (28 connues + 2 fils V/J en attente, voulus), 0 chevauchement, numéros 0 problème. v33 dans old/ (copie WinRelais sans retouche dans `schema/recus/`).
+`schema/generes/old/TTK_2026-11-18_v34.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (28 connues + 2 fils V/J en attente, voulus), 0 chevauchement, numéros 0 problème. v33 dans old/ (copie WinRelais sans retouche dans `schema/recus/`).
 
 ### Fait en v34 (revue v33 + réponses de Julien du 18/11)
 | Folio | Changement |
@@ -94,7 +107,7 @@
 - Essai PC Rimane : le script génère la v31 à l'identique (seuls les chemins d'images changent).
 - En attente de Julien : générer la v32 en release ; ouvrir la copie de test des images ; push.
 
-## Version actuelle : v31 (16/11/2026)
+## Version précédente : v31 (16/11/2026)
 `schema/generes/release/TTK_2026-11-16_v31.xrs` : 25 folios, 182 symboles, 658 fils, 87 renvois, 333 numéros ; 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v30 réenregistrée par Julien (copie `schema/recus/2026-11-16_v30_ouverte_WinRelais.xrs`).
 
 ### Fait en v31

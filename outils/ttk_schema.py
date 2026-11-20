@@ -32,6 +32,7 @@ for k_ in ("S411", "S412"):
     REP[k_]["fab"] = "Schneider XB5AS8442 + ZBE102 + ZBE101"
 REP["S412"]["carac"] = "2 NF + 1 NO"          # comme S1 (Julien 03/11)
 REP["Q135"].update({"des": "Disjoncteur limitation prise de service à 2 A (choix BEBL)", "fab": "Schneider A9P71602 (iDT40K)", "carac": "2 A C - 4,5 kA"})   # v35, Julien 20/11
+REP["X131"]["carac"] = "2P+T 16 A 250 V - limitée à 2 A par -QF10"   # v36 : QF10 en 2 A (était « limitée 1,5 kW »)
 REP["P511"]["loc"] = "+M"                    # colonne lumineuse de la machine (02_MATERIEL)
 # f13 séparé en deux (29/10) : f13 alimentations, f14 services armoire ; f43 supprimé (29/10)
 FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "13") + 1,

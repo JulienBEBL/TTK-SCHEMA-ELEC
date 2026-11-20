@@ -33,10 +33,9 @@ Tableau dans `cablage/TTK_CABLES.xlsx` (onglets « Stock câbles » et « Liaiso
 | 1,5 mm² | rouge, bleu |
 | 2,5 mm² | gris, noir, bleu, vert-jaune |
 | 4 mm² | noir, vert-jaune, bleu |
-| ≈ 1 ou 1,5 mm² (non identifié) | 2 bobines noires, 2 bobines bleues |
 
-- Julien 20/11 : bleu clair ou foncé **impossible à dire** (rien à comparer) ; bobines noires non identifiées : seulement une référence imprimée (à relever pour connaître la section) ; bleues : aucune inscription. Orange non utilisé. 1,5 mm² noir remplacé par 2,5 mm² noir ; achat probable d'une bobine 1,5 noir.
-- Bleu clair ou foncé : non précisé [?]. Manques par rapport au besoin (05, 20/11) : 1,5 mm² noir (peut-être les bobines non identifiées), 1,5 mm² vert-jaune (2,5 mm² V/J à la place, sans souci), bleu foncé 24 V si les bleus sont clairs [?].
+- Julien 20/11 : bleu clair ou foncé **impossible à dire** (rien à comparer) ; bobines non identifiées (noires et bleues) : **à oublier** (Julien 20/11). Orange non utilisé. 1,5 mm² noir remplacé par 2,5 mm² noir ; achat probable d'une bobine 1,5 noir.
+- Bleu clair ou foncé : non précisé [?]. Manques par rapport au besoin (05, 20/11) : 1,5 mm² noir (2,5 noir à la place, bobine 1,5 à acheter), 1,5 mm² vert-jaune (2,5 mm² V/J à la place, sans souci), bleu foncé 24 V si les bleus sont clairs [?].
 
 ## Bornes et accessoires
 | Article | Référence | Stock | Dessinées au schéma (v31) | Statut |
