@@ -473,3 +473,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 18/11/2026 : unité SEW
 - [C] MCX91A : 1 mise sous tension **par heure** (Julien). Programme : `T_SEW_ON` = 3600 s. Schéma inchangé.
 - [C] S13 (ENA), S14 (titre de la liste d'E/S), S3 (Q8.3 en réserve) : corrections validées (Julien).
+
+## 20/11/2026 : prise et sections
+- [D] QF10 (limitation prise) : Schneider iDT40K 1P+N **2 A** au lieu de 6 A (Julien, charge sur la phase). Référence exacte à confirmer ; à passer en v35 (attente du go).
+- [H] Sections proposées (230 V entrée / sortie des alimentations, prise) : voir `memoire/05_POINTS_OUVERTS.md` ; à valider par Julien.

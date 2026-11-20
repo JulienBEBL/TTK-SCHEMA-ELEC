@@ -348,3 +348,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 18/11/2026 : réponse sur les incohérences
 - Julien : S12 = 1 mise sous tension par heure ; S13, S14, S3 OK ; mettre à jour, vérifier, pousser.
 - Fait : 05, 06, `QUESTIONS_SEW.md`, DECISIONS ; vérifié qu'aucune mention « par minute » ne reste comme hypothèse.
+
+## 20/11/2026 : sections, QF10 en 2 A
+- Julien : sections de 1333 / 1334 / 1343 / 1344 (prise) ? QF10 passe en 2 A Schneider. Sections des fils d'entrée (N, L1 / L2 / L3) et de sortie des alimentations ?
+- Fait : réponse avec la règle (fil ≥ calibre amont) et des sections proposées ; 1343 / 1344 n'existent pas ; QF10 2 A noté (02, 05, DECISIONS) ; schéma non régénéré, attente du go v35 et de la référence. Commit local.
