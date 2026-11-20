@@ -26,6 +26,17 @@ Tableau dans `cablage/TTK_CABLES.xlsx` (onglets « Stock câbles » et « Liaiso
 - **Boîte de jonction machine +BJM** (nom donné le 17/11, ancien +M-X1 ; bornier +BJM-X1). **Hypothèse de Julien (17/11) : tous les conducteurs de tous les câbles passent par la boîte**, réserves comprises ; onglet « Boîte BJM ». Sans le pupitre W11 : **57 bornes** (6 PT 4 pour U V W des moteurs, 44 PT 2,5, 7 terre), 11 groupes, **447 mm de bornes, rail ≈ 490 mm**. Avec W11 : **84 bornes** (6 PT 4, 70 PT 2,5, 8 terre), 12 groupes, **599 mm, rail ≈ 640 mm**. Ordre du rail : 400 V (W2, W5, W4) | 48 V (W9, W10) | TF (W3, W6) | W12 | W14 | W8 | terre | W11. Calcul : PT 4 6,2 mm, PT 2,5 et terre 5,2 mm, butée 10 mm de chaque côté de chaque groupe, embout 2,2 mm, rail + 2 x 20 mm. Julien rachète des PT si besoin.
 - Julien a demandé un aperçu visuel des câbles le 17/11 (widget dans le chat, pas un rendu du schéma) : exception à la règle « pas d'aperçu » quand il le demande.
 
+## Fil de câblage intérieur (Julien 20/11) [C]
+| Section | Couleurs en stock |
+|---|---|
+| 1 mm² | blanc, bleu, gris, violet, orange |
+| 1,5 mm² | rouge, bleu |
+| 2,5 mm² | gris, noir, bleu, vert-jaune |
+| 4 mm² | noir, vert-jaune, bleu |
+| ≈ 1 ou 1,5 mm² (non identifié) | 2 bobines noires, 2 bobines bleues |
+
+- Bleu clair ou foncé : non précisé [?]. Manques par rapport au besoin (05, 20/11) : 1,5 mm² noir (peut-être les bobines non identifiées), 1,5 mm² vert-jaune (2,5 mm² V/J à la place, sans souci), bleu foncé 24 V si les bleus sont clairs [?].
+
 ## Bornes et accessoires
 | Article | Référence | Stock | Dessinées au schéma (v31) | Statut |
 |---|---|---|---|---|

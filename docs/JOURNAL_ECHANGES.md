@@ -360,3 +360,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 20/11/2026 : fil de câblage 2,5 / 1,5 mm²
 - Julien : quel fil dois-je avoir en 2,5 et 1,5 mm², par couleur ?
 - Fait : pas de stock de fil intérieur dans la mémoire ; besoin déduit du schéma (sections du 20/11, couleurs du 02/11) ; questions posées (stock réel, départs du bus, couleur du 0 V).
+
+## 20/11/2026 : stock de fil
+- Julien : stock de fil de câblage par section et couleur.
+- Fait : noté dans 09 ; comparé au besoin ; questions : bleus clairs ou foncés, couleurs du 24 V, bobines non identifiées.

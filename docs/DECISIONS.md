@@ -481,3 +481,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 20/11/2026 : v35
 - [D] QF10 : Schneider iDT40K A9P71602 (2 A C, 4,5 kA), référence vérifiée ; go v35 (Julien).
 - [H] Fils de la prise : 1323 / 1324 en 2,5 mm², 1333 / 1334 en 1,5 mm² (Julien parlait de ces fils, f13).
+
+## 20/11/2026 : stock de fil de câblage
+- [C] Stock du 20/11 (Julien) : 1 mm² blanc, bleu, gris, violet, orange ; 1,5 mm² rouge, bleu ; 2,5 mm² gris, noir, bleu, V/J ; 4 mm² noir, V/J, bleu ; 2 bobines noires et 2 bleues ≈ 1 / 1,5 mm² non identifiées. Détail : `memoire/09_STOCK.md`.
