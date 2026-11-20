@@ -87,6 +87,8 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 
 - 18/11 (v12) : `document` v12 / B ; `types_bornes` : PTFIX 2X4 (46 en stock, 6 mm) ; X20.15 / X20.25 dans les groupes W9 / W10 et V/J de leurs conducteurs ; `boite` = +BJM (plus aucun « +M-X1 ») ; XR2 « fixe ».
 
+- 20/11 (v35) : QF10 « Schneider A9P71602 » (2 A) dans `saisie.json` ; implantation à régénérer.
+
 ## Faire une nouvelle version
 1. `git pull` ; passer l'ancien PDF + son `_verification.md` dans `implantation/old/` (`git mv`).
 2. `saisie.json` : `version`, `indice` (lettre suivante), `date`, ligne dans `revisions`.

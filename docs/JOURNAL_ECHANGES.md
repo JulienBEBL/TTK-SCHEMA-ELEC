@@ -352,3 +352,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 20/11/2026 : sections, QF10 en 2 A
 - Julien : sections de 1333 / 1334 / 1343 / 1344 (prise) ? QF10 passe en 2 A Schneider. Sections des fils d'entrée (N, L1 / L2 / L3) et de sortie des alimentations ?
 - Fait : réponse avec la règle (fil ≥ calibre amont) et des sections proposées ; 1343 / 1344 n'existent pas ; QF10 2 A noté (02, 05, DECISIONS) ; schéma non régénéré, attente du go v35 et de la référence. Commit local.
+
+## 20/11/2026 : v35
+- Julien : les fils sont 1323 / 1324 et 1333 / 1334 (QF9, QF10, XD1) ; relire la mémoire ; go v35 ; mettre à jour la mémoire et le dépôt.
+- Fait : référence A9P71602 vérifiée ; symbole 2 A créé ; v35 (f13 + nomenclature) : 0 problème, 0 erreur, 0 chevauchement ; v34 dans old/ ; mémoire 02, 05, 06, 08, README, CLAUDE.md ; `saisie.json`. Commit et push.

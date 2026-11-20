@@ -31,6 +31,7 @@ REP["P511"]["fab"] = "RS PRO 199-9760"
 for k_ in ("S411", "S412"):
     REP[k_]["fab"] = "Schneider XB5AS8442 + ZBE102 + ZBE101"
 REP["S412"]["carac"] = "2 NF + 1 NO"          # comme S1 (Julien 03/11)
+REP["Q135"].update({"des": "Disjoncteur limitation prise de service à 2 A (choix BEBL)", "fab": "Schneider A9P71602 (iDT40K)", "carac": "2 A C - 4,5 kA"})   # v35, Julien 20/11
 REP["P511"]["loc"] = "+M"                    # colonne lumineuse de la machine (02_MATERIEL)
 # f13 séparé en deux (29/10) : f13 alimentations, f14 services armoire ; f43 supprimé (29/10)
 FOL.insert(next(i for i, f in enumerate(FOL) if f["num"] == "13") + 1,
@@ -886,7 +887,8 @@ W(f, [(XL, BUS14["N"]), (q131[("N", 0)].x, BUS14["N"])], "N")
 for ph in ("L3", "N"):
     renvoi("13", (XR, BUS13[ph]), f, (XL, BUS14[ph]), "N" if ph == "N" else "L")
 # prise de service : -QF9 -> -QF10 -> -X14 dans l'axe, fils allongés (29/10)
-q135 = maitre(C + "Schneider_A9P71606_iDT40K_disjoncteur_1PN_6A_C.xsy", "Q135", f, 20000, 8800)
+# v35 (Julien 20/11) : QF10 en 2 A (A9P71602), symbole copié du 6 A, dans la librairie du dépôt
+q135 = maitre(os.path.join(ICI, "librairie", "CUSTOM", "Schneider_A9P71602_iDT40K_disjoncteur_1PN_2A_C.xsy"), "Q135", f, 20000, 8800)
 x131 = maitre(C + "Legrand_004280_prise_2P+T_16A.xsy", "X131", f, 20000, 13200)
 W(f, [q131[("N", 1)], q135[("N", 0)]], "N")
 W(f, [q131["2"], q135["1"]], "L")

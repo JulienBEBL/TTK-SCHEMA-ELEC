@@ -1,6 +1,20 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v34 (18/11/2026, PC PRO RIMANE)
+## Version actuelle : v35 (20/11/2026, PC PRO RIMANE)
+`schema/generes/release/TTK_2026-11-20_v35.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (comme la v34), 0 chevauchement, numéros 0 problème. v34 dans old/ (non réenregistrée).
+
+### Fait en v35 (Julien 20/11)
+| Folio | Changement |
+|---|---|
+| 13 | QF10 : Schneider iDT40K **A9P71602, 2 A C - 4,5 kA** (symbole `outils/librairie/CUSTOM/Schneider_A9P71602_iDT40K_disjoncteur_1PN_2A_C.xsy`, copié du 6 A ; aussi copié dans `sym_electrotech\CUSTOM` du PC Rimane) ; désignation « … prise de service à 2 A (choix BEBL) » (`REP["Q135"]` dans le script, classeur non modifié) |
+| 90-92 | Nomenclature : QF10 en A9P71602 / 2 A |
+| saisie.json | QF10 « Schneider A9P71602 » ; implantation à régénérer (étiquette de QF10) |
+
+### Suite
+- Julien : relire la v35 ; valider les sections proposées (`05_POINTS_OUVERTS.md`, 20/11).
+- Implantation : régénérer pour QF10 (autre session).
+
+## Version précédente : v34 (18/11/2026, PC PRO RIMANE)
 `schema/generes/release/TTK_2026-11-18_v34.xrs` : 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros ; 0 problème, 0 erreur, 30 attentions (28 connues + 2 fils V/J en attente, voulus), 0 chevauchement, numéros 0 problème. v33 dans old/ (copie WinRelais sans retouche dans `schema/recus/`).
 
 ### Fait en v34 (revue v33 + réponses de Julien du 18/11)

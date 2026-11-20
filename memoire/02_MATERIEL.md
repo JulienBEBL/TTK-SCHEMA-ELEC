@@ -21,7 +21,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | QF6 | Schneider iC60N A9F75204, 2P 4 A courbe D | alimentation 48 V |
 | QF7 / QF8 | **Hager NFT702, 1P+N 2 A courbe C, 6-10 kA, 1 module** [D 29/10] | QF7 ventilateurs, QF8 éclairage (symbole NFT706 à remplacer en v7) |
 | QF9 | IMO B6CR1N1630A, différentiel 1P+N 16 A 30 mA | prise |
-| QF10 | Schneider iDT40K, 1P+N **2 A** courbe C (Julien 20/11, remplace le 6 A A9P71606 ; référence 2 A à confirmer, A9P71602 ?) | limitation prise (prise limitée à 2 A, charge sur L3) ; **à passer au schéma (v35) et à l'implantation** |
+| QF10 | **Schneider iDT40K A9P71602, 1P+N 2 A courbe C, 4,5 kA** [D 20/11, v35] (remplace le 6 A A9P71606 ; référence vérifiée chez les distributeurs, RS 238-3409) | limitation prise : charge limitée sur L3 (Julien) ; prise ≈ 460 W maxi |
 | XD1 (ancien X14) | Legrand 004280, prise 2P+T 16 A | |
 | EV1 / EV2 | IDE VF92AC, ventilateurs 230 V | |
 | EL1 / EL2 | RS PRO 194-0417, éclairage LED armoire | |

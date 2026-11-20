@@ -477,3 +477,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 20/11/2026 : prise et sections
 - [D] QF10 (limitation prise) : Schneider iDT40K 1P+N **2 A** au lieu de 6 A (Julien, charge sur la phase). Référence exacte à confirmer ; à passer en v35 (attente du go).
 - [H] Sections proposées (230 V entrée / sortie des alimentations, prise) : voir `memoire/05_POINTS_OUVERTS.md` ; à valider par Julien.
+
+## 20/11/2026 : v35
+- [D] QF10 : Schneider iDT40K A9P71602 (2 A C, 4,5 kA), référence vérifiée ; go v35 (Julien).
+- [H] Fils de la prise : 1323 / 1324 en 2,5 mm², 1333 / 1334 en 1,5 mm² (Julien parlait de ces fils, f13).
