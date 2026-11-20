@@ -500,3 +500,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 ## 20/11/2026 : 0 V commun
 - [C] Julien demande s'il vaut mieux deux 0 V séparés : non, le 0 V commun (décision du 28/10) est nécessaire (STO, SM 1223, bobines via KA1) ; explication dans `memoire/03_ARCHITECTURE.md`. Anciens noms de borniers corrigés dans 03.
+- [D] 0 V commun T1 / T2 gardé (Julien 20/11, après explication).
