@@ -497,3 +497,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 ## 20/11/2026 : implantation v13
 - [C] Implantation v13 sur le schéma v36 : QF10 2 A, XD1 limitée à 2 A ; borniers inchangés ; 0 / 0 / 0.
+
+## 20/11/2026 : 0 V commun
+- [C] Julien demande s'il vaut mieux deux 0 V séparés : non, le 0 V commun (décision du 28/10) est nécessaire (STO, SM 1223, bobines via KA1) ; explication dans `memoire/03_ARCHITECTURE.md`. Anciens noms de borniers corrigés dans 03.

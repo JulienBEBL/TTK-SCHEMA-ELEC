@@ -14,7 +14,7 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
 - Moteurs, freins et TF **via un bornier** [D 28/10, redemandé le 02/11] : fait en v11 aux f31 / f32 (8 bornes par moteur : PE, U, V, W, 1b, 2b, 2, 3) et au f20 (4 bornes par moteur pas-à-pas), repérées X31.1x à X31.3x, X32.1x à X32.3x, X20.1x / X20.2x (règle du 02/11). Thermocouple B7 : 2 bornes X63.11 / X63.12, type à définir (pas encore acheté). Symbole moteur SEW modifié par Julien le 02/11 (moteur + sonde TF + frein BE5 dans un cadre, broches PE U1 V1 W1 1b 2b 2 3), noms de broches masqués (v13). Câbles : moteur 4G2,5 blindé, sonde TF **2x0,75 blindé** [D 02/11], freins M1 + M2 dans **un seul 5G1,5** par une boîte de dérivation côté machine [D 05/11]. Pas-à-pas : **un câble blindé par moteur** du bornier au moteur (W9 / W10, 4 conducteurs, section à définir) [D 02/11].
 
 ## 24 V : deux alimentations, 0 V commun
-| 24VELEC (T2, bornier X31) | 24VSEC (T1, bornier X33) |
+| 24VELEC (T2, bloc X21.11, ancien X31) | 24VSEC (T1, bloc X21.13, ancien X33) |
 |---|---|
 | CPU K1 : L+ et sorties 3L+ (PUL / DIR / ENA des drivers) | KA1 13-14 → KF1, KF2 ; puis Manu-D → KA2 (48 V) |
 | K2, K3 : L+ | KA1 23-24 → Auto-A → KM1, KM2 |
@@ -27,7 +27,8 @@ Numéros de folio : ceux **affichés depuis la v12** (dizaines, 02/11). Repères
 - **Répartition validée par Julien le 29/10** (« ok pour le tableau actuel »).
 - **Noms (29/10, v7)** : **24VSEC** = T1 (bornier X33, alimente les contacts de KA1) ; **24VELEC** = T2 (bornier X31, électronique). Anciens noms : +24 V COMMANDE / +24 V ELEC.
 - **Après un AU, les deux 24 V restent distribués.** L'AU ouvre les contacts de KA1 : bobines KM1, KM2, KA2, KF1, KF2 et STO perdent leur 24 V. Automate, IHM, switch, colonne et voyants restent alimentés (affichage du défaut). Seuls QS1 / QF1 / QF4 / QF5 coupent T1 / T2.
-- 0 V commun (X32) [D 28/10] ; les deux +24 V ne sont **jamais** mis en parallèle. Liaison PELV unique 0 V – PE par la borne sectionnable X36.1 (f12).
+- 0 V commun (bloc X21.12, ancien X32) [D 28/10] ; les deux +24 V ne sont **jamais** mis en parallèle. Liaison PELV unique 0 V – PE par la borne sectionnable X12.11 (ancien X36.1, f12).
+- **Pourquoi le 0 V commun est obligatoire ici** (question de Julien 20/11, confirmé) : plusieurs circuits mélangent les deux 24 V et ont besoin de la même référence : STO (signal 24VSEC par KA1 33-34, U1 / U2 alimentés en 24VELEC par X5, retour X6.2 au 0 V) ; SM 1223 (alimentation L+ en 24VELEC, sorties 3L+ en 24VSEC, référence M) ; bobines KM / KF / KA2 (24VSEC par les contacts de KA1 alimenté en 24VELEC). Avec deux 0 V séparés, ces signaux n'auraient plus de référence et ne marcheraient pas ; il faudrait aussi deux liaisons PELV. Les sorties des alimentations RS 284-0491 sont isolées (flottantes) : relier leurs -V est la pratique normale, sans effet sur leur régulation. Une alim coupée ne réalimente rien par le 0 V. Au câblage : un fil -V par alimentation jusqu'à X21.12 (bleu).
 - **Barres 24VELEC et 0 V en haut** des folios de commande (f21, f30, f40 à f42, f50, f60 à f63), enchaînées par renvois dans l'ordre des pages ; X31 et X32 (f21) s'y piquent [D 29/10]. Les appareils dont le 0 V est en bas (bobines f12, voyants et colonne f61) rejoignent la barre par un collecteur remonté à gauche.
 
 ## 48 V (f20)

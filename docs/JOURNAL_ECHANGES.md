@@ -376,3 +376,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 20/11/2026 : implantation v13
 - Julien : refaire une implantation propre et à jour d'après la mémoire et les derniers commits.
 - Fait : v13 (2 pages, schéma v36) ; seuls changements : QF10 2 A, XD1 limitée à 2 A, renvoi page 2 ; bornes identiques à la v34 ; v12 dans old/ ; 0 / 0 / 0. Commit local, sans push.
+
+## 20/11/2026 : 0 V commun T1 / T2
+- Julien : relit la v36 ; l'autre session refait l'implantation ; inquiet de mettre les deux 0 V ensemble, propose deux borniers 0 V séparés.
+- Fait : expliqué pourquoi le 0 V commun est nécessaire ; 03 complété (et anciens noms X31 / X32 / X33 / X36.1 corrigés).
