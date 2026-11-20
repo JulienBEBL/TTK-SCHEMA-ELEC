@@ -484,3 +484,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 ## 20/11/2026 : stock de fil de câblage
 - [C] Stock du 20/11 (Julien) : 1 mm² blanc, bleu, gris, violet, orange ; 1,5 mm² rouge, bleu ; 2,5 mm² gris, noir, bleu, V/J ; 4 mm² noir, V/J, bleu ; 2 bobines noires et 2 bleues ≈ 1 / 1,5 mm² non identifiées. Détail : `memoire/09_STOCK.md`.
+
+## 20/11/2026 : couleurs du 24 V
+- [D] 24VELEC en rouge 1,5 mm², 24VSEC en gris, 0 V en bleu (comme les blocs X21) ; orange non utilisé ; 2,5 noir à la place du 1,5 noir (Julien).
+- [H] 0 V : chaque -V de T1 et T2 sur X21.12 par son propre fil (pas de T2 -V → T1 -V, sinon 20 A dans un seul fil).

@@ -49,6 +49,8 @@ Le sommaire (f02) est généré à partir de cette liste : Julien veut qu'il soi
 | Thermocouple type K | vert (+) / blanc (-) (IEC 60584-3) | `TC` (vert) |
 | PROFINET | câble vert | `PN` (vert) |
 
+**Fil réel 24 V, choix de Julien du 20/11 (stock)** : 24VELEC **rouge 1,5 mm²**, 24VSEC **gris** (2,5 mm² de T1 à X21.13, 1 mm² en départ), 0 V **bleu** (clair ou foncé inconnu ; écart à la norme si clair, signalé une fois). Comme les blocs X21. Pas d'orange. Phases 1,5 mm² : 2,5 mm² noir accepté en attendant une bobine 1,5 noir. Le type dans le script (couleur affichée) ne change pas.
+
 Orange = circuits exceptés (encore sous tension QS1 ouvert) : **aucun sur TTK**, donc plus d'orange (avant v13 : 48 V, résistance, thermocouple en orange). Rouge = commande en alternatif : aucune.
 
 ## Retouches de Julien dans WinRelais (02/11)
