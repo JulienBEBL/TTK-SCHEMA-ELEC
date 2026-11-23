@@ -44,7 +44,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 |---|---|---|
 | T1 / T2 | RS PRO 284-0491, 24 V 240 W (10 A) | T1 = COMMANDE, T2 = ELEC (noms à changer, voir 03) |
 | T3 | Mean Well NDR-240-48, 48 V 240 W | |
-| KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire, 1 pôle (1-2) sur le +48 V | pouvoir de coupure DC-1 sous 48 V à vérifier |
+| KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire ; 2 pôles utilisés : 1-2 (+48 V de U3), 3-4 (+48 V de U4) ; pôle 5-6 libre, plus dessiné depuis la v37 (symbole CUSTOM 2 pôles) | pouvoir de coupure DC-1 sous 48 V à vérifier |
 | X21.11 à X21.13 (anciens X31 à X33) | **Phoenix PTFIX 6/12X2,5 (3273354)**, 1 entrée + 12 départs [D 05/11, v20] : X21.11 24VELEC **rouge**, X21.12 0 V **bleu**, X21.13 24VSEC **gris** (stock de Julien : RD, BK, GY, BU ; référence exacte par couleur à vérifier) | remplace les PTFIX 6X1,5 (3002781) ; X12.11 (ancien X36) = borne sectionnable PELV |
 | U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA **réglée le 05/11** (voir 05 point 13 : ENA alimenté = moteur libre), à confirmer au banc |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
@@ -120,3 +120,8 @@ H1 n'est pas sur la porte : c'est la colonne lumineuse de la machine.
 - Boîte de dérivation machine : **+BJM** [D 17/11]. Blindages raccordés d'un seul côté (armoire) [D 17/11].
 - Thermocouple : bornes X63.11 / X63.12 gardées [D 17/11] (la mémoire disait « en direct sur K3 »).
 - Câble M12 de B2 : RS 285-9453 (SICK, 20 m), repère **W14** [D 18/11]. PROFINET : PN1 843-6365 (1 m), PN2 / PN3 843-6369 (2 m), PN4 Roline 616-2586 (20 m, bleu).
+
+## Boîte de jonction machine +BJM (v37, 23/11)
+- Fabrication BEBL (Julien 23/11), pas de référence du commerce. Bornier X1 : 69 bornes (66 passage, 3 terre), type de borne à choisir [?].
+- Ordre : W2 X1.1-4, W5 X1.5-8, W4 X1.9-12, W9 X1.13-16, W10 X1.17-20, W3 X1.21-22, W6 X1.23-24, W12 X1.25-40, W14 X1.41-44, W8 X1.45-46, W11 X1.47-69 (V/J = X1.69). Terre : X1.4, X1.8, X1.69.
+- Fils boîte -> appareils : sections proposées (`docs/RAPPORT_v37_2026-11-23.md`) [H].

@@ -717,10 +717,10 @@
      "cable": "W11",
      "fonction": "Sélecteur S3",
      "bornes": [
-      "X41.21",
-      "X41.22",
-      "X41.23",
-      "X41.24",
+      "X43.11",
+      "X43.12",
+      "X43.13",
+      "X43.14",
       "X42.11",
       "X42.12",
       "X42.13",
@@ -746,10 +746,10 @@
      "cable": "W12",
      "fonction": "Capot mécanique B1",
      "bornes": [
-      "X41.31",
-      "X41.32",
-      "X41.33",
-      "X41.34"
+      "X43.21",
+      "X43.22",
+      "X43.23",
+      "X43.24"
      ]
     },
     {
@@ -787,10 +787,10 @@
      "cable": "W14",
      "fonction": "Capot magnétique B2",
      "bornes": [
-      "X41.41",
-      "X41.42",
-      "X41.43",
-      "X41.44"
+      "X43.31",
+      "X43.32",
+      "X43.33",
+      "X43.34"
      ]
     },
     {
@@ -1005,10 +1005,10 @@
    "X41.14",
    "X60.11",
    "X60.12",
-   "X41.21",
-   "X41.22",
-   "X41.23",
-   "X41.24",
+   "X43.11",
+   "X43.12",
+   "X43.13",
+   "X43.14",
    "X42.11",
    "X42.12",
    "X42.13",
@@ -1021,10 +1021,10 @@
    "X60.24",
    "X50.11",
    "X50.12",
-   "X41.31",
-   "X41.32",
-   "X41.33",
-   "X41.34",
+   "X43.21",
+   "X43.22",
+   "X43.23",
+   "X43.24",
    "X60.31",
    "X60.32",
    "X60.33",
@@ -1088,7 +1088,7 @@
    "repere": "W2",
    "fonction": "Moteur M1 (U V W PE)",
    "origine": "+A1 X31.11 à X31.14 (U1 X2)",
-   "destination": "+M M1 : U1 V1 W1 PE",
+   "destination": "+BJM, puis +M M1 : U1 V1 W1 PE",
    "type": "2XSLCY-K",
    "reference": "AEE261757",
    "conducteurs": "4G2,5",
@@ -1101,7 +1101,7 @@
    "repere": "W3",
    "fonction": "Sonde TF M1",
    "origine": "+A1 X31.21 / X31.22 (U1 X10)",
-   "destination": "+M M1 : 1b / 2b",
+   "destination": "+BJM, puis +M M1 : 1b / 2b",
    "type": "LIYCY",
    "reference": "PPMM0180",
    "conducteurs": "2 x 0,75",
@@ -1127,7 +1127,7 @@
    "repere": "W5",
    "fonction": "Moteur M2 (U V W PE)",
    "origine": "+A1 X32.11 à X32.14 (U2 X2)",
-   "destination": "+M M2 : U1 V1 W1 PE",
+   "destination": "+BJM, puis +M M2 : U1 V1 W1 PE",
    "type": "2XSLCY-K",
    "reference": "AEE261757",
    "conducteurs": "4G2,5",
@@ -1140,7 +1140,7 @@
    "repere": "W6",
    "fonction": "Sonde TF M2",
    "origine": "+A1 X32.21 / X32.22 (U2 X10)",
-   "destination": "+M M2 : 1b / 2b",
+   "destination": "+BJM, puis +M M2 : 1b / 2b",
    "type": "LIYCY",
    "reference": "PPMM0180",
    "conducteurs": "2 x 0,75",
@@ -1153,7 +1153,7 @@
    "repere": "W8",
    "fonction": "Thermocouple K, tête Microdia",
    "origine": "+A1 X63.11 / X63.12 (K3 AI0)",
-   "destination": "+M B7",
+   "destination": "+BJM, puis +M B7",
    "type": "Câble de compensation type K",
    "reference": "RS 236-3959",
    "conducteurs": "2 cond. (7 x 0,2 mm)",
@@ -1166,7 +1166,7 @@
    "repere": "W9",
    "fonction": "Moteur pas-à-pas M3 (A+ A- B+ B-), 48 V",
    "origine": "+A1 X20.11 à X20.15 (U3)",
-   "destination": "+M M3",
+   "destination": "+BJM, puis +M M3",
    "type": "LIYCY-JZ",
    "reference": "AEE261168",
    "conducteurs": "5G1,5 (4 + V/J)",
@@ -1179,7 +1179,7 @@
    "repere": "W10",
    "fonction": "Moteur pas-à-pas M4 (A+ A- B+ B-), 48 V",
    "origine": "+A1 X20.21 à X20.25 (U4)",
-   "destination": "+M M4",
+   "destination": "+BJM, puis +M M4",
    "type": "LIYCY-JZ",
    "reference": "AEE261168",
    "conducteurs": "5G1,5 (4 + V/J)",
@@ -1192,7 +1192,7 @@
    "repere": "W11",
    "fonction": "Pupitre : AU S2, sélecteur S3, alimentation IHM",
    "origine": "+A1 X41.1x, X41.2x, X42.1x, X50.1x, X60.1x, X60.2x",
-   "destination": "+P1 S2, S3, P1",
+   "destination": "+BJM, puis +P1 S2, S3, P1",
    "type": "LIYCY-JZ",
    "reference": "AEE261165",
    "conducteurs": "27G1 (26 + V/J) : 22 + V/J utilisés, 4 réserve",
@@ -1230,8 +1230,8 @@
   {
    "repere": "W14",
    "fonction": "Capot magnétique codé B2",
-   "origine": "+A1 X41.41 à X41.44",
-   "destination": "+M B2 (connecteur M12)",
+   "origine": "+A1 X43.31 à X43.34",
+   "destination": "+BJM, puis +M B2",
    "type": "Câble M12 8 broches femelle, extrémité libre",
    "reference": "RS 285-9453 (SICK)",
    "conducteurs": "8 cond. (section à relever)",
@@ -1322,19 +1322,19 @@
    ],
    [
     "7",
-    "X41.21"
+    "X43.11"
    ],
    [
     "8",
-    "X41.22"
+    "X43.12"
    ],
    [
     "9",
-    "X41.23"
+    "X43.13"
    ],
    [
     "10",
-    "X41.24"
+    "X43.14"
    ],
    [
     "11",
@@ -1408,19 +1408,19 @@
   "W12": [
    [
     "1",
-    "X41.31"
+    "X43.21"
    ],
    [
     "2",
-    "X41.32"
+    "X43.22"
    ],
    [
     "3",
-    "X41.33"
+    "X43.23"
    ],
    [
     "4",
-    "X41.34"
+    "X43.24"
    ],
    [
     "5",
@@ -1618,19 +1618,19 @@
   "W14": [
    [
     "?",
-    "X41.41"
+    "X43.31"
    ],
    [
     "?",
-    "X41.42"
+    "X43.32"
    ],
    [
     "?",
-    "X41.43"
+    "X43.33"
    ],
    [
     "?",
-    "X41.44"
+    "X43.34"
    ]
   ]
  },

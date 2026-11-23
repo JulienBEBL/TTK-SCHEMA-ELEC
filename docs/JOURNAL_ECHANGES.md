@@ -398,3 +398,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 23/11/2026 : revue des demandes Krizox, une par une
 - Julien : revoir chaque demande une par une (brute + réécrite), go entre chaque ; ordre du fichier ; commit à la fin.
 - Fait : D01 à D25 passées avec Julien ; décisions dans le fichier des demandes ; 4 images d'exemple de bornier rangées dans `memoire/revues/` ; règles dans 04 ; 05, 06 à jour. Rien modifié dans le script.
+
+## 23/11/2026 : v37
+- Julien : v37 en autonomie (toutes les demandes validées), + images qui ne se chargent pas, sommaire, W1 à l'export PDF ; plan d'action, vérification à chaque étape, mini rapport.
+- Fait : v37 (30 folios) : boîte +BJM et câbles sur tous les folios, f21 refait, f41 / f43, synoptique par lieu, plans de bornier f71-f73, IP, KA2 2 pôles, W1, images ; contrôles à 0 ; rapport ; mémoire (02, 03, 04, 05, 06, 08, README), CLAUDE.md, demandes Krizox.

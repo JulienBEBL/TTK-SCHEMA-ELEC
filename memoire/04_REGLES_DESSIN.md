@@ -17,10 +17,10 @@ Le script garde les **anciens numéros en interne** (clés de `F`, textes « fNN
 | 21 | 31 | distribution 24 V : X21.11 à X21.13, voyant H3 |
 | 30 | 54 | switch PROFINET |
 | 31, 32 | 20, 21 | variateurs U1, U2, bornier, moteurs M1, M2 |
-| 40, 41, 42 | 40, 41, 42 | sécurité : relais KA1, entrées, sorties |
+| 40, 41, 42, 43 | 40, 41, 42, 43 | sécurité : relais KA1, entrées (AU -S1 / -S2), sorties, capots -B1 / -B2 et shunts -S3 (f43 créé en v37) |
 | 50 | 60 | pupitre (IHM) |
 | 60, 61, 62, 63 | 50, 51, 52, 53 | automate : CPU entrées, sorties, SM 1223, SM 1231 TC |
-| 70, 71 | 70, 71 | borniers : groupes vers machine / réseau (70), tableau des bornes pupitre (71) |
+| 70 à 73 | 70 à 73 | borniers : rail par rail (70), plans de bornier borne par borne (71 à 73, v37) |
 | 80, 85, 90 | idem | câbles, implantation, nomenclature |
 
 Supprimés (anciens numéros) : f11 (répartiteur et barrette de terre : pas de symbole, 29/10), f30 (fondu dans l'actuel f12), f43, f03 légende (02/11).
@@ -129,7 +129,8 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 ## Folio 70 (09/11)
 - Les borniers y sont rangés **comme en vrai** : une ligne par rail / tronçon, dans l'ordre de l'implantation (agent draw.io, `implantation/JOURNAL.md`), rail indiqué dans le titre de ligne. Si l'implantation change l'ordre, mettre à jour `RAILS_X70`.
 
-## Images (09/11)
+## Images (09/11, chemin changé en v37)
+- **v37 (23/11, PC PERSO JULIEN)** : le chemin relatif n'est pas trouvé par WinRelais sur ce PC (« logo_TTK.jpg ? »). Défaut = **chemin complet** de `schema/images` du dépôt, recalculé à chaque génération : juste sur le PC qui génère (`TTK_IMAGES` le remplace si besoin).
 - Les images (logos f01) sont dans `schema/images/` et écrites par le script dans la section `¤#Logo¤` : `x·y·largeur·hauteur·chemin absolu·1·ratio de l'image x 1000·index du folio·0·`. Le chemin est absolu : il est recalculé à chaque génération depuis le dépôt.
 - **18/11 (v32) : chemin relatif par défaut** `..\..\images\…` (relatif au .xrs, juste pour release/ et old/), essai réussi par Julien : images visibles sur les 2 PC. `TTK_IMAGES` le remplace si besoin.
 - 18/11 : variable `TTK_IMAGES` (dossier écrit dans le .xrs, relatif ou absolu ; défaut `schema/images` du dépôt). Essai en cours : copie `schema/generes/test_images/TEST_images_relatives.xrs` (chemins `..\..\images\…`, non versionnée), à ouvrir dans WinRelais par Julien.
@@ -240,3 +241,10 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - **Synoptique f03** : par lieu (réseau client, +A1, +P1, +BJM, +M), câbles entre les cadres (D18).
 - **Plans de bornier** : f70 gardé ; f71 remplacé par des plans de bornier horizontaux (style SEE Electrical, exemples dans `memoire/revues/2026-11-20_krizox_v36_exemples_bornier/`), f72… si besoin ; textes « -KA1:14 (f40) » + n° de fil, format provisoire (D24).
 - Bornes de porte (S1, S4, H2, H3, H4), de l'éclairage et des ventilateurs : **gardées** (D04, D05, D23).
+
+## Réalisé en v37 (23/11) : détails de dessin
+- Boîte +BJM : bornes X1.1 à X1.69 (`bjm()` / `BJM_ORDRE` du script), repère à côté du corps de la borne ; rangée « bornes d'armoire / câble / bornes de la boîte / fils / appareil » ; câble à 800 sous la borne d'armoire, boîte à 1600 (place du numéro de fil sous le câble).
+- Cadres de lieu : `cadre_lieu()` (pointillé, texte +BJM / +M / +P1 en haut, à gauche, à droite ou imposé). Deux cadres ne se croisent jamais (contrôle par calcul).
+- f60 (colonnes à 800) : étiquette de câble courte (`court=True` : repère seul, taille 200, sous le trait) ; câbles W11 du -S2 et du -S3 séparés (le -S1 de la porte passe entre eux).
+- Câble d'un seul brin : trait de 800 centré (jamais de longueur nulle).
+- Plans de bornier (f71 à f73) : borniers horizontaux, textes verticaux (taille 160), format « -REP:broche (fNN) » + n° de fil en haut, appareil + « câble (conducteur) » en bas ; boîte : câble en haut, appareil en bas.

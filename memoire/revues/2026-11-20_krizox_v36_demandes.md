@@ -14,33 +14,35 @@ Rien n'est modifié tant que Julien n'a pas validé la demande. **Statut : revue
 ## Tableau de synthèse (après la revue du 23/11)
 | N° | Folio | Demande (courte) | Décision de Julien | Qui | Statut |
 |---|---|---|---|---|---|
-| D01 | 10 | Brins des câbles sans le V/J | tous les câbles en « G » | C | à faire v37 |
-| D02 | 10 | Pas de numéro de fil côté câble client | validé | C | à faire v37 |
+| D01 | 10 | Brins des câbles sans le V/J | tous les câbles en « G » | C | **fait v37** |
+| D02 | 10 | Pas de numéro de fil côté câble client | validé | C | **fait v37** |
 | D03 | 10 | « Incrémenter » entre câble client et QF1 | déjà fait | — | clos |
 | D04 | 12 | Bornes de H2 | gardées (toute la porte) | — | clos |
 | D05 | 13 | Bornes ventilateurs / éclairage | gardées | — | clos |
-| D06 | 20 | Pôle 5-6 de KA2 | plus dessiné | C | à faire v37 |
-| D07 | 20 | « Enlever le num » | = brin 5 (V/J) de W9 / W10 (D01) | C | à faire v37 |
-| D08 | tous | Bornes de la boîte +BJM | tous les câbles, W11 compris ; fils boîte → appareils | C + J | à faire v37 |
-| D09 | tous | Cadre pointillé hors armoire | validé, +BJM dans son propre cadre | C | à faire v37 |
-| D10 | tous | Localisations | noms gardés, affichés partout | C | à faire v37 |
-| D11 | tous | 24 V / 0 V drivers et E/S | contrôle pendant la v37 | C | à faire v37 |
-| D12 | tous | Câbles W11, W12, W14 sur les folios | validé + vérifier qu'aucune borne ne manque | C | à faire v37 |
-| D13 | 21 | Barres du haut | supprimées au f21 | C | à faire v37 |
-| D14 | 21 | Folio 21 refait au propre | 4 blocs alignés, images retirées | C | à faire v37 |
-| D15 | 30 | Adresses IP | « IP : à définir » ; valeurs plus tard (TIA) | C puis J | à faire v37 |
-| D16 | 31, 32 | Fils STO et 24 V | retracés | C | à faire v37 |
+| D06 | 20 | Pôle 5-6 de KA2 | plus dessiné | C | **fait v37** |
+| D07 | 20 | « Enlever le num » | = brin 5 (V/J) de W9 / W10 (D01) | C | **fait v37** |
+| D08 | tous | Bornes de la boîte +BJM | tous les câbles, W11 compris ; fils boîte → appareils | C + J | **fait v37** (à valider) |
+| D09 | tous | Cadre pointillé hors armoire | validé, +BJM dans son propre cadre | C | **fait v37** |
+| D10 | tous | Localisations | noms gardés, affichés partout | C | **fait v37** |
+| D11 | tous | 24 V / 0 V drivers et E/S | contrôle pendant la v37 | C | **fait v37** |
+| D12 | tous | Câbles W11, W12, W14 sur les folios | validé + vérifier qu'aucune borne ne manque | C | **fait v37** |
+| D13 | 21 | Barres du haut | supprimées au f21 | C | **fait v37** |
+| D14 | 21 | Folio 21 refait au propre | 4 blocs alignés, images retirées | C | **fait v37** |
+| D15 | 30 | Adresses IP | « IP : à définir » ; valeurs plus tard (TIA) | C puis J | **fait v37** (IP à donner) |
+| D16 | 31, 32 | Fils STO et 24 V | retracés | C | **fait v37** |
 | D17 | 31, 32 | Freins : câblage et pilotage | action externe au schéma | J | hors v37 |
-| D18 | 03 | Synoptique | par lieu, avec les câbles | C | à faire v37 |
-| D19 | 60 | Renvois du haut horizontaux | validé | C | à faire v37 |
-| D20 | 60 | L+ capt | textes courts | C | à faire v37 |
-| D21 | 61, 62 | Réserves regroupées | validé, aussi au f62 | C | à faire v37 |
-| D22 | 62 | Colonne H1 centrée | validé | C | à faire v37 |
+| D18 | 03 | Synoptique | par lieu, avec les câbles | C | **fait v37** |
+| D19 | 60 | Renvois du haut horizontaux | validé | C | **fait v37** |
+| D20 | 60 | L+ capt | textes courts | C | **fait v37** |
+| D21 | 61, 62 | Réserves regroupées | validé, aussi au f62 | C | **fait v37** |
+| D22 | 62 | Colonne H1 centrée | validé | C | **fait v37** |
 | D23 | 62 | Bornes de H4 | gardées | — | clos |
-| D24 | 70, 71+ | Plans de bornier | f70 gardé, f71 remplacé, f72… si besoin | C | à faire v37 |
+| D24 | 70, 71+ | Plans de bornier | f70 gardé, f71 remplacé, f72… si besoin | C | **fait v37** |
 | D25 | automate | Mnémoniques | seulement dans TIA | J | hors schéma |
 
 **Après la v37 (Julien, D04)** : check global des bornes et de l'implantation.
+
+**v37 générée le 23/11** : `schema/generes/release/TTK_2026-11-23_v37.xrs`, rapport `docs/RAPPORT_v37_2026-11-23.md` (choix à valider : f43, bornes X43, ordre de la boîte, sections des fils).
 
 ## Détail
 

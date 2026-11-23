@@ -105,7 +105,11 @@ for w in fils:          # un fil qui aboutit au milieu d'un autre (piquage) est 
 groupes = defaultdict(list)
 for w in fils:
     groupes[r((w["folio"], w["x1"], w["y1"]))].append(w)
+# v37 (revue Krizox) : le câble client (tronçon qui arrive en haut des bornes d'arrivée X10.1x) n'est pas numéroté
+client = {(s["folio"], b["x"], b["y"]) for s in m["symboles"] if s["nom"].startswith("X10.1") for b in s["broches"] if b["nom"] == "1"}
 for ws in groupes.values():
+    if any((w["folio"], w["x1"], w["y1"]) in client or (w["folio"], w["x2"], w["y2"]) in client for w in ws):
+        continue
     if not any((w["folio"], w["x1"], w["y1"], w["x2"], w["y2"]) in troncon_ok for w in ws):
         w = ws[0]
         pb.append(f"f{num[w['folio']]} : tronçon {w['type']} sans numéro, ({w['x1']},{w['y1']})-({w['x2']},{w['y2']})")

@@ -35,7 +35,11 @@ TYPES_BORNES = {
     "terre": ("Borne de terre vert/jaune", "Phoenix 3211867 (RS 708-1687)"),
     "PTFIX 6/12": ("Bloc de distribution PTFIX 6/12X2,5", "Phoenix 3273354"),
     "PTFIX 2X4": ("Bloc distributeur PTFIX 2X4 (bornes W11 / W12)", "Phoenix 1028361"),
+    # v37 (revue Krizox, D08) : bornier de la boîte de jonction machine +BJM-X1 (boîte fabriquée par BEBL, bornes à choisir)
+    "BJM": ("Borne de passage, boîte +BJM", A_VERIFIER),
+    "BJM terre": ("Borne de terre, boîte +BJM", A_VERIFIER),
 }
+LOC_BORNES = {"BJM": "BJM", "BJM terre": "BJM"}     # les autres bornes sont dans l'armoire (A1)
 CARAC_BORNES = {"PTFIX 2X4": "2 trous - 6 mm"}   # Julien 18/11   # Qté = nombre de bornes dessinées
 # Matériel acheté mais non dessiné (memoire/02_MATERIEL.md, 09_STOCK.md) : repère, désignation, marque et réf.,
 # caractéristiques, quantité, localisation
@@ -44,7 +48,7 @@ HORS_SCHEMA = [
     ("XR2", "Répartiteur 4P 125 A 7 départs (non dessiné)", "AEE300427", "", "1", "A1"),
     ("XPE1", "Bornier de terre 27 (non dessiné)", "Legrand 404839", "", "1", "A1"),
     ("", "Butées d'arrêt rail DIN", A_VERIFIER, "", A_VERIFIER, "A1"),
-    ("+BJM", "Boîte de jonction machine (non achetée)", A_VERIFIER, "", "1", "M"),
+    ("+BJM", "Boîte de jonction machine (fabrication BEBL, Julien 23/11)", "BEBL", "", "1", "M"),
 ]
 
 
@@ -61,8 +65,15 @@ def _saisie():
 SYMBOLES_BORNES = {"borne 4 mm": "passage", "borne 4 mm terre": "terre", "borne distribution ptfix 6/12x2.5": "PTFIX 6/12"}
 
 
+def est_bjm(rep):
+    """Borne de la boîte +BJM (bornier X1, v37)."""
+    return rep.startswith("X1.")
+
+
 def type_borne(rep, symbole, tb):
     nature = SYMBOLES_BORNES.get(symbole.lower(), "?")
+    if est_bjm(rep):
+        return "BJM terre" if nature == "terre" else "BJM"
     if nature in ("PTFIX 6/12", "terre"):
         return nature
     if rep in tb.get("PTFIX 2X4", ()):
@@ -116,7 +127,7 @@ def lignes(g):
     for t in TYPES_BORNES:
         if bornes[t]:
             d, m = TYPES_BORNES[t]
-            out.append(("borne", ["X", d, m, CARAC_BORNES.get(t, ""), str(bornes[t]), "A1",
+            out.append(("borne", ["X", d, m, CARAC_BORNES.get(t, ""), str(bornes[t]), LOC_BORNES.get(t, "A1"),
                                   ", ".join(sorted(folios_bornes[t], key=_naturel))]))
     for rep, d, m, c, q, l in HORS_SCHEMA:
         out.append(("hors", [rep, d, m, c, q, l, "-"]))
@@ -267,7 +278,7 @@ def controle(chemin, numeros_folios):
             nat = SYMBOLES_BORNES.get(s_["symbole"].lower())
             if nat is None:
                 pb.append(f"nomenclature : borne {s_['nom']} : symbole « {s_['symbole']} » de type inconnu")
-            if (nat == "terre") != (s_["nom"] in tb["terre"]):
+            if not est_bjm(s_["nom"]) and (nat == "terre") != (s_["nom"] in tb["terre"]):
                 pb.append(f"nomenclature : borne {s_['nom']} : symbole de terre et liste terre de saisie.json en désaccord")
     for a_, b_ in (("PT 4", "terre"), ("PT 4", "PTFIX 2X4"), ("terre", "PTFIX 2X4")):
         for rep in set(tb.get(a_, ())) & set(tb.get(b_, ())):

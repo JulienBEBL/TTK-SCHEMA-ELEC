@@ -1,13 +1,38 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## En cours (23/11/2026, PC PERSO JULIEN) : revue de Krizox sur la v36
+## Version actuelle : v37 (23/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-23_v37.xrs` : 30 folios, 253 symboles, 710 fils, 91 renvois, 405 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v36 dans old/ (non réenregistrée).
+Rapport : `docs/RAPPORT_v37_2026-11-23.md` (contrôles, demande par demande, choix à valider).
+
+### Fait en v37 (revue Krizox, demandes validées par Julien le 23/11)
+| Folio | Changement |
+|---|---|
+| 01, 21 | Images en chemin complet (le relatif n'était pas trouvé sur le PC perso) |
+| 03 | Synoptique par lieu (réseau client, +A1, +BJM, +M, +P1, câbles) |
+| 10 | W1 redessiné (ovale, non blindé), brins 1-4 ; pas de numéro sur le câble client |
+| 20 | KA2 à 2 pôles ; drivers remontés ; bornes +BJM et fils vers M3 / M4 |
+| 21 | Refait : 4 blocs alignés, plus de barres en haut, plus d'images |
+| 30 | Tableau des adresses IP (à définir) ; les barres 24 V / 0 V commencent ici |
+| 31, 32 | X5 / X6 droits sur 2 niveaux ; boîte +BJM entre W2-W4 et le moteur |
+| 41 / 43 | f41 = AU -S1 / -S2 ; **nouveau f43** = capots, shunts -S3, infos capots ; bornes X43 |
+| 42, 50, 60, 62, 63 | Boîte +BJM et câbles W11 / W12 / W8 ; f60 : ligne 24 V capteurs et renvois horizontaux ; f62 : H1 centrée |
+| 61 | Réserve Q0.6 à Q1.1 en une accolade |
+| 71-73 | Plans de bornier borne par borne (remplacent le tableau du f71) |
+| tous | Brins des câbles en G sans le V/J ; cadres pointillés +BJM / +M / +P1 |
+
+### Suite
+- Julien : ouvrir la v37 (images, export PDF de W1, f41 / f43, f71-f73) ; valider les choix du rapport ; check global bornes + implantation.
+- Implantation à refaire (boîte +BJM, X43) ; `saisie.json` déjà à jour (bornes X43, destinations des câbles vers +BJM).
+- Hors schéma : freins (D17), mnémoniques (TIA).
+
+## 23/11/2026, PC PERSO JULIEN : revue de Krizox sur la v36
 - Julien a relu la v36 dans WinRelais sur le PC perso : « elle a l'air bien ».
 - Notes de la visio Krizox du 20/11 : `memoire/revues/2026-11-20_krizox_v36_notes_brutes.txt` (brut) et `…_demandes.md` (25 demandes D01-D25, qui fait quoi : C / J / J+C, questions Q1-Q10).
 - **Revue faite avec Julien le 23/11, point par point** : décisions notées dans le fichier des demandes ; règles nouvelles dans 04 (« Revue Krizox »).
 - **Suite : préparer la v37** (20 demandes « à faire v37 » du tableau de synthèse), avec le contrôle 24 V / 0 V (D11) et la vérification des bornes manquantes (D12) ; compte rendu à Julien. Ne générer qu'avec son go.
 - Hors v37 : freins (D17, action externe), mnémoniques (D25, TIA), check global bornes + implantation après la v37.
 
-## Version actuelle : v36 (20/11/2026, PC PRO RIMANE)
+## Version précédente : v36 (20/11/2026, PC PRO RIMANE)
 `schema/generes/release/TTK_2026-11-20_v36.xrs` : mêmes chiffres que la v35 ; 0 problème, 0 erreur, 30 attentions connues, 0 chevauchement, numéros 0 problème. v35 dans old/ (non réenregistrée).
 
 ### Fait en v36 (passe de vérification du 20/11)

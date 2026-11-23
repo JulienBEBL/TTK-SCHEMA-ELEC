@@ -118,6 +118,7 @@ class Gen:
         self.numeros = []           # (folio, x, y, texte, angle) : numéros / noms de fil (¤#Numero)
         self.renvois = []
         self.textes = []
+        self.textes_v = []         # v37 : textes tournés (folio, x, y, texte, taille, angle), plans de bornier (non décalés)
         self.dessins = []
         self.tableaux_bruts = []  # (index folio, lignes) : tableaux WinRelais recopiés tels quels (un bloc ¤#Tableau·n¤ chacun)
         self.logos = []           # (index folio, x, y, largeur, hauteur, chemin absolu, ratio de l'image x 1000)
@@ -373,6 +374,10 @@ class Gen:
     def texte(self, folio, x, y, txt, size=300, color=0, bold=0):
         self.textes.append((folio, x, y, txt, size, color, bold))
 
+    def texte_v(self, folio, x, y, txt, size=160, angle=90):
+        """Texte tourné (v37) : angle 90 = se lit de bas en haut, (x, y) = début du texte (en bas à gauche)."""
+        self.textes_v.append((folio, x, y, txt, size, angle))
+
     def ligne(self, folio, x1, y1, x2, y2, color=0, width=20, dashed=False):
         self.dessins.append((folio, x1, y1, x2, y2, 2, color, width, 2 if dashed else 0))
 
@@ -398,14 +403,22 @@ class Gen:
                                bold=1 if (entete and r == 0) else 0)
                 cx += c
 
-    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None, blinde=None):
+    def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None, blinde=None,
+              vj=(), court=False):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
         à gauche, composition dessous à gauche, désignation gardée mais masquée.
-        compo_dx : abscisse de la composition par rapport au 1er brin (placement de Julien, f31 du 02/11)."""
+        compo_dx : abscisse de la composition par rapport au 1er brin (placement de Julien, f31 du 02/11).
+        vj : abscisses des conducteurs vert/jaune du câble (v37, revue Krizox) : dans le trait, sans numéro de brin.
+        court=True (v37, colonnes à 800 du f60) : repère seul, taille 200, sous le trait à droite du 1er brin ; composition masquée."""
         if ovale:
-            x1, x2, etiq, size = brins_x[0], brins_x[-1], "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
+            xs_ = list(brins_x) + list(vj)
+            x1, x2, etiq, size = min(xs_), max(xs_), "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
+            if x2 - x1 < 800:          # v37 : jamais de câble de longueur nulle (un seul brin) : trait de 800 centré
+                x1, x2 = (x1 + x2) // 2 - 400, (x1 + x2) // 2 + 400
+            if court:
+                etiq, size = "bas", 200
         if nums:
             self.cable_nums[len(self.cables)] = list(nums)
         # type (relu sur le .xrs de Julien du 05/11) : 0 Simple, 1 Rectangle, 2 Blindé (Ellipse), 3 Blindé (Ellipse + Trait),
@@ -416,6 +429,8 @@ class Gen:
     def cable_textes(self, c):
         """[(texte, x, y, taille)] des 3 textes d'un câble, tels qu'écrits dans le fichier."""
         f, x1, x2, y, rep, compo, desig, brins, etiq, size = c
+        if etiq == "bas":
+            return [(rep, brins[0] + 100, y + 80, size), ("", brins[0] + 100, y + 380, size), ("", brins[0] + 100, y + 680, size)]
         if isinstance(etiq, str):
             w = int(len(rep) * size * 0.55)
             # composition sous l'ovale, arrêtée avant le 1er brin (texte long : décalée à gauche, 02/11)
@@ -628,6 +643,8 @@ class Gen:
             L.append("\u00a4#Texte\u00a4")
             for f, x, y, txt, size, color, bold in self.textes:
                 L.append(SEP.join(map(str, (x, y, txt, "", f, 0, "Arial", size, 0, color, bold, -1, 0, 0, "", 0, "", 0))) + SEP)
+            for f, x, y, txt, size, angle in self.textes_v:
+                L.append(SEP.join(map(str, (x, y, txt, "", f, 0, "Arial", size, angle, 0, 0, -1, 0, 0, "", 0, "", 0))) + SEP)
         if self.dessins:
             L.append("\u00a4#DSansTexte\u00a4")
             for f, x1, y1, x2, y2, forme, color, width, style in self.dessins:
@@ -655,13 +672,13 @@ class Gen:
                 L.append("\u00a4#Autre\u00a4")
                 L.append(SEP.join(map(str, (f, x1, y, x2, y, 0, 0, 0, 0))) + SEP)
                 L.append("0\u00b740\u00b70\u00b70\u00b71\u00b716777215\u00b7")
-                ov = isinstance(etiq, str)
+                ov = isinstance(etiq, str) and etiq != "bas"
                 L.append(f"802\u00b7500\u00b7{self.cable_type.get(n, 0)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
                 L.append("4\u00b70\u00b7400\u00b7400\u00b7400\u00b7400\u00b70\u00b7")
                 if ov:
                     rx = x1 - 600            # repère centré (alignement 6) dans l'ovale
                 L.append(SEP.join(map(str, (rep, rx, ry, 1, 6 if ov or not etiq else 0, "Arial", size, 0, 0, 0, 0))) + SEP)
-                L.append(SEP.join(map(str, (compo, cx, cy, 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
+                L.append(SEP.join(map(str, (compo, cx, cy, 0 if etiq == "bas" else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 L.append(SEP.join(map(str, (desig, dx_, dy_, 0 if ov or not desig else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 for k in range(4):
                     L.append(SEP.join(map(str, ("", x1, y + 1000 + 300 * k, 0, 2, "Arial", 300, 0, 0, 0, 0))) + SEP)

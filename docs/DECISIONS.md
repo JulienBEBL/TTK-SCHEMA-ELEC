@@ -523,3 +523,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] f31 / f32 STO et 24 V retracés ; f60 renvois du haut horizontaux et textes L+ capt ; réserves regroupées (f61, f62) ; H1 centrée.
 - [D] f70 gardé ; f71 remplacé par des plans de bornier (format « -KA1:14 (f40) », provisoire).
 - [D] Freins : action externe au schéma (câblage du frein monté, logique de pilotage). Mnémoniques : seulement dans TIA.
+
+## 23/11/2026 : v37
+- [C] v37 générée (revue Krizox) : 0 problème, 0 erreur, 0 chevauchement ; rapport `docs/RAPPORT_v37_2026-11-23.md`.
+- [H] f41 coupé en deux (f43 = capots) ; bornes X41.2x-4x -> X43.1x-3x ; boîte +BJM X1.1 à X1.69 (ordre du 17/11) ; sections des fils boîte -> appareils proposées ; à valider par Julien.
+- [C] Images : chemin relatif non trouvé sur le PC perso ; chemin complet par défaut.
+- [C] D11 : 24 V / 0 V des drivers et des E/S automate justes (37 broches contrôlées).
