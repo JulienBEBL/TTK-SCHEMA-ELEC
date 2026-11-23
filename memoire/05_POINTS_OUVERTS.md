@@ -134,7 +134,7 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 - Fil de câblage intérieur (20/11) : **aucun stock noté dans la mémoire** (09 ne couvre que les câbles sortants). Besoin déduit du schéma et des couleurs (04) : 2,5 mm² noir, bleu clair, bleu foncé, vert-jaune ; 1,5 mm² noir, bleu clair, vert-jaune (+ bleu foncé si 24 V en 1,5). Stock réel à donner par Julien [?].
 
 ## Reprise PC PERSO JULIEN (23/11)
-- Symboles CUSTOM (54, `librairie_winrelais/`) à copier dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` : accord de Julien attendu [?]. Sans eux, le script s'arrête (symbole introuvable) et WinRelais n'affiche pas ces symboles.
+- Symboles CUSTOM (54, `librairie_winrelais/`) à copier dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` : **réglé le 23/11** (accord de Julien) : installés, v36 régénérée à l'identique.
 
 ## Reprise PC PRO RIMANE (18/11)
 - Identité git du PC Rimane : **réglé le 18/11**, `--local` JulienBEBL / julien@bebl.fr.

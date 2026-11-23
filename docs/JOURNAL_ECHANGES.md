@@ -386,3 +386,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 23/11/2026 : reprise sur le PC PERSO JULIEN
 - Julien : lire CLAUDE.md et la mémoire ; nouveau PC perso pour 3 mois ; notes de visio avec un collègue élec à venir.
 - Fait : mémoire lue ; essai de génération de la v36 sur ce PC (identique) ; 3e clone noté (CLAUDE.md, 07, 05, README) ; question : installer les symboles CUSTOM.
+
+## 23/11/2026 : symboles CUSTOM sur le PC perso
+- Julien : Documents et Téléchargements recopiés du PC Rimane ; WinRelais et TIA Portal installés ; oui pour installer les CUSTOM.
+- Fait : 54 symboles copiés ; v36 régénérée à l'identique (0 problème, 0 erreur, 0 chevauchement) ; 05, 07, DECISIONS mis à jour.

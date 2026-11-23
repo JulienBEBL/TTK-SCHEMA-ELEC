@@ -506,3 +506,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 23/11/2026 : PC PERSO JULIEN
 - [D] Julien travaille depuis son PC perso pendant environ 3 mois (programme automate), puis reprend son PC pro. Préfixe de commit [PERSO JULIEN].
 - [C] Sur ce PC, le script régénère la v36 à l'identique (copie de la librairie + CUSTOM du dépôt). Symboles CUSTOM pas encore installés dans WinRelais.
+- [C] 23/11 : symboles CUSTOM installés sur le PC PERSO JULIEN (accord de Julien) ; v36 régénérée à l'identique avec la vraie librairie. WinRelais et TIA Portal installés, Documents et Téléchargements recopiés du PC Rimane.
