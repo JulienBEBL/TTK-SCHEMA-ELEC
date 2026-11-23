@@ -135,7 +135,11 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 
 ## Revue Krizox v36 (23/11)
 - Questions Q1 à Q10 et demandes D01 à D25 : suivies dans `memoire/revues/2026-11-20_krizox_v36_demandes.md` (pas en double ici).
-- Revient sur des décisions passées : bornes de porte « tous ou aucun » (05/11, D04 / D23), boîte +BJM non dessinée (18/11, D08), freins desserrés en Manu par KA1 (05/11, D17).
+- **Revue faite le 23/11** (Julien, point par point) : 20 demandes pour la v37, 3 closes sans changement, 2 hors schéma.
+- **Freins (D17), action externe au schéma** [?] : vérifier le câblage du frein réellement monté (plaque moteur, redresseur BG / BGE) et la logique de pilotage (notice SEW MCX91A, courant du frein pour QF2 / QF3, essais de rotation à la main en Manu, en Auto à l'arrêt, après AU). Lancée à part par Julien ; schéma modifié ensuite si besoin.
+- **Après la v37** : check global des bornes et de l'implantation (Julien, D04).
+- Adresses IP (D15) : fixées par Julien dans TIA, puis reportées au f30.
+- Revenait sur des décisions passées : bornes de porte « tous ou aucun » (05/11, D04 / D23), boîte +BJM non dessinée (18/11, D08), freins desserrés en Manu par KA1 (05/11, D17).
 
 ## Reprise PC PERSO JULIEN (23/11)
 - Symboles CUSTOM (54, `librairie_winrelais/`) à copier dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` : **réglé le 23/11** (accord de Julien) : installés, v36 régénérée à l'identique.

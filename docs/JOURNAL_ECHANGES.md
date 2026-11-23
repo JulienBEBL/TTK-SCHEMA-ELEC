@@ -394,3 +394,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 23/11/2026 : revue Krizox v36
 - Julien : v36 bonne dans WinRelais ; notes brutes de la visio avec Krizox ; copie dans la mémoire + document des demandes bien écrites ; certaines à faire par Julien, d'autres par Claude, ou les deux.
 - Fait : notes copiées dans `memoire/revues/` ; v36 relue folio par folio pour chaque note ; 25 demandes (D01-D25) avec état v36, action et qui ; 10 questions, lot 1 posé (Q2, Q3, Q5, Q7). README, 01, 05, 06 mis à jour.
+
+## 23/11/2026 : revue des demandes Krizox, une par une
+- Julien : revoir chaque demande une par une (brute + réécrite), go entre chaque ; ordre du fichier ; commit à la fin.
+- Fait : D01 à D25 passées avec Julien ; décisions dans le fichier des demandes ; 4 images d'exemple de bornier rangées dans `memoire/revues/` ; règles dans 04 ; 05, 06 à jour. Rien modifié dans le script.

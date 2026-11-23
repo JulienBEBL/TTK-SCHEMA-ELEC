@@ -512,3 +512,14 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Julien : la v36 a l'air bien dans WinRelais (PC perso).
 - [H] 25 demandes rédigées depuis les notes de visio de Krizox (20/11) : `memoire/revues/2026-11-20_krizox_v36_demandes.md`. À valider par Julien ; rien modifié.
 - [D] Rangement : revues extérieures dans `memoire/revues/` (brut + demandes).
+
+## 23/11/2026 : revue Krizox, décisions point par point
+- [D] Brins des câbles en « G » sans le V/J ; pas de numéro sur le câble client W1 ; pôle 5-6 de KA2 plus dessiné.
+- [D] Bornes gardées : porte (S1, S4, H2, H3, H4), éclairage, ventilateurs (règle du 05/11 maintenue).
+- [D] Boîte +BJM dessinée (revient sur le 18/11) : tous les câbles, W11 compris ; fils boîte → appareils ; boîte fabriquée par BEBL.
+- [D] Cadres pointillés hors armoire ; localisations +A1 / +P1 / +M / +BJM gardées et affichées ; synoptique par lieu.
+- [D] W11 / W12 / W14 dessinés sur les folios ; vérifier les bornes manquantes.
+- [D] f21 refait : sans barres du haut, 4 blocs alignés, images retirées ; f30 « IP : à définir ».
+- [D] f31 / f32 STO et 24 V retracés ; f60 renvois du haut horizontaux et textes L+ capt ; réserves regroupées (f61, f62) ; H1 centrée.
+- [D] f70 gardé ; f71 remplacé par des plans de bornier (format « -KA1:14 (f40) », provisoire).
+- [D] Freins : action externe au schéma (câblage du frein monté, logique de pilotage). Mnémoniques : seulement dans TIA.

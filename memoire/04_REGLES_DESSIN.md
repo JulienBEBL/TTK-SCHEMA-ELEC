@@ -226,3 +226,17 @@ Méthode prévue (script) : potentiels calculés à partir des fils générés (
 - f80 : la liste des câbles est un **tableau WinRelais** fait par Julien (v30). Le script le recopie tel quel depuis `outils/blocs/f80_liste_cables_WinRelais.txt` (`g.tableaux_bruts`, section `¤#NombreTableau¤` avant `¤#NombreDefCable¤`, 1er champ de `¤#TableauAutre¤` = index du folio). Si les câbles changent : Julien régénère le tableau dans WinRelais, puis on recopie le bloc.
 - Le bloc contient 2 tableaux (Tableau 0 = en-tête seul, Tableau 1 = 7 câbles) : le 0 semble en trop (à confirmer par Julien).
 - f85 : textes remontés en (1600, 1700) / (1600, 2300) (Julien, v30).
+
+## Revue Krizox (23/11) : règles validées, à appliquer en v37
+Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
+- **Câbles en « G »** : brins numérotés sans le vert/jaune (W1 1-4, W9 / W10 1-4…) ; le V/J est repéré par sa couleur, jamais numéroté (D01, D07).
+- **Câble client W1** : pas de numéro de fil sur le câble client ; numéros à partir des bornes X10 (D02).
+- **Appareils hors armoire** : cadre pointillé avec la localisation (+M, +P1) ; bornes de la boîte dans leur propre cadre « +BJM » (D09). Localisations gardées : +A1, +P1, +M, +BJM, affichées partout (D10).
+- **Boîte +BJM dessinée** (revient sur le 18/11) : tous les câbles sortants y passent, W11 compris ; boîte → appareils en fils simples, numéros et sections proposés par l'assistant selon la fonction (D08).
+- **Câbles W11, W12, W14** dessinés sur les folios fonctionnels, n° de conducteur sur chaque brin ; toute liaison armoire ↔ extérieur passe par une borne (D12).
+- **f21** : plus de barres 24VELEC / 0 V en haut (seule exception à la règle 14) ; 4 blocs alignés, sans images sauf place ; H3 sur ses propres départs ; départs 24VELEC / 0 V vers le f30 par renvois (D13, D14).
+- **Réserves** : une seule accolade « Réserve » par suite de broches libres consécutives (D21).
+- **Renvois du haut** d'un folio : à l'horizontale, alignés comme les barres (D19).
+- **Synoptique f03** : par lieu (réseau client, +A1, +P1, +BJM, +M), câbles entre les cadres (D18).
+- **Plans de bornier** : f70 gardé ; f71 remplacé par des plans de bornier horizontaux (style SEE Electrical, exemples dans `memoire/revues/2026-11-20_krizox_v36_exemples_bornier/`), f72… si besoin ; textes « -KA1:14 (f40) » + n° de fil, format provisoire (D24).
+- Bornes de porte (S1, S4, H2, H3, H4), de l'éclairage et des ventilateurs : **gardées** (D04, D05, D23).
