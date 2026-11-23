@@ -1,5 +1,10 @@
 # 06 · Travail en cours (version actuelle et suite)
 
+## En cours (23/11/2026, PC PERSO JULIEN) : revue de Krizox sur la v36
+- Julien a relu la v36 dans WinRelais sur le PC perso : « elle a l'air bien ».
+- Notes de la visio Krizox du 20/11 : `memoire/revues/2026-11-20_krizox_v36_notes_brutes.txt` (brut) et `…_demandes.md` (25 demandes D01-D25, qui fait quoi : C / J / J+C, questions Q1-Q10).
+- Rien modifié dans le script. Étape suivante : réponses de Julien (lot 1 : Q2, Q3, Q5, Q7), validation des demandes, puis v37.
+
 ## Version actuelle : v36 (20/11/2026, PC PRO RIMANE)
 `schema/generes/release/TTK_2026-11-20_v36.xrs` : mêmes chiffres que la v35 ; 0 problème, 0 erreur, 30 attentions connues, 0 chevauchement, numéros 0 problème. v35 dans old/ (non réenregistrée).
 

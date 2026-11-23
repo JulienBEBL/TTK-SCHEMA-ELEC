@@ -133,6 +133,10 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 - Fils de la prise (Julien 20/11 : il parlait de 1323 / 1324 et 1333 / 1334, f13) : 1323 / 1324 en 2,5 mm² (sous QF9 16 A), 1333 / 1334 en 1,5 mm² (sous QF10 2 A). Sections non écrites sur les folios (pas de règle de dessin pour ça).
 - Fil de câblage intérieur (20/11) : **aucun stock noté dans la mémoire** (09 ne couvre que les câbles sortants). Besoin déduit du schéma et des couleurs (04) : 2,5 mm² noir, bleu clair, bleu foncé, vert-jaune ; 1,5 mm² noir, bleu clair, vert-jaune (+ bleu foncé si 24 V en 1,5). Stock réel à donner par Julien [?].
 
+## Revue Krizox v36 (23/11)
+- Questions Q1 à Q10 et demandes D01 à D25 : suivies dans `memoire/revues/2026-11-20_krizox_v36_demandes.md` (pas en double ici).
+- Revient sur des décisions passées : bornes de porte « tous ou aucun » (05/11, D04 / D23), boîte +BJM non dessinée (18/11, D08), freins desserrés en Manu par KA1 (05/11, D17).
+
 ## Reprise PC PERSO JULIEN (23/11)
 - Symboles CUSTOM (54, `librairie_winrelais/`) à copier dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` : **réglé le 23/11** (accord de Julien) : installés, v36 régénérée à l'identique.
 

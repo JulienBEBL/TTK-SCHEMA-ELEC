@@ -29,6 +29,7 @@
 | Julien Rimoux | Installation électrique du site client |
 | Samir (WAGO) | Équivalences borniers |
 | 2 amis | Relecteurs le soir (électricien, automaticien) |
+| Krizox | Collègue électricien de Julien : revue de la v36 en visio le 20/11 (`memoire/revues/`) ; aide prévue sur l'automate (« AUTOM => krizox ») |
 | 2 stagiaires | Câblage de l'armoire |
 
 ## Planning (validé le 20/10)

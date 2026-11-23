@@ -390,3 +390,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 23/11/2026 : symboles CUSTOM sur le PC perso
 - Julien : Documents et Téléchargements recopiés du PC Rimane ; WinRelais et TIA Portal installés ; oui pour installer les CUSTOM.
 - Fait : 54 symboles copiés ; v36 régénérée à l'identique (0 problème, 0 erreur, 0 chevauchement) ; 05, 07, DECISIONS mis à jour.
+
+## 23/11/2026 : revue Krizox v36
+- Julien : v36 bonne dans WinRelais ; notes brutes de la visio avec Krizox ; copie dans la mémoire + document des demandes bien écrites ; certaines à faire par Julien, d'autres par Claude, ou les deux.
+- Fait : notes copiées dans `memoire/revues/` ; v36 relue folio par folio pour chaque note ; 25 demandes (D01-D25) avec état v36, action et qui ; 10 questions, lot 1 posé (Q2, Q3, Q5, Q7). README, 01, 05, 06 mis à jour.

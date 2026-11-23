@@ -1,0 +1,44 @@
+sur al v36 retur krizox :
+
+il faut peut etre incrementer sur les fils f10 entre cable client et QF1.
+Le cable client ne peux pas avoir 1 2 3 4 5, seulement 1 à 4 (f10)
+supprimer f10 les numeros de cables client car non il n'y en a pas
+
+f12
+supprimer borne H2
+
+f13
+supprimer borne ventilo
+
+F20
+enelver un contact KA2
+enlever le num
+
+tous els folios =>
+rajouter des bornes pour celles du boitier de dérivation
+reverifier si pointillé autour symbole si exterieur armoire.
+mettre un +1 pôur armoire, +2 pour ihm ect...
+vérifier le 24 et le 0 pour els drivers, et les entres sorties autom
+
+important => rajouter les cables 27G1 et 19G1 !!!
+
+f21 => renvoie de folio, manquant
+
+f21 => bornier noir chelou, degueu comme il est
+
+f30 => preciser les adrese IP, 
+
+f31 et f32, fil bleu sto et 24 degueu. revoir aussi le cablage frein !!!! important !! verifier le roatation manuel pednant test.
+
+SCHEMA => remettre la synotpiqte avec +P1 ect.. et les encadrés.
+
+f60 => mettre les renvoie de folio ligne haut en horizontale comme ligne du haut. eclaircir le L+ des sorties, car bizarre.
+
+f61 => reserve le sur les 4 pin au lieu de 2 grouep de 2
+
+F62 => recentre les lamps colone lumineuse. pas de bornier pour voyant car dans l'armoire, à verfiier
+
+f70 => revoir schema bornier (rajouter en plus de l'implant deja existante). faire comme les schema en vrai (see electrical)
+
+AUTOM => krizox
+prg automate => mnemonique important
