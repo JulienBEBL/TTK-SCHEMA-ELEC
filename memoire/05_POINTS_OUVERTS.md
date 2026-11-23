@@ -133,6 +133,9 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 - Fils de la prise (Julien 20/11 : il parlait de 1323 / 1324 et 1333 / 1334, f13) : 1323 / 1324 en 2,5 mm² (sous QF9 16 A), 1333 / 1334 en 1,5 mm² (sous QF10 2 A). Sections non écrites sur les folios (pas de règle de dessin pour ça).
 - Fil de câblage intérieur (20/11) : **aucun stock noté dans la mémoire** (09 ne couvre que les câbles sortants). Besoin déduit du schéma et des couleurs (04) : 2,5 mm² noir, bleu clair, bleu foncé, vert-jaune ; 1,5 mm² noir, bleu clair, vert-jaune (+ bleu foncé si 24 V en 1,5). Stock réel à donner par Julien [?].
 
+## Reprise PC PERSO JULIEN (23/11)
+- Symboles CUSTOM (54, `librairie_winrelais/`) à copier dans `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` : accord de Julien attendu [?]. Sans eux, le script s'arrête (symbole introuvable) et WinRelais n'affiche pas ces symboles.
+
 ## Reprise PC PRO RIMANE (18/11)
 - Identité git du PC Rimane : **réglé le 18/11**, `--local` JulienBEBL / julien@bebl.fr.
 - Python sur le PC Rimane : **réglé le 18/11** (3.15.2, contrôles identiques au PC de Julien).

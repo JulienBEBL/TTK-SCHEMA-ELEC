@@ -381,3 +381,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : relit la v36 ; l'autre session refait l'implantation ; inquiet de mettre les deux 0 V ensemble, propose deux borniers 0 V séparés.
 - Fait : expliqué pourquoi le 0 V commun est nécessaire ; 03 complété (et anciens noms X31 / X32 / X33 / X36.1 corrigés).
 - Julien : garde le 0 V commun.
+
+
+## 23/11/2026 : reprise sur le PC PERSO JULIEN
+- Julien : lire CLAUDE.md et la mémoire ; nouveau PC perso pour 3 mois ; notes de visio avec un collègue élec à venir.
+- Fait : mémoire lue ; essai de génération de la v36 sur ce PC (identique) ; 3e clone noté (CLAUDE.md, 07, 05, README) ; question : installer les symboles CUSTOM.

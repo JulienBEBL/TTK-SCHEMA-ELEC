@@ -1,11 +1,13 @@
 # 07 · Méthode de travail
 
 ## Source de vérité
-- **Dépôt** https://github.com/JulienBEBL/TTK-SCHEMA-ELEC, branche `main`. Deux clones (18/11) :
+- **Dépôt** https://github.com/JulienBEBL/TTK-SCHEMA-ELEC, branche `main`. Trois clones (18/11, 23/11) :
   | PC | Préfixe de commit | Clone |
   |---|---|---|
   | PC de Julien (BEBL-15-LAFITE) | [PRO JULIEN] | `C:\Users\Julien\Documents\10. TTK\Repo_git\TTK-SCHEMA-ELEC` |
   | PC Rimane (DESKTOP-G68K9P5) | [PRO RIMANE] | `C:\Users\Rimane\Documents\10. TTK\TTK-SCHEMA-ELEC` |
+  | PC perso de Julien (DESKTOP-JEQGUKQ), depuis le 23/11 pour environ 3 mois (programme automate) | [PERSO JULIEN] | `C:\Users\Julien\Documents\10. TTK\TTK-SCHEMA-ELEC` |
+  - PC perso (23/11) : identité git `--local` JulienBEBL / julien@bebl.fr ; Python 3.15.2 ; WinRelais installé (`C:\Users\Public\Documents\Elec-CAO\sym_electrotech`) mais **symboles CUSTOM pas installés** (installation : `librairie_winrelais/README.md`, avec l'accord de Julien). Essai : avec une copie de la librairie + CUSTOM du dépôt (`TTK_LIB` vers cette copie), la v36 se régénère **octet pour octet** ; 0 problème, 0 chevauchement. Dossier voisin : `Documents\10. TTK\TTK-AUTOMATISME` (programme).
   - Identité git du PC Rimane : `--local` (ce dépôt seul), JulienBEBL / julien@bebl.fr, comme sur le PC de Julien (18/11).
   - Toujours `git pull --rebase` avant de travailler : l'autre PC a pu pousser.
   - Ce qui dépend du PC : chemins des images dans les .xrs (`¤#Logo¤`, chemin absolu), zoom écrit par WinRelais (virgule décimale sur le PC Rimane), Python (installé sur le PC Rimane le 18/11 : 3.15.2), symboles CUSTOM installés ou non. Détail : `docs/ANALYSE_PC_RIMANE_2026-11-18.md`.
@@ -23,7 +25,7 @@
 | `docs/` (autres) | Nommage, sécurité, passation, format .xrs (`docs/local/`) |
 | `outils/` | Scripts Python, librairie de symboles reconstruite |
 | `schema/generes/release/` | **la dernière version seule** : `TTK_AAAA-MM-JJ_vN.xrs` + `_verification.md` + `_nomenclature.csv` |
-| `implantation/` | Dossier d'implantation **généré** depuis le 17/11 (`implantation/generateur/`, PDF dans release/). Jusqu'à la v10 : agent draw.io. Commits préfixés par le PC ([PRO JULIEN], [PRO RIMANE], [perso]) ; pas de push sans accord de Julien |
+| `implantation/` | Dossier d'implantation **généré** depuis le 17/11 (`implantation/generateur/`, PDF dans release/). Jusqu'à la v10 : agent draw.io. Commits préfixés par le PC ([PRO JULIEN], [PRO RIMANE], [PERSO JULIEN]) ; pas de push sans accord de Julien |
 | `cablage/` | Vérité terrain des câbles sortants et des bornes (`TTK_CABLES.xlsx`, CSV exportés), indépendante du schéma (17/11) |
 | `schema/generes/old/` | toutes les versions précédentes (on y déplace l'ancienne release avec `git mv` à chaque nouvelle version) |
 | attention | **Julien ouvre la release directement dans WinRelais, qui la réenregistre.** Avant le `git mv`, faire `git status` : si la release est modifiée, la copier dans `schema/recus/AAAA-MM-JJ_vN_ouverte_WinRelais.xrs`, la comparer à la version générée (section par section), puis `git checkout` la version générée (constaté le 02/11 sur la v12). |
