@@ -27,7 +27,7 @@ Rapport : `docs/RAPPORT_v37_2026-11-23.md` (contrôles, demande par demande, cho
 ### 24/11/2026 : valeurs orales SEW (frein, STO), rien modifié au schéma
 - Technicien SEW, téléphone, **à confirmer par écrit** : STO 150 mW (6,25 mA sous 24 V, par variateur ou total non précisé) ; frein BE5 / BGE1.5 maintien 0,18 A (appel non donné). Questions 1 et 2 de `docs/QUESTIONS_SEW.md` **toujours ouvertes**.
 - Effet [H] : STO 12,5 mA (cas A) ou 6,25 mA (cas B) contre 10 mA mini de KA1 33-34 ; frein 0,18 A contre QF2 / QF3 2 A C, appel manquant. Détail et options : `05_POINTS_OUVERTS.md` points 1 bis et 8.
-- **Prochaine étape** : Julien donne ses autres demandes pour SEW ; les ajouter à QUESTIONS_SEW (N°, question, pourquoi) et signaler les recoupements. Pas de v38 générée ici ; les 4 questions des retours v37 restent en attente.
+- **Prochaine étape** : réponse écrite de Xavier (SEW) au mail envoyé le 24/11 (questions 10, 1, 2, 3, 4, 5) ; la reporter dans QUESTIONS_SEW, 05, BILAN et DECISIONS. Autres questions SEW (7, 8, 9, 11 à 16) à envoyer plus tard. Pas de v38 générée ici ; les 4 questions des retours v37 restent en attente.
 
 ### Suite
 - Julien : ouvrir la v37 (images, export PDF de W1, f41 / f43, f71-f73) ; valider les choix du rapport ; check global bornes + implantation.
