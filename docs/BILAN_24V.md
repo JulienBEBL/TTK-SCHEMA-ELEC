@@ -16,7 +16,7 @@ Règle : aucune valeur inventée. « ? » = valeur à lire sur la fiche ou à de
 | K3 SM 1231 TC G2 (L+) | 0,015 A | fiche 6ES7231-5QF50-0XB0 (version allemande) |
 | K4 switch IE-SW-AL05LM-5TX | 0,14 A | fiche Weidmüller 2682250000 |
 | P1 IHM KTP700 Basic PN (via 27G1) | 0,23 A | fiche 6AV2123-2GB03-0AX0 |
-| U1, U2 MCX91A : X5 électronique 24 V | ? × 2 | à demander à SEW (`docs/QUESTIONS_SEW.md`, question 8) |
+| U1, U2 MCX91A : X5 électronique 24 V | ? × 2 | à demander à SEW (`docs/QUESTIONS_SEW.md`, question 4) |
 | CPU 3L+ → entrées PUL / DIR / ENA des 2 drivers DM860H | ? (6 entrées) | notice DM860H |
 | CPU L+ capteurs → contacts B1 à B6, S1 à S3, KM / KA2 (14 entrées) | ? (courant d'entrée de la CPU G2) | fiche CPU |
 | H3 voyant porte 24VELEC | ? | référence à définir |
@@ -30,7 +30,7 @@ T2 consomme à peu près la même chose en permanence (min ≈ moy ≈ max), ave
 | KF1, KF2 bobines LC1D09BD (freins) | 2 × 0,225 A (5,4 W chacune) | KA1 armé (Auto et Manu) | fiche Schneider LC1D09BD |
 | KM1, KM2 bobines LC1D09BD (réseau des variateurs) | 2 × 0,225 A | Auto seulement (AUTO-A) | idem |
 | KA2 bobine LC1D09BD (48 V des drivers) | 0,225 A | Manu seulement (MANU-D) | idem |
-| STO de U1 (puis U2 en chaîne) | ? | Auto seulement (AUTO-B) | à demander à SEW (question 3) |
+| STO de U1 (puis U2 en chaîne) | **oral 24/11, à confirmer par écrit : 150 mW = 6,25 mA sous 24 V**, par variateur ou pour les 2 non précisé : 6,25 mA (total) ou 12,5 mA (par variateur, 2 en chaîne), soit 0,06 à 0,13 % de T1 | Auto seulement (AUTO-B) | SEW, oral 24/11 ; question 2 de `docs/QUESTIONS_SEW.md` toujours ouverte |
 | H1 colonne (1 à 3 feux), par Q8.0 à Q8.2 | ? | selon le programme | fiche RS 199-9760 (onglet Documents) |
 | H4 voyant défaut, par Q8.4 | ? | en défaut | référence à définir |
 

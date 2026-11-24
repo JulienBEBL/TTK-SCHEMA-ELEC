@@ -533,3 +533,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 24/11/2026 : retours v37
 - [?] Retours de Julien sur la v37 notés (`memoire/revues/2026-11-23_retours_julien_v37.md`) ; 4 questions posées avant la v38.
 - [D] Plans de bornier f71-f73 : forme validée ; note du haut à supprimer.
+
+## 24/11/2026 : valeurs orales SEW (frein BE5, STO)
+- [?] Source orale (technicien SEW, téléphone, 24/11), **à confirmer par écrit**, aucun document. Questions 1 et 2 de `docs/QUESTIONS_SEW.md` **restent ouvertes** (réponses partielles).
+- [?] Frein BE5 avec redresseur BGE1.5 : courant de maintien 0,18 A ; courant d'appel non donné ; côté CA / CC et « par frein » non précisés.
+- [?] Entrée STO du MCX91A : 150 mW (6,25 mA sous 24 V) ; non précisé si par variateur (12,5 mA pour 2) ou pour les deux (6,25 mA).
+- [H] STO : cas A (12,5 mA) au-dessus du minimum de 10 mA / 15 V de KA1 33-34 (R-32), marge 2,5 mA ; cas B (6,25 mA) en dessous, il manque 3,75 mA. Options notées en 05, point 1 bis, sans décision.
+- [H] Frein : 0,18 A = 9 % de 2 A ; charge de KA1 13-14 inchangée (le frein passe par KF1 / KF2). Appel manquant : déclenchement de la courbe C non jugeable.
+- [?] 0,18 A cohérent avec le 0,183 A à 400 V d'un chat du 27/08 (non vérifié) ; pas un recoupement indépendant prouvé.
+- [C] Aucun changement de schéma, de calibre ni de nomenclature. Corrections de texte : BILAN_24V (n° de questions 3 -> 2 et 8 -> 4), 03 et 05 (STO « en chaîne » et non « en parallèle »).

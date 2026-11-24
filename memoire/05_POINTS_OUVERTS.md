@@ -41,7 +41,12 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.
-1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A en parallèle à lire (SEW).
+1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A (en chaîne depuis la v23) à lire (SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : entrée STO 150 mW ; non précisé si par variateur ou pour les 2. Question 2 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
+   - Calcul [H] (aucune valeur ajoutée) : 150 mW / 24 V = 6,25 mA.
+   - Cas A, 150 mW par variateur : 2 × 6,25 = **12,5 mA** ≥ 10 mA ; marge 2,5 mA (25 %). Si l'entrée est résistive [H] (R ≈ 24² / 0,150 = 3,84 kΩ), le courant suit la tension : 10 mA atteints vers 19,2 V.
+   - Cas B, 150 mW au total : **6,25 mA** < 10 mA ; il manque 3,75 mA. 15 V : 24 V suffit dans les 2 cas.
+   - Le minimum de Schneider fixe la fiabilité du contact, pas le fonctionnement du STO. Le contact AUTO-B de S3 (Eaton) est en série : sa fiche donne la fiabilité à 24 V CC / 10 mA [C], rien en dessous.
+   - Options si la marge ne suffit pas (aucune décision) : (a) confirmation écrite SEW, puis mesure du courant de la ligne STO au banc (02/12) : sans risque, mais après le câblage du 26/11 ; (b) résistance de charge sur la ligne STO, déjà envisagée en B3 de `docs/REVUE_ACHATS_2026-11-03.md` : pour ajouter 3,75 mA sous 24 V, R ≤ 6,4 kΩ (≈ 90 mW) ; risques : composant à ajouter à la nomenclature et au f42, nouveau point de défaut dans la chaîne STO, accord SEW nécessaire ; (c) faire commuter le STO par un contact de KA1 déjà chargé par des bobines (13-14 : 0,68 A, 23-24 : 0,45 A) ; risques : change la répartition validée le 06/11, charge min. assurée mais STO et bobines sur le même contact ; (d) garder tel quel si le cas A est confirmé par écrit ; risque : à 12,5 mA la marge est mince et la tension réelle n'est pas connue ; si le cas B : contact hors garantie, panne probable côté disponibilité (STO non libéré) plutôt que côté sécurité [H].
 1 ter. Capot à deux technologies (B1 mécanique voie 1, B2 magnétique voie 2) : écart d'ouverture > 200 ms = alerte (R-16), à essayer au banc.
 2. Charge de la sortie 13-14 : 3 bobines LC1D09BD à 5,4 W = 0,68 A sous 24 V, < 3 A DC-13 [C fiche Schneider LC1D09BD, 03/11]. 23-24 : 0,45 A.
 3. Antiparasites des bobines LC1D09BD : **réglé, rien à ajouter** : « Built-in bidirectional peak limiting diode suppressor » [C fiche Schneider, 03/11].
@@ -51,7 +56,13 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 7. Fins de course B3 à B6 : NO le 05/11, **NF 11-12 depuis le 18/11 (v32, Julien)**.
 
 ## Puissance et variateurs
-8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW).
+8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : redresseur BGE1.5, courant de **maintien 0,18 A** ; **courant d'appel non donné** ; côté CA ou CC et « par frein » non précisés. Question 1 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
+   - Maintien 0,18 A contre QF2 / QF3 (2 A C) : 9 % du calibre. Chaque frein a son disjoncteur et ses propres brins dans W4 (M1 : L1 / L2, M2 : L1 / L3), donc 0,18 A par conducteur [H].
+   - Câble 5G1,5 : 0,18 A est très inférieur à 2 A, et QF2 / QF3 protègent le câble. Tenue exacte (NF EN 60204-1, tableau 6) non relevée ; longueur de W4 non définie, donc chute de tension non calculée.
+   - Charge de KA1 13-14 : **inchangée**. Le courant du frein passe par les contacts de puissance de KF1 / KF2, pas par KA1. 13-14 ne porte que les bobines (KF1, KF2, KA2 : 0,68 A < 3 A DC-13). Pouvoir de coupure des contacts de KF1 / KF2 : fiche non dans le dépôt [?].
+   - **Appel manquant** : on ne peut pas juger le déclenchement magnétique de la courbe C. Seuil indicatif de 5 à 10 × In (IEC 60898) [H, à lire sur la fiche A9F74202], soit 10 à 20 A, soit 55 à 110 × 0,18 A. Le rapport appel / maintien du BGE1.5 est à demander.
+   - 0,18 A est cohérent avec les 0,183 A à 400 V d'un chat du 27/08 (écart 1,6 %). Ce chat n'avait pas été vérifié ; l'accord ne prouve pas deux sources indépendantes (le technicien a pu lire la même table). Si 0,18 A est un courant CC de bobine, il ne dit rien du courant CA vu par QF2 / QF3.
+   - Rien modifié : calibre, courbe et câble inchangés tant que l'appel manque.
 9. X6 (STO) **réglé le 05/11** (Julien, notice SEW) : X6.1 / X6.3 = F_STO_P +24 V, X6.2 / X6.4 = F_STO_M 0 V, X6.5 VO24_STO / X6.6 GND non utilisés ; câblage du schéma conforme. Reste X10 (TF) et le courant des entrées STO (point 1 bis).
 10. Mises sous tension du MCX91A (= fermeture de KM1 / KM2, 400 V sur L1-L3) : réponse SEW « 1 » (06/11). Usage (Julien, 09/11) : environ **1 mise sous tension toutes les 8 h** (passage en Manu pour la maintenance, puis retour en Auto) ; l'AU est réservé aux urgences, pas d'usage normal. Compatible avec la réponse « 1 » de SEW : **on garde KM1 / KM2**, point clos pour le schéma. **Rouvert le 18/11 pour le programme** (chat automate) : **réglé le 18/11 (Julien) : 1 mise sous tension par heure**. Programme : `T_SEW_ON` = 3600 s (AL04 dure 1 h après chaque retour en Auto) ; l'alarme AL04 supposait 1 / min (60 s).
 11. Câbles frein 5G1,5 (réserve) et TF 2x0,75 blindé (acheté) : longueurs à définir. Câbles pas-à-pas W9 / W10 : **réglé le 17/11**, LIYCY-JZ 5G1,5 (étiquettes en v34).
@@ -84,7 +95,7 @@ Procédure pour un nouveau chat : `docs/ESSAI_BANC_BOUCLE_RETOUR.md`.
 - Boucle Y1-Y2 avec un NF miroir de LC1D09BD en série avec le bouton (START 3) : réarmement normal accepté ; NF ouvert (fil retiré, contacteur tenu enclenché) : réarmement refusé. Déjà constaté le 02/11 : bouton enfoncé = START clignote, relâchement = sorties fermées (front descendant).
 
 ## Questions à SEW
-Liste à jour : `docs/QUESTIONS_SEW.md` (05/11) : TF livrées, X10, courant STO, frein BE5, frein alimenté moteur à l'arrêt, mises sous tension / h, longueur de câble.
+Liste à jour : `docs/QUESTIONS_SEW.md` (24/11, 16 questions). Réponses **orales partielles** du 24/11 sur les questions 1 (frein : maintien 0,18 A) et 2 (STO : 150 mW), à confirmer par écrit : voir points 1 bis et 8.
 
 ## Contrôle des fils v26 (13/11)
 - **H2 voyant 230 V de porte** : piqué directement sur L3 / N du bus, seule protection QF1 20 A. **Julien (13/11) : il garde ce branchement.** Rappel fait une fois (NF EN 60204-1, 7.2) : pas de disjoncteur obligatoire pour un voyant, mais chaque fil doit être protégé contre les surintensités ; les fils de H2 (jusqu'à la porte) doivent donc tenir les 20 A de QF1 (1,5 mm² ne convient pas ; 2,5 mm² à vérifier selon le mode de pose dans le tableau de la norme), sinon un fusible 2 A sur L3. Numéros : 1023 / 1024. Détail : `docs/CONTROLE_FILS_v26.md`.

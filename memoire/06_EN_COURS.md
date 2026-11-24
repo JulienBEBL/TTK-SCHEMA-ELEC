@@ -24,6 +24,11 @@ Rapport : `docs/RAPPORT_v37_2026-11-23.md` (contrôles, demande par demande, cho
 - Détail et questions : `memoire/revues/2026-11-23_retours_julien_v37.md` (défaut commun : numéros de fil sur les ellipses de câble, repères, numéros de brin et cadres pointillés ; folios 12, 13, 20, 31, 32, 40-43, 50, 60, 62, 63 ; plans de bornier OK).
 - **Prochaine étape** : réponses de Julien aux 4 questions, puis v38, commit + push.
 
+### 24/11/2026 : valeurs orales SEW (frein, STO), rien modifié au schéma
+- Technicien SEW, téléphone, **à confirmer par écrit** : STO 150 mW (6,25 mA sous 24 V, par variateur ou total non précisé) ; frein BE5 / BGE1.5 maintien 0,18 A (appel non donné). Questions 1 et 2 de `docs/QUESTIONS_SEW.md` **toujours ouvertes**.
+- Effet [H] : STO 12,5 mA (cas A) ou 6,25 mA (cas B) contre 10 mA mini de KA1 33-34 ; frein 0,18 A contre QF2 / QF3 2 A C, appel manquant. Détail et options : `05_POINTS_OUVERTS.md` points 1 bis et 8.
+- **Prochaine étape** : Julien donne ses autres demandes pour SEW ; les ajouter à QUESTIONS_SEW (N°, question, pourquoi) et signaler les recoupements. Pas de v38 générée ici ; les 4 questions des retours v37 restent en attente.
+
 ### Suite
 - Julien : ouvrir la v37 (images, export PDF de W1, f41 / f43, f71-f73) ; valider les choix du rapport ; check global bornes + implantation.
 - Implantation à refaire (boîte +BJM, X43) ; `saisie.json` déjà à jour (bornes X43, destinations des câbles vers +BJM).

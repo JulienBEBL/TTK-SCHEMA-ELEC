@@ -1,18 +1,70 @@
-# Questions à poser à SEW (05/11/2026)
+# Questions à poser à SEW (mise à jour du 24/11/2026)
 
-Matériel : 2 motoréducteurs SEW K39 DRN100LS4 / BE5 / TF (2,2 kW, frein BE5 400 V CA, sonde TF), 2 variateurs MOVITRAC MCX91A-0055-5E3 (options CSO = STO, CFN = PROFINET).
-Câblage prévu : réseau coupé par un contacteur KM1 / KM2 en amont de chaque variateur ; STO X6 commandé par le relais de sécurité ; frein alimenté en 400 V CA par un contacteur KF1 / KF2 ; sonde TF sur X10.
+Interlocuteur : Franck Strugareck (SEW-USOCOME). Un seul envoi groupé.
+
+Matériel : 2 motoréducteurs SEW K39 DRN100LS4 / BE5 / TF (2,2 kW, frein BE5 400 V CA, redresseur BGE1.5 d'après la plaque du 18/11, sonde TF), 2 variateurs MOVITRAC MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM, 2 résistances BW100-001.
+Câblage : réseau coupé par KM1 / KM2 en amont de chaque variateur ; STO X6 commandé par le relais de sécurité KA1 (33-34, 2 STO en chaîne) ; frein alimenté en 400 V CA par KF1 / KF2 (QF2 / QF3 en amont) ; sonde TF sur X10 ; X5 en 24 V permanent.
+
+## Questions en suspens
+
+### Avant câblage de l'armoire (J3, 26/11)
 
 | N° | Question | Pourquoi |
 |---|---|---|
-| 1 | Les sondes TF sont-elles montées sur les moteurs livrés ? Bornes dans la boîte à bornes ? **06/11 : SEW n'a pas l'information** (à voir à la réception, plaque et boîte à bornes) | Le câble TF 2x0,75 blindé (W3 / W6) et les bornes X31.2x / X32.2x sont prévus |
-| 2 | Bornes exactes de la sonde sur le MCX91A (X10) et paramétrage ; que faire à X10 si pas de sonde (pont, paramètre) ? | Texte « TF X10 : bornes à confirmer » encore au schéma (f31 / f32) |
-| 3 | Courant consommé par les entrées STO X6.1 / X6.3 d'un MCX91A | Les 2 variateurs sont en parallèle sur un contact du relais KA1, qui demande au moins 10 mA (et 15 V) |
-| 4 | Frein BE5 400 V CA : courant d'appel et de maintien, redresseur fourni (type, emplacement) ? | Calibre et courbe des disjoncteurs QF2 / QF3 ; section du câble frein (5G1,5) |
-| 5 | Frein alimenté en permanence alors que le moteur est à l'arrêt et non alimenté (mode Manu : arbre tourné à la clé pour la maintenance) : admissible ? **06/11 : OUI** | Choix de Julien : moteurs libres en Manu |
-| 6 | Nombre maximal de mises sous tension par heure du MCX91A **06/11 : « 1 » (réponse relayée par Julien), unité à confirmer : par heure ou par minute ?** **09/11 : sans objet pour le schéma** ; **18/11 : 1 par heure (Julien)** : temporisation `T_SEW_ON` de l'alarme AL04 du programme = 3600 s, usage réel ≈ 1 toutes les 8 h (Manu pour maintenance), AU exceptionnel : KM1 / KM2 gardés | KM1 / KM2 coupent le réseau du variateur à chaque arrêt d'urgence |
-| 7 | Longueur maximale de câble moteur blindé sans self ni filtre ; reprise du blindage conseillée | Câble 2XSLCY-K 4G2,5, environ 15 m par moteur |
-| 8 | Consommation de l'électronique 24 V (X5) d'un MCX91A-0055-5E3 avec CSO et CFN | Bilan 24VELEC (`docs/BILAN_24V.md`) ; la page SEW « Power consumption of the 24 V supply » n'est pas lisible en ligne |
-| 9 | STO en chaîne : 24 V et 0 V sur X6.1 / X6.2 de U1, puis X6.3 / X6.4 de U1 vers X6.1 / X6.2 de U2 : **validé par SEW (Julien, 06/11)** | Câblage dessiné en v23 |
+| 1 | Frein BE5 400 V CA avec redresseur BGE1.5 : courant d'appel et de maintien. **RÉPONSE PARTIELLE, orale (technicien, 24/11), à confirmer par écrit : maintien 0,18 A ; appel non donné.** Restent à demander : appel (valeur, durée), côté (CA ou CC), tension, tolérance. | Calibre et courbe de QF2 / QF3 (2 A C posés), section du câble frein 5G1,5. Un chat du 27/08 cite 0,183 A à 400 V (non vérifié) : cohérent avec 0,18 A, mais pas un recoupement indépendant prouvé. Sans l'appel, on ne juge pas le déclenchement de la courbe C. |
+| 2 | Courant consommé par les entrées STO X6.1 / X6.3 d'un MCX91A (2 en chaîne). **RÉPONSE PARTIELLE, orale (technicien, 24/11), à confirmer par écrit : entrée STO 150 mW (soit 6,25 mA sous 24 V) ; non précisé si c'est par variateur ou pour les deux.** Restent à demander : par variateur ou total, tension de mesure, tolérance. | KA1 33-34 exige au moins 10 mA et 15 V (R-32). Cas A (150 mW par variateur) : 12,5 mA pour 2, au-dessus de 10 mA. Cas B (150 mW au total) : 6,25 mA, en dessous. Détail : `memoire/05_POINTS_OUVERTS.md`, point 1 bis. |
+| 3 | Sonde TF : bornes exactes de X10 sur le MCX91A, paramètre du type de sonde, réaction et reset au déclenchement, bornes dans la boîte à bornes moteur. | f31 / f32 : « TF X10 : bornes à confirmer ». Valeurs TF1 / GND, 1830 Ω issues de la doc MDX91A, non confirmées pour le MCX91A. W3 / W6, DF01 / DF02. |
+| 4 | Consommation 24 V de l'électronique (X5), variante CSO / CFN / CDM / CMM. | `docs/BILAN_24V.md` porte « ? ». |
+| 5 | Courant réseau d'entrée du MCX91A-0055-5E3 (nominal, appel, précharge) et protection amont recommandée. | Réglage de QM1 / QM2 (GV2ME14 6-10 A), point B3 de la revue v33. |
+| 6 | Câble moteur blindé 2XSLCY-K 4G2,5 (≈ 15 m) : longueur max sans self ni filtre, reprise du blindage, section max de X2, courant de fuite. | CEM, section PE. Courant de fuite : point d'un chat de septembre, à vérifier s'il est encore utile. |
 
-Réponses à reporter dans `memoire/05_POINTS_OUVERTS.md` (points 1 bis, 8 à 11, Q37) et `docs/DECISIONS.md`.
+### Avant les essais (banc 02/12, recette 23/12)
+
+| N° | Question | Pourquoi |
+|---|---|---|
+| 7 | Temps de retombée du BE5 avec coupure côté CA seule (KF1 / KF2) ; travail de freinage admissible par AU en rotation (1 AU / h au pire). | AU catégorie 0, coupure côté DC abandonnée en octobre. Roue libre ≈ 10 s à mesurer. Demande l'inertie J (client). |
+| 8 | Frein alimenté en permanence quand le variateur n'est pas prêt ou en défaut, sans la sortie frein du variateur : réglage à faire (fonction frein désactivée) ? | Revue Krizox D17. SEW a répondu OUI le 06/11 pour le moteur à l'arrêt seulement. |
+| 9 | BW100-001 : valeurs à paramétrer, seuil du hacheur, contact thermique éventuel, dégagements minimaux. | Dégagements montés (22/10) : 100 mm variateur-résistance, 70 mm au toit, inférieurs aux 150-200 mm et 300-350 mm relevés dans la doc SEW. Résistances non déplaçables. |
+| 10 | Sans codeur, de 30 à 137 tr/min en sortie : précision de la vitesse estimée, écart entre les 2 moteurs, couple continu à basse vitesse (autoventilé), surcharge. | Recette : écart ≤ 2 tr/min à vide. Alarme AL01. |
+| 11 | Perte du bus : le paramètre 8622.6 vaut-il pour PROFINET ? Délai (8455.3) ? Valeur du chien de garde PROFINET ? | TA06, DF03 / DF04, `T_COM`. `interface_sew.md` : point `[?]` (description citant EtherCAT). |
+| 12 | Mises sous tension : confirmer par écrit « 1 par heure ». | SEW a répondu « 1 » sans unité ; la doc MDX91A donne 1 par minute. KM1 / KM2 retombent à chaque AU et passage en Manu. `T_SEW_ON` = 3600 s (AL04) repose sur la décision du 18/11. |
+| 13 | Exemplaire US : MCX91A et redresseur BGE1.5 / BE5 à 60 Hz derrière le transformateur 480 → 400 V. | Armoire US identique à l'UE (`areas/us-transformer`). |
+| 14 | Rotation manuelle de l'arbre de sortie à la clé : couple statique admissible, entraînement inverse, course 90° ou 180°. | Nettoyage en Manu. Mail du 27/08, réponse non retrouvée. |
+| 15 | STO ouvert en même temps que KM1 / KM2 retombent (AU) : effet sur le MCX91A ? | Question proposée le 06/11, non validée par Julien : à retirer si inutile. |
+| 16 | Confirmation écrite des références commandées (K39 DRN100LS4 / BE5 / TF, MCX91A…, BW100-001) et des délais. | Anciens échanges sur K47DRP90LJ4 et devis en commande binaire. Point du 02/11 : confirmation écrite des motoréducteurs. |
+
+### À poser seulement si le banc ne tranche pas (essais E1 à E6, avant le 02/12)
+
+- PROFINET actif avec 24 V seul sur X5, 400 V coupé (hypothèse `[H]`, décision du 18/11).
+- Seuil du bit « moteur en marche » (EP 1.4), utilisé par TA05.
+- Handshake SP 1.15 (MOVIKIT ≥ V10).
+- Décélération « limite application » (arrêt FCB 13, au plus 5 s).
+- Version du firmware par rapport au GSDML V2.42.
+
+### Hors SEW (bloquent les questions 7 et 9)
+
+- Inertie J des parties tournantes : à demander au client (Nicolas Ghut).
+- Temps de roue libre : à mesurer à l'atelier.
+- Présence des sondes TF : à voir à la réception des moteurs.
+- Document de recette : « 10 Hz = 30 tr/min » est faux ; 10 Hz ≈ 27 tr/min, 30 tr/min ≈ 11 Hz.
+
+## Réponses partielles orales (les questions restent OUVERTES)
+
+Source : technicien SEW, par téléphone, 24/11/2026. Aucun document. **À confirmer par écrit.**
+
+| Question | Valeur donnée | Ce qui manque |
+|---|---|---|
+| 1 (frein BE5 + BGE1.5) | Courant de maintien 0,18 A | Courant d'appel ; côté CA ou CC ; tension ; par frein ou pour les deux (non précisé) |
+| 2 (STO X6) | Entrée STO : puissance absorbée 150 mW (6,25 mA sous 24 V) | Par variateur ou pour les deux (non précisé) ; tension de mesure |
+
+## Réponses reçues (à ne pas reposer)
+
+| Sujet | Réponse | Date |
+|---|---|---|
+| Sondes TF montées sur les moteurs livrés | SEW n'a pas l'information : voir à la réception (plaque, boîte à bornes) | 06/11 |
+| Frein alimenté en permanence, moteur à l'arrêt et non alimenté (Manu) | OUI, admissible | 06/11 |
+| Nombre de mises sous tension | « 1 », unité à confirmer (question 12) | 06/11 |
+| STO en chaîne : 24 V / 0 V sur X6.1 / X6.2 de U1, puis X6.3 / X6.4 de U1 vers X6.1 / X6.2 de U2 | Validé par SEW (Julien) ; dessiné en v23 | 06/11 |
+| Bornes X6 (STO) | Réglé d'après la notice : X6.1 / X6.3 = +24 V, X6.2 / X6.4 = 0 V | 05/11 |
+
+Réponses à reporter dans `memoire/05_POINTS_OUVERTS.md` (points 1 bis, 8 à 11, Q37), `docs/DECISIONS.md` et `docs/BILAN_24V.md` (questions 2 et 4).
