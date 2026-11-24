@@ -1,6 +1,6 @@
 # Mail à Xavier (SEW) : brouillon du 24/11/2026
 
-Statut : **brouillon, non envoyé**. Texte à copier dans la messagerie. Les `[crochets]` sont à compléter par Julien (valeurs à lire sur la plaque ou la commande ; aucune n'est inventée). Questions du dépôt concernées : 10 (précision de vitesse), 1 et 2 (confirmation écrite des valeurs orales), 3, 4, 5 (voir `docs/QUESTIONS_SEW.md`).
+Statut : **brouillon, non envoyé**. Texte à copier dans la messagerie. Plus aucun champ à compléter. Questions du dépôt concernées : 10 (précision de vitesse), 1 et 2 (confirmation écrite des valeurs orales), 3, 4, 5 (voir `docs/QUESTIONS_SEW.md`).
 
 ---
 
@@ -13,11 +13,11 @@ Suite à notre échange téléphonique du 24/11, je vous écris pour poser mes q
 **Contexte**
 
 Nous équipons une machine de deux axes motorisés indépendants, qui tournent en sens opposés, à des vitesses réglables de 30 à 137 tr/min en sortie de réducteur. Chaque axe comprend :
-- un motoréducteur SEW K39 DRN100LS4 / BE5 / TF (2,2 kW), rapport de réduction [i = ...], frein BE5 400 V CA avec redresseur BGE1.5 (plaque du 18/11), sans codeur ;
+- un motoréducteur SEW K39 DRN100LS4 / BE5 / TF (2,2 kW), rapport de réduction 10,61, frein BE5 400 V CA avec redresseur BGE1.5 (plaque du 18/11), sans codeur ;
 - un variateur MOVITRAC MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM, alimenté en 400 V triphasé, avec une résistance de freinage BW100-001 ;
 - une consigne de vitesse envoyée par PROFINET depuis un automate Siemens S7-1200 ; le STO (X6) est commandé par un relais de sécurité.
 
-Mode de régulation actuellement prévu : [mode : à compléter]. Le réseau du variateur est coupé par contacteur ; l'électronique reste alimentée en 24 V (X5).
+Le réseau du variateur est coupé par contacteur ; l'électronique reste alimentée en 24 V (X5).
 
 **1. Question principale : écart entre consigne et vitesse réelle, à vide**
 
@@ -44,14 +44,11 @@ Une réponse écrite, même brève, nous suffit. Merci d'avance pour votre aide.
 
 Cordialement,
 
-[Prénom Nom]
-[Société] · [téléphone]
-
 ---
 
 ## Notes pour Julien (ne pas envoyer)
 
-- Le rapport de réduction, le mode de régulation et la signature sont à compléter ; ils ne sont pas dans le dépôt.
+- Rapport de réduction 10,61 (Julien, 24/11). Mode de régulation : non choisi, c'est Xavier qui doit le recommander (question 1). Signature : celle de la messagerie.
 - Exigence « ≤ 2 tr/min » : dans le dépôt c'est l'écart **entre les deux moteurs à vide** (recette) ; le mail ne la présente pas comme une exigence sur l'écart consigne / réel.
 - « Résistance BW100-001 », « S7-1200 » : repris du dépôt (`memoire/02_MATERIEL.md`) ; à retirer si tu veux un mail plus court.
 - Pas de nom de client, pas de nom de machine (décision du 24/11).

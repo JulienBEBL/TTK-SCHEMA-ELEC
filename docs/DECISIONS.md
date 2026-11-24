@@ -546,3 +546,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 24/11/2026 : précisions orales et mail à Xavier (SEW)
 - [?] STO : 150 mW **par variateur** (Julien, 24/11, même source orale) : 12,5 mA pour les 2 en chaîne, au-dessus du minimum de 10 mA de KA1 33-34 ; marge 2,5 mA. Cas B écarté, **à confirmer par écrit**.
 - [D] Mail à Xavier (SEW) en français, ton pro et neutre, contexte technique sans nom de client : `docs/MAIL_SEW_XAVIER_2026-11-24.md` (brouillon non envoyé). Question 1 : écart consigne / vitesse réelle à vide sur 30 à 137 tr/min ; puis confirmation écrite frein et STO, courant réseau, TF X10, 24 V X5.
+
+- [D] Rapport de réduction des K39 : **10,61** (Julien, 24/11) ; repris dans le mail à Xavier. Cohérent avec « 10 Hz ≈ 27 tr/min » (4 pôles) [H]. Mode de régulation : non choisi, demandé à SEW ; signature : celle de la messagerie.

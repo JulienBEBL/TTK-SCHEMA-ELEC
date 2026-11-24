@@ -414,3 +414,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 24/11/2026 : mail à Xavier (SEW)
 - Julien : STO = 150 mW par variateur ; reprendre les questions SEW sans réponse ; mail à Xavier : contexte, écart consigne / réel à vide, puis autres questions.
 - Fait : 3 réponses de cadrage (français, contexte technique, plage 30-137 tr/min) ; brouillon `docs/MAIL_SEW_XAVIER_2026-11-24.md` ; STO passé en cas A dans QUESTIONS_SEW, 05, BILAN, DECISIONS. Rien envoyé.
+- Julien : rapport 10,61 ; mode de régulation = question à SEW ; signature automatique. Fait : mail sans champ à compléter.
