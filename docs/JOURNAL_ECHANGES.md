@@ -402,3 +402,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 23/11/2026 : v37
 - Julien : v37 en autonomie (toutes les demandes validées), + images qui ne se chargent pas, sommaire, W1 à l'export PDF ; plan d'action, vérification à chaque étape, mini rapport.
 - Fait : v37 (30 folios) : boîte +BJM et câbles sur tous les folios, f21 refait, f41 / f43, synoptique par lieu, plans de bornier f71-f73, IP, KA2 2 pôles, W1, images ; contrôles à 0 ; rapport ; mémoire (02, 03, 04, 05, 06, 08, README), CLAUDE.md, demandes Krizox.
+
+## 24/11/2026 : retours v37
+- Julien : captures WinRelais, folios illisibles (numéros de fil sur câbles et cadres), demandes par folio ; plans de bornier OK ; découper le f60 ; puis mise en mémoire avant compactage.
+- Fait : diagnostic du défaut commun, méthode, 4 questions ; tout noté en mémoire ; commit + push.

@@ -20,6 +20,10 @@ Rapport : `docs/RAPPORT_v37_2026-11-23.md` (contrôles, demande par demande, cho
 | 71-73 | Plans de bornier borne par borne (remplacent le tableau du f71) |
 | tous | Brins des câbles en G sans le V/J ; cadres pointillés +BJM / +M / +P1 |
 
+### Retours de Julien sur la v37 (23/11) : EN COURS
+- Détail et questions : `memoire/revues/2026-11-23_retours_julien_v37.md` (défaut commun : numéros de fil sur les ellipses de câble, repères, numéros de brin et cadres pointillés ; folios 12, 13, 20, 31, 32, 40-43, 50, 60, 62, 63 ; plans de bornier OK).
+- **Prochaine étape** : réponses de Julien aux 4 questions, puis v38, commit + push.
+
 ### Suite
 - Julien : ouvrir la v37 (images, export PDF de W1, f41 / f43, f71-f73) ; valider les choix du rapport ; check global bornes + implantation.
 - Implantation à refaire (boîte +BJM, X43) ; `saisie.json` déjà à jour (bornes X43, destinations des câbles vers +BJM).

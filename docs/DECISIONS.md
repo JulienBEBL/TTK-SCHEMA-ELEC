@@ -529,3 +529,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] f41 coupé en deux (f43 = capots) ; bornes X41.2x-4x -> X43.1x-3x ; boîte +BJM X1.1 à X1.69 (ordre du 17/11) ; sections des fils boîte -> appareils proposées ; à valider par Julien.
 - [C] Images : chemin relatif non trouvé sur le PC perso ; chemin complet par défaut.
 - [C] D11 : 24 V / 0 V des drivers et des E/S automate justes (37 broches contrôlées).
+
+## 24/11/2026 : retours v37
+- [?] Retours de Julien sur la v37 notés (`memoire/revues/2026-11-23_retours_julien_v37.md`) ; 4 questions posées avant la v38.
+- [D] Plans de bornier f71-f73 : forme validée ; note du haut à supprimer.
