@@ -1,2 +1,3 @@
 # Symboles WinRelais copiés octet pour octet depuis le PC (cp1252, CRLF) : ne pas convertir
 librairie_winrelais/** -text
+*.sh text eol=lf
