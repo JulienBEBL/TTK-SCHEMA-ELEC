@@ -1,0 +1,255 @@
+Repère;Folio;Désignation;Champ 3;Champ 4;Fabricant;Référence;Symbole;Nb broches;X;Y
+B1;43;Interrupteur capot mécanique;RS PRO 902-6874;1 NO + 1 NF;RS PRO;Interrupteur de position poussoir a galet;interrupteur position galet rs 902-6874;4;10400;8800
+B2;43;Interrupteur capot;ifm MN508S (RS 016-3138);codé - 2 NO + 1 NF - M12;IFM ELECTRONIC;MN508S;capteur codage magnetique ifm mn508s;6;22000;8800
+B3;61;Fin de course axe 1 min;RS PRO 902-6874;contact NF 11-12 (0 = fin de;;;fin de course nf 11-12;2;14800;8400
+B4;61;Fin de course axe 1 max;RS PRO 902-6874;contact NF 11-12 (0 = fin de;;;fin de course nf 11-12;2;16400;10800
+B5;61;Fin de course axe 2 min;RS PRO 902-6874;contact NF 11-12 (0 = fin de;;;fin de course nf 11-12;2;18000;8400
+B6;61;Fin de course axe 2 max;RS PRO 902-6874;contact NF 11-12 (0 = fin de;;;fin de course nf 11-12;2;19600;10800
+B7;64;Thermocouple tête;Type K (réf. à définir);;;;thermocouple;2;15600;5200
+EL1;13;Éclairage armoire n°1;RS PRO 194-0417;230 V - 14 W LED;RS PRO;Lampe d'armoire LED 14 W;RSPRO_194-0417_eclairage_armoire_LED;2;6400;9200
+EL2;13;Éclairage armoire n°2;RS PRO 194-0417;230 V - 14 W LED;RS PRO;Lampe d'armoire LED 14 W;RSPRO_194-0417_eclairage_armoire_LED;2;6400;15400
+EV1;13;Ventilateur armoire;IDE VF92AC;230 V - 19 W;IDE;VF92AC;IDE_VF92AC_ventilateur_230V;2;14000;9600
+EV2;13;Ventilateur armoire;IDE VF92AC;230 V - 19 W;IDE;VF92AC;IDE_VF92AC_ventilateur_230V;2;14000;14000
+FA1;40;Protection des;Mersen CMC101 +;gG 4 A 10x38;MERSEN;CMC101;fusible 1ph;2;12800;4800
+H1;63;Colonne lumineuse 3 couleurs;RS PRO 199-9760;24 V CC;RS PRO;Colonne lumineuse LED 3 feux;colonne lumineuse 3 feux rs 199-9760;4;16000;16400
+H2;12;Voyant porte : armoire;À définir;230 V CA - blanc;;;voyant;2;21600;6800
+H3;21;Voyant porte :;À définir;24 V CC - blanc ou;;;voyant;2;6000;12400
+H4;63;Voyant porte :;À définir;24 V CC - rouge;;;voyant;2;23200;13200
+K1;61;Automate CPU 1214C G2;Siemens 6ES7214-1AH50-0XB0;14 DI / 10 DQ 24 V CC;;;cpu 1214c g2 dc-dc-dc entrees;15;3600;17200
+K1;60;Automate CPU 1214C G2 DC/DC/DC;Siemens 6ES7214-1AH50-0XB0;14 DI / 10 DQ 24 V CC;SIEMENS;6ES7214-1AH50-0XB0;cpu 1214c g2 dc-dc-dc alimentation profinet;7;4800;9600
+K1;62;Automate CPU 1214C G2;Siemens 6ES7214-1AH50-0XB0;14 DI / 10 DQ 24 V CC;;;cpu 1214c g2 dc-dc-dc sorties;12;4800;6400
+K2;63;Module E/S SM 1223 G2 8DI/8DQ;Siemens 6ES7223-5BH50-0XB0;8 DI / 8 DQ 24 V CC;SIEMENS;6ES7223-5BH50-0XB0;sm 1223 g2 8di 8dq alim entrees;12;4800;4400
+K2;63;Module E/S SM 1223 G2;Siemens 6ES7223-5BH50-0XB0;8 DI / 8 DQ 24 V CC;;;sm 1223 g2 8di 8dq sorties;10;4800;9600
+K3;64;Module SM 1231 TC G2;Siemens 6ES7231-5QF50-0XB0;8 AI thermocouple;SIEMENS;6ES7231-5QF50-0XB0;sm 1231 tc g2 8ai thermocouple;18;9600;12000
+K4;30;Switch PROFINET armoire;Weidmüller 2682250000;5 ports - 2 alim.;WEIDMULLER;2682250000;weidmuller ie-sw-al05lm-5tx;11;16000;4400
+KA1;40;Relais de sécurité AU /;Schneider XPSUAF13AP;Fonction 1 - départ 3 - 24 V;SCHNEIDER ELECTRIC;XPSUAF13AP;module de securite xpsuaf13ap;16;4400;8800
+KA2;20;Contacteur auxiliaire :;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 2p;4;5600;4400
+KA2;40;Retour contacteur;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;13600
+KA2;42;Contacteur;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;11200;17200
+KA2;61;Retour contacteur 48 V (aux;;;;;rc contact no 13-14;2;24400;8400
+KF1;11;Contacteur frein M1;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;17600;11200
+KF1;40;Retour contacteur frein;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;8800
+KF1;42;Contacteur frein;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;4400;17200
+KF2;11;Contacteur frein M2;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;23200;11200
+KF2;40;Retour contacteur frein;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;11200
+KF2;42;Contacteur frein;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;7600;17200
+KM1;11;Contacteur amont;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;4800;11200
+KM1;40;Retour contacteur amont;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;4000
+KM1;42;Contacteur amont;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;15200;17200
+KM1;61;Retour contacteur amont;;;;;rc contact no 13-14;2;21200;8400
+KM2;11;Contacteur amont;Schneider Electric;3P - 9 A AC-3 - bobine;;;lc1d09bd contacts puissance 3p;6;12000;11200
+KM2;40;Retour contacteur amont;;;;;lc1d09bd contact aux nc 21-22 miroir;2;20000;6400
+KM2;42;Contacteur amont;Schneider;Bobine 24 V CC;SCHNEIDER ELECTRIC;LC1D09BD;contacteur tri+1 no+1 nc lc1d09bd;2;18400;17200
+KM2;61;Retour contacteur amont;;;;;rc contact no 13-14;2;22800;10800
+M1;31;Motoréducteur frein;SEW K39 DRN100LS4/BE5/TF;2,2 kW - 400 V Y - frein 400 V CA;SEW-EURODRIVE;K39 DRN100LS4/BE5/TF;sew k39 drn100ls4 be5 tf v2;8;6000;15200
+M2;32;Motoréducteur frein;SEW K39 DRN100LS4/BE5/TF;2,2 kW - 400 V Y - frein 400 V CA;SEW-EURODRIVE;K39 DRN100LS4/BE5/TF;sew k39 drn100ls4 be5 tf v2;8;6000;15200
+M3;20;Moteur pas-à-pas translation;StepperOnline 34IP65-85;Nema 34 - 6 A - 8,5 Nm;STEPPERONLINE;34IP65-85;moteur pas a pas nema34 34ip65-85;4;11600;16400
+M4;20;Moteur pas-à-pas translation;StepperOnline 34IP65-85;Nema 34 - 6 A - 8,5 Nm;STEPPERONLINE;34IP65-85;moteur pas a pas nema34 34ip65-85;4;22800;16400
+P1;50;IHM pupitre;Siemens 6AV2123-2GB03-0AX0;24 V CC - PROFINET;SIEMENS;6AV2123-2GB03-0AX0;ktp700 basic pn;4;8000;9600
+QF1;10;Disjoncteur de tête;Hager NFT820;20 A courbe C - 10 kA - 3P+N;HAGER;NFT820;disjoncteur 3p+n neutre a gauche;8;6000;10800
+QF2;11;Disjoncteur départ frein M1;Schneider A9F74202 (iC60N);2 A courbe C - 2P;SCHNEIDER ELECTRIC;A9F74202;disjoncteur bipolaire ic60n a9f74202;4;18400;6400
+QF3;11;Disjoncteur départ frein M2;Schneider A9F74202 (iC60N);2 A courbe C - 2P;SCHNEIDER ELECTRIC;A9F74202;disjoncteur bipolaire ic60n a9f74202;4;24000;6400
+QF4;12;Disjoncteur alimentation 24;Hager NFT706;6 A C - 10 kA - 1P+N;HAGER;NFT706;disjoncteur 1p+n hager nft706;4;4000;5600
+QF5;12;Disjoncteur alimentation 24;Hager NFT706;6 A C - 10 kA - 1P+N;HAGER;NFT706;disjoncteur 1p+n hager nft706;4;9600;5600
+QF6;12;Disjoncteur alimentation 48;Schneider A9F75204 (iC60N);4 A courbe D - 2P;SCHNEIDER ELECTRIC;A9F75204;disjoncteur bipolaire ic60n a9f75204;4;15200;5600
+QF7;13;Disjoncteur ventilateurs;Hager NFT702;1P+N - 2 A courbe C - 6-10;HAGER;NFT702;disjoncteur 1p+n hager nft702;4;14000;4400
+QF8;13;Disjoncteur éclairage (2;Hager NFT702;1P+N - 2 A courbe C - 6-10;HAGER;NFT702;disjoncteur 1p+n hager nft702;4;6400;4400
+QF9;13;Disjoncteur différentiel;IMO B6CR1N1630A;16 A C - 30 mA type A - 6 kA;IMO;B6CR1N1630A;disjoncteur differentiel 1p+n imo b6cr;4;22000;4400
+QF10;13;Disjoncteur limitation prise;Schneider A9P71602 (iDT40K);2 A C - 4,5 kA;SCHNEIDER ELECTRIC;A9P71602;disjoncteur 1p+n schneider idt40k a9p71602;4;22000;8800
+QM1;11;Disjoncteur moteur départ;Schneider GV2ME14;6-10 A - réglage 6,5 A;SCHNEIDER ELECTRIC;GV2ME14;disjoncteur moteur gv2me14;6;4800;6400
+QM2;11;Disjoncteur moteur départ;Schneider GV2ME14;6-10 A - réglage 6,5 A;SCHNEIDER ELECTRIC;GV2ME14;disjoncteur moteur gv2me14;6;12000;6400
+QS1;10;Sectionneur général;Legrand 022515 Vistop;63 A - 4P - 690 V;LEGRAND;022515;inter sectionneur 4p vertical legrand vistop;8;6000;6800
+R1;31;Résistance de freinage;SEW BW100-001;100 Ω - 0,1 kW;SEW-EURODRIVE;BW100-001;resistance de freinage sew bw100-001;2;9600;7600
+R2;32;Résistance de freinage;SEW BW100-001;100 Ω - 0,1 kW;SEW-EURODRIVE;BW100-001;resistance de freinage sew bw100-001;2;9600;7600
+S1;41;Arrêt d'urgence armoire;Schneider XB5AS8442 + ZBE102;2 NF + 1 NO;SCHNEIDER ELECTRIC;XB5AS8442 + ZBE102 + ZBE101;arret urgence nc déverr tournant;2;10000;5600
+S1;41;AU armoire - 2e;;;;;rc contact nc 21-22;2;20000;5600
+S1;61;AU armoire - contact NO;;;;;rc contact no 13-14;2;6800;10800
+S2;41;Arrêt d'urgence pupitre;Schneider XB5AS8442 + ZBE102;2 NF + 1 NO;SCHNEIDER ELECTRIC;XB5AS8442 + ZBE102 + ZBE101;arret urgence nc déverr tournant;2;10000;13200
+S2;41;AU pupitre (+P1) - 2e;;;;;rc contact nc 21-22;2;20000;13200
+S2;61;AU pupitre - contact NO;;;;;rc contact no 13-14;2;5200;8400
+S3;43;MANU-A :;;;;;rc contact no 3-4 eaton;2;7200;8800
+S3;43;MANU-B :;;;;;rc contact no 7-8 eaton;2;18800;8800
+S3;43;Sélecteur de mode Auto/Manu;Eaton T0-4-8223/E;8 contacts NO 1-2 à 15-16;EATON;T0-4-8223/E;tête 2 pos fixes no;2;5600;17200
+S3;42;MANU-D : 48 V en;;;;;rc contact no 15-16 eaton;2;11200;10800
+S3;42;AUTO-A : commande;;;;;rc contact no 1-2 eaton;2;15200;10800
+S3;42;AUTO-B :;;;;;rc contact no 5-6 eaton;2;21600;10800
+S3;61;AUTO-C : info Auto;;;;;rc contact no 9-10 eaton;2;11600;8400
+S3;61;MANU-C : info Manu;;;;;rc contact no 11-12 eaton;2;13200;10800
+S4;40;Bouton de;Schneider;1 NO - noir;SCHNEIDER ELECTRIC;XB4BA21;bp affleurant noir;2;20000;17200
+T1;12;Alimentation 24 V CC n°1;RS PRO 284-0491;24 V - 10 A - 240 W;RS PRO;Alimentation rail DIN 24 V 240 W;alim 230ac 24dc 240w rs 284-0491;7;4000;10400
+T2;12;Alimentation 24 V CC n°2;RS PRO 284-0491;24 V - 10 A - 240 W;RS PRO;Alimentation rail DIN 24 V 240 W;alim 230ac 24dc 240w rs 284-0491;7;9600;10400
+T3;12;Alimentation 48 V CC;Mean Well NDR-240-48;48 V - 5 A - 240 W;MEAN WELL;NDR-240-48;alim 230ac 48dc 240w ndr-240-48;7;15200;10400
+TR1;10;Transformateur US -> UE;TEMCo TT1041;15 kVA - 480 V triangle;TEMCO;TT1041;temco tt1041 480d 400y-230;8;18800;5600
+U1;31;Variateur M1;SEW;2,2 kW - 5,5 A - STO - PROFINET;SEW-EURODRIVE;MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM;sew movitrac advanced mcx91a-0055-5e3 cso cfn;41;5200;5600
+U2;32;Variateur M2;SEW;2,2 kW - 5,5 A - STO - PROFINET;SEW-EURODRIVE;MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM;sew movitrac advanced mcx91a-0055-5e3 cso cfn;41;5200;5600
+U3;20;Driver pas-à-pas axe 1;Jkongmotor JKDM860H;48 V CC - 6,0 A;JKONGMOTOR;JKDM860H;driver pas a pas jkdm860h;12;12400;8000
+U4;20;Driver pas-à-pas axe 2;Jkongmotor JKDM860H;48 V CC - 6,0 A;JKONGMOTOR;JKDM860H;driver pas a pas jkdm860h;12;23600;8000
+X1.1;31;Boîte de jonction machine;;;;;borne 4 mm;2;6000;13600
+X1.2;31;Boîte de jonction machine;;;;;borne 4 mm;2;6800;13600
+X1.3;31;Boîte de jonction machine;;;;;borne 4 mm;2;7600;13600
+X1.4;31;Boîte de jonction machine;;borne de terre vert/jaune;;;borne 4 mm terre;2;5200;13600
+X1.5;32;Boîte de jonction machine;;;;;borne 4 mm;2;6000;13600
+X1.6;32;Boîte de jonction machine;;;;;borne 4 mm;2;6800;13600
+X1.7;32;Boîte de jonction machine;;;;;borne 4 mm;2;7600;13600
+X1.8;32;Boîte de jonction machine;;borne de terre vert/jaune;;;borne 4 mm terre;2;5200;13600
+X1.9;31;Boîte de jonction machine;;;;;borne 4 mm;2;13200;13600
+X1.10;31;Boîte de jonction machine;;;;;borne 4 mm;2;14000;13600
+X1.11;32;Boîte de jonction machine;;;;;borne 4 mm;2;13200;13600
+X1.12;32;Boîte de jonction machine;;;;;borne 4 mm;2;14000;13600
+X1.13;20;Boîte de jonction machine;;;;;borne 4 mm;2;11600;14400
+X1.14;20;Boîte de jonction machine;;;;;borne 4 mm;2;12000;15000
+X1.15;20;Boîte de jonction machine;;;;;borne 4 mm;2;12800;14400
+X1.16;20;Boîte de jonction machine;;;;;borne 4 mm;2;13200;15000
+X1.17;20;Boîte de jonction machine;;;;;borne 4 mm;2;22800;14400
+X1.18;20;Boîte de jonction machine;;;;;borne 4 mm;2;23200;15000
+X1.19;20;Boîte de jonction machine;;;;;borne 4 mm;2;24000;14400
+X1.20;20;Boîte de jonction machine;;;;;borne 4 mm;2;24400;15000
+X1.21;31;Boîte de jonction machine;;;;;borne 4 mm;2;10000;13600
+X1.22;31;Boîte de jonction machine;;;;;borne 4 mm;2;10800;13600
+X1.23;32;Boîte de jonction machine;;;;;borne 4 mm;2;10000;13600
+X1.24;32;Boîte de jonction machine;;;;;borne 4 mm;2;10800;13600
+X1.25;43;Boîte de jonction machine;;;;;borne 4 mm;2;10400;7200
+X1.26;43;Boîte de jonction machine;;;;;borne 4 mm;2;10400;11600
+X1.27;43;Boîte de jonction machine;;;;;borne 4 mm;2;11200;7200
+X1.28;43;Boîte de jonction machine;;;;;borne 4 mm;2;11200;11600
+X1.29;61;Boîte de jonction machine;;;;;borne 4 mm;2;14800;6800
+X1.30;61;Boîte de jonction machine;;;;;borne 4 mm;2;14800;13600
+X1.31;61;Boîte de jonction machine;;;;;borne 4 mm;2;16400;6800
+X1.32;61;Boîte de jonction machine;;;;;borne 4 mm;2;16400;13600
+X1.33;61;Boîte de jonction machine;;;;;borne 4 mm;2;18000;6800
+X1.34;61;Boîte de jonction machine;;;;;borne 4 mm;2;18000;13600
+X1.35;61;Boîte de jonction machine;;;;;borne 4 mm;2;19600;6800
+X1.36;61;Boîte de jonction machine;;;;;borne 4 mm;2;19600;13600
+X1.37;63;Boîte de jonction machine;;;;;borne 4 mm;2;16000;14800
+X1.38;63;Boîte de jonction machine;;;;;borne 4 mm;2;17600;14800
+X1.39;63;Boîte de jonction machine;;;;;borne 4 mm;2;19200;14800
+X1.40;63;Boîte de jonction machine;;;;;borne 4 mm;2;20800;14800
+X1.41;43;Boîte de jonction machine;;;;;borne 4 mm;2;22000;7200
+X1.42;43;Boîte de jonction machine;;;;;borne 4 mm;2;22000;11600
+X1.43;43;Boîte de jonction machine;;;;;borne 4 mm;2;22800;7200
+X1.44;43;Boîte de jonction machine;;;;;borne 4 mm;2;22800;11600
+X1.45;64;Boîte de jonction machine;;;;;borne 4 mm;2;14800;7200
+X1.46;64;Boîte de jonction machine;;;;;borne 4 mm;2;17200;7200
+X1.47;41;Boîte de jonction machine;;;;;borne 4 mm;2;10000;11600
+X1.48;41;Boîte de jonction machine;;;;;borne 4 mm;2;10000;16000
+X1.49;41;Boîte de jonction machine;;;;;borne 4 mm;2;20000;11600
+X1.50;41;Boîte de jonction machine;;;;;borne 4 mm;2;20000;16000
+X1.51;61;Boîte de jonction machine;;;;;borne 4 mm;2;5200;6800
+X1.52;61;Boîte de jonction machine;;;;;borne 4 mm;2;5200;13600
+X1.53;43;Boîte de jonction machine;;;;;borne 4 mm;2;7200;7200
+X1.54;43;Boîte de jonction machine;;;;;borne 4 mm;2;7200;11600
+X1.55;43;Boîte de jonction machine;;;;;borne 4 mm;2;18800;7200
+X1.56;43;Boîte de jonction machine;;;;;borne 4 mm;2;18800;11600
+X1.57;42;Boîte de jonction machine;;;;;borne 4 mm;2;11200;9200
+X1.58;42;Boîte de jonction machine;;;;;borne 4 mm;2;11200;13600
+X1.59;42;Boîte de jonction machine;;;;;borne 4 mm;2;15200;9200
+X1.60;42;Boîte de jonction machine;;;;;borne 4 mm;2;15200;13600
+X1.61;42;Boîte de jonction machine;;;;;borne 4 mm;2;21600;9200
+X1.62;42;Boîte de jonction machine;;;;;borne 4 mm;2;21600;13600
+X1.63;61;Boîte de jonction machine;;;;;borne 4 mm;2;11600;6800
+X1.64;61;Boîte de jonction machine;;;;;borne 4 mm;2;11600;13600
+X1.65;61;Boîte de jonction machine;;;;;borne 4 mm;2;13200;6800
+X1.66;61;Boîte de jonction machine;;;;;borne 4 mm;2;13200;13600
+X1.67;50;Boîte de jonction machine;;;;;borne 4 mm;2;8000;10800
+X1.68;50;Boîte de jonction machine;;;;;borne 4 mm;2;8800;10800
+X1.69;50;Boîte de jonction machine;;borne de terre vert/jaune;;;borne 4 mm terre;2;9600;10800
+X10.11;10;Arrivée réseau;;borne de terre vert/jaune;;;borne 4 mm terre;2;5200;5200
+X10.12;10;Arrivée réseau;;;;;borne 4 mm;2;6000;5200
+X10.13;10;Arrivée réseau;;;;;borne 4 mm;2;6800;5200
+X10.14;10;Arrivée réseau;;;;;borne 4 mm;2;7600;5200
+X10.15;10;Arrivée réseau;;;;;borne 4 mm;2;8400;5200
+X12.11;12;Liaison PELV 0 V - PE;;;;;borne 4 mm;2;7200;17600
+X12.21;12;Voyant -H2 230 V (porte);;;;;borne 4 mm;2;21600;5200
+X12.22;12;Voyant -H2 230 V (porte);;;;;borne 4 mm;2;21600;10000
+X13.11;13;Eclairage armoire -EL1 /;;;;;borne 4 mm;2;8000;8000
+X13.12;13;Eclairage armoire -EL1 /;;;;;borne 4 mm;2;6400;8000
+X13.21;13;Ventilation -EV1 / -EV2;;;;;borne 4 mm;2;14800;8000
+X13.22;13;Ventilation -EV1 / -EV2;;;;;borne 4 mm;2;14000;8000
+X20.11;20;Moteur pas-à-pas M3;;;;;borne 4 mm;2;11600;11600
+X20.12;20;Moteur pas-à-pas M3;;;;;borne 4 mm;2;12000;12200
+X20.13;20;Moteur pas-à-pas M3;;;;;borne 4 mm;2;12800;11600
+X20.14;20;Moteur pas-à-pas M3;;;;;borne 4 mm;2;13200;12200
+X20.15;20;Moteur pas-à-pas M3;;borne de terre vert/jaune;;;borne 4 mm terre;2;14000;11600
+X20.21;20;Moteur pas-à-pas M4;;;;;borne 4 mm;2;22800;11600
+X20.22;20;Moteur pas-à-pas M4;;;;;borne 4 mm;2;23200;12200
+X20.23;20;Moteur pas-à-pas M4;;;;;borne 4 mm;2;24000;11600
+X20.24;20;Moteur pas-à-pas M4;;;;;borne 4 mm;2;24400;12200
+X20.25;20;Moteur pas-à-pas M4;;borne de terre vert/jaune;;;borne 4 mm terre;2;25200;11600
+X21.11;21;Distribution;Phoenix 3273354;1 entrée + 12;PHOENIX CONTACT;3273354;borne distribution ptfix 6/12x2.5;13;3600;8400
+X21.12;21;Distribution 0 V;Phoenix 3273354;1 entrée + 12;PHOENIX CONTACT;3273354;borne distribution ptfix 6/12x2.5;13;10000;8400
+X21.13;21;Distribution;Phoenix 3273354;1 entrée + 12;PHOENIX CONTACT;3273354;borne distribution ptfix 6/12x2.5;13;16400;8400
+X21.14;21;Distribution 24;Phoenix 3273354;1 entrée + 12;PHOENIX CONTACT;3273354;borne distribution ptfix 6/12x2.5;13;22800;8400
+X21.21;21;Voyant -H3 (porte);;;;;borne 4 mm;2;6000;10800
+X21.22;21;Voyant -H3 (porte);;;;;borne 4 mm;2;6000;14800
+X31.11;31;Moteur M1;;borne de terre vert/jaune;;;borne 4 mm terre;2;5200;10800
+X31.12;31;Moteur M1;;;;;borne 4 mm;2;6000;10800
+X31.13;31;Moteur M1;;;;;borne 4 mm;2;6800;10800
+X31.14;31;Moteur M1;;;;;borne 4 mm;2;7600;10800
+X31.21;31;Sonde TF M1;;;;;borne 4 mm;2;10000;10800
+X31.22;31;Sonde TF M1;;;;;borne 4 mm;2;10800;10800
+X31.31;31;Frein M1;;;;;borne 4 mm;2;13200;10800
+X31.32;31;Frein M1;;;;;borne 4 mm;2;14000;10800
+X32.11;32;Moteur M2;;borne de terre vert/jaune;;;borne 4 mm terre;2;5200;10800
+X32.12;32;Moteur M2;;;;;borne 4 mm;2;6000;10800
+X32.13;32;Moteur M2;;;;;borne 4 mm;2;6800;10800
+X32.14;32;Moteur M2;;;;;borne 4 mm;2;7600;10800
+X32.21;32;Sonde TF M2;;;;;borne 4 mm;2;10000;10800
+X32.22;32;Sonde TF M2;;;;;borne 4 mm;2;10800;10800
+X32.31;32;Frein M2;;;;;borne 4 mm;2;13200;10800
+X32.32;32;Frein M2;;;;;borne 4 mm;2;14000;10800
+X40.11;40;Réarmement -S4 (porte);;;;;borne 4 mm;2;20000;16000
+X40.12;40;Réarmement -S4 (porte);;;;;borne 4 mm;2;21600;18000
+X41.11;41;AU pupitre -S2, voies 1 et 2;;;;;borne 4 mm;2;10000;9200
+X41.12;41;AU pupitre -S2, voies 1 et 2;;;;;borne 4 mm;2;10000;18400
+X41.13;41;AU pupitre -S2, voies 1 et 2;;;;;borne 4 mm;2;20000;9200
+X41.14;41;AU pupitre -S2, voies 1 et 2;;;;;borne 4 mm;2;20000;18400
+X41.51;41;AU armoire -S1 (porte),;;;;;borne 4 mm;2;10000;4400
+X41.52;41;AU armoire -S1 (porte),;;;;;borne 4 mm;2;10000;8000
+X41.53;41;AU armoire -S1 (porte),;;;;;borne 4 mm;2;20000;4400
+X41.54;41;AU armoire -S1 (porte),;;;;;borne 4 mm;2;20000;8000
+X42.11;42;Sélecteur -S3 : MANU-D,;;;;;borne 4 mm;2;11200;6800
+X42.12;42;Sélecteur -S3 : MANU-D,;;;;;borne 4 mm;2;11200;16000
+X42.13;42;Sélecteur -S3 : MANU-D,;;;;;borne 4 mm;2;15200;6800
+X42.14;42;Sélecteur -S3 : MANU-D,;;;;;borne 4 mm;2;15200;16000
+X42.15;42;Sélecteur -S3 : MANU-D,;;;;;borne 4 mm;2;21600;6800
+X42.16;42;Sélecteur -S3 : MANU-D,;;;;;borne 4 mm;2;21600;16000
+X43.11;43;Sélecteur -S3 Manu : shunt;;;;;borne 4 mm;2;7200;4800
+X43.12;43;Sélecteur -S3 Manu : shunt;;;;;borne 4 mm;2;7200;14000
+X43.13;43;Sélecteur -S3 Manu : shunt;;;;;borne 4 mm;2;18800;4800
+X43.14;43;Sélecteur -S3 Manu : shunt;;;;;borne 4 mm;2;18800;14000
+X43.21;43;Capot -B1;;;;;borne 4 mm;2;10400;4800
+X43.22;43;Capot -B1;;;;;borne 4 mm;2;10400;14000
+X43.23;43;Capot -B1;;;;;borne 4 mm;2;11200;4800
+X43.24;43;Capot -B1;;;;;borne 4 mm;2;11200;14000
+X43.31;43;Capot -B2;;;;;borne 4 mm;2;22000;4800
+X43.32;43;Capot -B2;;;;;borne 4 mm;2;22000;14000
+X43.33;43;Capot -B2;;;;;borne 4 mm;2;22800;4800
+X43.34;43;Capot -B2;;;;;borne 4 mm;2;22800;14000
+X50.11;50;Alimentation IHM -P1;;;;;borne 4 mm;2;8000;13200
+X50.12;50;Alimentation IHM -P1;;;;;borne 4 mm;2;8800;13200
+X50.13;50;Alimentation IHM -P1;;borne de terre vert/jaune;;;borne 4 mm terre;2;9600;13200
+X61.11;61;AU pupitre -S2 (contact NO);;;;;borne 4 mm;2;5200;4400
+X61.12;61;AU pupitre -S2 (contact NO);;;;;borne 4 mm;2;5200;16000
+X61.21;61;Sélecteur -S3 Auto / Manu;;;;;borne 4 mm;2;11600;4400
+X61.22;61;Sélecteur -S3 Auto / Manu;;;;;borne 4 mm;2;11600;16000
+X61.23;61;Sélecteur -S3 Auto / Manu;;;;;borne 4 mm;2;13200;4400
+X61.24;61;Sélecteur -S3 Auto / Manu;;;;;borne 4 mm;2;13200;16000
+X61.31;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;14800;4400
+X61.32;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;14800;16000
+X61.33;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;16400;4400
+X61.34;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;16400;16000
+X61.35;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;18000;4400
+X61.36;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;18000;16000
+X61.37;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;19600;4400
+X61.38;61;Fins de course -B3 à -B6;;;;;borne 4 mm;2;19600;16000
+X61.41;61;AU armoire -S1 (porte),;;;;;borne 4 mm;2;6800;4400
+X61.42;61;AU armoire -S1 (porte),;;;;;borne 4 mm;2;6800;16000
+X63.11;63;Colonne -H1;;;;;borne 4 mm;2;16000;12400
+X63.12;63;Colonne -H1;;;;;borne 4 mm;2;17600;12400
+X63.13;63;Colonne -H1;;;;;borne 4 mm;2;19200;12400
+X63.14;63;Colonne -H1;;;;;borne 4 mm;2;20800;12400
+X63.21;63;Voyant -H4 (porte);;;;;borne 4 mm;2;23200;12000
+X63.22;63;Voyant -H4 (porte);;;;;borne 4 mm;2;23200;15600
+X64.11;64;Thermocouple -B7;;;;;borne 4 mm;2;14800;10000
+X64.12;64;Thermocouple -B7;;;;;borne 4 mm;2;17200;10000
+XD1;13;Prise de service;Legrand 004280;2P+T 16 A 250 V - limitée à;LEGRAND;004280;Legrand_004280_prise_2P+T_16A;3;22000;13800

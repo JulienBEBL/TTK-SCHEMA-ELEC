@@ -558,3 +558,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : V/J de W9 / W10 arrêté sous le câble ; f13 : bas des colonnes alignés.
 - [C] Défaut de lisibilité de la v37 reproduit par calcul (197 chevauchements avec les ellipses, repères de câble et bords de cadres) ; v38 : 0.
 - [H] Symbole CPU coupé en deux (alim_profinet / entrees, CUSTOM) ; synoptique : numéros de folio corrigés.
+
+## 24/11/2026 : v39
+- [D] Julien : un W11 et un cadre +BJM par colonne (f41, f42) ; symbole des entrées CPU plus large ; f70 supprimé, plans de bornier renumérotés ; gris clair sur les bornes et borniers de terre.
+- [C] Check global des bornes : 168, 0 doublon, règle X + folio respectée, saisie.json = schéma.
+- [H] Tableau des entrées au f60 (pas la place au f61) ; 4e folio de plans de bornier ; remplissage des formes : champs déduits, à confirmer.

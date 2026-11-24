@@ -20,7 +20,7 @@ Le script garde les **anciens numéros en interne** (clés de `F`, textes « fNN
 | 40, 41, 42, 43 | 40, 41, 42, 43 | sécurité : relais KA1, entrées (AU -S1 / -S2), sorties, capots -B1 / -B2 et shunts -S3 (f43 créé en v37) |
 | 50 | 60 | pupitre (IHM) |
 | 60, 61, 62, 63, 64 | 55, 50, 51, 52, 53 | automate : CPU alimentation + PROFINET (f60, créé en v38), entrées, sorties, SM 1223, SM 1231 TC |
-| 70 à 73 | 70 à 73 | borniers : rail par rail (70), plans de bornier borne par borne (71 à 73, v37) |
+| 70 à 73 | 71 à 74 | plans de bornier borne par borne (v37) ; ancien f70 « rail par rail » supprimé en v39 (Julien 24/11), 4e folio ajouté |
 | 80, 85, 90 | idem | câbles, implantation, nomenclature |
 
 Supprimés (anciens numéros) : f11 (répartiteur et barrette de terre : pas de symbole, 29/10), f30 (fondu dans l'actuel f12), f43, f03 légende (02/11).
@@ -258,3 +258,10 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - f20 : V/J de W9 / W10 arrêté sous le câble, texte « V/J non raccordé » (Julien : oui).
 - f61 : repères des contacts de la 2e rangée à gauche du contact (à droite, ils coupaient le cadre voisin).
 - Plans de bornier : forme validée par Julien (« c'est ce que je voulais ») ; note du haut retirée, à retravailler plus tard.
+
+## v39 (24/11, retours de Julien sur la v38)
+- f41 / f42 : **un W11 et un cadre +BJM par colonne** (« chaque colonne à part »).
+- f40 : textes des contacts à côté du contact (à gauche), jamais après un fil.
+- f61 : symbole des entrées CPU refait **au pas de 1600** (`…_entrees.xsy`) ; tableau des entrées au f60.
+- Plans de bornier : borniers écartés de 1200 de plus (`ECART_B`) ; **fond gris très clair** (0xF0F0F0, `GRIS_TERRE`) sur les bornes de terre et le cadre d'un bornier de terre. Remplissage : champs 11 / 12 de `¤#DSansTexte` (0 + couleur) déduits, à confirmer dans WinRelais.
+- Cadres de lieu : ne pas couper les textes dessinés dans le symbole (noms de broches) ; le contrôle ne les voit pas encore.

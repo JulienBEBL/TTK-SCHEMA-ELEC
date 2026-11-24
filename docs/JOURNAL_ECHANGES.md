@@ -425,3 +425,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 24/11/2026 : retours v38
 - Julien : captures de la v38 (f31/32, f40-43, f61, f63, f64, f70, f71-73) ; questions avant la v39 (`memoire/revues/2026-11-24_retours_julien_v38.md`).
+
+- Julien : réponses (1 oui, 2 oui + tableau, 3 oui, 4 toutes les bornes de terre + bornier) ; GO v39, mémoire, sync ; rapport + phrase de reprise.
+- Fait : v39 (rapport `docs/RAPPORT_v39_2026-11-24.md`), mémoire, commit + push.

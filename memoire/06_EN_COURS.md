@@ -1,6 +1,14 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v38 (24/11/2026, PC PERSO JULIEN)
+## Version actuelle : v39 (24/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-24_v39.xrs` : 31 folios, 254 symboles, 714 fils, 93 renvois, 407 numéros ; tous contrôles à 0 (verifier : 28 attentions connues) ; bornes : 168, 0 doublon. v38 dans old/ (réenregistrée par WinRelais sans retouche : `schema/recus/2026-11-24_v38_ouverte_WinRelais.xrs`).
+Rapport : `docs/RAPPORT_v39_2026-11-24.md`. Demandes : `memoire/revues/2026-11-24_retours_julien_v38.md` (faites).
+
+### Suite
+- Julien : ouvrir la v39 (fond gris des bornes de terre, lisibilité f31/f32, f40-f43, f61, f64, plans f70-f73).
+- Implantation à régénérer (check global) ; freins (D17) ; TIA ; SEW.
+
+## Version précédente : v38 (24/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-24_v38.xrs` : 31 folios, 254 symboles, 714 fils, 93 renvois, 407 numéros ; 0 problème, 0 erreur, 28 attentions (connues), **0 chevauchement au contrôle élargi** (v37 : 197), numéros 0 problème, cadres 0, textes 0, D11 0. v37 dans old/ (non réenregistrée).
 Rapport : `docs/RAPPORT_v38_2026-11-24.md`. Demandes : `memoire/revues/2026-11-23_retours_julien_v37.md` (faites).
 

@@ -382,8 +382,9 @@ class Gen:
     def ligne(self, folio, x1, y1, x2, y2, color=0, width=20, dashed=False):
         self.dessins.append((folio, x1, y1, x2, y2, 2, color, width, 2 if dashed else 0))
 
-    def cadre(self, folio, x1, y1, x2, y2, color=0, width=20, dashed=False):
-        self.dessins.append((folio, x1, y1, x2, y2, 0, color, width, 2 if dashed else 0))
+    def cadre(self, folio, x1, y1, x2, y2, color=0, width=20, dashed=False, fond=None):
+        """fond (v39) : couleur de remplissage (BGR) ; sinon transparent (champ 11 = 1, relevé sur les fichiers de Julien)."""
+        self.dessins.append((folio, x1, y1, x2, y2, 0, color, width, 2 if dashed else 0, fond))
 
     def tableau(self, folio, x, y, col_w, row_h, rows, size=250, entete=True):
         """Tableau simple : rows = liste de listes de textes ; col_w = largeurs de colonnes."""
@@ -648,8 +649,10 @@ class Gen:
                 L.append(SEP.join(map(str, (x, y, txt, "", f, 0, "Arial", size, angle, 0, 0, -1, 0, 0, "", 0, "", 0))) + SEP)
         if self.dessins:
             L.append("\u00a4#DSansTexte\u00a4")
-            for f, x1, y1, x2, y2, forme, color, width, style in self.dessins:
-                L.append(SEP.join(map(str, (x1, y1, x2, y2, forme, f, color, width, 0, style, 1, 16777215, 0, 0))) + SEP)
+            for f, x1, y1, x2, y2, forme, color, width, style, *fd in self.dessins:
+                fond = fd[0] if fd else None
+                L.append(SEP.join(map(str, (x1, y1, x2, y2, forme, f, color, width, 0, style, 1 if fond is None else 0,
+                                            16777215 if fond is None else fond, 0, 0))) + SEP)
         if self.logos:
             L.append("\u00a4#Logo\u00a4")
             for f, x, y, w, h, chemin, ratio in self.logos:

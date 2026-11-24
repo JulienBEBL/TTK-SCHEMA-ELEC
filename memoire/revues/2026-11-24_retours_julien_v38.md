@@ -1,6 +1,8 @@
 # Retours de Julien sur la v38 (24/11/2026, captures WinRelais) : à faire en v39
 
-Statut : **questions posées (24/11), réponses attendues avant la v39.**
+Statut : **fait en v39 (24/11)** : `docs/RAPPORT_v39_2026-11-24.md`.
+
+Réponses de Julien (24/11) : 1 oui (un W11 et un cadre par colonne) ; 2 symbole au pas de 1600, tableau au f61 si la place, sinon f60 (-> f60) ; 3 plans de bornier renumérotés ; 4 gris sur toutes les bornes de terre et sur le bornier de terre.
 
 | Folio | Demande de Julien |
 |---|---|
