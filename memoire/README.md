@@ -14,7 +14,7 @@ Point d'entrée unique pour reprendre le projet sans relire tout l'historique.
 | [07_METHODE_TRAVAIL.md](07_METHODE_TRAVAIL.md) | Dépôt, génération, contrôle, commit, façon de répondre à Julien |
 | [08_IMPLANTATION.md](08_IMPLANTATION.md) | Dossier d'implantation généré (PDF de 2 pages depuis la v12) : demande, générateur, saisie.json, points ouverts |
 | [09_STOCK.md](09_STOCK.md) | Stock de câbles et de bornes (source unique, « on ne commande plus rien ») |
-| [revues/](revues/) | Revues extérieures du schéma : notes brutes recopiées telles quelles (`AAAA-MM-JJ_auteur_vN_notes_brutes.txt`) + demandes rédigées et suivies (`…_demandes.md`). Revue Krizox v36 (faite en v37) : [demandes](revues/2026-11-20_krizox_v36_demandes.md) ; [retours de Julien sur la v37](revues/2026-11-23_retours_julien_v37.md) (faits en v38) |
+| [revues/](revues/) | Revues extérieures du schéma : notes brutes recopiées telles quelles (`AAAA-MM-JJ_auteur_vN_notes_brutes.txt`) + demandes rédigées et suivies (`…_demandes.md`). Revue Krizox v36 (faite en v37) : [demandes](revues/2026-11-20_krizox_v36_demandes.md) ; [retours de Julien sur la v37](revues/2026-11-23_retours_julien_v37.md) (faits en v38) ; **en cours : [retours v38](revues/2026-11-24_retours_julien_v38.md)** |
 
 ## Statuts utilisés
 - **[D]** décision de Julien

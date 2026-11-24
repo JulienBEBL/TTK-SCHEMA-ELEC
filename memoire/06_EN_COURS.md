@@ -17,7 +17,7 @@ Rapport : `docs/RAPPORT_v38_2026-11-24.md`. Demandes : `memoire/revues/2026-11-2
 | 71-73 | Note du haut retirée |
 
 ### Suite
-- Julien : ouvrir la v38 (lisibilité) ; dire si le f60 doit contenir autre chose ; check global bornes + implantation.
+- **Retours de Julien sur la v38 (24/11)** : `memoire/revues/2026-11-24_retours_julien_v38.md` ; questions posées, v39 après réponses.
 - Hors schéma : freins (D17), mnémoniques (TIA), réponse de SEW (autre session).
 
 ## Version précédente : v37 (23/11/2026, PC PERSO JULIEN)

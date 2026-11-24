@@ -422,3 +422,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 24/11/2026 : v38
 - Julien : réponses aux 4 questions (1 a, 2 numéros plus petits partout de 30-40 %, 3 oui, 4 oui) ; faire la v38, mémoire, commit + push ; vérifier les autres commits.
 - Fait : commits [perso] SEW récupérés (aucun ne touche au schéma) ; contrôle élargi ; v38 (31 folios) ; rapport `docs/RAPPORT_v38_2026-11-24.md` ; mémoire (03, 04, 05, 06, 08, README, retours), CLAUDE.md, README.
+
+## 24/11/2026 : retours v38
+- Julien : captures de la v38 (f31/32, f40-43, f61, f63, f64, f70, f71-73) ; questions avant la v39 (`memoire/revues/2026-11-24_retours_julien_v38.md`).
