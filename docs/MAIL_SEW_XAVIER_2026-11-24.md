@@ -12,7 +12,15 @@ Suite à notre échange téléphonique du 24/11, je vous écris pour poser mes q
 
 **Contexte**
 
-Nous équipons une machine de deux axes motorisés indépendants, qui tournent en sens opposés, à des vitesses réglables de 30 à 137 tr/min en sortie de réducteur. Chaque axe comprend :
+Nous réalisons l'armoire électrique et le programme d'une machine de tressage : elle tresse du caoutchouc autour d'un câble, en ligne avec une tête d'extrusion.
+
+Deux motoréducteurs SEW entraînent chacun un axe de la machine, de façon indépendante. Ils tournent en sens opposés, à des vitesses réglables de 30 à 137 tr/min en sortie de réducteur, sans codeur. Les deux axes doivent rester proches l'un de l'autre en vitesse.
+
+Deux modes de fonctionnement :
+- en production (mode Auto), les moteurs tournent en continu ; l'ouverture du capot de protection provoque un arrêt d'urgence (catégorie 0) ;
+- en nettoyage (mode Manu), les moteurs SEW ne sont pas alimentés : les variateurs sont mis hors réseau et les freins restent desserrés pour que l'opérateur puisse tourner les arbres à la main.
+
+Chaque axe comprend :
 - un motoréducteur SEW K39 DRN100LS4 / BE5 / TF (2,2 kW), rapport de réduction 10,61, frein BE5 400 V CA avec redresseur BGE1.5 (plaque du 18/11), sans codeur ;
 - un variateur MOVITRAC MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM, alimenté en 400 V triphasé, avec une résistance de freinage BW100-001 ;
 - une consigne de vitesse envoyée par PROFINET depuis un automate Siemens S7-1200 ; le STO (X6) est commandé par un relais de sécurité.
