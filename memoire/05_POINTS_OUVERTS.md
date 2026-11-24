@@ -41,7 +41,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.
-1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A (en chaîne depuis la v23) à lire (SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : entrée STO 150 mW ; non précisé si par variateur ou pour les 2. Question 2 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
+1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A (en chaîne depuis la v23) à lire (SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : entrée STO 150 mW **par variateur** (précisé par Julien le même jour) : **cas A retenu, 12,5 mA pour les 2, au-dessus de 10 mA** ; le cas B ci-dessous est écarté tant que l'écrit ne dit pas le contraire. Question 2 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
    - Calcul [H] (aucune valeur ajoutée) : 150 mW / 24 V = 6,25 mA.
    - Cas A, 150 mW par variateur : 2 × 6,25 = **12,5 mA** ≥ 10 mA ; marge 2,5 mA (25 %). Si l'entrée est résistive [H] (R ≈ 24² / 0,150 = 3,84 kΩ), le courant suit la tension : 10 mA atteints vers 19,2 V.
    - Cas B, 150 mW au total : **6,25 mA** < 10 mA ; il manque 3,75 mA. 15 V : 24 V suffit dans les 2 cas.

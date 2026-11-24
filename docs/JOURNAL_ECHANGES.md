@@ -410,3 +410,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 24/11/2026 : valeurs orales SEW (frein, STO)
 - Julien : un technicien SEW a donné par téléphone STO 150 mW et frein BE5 / BGE1.5 maintien 0,18 A ; reporter en « oral, à confirmer par écrit », calculer l'effet, signaler les incohérences, ne rien modifier au schéma ; puis attendre ses autres questions pour SEW.
 - Fait : valeurs reportées (QUESTIONS_SEW 1 et 2 + section « réponses partielles orales », 05 points 1 bis et 8, BILAN_24V, DECISIONS) ; calculs STO (6,25 / 12,5 mA contre 10 mA) et frein (0,18 A contre 2 A C, appel manquant) ; corrections de texte (n° de questions du BILAN, « en chaîne »). Rien généré, aucun .xrs modifié, pas de push.
+
+## 24/11/2026 : mail à Xavier (SEW)
+- Julien : STO = 150 mW par variateur ; reprendre les questions SEW sans réponse ; mail à Xavier : contexte, écart consigne / réel à vide, puis autres questions.
+- Fait : 3 réponses de cadrage (français, contexte technique, plage 30-137 tr/min) ; brouillon `docs/MAIL_SEW_XAVIER_2026-11-24.md` ; STO passé en cas A dans QUESTIONS_SEW, 05, BILAN, DECISIONS. Rien envoyé.

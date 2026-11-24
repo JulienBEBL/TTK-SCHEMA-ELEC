@@ -30,7 +30,7 @@ T2 consomme à peu près la même chose en permanence (min ≈ moy ≈ max), ave
 | KF1, KF2 bobines LC1D09BD (freins) | 2 × 0,225 A (5,4 W chacune) | KA1 armé (Auto et Manu) | fiche Schneider LC1D09BD |
 | KM1, KM2 bobines LC1D09BD (réseau des variateurs) | 2 × 0,225 A | Auto seulement (AUTO-A) | idem |
 | KA2 bobine LC1D09BD (48 V des drivers) | 0,225 A | Manu seulement (MANU-D) | idem |
-| STO de U1 (puis U2 en chaîne) | **oral 24/11, à confirmer par écrit : 150 mW = 6,25 mA sous 24 V**, par variateur ou pour les 2 non précisé : 6,25 mA (total) ou 12,5 mA (par variateur, 2 en chaîne), soit 0,06 à 0,13 % de T1 | Auto seulement (AUTO-B) | SEW, oral 24/11 ; question 2 de `docs/QUESTIONS_SEW.md` toujours ouverte |
+| STO de U1 (puis U2 en chaîne) | **oral 24/11, à confirmer par écrit : 150 mW par variateur = 6,25 mA sous 24 V, soit 12,5 mA pour les 2 en chaîne** (0,13 % de T1) | Auto seulement (AUTO-B) | SEW, oral 24/11 ; question 2 de `docs/QUESTIONS_SEW.md` toujours ouverte |
 | H1 colonne (1 à 3 feux), par Q8.0 à Q8.2 | ? | selon le programme | fiche RS 199-9760 (onglet Documents) |
 | H4 voyant défaut, par Q8.4 | ? | en défaut | référence à définir |
 

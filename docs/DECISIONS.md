@@ -542,3 +542,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] Frein : 0,18 A = 9 % de 2 A ; charge de KA1 13-14 inchangée (le frein passe par KF1 / KF2). Appel manquant : déclenchement de la courbe C non jugeable.
 - [?] 0,18 A cohérent avec le 0,183 A à 400 V d'un chat du 27/08 (non vérifié) ; pas un recoupement indépendant prouvé.
 - [C] Aucun changement de schéma, de calibre ni de nomenclature. Corrections de texte : BILAN_24V (n° de questions 3 -> 2 et 8 -> 4), 03 et 05 (STO « en chaîne » et non « en parallèle »).
+
+## 24/11/2026 : précisions orales et mail à Xavier (SEW)
+- [?] STO : 150 mW **par variateur** (Julien, 24/11, même source orale) : 12,5 mA pour les 2 en chaîne, au-dessus du minimum de 10 mA de KA1 33-34 ; marge 2,5 mA. Cas B écarté, **à confirmer par écrit**.
+- [D] Mail à Xavier (SEW) en français, ton pro et neutre, contexte technique sans nom de client : `docs/MAIL_SEW_XAVIER_2026-11-24.md` (brouillon non envoyé). Question 1 : écart consigne / vitesse réelle à vide sur 30 à 137 tr/min ; puis confirmation écrite frein et STO, courant réseau, TF X10, 24 V X5.

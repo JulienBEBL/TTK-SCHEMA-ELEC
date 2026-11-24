@@ -12,7 +12,7 @@ Câblage : réseau coupé par KM1 / KM2 en amont de chaque variateur ; STO X6 co
 | N° | Question | Pourquoi |
 |---|---|---|
 | 1 | Frein BE5 400 V CA avec redresseur BGE1.5 : courant d'appel et de maintien. **RÉPONSE PARTIELLE, orale (technicien, 24/11), à confirmer par écrit : maintien 0,18 A ; appel non donné.** Restent à demander : appel (valeur, durée), côté (CA ou CC), tension, tolérance. | Calibre et courbe de QF2 / QF3 (2 A C posés), section du câble frein 5G1,5. Un chat du 27/08 cite 0,183 A à 400 V (non vérifié) : cohérent avec 0,18 A, mais pas un recoupement indépendant prouvé. Sans l'appel, on ne juge pas le déclenchement de la courbe C. |
-| 2 | Courant consommé par les entrées STO X6.1 / X6.3 d'un MCX91A (2 en chaîne). **RÉPONSE PARTIELLE, orale (technicien, 24/11), à confirmer par écrit : entrée STO 150 mW (soit 6,25 mA sous 24 V) ; non précisé si c'est par variateur ou pour les deux.** Restent à demander : par variateur ou total, tension de mesure, tolérance. | KA1 33-34 exige au moins 10 mA et 15 V (R-32). Cas A (150 mW par variateur) : 12,5 mA pour 2, au-dessus de 10 mA. Cas B (150 mW au total) : 6,25 mA, en dessous. Détail : `memoire/05_POINTS_OUVERTS.md`, point 1 bis. |
+| 2 | Courant consommé par les entrées STO X6.1 / X6.3 d'un MCX91A (2 en chaîne). **RÉPONSE PARTIELLE, orale (technicien, 24/11), à confirmer par écrit : entrée STO 150 mW par variateur (6,25 mA sous 24 V, 12,5 mA pour les 2 ; précisé par Julien le 24/11 : « 150 mW / var »).** Restent à demander : confirmation écrite, tension de mesure, tolérance. | KA1 33-34 exige au moins 10 mA et 15 V (R-32). 12,5 mA pour 2 : au-dessus de 10 mA, marge 2,5 mA. Détail : `memoire/05_POINTS_OUVERTS.md`, point 1 bis. |
 | 3 | Sonde TF : bornes exactes de X10 sur le MCX91A, paramètre du type de sonde, réaction et reset au déclenchement, bornes dans la boîte à bornes moteur. | f31 / f32 : « TF X10 : bornes à confirmer ». Valeurs TF1 / GND, 1830 Ω issues de la doc MDX91A, non confirmées pour le MCX91A. W3 / W6, DF01 / DF02. |
 | 4 | Consommation 24 V de l'électronique (X5), variante CSO / CFN / CDM / CMM. | `docs/BILAN_24V.md` porte « ? ». |
 | 5 | Courant réseau d'entrée du MCX91A-0055-5E3 (nominal, appel, précharge) et protection amont recommandée. | Réglage de QM1 / QM2 (GV2ME14 6-10 A), point B3 de la revue v33. |
@@ -25,7 +25,7 @@ Câblage : réseau coupé par KM1 / KM2 en amont de chaque variateur ; STO X6 co
 | 7 | Temps de retombée du BE5 avec coupure côté CA seule (KF1 / KF2) ; travail de freinage admissible par AU en rotation (1 AU / h au pire). | AU catégorie 0, coupure côté DC abandonnée en octobre. Roue libre ≈ 10 s à mesurer. Demande l'inertie J (client). |
 | 8 | Frein alimenté en permanence quand le variateur n'est pas prêt ou en défaut, sans la sortie frein du variateur : réglage à faire (fonction frein désactivée) ? | Revue Krizox D17. SEW a répondu OUI le 06/11 pour le moteur à l'arrêt seulement. |
 | 9 | BW100-001 : valeurs à paramétrer, seuil du hacheur, contact thermique éventuel, dégagements minimaux. | Dégagements montés (22/10) : 100 mm variateur-résistance, 70 mm au toit, inférieurs aux 150-200 mm et 300-350 mm relevés dans la doc SEW. Résistances non déplaçables. |
-| 10 | Sans codeur, de 30 à 137 tr/min en sortie : précision de la vitesse estimée, écart entre les 2 moteurs, couple continu à basse vitesse (autoventilé), surcharge. | Recette : écart ≤ 2 tr/min à vide. Alarme AL01. |
+| 10 | Sans codeur, de 30 à 137 tr/min en sortie : précision de la vitesse estimée, écart entre les 2 moteurs, couple continu à basse vitesse (autoventilé), surcharge. | Recette : écart ≤ 2 tr/min à vide. Alarme AL01. **Mail à Xavier (SEW) préparé le 24/11, non envoyé** : `docs/MAIL_SEW_XAVIER_2026-11-24.md` (reprend aussi 1, 2, 3, 4, 5). |
 | 11 | Perte du bus : le paramètre 8622.6 vaut-il pour PROFINET ? Délai (8455.3) ? Valeur du chien de garde PROFINET ? | TA06, DF03 / DF04, `T_COM`. `interface_sew.md` : point `[?]` (description citant EtherCAT). |
 | 12 | Mises sous tension : confirmer par écrit « 1 par heure ». | SEW a répondu « 1 » sans unité ; la doc MDX91A donne 1 par minute. KM1 / KM2 retombent à chaque AU et passage en Manu. `T_SEW_ON` = 3600 s (AL04) repose sur la décision du 18/11. |
 | 13 | Exemplaire US : MCX91A et redresseur BGE1.5 / BE5 à 60 Hz derrière le transformateur 480 → 400 V. | Armoire US identique à l'UE (`areas/us-transformer`). |
@@ -55,7 +55,7 @@ Source : technicien SEW, par téléphone, 24/11/2026. Aucun document. **À confi
 | Question | Valeur donnée | Ce qui manque |
 |---|---|---|
 | 1 (frein BE5 + BGE1.5) | Courant de maintien 0,18 A | Courant d'appel ; côté CA ou CC ; tension ; par frein ou pour les deux (non précisé) |
-| 2 (STO X6) | Entrée STO : puissance absorbée 150 mW (6,25 mA sous 24 V) | Par variateur ou pour les deux (non précisé) ; tension de mesure |
+| 2 (STO X6) | Entrée STO : puissance absorbée 150 mW **par variateur** (6,25 mA sous 24 V, 12,5 mA pour 2) | Confirmation écrite ; tension de mesure |
 
 ## Réponses reçues (à ne pas reposer)
 
