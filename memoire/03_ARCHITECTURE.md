@@ -95,6 +95,7 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - f50 : on ne garde que l'IHM, alimentée par X71.21 (L+), .22 (M), .23 (FE).
 
 ## Borniers
+- **v38 (24/11, choix a de Julien)** : ancien f60 coupé en deux (f60 = alimentation + PROFINET de la CPU, f61 = entrées) ; bornes **X60 → X61**, **X62 → X63** (colonne -H1, voyant -H4), **X63 → X64** (thermocouple) ; fils 60xx → 61xx, 61xx → 62xx, 62xx → 63xx, 63xx → 64xx (24 V capteurs : 6001, né au f60).
 - **v37 (23/11)** : boîte de jonction machine **+BJM** dessinée (bornier X1, 69 bornes X1.1 à X1.69, fabrication BEBL) ; tous les câbles sortants y passent (W2-W6, W8-W12, W14), puis des fils vont aux appareils. Bornes des capots et des shunts au **f43** : X43.11-14 (shunts -S3, ex X41.21-24), X43.21-24 (-B1, ex X41.31-34), X43.31-34 (-B2, ex X41.41-44). Le reste de cette section décrit l'état d'avant (X70 / X71 = anciens noms).
 - X70 (armoire ↔ machine) : en construction ; X70.1-4 B1, 5-8 B2, 9-16 fins de course.
 - X71 (armoire ↔ pupitre) : 1-4 AU, 5-6 AU pupitre → automate, 7-20 sélecteur, 21-23 IHM.

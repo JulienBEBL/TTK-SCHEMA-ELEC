@@ -19,7 +19,7 @@ Le script garde les **anciens numéros en interne** (clés de `F`, textes « fNN
 | 31, 32 | 20, 21 | variateurs U1, U2, bornier, moteurs M1, M2 |
 | 40, 41, 42, 43 | 40, 41, 42, 43 | sécurité : relais KA1, entrées (AU -S1 / -S2), sorties, capots -B1 / -B2 et shunts -S3 (f43 créé en v37) |
 | 50 | 60 | pupitre (IHM) |
-| 60, 61, 62, 63 | 50, 51, 52, 53 | automate : CPU entrées, sorties, SM 1223, SM 1231 TC |
+| 60, 61, 62, 63, 64 | 55, 50, 51, 52, 53 | automate : CPU alimentation + PROFINET (f60, créé en v38), entrées, sorties, SM 1223, SM 1231 TC |
 | 70 à 73 | 70 à 73 | borniers : rail par rail (70), plans de bornier borne par borne (71 à 73, v37) |
 | 80, 85, 90 | idem | câbles, implantation, nomenclature |
 
@@ -248,3 +248,13 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - f60 (colonnes à 800) : étiquette de câble courte (`court=True` : repère seul, taille 200, sous le trait) ; câbles W11 du -S2 et du -S3 séparés (le -S1 de la porte passe entre eux).
 - Câble d'un seul brin : trait de 800 centré (jamais de longueur nulle).
 - Plans de bornier (f71 à f73) : borniers horizontaux, textes verticaux (taille 160), format « -REP:broche (fNN) » + n° de fil en haut, appareil + « câble (conducteur) » en bas ; boîte : câble en haut, appareil en bas.
+
+## Lisibilité (v38, retours de Julien du 23/11 et réponses du 24/11)
+- **Numéros de fil en taille 200** sur tout le schéma (`NUM_T` de `xrs_gen.py`, 300 avant ; Julien : réduire de 30-40 %, pas plus pour le moment).
+- **Défaut de la v37** : numéros sur l'ellipse d'un câble blindé (±350 autour du trait), sur le cadre arrondi du repère (dessiné même avec `court=True`) et sur les bords des cadres pointillés. Le contrôle ne les connaissait pas : `xrs_chevauchements.py` les compte depuis la v38 (197 sur la v37) ; `zones_cables()` du script les fait éviter au placement, avec les textes libres.
+- **Règle d'espacement** d'une chaîne borne / câble / boîte / appareil (pas de 400) : câble à 1200 sous la broche du bas de la borne, boîte à 800 sous le câble (cadre +BJM marge 100), appareil à 1600 sous la boîte s'il a son propre cadre (+M / +P1), sinon 1200. Sens montant : symétrique.
+- Une version ne sort que si le contrôle élargi est à 0. Option `--marge=N` : écart minimal voulu (à 50, seuls restent les textes de lieu dans leur propre cadre).
+- f12 : « PE » écrit à gauche du fil (Julien). f13 : bas des 3 colonnes alignés (Julien : oui).
+- f20 : V/J de W9 / W10 arrêté sous le câble, texte « V/J non raccordé » (Julien : oui).
+- f61 : repères des contacts de la 2e rangée à gauche du contact (à droite, ils coupaient le cadre voisin).
+- Plans de bornier : forme validée par Julien (« c'est ce que je voulais ») ; note du haut retirée, à retravailler plus tard.

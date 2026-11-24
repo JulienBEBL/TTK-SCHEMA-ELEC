@@ -417,3 +417,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : rapport 10,61 ; mode de régulation = question à SEW ; signature automatique. Fait : mail sans champ à compléter.
 - Julien : détailler la phrase de contexte du mail. Fait : machine de tressage, 2 axes indépendants, modes Auto / Manu (source : 01_PROJET, 03 ; sans nom de client).
 - Julien : mail envoyé à Xavier, réponse attendue. Fait : statut noté (mail, QUESTIONS_SEW, DECISIONS).
+
+
+## 24/11/2026 : v38
+- Julien : réponses aux 4 questions (1 a, 2 numéros plus petits partout de 30-40 %, 3 oui, 4 oui) ; faire la v38, mémoire, commit + push ; vérifier les autres commits.
+- Fait : commits [perso] SEW récupérés (aucun ne touche au schéma) ; contrôle élargi ; v38 (31 folios) ; rapport `docs/RAPPORT_v38_2026-11-24.md` ; mémoire (03, 04, 05, 06, 08, README, retours), CLAUDE.md, README.

@@ -19,6 +19,7 @@ from xrs_tool import split_sections, fields, to_int
 LIB = os.environ.get("TTK_LIB") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "librairie")
 GRID = 400
 DATE = os.environ.get("TTK_DATE") or "28/10/2026"     # date de modification inscrite au cartouche et dans les symboles
+NUM_T = 200                     # v38 (Julien 24/11) : taille des numéros de fil, 300 -> 200 sur tout le schéma
 ZONE_X = (1300, 29600)          # cadre utile (hors marges)
 ZONE_Y = (1300, 19600)          # au-dessus du cartouche
 RENVOI_L = 1600                 # emprise flèche + texte d'un renvoi au-delà de son point (mesurée sur WinRelais)
@@ -628,7 +629,7 @@ class Gen:
             # x·y·texte·folio·0·police·taille·angle·couleur·0·0·0·
             L.append("\u00a4#Numero\u00a4")
             for f, x, y, txt, ang in self.numeros:
-                L.append(SEP.join(map(str, (x, y, txt, f, 0, "Arial", 300, ang, 8388608, 0, 0, 0))) + SEP)
+                L.append(SEP.join(map(str, (x, y, txt, f, 0, "Arial", NUM_T, ang, 8388608, 0, 0, 0))) + SEP)
         if self.renvois:
             L.append("\u00a4#RenvoiF\u00a4")
             for fa, pa, fb, pb, t, vert in self.renvois:

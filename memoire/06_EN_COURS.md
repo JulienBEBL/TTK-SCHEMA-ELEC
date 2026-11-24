@@ -1,6 +1,26 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v37 (23/11/2026, PC PERSO JULIEN)
+## Version actuelle : v38 (24/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-24_v38.xrs` : 31 folios, 254 symboles, 714 fils, 93 renvois, 407 numéros ; 0 problème, 0 erreur, 28 attentions (connues), **0 chevauchement au contrôle élargi** (v37 : 197), numéros 0 problème, cadres 0, textes 0, D11 0. v37 dans old/ (non réenregistrée).
+Rapport : `docs/RAPPORT_v38_2026-11-24.md`. Demandes : `memoire/revues/2026-11-23_retours_julien_v37.md` (faites).
+
+### Fait en v38 (retours de Julien sur la v37, réponses du 24/11)
+| Folio | Changement |
+|---|---|
+| tous | Numéros de fil en taille 200 ; contrôle et placement tiennent compte des ellipses, repères de câble et cadres pointillés |
+| 12, 13 | PE à gauche du fil ; bas des 3 colonnes alignés |
+| 20 | V/J arrêté sous le câble ; rangées aérées ; textes des moteurs centrés |
+| 31, 32, 40-43, 50 | Rangées aérées (≈ 1600 autour des câbles) |
+| 60 / 61 | f60 = alimentation + PROFINET de la CPU (nouveau) ; f61 = entrées ; symbole CPU coupé en deux (CUSTOM) |
+| 62-64 | Anciens f61-f63 ; bornes X61 / X63 / X64 |
+| 03 | Numéros de folio du synoptique corrigés |
+| 71-73 | Note du haut retirée |
+
+### Suite
+- Julien : ouvrir la v38 (lisibilité) ; dire si le f60 doit contenir autre chose ; check global bornes + implantation.
+- Hors schéma : freins (D17), mnémoniques (TIA), réponse de SEW (autre session).
+
+## Version précédente : v37 (23/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-23_v37.xrs` : 30 folios, 253 symboles, 710 fils, 91 renvois, 405 numéros ; 0 problème, 0 erreur, 28 attentions (connues), 0 chevauchement, numéros 0 problème. v36 dans old/ (non réenregistrée).
 Rapport : `docs/RAPPORT_v37_2026-11-23.md` (contrôles, demande par demande, choix à valider).
 
@@ -20,9 +40,8 @@ Rapport : `docs/RAPPORT_v37_2026-11-23.md` (contrôles, demande par demande, cho
 | 71-73 | Plans de bornier borne par borne (remplacent le tableau du f71) |
 | tous | Brins des câbles en G sans le V/J ; cadres pointillés +BJM / +M / +P1 |
 
-### Retours de Julien sur la v37 (23/11) : EN COURS
-- Détail et questions : `memoire/revues/2026-11-23_retours_julien_v37.md` (défaut commun : numéros de fil sur les ellipses de câble, repères, numéros de brin et cadres pointillés ; folios 12, 13, 20, 31, 32, 40-43, 50, 60, 62, 63 ; plans de bornier OK).
-- **Prochaine étape** : réponses de Julien aux 4 questions, puis v38, commit + push.
+### Retours de Julien sur la v37 (23/11) : faits en v38
+- Détail : `memoire/revues/2026-11-23_retours_julien_v37.md`.
 
 ### 24/11/2026 : valeurs orales SEW (frein, STO), rien modifié au schéma
 - Technicien SEW, téléphone, **à confirmer par écrit** : STO 150 mW (6,25 mA sous 24 V, par variateur ou total non précisé) ; frein BE5 / BGE1.5 maintien 0,18 A (appel non donné). Questions 1 et 2 de `docs/QUESTIONS_SEW.md` **toujours ouvertes**.

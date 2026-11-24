@@ -63,10 +63,10 @@ Le script garde d'anciens numéros en interne (table `NUMFOL`, voir `memoire/04_
 cd outils
 export PYTHONIOENCODING=utf-8 TTK_LIB='C:\Users\Public\Documents\Elec-CAO\sym_electrotech' TTK_DATE=JJ/MM/AAAA
 python ttk_schema.py ../schema/generes/release/TTK_AAAA-MM-JJ_vN.xrs
-# option : TTK_IMAGES=<dossier des images écrit dans le .xrs> (défaut : ..\..\images, relatif au .xrs)
+# option : TTK_IMAGES=<dossier des images écrit dans le .xrs> (défaut v37 : chemin complet de schema/images sur le PC qui génère)
 python xrs_tool.py verifier <fichier.xrs> > <fichier>_verification.md
 python xrs_tool.py nomenclature <fichier.xrs> > <fichier>_nomenclature.csv
-python xrs_chevauchements.py <fichier.xrs>
-python xrs_numeros.py <fichier.xrs> 10,11,12,13,20,21,30,31,32,40,41,42,50,60,61,62,63
+python xrs_chevauchements.py <fichier.xrs>            # option --marge=N : écart minimal voulu (v38)
+python xrs_numeros.py <fichier.xrs> 10,11,12,13,20,21,30,31,32,40,41,42,43,50,60,61,62,63,64
 ```
 Avant de passer l'ancienne version dans `old/` : `git status`. Si WinRelais l'a réenregistrée, l'archiver dans `schema/recus/` et reprendre les retouches de Julien dans le script (une retouche faite seulement dans WinRelais est perdue à la génération suivante).

@@ -550,3 +550,11 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Rapport de réduction des K39 : **10,61** (Julien, 24/11) ; repris dans le mail à Xavier. Cohérent avec « 10 Hz ≈ 27 tr/min » (4 pôles) [H]. Mode de régulation : non choisi, demandé à SEW ; signature : celle de la messagerie.
 
 - [C] Mail à Xavier (SEW) **envoyé par Julien le 24/11/2026** : questions 10, 1, 2, 3, 4, 5 en attente de réponse écrite. Aucune réponse reçue à ce stade.
+
+
+## 24/11/2026 : v38
+- [D] Julien : f60 coupé en deux, tout renommer (choix a) : f60 = alimentation + PROFINET CPU, f61 = entrées, f62-f64 = anciens f61-f63 ; bornes X60 -> X61, X62 -> X63, X63 -> X64 ; fils 60xx -> 61xx…
+- [D] Julien : numéros de fil plus petits sur tout le schéma, de 30 à 40 % (fait : 300 -> 200).
+- [D] Julien : V/J de W9 / W10 arrêté sous le câble ; f13 : bas des colonnes alignés.
+- [C] Défaut de lisibilité de la v37 reproduit par calcul (197 chevauchements avec les ellipses, repères de câble et bords de cadres) ; v38 : 0.
+- [H] Symbole CPU coupé en deux (alim_profinet / entrees, CUSTOM) ; synoptique : numéros de folio corrigés.

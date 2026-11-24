@@ -144,6 +144,13 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 - Fils de la prise (Julien 20/11 : il parlait de 1323 / 1324 et 1333 / 1334, f13) : 1323 / 1324 en 2,5 mm² (sous QF9 16 A), 1333 / 1334 en 1,5 mm² (sous QF10 2 A). Sections non écrites sur les folios (pas de règle de dessin pour ça).
 - Fil de câblage intérieur (20/11) : **aucun stock noté dans la mémoire** (09 ne couvre que les câbles sortants). Besoin déduit du schéma et des couleurs (04) : 2,5 mm² noir, bleu clair, bleu foncé, vert-jaune ; 1,5 mm² noir, bleu clair, vert-jaune (+ bleu foncé si 24 V en 1,5). Stock réel à donner par Julien [?].
 
+## v38 (24/11) : à regarder par Julien
+Détail : `docs/RAPPORT_v38_2026-11-24.md`.
+- Lisibilité dans WinRelais des f20, f31, f32, f41-f43, f50, f60-f64 (le contrôle par calcul est à 0).
+- f60 presque vide (CPU seule) : y ajouter autre chose (tableau des E/S, IP) ? [?]
+- Repères déjà posés en X60 / X62 / X63 : à refaire (X61 / X63 / X64).
+- Implantation à régénérer (boîte +BJM, X43, X61 / X63 / X64).
+
 ## v37 (23/11) : à valider par Julien
 Détail : `docs/RAPPORT_v37_2026-11-23.md`.
 - f41 coupé en deux (f43 = capots) et bornes X41.2x-4x renommées X43.1x-3x [H].

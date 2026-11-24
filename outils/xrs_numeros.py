@@ -39,7 +39,7 @@ def fil_du_numero(n):
         if w["folio"] != n["folio"]:
             continue
         x1, x2, y1, y2 = min(w["x1"], w["x2"]), max(w["x1"], w["x2"]), min(w["y1"], w["y2"]), max(w["y1"], w["y2"])
-        if vert and x1 == x2 == n["x"]:
+        if vert and x1 == x2 and x1 in (n["x"], n["x"] + 300):     # v38 : « PE » du f12 écrit à gauche du fil (300)
             d = max(y1 - n["y"], n["y"] - y2, 0)
         elif not vert and y1 == y2 == n["y"]:
             d = max(x1 - n["x"], n["x"] - x2, 0)

@@ -1,6 +1,6 @@
 # Retours de Julien sur la v37 (23/11/2026, captures WinRelais) : à faire en v38
 
-Statut : **questions posées à Julien (24/11), réponses attendues avant la v38.**
+Statut : **fait en v38 (24/11)** : `docs/RAPPORT_v38_2026-11-24.md`.
 
 ## Défaut commun (diagnostic de l'assistant, à corriger en priorité)
 Les numéros de fil (verticaux, taille 300, ≈ 650 de long) tombent sur :
@@ -31,10 +31,16 @@ Méthode prévue :
 | 63 | Texte superposé (W8, +BJM, 1230 / 1241) : à revoir |
 | 71-73 | Plans de bornier : **bien, c'est la forme voulue** ; supprimer la note en haut (à retravailler plus tard) |
 
-## Questions posées (24/11), réponses attendues
+## Réponses de Julien (24/11)
+1. **a)** tout renommer (X60 -> X61, X62 -> X63, X63 -> X64, fils 60xx -> 61xx…).
+2. Réduire la taille des numéros, **sur tout le schéma**, de 30 à 40 %, pas plus pour le moment (fait : 300 -> 200).
+3. Oui (V/J arrêté sous le câble).
+4. Oui (bas des 3 colonnes alignés).
+
+## Questions posées (24/11)
 1. Découpe du f60 : renommer bornes (X60 -> X61, X62 -> X63, X63 -> X64) et numéros de fil (60xx -> 61xx…) ? Repères déjà posés ? Choix : a) tout renommer ; b) découper sans renommer ; c) f60 = entrées, alimentation + PROFINET CPU sur un nouveau f64.
 2. Place : accepter plus de folios (ex. entrées sur 2 folios) ou numéros de fil en taille 250 ?
 3. f20 : arrêter le V/J de W9 / W10 à la borne de terre avec « V/J non raccordé », sans fil jusqu'en bas ?
 4. f13 : « égaliser » = aligner le bas des 3 colonnes (éclairage, ventilation, prise XD1) ?
 
-Après les réponses : faire la v38, commit + push (sync).
+v38 faite le 24/11, commit + push.

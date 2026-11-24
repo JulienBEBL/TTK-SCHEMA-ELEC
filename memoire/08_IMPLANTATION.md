@@ -99,3 +99,4 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 6. PC Rimane : lancer `generer.py` hors bac à sable de l'assistant (Edge sort sinon sans PDF) ; contrôle visuel dans `build/dossier.html`.
 
 - 23/11 (schéma v37) : `saisie.json` : bornes X41.21-24 / 31-34 / 41-44 renommées X43.11-14 / 21-24 / 31-34 (types et conducteurs) ; destinations des câbles W2, W3, W5, W6, W8, W9, W10, W11, W14 = « +BJM, puis … ». `extraire.py` lit la v37 (168 bornes dont 69 de la boîte +BJM, 31 câbles) ; dossier d'implantation **pas régénéré** (la boîte n'est pas dans l'armoire : à traiter au check global de Julien).
+- 24/11 (schéma v38) : `saisie.json` : bornes X60.xx -> X61.xx, X62.xx -> X63.xx, X63.xx -> X64.xx (68 repères, choix a de Julien) ; `extraire.py` lit la v38 (168 bornes, 31 câbles) ; dossier d'implantation **pas régénéré**.
