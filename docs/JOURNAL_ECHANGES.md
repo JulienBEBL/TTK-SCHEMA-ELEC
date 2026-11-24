@@ -428,3 +428,5 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 - Julien : réponses (1 oui, 2 oui + tableau, 3 oui, 4 toutes les bornes de terre + bornier) ; GO v39, mémoire, sync ; rapport + phrase de reprise.
 - Fait : v39 (rapport `docs/RAPPORT_v39_2026-11-24.md`), mémoire, commit + push.
+
+- Julien : passage à Sonnet + compactage ; fait : `memoire/10_REPRISE_AUTRE_MODELE.md`, contrôles copiés du scratchpad dans `outils/controles/` (tout.sh), CLAUDE.md.
