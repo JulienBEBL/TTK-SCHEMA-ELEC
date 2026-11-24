@@ -548,3 +548,5 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Mail à Xavier (SEW) en français, ton pro et neutre, contexte technique sans nom de client : `docs/MAIL_SEW_XAVIER_2026-11-24.md` (brouillon non envoyé). Question 1 : écart consigne / vitesse réelle à vide sur 30 à 137 tr/min ; puis confirmation écrite frein et STO, courant réseau, TF X10, 24 V X5.
 
 - [D] Rapport de réduction des K39 : **10,61** (Julien, 24/11) ; repris dans le mail à Xavier. Cohérent avec « 10 Hz ≈ 27 tr/min » (4 pôles) [H]. Mode de régulation : non choisi, demandé à SEW ; signature : celle de la messagerie.
+
+- [C] Mail à Xavier (SEW) **envoyé par Julien le 24/11/2026** : questions 10, 1, 2, 3, 4, 5 en attente de réponse écrite. Aucune réponse reçue à ce stade.

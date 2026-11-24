@@ -1,6 +1,6 @@
 # Mail à Xavier (SEW) : brouillon du 24/11/2026
 
-Statut : **brouillon, non envoyé**. Texte à copier dans la messagerie. Plus aucun champ à compléter. Questions du dépôt concernées : 10 (précision de vitesse), 1 et 2 (confirmation écrite des valeurs orales), 3, 4, 5 (voir `docs/QUESTIONS_SEW.md`).
+Statut : **envoyé par Julien le 24/11/2026, réponse attendue**. Texte à copier dans la messagerie. Plus aucun champ à compléter. Questions du dépôt concernées : 10 (précision de vitesse), 1 et 2 (confirmation écrite des valeurs orales), 3, 4, 5 (voir `docs/QUESTIONS_SEW.md`).
 
 ---
 

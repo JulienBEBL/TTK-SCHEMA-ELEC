@@ -416,3 +416,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Fait : 3 réponses de cadrage (français, contexte technique, plage 30-137 tr/min) ; brouillon `docs/MAIL_SEW_XAVIER_2026-11-24.md` ; STO passé en cas A dans QUESTIONS_SEW, 05, BILAN, DECISIONS. Rien envoyé.
 - Julien : rapport 10,61 ; mode de régulation = question à SEW ; signature automatique. Fait : mail sans champ à compléter.
 - Julien : détailler la phrase de contexte du mail. Fait : machine de tressage, 2 axes indépendants, modes Auto / Manu (source : 01_PROJET, 03 ; sans nom de client).
+- Julien : mail envoyé à Xavier, réponse attendue. Fait : statut noté (mail, QUESTIONS_SEW, DECISIONS).
