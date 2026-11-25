@@ -442,3 +442,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 
 ## 25/11/2026 : préparation des retours v39
 - Julien : va donner ses retours sur la v39 ; demande si l'assistant sait lire, modifier et générer le schéma. Fait : v39 régénérée à l'identique (octet pour octet), tous les contrôles à 0 ; release non réenregistrée par WinRelais ; README racine mis à jour (il restait en v36).
+
+## 25/11/2026 : retours v39 -> v40
+- Julien : retours folio par folio sur la v39 ; « travaille en autonomie, plan d'action et go, livre-moi une v40 » ; toujours consigner nos discussions (règle de mémoire).
+- Fait : retours notés (`memoire/revues/2026-11-25_retours_julien_v39.md`) ; v40 (rapport `docs/RAPPORT_v40_2026-11-25.md`) ; symbole moteur CUSTOM en contour plein (3 copies) ; mémoire (04, 05, 06, 10, README, revues), CLAUDE.md, README ; commit + push.
+- En attente : réponse de Julien sur le f40 ; relecture de la v40 dans WinRelais.

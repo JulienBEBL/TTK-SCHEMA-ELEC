@@ -578,3 +578,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 25/11/2026 : fils 48 V
 - [D] Fils +48 V (1251, 2001, 2011) et 0 V 48 (1250) entre T3, KA2 et U3 / U4 : **noir 2,5 mm²** du stock, + et - de même couleur, repérés par leur numéro. Rouge / bleu écartés (codes du 24VELEC et du 0 V 24).
 - [?] Section maxi acceptée par les bornes d'alimentation du DM860H : à vérifier.
+
+## 25/11/2026 : retours v39 et v40
+- [D] Julien : retours sur la v39 (f03, f10, f20, f21, f30, f31/f32, f40, f42, f43, f61, f63, f64, f70-f73, f80) ; travail en autonomie, livrer une v40.
+- [D] Règle de mémoire : toujours consigner les discussions (journal, décisions, fichier du thème), à chaque échange.
+- [D] Symbole moteur SEW (CUSTOM, 3 copies) : contour extérieur plein.
+- [D] Plans de bornier : utiliser les 4 folios ; bornes et bornier de terre en vert / jaune (plus de gris).
+- [C] v40 générée : 0 problème, 0 erreur (28 attentions), 0 chevauchement ; numéros, cadres, textes, 24 V / 0 V, bornes à 0 ; rapport `docs/RAPPORT_v40_2026-11-25.md`.
+- [H] Résistance de freinage avec repère seul ; pas d'image du bloc noir -X21.14 ; vert RGB(0, 176, 64), jaune RGB(255, 230, 0).
+- [?] f40 : accrochage du texte des contacts non modifié (code 0 déjà dans le fichier) ; question posée à Julien.

@@ -265,3 +265,15 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - f61 : symbole des entrées CPU refait **au pas de 1600** (`…_entrees.xsy`) ; tableau des entrées au f60.
 - Plans de bornier : borniers écartés de 1200 de plus (`ECART_B`) ; **fond gris très clair** (0xF0F0F0, `GRIS_TERRE`) sur les bornes de terre et le cadre d'un bornier de terre. Remplissage : champs 11 / 12 de `¤#DSansTexte` (0 + couleur) déduits, à confirmer dans WinRelais.
 - Cadres de lieu : ne pas couper les textes dessinés dans le symbole (noms de broches) ; le contrôle ne les voit pas encore.
+
+## v40 (25/11, retours de Julien sur la v39)
+- **Cadre de lieu autour d'un contact** (f42, f43, f61) : le cadre englobe le contact entier, broches et numéros de broche compris ; ses bords coupent les fils à 200 des broches, jamais sur un point de connexion. Un cadre par contact quand les contacts sont en colonnes séparées (f42). Texte du lieu **hors du cadre** (f43).
+- **Cadres d'une même chaîne** (f20 : +BJM, +M) : même marge (200), bords gauche et droit alignés (`emprise()`).
+- **Numéros de fil au même niveau** : sur une rangée de fils parallèles, numéros verticaux à la même hauteur, numéros horizontaux à la même abscisse (f20 : `aligner_numeros_f20()` ; f31 / f32 : `aligner_haut_variateurs()`).
+- **Renvois d'un groupe** : horizontaux et alignés avec les renvois voisins (f20 : 0 V 1230 sous PUL / DIR / ENA, pas de 800).
+- **Pas de fil horizontal au-dessus d'une accolade de réserve** (f64) : chaîne dans l'axe de l'entrée.
+- **Symbole moteur SEW** : contour extérieur plein (le pointillé est réservé aux cadres de lieu) ; séparations internes en pointillé.
+- **Résistance de freinage** (f31, f32) : sous le variateur, entre +R et -R ; repère seul affiché (désignation dans la nomenclature).
+- **Plans de bornier** : 8 rangées sur 4 folios, largeurs équilibrées (découpage optimal), rangées justifiées ; bornes et bornier de terre **rayés vert / jaune** (`cadre_vj`, bandes de 200, zone du numéro sans bande).
+- **f80** : texte le plus grand possible (320), colonnes longues sur 2 lignes (`tableau_pages(..., coupe=True)`).
+- **f21** : images des blocs PTFIX au-dessus des renvois du haut.

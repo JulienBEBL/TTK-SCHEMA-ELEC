@@ -3,8 +3,9 @@
 À lire après CLAUDE.md et README. Résume **comment travailler** sur ce dépôt sans refaire les erreurs des v37 / v38.
 
 ## État
-- Version : **v39** (`schema/generes/release/TTK_2026-11-24_v39.xrs`), rapport `docs/RAPPORT_v39_2026-11-24.md`.
-- Attente : retours de Julien sur la v39 (fond gris des bornes de terre à confirmer, lisibilité).
+- Version : **v40** (`schema/generes/release/TTK_2026-11-25_v40.xrs`), rapport `docs/RAPPORT_v40_2026-11-25.md`.
+- Attente : retours de Julien sur la v40 ; question du f40 (accrochage du texte des contacts).
+- Lecture d'un folio par calcul (v40) : un petit script dans le scratchpad qui liste symboles (emprise, champs, broches), textes, câbles, cadres, renvois, numéros et fils d'un folio affiché ; il n'est pas dans le dépôt, à recréer au besoin.
 
 ## Méthode qui marche (à suivre à chaque version)
 1. Lire la demande, noter les retours bruts dans `memoire/revues/AAAA-MM-JJ_retours_julien_vNN.md` (tableau folio / demande), **poser au plus 4 questions numérotées**, commit + push, attendre le GO.

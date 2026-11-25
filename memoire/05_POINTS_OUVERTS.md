@@ -186,3 +186,10 @@ Détail : `docs/RAPPORT_v37_2026-11-23.md`.
 - Fils : +48 V 1251 (T3 -> KA2 1 et 3), 2001 (KA2 2 -> U3), 2011 (KA2 4 -> U4) ; 0 V 48 1250 (T3 -> U3, T3 -> U4, en direct). 0 V 48 (1250) distinct du 0 V commun 24 V (1230).
 - Section proposée [H] : 1,5 mm² (T3 5 A, valeur du script, source à retrouver). Bornes du DM860H : section maxi à vérifier.
 - Couleur : **noir 2,5 mm² pour le + et le -** [D 25/11, Julien], conforme à la norme (04). Repérage par les numéros de fil (1251, 2001, 2011, 1250). Rouge / bleu écartés (codes du 24 V).
+
+## v40 (25/11) : à regarder par Julien
+Détail : `docs/RAPPORT_v40_2026-11-25.md`.
+- **f40, question** : accrochage du texte des contacts de retour. Le fichier porte déjà le code 0 (librairie : 0 = gauche, 2 = droite, 6 = centré) : valeur vue dans WinRelais et valeur voulue ? [?]
+- f31 / f32 : résistance avec son repère seul (désignation masquée, faute de place) [H].
+- f21 : pas d'image pour le bloc noir -X21.14 (aucune image noire) [?].
+- Plans de bornier : rendu du vert / jaune dans WinRelais (remplissage vérifié par calcul seulement) [?].

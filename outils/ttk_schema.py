@@ -659,6 +659,19 @@ def bjm(f, x, y, cable, cond, fpos=None):
                    prefix="X")
 
 
+def emprise(elems):
+    """Rectangle englobant (symboles avec leurs textes, ou rectangles) : (x1, y1, x2, y2). v40."""
+    bx = []
+    for e in elems:
+        if isinstance(e, tuple):
+            bx.append(e)
+            continue
+        if e.bbox:
+            bx.append(e.bbox)
+        bx += [b for _, b in e.texts]
+    return (min(b[0] for b in bx), min(b[1] for b in bx), max(b[2] for b in bx), max(b[3] for b in bx))
+
+
 def cadre_lieu(f, elems, lieu, marge=300, haut=None, droite=False, gauche=False, txt=None):
     """Cadre pointillé autour d'appareils hors armoire (v37, D09 / D10), localisation écrite en haut à gauche
     (droite=True : à droite du cadre, à mi-hauteur). elems : symboles posés (Placed) ou rectangles (x1, y1, x2, y2).
@@ -768,13 +781,14 @@ SY = F["04"]
 
 def bloc(x1, y1, x2, lignes, dashed=False):
     """Cadre + titre en gras + lignes ; rend (x1, y1, x2, y2). Refuse un texte plus large que le cadre."""
-    y2 = y1 + 330 * len(lignes) + 300
+    # v40 (Julien 25/11 : lisibilité) : textes 240 / 210 (220 / 200 avant), interligne 360
+    y2 = y1 + 360 * len(lignes) + 300
     g.cadre(SY, x1, y1, x2, y2, width=30, dashed=dashed)
     for i, t in enumerate(lignes):
-        sz = 220 if i == 0 else 200
+        sz = 240 if i == 0 else 210
         if len(ren(t)) * sz * 0.55 > x2 - x1 - 400:
             raise SystemExit(f"f04 : texte trop long pour son cadre : {t}")
-        texte("04", x1 + 200, y1 + 150 + 330 * i, t, sz, 0, 1 if i == 0 else 0)
+        texte("04", x1 + 200, y1 + 150 + 360 * i, t, sz, 0, 1 if i == 0 else 0)
     return (x1, y1, x2, y2)
 
 
@@ -793,7 +807,7 @@ def fleche(pts, dashed=False, tete=True):
 # les câbles entre les cadres (repère + composition), PROFINET en pointillés.
 def lieu(x1, y1, x2, y2, titre):
     g.cadre(SY, x1, y1, x2, y2, width=30, dashed=True)
-    texte("04", x1 + 200, y1 + 150, titre, 260, 0, 1)
+    texte("04", x1 + 200, y1 + 150, titre, 280, 0, 1)      # v40 : titre 260 -> 280
 
 
 def liaison(pts, txt, y_txt=None, x_txt=None, dashed=False):
@@ -807,11 +821,11 @@ lieu(1600, 1600, 7200, 6800, "RESEAU CLIENT")
 cli = bloc(1900, 2300, 6900, ["ARRIVEE (f10)", "3 x 400 V + N + PE - 50 Hz", "TN-S - Icc 6 kA"])
 usa = bloc(1900, 4300, 6900, ["VARIANTE USA (option)", "3 x 480 V -> -TR1 15 kVA", "-> 400 V (f10)"], dashed=True)
 # armoire +A1 (au centre)
-XA1, XA2 = 8800, 18400
+XA1, XA2 = 8800, 17600         # v40 (Julien 25/11 : lisibilité) : armoire moins large, plus de place aux câbles
 lieu(XA1, 1600, XA2, 19200, "ARMOIRE +A1")
 ya = 2300
 BL = {}
-for cle, lignes in (("pui", ["PUISSANCE (f10 à f14)", "-QS1, -QF1 20 A ; -QM1 / -KM1, -QM2 / -KM2", "-QF2 / -KF1, -QF3 / -KF2 (freins)"]),
+BLOCS_A1 = (("pui", ["PUISSANCE (f10 à f14)", "-QS1, -QF1 20 A ; -QM1 / -KM1, -QM2 / -KM2", "-QF2 / -KF1, -QF3 / -KF2 (freins)"]),
                     ("ali", ["ALIMENTATIONS (f13, f31)", "-T1 24VSEC, -T2 24VELEC, -T3 48 V", "blocs -X21.11 à -X21.14, PELV -X12.11"]),
                     ("var", ["VARIATEURS (f20, f21)", "-U1, -U2 MCX91A, résistances -R1 / -R2"]),
                     ("pap", ["PAS-A-PAS (f32)", "-KA2 (48 V en Manu), drivers -U3 / -U4"]),
@@ -819,9 +833,12 @@ for cle, lignes in (("pui", ["PUISSANCE (f10 à f14)", "-QS1, -QF1 20 A ; -QM1 /
                     ("api", ["AUTOMATE (f55 à f53)", "-K1 CPU 1214C, -K2 SM 1223, -K3 SM 1231 TC"]),
                     ("swi", ["RESEAU (f54)", "switch PROFINET -K4"]),
                     ("por", ["PORTE", "-S1 AU, -S4 réarmement, -H2 / -H3 / -H4"]),
-                    ("bor", ["BORNIERS (f71 à f74)", "-X10 à -X64, terre -XPE1"])):
+                    ("bor", ["BORNIERS (f71 à f74)", "-X10 à -X64, terre -XPE1"]))
+# v40 (Julien 25/11 : forme) : blocs de l'armoire répartis sur toute la hauteur du cadre (écart égal entre blocs)
+GAP_A1 = (19200 - 400 - 2300 - sum(360 * len(l_) + 300 for _, l_ in BLOCS_A1)) // (len(BLOCS_A1) - 1) // 10 * 10
+for cle, lignes in BLOCS_A1:
     BL[cle] = bloc(XA1 + 300, ya, XA2 - 300, lignes)
-    ya = BL[cle][3] + 200
+    ya = BL[cle][3] + GAP_A1
 # boîte de jonction machine +BJM
 XB1, XB2 = 20800, 23600
 lieu(XB1, 4400, XB2, 15600, "BOITE +BJM")
@@ -839,7 +856,7 @@ y_ = 5200
 for txt in ("-W2 / -W5 4G2,5 (moteurs)", "-W3 / -W6 2x0,75 (sondes TF)", "-W4 5G1,5 (freins)", "-W9 / -W10 5G1,5 (pas-à-pas)",
             "-W8 compensation type K", "-W12 19G1 (machine)", "-W14 M12 (capot -B2)", "-W11 27G1 (pupitre)"):
     fleche([(XA2, y_), (XB1, y_)])
-    texte("04", XA2 + 100, y_ - 280, txt, 160)
+    texte("04", XA2 + 150, y_ - 300, txt, 180)          # v40 : 160 -> 180
     y_ += 1300
 fleche([(XB2, 7600), (XM1, 7600)])
 texte("04", XB2 + 150, 7250, "fils", 200)
@@ -881,8 +898,11 @@ for r, x in xb.items():
     W(f, [(x, 2000), B[r]["1"]], "PE" if r.endswith("VJ") else ("N" if x == 5200 else "L"))
 # v37 (revue Krizox) : W1 dessiné comme les autres câbles (trait du 1er au dernier conducteur, repère dans l'ovale),
 # non blindé ; V/J dans le trait sans numéro de brin (brins 1 à 4) ; l'ancien W1 sortait mal à l'export PDF (Julien)
-g.cable(F[f], 0, 0, 2400, "W101", "5G4", "Câble client", [5200, 6000, 6800, 7600], ovale=True, blinde=False, vj=[4400],
-        compo_dx=-1000)
+# v40 (Julien 25/11 : « infos du câble W1 pas bonnes ») : trait au milieu entre le cadre d'arrivée et les bornes
+# (brins à 500 du cadre), composition centrée sous le repère
+from xrs_gen import largeur as _lg
+g.cable(F[f], 0, 0, 2800, "W101", "5G4", "Câble client", [5200, 6000, 6800, 7600], ovale=True, blinde=False, vj=[4400],
+        compo_dx=-round((600 + _lg("5G4", 300) / 2) / 50) * 50)
 q101 = maitre(C + "Legrand_Vistop_022515_4P_63A.xsy", "Q101", f, 5200, 6000)
 q102 = maitre(C + "Hager_NFT820_disjoncteur_3P+N_20A.xsy", "Q102", f, 5200, 10000)
 for r, p in (("X101.1", ("N", 0)), ("X101.2", "1/L1"), ("X101.3", "3/L2"), ("X101.4", "5/L3")):
@@ -1069,15 +1089,20 @@ BORNES_MOT = {"M201": [f"X701.{n}" for n in range(17, 25)], "M211": [f"X701.{n}"
 mot = C + "SEW_K39-DRN100LS4-BE5-TF_motoreducteur_frein.xsy"
 res = C + "SEW_BW100-001_resistance_freinage.xsy"
 VAR = {}
+VARIATEURS = []         # v40 : variateurs posés (alignement des numéros au-dessus des broches du haut)
 for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W202", "W203", "KM1", "Q421"),
                                        ("21", "T211", "R211", "M211", "W211", "W212", "W213", "KM2", "Q422")):
     # variateur remonté, moteur dans l'axe de X2 (fils droits), câbles W sur une seule ligne (30/10)
     # v37 (revue Krizox) : variateur descendu de 400 (renvois X5 / X6 sur 2 niveaux, fils droits, D16) ;
     # bornier -X31 / -X32 remonté de 400, câbles W2 à W6 entre ce bornier et la boîte +BJM, fils de la boîte au moteur (D08)
-    T = maitre(mcx, t, f, 4000, 5600, wrap=34)
+    # v40 (Julien 25/11) : variateur remonté de 400 (place des numéros de fil, des bornes et de la résistance)
+    T = maitre(mcx, t, f, 4000, 5200, wrap=34)
+    VARIATEURS.append(T)
     # v38 : 1200 plus haut (place des fils TF / frein) ; v39 (Julien 24/11 : textes superposés aux broches X20 du variateur) :
     # textes à 1400 à droite, sous les broches, au-dessus du fil 2b (8800)
-    R = maitre(res, r, f, 8400, 7600, shown=(2,), wrap=22, fpos=(1400, 100))        # 2000 plus à gauche (Julien, v12)
+    # v40 (Julien 25/11 : « la résistance de freinage, toujours pas bon ») : résistance sous le variateur, entre +R et -R,
+    # loin des broches X20 ; repère seul à droite (la désignation reste dans le symbole, nomenclature f90)
+    R = maitre(res, r, f, 7600, 8400, shown=(), fpos=(250, 600))
     # symbole modifié par Julien le 02/11 : moteur, sonde TF, frein BE5 dans un même cadre, origine sur U1
     M = maitre(mot, m, f, 4800, 15200, fpos=(10800, 0), wrap=36, noms=False)   # textes à droite du symbole
     # v38 (retours v37) : bornier 10800, câbles 12400, boîte 13600, moteur 15600 : 1600 libres autour des câbles et des cadres
@@ -1101,8 +1126,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [T["X2:W"], BM["W1"]["1"]], "L")
     g.cable(F[f], 0, 0, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [M[p].x for p in ("U1", "V1", "W1")], ovale=True,
             compo_dx=-2300, vj=[M["PE"].x])      # v37 : V/J sans numéro de brin ; compositions placées comme Julien (02/11)
-    W(f, [T["X2:-R"], (8000, R["1"].y), R["1"]], "PDC")                   # v37 : droit vers R1
-    W(f, [T["X2:+R"], (7200, R["2"].y), R["2"]], "PDC")       # v37 : +R droit vers R2 (plus de détour sous R)
+    W(f, [T["X2:-R"], (T["X2:-R"].x, 8000), (R["1"].x, 8000), R["1"]], "PDC")              # v40 : -R -> haut de R
+    W(f, [T["X2:+R"], (T["X2:+R"].x, 10400), (R["2"].x, 10400), R["2"]], "PDC")            # v40 : +R -> bas de R
     # frein et sonde TF par le bornier (02/11) ; frein : les 2 fils remontent avant de partir à droite ;
     # broche 2 au-dessus de la broche 3, renvois décalés en x (pas de recouvrement des flèches)
     renvoi("12", out12[(qf, "4/T2")], f, W(f, [BM["2"]["1"], (M["2"].x, 10000), (16800, 10000)], "L"), "L")
@@ -1110,7 +1135,7 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     # sonde TF : remonte à droite du variateur vers X10 (1b -> X10:1 impose un croisement)
     W(f, [BM["1b"]["1"], (M["1b"].x, 9600), (21600, 9600), (21600, 4000), (T["X10:1"].x, 4000), T["X10:1"]], "PDC")
     W(f, [BM["2b"]["1"], (M["2b"].x, 8800), (21200, 8800), (21200, 4400), (T["X10:2"].x, 4400), T["X10:2"]], "PDC")
-    VAR[(f, "PN")] = W(f, [T["X40"], (T["X40"].x, 5200), (16000, 5200)], "PN")
+    VAR[(f, "PN")] = W(f, [T["X40"], (T["X40"].x, 4800), (16000, 4800)], "PN")          # v40 : variateur 400 plus haut
     g.cable(F[f], 0, 0, YC, w3, "2x0,75 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True, compo_dx=-1600)
     # freins M1 + M2 : UN SEUL câble -W4 (W202) LIYCY-JZ 5G1,5 blindé (05/11, W7 supprimé) : conducteurs 1-2 au f31,
     # 3-4 au f32 ; V/J vers le bornier de terre -XPE1 et la boîte de dérivation côté machine
@@ -1122,7 +1147,7 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     # -U1 X6.3 / X6.4 repartent vers -U2 X6.1 / X6.2 ; -U2 X6.3 / X6.4 libres (fin de chaîne)
     # v37 (D16) : chaque broche monte droit à son renvoi ; broches voisines à 400 -> 2 niveaux (pointe à 4600 : +24 V ;
     # pointe à 2900 : 0 V), flèches d'un niveau écartées de 1600 de l'autre niveau
-    YA, YB_ = 4600, 2900
+    YA, YB_ = 4600, 2900          # v40 : niveaux inchangés (le variateur, 400 plus haut, raccourcit les fils de 400)
     VAR[(f, "24")] = W(f, [T["X5:24V"], (T["X5:24V"].x, YA)], "24")
     VAR[(f, "0V")] = W(f, [T["X5:GND"], (T["X5:GND"].x, YB_)], "0V")
     VAR[(f, "STO1")] = W(f, [T["X6:1"], (T["X6:1"].x, YA)], "24")
@@ -1160,6 +1185,13 @@ for rep_, x in X31B.items():
                                                      4: f"1 entrée + 12 départs - {DESC31[rep_][1]}"}, loc="A1", wrap=16,
                         ref=("PHOENIX CONTACT", "", "3273354"), fpos=(3200, -200), shown=(2, 4))
 x311, x312, x313, x314 = P31["X311"], P31["X312"], P31["X313"], P31["X314"]
+# v40 (Julien 25/11) : images des blocs remises, au-dessus des renvois du haut (hauteur 3200, centrées sur le bloc).
+# Pas d'image du bloc noir -X21.14 (aucune image noire dans schema/images).
+for rep_, (img_, ratio_) in (("X311", ("Phoenix_PTFIX_6-12x2.5_rouge.jpg", 1233)), ("X312", ("Phoenix_PTFIX_6-12x2.5.jpg", 999)),
+                             ("X313", ("Phoenix_PTFIX_6-12x2.5_gris.jpg", 1166))):
+    h_ = 3200
+    w_ = h_ * ratio_ // 1000
+    g.logos.append((F[f], X31B[rep_] + 1200 - w_ // 2, 2000, w_, h_, os.path.join(IMG, img_), ratio_))
 YH, YB = Y31 - 1200, Y31 + 2000                 # bout des fils du haut / du bas (points de renvoi)
 
 
@@ -1208,6 +1240,7 @@ for cle in ("-U4", "+U4", "+U3"):
 drv = C + "Jkongmotor_JKDM860H_driver_pas-a-pas.xsy"
 mpp = C + "StepperOnline_34IP65-85_moteur_pas-a-pas.xsy"
 CMD32, DRV = {}, {}
+F20_RANGS = []          # v40 : (driver, bornes armoire, bornes +BJM, moteur, câble) pour aligner les numéros de fil
 for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     # drivers remontés de 1600 le 02/11 : place pour les fils driver -> bornier et pour le câble blindé bornier -> moteur
     # v37 (revue Krizox, D08) : drivers remontés de 800 ; bornier -X20, câble W9 / W10, bornes de la boîte +BJM, fils au moteur
@@ -1216,16 +1249,18 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     Mo = maitre(mpp, Mrep, f, x0 - 800, 17600, noms=False, fpos=(2000, 800))
     DRV[T] = D
     # moteurs hors armoire (02/11) : bornier entre driver et moteur ; broches à 400 -> bornes sur 2 niveaux
-    BJ20 = []
+    BJ20, BA20 = [], []
     for k_, (p, nb) in enumerate(zip(("A+", "A-", "B+", "B-"), BORNES_MOT[Mrep])):
         haut = p.endswith("+")
         # 02/11 : bornes à 800 sous le driver ; v37 : bornes armoire sur 2 niveaux (12800 / 13600), câble à 14400,
         # bornes de la boîte sur 2 niveaux (15200 / 16000), repère à côté du corps de la borne (gauche / droite)
         # v38 : niveaux à 600 (12800 / 13400 et 15600 / 16200), câble à 15000 : place des numéros autour du câble
         b = borne(nb, f, D[p].x, 12800 if haut else 13400, fpos=(-500, 125) if haut else (150, 125))
-        bj = bjm(f, D[p].x, 15600 if haut else 16200, {"M321": "W321", "M322": "W322"}[Mrep], k_ + 1,
+        # v40 (Julien 25/11 : cadres à égale distance) : boîte 200 plus bas, câble 200 plus haut (écart câble / cadre +BJM)
+        bj = bjm(f, D[p].x, 15800 if haut else 16400, {"M321": "W321", "M322": "W322"}[Mrep], k_ + 1,
                  fpos=(-500, 125) if haut else (150, 125))
         BJ20.append(bj)
+        BA20.append(b)
         W(f, [D[p], b["1"]], "PDC")
         W(f, [b["2"], bj["1"]], "PDC")
         W(f, [bj["2"], Mo[p]], "PDC")
@@ -1235,17 +1270,22 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     bpe = borne({"M321": "X701.47", "M322": "X701.48"}[Mrep], f, xpe, 12800, fpos=(150, 125))
     PE_DEST.append((f, W(f, [bpe["1"], (xpe, 12400), (xpe + 1200, 12400)], "PE")))   # renvoi vers la droite (sous le driver)
     # v38 (Julien 24/11) : le V/J s'arrête sous le câble (plus de fil jusqu'en bas du folio)
-    W(f, [bpe["2"], (xpe, 15400)], "PE")
-    texte(f, xpe + 200, 15500, "V/J non raccordé", 180)
-    g.cable(F[f], 0, 0, 15000, {"M321": "W321", "M322": "W322"}[Mrep], "5G1,5 blindé",
+    W(f, [bpe["2"], (xpe, 15200)], "PE")
+    texte(f, xpe + 200, 15300, "V/J non raccordé", 180)
+    g.cable(F[f], 0, 0, 14800, {"M321": "W321", "M322": "W322"}[Mrep], "5G1,5 blindé",
             f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")], ovale=True, compo_dx=-3200, vj=[xpe])   # v37 : V/J sans numéro
     xin, xbus = x0 - 4000, x0 - 3200
     for s in ("PUL", "DIR", "ENA"):
         CMD32[(T, s)] = W(f, [D[s + "+"], (xin, D[s + "+"].y)], "24")
         W(f, [D[s + "-"], (xbus, D[s + "-"].y)], "0V")
-    CMD32[(T, "0V")] = W(f, [(xbus, D["PUL-"].y), (xbus, D["ENA-"].y + 800)], "0V")
-    cadre_lieu(f, BJ20, "+BJM", marge=200, haut=0, gauche=True)          # v37 (D09)
-    cadre_lieu(f, [Mo], "+M", marge=100, haut=0, gauche=True)
+    # v40 (Julien 25/11) : renvoi du 0 V (1230) horizontal, aligné sous les renvois PUL / DIR / ENA (pas de 800)
+    CMD32[(T, "0V")] = W(f, [(xbus, D["PUL-"].y), (xbus, D["ENA-"].y + 400), (xin, D["ENA-"].y + 400)], "0V")
+    # v40 (Julien 25/11 : égaliser les cadres) : même marge (200), bords gauche et droit alignés (+BJM / +M)
+    eb, em = emprise(BJ20), emprise([Mo])
+    xg_, xd_ = min(eb[0], em[0]), max(eb[2], em[2])
+    cadre_lieu(f, BJ20 + [(xg_, eb[1], xd_, eb[1])], "+BJM", marge=200, haut=0, gauche=True)          # v37 (D09)
+    cadre_lieu(f, [Mo, (xg_, em[1], xd_, em[1])], "+M", marge=200, haut=0, gauche=True)
+    F20_RANGS.append((D, BA20, BJ20, Mo, len(g.cables) - 1))
 renvoi("31", d31["0V32a"], f, CMD32[("T322", "0V")], "0V")
 renvoi("31", d31["0V32b"], f, CMD32[("T323", "0V")], "0V")
 # un fil par driver : les fils de -U4 passent au-dessus de ceux de -U3 (un seul croisement, 0 V 48 de -U3)
@@ -1397,7 +1437,9 @@ for voie, x, cap, capxsy, bornes, ret, byp, cab, cab_compo in (
     cadre_lieu(f, [jba], "+BJM", marge=100, haut=0, droite=True)
     cadre_lieu(f, [jbb], "+BJM", marge=100, haut=0, droite=True)
     cadre_lieu(f, [cp], "+M", marge=200, haut=0, droite=True)
-    cadre_lieu(f, [ctc], "+P1", marge=200, haut=300)        # v38 : texte dans le cadre, en haut (le cadre du capot est à droite)
+    # v40 (Julien 25/11) : texte +P1 hors du cadre, à gauche ; le cadre englobe les broches du contact (bords à 200)
+    yp_ = [xy[1] for lst in ctc.pins.values() for xy in lst]
+    cadre_lieu(f, [ctc, (ctc.bbox[0], min(yp_), ctc.bbox[2], max(yp_))], "+P1", marge=200, haut=0, gauche=True)
 # -S414 (réarmement) déplacé au f40 (Julien 02/11) ; tête du sélecteur : avec les shunts (v37)
 tete = maitre("Poussoirs et commutateurs\\Tête 2 pos fixes NO.xsy", "S413", f, 5600, 16800, prefix="S", fpos=(600, 0),
               ref=("EATON", "", "T0-4-8223/E"))
@@ -1441,7 +1483,7 @@ for rep, x, pref in (("Q421", 4400, "Q"), ("Q422", 7600, "Q"), ("Q423", 11200, "
     k = maitre(bob, rep, f, x, YC, ref=("SCHNEIDER ELECTRIC", "", "LC1D09BD"), prefix=pref, wrap=16)
     COIL[rep] = k            # A2 : collecteur 0 V tracé après le décalage du folio
 # --- sortie 1 : freins (toujours, seul l'AU les coupe) et 48 V (Manu-D)
-s1 = (4400, 4000)
+s1 = (4400, 4400)          # v40 : 4000 -> 4400 (folio descendu de 400 seulement)
 W(f, [s1, COIL["Q421"]["A1"]], "24")
 W(f, [(4400, 4800), (11200, 4800)], "24")
 W(f, [(7600, 4800), COIL["Q422"]["A1"]], "24")
@@ -1449,22 +1491,22 @@ t1, t2 = chaine_s413(11200, "X711.19", "X711.20", 15, "MANU-D : 48 V en Manu seu
 W(f, [(11200, 4800), t1["1"]], "24")
 W(f, [t2["2"], COIL["Q423"]["A1"]], "24")
 renvoi("40", O40["14"], f, s1, "24")
-texte(f, 4800, 3000, "Sortie 1 (13-14) : freins + 48 V", 220, 0, 1)
+texte(f, 4800, 3400, "Sortie 1 (13-14) : freins + 48 V", 220, 0, 1)
 # --- sortie 2 : Auto-A -> -KM1 / -KM2 (pas d'ordre automate, décision du 27/10, option A)
 t1, t2 = chaine_s413(15200, "X711.7", "X711.8", 1, "AUTO-A : commande -KM1 / -KM2", (13, 14))
-s2 = stub(f, (15200, 3600), t1["1"], "24")   # 16/11 : 4000 -> 3600 (place du numéro)
+s2 = stub(f, (15200, 4400), t1["1"], "24")   # 16/11 : 4000 -> 3600 (place du numéro) ; v40 : 4400 (folio moins descendu)
 W(f, [t2["2"], COIL["KM1"]["A1"]], "24")
 W(f, [(15200, YC - 400), (18400, YC - 400), COIL["KM2"]["A1"]], "24")
 renvoi("40", O40["24"], f, s2, "24")
-texte(f, 15600, 3000, "Sortie 2 (23-24) : -KM1 / -KM2", 220, 0, 1)
+texte(f, 15600, 3400, "Sortie 2 (23-24) : -KM1 / -KM2", 220, 0, 1)
 # --- sortie 3 : Auto-B -> STO des 2 variateurs (validé SEW)
 t1, t2 = chaine_s413(21600, "X711.9", "X711.10", 5, "AUTO-B : autorisation STO", (15, 16))
-s3 = stub(f, (21600, 3600), t1["1"], "24")   # 16/11 : idem
+s3 = stub(f, (21600, 4400), t1["1"], "24")   # 16/11 : idem ; v40 : 4400
 YSTO = t2["2"].y + 800
 W(f, [t2["2"], (21600, YSTO)], "24")
 renvoi("40", O40["34"], f, s3, "24")
 renvoi(f, (21600, YSTO), "20", VAR[("20", "STO1")], "24")
-texte(f, 22000, 3000, "Sortie 3 (33-34) : STO", 220, 0, 1)
+texte(f, 22000, 3400, "Sortie 3 (33-34) : STO", 220, 0, 1)
 texte(f, 22000, YSTO + 600, "STO : -U1 X6.1 / X6.2, puis -U2", 200)
 texte(f, 22000, YSTO + 900, "en chaîne par -U1 X6.3 / X6.4 (validé SEW)", 200)
 # câble W11 (pupitre) : une ligne au-dessus des bornes de la boîte, une en dessous (n° des conducteurs : 02_MATERIEL)
@@ -1475,7 +1517,11 @@ for x_, (na, nb), (ja, jb) in zip(xs42, ((11, 12), (13, 14), (15, 16)), BJ42):
     g.cable(F[f], 0, 0, Y42 + 8000, "W11", "27G1 blindé", "Pupitre", [x_], ovale=True, compo_dx=-2400, nums=(nb,))
     cadre_lieu(f, [ja], "+BJM", marge=100, haut=0, gauche=True)
     cadre_lieu(f, [jb], "+BJM", marge=100, haut=0, gauche=True)
-cadre_lieu(f, P42, "+P1", marge=200, haut=0, gauche=True)
+# v40 (Julien 25/11 : les pointillés +P1 traversaient les points de connexion) : un cadre +P1 par contact (comme +BJM),
+# qui englobe les broches du contact (bords à 200 des broches, sur les fils)
+for c_ in P42:
+    yp_ = [xy[1] for lst in c_.pins.values() for xy in lst]
+    cadre_lieu(f, [c_, (c_.bbox[0], min(yp_), c_.bbox[2], max(yp_))], "+P1", marge=200, haut=0, gauche=True)
 # 0 V des STO (X6:2 / X6:4) : piqués sur la barre 0 V du haut, après le décalage du folio
 
 # ======================================================================== 50 AUTOMATE ENTREES
@@ -1580,10 +1626,20 @@ xS2, xS3, xB = [k501e["I0.0"].x], [k501e["I0.4"].x, k501e["I0.5"].x], [k501e[i].
 for cote in ("haut", "bas"):
     for xs_ in (xS2, xS3 + xB):
         cadre_lieu(f, [BJ60[(cote, x_)] for x_ in xs_], "+BJM", marge=100, haut=0, droite=xs_ == xS2, gauche=xs_ != xS2)
-cadre_lieu(f, [DEV60[x_] for x_ in xS2], "+P1", marge=150, haut=0, droite=True)
+# v40 (Julien 25/11 : les cadres doivent bien englober les contacts, attention aux numéros des broches) :
+# chaque cadre contient le contact ENTIER, broches et leurs numéros compris (bords à 200 des broches, sur les fils)
+
+
+def avec_broches(s_):
+    yp_ = [xy[1] for lst in s_.pins.values() for xy in lst]
+    xp_ = [xy[0] for lst in s_.pins.values() for xy in lst]
+    return (min(s_.bbox[0], min(xp_) - 300), min(yp_), max(s_.bbox[2], max(xp_) + 300), max(yp_))
+
+
+cadre_lieu(f, [DEV60[x_] for x_ in xS2] + [avec_broches(DEV60[x_]) for x_ in xS2], "+P1", marge=200, haut=0, droite=True)
 # S3 et B3 à 800 l'un de l'autre : cadres sur le contour des symboles seulement (pas leurs repères), sinon ils se croisent
-cadre_lieu(f, [DEV60[x_].bbox for x_ in xS3], "+P1", marge=150, haut=0, txt=(xS3[0] + 100, Y60 + 6600))
-cadre_lieu(f, [DEV60[x_].bbox for x_ in xB], "+M", marge=100, haut=0, txt=(xB[0] + 100, Y60 + 6600))
+cadre_lieu(f, [avec_broches(DEV60[x_]) for x_ in xS3], "+P1", marge=200, haut=0, txt=(xS3[0] + 100, Y60 + 6600))
+cadre_lieu(f, [avec_broches(DEV60[x_]) for x_ in xB], "+M", marge=200, haut=0, txt=(xB[0] + 100, Y60 + 6600))
 # v39 : tableau des entrées déplacé au f60 (plus de place au f61, symbole élargi)
 
 
@@ -1658,7 +1714,8 @@ bcom = borne("X701.46", f, XCOM, 12400)
 REP["P513"] = {"des": "Voyant porte : défaut machine", "fab": "À définir", "carac": "24 V CC - rouge", "loc": "+A1"}
 XH4 = XCOM + 2400
 p513 = decrit(voyant, "P513", f, XH4, 13200, "Voyant porte : défaut machine", fpos=(600, 400), wrap=20, prefix="P", nomenc=True)
-bh4a, bh4b = borne("X721.13", f, XH4, 12000), borne("X721.14", f, XH4, 15600)     # porte (05/11)
+# v40 (Julien 25/11 : bornes de -H4 trop serrées) : 1200 entre chaque borne et le voyant (800 avant)
+bh4a, bh4b = borne("X721.13", f, XH4, 11600), borne("X721.14", f, XH4, 16000)     # porte (05/11)
 # sorties -> appareils : la sortie la plus à gauche descend le plus bas (aucun croisement)
 for q, dest, yh in (("Q8.0", BCOL["RD"]["1"], 12000), ("Q8.1", BCOL["OG"]["1"], 11600), ("Q8.2", BCOL["GN"]["1"], 11200),
                     ("Q8.4", bh4a["1"], 10800)):
@@ -1699,20 +1756,23 @@ REP["B531"]["fab"] = REP["B531"]["fab"] or "Type K"
 REP["B531"]["loc"] = "+M"                    # thermocouple de la tête d'extrusion, sur la machine (01_PROJET)
 # v37 (revue Krizox, D08) : -B7 -> fils -> boîte +BJM -> câble W8 -> bornes -X63 -> -K3 ; -B7 remonté de 2000
 # v39 (Julien 24/11 : trop serré, 24 V / 0 V mal placés) : thermocouple, boîte et bornes décalés de 4000 à droite
-b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, 10800, 5200, prefix="B", fpos=(2000, 0))
+# v40 (Julien 25/11 : « Réserve » superposé au reste) : chaîne thermocouple dans l'axe de AI0+ / AI0- (fils droits,
+# plus de fils horizontaux au-dessus des voies de réserve AI1 à AI7) ; 1200 à droite des fils 24 V / 0 V du module
+b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, k531["AI0+"].x, 5200, prefix="B", fpos=(2000, 0))
 # 02/11 : 2 bornes pour thermocouple (référence à définir, pas encore achetée), entre le câble W8 et -K3
 REP["X701.41"] = REP["X701.42"] = {"des": "Borne thermocouple (PT 2,5, Julien 18/11)", "fab": "", "carac": "", "loc": "+A1"}
-# v38 (retours v37 : textes superposés) : câble W8 à 1600 de la boîte, bornes 800 plus bas, texte +BJM à droite
-bt1, bt2 = borne("X701.41", f, 10000, 10000, fpos=(150, 125)), borne("X701.42", f, 12400, 10000, fpos=(150, 125))
-bj1, bj2 = bjm(f, 10000, 7200, "W531", 1), bjm(f, 12400, 7200, "W531", 2)
-W(f, [b531["1"], (10800, 4400), (10000, 4400), bj1["1"]], "TC")
+xa_, xb_ = k531["AI0+"].x, k531["AI0-"].x
+bt1, bt2 = borne("X701.41", f, xa_, 10000, fpos=(150, 125)), borne("X701.42", f, xb_, 10000, fpos=(150, 125))
+bj1, bj2 = bjm(f, xa_, 7200, "W531", 1), bjm(f, xb_, 7200, "W531", 2)
+W(f, [b531["1"], bj1["1"]], "TC")
 W(f, [bj1["2"], bt1["1"]], "TC")
-W(f, [bt1["2"], (10000, 10800), (6800, 10800), k531["AI0+"]], "TC")
-W(f, [b531["2"], (11600, 4400), (12400, 4400), bj2["1"]], "TC")
+W(f, [bt1["2"], k531["AI0+"]], "TC")
+W(f, [b531["2"], bj2["1"]], "TC")
 W(f, [bj2["2"], bt2["1"]], "TC")
-W(f, [bt2["2"], (12400, 11200), (7600, 11200), k531["AI0-"]], "TC")
+W(f, [bt2["2"], k531["AI0-"]], "TC")
 # 16/11 : repère et composition du câble à droite (plus sur les fils), réserve AI1 à AI7 par une accolade
-g.cable(F[f], 9600, 12800, 8800, "W531", "compensation type K RS 236-3959", "", [10000, 12400], etiq=(13200, 8700), size=250)
+g.cable(F[f], xa_ - 400, xb_ + 400, 8800, "W531", "compensation type K RS 236-3959", "", [xa_, xb_], etiq=(xb_ + 800, 8700),
+        size=250)
 cadre_lieu(f, [bj1, bj2], "+BJM", marge=100, haut=0, droite=True)        # v37 (D09)
 cadre_lieu(f, [b531], "+M", marge=200, haut=0, gauche=True)
 reserve(f, [k531[p_] for p_ in ("AI1+", "AI7-")], False)
@@ -1733,7 +1793,8 @@ for p_, t in (("P1", "Port 1 -> -K501 automate CPU 1214C, port X1 P1"),
     # v33 (Julien) : texte décalé à droite du repère PN1-PN4 (posé sur le fil en x 8600), au-dessus du fil
     texte(f, 9600 if p_ != "P5" else 8000, py - 350, t, 220)
 # v37 (revue Krizox, D15) : adresses IP à fixer par Julien dans TIA, reportées ici ensuite
-g.tableau(F[f], 9600, 12800, [3000, 6400, 3600], 400, [
+# v40 (Julien 25/11) : tableau centré sur la page (zone utile x 1500 à 29100), 800 sous le switch
+g.tableau(F[f], (1500 + 29100) // 2 - (3000 + 6400 + 3600) // 2, 13200, [3000, 6400, 3600], 400, [
     ["Repère", "Appareil", "Adresse IP"], ["-K501", "Automate CPU 1214C (X1)", "à définir"],
     ["-T201", "Variateur M1 (X40)", "à définir"], ["-T211", "Variateur M2 (X40)", "à définir"],
     ["-P601", "IHM KTP700 (X1)", "à définir"], ["", "Masque de sous-réseau", "à définir"]], size=220)
@@ -2038,7 +2099,23 @@ def ecrire_borniers(path):
 PLANS_FOL = ("71", "72", "73", "74")
 PAS_B, LB, HB = 600, 500, 1400          # pas des bornes, largeur, hauteur d'une borne
 ECART_B = 1200                          # v39 (Julien 24/11) : écart de plus entre deux borniers d'une rangée
-GRIS_TERRE = 15790320                   # v39 (Julien 24/11) : fond gris très clair des bornes et borniers de terre (0xF0F0F0)
+GRIS_TERRE = 15790320                   # v39 (Julien 24/11) : fond gris très clair (0xF0F0F0) ; remplacé en v40 par le vert / jaune
+# v40 (Julien 25/11 : « en vert / jaune les borniers qui le sont, pas en nuance de gris ») : bandes jaunes et vertes (BGR)
+JAUNE_VJ, VERT_VJ = 0x00E6FF, 0x40B000     # jaune RGB(255, 230, 0), vert RGB(0, 176, 64)
+
+
+def cadre_vj(fo, x1, y1, x2, y2, color=0, width=20, bande=200, libre=None):
+    """Rectangle rayé vert / jaune (borne ou bornier de terre) : fond jaune, bandes vertes, contour par-dessus.
+    libre = (ya, yb) : zone sans bande verte (texte du numéro ou du repère, lisible et jamais coupé par un trait)."""
+    g.cadre(F[fo], x1, y1, x2, y2, color=JAUNE_VJ, width=10, fond=JAUNE_VJ)
+    y_ = y1 + bande
+    while y_ < y2:
+        a_, b_ = y_, min(y_ + bande, y2)
+        for c_, d_ in ([(a_, b_)] if not libre else [(a_, min(b_, libre[0])), (max(a_, libre[1]), b_)]):
+            if d_ - c_ >= 60:
+                g.cadre(F[fo], x1, c_, x2, d_, color=VERT_VJ, width=10, fond=VERT_VJ)
+        y_ += 2 * bande
+    g.cadre(F[fo], x1, y1, x2, y2, color=color, width=width)
 ZT, ZB = 2600, 2800                     # zones de texte au-dessus / en dessous des bornes
 EXT_APP = ("B", "M", "S1", "S2", "S3", "S4", "H", "P1", "EL", "EV")   # appareils hors de l'armoire ou sur la porte
 
@@ -2131,33 +2208,73 @@ def plans_bornier(path):
         par_bornier.setdefault(rep.split(".")[0], []).append(rep)
     cle = lambda r: (r == "X1", int(r[1:]) if r[1:].isdigit() else 0)
     ordre = sorted(par_bornier, key=cle)
-    # rangées : borniers mis bout à bout tant que la largeur utile (x 1600 à 29200) le permet ; la boîte sur 2 rangées
-    rangs, cur, larg = [], [], 0
-    for b in ordre:
-        reps = sorted(par_bornier[b], key=lambda r: int(r.split(".")[1]))
-        morceaux = [reps[i:i + 40] for i in range(0, len(reps), 40)]
-        for mo in morceaux:
-            w = 2400 + len(mo) * PAS_B + 400 + ECART_B
-            if cur and larg + w - ECART_B > 27600:
-                rangs.append(cur)
-                cur, larg = [], 0
-            cur.append((b, mo))
-            larg += w
-    if cur:
-        rangs.append(cur)
-    if len(rangs) > 2 * len(PLANS_FOL):
-        raise SystemExit(f"plans de bornier : {len(rangs)} rangées pour {2 * len(PLANS_FOL)} places")
+    # v40 (Julien 25/11 : « utiliser pleinement les 4 pages ») : les borniers, dans l'ordre, sont répartis sur les
+    # 8 rangées (2 par folio) en équilibrant la largeur des rangées ; la boîte +BJM est coupée en morceaux égaux ;
+    # dans une rangée, l'espace libre est réparti également entre les borniers et aux deux bords.
+    NR, LU = 2 * len(PLANS_FOL), 27600
+    larg_ = lambda mo: 2400 + len(mo) * PAS_B + 400
+    meilleur = None
+    for taille in range(40, 9, -1):
+        segs = []
+        for b in ordre:
+            reps = sorted(par_bornier[b], key=lambda r: int(r.split(".")[1]))
+            n_ = -(-len(reps) // taille)
+            q_, r_ = divmod(len(reps), n_)
+            i_ = 0
+            for k_ in range(n_):
+                m_ = q_ + (1 if k_ < r_ else 0)
+                segs.append((b, reps[i_:i_ + m_]))
+                i_ += m_
+        if len(segs) < NR:
+            continue
+        # découpage optimal (programmation dynamique) : rangées consécutives, largeur maxi la plus petite
+        W_ = [larg_(mo) for _, mo in segs]
+        INF = float("inf")
+        best = [[INF] * (NR + 1) for _ in range(len(segs) + 1)]
+        cut = [[0] * (NR + 1) for _ in range(len(segs) + 1)]
+        best[0][0] = 0
+        for i_ in range(1, len(segs) + 1):
+            for k_ in range(1, NR + 1):
+                s_ = 0
+                for j_ in range(i_, 0, -1):
+                    s_ += W_[j_ - 1] + (ECART_B if j_ < i_ else 0)
+                    if s_ > LU:
+                        break
+                    v_ = max(best[j_ - 1][k_ - 1], s_)
+                    if v_ < best[i_][k_]:
+                        best[i_][k_], cut[i_][k_] = v_, j_ - 1
+        if best[len(segs)][NR] == INF:
+            continue
+        if meilleur is None or best[len(segs)][NR] < meilleur[0]:
+            rangs_, i_ = [], len(segs)
+            for k_ in range(NR, 0, -1):
+                j_ = cut[i_][k_]
+                rangs_.insert(0, segs[j_:i_])
+                i_ = j_
+            meilleur = (best[len(segs)][NR], rangs_)
+    if meilleur is None:
+        raise SystemExit("plans de bornier : pas de répartition sur les 8 rangées")
+    rangs = meilleur[1]
     YR = (1900, 10900)                      # haut des 2 rangées d'un folio (zone de texte du haut comprise)
     for i, rang in enumerate(rangs):
         fo = PLANS_FOL[i // 2]
         y0 = YR[i % 2] + ZT                 # haut des bornes
         y1 = y0 + HB
-        x = 1600
+        libre_ = LU - sum(larg_(mo) for _, mo in rang)
+        if len(rang) > 1:                   # justifié : 1er bornier au bord gauche, dernier au bord droit
+            ecart_ = libre_ // (len(rang) - 1) // 100 * 100
+            x = 1600
+        else:                               # bornier seul : centré
+            ecart_ = 0
+            x = 1600 + libre_ // 2 // 100 * 100
         for b, mo in rang:
             # repère du bornier dans un cadre, relié à la rangée
             nom_b = "+BJM -X1" if b == "X1" else f"-{b}"
             tout_terre = all("terre" in bornes[r_].block[2] for r_ in mo)
-            g.cadre(F[fo], x, y0 + 200, x + 1800, y1 - 200, width=20, fond=GRIS_TERRE if tout_terre else None)
+            if tout_terre:
+                cadre_vj(fo, x, y0 + 200, x + 1800, y1 - 200, libre=(y0 + HB // 2 - 250, y0 + HB // 2 + 250))
+            else:
+                g.cadre(F[fo], x, y0 + 200, x + 1800, y1 - 200, width=20)
             texte(fo, x + 900 - largeur(nom_b, 300) // 2, y0 + HB // 2 - 150, nom_b, 300, 0, 1)
             for yy in (y0 + 450, y1 - 450):
                 g.ligne(F[fo], x + 1800, yy, x + 2400, yy, width=20)
@@ -2172,8 +2289,11 @@ def plans_bornier(path):
                 prec = n_
                 xc = x + PAS_B // 2
                 terre = "terre" in s_.block[2]
-                g.cadre(F[fo], xc - LB // 2, y0, xc + LB // 2, y1, color=32768 if terre else 0, width=30 if terre else 20,
-                        fond=GRIS_TERRE if terre else None)
+                if terre:
+                    cadre_vj(fo, xc - LB // 2, y0, xc + LB // 2, y1, color=32768, width=30,
+                             libre=(y0 + HB // 2 - 200, y0 + HB // 2 + 200))
+                else:
+                    g.cadre(F[fo], xc - LB // 2, y0, xc + LB // 2, y1, width=20)
                 for yv in (y0 + 80, y1 - 300):
                     g.cadre(F[fo], xc - 120, yv, xc + 120, yv + 220, width=10)                       # vis
                 lab = ("PE " if terre else "") + n_
@@ -2209,7 +2329,7 @@ def plans_bornier(path):
                     g.texte_v(F[fo], xc + 30, y1 + 150 + largeur(tk, 160), tk, 160)
                 x += PAS_B
             g.ligne(F[fo], x, y0 - 100, x, y1 + 100, width=60)                # butée de fin
-            x += 400 + ECART_B
+            x += 400 + ecart_
     # v38 (Julien 24/11) : note du haut retirée (à retravailler plus tard) ; elle disait : haut = côté intérieur
     # (boîte : côté câble), bas = côté terrain (boîte : côté appareil) ; texte = appareil:broche (folio), n° de fil, câble (conducteur)
 
@@ -2233,7 +2353,8 @@ texte(f, xb_ - 1200, PE10[1] - 2400, "Bâti machine +M", 220, 0, 1)
 
 # ======================================================================== barres 24 V / 0 V en haut (29/10)
 # contenu descendu pour laisser la place aux barres (après la pose de tous les renvois vers ces folios)
-for num_, dy_ in (("40", 800), ("42", 1200), ("50", 800)):
+# v40 (Julien 25/11 : f42, fil 0 V du bas trop près du cartouche) : f42 descendu de 400 seulement (1200 avant)
+for num_, dy_ in (("40", 800), ("42", 400), ("50", 800)):
     g.decaler(F[num_], 0, dy_)
 f = "40"
 W(f, [k401["A1"], (k401["A1"].x, RAIL24_Y)], "24")
@@ -2293,14 +2414,68 @@ for num_, (x1_, y1_, x2_, y2_), dx_, dy_ in (("51", (20700, 15500, 29100, 17200)
     g.dessins = [(d[0], d[1] + dx_, d[2] + dy_, d[3] + dx_, d[4] + dy_) + tuple(d[5:])
                  if d[0] == F[num_] and dans(d[1], d[2]) and dans(d[3], d[4]) else d for d in g.dessins]
 nommer_phases()
+
+
+def aligner_numeros_f20():
+    """v40 (Julien 25/11 : « numéros de fil au même niveau ») : au f20, numéros verticaux des fils driver -> moteur
+    sur 3 rangées (driver / bornes, bornes / câble, boîte / moteur) et numéros horizontaux PUL / DIR / ENA / 0 V
+    sur une même colonne, entre le collecteur 0 V et le driver."""
+    from xrs_gen import largeur, NUM_T
+    f_ = F["32"]
+    for D, bornes, BJ, Mo, ic in F20_RANGS:
+        xs = {D[p].x for p in ("A+", "A-", "B+", "B-")}
+        haut_ = min(s_.pins["1"][0][1] for s_ in bornes)              # haut des bornes d'armoire (rangée du haut)
+        bas_ = max(s_.pins["2"][0][1] for s_ in bornes)               # bas des bornes d'armoire (rangée du bas)
+        bj_haut = min(b_.pins["1"][0][1] for b_ in BJ)
+        bj_bas = max(b_.pins["2"][0][1] for b_ in BJ)
+        yc = g.cables[ic][3]
+        ydrv = D["A+"].y
+        c_a = (ydrv + haut_) / 2
+        c_b = (bas_ + yc - 350) / 2                                   # sous les bornes, au-dessus des n° de brin
+        c_d = (bj_bas + 200 + Mo.bbox[1] - 200) / 2                   # entre les cadres +BJM et +M
+        nv = []
+        for n_ in g.numeros:
+            fo, x, y, txt, ang = n_
+            if fo == f_ and ang == 90 and x in xs and txt != "PE":
+                # rangée du numéro d'après les bornes de SON fil (bornes sur 2 niveaux)
+                ba_ = next(s_ for s_ in bornes if s_.pins["1"][0][0] == x)
+                bb_ = next(s_ for s_ in BJ if s_.pins["1"][0][0] == x)
+                c = c_a if y <= ba_.pins["1"][0][1] else (c_b if ba_.pins["2"][0][1] <= y <= bb_.pins["1"][0][1]
+                                                          else (c_d if y >= bb_.pins["2"][0][1] else None))
+                if c is not None:
+                    y = int(round((c + largeur(txt, NUM_T) / 2) / 100)) * 100
+            if fo == f_ and ang == 0 and D["PUL+"].y <= y <= D["ENA-"].y and D["PUL-"].x - 4000 < x < D["PUL-"].x:
+                xc = D["PUL-"].x - 400                                # milieu entre le collecteur 0 V et le driver
+                x = int(round((xc - largeur(txt, NUM_T) / 2) / 100)) * 100
+            nv.append((fo, x, y, txt, ang))
+        g.numeros = nv
+
+
+aligner_numeros_f20()
+
+
+def aligner_haut_variateurs():
+    """v40 (Julien 25/11) : f31 / f32, numéros des fils qui partent des broches du haut du variateur sur une même ligne,
+    juste au-dessus des broches (sous les flèches des renvois)."""
+    from xrs_gen import largeur, NUM_T
+    for T in VARIATEURS:
+        yp = min(xy[1] for lst in T.pins.values() for xy in lst)
+        xs = {xy[0] for lst in T.pins.values() for xy in lst if xy[1] == yp}
+        g.numeros = [(fo, x, yp - 100, txt, ang) if fo == T.folio and ang == 90 and x in xs and yp - 2400 < y < yp + 1
+                     else (fo, x, y, txt, ang) for fo, x, y, txt, ang in g.numeros]
+
+
+aligner_haut_variateurs()
 for a_ in NUM_ALERTES:
     print("ATTENTION", a_)
 renommer_symboles()
 # nomenclature générée (option B, Julien 18/11) : une ligne par appareil, bornes par type, non dessiné, câbles (f90, f91)
 NOMENC_LIGNES = nomenclature.lignes(g)
 print("nomenclature : taille, ligne, lignes par folio", nomenclature.dessiner(g, _texte, [F["90"], F["91"], F["92"]], NOMENC_LIGNES))
+# v40 (Julien 25/11 : police plus grande au f80) : tailles jusqu'à 360, colonnes longues sur 2 lignes si besoin
 print("liste des câbles : taille, ligne", nomenclature.tableau_pages(g, _texte, [F["80"]], nomenclature.ENTETE_CABLES,
-                                                                     nomenclature.lignes_cables()))
+                                                                     nomenclature.lignes_cables(), ligne_max=960,
+                                                                     tailles=(360, 340, 320, 300, 280, 260, 240), coupe=True))
 g.write(SORTIE)
 ecrire_borniers(SORTIE)
 g.write(SORTIE)

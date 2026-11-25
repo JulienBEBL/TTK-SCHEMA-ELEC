@@ -147,25 +147,47 @@ def lignes_cables():
             for c in _saisie()["cables"]]
 
 
-def tableau_pages(g, texte, folios, entete, rows, ligne_max=900):
+def _coupe(txt):
+    """Texte coupé en 2 lignes à l'espace le plus proche du milieu (v40, f80) ; [txt] si pas d'espace."""
+    esp = [i for i, c in enumerate(txt) if c == " "]
+    if not esp:
+        return [txt]
+    i = min(esp, key=lambda k: abs(k - len(txt) / 2))
+    return [txt[:i], txt[i + 1:]]
+
+
+def tableau_pages(g, texte, folios, entete, rows, ligne_max=900, tailles=TAILLES, coupe=False):
     """Tableau centré sur toute la zone utile des folios (index), en-tête sur chaque folio, lignes réparties
     également. Taille de texte = la plus grande de TAILLES qui tient en largeur ; colonnes élargies au prorata
-    du contenu jusqu'à la largeur utile. Retourne (taille, hauteur de ligne, lignes par folio)."""
+    du contenu jusqu'à la largeur utile. Retourne (taille, hauteur de ligne, lignes par folio).
+    coupe=True (v40, f80, Julien 25/11 : police plus grande) : une colonne trop large passe sur 2 lignes
+    (les plus larges d'abord) ; la hauteur de ligne suit (2 lignes de texte)."""
     xa, ya, xb, yb = ZONE
     W = xb - xa
-    for taille in TAILLES:
+    par = -(-len(rows) // len(folios))
+    dispo = (yb - ya) // (par + 1) // 20 * 20
+    for taille in tailles:
         pad = taille
-        cont = [max(largeur(r[k], taille) for r in [entete] + [x[1] for x in rows]) + pad for k in range(len(entete))]
+        larg1 = lambda k: max(largeur(r[k], taille) for r in [entete] + [x[1] for x in rows]) + pad
+        larg2 = lambda k: max(max(largeur(s, taille) for s in _coupe(r[k])) for r in [entete] + [x[1] for x in rows]) + pad
+        cont = [larg1(k) for k in range(len(entete))]
+        deux = set()
+        if coupe and min(ligne_max, dispo) >= 2 * taille + 300:
+            for k in sorted(range(len(entete)), key=lambda k: -(cont[k] - larg2(k))):
+                if sum(cont) <= W:
+                    break
+                if larg2(k) < cont[k]:
+                    cont[k] = larg2(k)
+                    deux.add(k)
         if sum(cont) <= W:
             break
     else:
-        raise ValueError(f"tableau trop large même en {TAILLES[-1]} : {sum(cont)} > {W}")
+        raise ValueError(f"tableau trop large même en {tailles[-1]} : {sum(cont)} > {W}")
     reste = W - sum(cont)
     w = [c + reste * c // sum(cont) for c in cont]
     w[-1] += W - sum(w)
-    par = -(-len(rows) // len(folios))
-    ligne = min(ligne_max, (yb - ya) // (par + 1) // 20 * 20)
-    if ligne < taille + 100:
+    ligne = min(ligne_max, dispo)
+    if ligne < (2 * taille + 200 if deux else taille + 100):
         raise ValueError(f"tableau : {len(rows)} lignes sur {len(folios)} folios, lignes de {ligne} trop basses")
     paquets = [rows[i:i + par] for i in range(0, len(rows), par)]
     for f, paquet in zip(folios, paquets):
@@ -182,10 +204,13 @@ def tableau_pages(g, texte, folios, entete, rows, ligne_max=900):
             g.ligne(f, cx, y0, cx, y0 + H, width=10)
         for r, (fam, row) in enumerate(tab):
             cx = xa
-            for c, txt in zip(w, row):
+            for k, (c, txt) in enumerate(zip(w, row)):
                 if txt:
-                    texte(f, cx + pad // 2, y0 + r * ligne + (ligne - taille) // 2, txt, taille, 0,
-                          1 if fam in ("entete", "titre") else 0)
+                    morceaux = _coupe(txt) if k in deux and largeur(txt, taille) + pad > c else [txt]
+                    h_ = len(morceaux) * taille + (len(morceaux) - 1) * 80
+                    for i_, s_ in enumerate(morceaux):
+                        texte(f, cx + pad // 2, y0 + r * ligne + (ligne - h_) // 2 + i_ * (taille + 80), s_, taille, 0,
+                              1 if fam in ("entete", "titre") else 0)
                 cx += c
     return taille, ligne, [len(p) for p in paquets]
 
@@ -202,7 +227,9 @@ def controle_cables(chemin, numero_folio):
     for t in m["textes"]:
         if t["folio"] in idx:
             par_ligne[t["y"]].append((t["x"], t["texte"]))
-    reps = Counter(sorted(v)[0][1] for v in par_ligne.values())
+    # v40 : cellules sur 2 lignes possibles ; une ligne du tableau = un texte dans la 1re colonne (repère, jamais coupé)
+    xmin = min(x for v in par_ligne.values() for x, _ in v)
+    reps = Counter(tx for v in par_ligne.values() for x, tx in v if x == xmin)
     pb = []
     attendus = {c["repere"] for c in _saisie()["cables"]} | {c["nom"] for c in m["cables"] if c["nom"]}
     for r in sorted(attendus, key=_naturel):

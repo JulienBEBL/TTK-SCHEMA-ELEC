@@ -1,6 +1,31 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v39 (24/11/2026, PC PERSO JULIEN)
+## Version actuelle : v40 (25/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-25_v40.xrs` : 31 folios, 254 symboles, 712 fils, 93 renvois, 407 numéros ; tous contrôles à 0 (verifier : 28 attentions connues) ; bornes : 168, 0 doublon. v39 dans old/ (non réenregistrée).
+Rapport : `docs/RAPPORT_v40_2026-11-25.md`. Demandes : `memoire/revues/2026-11-25_retours_julien_v39.md` (faites, sauf f40).
+
+### Fait en v40 (retours de Julien sur la v39, 25/11)
+| Folio | Changement |
+|---|---|
+| 03 | Armoire moins large, blocs répartis sur la hauteur, textes plus grands |
+| 10 | W1 : trait entre le cadre d'arrivée et les bornes, composition centrée sous le repère |
+| 20 | Renvois 0 V horizontaux ; cadres +BJM / +M alignés, même marge ; numéros alignés (rangées, colonne) |
+| 21 | Images PTFIX au-dessus des renvois (pas d'image du bloc noir) |
+| 30 | Tableau IP centré |
+| 31, 32 | Variateur 400 plus haut ; résistance sous le variateur (repère seul) ; numéros du haut alignés ; moteur SEW en contour plein (CUSTOM, 3 copies) |
+| 42 | Folio descendu de 400 (fil 0 V du bas à 18800) ; un cadre +P1 par contact, broches dedans |
+| 43 | Texte +P1 hors du cadre |
+| 61 | Cadres +P1 / +M : contacts entiers, broches et numéros compris |
+| 63 | Bornes de -H4 écartées (1200) |
+| 64 | Thermocouple dans l'axe de AI0 : plus rien sur la réserve |
+| 70-73 | 8 rangées équilibrées, rangées justifiées ; terre rayée vert / jaune |
+| 80 | Texte 320 (240), cellules sur 2 lignes |
+
+### Suite
+- Julien : ouvrir la v40 ; répondre à la question du f40 (accrochage du texte des contacts) ; vérifier le rendu vert / jaune des plans de bornier.
+- Implantation à régénérer (check global) ; freins (D17) ; TIA ; SEW (réponses écrites reçues, à reporter).
+
+## Version précédente : v39 (24/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-24_v39.xrs` : 31 folios, 254 symboles, 714 fils, 93 renvois, 407 numéros ; tous contrôles à 0 (verifier : 28 attentions connues) ; bornes : 168, 0 doublon. v38 dans old/ (réenregistrée par WinRelais sans retouche : `schema/recus/2026-11-24_v38_ouverte_WinRelais.xrs`).
 Rapport : `docs/RAPPORT_v39_2026-11-24.md`. Demandes : `memoire/revues/2026-11-24_retours_julien_v38.md` (faites).
 
