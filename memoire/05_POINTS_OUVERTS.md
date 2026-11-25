@@ -182,7 +182,7 @@ Détail : `docs/RAPPORT_v37_2026-11-23.md`.
 - Bornes PE X10.11, X31.11, X32.11, X50.13 en bornes de terre ; X12.11 en PT 4 : **confirmé par Julien le 18/11**.
 - Zoom écrit avec une virgule par WinRelais sur le PC Rimane (`0,749…`) : lecture par le WinRelais de Julien à vérifier.
 
-## Fils 48 V : T3 -> KA2 -> U3 / U4 (question de Julien, 25/11) [?]
+## Fils 48 V : T3 -> KA2 -> U3 / U4 (question de Julien, 25/11) : **réglé le 25/11, noir 2,5 mm² (stock)** ; reste : section maxi des bornes du DM860H [?]
 - Fils : +48 V 1251 (T3 -> KA2 1 et 3), 2001 (KA2 2 -> U3), 2011 (KA2 4 -> U4) ; 0 V 48 1250 (T3 -> U3, T3 -> U4, en direct). 0 V 48 (1250) distinct du 0 V commun 24 V (1230).
 - Section proposée [H] : 1,5 mm² (T3 5 A, valeur du script, source à retrouver). Bornes du DM860H : section maxi à vérifier.
-- Couleur : norme (04) = noir pour le + et le - (puissance CC). Stock (09) : pas de 1,5 mm² noir ; 2,5 mm² noir disponible. Rouge / bleu 1,5 = codes du 24VELEC et du 0 V 24 : risque de confusion. Choix de Julien attendu.
+- Couleur : **noir 2,5 mm² pour le + et le -** [D 25/11, Julien], conforme à la norme (04). Repérage par les numéros de fil (1251, 2001, 2011, 1250). Rouge / bleu écartés (codes du 24 V).

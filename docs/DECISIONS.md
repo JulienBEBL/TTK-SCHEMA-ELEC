@@ -574,3 +574,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] `docs/LISTE_ES_AUTOMATE.md` : repères et folios passés en v39 (X61, X43, X63, X64 ; f60-f64). Affectation des E/S inchangée.
 - [C] SEW : Xavier et Franck Strugareck sont deux personnes différentes (Julien, 25/11).
 - [?] STO 150 mW : retenu « par variateur » (05, 06 alignés) ; réponse écrite de SEW reçue d'après le dépôt automatisme (25/11), document pas encore dans les dépôts.
+
+## 25/11/2026 : fils 48 V
+- [D] Fils +48 V (1251, 2001, 2011) et 0 V 48 (1250) entre T3, KA2 et U3 / U4 : **noir 2,5 mm²** du stock, + et - de même couleur, repérés par leur numéro. Rouge / bleu écartés (codes du 24VELEC et du 0 V 24).
+- [?] Section maxi acceptée par les bornes d'alimentation du DM860H : à vérifier.
