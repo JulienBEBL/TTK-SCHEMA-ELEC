@@ -1,6 +1,13 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v40 (25/11/2026, PC PERSO JULIEN)
+## Version actuelle : v41 (25/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-25_v41.xrs` : comme la v40, contour du moteur SEW corrigé (épaisseur 20 ; la v40 avait 200 par erreur, capture de Julien du f31). Diff v40 -> v41 : 8 lignes (4 par moteur). Tous contrôles à 0, dont le nouveau contrôle des symboles CUSTOM. Rapport : `docs/RAPPORT_v41_2026-11-25.md`. v40 dans old/ (non réenregistrée).
+
+### Suite
+- Julien : relire la v41 ; question du f40 (accrochage du texte des contacts) ; rendu vert / jaune des plans de bornier.
+- Implantation à régénérer ; freins (D17) ; TIA ; SEW (réponses écrites reçues, à reporter).
+
+## Version précédente : v40 (25/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-25_v40.xrs` : 31 folios, 254 symboles, 712 fils, 93 renvois, 407 numéros ; tous contrôles à 0 (verifier : 28 attentions connues) ; bornes : 168, 0 doublon. v39 dans old/ (non réenregistrée).
 Rapport : `docs/RAPPORT_v40_2026-11-25.md`. Demandes : `memoire/revues/2026-11-25_retours_julien_v39.md` (faites, sauf f40).
 

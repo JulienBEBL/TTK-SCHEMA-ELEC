@@ -587,3 +587,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] v40 générée : 0 problème, 0 erreur (28 attentions), 0 chevauchement ; numéros, cadres, textes, 24 V / 0 V, bornes à 0 ; rapport `docs/RAPPORT_v40_2026-11-25.md`.
 - [H] Résistance de freinage avec repère seul ; pas d'image du bloc noir -X21.14 ; vert RGB(0, 176, 64), jaune RGB(255, 230, 0).
 - [?] f40 : accrochage du texte des contacts non modifié (code 0 déjà dans le fichier) ; question posée à Julien.
+
+## 25/11/2026 : v41 (contour moteur)
+- [C] Julien (capture f31) : contour du moteur SEW beaucoup trop épais aux f31 / f32. Cause : erreur de l'assistant en v40 (épaisseur 200 au lieu de 20, champ de style perdu, 3 copies du symbole).
+- [C] v41 : contour à 20, trait plein ; diff v40 -> v41 = 8 lignes ; tous contrôles à 0.
+- [D] Nouveau contrôle `outils/controles/symboles.py` dans `tout.sh` (copies CUSTOM, format des contours).

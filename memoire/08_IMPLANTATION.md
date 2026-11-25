@@ -95,7 +95,7 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 2. `saisie.json` : `version`, `indice` (lettre suivante), `date`, ligne dans `revisions`.
 3. `cd implantation/generateur` ; `python -I extraire.py` ; `python -I generer.py --png <scratchpad>`.
 4. Contrôle 0 / 0 / 0 dans le `_verification.md` ; regarder les PNG.
-5. `implantation/JOURNAL.md`, `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md`, ce fichier ; commit préfixé par le PC (`[PRO JULIEN]`, `[PRO RIMANE]`) ; **push seulement avec l'accord de Julien**.
+5. `implantation/JOURNAL.md`, `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md`, ce fichier ; commit préfixé `[PERSO JULIEN]` (préfixe unique depuis le 25/11) ; **push seulement avec l'accord de Julien**.
 6. PC Rimane : lancer `generer.py` hors bac à sable de l'assistant (Edge sort sinon sans PDF) ; contrôle visuel dans `build/dossier.html`.
 
 - 23/11 (schéma v37) : `saisie.json` : bornes X41.21-24 / 31-34 / 41-44 renommées X43.11-14 / 21-24 / 31-34 (types et conducteurs) ; destinations des câbles W2, W3, W5, W6, W8, W9, W10, W11, W14 = « +BJM, puis … ». `extraire.py` lit la v37 (168 bornes dont 69 de la boîte +BJM, 31 câbles) ; dossier d'implantation **pas régénéré** (la boîte n'est pas dans l'armoire : à traiter au check global de Julien).

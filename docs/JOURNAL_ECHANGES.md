@@ -447,3 +447,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : retours folio par folio sur la v39 ; « travaille en autonomie, plan d'action et go, livre-moi une v40 » ; toujours consigner nos discussions (règle de mémoire).
 - Fait : retours notés (`memoire/revues/2026-11-25_retours_julien_v39.md`) ; v40 (rapport `docs/RAPPORT_v40_2026-11-25.md`) ; symbole moteur CUSTOM en contour plein (3 copies) ; mémoire (04, 05, 06, 10, README, revues), CLAUDE.md, README ; commit + push.
 - En attente : réponse de Julien sur le f40 ; relecture de la v40 dans WinRelais.
+
+## 25/11/2026 : contour moteur, v41, contrôle de la mémoire
+- Julien : capture du f31, contour du symbole moteur beaucoup trop épais (f32 pareil) ; contrôle complet de la mémoire, commit, sync, mise à jour du dépôt.
+- Fait : cause trouvée (épaisseur 200 écrite en v40) ; symbole corrigé (3 copies) ; v41 (rapport `docs/RAPPORT_v41_2026-11-25.md`) ; contrôle `symboles.py` ajouté à `tout.sh` ; mémoire relue : 05 (2 points v38 dépassés), 06 (v41), 07 (tout.sh), 08 (préfixe), 10 (piège des retouches de symbole, copies CUSTOM), README, CLAUDE.md ; commit + push.

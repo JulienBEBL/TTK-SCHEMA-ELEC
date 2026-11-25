@@ -146,8 +146,8 @@ Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (re
 
 ## v38 (24/11) : à regarder par Julien
 Détail : `docs/RAPPORT_v38_2026-11-24.md`.
-- Lisibilité dans WinRelais des f20, f31, f32, f41-f43, f50, f60-f64 (le contrôle par calcul est à 0).
-- f60 presque vide (CPU seule) : y ajouter autre chose (tableau des E/S, IP) ? [?]
+- Lisibilité dans WinRelais des f20, f31, f32, f41-f43, f50, f60-f64 : **dépassé**, retours v38 / v39 traités en v39 / v40.
+- f60 presque vide (CPU seule) : **réglé en v39** (tableau des entrées au f60).
 - Repères déjà posés en X60 / X62 / X63 : à refaire (X61 / X63 / X64).
 - Implantation à régénérer (boîte +BJM, X43, X61 / X63 / X64).
 
