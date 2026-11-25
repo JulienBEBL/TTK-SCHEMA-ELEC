@@ -46,7 +46,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | T3 | Mean Well NDR-240-48, 48 V 240 W | |
 | KA2 (ex KM3) | Schneider LC1D09BD, contacteur auxiliaire ; 2 pôles utilisés : 1-2 (+48 V de U3), 3-4 (+48 V de U4) ; pôle 5-6 libre, plus dessiné depuis la v37 (symbole CUSTOM 2 pôles) | pouvoir de coupure DC-1 sous 48 V à vérifier |
 | X21.11 à X21.13 (anciens X31 à X33) | **Phoenix PTFIX 6/12X2,5 (3273354)**, 1 entrée + 12 départs [D 05/11, v20] : X21.11 24VELEC **rouge**, X21.12 0 V **bleu**, X21.13 24VSEC **gris** (stock de Julien : RD, BK, GY, BU ; référence exacte par couleur à vérifier) | remplace les PTFIX 6X1,5 (3002781) ; X12.11 (ancien X36) = borne sectionnable PELV |
-| U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA **réglée le 05/11** (voir 05 point 13 : ENA alimenté = moteur libre), à confirmer au banc |
+| U3 / U4 | Jkongmotor JKDM860H | entrées PUL / DIR / ENA en **24 V CC** [C 27/10] ; polarité ENA **confirmée le 18/11** (dépôt automatisme, décisions) : ENA alimenté = driver désactivé (moteur libre), ENA non alimenté = driver actif |
 | M3 / M4 | StepperOnline 34IP65-85 (Nema 34) | |
 
 ## Sécurité, commande (f40 à f42, f50)
@@ -71,7 +71,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | K2 | SM 1223 G2 8DI/8DQ 6ES7223-5BH50-0XB0 |
 | K3 | SM 1231 TC G2 6ES7231-5QF50-0XB0 (f63 validé par Julien le 23/10, à revalider après renommage) |
 | K4 | Switch Weidmüller 2682250000 IE-SW-AL05LM-5TX |
-| B7 / W8 | Thermocouple type K, câble de compensation en direct jusqu'à K3 [D 28/10] |
+| B7 / W8 | Thermocouple type K, câble de compensation W8 jusqu'aux bornes **X64.11 / X64.12** (PT 2,5), puis K3 [D 17/11, bornes gardées ; X63 renommé X64 en v38] |
 
 ## Câbles multiconducteurs
 - 19G1 et 27G1 : **validés par Julien le 05/11 (Q32)**, dessinés au f70 en v19 (table `CABLES_MULTI` du script). Julien veut utiliser le 27G1 en priorité, ranger par fonction ; conducteur n° = ordre des bornes.
@@ -118,7 +118,7 @@ H1 n'est pas sur la porte : c'est la colonne lumineuse de la machine.
 - W9 / W10 (pas-à-pas) : LIYCY-JZ 5G1,5 AEE261168 (4 + V/J) [D 17/11] ; V/J sur borne de terre X20.15 / X20.25 côté armoire, non raccordé au moteur [D 18/11, v34]. Le 5G1,5 sert à W4, W9, W10 (30 m pour 10 m chacun).
 - Tableau V1 (sourcing, `Downloads/Sourcing Composant (3).xlsx`, 03/11) = **1 armoire** [D 17/11]. Bornes achetées : PT 2,5 70 (20 + 50), PT 4 15 ; bornes de terre RS 708-1687 en livraison.
 - Boîte de dérivation machine : **+BJM** [D 17/11]. Blindages raccordés d'un seul côté (armoire) [D 17/11].
-- Thermocouple : bornes X63.11 / X63.12 gardées [D 17/11] (la mémoire disait « en direct sur K3 »).
+- Thermocouple : bornes gardées [D 17/11], X63.11 / X63.12 devenues **X64.11 / X64.12** en v38.
 - Câble M12 de B2 : RS 285-9453 (SICK, 20 m), repère **W14** [D 18/11]. PROFINET : PN1 843-6365 (1 m), PN2 / PN3 843-6369 (2 m), PN4 Roline 616-2586 (20 m, bleu).
 
 ## Boîte de jonction machine +BJM (v37, 23/11)

@@ -1,6 +1,6 @@
 # Questions à poser à SEW (mise à jour du 24/11/2026)
 
-Interlocuteur : Franck Strugareck (SEW-USOCOME). Un seul envoi groupé.
+Interlocuteurs chez SEW-USOCOME : **Xavier** et **Franck Strugareck**, deux personnes différentes (confirmé par Julien le 25/11). Mail du 24/11 envoyé à Xavier. Qui suit quel sujet : [?].
 
 Matériel : 2 motoréducteurs SEW K39 DRN100LS4 / BE5 / TF (2,2 kW, frein BE5 400 V CA, redresseur BGE1.5 d'après la plaque du 18/11, sonde TF), 2 variateurs MOVITRAC MCX91A-0055-5E3-4-T00/001/CSO/CFN/CDM/CMM, 2 résistances BW100-001.
 Câblage : réseau coupé par KM1 / KM2 en amont de chaque variateur ; STO X6 commandé par le relais de sécurité KA1 (33-34, 2 STO en chaîne) ; frein alimenté en 400 V CA par KF1 / KF2 (QF2 / QF3 en amont) ; sonde TF sur X10 ; X5 en 24 V permanent.

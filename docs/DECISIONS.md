@@ -563,3 +563,14 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : un W11 et un cadre +BJM par colonne (f41, f42) ; symbole des entrées CPU plus large ; f70 supprimé, plans de bornier renumérotés ; gris clair sur les bornes et borniers de terre.
 - [C] Check global des bornes : 168, 0 doublon, règle X + folio respectée, saisie.json = schéma.
 - [H] Tableau des entrées au f60 (pas la place au f61) ; 4e folio de plans de bornier ; remplissage des formes : champs déduits, à confirmer.
+
+## 25/11/2026 : reprise, corrections de la mémoire (bloc 1)
+- [D] Préfixe de commit unique `[PERSO JULIEN]` pour les deux dépôts (schéma et automatisme), quel que soit le PC. Remplace [PRO JULIEN], [PRO RIMANE], [perso].
+- [C] Julien câble seul l'armoire (18/11) : les 2 stagiaires ne câblent pas.
+- [C] Thermocouple : bornes gardées (17/11), X64.11 / X64.12 depuis la v38 ; la mention « en direct jusqu'à K3 » (28/10) est retirée.
+- [C] Polarité ENA des DM860H confirmée le 18/11 (dépôt automatisme) : ENA alimenté = moteur libre.
+- [C] Passage en Manu : arrêt depuis l'IHM, puis sélecteur ; pas de demande Manu sur l'IHM (bloc 3 du 18/11, dépôt automatisme). Remplace la procédure du 27/10.
+- [C] Q8.3 : en réserve partout dans `03_ARCHITECTURE.md` (plus de « voyant S4 », déjà corrigé avant le 25/11).
+- [C] `docs/LISTE_ES_AUTOMATE.md` : repères et folios passés en v39 (X61, X43, X63, X64 ; f60-f64). Affectation des E/S inchangée.
+- [C] SEW : Xavier et Franck Strugareck sont deux personnes différentes (Julien, 25/11).
+- [?] STO 150 mW : retenu « par variateur » (05, 06 alignés) ; réponse écrite de SEW reçue d'après le dépôt automatisme (25/11), document pas encore dans les dépôts.

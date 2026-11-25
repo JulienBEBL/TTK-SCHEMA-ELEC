@@ -21,7 +21,7 @@
 - Symboles CUSTOM : 3 copies à garder identiques : `outils/librairie/CUSTOM` (UTF-8), `librairie_winrelais/sym_electrotech/CUSTOM` et `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (cp1252, CRLF).
 - Bornes : renommer un folio renomme ses bornes (règle X + folio) : mettre aussi à jour `implantation/generateur/saisie.json` (sinon la nomenclature signale des bornes absentes).
 - `implantation/` : ne pas régénérer le dossier sans accord ; `extraire.py` écrit `donnees.json` (le remettre avec `git checkout` après un essai).
-- Une autre session (préfixe `[perso]`) travaille sur SEW / docs : toujours `git pull --rebase` avant de commencer et avant de pousser.
+- D'autres sessions peuvent pousser (SEW, docs) : toujours `git pull --rebase` avant de commencer et avant de pousser. Préfixe de commit unique `[PERSO JULIEN]` (25/11).
 
 ## Outils de contrôle (dans le dépôt depuis le 24/11, avant dans le scratchpad)
 `outils/controles/` : `tout.sh` (génère + tout contrôle), `cadres.py` (cadres pointillés), `textes.py` (folios hors 10-69), `d11.py` (24 V / 0 V des drivers et E/S), `bornes.py` (doublons, règle X + folio, saisie.json), `bbox.py` (géométrie d'un symbole de la librairie).

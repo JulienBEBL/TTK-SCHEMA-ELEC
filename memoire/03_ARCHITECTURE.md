@@ -77,7 +77,7 @@ Transitions (ancien f43, supprimé le 29/10) :
 | Manu → Auto, capot fermé | 48 V coupé, STO libéré, KM1 / KM2 fermés ; rien ne démarre sans ordre de marche IHM |
 | Manu → Auto, capot ouvert | shunts ouverts : le relais retombe ; fermer le capot puis réarmer |
 
-Programme : défaut sélecteur si I0.4 = I0.5 en régime établi (0/0 ou 1/1), filtrage de quelques centaines de ms à la commutation. Procédure normale : demande Manu sur l'IHM, arrêt en rampe, puis rotation du sélecteur.
+Programme : défaut sélecteur si I0.4 = I0.5 en régime établi (0/0 ou 1/1), filtrage de quelques centaines de ms à la commutation. Procédure normale (bloc 3 du 18/11, dépôt automatisme ; remplace la « demande Manu sur l'IHM » du 27/10) : arrêt depuis l'IHM, puis rotation du sélecteur ; pas de demande de passage en Manu sur l'IHM (rappel sur l'écran Production).
 
 Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du client) ; roue libre si le sélecteur tourne pendant la rotation (≈ 10 s, à mesurer) ; un seul contact Manu-D pour le 48 V (PL c accepté).
 

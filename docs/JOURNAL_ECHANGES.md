@@ -430,3 +430,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Fait : v39 (rapport `docs/RAPPORT_v39_2026-11-24.md`), mémoire, commit + push.
 
 - Julien : passage à Sonnet + compactage ; fait : `memoire/10_REPRISE_AUTRE_MODELE.md`, contrôles copiés du scratchpad dans `outils/controles/` (tout.sh), CLAUDE.md.
+
+## 25/11/2026 : reprise (nouvelle session) et bloc 1
+- Reprise : lecture de CLAUDE.md, memoire/, docs, dépôt automatisme (lecture seule) ; résumé à Julien ; bloc 1 de corrections proposé.
+- Julien : « Oui, bloc 1 ». Fait : CLAUDE.md, 01, 02, 03, 06, 07, 10, README, LISTE_ES_AUTOMATE, QUESTIONS_SEW, DECISIONS ; commit + push.
+- En attente : mail écrit de SEW (STO, frein) ; qui suit quel sujet entre Xavier et Franck.

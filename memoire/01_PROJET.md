@@ -30,7 +30,7 @@
 | Samir (WAGO) | Équivalences borniers |
 | 2 amis | Relecteurs le soir (électricien, automaticien) |
 | Krizox | Collègue électricien de Julien : revue de la v36 en visio le 20/11 (`memoire/revues/`) ; aide prévue sur l'automate (« AUTOM => krizox ») |
-| 2 stagiaires | Câblage de l'armoire |
+| (personne d'autre) | Câblage de l'armoire : **Julien câble seul** (18/11) ; les 2 stagiaires prévus ne câblent pas |
 
 ## Planning (validé le 20/10)
 | Jalon | Date |
