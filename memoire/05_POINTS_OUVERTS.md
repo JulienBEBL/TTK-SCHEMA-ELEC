@@ -181,3 +181,8 @@ Détail : `docs/RAPPORT_v37_2026-11-23.md`.
 - PTFIX 2X4 Phoenix 1028361 : 2 trous, 6 mm, 19 + 27 blocs (Julien 18/11). **Réglé le 18/11** : réserves non bornées, X50.13 reste une borne de terre vert/jaune ; 38 blocs dessinés.
 - Bornes PE X10.11, X31.11, X32.11, X50.13 en bornes de terre ; X12.11 en PT 4 : **confirmé par Julien le 18/11**.
 - Zoom écrit avec une virgule par WinRelais sur le PC Rimane (`0,749…`) : lecture par le WinRelais de Julien à vérifier.
+
+## Fils 48 V : T3 -> KA2 -> U3 / U4 (question de Julien, 25/11) [?]
+- Fils : +48 V 1251 (T3 -> KA2 1 et 3), 2001 (KA2 2 -> U3), 2011 (KA2 4 -> U4) ; 0 V 48 1250 (T3 -> U3, T3 -> U4, en direct). 0 V 48 (1250) distinct du 0 V commun 24 V (1230).
+- Section proposée [H] : 1,5 mm² (T3 5 A, valeur du script, source à retrouver). Bornes du DM860H : section maxi à vérifier.
+- Couleur : norme (04) = noir pour le + et le - (puissance CC). Stock (09) : pas de 1,5 mm² noir ; 2,5 mm² noir disponible. Rouge / bleu 1,5 = codes du 24VELEC et du 0 V 24 : risque de confusion. Choix de Julien attendu.

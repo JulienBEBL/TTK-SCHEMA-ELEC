@@ -435,3 +435,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Reprise : lecture de CLAUDE.md, memoire/, docs, dépôt automatisme (lecture seule) ; résumé à Julien ; bloc 1 de corrections proposé.
 - Julien : « Oui, bloc 1 ». Fait : CLAUDE.md, 01, 02, 03, 06, 07, 10, README, LISTE_ES_AUTOMATE, QUESTIONS_SEW, DECISIONS ; commit + push.
 - En attente : mail écrit de SEW (STO, frein) ; qui suit quel sujet entre Xavier et Franck.
+
+## 25/11/2026 : fils 48 V
+- Julien : sections et surtout couleurs des fils +48 V / 0 V 48 entre T3 et les drivers. Réponse : fils 1251 / 2001 / 2011 / 1250, 1,5 mm² proposé [H], couleur à choisir (noir 2,5 du stock conseillé) ; noté en 05.
