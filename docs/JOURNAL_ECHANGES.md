@@ -439,3 +439,6 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 25/11/2026 : fils 48 V
 - Julien : sections et surtout couleurs des fils +48 V / 0 V 48 entre T3 et les drivers. Réponse : fils 1251 / 2001 / 2011 / 1250, 1,5 mm² proposé [H], couleur à choisir (noir 2,5 du stock conseillé) ; noté en 05.
 - Julien : « Noir 2,5 (stock) ». Fait : 04, 05, DECISIONS ; schéma inchangé (type « Autre tension DC », noir).
+
+## 25/11/2026 : préparation des retours v39
+- Julien : va donner ses retours sur la v39 ; demande si l'assistant sait lire, modifier et générer le schéma. Fait : v39 régénérée à l'identique (octet pour octet), tous les contrôles à 0 ; release non réenregistrée par WinRelais ; README racine mis à jour (il restait en v36).

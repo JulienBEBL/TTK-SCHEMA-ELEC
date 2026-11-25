@@ -5,17 +5,15 @@ BE Bailly Levert (BEBL), dessinateur Julien Thro (THRO.J).
 
 Le schéma n'est pas dessiné à la main : il est **généré par un script Python** (`outils/ttk_schema.py`), puis ouvert et relu dans WinRelais.
 
-## État actuel (20/11/2026)
+## État actuel (25/11/2026)
 | | |
 |---|---|
-| Dernière version | **v36**, `schema/generes/release/TTK_2026-11-20_v36.xrs` |
-| Contenu | 27 folios, 184 symboles, 668 fils, 89 renvois, 337 numéros de fil ; nomenclature (f90-f92) et liste des câbles (f80) générées |
-| Contrôles | 0 problème, 0 erreur au verifier (30 attentions connues), 0 chevauchement, numéros 0 problème |
-| Revue complète | `docs/REVUE_SCHEMA_v33_2026-11-18.md` (dernière revue, corrections faites en v34) ; avant : `docs/REVUE_COMPLETE_v29.md` |
-| Numérotation des fils | **faite sur tous les folios** (f10 à f63, v30) ; contrôle `outils/xrs_numeros.py` : 0 problème |
-| Implantation de l'armoire | v12 indice B (18/11, générée par `implantation/generateur/`), `implantation/release/` ; à régénérer pour QF10 en 2 A (v35 / v36) |
+| Dernière version | **v39**, `schema/generes/release/TTK_2026-11-24_v39.xrs` (rapport `docs/RAPPORT_v39_2026-11-24.md`) |
+| Contenu | 31 folios, 254 symboles, 714 fils, 93 renvois, 407 numéros de fil, 168 bornes ; boîte +BJM, plans de bornier f70-f73, liste des câbles f80, nomenclature f90-f92 générées |
+| Contrôles | `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` : 0 problème, 0 erreur (28 attentions connues), 0 chevauchement (contrôle élargi), numéros, cadres, textes, 24 V / 0 V, bornes : 0 |
+| Implantation de l'armoire | v13 (20/11, schéma v36), `implantation/release/` ; à régénérer |
 
-Détail de la version, points ouverts et suite : `memoire/06_EN_COURS.md` et `memoire/05_POINTS_OUVERTS.md`.
+La liste des folios et l'arborescence ci-dessous datent de la v36 : la référence à jour est `memoire/04_REGLES_DESSIN.md` (ordre des folios) et `memoire/06_EN_COURS.md`.
 
 ## La machine en bref
 - Réseau 400 V 3P+N+PE (TN-S), armoire +A1, pupitre +P1 posé sur la machine, machine +M.
