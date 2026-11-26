@@ -189,18 +189,18 @@ Détail : `docs/RAPPORT_v37_2026-11-23.md`.
 
 ## v40 (25/11) : à regarder par Julien
 Détail : `docs/RAPPORT_v40_2026-11-25.md`.
-- **f40, question** : accrochage du texte des contacts de retour. Le fichier porte déjà le code 0 (librairie : 0 = gauche, 2 = droite, 6 = centré) : valeur vue dans WinRelais et valeur voulue ? [?]
+- **f40 : réglé en v43** (textes à droite du contact, accrochés à gauche, décision de Julien du 26/11). Historique : accrochage du texte des contacts de retour. Le fichier porte déjà le code 0 (librairie : 0 = gauche, 2 = droite, 6 = centré) : valeur vue dans WinRelais et valeur voulue ? [?]
   26/11 : capture de Julien (v41) : textes de -KM1, -KM2, -KF1 alignés à gauche, à gauche du contact. Lecture : accrochage à gauche déjà en place ; confirmation demandée à Julien [?]
 - f31 / f32 : résistance avec son repère seul (désignation masquée, faute de place) [H].
 - f21 : pas d'image pour le bloc noir -X21.14 (aucune image noire) [?].
-- Plans de bornier : rendu du vert / jaune dans WinRelais (remplissage vérifié par calcul seulement) [?].
+- Plans de bornier : rendu du vert / jaune dans WinRelais : **vu par Julien (26/11), rayé plus marqué en v42**.
   26/11 : capture de Julien (v41, -X31.11) : fond jaune, une bande verte en haut et en bas (sous les carrés de connexion), contour vert, numéro sur le jaune. Avis de Julien demandé (garder, ou plus de bandes) [?]
 
 ## v42 (26/11) : à regarder par Julien
 Détail : `docs/RAPPORT_v42_2026-11-26.md`.
-- f40 : **réglé en v42** (textes à droite, accrochés à droite, à la demande de Julien du 26/11).
+- f40 : textes à droite, accrochés à droite en v42, puis **accrochés à gauche en v43** (Julien : « je me suis trompé »).
 - Plans de bornier : vert / jaune vu par Julien (26/11) ; **rayé plus marqué en v42** (bandes de 100).
-- Rendu dans WinRelais de la v42 : variateur élargi (f31 / f32), thermocouple retourné (f64), gras et résumés des plans de bornier [?].
+- Rendu dans WinRelais : variateur élargi (f31 / f32) **validé par Julien (26/11)** ; thermocouple retourné (f64), gras et résumés des plans de bornier (résumé sous le cadre du repère en v43) : à relire sur la v43 [?].
 - `implantation/generateur/saisie.json` : folios et origines de W8 (f64), W11 (X43.1x, pas de X41.2x), W12 (X43.2x, f43 / f61 / f63), W14 (f43) d'avant la v37 ; le schéma les relit sur le dessin. **Corrigé le 26/11** (accord de Julien) dans `saisie.json`.
 - Haut des variateurs f31 / f32 : numéros sur une rangée juste au-dessus des broches (alignement v40), pas centrés (fils 24 V de 600) [H].
 - Nomenclature : 6 bornes de terre dessinées pour 4 achetées ; références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].
@@ -208,3 +208,4 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 ## v43 (26/11)
 - W9 / W10 : le brin du V/J porte le n° 4 (comme le conducteur 4), repris de la retouche de Julien : voulu ? [?]
 - f31 / f32 : variateur élargi validé par Julien (26/11).
+- Relecture de la v43 par Julien dans WinRelais (W1, W9 / W10 repris, f40, plans de bornier, nomenclature en 300) [?].

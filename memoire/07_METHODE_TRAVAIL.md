@@ -44,7 +44,8 @@
    python xrs_tool.py verifier ..\schema\generes\release\TTK_AAAA-MM-JJ_vN.xrs
    python xrs_chevauchements.py ..\schema\generes\release\TTK_AAAA-MM-JJ_vN.xrs
    ```
-   Contrôle complet en une commande (essai) : `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` (numéros, cadres, textes, 24 V / 0 V, bornes, symboles CUSTOM).
+   Contrôle complet en une commande (essai) : `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` (numéros, cadres, textes, 24 V / 0 V, bornes, symboles CUSTOM ; v42 : corps des symboles, noms de broches, points de connexion).
+   Aides (v43, dans le dépôt) : `outils/controles/folio.py <xrs> <folio affiché> [sym txt cab cad ren num fil]` (lecture d'un folio par calcul), `retouche.py <générée> <ouverte_WinRelais>` (retouches de Julien), `centrage.py <xrs>` (centrage des numéros).
    Attendu : « 0 problème(s) de contrôle », 0 erreur au verifier, « total 0 » aux chevauchements. Les 28 « attention » connues de la v9 sont normales (fils en attente de l'arrivée réseau et de la variante USA, début de barre au f25, références croisées à lancer dans WinRelais, 0 V / PE liés par X36.1).
 4. Mettre à jour `docs/DECISIONS.md`, `docs/JOURNAL_ECHANGES.md` et `memoire/`.
 5. Commit + push (message en français, fin : `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`).

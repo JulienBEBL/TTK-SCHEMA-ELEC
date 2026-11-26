@@ -470,3 +470,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : W1 et W9 / W10 retouchés dans WinRelais ; variateur OK ; f40 accroché à gauche (« je me suis trompé ») ; résumé des borniers sous le rectangle du repère ; police de nomenclature plus grande ; « livre la prochaine version et vérifie-la ».
 - Fait : v42 retouchée archivée et comparée ; retouches reprises (blocs identiques) ; v43 (rapport `docs/RAPPORT_v43_2026-11-26.md`) ; mémoire (04, 05, 06, 10, README), CLAUDE.md, README ; commit + push.
 - En attente : relecture v43 ; question du brin V/J n° 4.
+
+## 26/11/2026 : mise à jour complète et passation
+- Julien : « mets à jour la mémoire, check si tout est ok, mets à jour le repo entièrement, regarde le README, puis fais un prompt de passation pour le prochain chat ».
+- Fait : README réécrit ; mémoire relue et corrigée ; outils rangés ; contrôles relancés sur la v43 (0 partout) ; `docs/PASSATION_2026-11-26.md` ; commit + push.
