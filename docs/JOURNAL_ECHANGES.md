@@ -465,3 +465,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : correction de saisie.json
 - Julien : accord pour corriger `saisie.json` (W8, W11, W12, W14).
 - Fait : 4 câbles corrigés (folios, origines) ; le schéma ne relit plus rien de différent ; v42 régénérée (f80 seul) ; mémoire 05, 06, rapport v42 ; commit + push. Implantation pas encore régénérée.
+
+## 26/11/2026 : retours v42 -> v43
+- Julien : W1 et W9 / W10 retouchés dans WinRelais ; variateur OK ; f40 accroché à gauche (« je me suis trompé ») ; résumé des borniers sous le rectangle du repère ; police de nomenclature plus grande ; « livre la prochaine version et vérifie-la ».
+- Fait : v42 retouchée archivée et comparée ; retouches reprises (blocs identiques) ; v43 (rapport `docs/RAPPORT_v43_2026-11-26.md`) ; mémoire (04, 05, 06, 10, README), CLAUDE.md, README ; commit + push.
+- En attente : relecture v43 ; question du brin V/J n° 4.

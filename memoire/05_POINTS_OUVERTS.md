@@ -204,3 +204,7 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 - `implantation/generateur/saisie.json` : folios et origines de W8 (f64), W11 (X43.1x, pas de X41.2x), W12 (X43.2x, f43 / f61 / f63), W14 (f43) d'avant la v37 ; le schéma les relit sur le dessin. **Corrigé le 26/11** (accord de Julien) dans `saisie.json`.
 - Haut des variateurs f31 / f32 : numéros sur une rangée juste au-dessus des broches (alignement v40), pas centrés (fils 24 V de 600) [H].
 - Nomenclature : 6 bornes de terre dessinées pour 4 achetées ; références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].
+
+## v43 (26/11)
+- W9 / W10 : le brin du V/J porte le n° 4 (comme le conducteur 4), repris de la retouche de Julien : voulu ? [?]
+- f31 / f32 : variateur élargi validé par Julien (26/11).

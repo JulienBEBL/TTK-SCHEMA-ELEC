@@ -126,6 +126,7 @@ class Gen:
         self.cables = []
         self.cable_nums = {}      # index du câble -> numéros des brins (câble sur 2 folios)
         self.cable_type = {}      # index du câble -> type WinRelais (0 simple, 3 blindé ellipse + trait)
+        self.cable_extra = {}     # v43 : index -> (4 valeurs après le trait, [(écart au 1er brin, n° du brin V/J)])
         self.nets = {}              # union-find des équipotentielles voulues
         self.net_names = {}
         self.tee_issues = []
@@ -411,7 +412,7 @@ class Gen:
                 cx += c
 
     def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None, blinde=None,
-              vj=(), court=False, droite=False):
+              vj=(), court=False, droite=False, compo_dy=None, ellipse=None, vj_num=None):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
@@ -419,18 +420,26 @@ class Gen:
         compo_dx : abscisse de la composition par rapport au 1er brin (placement de Julien, f31 du 02/11).
         vj : abscisses des conducteurs vert/jaune du câble (v37, revue Krizox) : dans le trait, sans numéro de brin.
         court=True (v37, colonnes à 800 du f60) : repère seul, taille 200, sous le trait à droite du 1er brin ; composition masquée.
-        droite=True (v42, f10, Julien 26/11) : ovale du repère à droite du dernier brin, composition centrée dessous."""
+        droite=True (v43, f10, retouche de Julien sur la v42) : textes à droite du dernier brin, sans ovale : repère
+        (centré à 600), composition et désignation dessous (à 400, visibles).
+        compo_dy (v43) : hauteur de la composition par rapport au trait (sinon 400 dessous).
+        ellipse (v43) : 4 valeurs écrites après le trait (Julien, W9 / W10 : 0, 200, 0, 200).
+        vj_num (v43) : numéro de brin écrit sur le conducteur vert/jaune (Julien, W9 / W10)."""
         if ovale:
             xs_ = list(brins_x) + list(vj)
             x1, x2, etiq, size = min(xs_), max(xs_), "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
+            if compo_dy is not None and compo_dx is not None:
+                etiq += f":{compo_dy}"
             if droite:
-                etiq = "ovaled"
+                etiq = "texted"
             if x2 - x1 < 800:          # v37 : jamais de câble de longueur nulle (un seul brin) : trait de 800 centré
                 x1, x2 = (x1 + x2) // 2 - 400, (x1 + x2) // 2 + 400
             if court:
                 etiq, size = "bas", 200
         if nums:
             self.cable_nums[len(self.cables)] = list(nums)
+        if ellipse or (vj_num and vj):
+            self.cable_extra[len(self.cables)] = (ellipse, [(v - x1, vj_num) for v in vj] if vj_num else [])
         # type (relu sur le .xrs de Julien du 05/11) : 0 Simple, 1 Rectangle, 2 Blindé (Ellipse), 3 Blindé (Ellipse + Trait),
         # 4 / 5 Blindé (Rectangle arrondi / + Trait). Par défaut : présentation ovale = blindé, sinon simple
         self.cable_type[len(self.cables)] = 3 if (ovale if blinde is None else blinde) else 0
@@ -441,17 +450,17 @@ class Gen:
         f, x1, x2, y, rep, compo, desig, brins, etiq, size = c
         if etiq == "bas":
             return [(rep, brins[0] + 100, y + 80, size), ("", brins[0] + 100, y + 380, size), ("", brins[0] + 100, y + 680, size)]
-        if etiq == "ovaled":                       # v42 : repère à droite du câble, composition centrée dessous
-            w, wc = int(len(rep) * size * 0.55), int(len(compo) * size * 0.55)
-            return [(rep, x2 + 600 - w // 2, y - 150, size), (compo, (x2 + 600 - wc // 2) // 50 * 50, y + 400, size),
-                    ("", x2, y + 700, size)]
+        if etiq == "texted":                       # v43 : textes à droite du câble, sans ovale (retouche de Julien)
+            w = int(len(rep) * size * 0.55)
+            return [(rep, x2 + 600 - w // 2, y - 150, size), (compo, x2 + 400, y + 200, size), (desig, x2 + 400, y + 500, size)]
         if isinstance(etiq, str):
             w = int(len(rep) * size * 0.55)
             # composition sous l'ovale, arrêtée avant le 1er brin (texte long : décalée à gauche, 02/11)
             cx = min(x1 - 2000, (x1 - 300 - int(len(compo) * size * 0.55)) // 100 * 100)
             if ":" in etiq:
                 cx = x1 + int(etiq.split(":")[1])
-            return [(rep, x1 - 600 - w // 2, y - 150, size), (compo, cx, y + 400, size), ("", x1, y + 700, size)]
+            cy = y + (int(etiq.split(":")[2]) if etiq.count(":") == 2 else 400)
+            return [(rep, x1 - 600 - w // 2, y - 150, size), (compo, cx, cy, size), ("", x1, y + 700, size)]
         if etiq:
             ex, ey = etiq
             return [(rep, ex, ey, size), (compo, ex, ey + size + 100, size), (desig, ex, ey + 2 * (size + 100), size)]
@@ -686,25 +695,33 @@ class Gen:
                 (_, rx, ry, _), (_, cx, cy, _), (_, dx_, dy_, _) = self.cable_textes(c)
                 L.append(f"\u00a4#DefCable\u00b7{n}\u00a4")
                 L.append("\u00a4#Autre\u00a4")
-                L.append(SEP.join(map(str, (f, x1, y, x2, y, 0, 0, 0, 0))) + SEP)
+                ell, vjb = self.cable_extra.get(n, (None, []))
+                L.append(SEP.join(map(str, (f, x1, y, x2, y) + tuple(ell or (0, 0, 0, 0)))) + SEP)
                 L.append("0\u00b740\u00b70\u00b70\u00b71\u00b716777215\u00b7")
-                ov = isinstance(etiq, str) and etiq != "bas"
-                L.append(f"802\u00b7500\u00b7{self.cable_type.get(n, 0)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
+                ov = isinstance(etiq, str) and etiq not in ("bas", "texted")
+                if etiq == "texted":                  # v43 : sans ovale (relu sur la retouche de Julien, W1)
+                    L.append("800\u00b7500\u00b70\u00b70\u00b70\u00b70\u00b70\u00b70\u00b7")
+                else:
+                    L.append(f"802\u00b7500\u00b7{self.cable_type.get(n, 0)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
                 L.append("4\u00b70\u00b7400\u00b7400\u00b7400\u00b7400\u00b70\u00b7")
                 if ov:
-                    rx = x2 + 600 if etiq == "ovaled" else x1 - 600     # repère centré (alignement 6) dans l'ovale
-                L.append(SEP.join(map(str, (rep, rx, ry, 1, 6 if ov or not etiq else 0, "Arial", size, 0, 0, 0, 0))) + SEP)
+                    rx = x1 - 600                     # repère centré (alignement 6) dans l'ovale
+                if etiq == "texted":
+                    rx = x2 + 600
+                L.append(SEP.join(map(str, (rep, rx, ry, 1, 6 if ov or not etiq or etiq == "texted" else 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 L.append(SEP.join(map(str, (compo, cx, cy, 0 if etiq == "bas" else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
-                L.append(SEP.join(map(str, (desig, dx_, dy_, 0 if ov or not desig else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
+                L.append(SEP.join(map(str, (desig, dx_, dy_, 0 if (ov and etiq != "texted") or not desig else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 for k in range(4):
                     L.append(SEP.join(map(str, ("", x1, y + 1000 + 300 * k, 0, 2, "Arial", 300, 0, 0, 0, 0))) + SEP)
                 L.append("\u00a4#BrinCable\u00a4")
                 nums = self.cable_nums.get(n) or [i + 1 for i in range(len(brins))]
-                L.append("-".join(str(k) for k in nums) + SEP)
+                L.append("-".join(str(k) for k in nums + [k for _, k in vjb]) + SEP)
                 L.append("Arial\u00b7300\u00b70\u00b70\u00b70\u00b7")
                 L.append("1\u00b710\u00b70\u00b7")
                 for i, bx in enumerate(brins):
                     L.append(SEP.join(map(str, (bx, y, nums[i], 0))) + SEP)
+                for dxv, k in vjb:                    # v43 : brin écrit sur le V/J (retouche de Julien, W9 / W10)
+                    L.append(SEP.join(map(str, (x1 + dxv, y, k, 0))) + SEP)
                 L.append("\u00a4#FIN\u00a4")
         L.append("\u00a4#FIN\u00a4")
         L.append("")

@@ -289,3 +289,10 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - **Capteur à broches en haut** (thermocouple) : symbole retourné quand les fils partent vers le bas (jamais de fil à travers un dessin de symbole).
 - **Plans de bornier** : rayé vert / jaune en bandes de 100 ; nom du câble et n° de fil en gras ; sous chaque bornier, une ligne par fonction « n° des bornes : fonction » (boîte +BJM : câble et fonction ; 2 ou 3 colonnes si la place manque).
 - **Liste des câbles (f80) et nomenclature** : folios et origines relus sur le dessin (`cables_schema`), pas seulement sur `saisie.json`.
+
+## v43 (26/11, retouches et retours de Julien sur la v42)
+- **f40** : textes des contacts de retour à droite du contact, **accrochés à gauche** (Julien : « je me suis trompé » en v42).
+- **Câble client W1** : textes à droite du dernier conducteur, **sans ovale** (retouche de Julien) : repère, puis composition et désignation visibles dessous.
+- **Câbles W9 / W10** (f20) : présentation de Julien : composition à gauche de l'ovale (100 au-dessus du trait), ellipse « 0 200 0 200 », brin n° 4 sur le V/J.
+- **Plans de bornier** : résumé des fonctions **juste sous le cadre du repère** du bornier (largeur 2300, police 160).
+- **Nomenclature** : police la plus grande qui tient (300), blanc de colonne 0,4 x la taille.

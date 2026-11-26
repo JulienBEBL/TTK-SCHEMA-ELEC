@@ -336,7 +336,7 @@ def zones_cables(f_):
                 continue
             w_ = largeur(txt, sz)
             if k_ == 0 and isinstance(c[8], str) and c[8] != "bas":       # repère centré dans l'ovale (à gauche, ou à droite)
-                tx = (x2 + 600 if c[8] == "ovaled" else x1 - 600) - w_ // 2
+                tx = (x2 + 600 if c[8] == "texted" else x1 - 600) - w_ // 2
             out.append((tx - 150, ty - 100, tx + w_ + 150, ty + sz + 100) if k_ == 0 else (tx, ty, tx + w_, ty + sz))
     for tf, tx, ty, txt, sz, *_ in g.textes:      # v38 : textes libres du folio (lieux, notes)
         if tf == f_ and txt:
@@ -1043,7 +1043,8 @@ for r, x in xb.items():
 # v40 (Julien 25/11 : « infos du câble W1 pas bonnes ») : trait au milieu entre le cadre d'arrivée et les bornes
 # (brins à 500 du cadre), composition centrée sous le repère
 from xrs_gen import largeur as _lg
-# v42 (Julien 26/11 : « W1 et 5G4 à droite du câble ») : ovale du repère à droite du conducteur L3, composition dessous
+# v42 (Julien 26/11 : « W1 et 5G4 à droite du câble ») ; v43 : retouche de Julien sur la v42 reprise (textes à droite, sans
+# ovale : W1, puis 5G4 et « Câble client » dessous)
 g.cable(F[f], 0, 0, 2800, "W101", "5G4", "Câble client", [5200, 6000, 6800, 7600], ovale=True, blinde=False, vj=[4400],
         droite=True)
 q101 = maitre(C + "Legrand_Vistop_022515_4P_63A.xsy", "Q101", f, 5200, 6000, fpos=(3000, 0))   # v42 : repère 200 à droite (nom 5/L3)
@@ -1423,9 +1424,12 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     PE_DEST.append((f, W(f, [bpe["1"], (xpe, 12400), (xpe + 1200, 12400)], "PE")))   # renvoi vers la droite (sous le driver)
     # v38 (Julien 24/11) : le V/J s'arrête sous le câble (plus de fil jusqu'en bas du folio)
     W(f, [bpe["2"], (xpe, 15200)], "PE")
-    texte(f, xpe + 200, 15300, "V/J non raccordé", 180)
-    g.cable(F[f], 0, 0, 14800, {"M321": "W321", "M322": "W322"}[Mrep], "5G1,5 blindé",
-            f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")], ovale=True, compo_dx=-3200, vj=[xpe])   # v37 : V/J sans numéro
+    texte(f, xpe + (400 if Mrep == "M321" else 500), 14900, "V/J non raccordé", 180)   # v43 : place de Julien
+    g.cable(F[f], 0, 0, 15000, {"M321": "W321", "M322": "W322"}[Mrep], "5G1,5 blindé",
+            f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")], ovale=True, compo_dx=-2800,
+            compo_dy=-100, vj=[xpe], ellipse=(0, 200, 0, 200), vj_num=4)
+    # v43 : retouches de Julien sur la v42 (WinRelais) reprises : câble 200 plus bas, composition à gauche de l'ovale,
+    # ellipse « 0 200 0 200 », brin n° 4 écrit aussi sur le V/J
     xin, xbus = x0 - 4000, x0 - 3200
     for s in ("PUL", "DIR", "ENA"):
         CMD32[(T, s)] = W(f, [D[s + "+"], (xin, D[s + "+"].y)], "24")
@@ -1472,13 +1476,13 @@ miroir = C + "Schneider_LC1D09BD_contact_aux_NC_21-22_miroir.xsy"
 prev = W(f, [k401["Y1"], (8400, 3200), (20000, 3200)], "24")
 DESC_KM = {"KM1": "contacteur amont variateur 1", "KM2": "contacteur amont variateur 2",
            "Q421": "contacteur frein M1", "Q422": "contacteur frein M2", "Q423": "contacteur auxiliaire 48 V"}
-# v42 (Julien 26/11 : « texte à droite du symbole contact, accroché à droite ; déplacer proprement le texte jaune ») :
-# textes à droite du contact, alignés à droite (accroche à XTX40) ; « contact miroir » passe à gauche du contact ;
-# retour vers Y2 décalé à droite (XRET40) pour laisser la place aux textes
-XTX40, XRET40 = 23200, 24400
+# v42 (Julien 26/11 : « texte à droite du symbole contact ; déplacer proprement le texte jaune ») : textes à droite du
+# contact ; « contact miroir » passe à gauche du contact ; retour vers Y2 décalé à droite (XRET40) pour laisser la place.
+# v43 (Julien 26/11 : « accrochés à gauche, je me suis trompé ») : textes accrochés à gauche, début à XTX40
+XTX40, XRET40 = 20800, 24400
 for i, rep in enumerate(DESC_KM):
     c = decrit(miroir, rep, f, 20000, 3200 + 2400 * i, f"Retour {DESC_KM[rep]}",
-               prefix="KM" if rep.startswith("KM") else "Q", wrap=24, fpos=(XTX40 - 20000, 400), align=2)
+               prefix="KM" if rep.startswith("KM") else "Q", wrap=24, fpos=(XTX40 - 20000, 400), align=0)
     sec_ = None
     for k_, l_ in enumerate(c.block):
         if l_.startswith("¤#"):
@@ -2371,8 +2375,10 @@ CAB_FN = {"W201": "moteur M1", "W211": "moteur M2", "W202": "freins M1 + M2", "W
           "W531": "thermocouple B7", "W11": "pupitre : AU S2, sélecteur S3, IHM P1"}
 
 
-def resume_bornier(fo, x, y, larg, b, mo):
-    """Texte court sous un bornier (v42) : bornes consécutives de même fonction regroupées, « 11-15 : fonction »."""
+def resume_bornier(fo, x, y, larg, b, mo, taille=160, pas=220):
+    """Texte court sous un bornier (v42) : bornes consécutives de même fonction regroupées, « 11-15 : fonction ».
+    v43 (Julien 26/11 : « juste en dessous du rectangle avec le texte -X12 ») : sous le cadre du repère du bornier,
+    sur sa largeur (larg), lignes coupées pour ne pas déborder sur les textes des bornes."""
     from xrs_gen import largeur, _wrap
     fn_ = {ren(i_): f for i_, f in DES_BORNE.items()}
     if b == "X1":
@@ -2384,18 +2390,15 @@ def resume_bornier(fo, x, y, larg, b, mo):
             grp[-1][1] = n_
         else:
             grp.append([n_, n_, f_])
-    maxl = (19400 - y) // 260                    # au-dessus du cartouche
-    for ncol in (1, 2, 3):                       # trop de lignes : 2 ou 3 colonnes
-        lc_ = larg // ncol
+    for n_car in range(40, 8, -1):               # le plus de caractères par ligne qui tient dans la largeur
         lignes = []
         for a_, z_, f_ in grp:
             t_ = (a_ if a_ == z_ else f"{a_}-{z_}") + (f" : {ren(f_)}" if f_ else "")
-            lignes += _wrap(t_, max(12, int((lc_ - 200) / (180 * 0.5))))
-        if len(lignes) <= maxl * ncol:
+            lignes += _wrap(t_, n_car)
+        if max(largeur(l_, taille) for l_ in lignes) <= larg:
             break
-    par_col = -(-len(lignes) // ncol)
     for i_, l_ in enumerate(lignes):
-        texte(fo, x + (i_ // par_col) * lc_, y + 260 * (i_ % par_col), l_, 180)
+        texte(fo, x, y + pas * i_, l_, taille)
 
 
 def plans_bornier(path):
@@ -2541,7 +2544,7 @@ def plans_bornier(path):
             g.ligne(F[fo], x, y0 - 100, x, y1 + 100, width=60)                # butée de fin
             # v42 (Julien 26/11 : « sous chaque bornier, un petit texte qui note les fonctions des câbles ou fils,
             # résumé simple et concis ») : une ligne par fonction, « n° des bornes : fonction »
-            resume_bornier(fo, xb0_, y1 + ZB + 100, x + 400 - xb0_, b, mo)
+            resume_bornier(fo, xb0_, y1 - 100, 2300, b, mo)          # v43 : sous le cadre du repère
             x += 400 + ecart_
     # v38 (Julien 24/11) : note du haut retirée (à retravailler plus tard) ; elle disait : haut = côté intérieur
     # (boîte : côté câble), bas = côté terrain (boîte : côté appareil) ; texte = appareil:broche (folio), n° de fil, câble (conducteur)

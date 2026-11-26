@@ -612,3 +612,12 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 26/11/2026 : saisie.json (câbles)
 - [D] Julien : « oui, corrige-le » : `implantation/generateur/saisie.json` corrigé pour W8 (f64), W11 (origine X41.1x, X42.1x, X43.1x, X50.1x, X61.1x, X61.2x ; f41, 42, 43, 50, 61), W12 (X43.2x, X61.3x, X63.1x ; f43, 61, 63), W14 (f43).
 - [C] v42 régénérée (même nom, pas encore ouverte dans WinRelais) : seul le f80 change ; contrôles à 0.
+
+## 26/11/2026 : retours v42 et v43
+- [D] Julien (retouches WinRelais sur la v42) : W1 textes à droite sans ovale ; W9 / W10 câble 200 plus bas, composition à gauche de l'ovale, brin 4 sur le V/J. Reprises dans le script.
+- [D] Julien : variateur élargi OK (f31 / f32).
+- [D] Julien : f40, textes des contacts accrochés à gauche (correction de sa demande de la v42).
+- [D] Julien : résumé des plans de bornier juste sous le cadre du repère du bornier.
+- [D] Julien : police de la nomenclature un peu plus grande -> 300.
+- [C] v43 générée et vérifiée : tous contrôles à 0 ; W1, W9, W10 identiques à la retouche.
+- [?] Brin V/J n° 4 de W9 / W10 : voulu ?

@@ -48,7 +48,7 @@ HORS_SCHEMA = [
     ("XR2", "Répartiteur 4P 125 A 7 départs (non dessiné)", "AEE300427", "", "1", "A1"),
     ("XPE1", "Bornier de terre 27 (non dessiné)", "Legrand 404839", "", "1", "A1"),
     ("", "Butées d'arrêt rail DIN", A_VERIFIER, "", A_VERIFIER, "A1"),
-    ("+BJM", "Boîte de jonction machine (fabrication BEBL, Julien 23/11)", "BEBL", "", "1", "M"),
+    ("+BJM", "Boîte de jonction machine (fabrication BEBL)", "BEBL", "", "1", "M"),     # v43 : « Julien 23/11 » retiré
 ]
 
 
@@ -142,7 +142,8 @@ def lignes(g, schema=None):
     for c in _saisie()["cables"]:
         dest = re.search(r"\+([A-Z0-9]+)", c["destination"])
         lieu = {"BJM": "M"}.get(dest.group(1), dest.group(1)) if dest else ""
-        out.append(("cable", [c["repere"], c["fonction"], f"{c['type']} {c['reference']}".strip(),
+        # v43 : « broches » abrégé (largeur de colonne, police plus grande)
+        out.append(("cable", [c["repere"], c["fonction"], f"{c['type']} {c['reference']}".strip().replace(" broches ", " br. "),
                               c["conducteurs"], "1", lieu, _cable(c, schema)[0]]))
     return out
 
@@ -163,18 +164,20 @@ def _coupe(txt):
     return [txt[:i], txt[i + 1:]]
 
 
-def tableau_pages(g, texte, folios, entete, rows, ligne_max=900, tailles=TAILLES, coupe=False):
+def tableau_pages(g, texte, folios, entete, rows, ligne_max=900, tailles=TAILLES, coupe=False, marge=1.0):
     """Tableau centré sur toute la zone utile des folios (index), en-tête sur chaque folio, lignes réparties
     également. Taille de texte = la plus grande de TAILLES qui tient en largeur ; colonnes élargies au prorata
     du contenu jusqu'à la largeur utile. Retourne (taille, hauteur de ligne, lignes par folio).
     coupe=True (v40, f80, Julien 25/11 : police plus grande) : une colonne trop large passe sur 2 lignes
-    (les plus larges d'abord) ; la hauteur de ligne suit (2 lignes de texte)."""
+    (les plus larges d'abord) ; la hauteur de ligne suit (2 lignes de texte).
+    marge (v43) : blanc total d'une colonne, en fraction de la taille du texte (1.0 avant ; 0.6 pour la nomenclature,
+    Julien 26/11 : « augmente un peu la taille de la police de la nomenclature »)."""
     xa, ya, xb, yb = ZONE
     W = xb - xa
     par = -(-len(rows) // len(folios))
     dispo = (yb - ya) // (par + 1) // 20 * 20
     for taille in tailles:
-        pad = taille
+        pad = int(taille * marge)
         larg1 = lambda k: max(largeur(r[k], taille) for r in [entete] + [x[1] for x in rows]) + pad
         larg2 = lambda k: max(max(largeur(s, taille) for s in _coupe(r[k])) for r in [entete] + [x[1] for x in rows]) + pad
         cont = [larg1(k) for k in range(len(entete))]
@@ -223,7 +226,8 @@ def tableau_pages(g, texte, folios, entete, rows, ligne_max=900, tailles=TAILLES
 
 
 def dessiner(g, texte, folios, rows):
-    return tableau_pages(g, texte, folios, ENTETE, rows)
+    # v43 (Julien 26/11) : police plus grande : tailles jusqu'à 340, blanc des colonnes réduit (0,4 x la taille)
+    return tableau_pages(g, texte, folios, ENTETE, rows, tailles=(340, 320, 300) + TAILLES[1:], marge=0.4)
 
 
 def controle_cables(chemin, numero_folio):

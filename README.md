@@ -8,7 +8,7 @@ Le schéma n'est pas dessiné à la main : il est **généré par un script Pyth
 ## État actuel (26/11/2026)
 | | |
 |---|---|
-| Dernière version | **v42**, `schema/generes/release/TTK_2026-11-26_v42.xrs` (rapport `docs/RAPPORT_v42_2026-11-26.md`) |
+| Dernière version | **v43**, `schema/generes/release/TTK_2026-11-26_v43.xrs` (rapport `docs/RAPPORT_v43_2026-11-26.md`) |
 | Contenu | 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros de fil, 168 bornes ; boîte +BJM, plans de bornier f70-f73, liste des câbles f80, nomenclature f90-f92 générées |
 | Contrôles | `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` : 0 problème, 0 erreur (28 attentions connues), 0 chevauchement (contrôle élargi : textes, câbles, cadres, corps des symboles, noms de broches, points de connexion), numéros, cadres, textes, 24 V / 0 V, bornes, symboles CUSTOM : 0 |
 | Implantation de l'armoire | v13 (20/11, schéma v36), `implantation/release/` ; à régénérer |

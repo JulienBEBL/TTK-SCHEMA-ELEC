@@ -1,6 +1,14 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v42 (26/11/2026, PC PERSO JULIEN)
+## Version actuelle : v43 (26/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-26_v43.xrs` : tous contrôles à 0. v42 dans old/ ; v42 retouchée par Julien archivée (`schema/recus/2026-11-26_v42_ouverte_WinRelais.xrs`).
+Rapport : `docs/RAPPORT_v43_2026-11-26.md`.
+- Retouches de Julien reprises : W1 (f10, textes à droite sans ovale), W9 / W10 (f20, câble 200 plus bas, composition, ellipse, brin 4 sur le V/J, texte « V/J non raccordé »).
+- f40 : textes des contacts accrochés à gauche (Julien s'était trompé en v42). Variateur f31 / f32 : OK (Julien).
+- Plans de bornier : résumé sous le cadre du repère du bornier. Nomenclature : police 300 (280).
+- Question à Julien : n° 4 sur le brin V/J de W9 / W10, voulu ?
+
+## Version précédente : v42 (26/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-26_v42.xrs` : 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros ; tous contrôles à 0 (verifier : 28 attentions connues ; contrôle élargi v42 : corps des symboles, noms de broches, points de connexion). v41 dans old/ (ouverte dans WinRelais, sans retouche : `schema/recus/2026-11-25_v41_ouverte_WinRelais.xrs`).
 Rapport : `docs/RAPPORT_v42_2026-11-26.md`. Demandes : `memoire/revues/2026-11-26_retours_julien_v41.md` (faites).
 
