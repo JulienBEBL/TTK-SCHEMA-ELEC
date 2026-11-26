@@ -1,6 +1,11 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v44 (26/11/2026, PC PERSO JULIEN)
+## Version actuelle : v45 (26/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-26_v45.xrs` : comme la v44, QM1 / QM2 en GV2ME10 (réglage 6,3 A). Tous contrôles à 0. v44 dans old/ (non réenregistrée).
+Rapport : `docs/RAPPORT_v45_2026-11-26.md` (vérification du GV2ME10 à pleine charge, précision de vitesse).
+- Suite : régler QM1 / QM2 à 6,3 A ; relecture de la v45 ; `implantation/generateur/saisie.json` porte encore « Schneider GV2ME14 » (2 lignes) : à corriger avec l'accord de Julien ; implantation à régénérer ; freins (D17), TIA.
+
+## Version précédente : v44 (26/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-26_v44.xrs` : 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros ; tous contrôles à 0. v43 dans old/ (non réenregistrée).
 Rapport : `docs/RAPPORT_v44_2026-11-26.md`. Demandes : `memoire/revues/2026-11-26_retours_julien_v43.md`.
 - f31 / f32 : sonde TF sur X10:3 / X10:4 (doc SEW, Xavier 26/11) ; plans de bornier suivent.

@@ -646,3 +646,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : pas de relance de SEW.
 - [C] v44 : TF sur X10:3 / X10:4 (sonde pas encore câblée, Julien) ; brin V/J de W9 / W10 sans n° ; tous contrôles à 0.
 - [H] QM1 / QM2 : GV2ME10 (réglé 6,3 A) ou GV2ME14 (réglé 6-6,5 A) tiennent la pleine charge (5 A, mini SEW 5,5 A). [?] Référence montée à lire par Julien.
+
+## 26/11/2026 : v45, QM1 / QM2
+- [D] Julien : QM1 / QM2 = GV2ME10 (montés et câblés). [C] Fiche Schneider : 2,2 kW à 400 V, 4-6,3 A, Im 91 A, Icu 100 kA. [H] Vérification : pas sous-dimensionné ; **réglage 6,3 A** (mini SEW 5,5 A).
+- [D] Julien : précision de vitesse (0,94 tr/min par axe, 1,89 au pire) notée en mémoire, « théoriquement super » ; à mesurer au banc.

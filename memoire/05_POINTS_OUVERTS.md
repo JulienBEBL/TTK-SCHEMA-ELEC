@@ -214,5 +214,5 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 Détail : `docs/RAPPORT_SEW_2026-11-26.md`.
 - **TF sur X10:3 / X10:4** : **fait en v44** ; pas encore câblé (Julien 26/11).
 - Vitesse sans codeur (VFC^PLUS) : écart typique 0,2 × glissement nominal. Plaque : 1450 tr/min (Julien 26/11) : **0,94 tr/min par axe en sortie, 1,89 tr/min entre les 2 axes au pire** (≤ 2, marge 0,11). Écart typique, pas un maximum : à mesurer au banc [?].
-- QM1 / QM2 : plaque 4,75 A (Julien 26/11). **Référence montée incertaine** (GV2ME10 4-6,3 A et GV2ME14 6-10 A achetés) : les deux tiennent la pleine charge (5 A, mini SEW 5,5 A) : GV2ME10 réglé 6,3 A, GV2ME14 réglé 6-6,5 A. Lire la face avant ; si GV2ME10 : symbole et nomenclature à changer [?]. Seuil magnétique (fiche Schneider) et appel du variateur non relevés [?].
+- QM1 / QM2 : **réglé le 26/11** : GV2ME10 montés (Julien), vérifiés sur la fiche Schneider, **réglage 6,3 A**, dessinés en v45. Reste : appel du variateur à la mise sous tension (Im 91 A, très probablement OK) à voir au 1er essai ; déclassement côte à côte non trouvé sur la fiche [?].
 - Sans réponse : dispersion entre 2 ensembles, échauffement, tension réseau, appel réseau, paramètre TF / réaction / réarmement. **Julien 26/11 : pas de relance de SEW** (« on reste tel quel ») ; à voir au banc.

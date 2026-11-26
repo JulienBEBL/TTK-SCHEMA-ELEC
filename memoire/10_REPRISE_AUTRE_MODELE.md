@@ -3,8 +3,8 @@
 À lire après CLAUDE.md et README. Résume **comment travailler** sur ce dépôt sans refaire les erreurs des v37 / v38.
 
 ## État
-- Version : **v44** (`schema/generes/release/TTK_2026-11-26_v44.xrs`), rapport `docs/RAPPORT_v44_2026-11-26.md`.
-- Attente : relecture de la v44 ; référence montée de QM1 / QM2 (GV2ME10 ou GV2ME14). SEW : réponse écrite reçue et reportée (`docs/RAPPORT_SEW_2026-11-26.md`), pas de relance.
+- Version : **v45** (`schema/generes/release/TTK_2026-11-26_v45.xrs`), rapport `docs/RAPPORT_v45_2026-11-26.md`.
+- Attente : relecture de la v45 (QM1 / QM2 en GV2ME10, réglage 6,3 A). SEW : réponse écrite reçue et reportée (`docs/RAPPORT_SEW_2026-11-26.md`), pas de relance.
 - Piège (v43) : dans ce terminal, un heredoc bash passé à python transforme « \\ » en « \ » : pour un correctif qui contient des antislashs (« \u00b7 » de xrs_gen), écrire le script Python dans un fichier (outil Write).
 - Placement des numéros de fil (v42) : `centre_troncon` (milieu du plus long chemin, parties libres de `troncon_libre`) ; obstacles des symboles : `obstacles_symboles` / `dessin_symbole` ; débogage : `TTK_DBG=<numéro>` affiche les positions candidates.
 - Lecture d'un folio par calcul : `outils/controles/folio.py <xrs> <folio affiché>` (dans le dépôt depuis la v43). Comparer une release réenregistrée : `outils/controles/retouche.py` + comparer à part les blocs ¤#DefCable (positions des textes de câble). Centrage des numéros : `outils/controles/centrage.py`.

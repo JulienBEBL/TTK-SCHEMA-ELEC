@@ -497,3 +497,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : TF pas encore câblée ; plaque 1450 tr/min, 4,75 A ; pas de relance de SEW ; mettre à jour la mémoire et le schéma ; recalculer les disjoncteurs moteur à pleine charge (référence pas sûre).
 - Fait : v44 (TF X10:3 / X10:4, V/J sans n°), tout à 0 ; rapport `docs/RAPPORT_v44_2026-11-26.md` (calcul QM1 / QM2 : GV2ME10 et GV2ME14 achetés, les deux tiennent la pleine charge) ; mémoire (02, 04, 05, 06, 10, README), CLAUDE.md, README.
 - En attente : référence montée de QM1 / QM2 ; relecture v44.
+
+## 26/11/2026 : GV2ME10 et v45
+- Julien : noter la précision de vitesse (« théoriquement super ») ; QM1 / QM2 sont des GV2ME10 câblés : vérifier qu'ils ne sont pas sous-dimensionnés, donner le réglage.
+- Fait : fiche Schneider GV2ME10 lue (2,2 kW à 400 V, Im 91 A, Icu 100 kA) et rangée dans `docs/references/` ; vérification : OK, réglage 6,3 A ; v45 (QM1 / QM2 en GV2ME10), tout à 0 ; mémoire (02, 03, 04, 05, 06, 10, README), CLAUDE.md, README.
+- En attente : `saisie.json` (GV2ME14 -> GV2ME10) avec l'accord de Julien ; relecture v45.

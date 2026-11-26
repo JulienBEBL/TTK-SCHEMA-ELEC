@@ -300,3 +300,6 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 ## v44 (26/11, retours de Julien sur la v43 et doc SEW)
 - **Câbles en G (W9 / W10)** : pas de numéro de brin sur le V/J (Julien), comme la règle de la revue Krizox.
 - **Sonde TF du MCX91A** : X10:3 (TF1) / X10:4 (GND), d'après la doc SEW ; X10:1 / X10:2 = sortie frein DB00, non câblée.
+
+## v45 (26/11)
+- QM1 / QM2 : symbole GV2ME10 (librairie WinRelais, géométrie identique au GV2ME14) ; champs « Schneider GV2ME10 », « 4-6,3 A - réglage 6,3 A » (`REP` dans le script).

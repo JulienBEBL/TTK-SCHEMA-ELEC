@@ -133,3 +133,8 @@ Risques résiduels : sélecteur sans clé (capot shunté en Manu, choix du clien
 - Entrées X10 : 14, sink/source, commun 1M (2 broches) **au 0 V** (note ② Siemens) ; 6 mA (Ia.0-Ia.5), 4 mA (Ia.6-Ib.5). Charge de -X21.14 ≈ 64 mA (16 %).
 - Sorties X11 : transistor sourcing 0,5 A ; PTO 100 kHz Qa.0-Qa.3, 20 kHz Qa.4-Qb.1. **Alimentation des sorties nommée 2L+ / 2M en G2** : symbole CUSTOM corrigé en v31 (accord de Julien 16/11, librairie du PC + copie du dépôt).
 - Note ① Siemens (pont M - châssis) : **ne pas le faire**, la liaison 0 V - PE unique est X12.11 (PELV, mesure d'isolement).
+
+## Précision de vitesse sans codeur (26/11, doc SEW + plaque moteur) : validée par Julien (« théoriquement super »)
+- Mode du MCX91A : **VFC^PLUS sans codeur**. Doc SEW (manuel MOVITRAC advanced, p. 142) : écart typique = 0,2 × glissement nominal, selon la précision des paramètres moteur (faire l'identification du moteur à la mise en service).
+- Plaque DRN100LS4 : 1450 tr/min, 4,75 A. Glissement 1500 − 1450 = 50 tr/min ; écart typique 10 tr/min moteur, soit **0,94 tr/min par axe en sortie** (réducteur 10,61). En % : 3,1 % à 30 tr/min, 0,7 % à 137 tr/min.
+- Entre les 2 axes, au pire (écarts opposés) : **1,89 tr/min ≤ 2 tr/min** (exigence de recette, à vide), marge 0,11. Écart typique, pas un maximum : **à mesurer au banc**.

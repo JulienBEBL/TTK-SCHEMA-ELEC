@@ -1071,7 +1071,12 @@ texte(f, 15400, 2700, "480 V L1 L2 L3 / PE", 200)
 
 # ======================================================================== 12 DISTRIBUTION 400 V
 f = "12"
-gv = C + "Schneider_GV2ME14_disjoncteur_moteur.xsy"
+# QM1 / QM2 : GV2ME10 (4-6,3 A) montés et câblés (Julien 26/11 ; GV2ME14 aussi acheté, non utilisé). Réglage 6,3 A :
+# entrée MCX91A-0055 5 A à pleine charge, mini SEW 1,1 x 5 = 5,5 A (doc SEW 26/11) ; fiche GV2ME10 : 2,2 kW à 400 V,
+# Im 91 A, Icu 100 kA à 400 V (docs/references/Schneider_GV2ME10_fiche_2026-11-25.pdf). Calcul : docs/RAPPORT_v45_2026-11-26.md
+gv = C + "Schneider_GV2ME10_disjoncteur_moteur.xsy"
+for r_ in ("Q121", "Q122"):
+    REP[r_].update({"fab": "Schneider GV2ME10", "carac": "4-6,3 A - réglage 6,3 A"})
 poles = C + "Schneider_LC1D09BD_contacts_puissance_3P.xsy"
 DY12 = 2800                        # place pour le bus en haut du folio (descendu de 800 le 02/11)
 q121 = maitre(gv, "Q121", f, 4800, 3600 + DY12)
