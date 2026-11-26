@@ -510,3 +510,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : prompt pour refaire l'implantation
 - Julien : un prompt pour un nouveau chat qui refait l'implantation, et une phrase courte pour l'y envoyer.
 - Fait : `docs/PROMPT_IMPLANTATION_2026-11-26.md` (lecture, état v13 / schéma v45, changements depuis la v36, état des lieux avant GO, v14 indice D, règles). Essai : `extraire.py` lit la v45 (168 bornes, 37 câbles).
+
+## 26/11/2026 : passation du chat schéma (v45)
+- Julien : un prompt de passation pour le prochain chat schéma.
+- Fait : `docs/PASSATION_2026-11-26_v45.md` (remplace celui de la v43) ; renvoi dans la mémoire.

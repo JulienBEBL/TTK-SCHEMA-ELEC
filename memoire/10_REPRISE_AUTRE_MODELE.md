@@ -3,6 +3,7 @@
 À lire après CLAUDE.md et README. Résume **comment travailler** sur ce dépôt sans refaire les erreurs des v37 / v38.
 
 ## État
+- Passation du chat schéma : `docs/PASSATION_2026-11-26_v45.md` ; chat d'implantation : `docs/PROMPT_IMPLANTATION_2026-11-26.md`.
 - Version : **v45** (`schema/generes/release/TTK_2026-11-26_v45.xrs`), rapport `docs/RAPPORT_v45_2026-11-26.md`.
 - Attente : relecture de la v45 (QM1 / QM2 en GV2ME10, réglage 6,3 A). SEW : réponse écrite reçue et reportée (`docs/RAPPORT_SEW_2026-11-26.md`), pas de relance.
 - Piège (v43) : dans ce terminal, un heredoc bash passé à python transforme « \\ » en « \ » : pour un correctif qui contient des antislashs (« \u00b7 » de xrs_gen), écrire le script Python dans un fichier (outil Write).
