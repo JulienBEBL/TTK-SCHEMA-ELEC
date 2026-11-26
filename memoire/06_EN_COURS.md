@@ -3,7 +3,7 @@
 ## Version actuelle : v45 (26/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-26_v45.xrs` : comme la v44, QM1 / QM2 en GV2ME10 (réglage 6,3 A). Tous contrôles à 0. v44 dans old/ (non réenregistrée).
 Rapport : `docs/RAPPORT_v45_2026-11-26.md` (vérification du GV2ME10 à pleine charge, précision de vitesse).
-- Suite : régler QM1 / QM2 à 6,3 A ; relecture de la v45 ; `implantation/generateur/saisie.json` porte encore « Schneider GV2ME14 » (2 lignes) : à corriger avec l'accord de Julien ; implantation à régénérer ; freins (D17), TIA.
+- Suite : régler QM1 / QM2 à 6,3 A ; relecture de la v45 ; `implantation/generateur/saisie.json` : QM1 / QM2 en « Schneider GV2ME10 » (corrigé le 26/11, accord de Julien ; schéma inchangé) ; implantation à régénérer ; freins (D17), TIA.
 
 ## Version précédente : v44 (26/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-26_v44.xrs` : 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros ; tous contrôles à 0. v43 dans old/ (non réenregistrée).

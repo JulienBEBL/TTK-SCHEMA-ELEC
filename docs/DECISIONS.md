@@ -650,3 +650,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 26/11/2026 : v45, QM1 / QM2
 - [D] Julien : QM1 / QM2 = GV2ME10 (montés et câblés). [C] Fiche Schneider : 2,2 kW à 400 V, 4-6,3 A, Im 91 A, Icu 100 kA. [H] Vérification : pas sous-dimensionné ; **réglage 6,3 A** (mini SEW 5,5 A).
 - [D] Julien : précision de vitesse (0,94 tr/min par axe, 1,89 au pire) notée en mémoire, « théoriquement super » ; à mesurer au banc.
+- [D] Julien (26/11) : `saisie.json` corrigé, QM1 / QM2 en GV2ME10.

@@ -502,3 +502,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : noter la précision de vitesse (« théoriquement super ») ; QM1 / QM2 sont des GV2ME10 câblés : vérifier qu'ils ne sont pas sous-dimensionnés, donner le réglage.
 - Fait : fiche Schneider GV2ME10 lue (2,2 kW à 400 V, Im 91 A, Icu 100 kA) et rangée dans `docs/references/` ; vérification : OK, réglage 6,3 A ; v45 (QM1 / QM2 en GV2ME10), tout à 0 ; mémoire (02, 03, 04, 05, 06, 10, README), CLAUDE.md, README.
 - En attente : `saisie.json` (GV2ME14 -> GV2ME10) avec l'accord de Julien ; relecture v45.
+
+## 26/11/2026 : saisie.json, GV2ME10
+- Julien : « Oui, corrige » (GV2ME14 -> GV2ME10 dans `saisie.json`).
+- Fait : 2 lignes corrigées (QM1, QM2) ; JSON valide ; schéma régénéré identique à la v45, contrôles à 0. Implantation pas régénérée.
