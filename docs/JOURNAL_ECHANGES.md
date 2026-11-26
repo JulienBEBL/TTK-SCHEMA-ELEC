@@ -523,3 +523,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : reprise du chat schéma (v45)
 - Julien : suivre `docs/PASSATION_2026-11-26_v45.md`.
 - Fait : `git pull --rebase` (à jour) ; mémoire et rapports relus ; release v45 inchangée ; mémoire 05 (TF X10 corrigé en v44) et 10 (`ttk_schema.py` en CRLF) mises à jour. Attente des retours sur la v45.
+
+## 26/11/2026 : implantation v14, réponses aux 3 questions
+- Julien : 1 « seulement +BJM X1.13 » ; 2 « NON RAJOUTE » ; 3 « c'est quoi déjà X21 ? ».
+- Fait : X21 expliqué (4 blocs PTFIX 6/12 de distribution 24 V sur R3, f21) ; lecture du 2 et largeur des bornes de la boîte à confirmer. Pas de GO encore, rien généré.

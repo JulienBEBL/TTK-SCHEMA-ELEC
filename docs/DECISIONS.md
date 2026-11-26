@@ -658,3 +658,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Changent : 69 bornes +BJM-X1 (hors armoire) ; côté extérieur des bornes vers la machine / le pupitre = borne X1.n de la boîte ; n° de fil des f43 / f61 / f63 / f64 (+100 : 4101 -> 4301, 6011 -> 6111…) ; TF sur U1 / U2 X10:3 / X10:4.
 - [H] Générateur à adapter (pas le schéma) : X1.n traité comme côté extérieur ; bornes X1 exclues du contrôle « posée sur les rails » et comptées à part. Questions posées à Julien (affichage du côté extérieur, boîte sur les 2 pages, X21.14).
 - [C] 26/11 (reprise v45) : mémoire 05 et 10 remises à jour (TF déjà corrigé en v44 ; `ttk_schema.py` en CRLF).
+
+## 26/11/2026 : implantation v14, réponses de Julien
+- [D] Julien : bas des bornes R5 = « +BJM X1.n » seulement (pas l'appareil final).
+- [D] Julien : « NON RAJOUTE » : le bornier +BJM-X1 est ajouté dans le dossier (2 pages). Lecture de l'assistant, à confirmer ; type de borne de la boîte toujours à choisir [?].
+- [?] X21.14 à droite de K4 : Julien a demandé ce qu'est X21 ; explication donnée, validation attendue.
