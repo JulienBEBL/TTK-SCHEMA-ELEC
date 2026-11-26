@@ -652,3 +652,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : précision de vitesse (0,94 tr/min par axe, 1,89 au pire) notée en mémoire, « théoriquement super » ; à mesurer au banc.
 - [D] Julien (26/11) : `saisie.json` corrigé, QM1 / QM2 en GV2ME10.
 - [D] Julien (26/11) : l'implantation sera refaite dans un nouveau chat (prompt `docs/PROMPT_IMPLANTATION_2026-11-26.md`).
+
+## 26/11/2026 : implantation, état des lieux v36 -> v45 (nouveau chat)
+- [C] `donnees.json` v45 comparé à celui de la v13 (v36) : **99 bornes d'armoire, les mêmes** (après renommage X43 / X61 / X63 / X64), mêmes types (PT 2,5 36, PT 4 15, terre 6, PTFIX 2X4 38, PTFIX 6/12 4). Rien ne change en place sur R3, R4, R5 ; tout tient comme en v13.
+- [C] Changent : 69 bornes +BJM-X1 (hors armoire) ; côté extérieur des bornes vers la machine / le pupitre = borne X1.n de la boîte ; n° de fil des f43 / f61 / f63 / f64 (+100 : 4101 -> 4301, 6011 -> 6111…) ; TF sur U1 / U2 X10:3 / X10:4.
+- [H] Générateur à adapter (pas le schéma) : X1.n traité comme côté extérieur ; bornes X1 exclues du contrôle « posée sur les rails » et comptées à part. Questions posées à Julien (affichage du côté extérieur, boîte sur les 2 pages, X21.14).

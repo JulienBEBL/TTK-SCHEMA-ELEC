@@ -514,3 +514,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : passation du chat schéma (v45)
 - Julien : un prompt de passation pour le prochain chat schéma.
 - Fait : `docs/PASSATION_2026-11-26_v45.md` (remplace celui de la v43) ; renvoi dans la mémoire.
+
+## 26/11/2026 : implantation v14, état des lieux
+- Julien : nouveau chat, suivre `docs/PROMPT_IMPLANTATION_2026-11-26.md` (état des lieux d'abord, sans rien générer).
+- Fait : mémoire relue ; `extraire.py` sur la v45 (168 bornes, 37 câbles), `donnees.json` remis par `git checkout` ; comparaison avec la v36 : 99 bornes d'armoire inchangées, rails inchangés ; générateur à adapter pour la boîte +BJM. 3 questions posées. Rien généré, rien poussé.
