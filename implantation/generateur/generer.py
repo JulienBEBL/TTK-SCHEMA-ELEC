@@ -548,7 +548,7 @@ def page_boite():
     y += 6
     notes = ["Boîte de fabrication BEBL, bornier X1 de 69 bornes (66 de passage, 3 de terre : X1.4, X1.8, X1.69). "
              "Types (Julien 26/11) : PT 2,5 ; PT 4 pour les moteurs M1 / M2 (U V W) et les freins ; terre en PT 4 "
-             "(largeur prise égale à la PT 4, 6,2 mm, à vérifier).",
+             "(6,2 mm, confirmé par Julien le 26/11). Pas-à-pas W9 / W10 en PT 2,5 (Julien 26/11).",
              "Ordre des bornes = ordre du schéma (v37) : un groupe par câble, une butée de chaque côté de chaque groupe "
              "(règle des rails de l'armoire, appliquée à la boîte).",
              "N° de conducteur = celui de la borne d'armoire raccordée. Tous les câbles sortants passent par la boîte, "
@@ -829,7 +829,6 @@ def ouverts():
         elif rec["type"] != "PTFIX":
             besoin[type_borne(rep)] += 1
     manque = {k: besoin[k] - t["achetes"][k] for k in besoin}
-    OUVERTS.append("Boîte +BJM-X1 : bornes de terre en PT 4, largeur prise égale à la PT 4 (6,2 mm), à vérifier.")
     return besoin, manque, boite
 
 

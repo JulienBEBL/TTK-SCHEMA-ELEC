@@ -185,3 +185,4 @@ Fichiers : `release/TTK_implantation_2026-11-26_v15.pdf` (3 pages A3) + `_verifi
 - `saisie.json` (`boite.bornier`) : liste PT 4 (X1.1-3, X1.5-7, X1.9-12), largeurs PT 2,5 5,2 / PT 4 6,2 / terre 6,2 [H] ; `generer.py` : types de la boîte, comptage par type, légende de la page 3.
 - Comme dans l'armoire : W9 / W10 (pas-à-pas) restent en PT 2,5.
 - Contrôle : 0 / 0 / 0. Boîte : 56 PT 2,5, 10 PT 4, 3 terre (PT 4).
+- Julien (26/11) : W9 / W10 en PT 2,5 et terre PT 4 à 6,2 mm confirmés. Générateur corrigé (plus de « à vérifier ») ; PDF non régénéré.
