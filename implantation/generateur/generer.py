@@ -103,7 +103,7 @@ def court_ext(rec):
 
 def type_borne(rep):
     if rep.startswith("X1."):
-        return "terre" if rep in BJM["terre"] else "boîte"
+        return "terre" if rep in BJM["terre"] else "PT 4" if rep in BJM["PT 4"] else "PT 2,5"
     t = S["types_bornes"]
     if rep in t["terre"]:
         return "terre"
@@ -116,7 +116,7 @@ def type_borne(rep):
 
 def larg_borne(rep):
     if rep.startswith("X1."):
-        return BJM["largeur"]
+        return BJM["largeur"][type_borne(rep)]
     return S["types_bornes"]["largeur"][type_borne(rep)]
 
 
@@ -546,9 +546,9 @@ def page_boite():
         y, xd = rangee(p, br, y + (3 if i else 0), rg["troncon"] + " : haut = borne d'armoire raccordée (+A1), "
                        "bas = appareil sur la machine ou le pupitre")
     y += 6
-    notes = [f"Boîte de fabrication BEBL, bornier X1 de 69 bornes (66 de passage, 3 de terre : X1.4, X1.8, X1.69). "
-             f"Type de borne à choisir : dessinées en largeur PT 2,5 ({str(BJM['largeur']).replace('.', ',')} mm), "
-             "accord de Julien du 26/11.",
+    notes = ["Boîte de fabrication BEBL, bornier X1 de 69 bornes (66 de passage, 3 de terre : X1.4, X1.8, X1.69). "
+             "Types (Julien 26/11) : PT 2,5 ; PT 4 pour les moteurs M1 / M2 (U V W) et les freins ; terre en PT 4 "
+             "(largeur prise égale à la PT 4, 6,2 mm, à vérifier).",
              "Ordre des bornes = ordre du schéma (v37) : un groupe par câble, une butée de chaque côté de chaque groupe "
              "(règle des rails de l'armoire, appliquée à la boîte).",
              "N° de conducteur = celui de la borne d'armoire raccordée. Tous les câbles sortants passent par la boîte, "
@@ -556,11 +556,11 @@ def page_boite():
              "Plans de bornier du schéma : folios 70 à 73."]
     for n in notes:
         y = p.bloc(16, y, "• " + n, 2.4, maxw=222) + 0.8
-    legende_etroite(p, 300, 162, bas="Bas : appareil (+M, +P1)")
+    legende_etroite(p, 300, 162, bas="Bas : appareil (+M, +P1)", terre="Terre V/J PT 4 (6,2)")
     return p
 
 
-def legende_etroite(p, x, y, bas="Bas : côté extérieur (+BJM X1.n)"):
+def legende_etroite(p, x, y, bas="Bas : côté extérieur (+BJM X1.n)", terre="Terre V/J (5,2)"):
     """Légende de lecture d'une borne, en colonne (à droite du rail R4)."""
     w = 404 - x
     p.text(x, y, "Lecture d'une borne", 2.6, gras=True, maxw=w)
@@ -571,9 +571,8 @@ def legende_etroite(p, x, y, bas="Bas : côté extérieur (+BJM X1.n)"):
         y += 3.4
     y += 1.6
     for i, (nom, f) in enumerate([("PT 2,5 (5,2)", TYPE_FILL["PT 2,5"]), ("PT 4 (6,2)", TYPE_FILL["PT 4"]),
-                                  ("PTFIX 2X4 (6)", TYPE_FILL["PTFIX 2X4"]), ("Terre V/J (5,2)", TYPE_FILL["terre"]),
-                                  ("Butée (10)", "#262626"), ("Capot de fin", "#8c8c8c"),
-                                  ("Boîte : type ?", TYPE_FILL["boîte"])]):
+                                  ("PTFIX 2X4 (6)", TYPE_FILL["PTFIX 2X4"]), (terre, TYPE_FILL["terre"]),
+                                  ("Butée (10)", "#262626"), ("Capot de fin", "#8c8c8c")]):
         xx = x + (i % 2) * (w / 2)
         yy = y + (i // 2) * 4.2
         p.rect(xx, yy - 2.6, 4, 3, fill=f, stroke="#000", sw=0.2)
@@ -822,16 +821,15 @@ def page_synoptique():
 def ouverts():
     t = S["types_bornes"]
     besoin = {k: 0 for k in t["achetes"]}
-    boite = {"passage (type à choisir)": 0, "terre": 0}
+    boite = {"PT 2,5": 0, "PT 4": 0, "terre (PT 4)": 0}
     for rep, rec in B.items():
         if rep.startswith("X1."):
-            boite["terre" if type_borne(rep) == "terre" else "passage (type à choisir)"] += 1
+            tb = type_borne(rep)
+            boite["terre (PT 4)" if tb == "terre" else tb] += 1
         elif rec["type"] != "PTFIX":
             besoin[type_borne(rep)] += 1
     manque = {k: besoin[k] - t["achetes"][k] for k in besoin}
-    OUVERTS.append(f"Boîte +BJM-X1 : type de borne à choisir ; dessinée en largeur PT 2,5 "
-                   f"({str(BJM['largeur']).replace('.', ',')} mm), "
-                   "accord de Julien du 26/11.")
+    OUVERTS.append("Boîte +BJM-X1 : bornes de terre en PT 4, largeur prise égale à la PT 4 (6,2 mm), à vérifier.")
     return besoin, manque, boite
 
 

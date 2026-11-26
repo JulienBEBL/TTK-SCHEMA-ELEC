@@ -3,8 +3,8 @@
  "document": {
   "titre": "Armoire +A1 : implantation et borniers",
   "machine": "Machine de tressage TTK, n° 001-EU",
-  "indice": "D",
-  "version": "v14",
+  "indice": "E",
+  "version": "v15",
   "date": "26/11/2026",
   "auteur": "THRO.J",
   "societe": "BEBL",
@@ -28,6 +28,11 @@
     "D",
     "26/11/2026",
     "Schéma v45 : boîte +BJM (bornier X1, 69 bornes, ajouté au dossier), bornes renommées X43 / X61 / X63 / X64, côté extérieur des bornes R5 = « +BJM X1.n », TF sur X10:3 / X10:4, QM1 / QM2 en GV2ME10. X21.14 à droite de K4 validé (Julien 26/11)."
+   ],
+   [
+    "E",
+    "26/11/2026",
+    "Boîte +BJM-X1 : types de borne choisis par Julien (26/11) : PT 2,5 ; PT 4 pour les moteurs M1 / M2 et les freins ; terre en PT 4."
    ]
   ]
  },
@@ -1075,9 +1080,12 @@
   "designation": "Boîte de jonction machine (une seule), bornier +BJM-X1",
   "statut": "nommée par Julien le 17/11 (ancien +M-X1)",
   "bornier": {
-   "_note": "Bornier +BJM-X1, ordre du schéma v37 (X1.1 à X1.69). Hors armoire : dessiné sans rail, ni vis ni support. Type de borne à choisir [?] : dessinées en largeur PT 2,5 (5,2 mm), accord de Julien le 26/11. Une butée de chaque côté de chaque groupe (règle des rails, appliquée à la boîte).",
-   "type": "à choisir",
-   "largeur": 5.2,
+   "_note": "Bornier +BJM-X1, ordre du schéma v37 (X1.1 à X1.69). Hors armoire : dessiné sans rail, ni vis ni support. Types (Julien 26/11) : PT 2,5 ; PT 4 pour les moteurs M1 / M2 (U V W) et les freins ; terre en PT 4. Une butée de chaque côté de chaque groupe (règle des rails de l'armoire, appliquée à la boîte).",
+   "largeur": {
+    "PT 2,5": 5.2,
+    "PT 4": 6.2,
+    "terre": 6.2
+   },
    "terre": [
     "X1.4",
     "X1.8",
@@ -1229,7 +1237,20 @@
       }
      ]
     }
-   ]
+   ],
+   "PT 4": [
+    "X1.1",
+    "X1.2",
+    "X1.3",
+    "X1.5",
+    "X1.6",
+    "X1.7",
+    "X1.9",
+    "X1.10",
+    "X1.11",
+    "X1.12"
+   ],
+   "_largeur_terre": "terre en PT 4 (Julien 26/11) : largeur prise égale à la PT 4 (6,2 mm) [H, à vérifier sur la borne]."
   }
  },
  "cables": [

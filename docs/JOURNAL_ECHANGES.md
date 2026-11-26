@@ -533,3 +533,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Fait : v14 indice D, 3 pages (boîte +BJM-X1 en page 3, page 2 pleine) ; `extraire.py`, `generer.py`, `saisie.json` adaptés ; contrôle 0 / 0 / 0 ; PNG relus. Commit local, push sur accord.
 - Julien : « Oui, pousse » (v14). Fait : poussé sur `main`.
 - Julien : « on garde la 3e page ». Noté (mémoire 08, décisions).
+
+## 26/11/2026 : implantation v15, types de bornes de la boîte
+- Julien : « PT 2,5 pour la boîte et des PT 4 pour les arrivées moteurs et frein notamment ; aussi PT 4 pour la terre ».
+- Fait : v15 indice E (types dans `saisie.json`, générateur) ; contrôle 0 / 0 / 0 ; page 3 relue. Commit local, push sur accord.

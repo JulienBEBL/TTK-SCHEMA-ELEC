@@ -669,3 +669,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] Bornier +BJM-X1 en 3e page : la page 2 est pleine (écart à « 2 pages seulement », signalé à Julien).
 - [C] v14 : contrôle 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs v45.
 - [D] Julien (26/11) : on garde la 3e page de l'implantation (bornier +BJM-X1). Le dossier fait 3 pages.
+
+## 26/11/2026 : implantation v15 (indice E), bornes de la boîte
+- [D] Julien : boîte +BJM-X1 en PT 2,5 ; PT 4 pour les moteurs M1 / M2 et les freins ; terre en PT 4.
+- [H] Pas-à-pas W9 / W10 laissés en PT 2,5 (comme X20 dans l'armoire) ; largeur de la borne de terre PT 4 prise à 6,2 mm, à vérifier.

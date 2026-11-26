@@ -1,6 +1,6 @@
 # 08 · Dossier d'implantation +A1 (généré)
 
-Créé le 17/11/2026. Version actuelle : **v14, indice D** (26/11, schéma v45, PC PERSO JULIEN), **3 pages** (plaque, borniers R3-R5, boîte +BJM-X1), en attente des retours de Julien. v13 et avant dans `old/`.
+Créé le 17/11/2026. Version actuelle : **v15, indice E** (26/11, schéma v45, PC PERSO JULIEN), **3 pages** (plaque, borniers R3-R5, boîte +BJM-X1), en attente des retours de Julien. v13 et avant dans `old/`.
 
 ## Demande de Julien (18/11) [D]
 - **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). **26/11 : 3e page gardée** (bornier de la boîte +BJM-X1, Julien) : le dossier fait 3 pages. Générateur gardé, **draw.io abandonné**.
@@ -107,3 +107,4 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 - 26/11 (réponses de Julien) : bas des bornes R5 = **« +BJM X1.n »** seulement [D] ; bornier **+BJM-X1 ajouté** au dossier (« NON RAJOUTE », lecture à confirmer) ; X21.14 : explication demandée par Julien, validation attendue.
 - 26/11 (**v14 indice D**, GO de Julien) : bas des bornes R5 « +BJM X1.n » [D] ; bornier +BJM-X1 ajouté en **page 3** (page 2 pleine) [D « rajoute », 3e page à confirmer] ; X21.14 à droite de K4 **validé** [D] ; bornes de la boîte en largeur PT 2,5 5,2 mm, type à choisir [D / ?]. `saisie.json` : `boite.bornier` (largeur, terre X1.4 / X1.8 / X1.69, 2 rangées par câble). Contrôle 0 / 0 / 0. Seul point ouvert : type de borne de la boîte.
 - 26/11 : **3e page gardée** (Julien). Reste ouvert : type de borne de la boîte +BJM-X1.
+- 26/11 (**v15 indice E**) : types de borne de la boîte +BJM-X1 [D Julien] : **PT 2,5** ; **PT 4** pour les moteurs M1 / M2 (X1.1-3, X1.5-7) et les freins (X1.9-12) ; **terre en PT 4** (X1.4, X1.8, X1.69 ; largeur prise à 6,2 mm [H, à vérifier]). Boîte : 56 PT 2,5, 10 PT 4, 3 terre. Contrôle 0 / 0 / 0. v14 dans `old/`.

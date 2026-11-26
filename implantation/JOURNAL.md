@@ -178,3 +178,10 @@ Fichiers : `release/TTK_implantation_2026-11-26_v14.pdf` (**3 pages A3**) + `_ve
 - Page 2 pleine : la boîte ne tenait pas, d'où la 3e page (écart à la règle « 2 pages », signalé à Julien).
 - Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs ; 3 PNG relus. Bornes : armoire PT 2,5 36, PT 4 15, terre 6, PTFIX 2X4 38 ; boîte 66 passage + 3 terre.
 - Julien (26/11) : 3e page gardée.
+
+## v15 (indice E) — 26/11/2026 (schéma v45), PC PERSO JULIEN
+Fichiers : `release/TTK_implantation_2026-11-26_v15.pdf` (3 pages A3) + `_verification.md` ; v14 dans `old/`.
+- Julien (26/11) : boîte en PT 2,5 ; PT 4 pour les arrivées moteurs et freins ; terre en PT 4.
+- `saisie.json` (`boite.bornier`) : liste PT 4 (X1.1-3, X1.5-7, X1.9-12), largeurs PT 2,5 5,2 / PT 4 6,2 / terre 6,2 [H] ; `generer.py` : types de la boîte, comptage par type, légende de la page 3.
+- Comme dans l'armoire : W9 / W10 (pas-à-pas) restent en PT 2,5.
+- Contrôle : 0 / 0 / 0. Boîte : 56 PT 2,5, 10 PT 4, 3 terre (PT 4).
