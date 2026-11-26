@@ -3,8 +3,9 @@
 À lire après CLAUDE.md et README. Résume **comment travailler** sur ce dépôt sans refaire les erreurs des v37 / v38.
 
 ## État
-- Version : **v41** (`schema/generes/release/TTK_2026-11-25_v41.xrs`), rapports `docs/RAPPORT_v40_2026-11-25.md` et `docs/RAPPORT_v41_2026-11-25.md`.
-- Attente : retours de Julien sur la v41 ; question du f40 (accrochage du texte des contacts).
+- Version : **v42** (`schema/generes/release/TTK_2026-11-26_v42.xrs`), rapport `docs/RAPPORT_v42_2026-11-26.md`.
+- Attente : retours de Julien sur la v42.
+- Placement des numéros de fil (v42) : `centre_troncon` (milieu du plus long chemin, parties libres de `troncon_libre`) ; obstacles des symboles : `obstacles_symboles` / `dessin_symbole` ; débogage : `TTK_DBG=<numéro>` affiche les positions candidates.
 - Lecture d'un folio par calcul (v40) : un petit script dans le scratchpad qui liste symboles (emprise, champs, broches), textes, câbles, cadres, renvois, numéros et fils d'un folio affiché ; il n'est pas dans le dépôt, à recréer au besoin.
 
 ## Méthode qui marche (à suivre à chaque version)
@@ -19,11 +20,11 @@
 - Numéros de fil : taille `NUM_T = 200` (xrs_gen.py).
 - Le contrôle ne voit **pas** les textes dessinés dans les symboles (noms de broches) : vérifier à la main les cadres autour des symboles.
 - Fichiers : `ttk_schema.py` en LF, `xrs_gen.py` en CRLF : faire les remplacements avec un petit script Python (lire, `assert t.count(a) == 1`, remplacer, réécrire en gardant les fins de ligne). Écrire les gros scripts dans un fichier (pas de heredoc avec beaucoup de guillemets).
-- Symboles CUSTOM : 3 copies : `outils/librairie/CUSTOM` (parfois un autre format : bloc brut UTF-8), `librairie_winrelais/sym_electrotech/CUSTOM` et `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (cp1252, CRLF ; ces 2 dernières identiques octet pour octet, c'est celle du PC que lit le script). Contrôle : `outils/controles/symboles.py` (dans `tout.sh`).
+- Symboles CUSTOM : 3 copies : `outils/librairie/CUSTOM` (parfois un autre format : bloc brut UTF-8), `librairie_winrelais/sym_electrotech/CUSTOM` et `C:\Users\Public\Documents\Elec-CAO\sym_electrotech\CUSTOM` (cp1252, CRLF ; ces 2 dernières identiques octet pour octet, c'est celle du PC que lit le script). Contrôle : `outils/controles/symboles.py` (dans `tout.sh`). Nouveau symbole (v42, `Thermocouple_bas.xsy`) : l'écrire dans les 3 dossiers ; modification par script (`tc_bas`, `mcx_large` : positions relatives à la broche d'origine, chaque copie dans son encodage), puis diff.
 - **Retoucher un symbole** (erreur de la v40 : épaisseur 200 au lieu de 20) : remplacer la ligne de contour entière (10 champs : x1, y1, x2, y2, épaisseur, style 0 plein / 1 pointillé, 0, 0, 0, vide), jamais couper des octets (« · » fait 1 octet en cp1252, 2 en UTF-8) ; vérifier ensuite le diff du .xrs généré.
 - Bornes : renommer un folio renomme ses bornes (règle X + folio) : mettre aussi à jour `implantation/generateur/saisie.json` (sinon la nomenclature signale des bornes absentes).
 - `implantation/` : ne pas régénérer le dossier sans accord ; `extraire.py` écrit `donnees.json` (le remettre avec `git checkout` après un essai).
 - D'autres sessions peuvent pousser (SEW, docs) : toujours `git pull --rebase` avant de commencer et avant de pousser. Préfixe de commit unique `[PERSO JULIEN]` (25/11).
 
 ## Outils de contrôle (dans le dépôt depuis le 24/11, avant dans le scratchpad)
-`outils/controles/` : `tout.sh` (génère + tout contrôle), `symboles.py` (copies CUSTOM, format des contours, v41), `cadres.py` (cadres pointillés), `textes.py` (folios hors 10-69), `d11.py` (24 V / 0 V des drivers et E/S), `bornes.py` (doublons, règle X + folio, saisie.json), `bbox.py` (géométrie d'un symbole de la librairie).
+`outils/controles/` : `tout.sh` (génère + tout contrôle ; v42 : le contrôle élargi voit aussi corps des symboles, noms de broches et points de connexion), `symboles.py` (copies CUSTOM, format des contours, v41), `cadres.py` (cadres pointillés), `textes.py` (folios hors 10-69), `d11.py` (24 V / 0 V des drivers et E/S), `bornes.py` (doublons, règle X + folio, saisie.json), `bbox.py` (géométrie d'un symbole de la librairie).

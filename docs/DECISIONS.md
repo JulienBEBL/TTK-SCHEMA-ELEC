@@ -596,3 +596,15 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 26/11/2026 : captures v41
 - [C] f40 dans WinRelais : textes des contacts de retour accrochés à gauche (code 0). Attente de la confirmation de Julien [?].
 - [C] Borne de terre des plans de bornier : rendu jaune + bandes vertes visible dans WinRelais. Avis de Julien attendu [?].
+
+## 26/11/2026 : captures v41, retours v41 et v42
+- [D] Julien : f40, textes des contacts à droite du symbole, accrochés à droite ; « contact miroir » déplacé.
+- [D] Julien : rayé vert / jaune plus marqué ; nom du câble et n° de fil en gras ; résumé des fonctions sous chaque bornier.
+- [D] Julien : « Affaire » retiré du f01 ; W1 / 5G4 à droite du câble (f10).
+- [D] Julien : variateur plus large (plus d'espace entre bornes, sans dépasser le folio) : pas de 600 dans les groupes X5, X6, X10, X40, X20, X22, X23.
+- [D] Règle générale (Julien) : numéro de fil centré sur la longueur du tronçon, sans superposition, calculé avec la taille du texte.
+- [H] f64 : thermocouple retourné (nouveau symbole CUSTOM `Thermocouple_bas.xsy`), cause du numéro « dans le symbole ».
+- [H] f20 : bornes +BJM sur 2 niveaux à 400 (600 avant) pour dégager les broches du moteur.
+- [H] KA1 : noms de broches masqués (doublon avec les textes jaunes du symbole).
+- [C] Check folios : 31 folios cohérents, 336 renvois « fNN » justes. Check nomenclature : appareils cohérents ; câbles W8, W11, W12, W14 corrigés dans le schéma (folios et origines relus sur le dessin) ; `saisie.json` inchangé (implantation).
+- [C] v42 générée : tous contrôles à 0 (contrôle élargi aux symboles).

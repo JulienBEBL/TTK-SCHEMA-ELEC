@@ -35,7 +35,7 @@ while i < len(L):
             f = L[j].split(SEP)
             if f[3] == "1" and f[0]:
                 s = int(f[6] or 300)
-                x = int(f[1]) - (W(f[0], s) // 2 if f[4] == "6" else 0)
+                x = int(f[1]) - {"6": W(f[0], s) // 2, "2": W(f[0], s)}.get(f[4], 0)   # v42 : accroché à droite (2)
                 box[k].append((f"{rep}:{f[0][:24]}", (x, int(f[2]), x + W(f[0], s), int(f[2]) + s)))
         i += 12
     elif L[i].startswith("\u00a4#DefCable"):
@@ -69,6 +69,42 @@ while i < len(L):
         i = j
     else:
         i += 1
+# v42 (Julien 26/11 : numéros dans un symbole, sur les points rouges ou les noms des broches) : corps des symboles,
+# textes dessinés dans le symbole (BK, GN...), noms des broches affichés, points de connexion des broches.
+# Ces zones sont contrôlées contre les numéros de fil, les textes libres et entre noms de broches.
+corps = {k: [] for k in num}
+i = 0
+while i < len(L):
+    if L[i].startswith("¤#Symbole" + SEP):
+        info = L[i + 3].split(SEP)
+        k, noms_ = int(info[8]), info[5] == "1"
+        rep = L[i + 4].split(SEP)[0]
+        j, sec, xs, ys = i + 1, None, [], []
+        while L[j] != "¤#FIN¤":
+            if L[j].startswith("¤#"):
+                sec = L[j]
+            else:
+                f = L[j].split(SEP)
+                if sec == "¤#Contour¤" and len(f) > 4:
+                    xs += [int(f[0]), int(f[2])]
+                    ys += [int(f[1]), int(f[3])]
+                elif sec == "¤#Arc¤" and len(f) > 3 and f[2]:
+                    xs += [int(f[0]) - int(f[2]), int(f[0]) + int(f[2])]
+                    ys += [int(f[1]) - int(f[2]), int(f[1]) + int(f[2])]
+                elif sec == "¤#MDessin¤" and len(f) > 5 and f[5]:
+                    s = int(f[4] or 150)
+                    box[k].append((f"dessin {rep}:{f[5][:20]}", (int(f[1]), int(f[2]), int(f[1]) + W(f[5], s), int(f[2]) + s)))
+                elif sec == "¤#Broche¤" and len(f) > 13:
+                    px, py = int(f[1]), int(f[2])
+                    corps[k].append((f"point {rep}:{f[0]}", (px - 60, py - 60, px + 60, py + 60)))
+                    if noms_ and f[0]:
+                        s = int(f[13] or 200)
+                        box[k].append((f"broche {rep}:{f[0]}", (int(f[5]), int(f[6]), int(f[5]) + W(f[0], s), int(f[6]) + s)))
+            j += 1
+        if xs:
+            corps[k].append((f"corps {rep}", (min(xs) + 30, min(ys) + 30, max(xs) - 30, max(ys) - 30)))
+        i = j
+    i += 1
 # cadres pointillés (v38) : les 4 bords
 if "¤#DSansTexte¤" in L:
     i = L.index("¤#DSansTexte¤") + 1
@@ -135,6 +171,11 @@ for k, lst in box.items():
             if zrep and zn.startswith("ellipse") and n.startswith("brin"):
                 continue
             if ov(zb, b):
+                out.append(f"  {n} x {zn}" + (f" {b} {zb}" if "-v" in sys.argv else ""))
+    # v42 : numéros de fil et textes libres sur le corps d'un symbole ou sur un point de connexion
+    for zn, zb in corps.get(k, []):
+        for n, b in lst:
+            if n.startswith(("fil ", "txt ")) and ov(zb, b):
                 out.append(f"  {n} x {zn}" + (f" {b} {zb}" if "-v" in sys.argv else ""))
     # renvois / fils des autres : renvoi traversé
     if out:

@@ -274,6 +274,18 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - **Pas de fil horizontal au-dessus d'une accolade de réserve** (f64) : chaîne dans l'axe de l'entrée.
 - **Symbole moteur SEW** : contour extérieur plein (le pointillé est réservé aux cadres de lieu) ; séparations internes en pointillé.
 - **Résistance de freinage** (f31, f32) : sous le variateur, entre +R et -R ; repère seul affiché (désignation dans la nomenclature).
-- **Plans de bornier** : 8 rangées sur 4 folios, largeurs équilibrées (découpage optimal), rangées justifiées ; bornes et bornier de terre **rayés vert / jaune** (`cadre_vj`, bandes de 200, zone du numéro sans bande).
+- **Plans de bornier** : 8 rangées sur 4 folios, largeurs équilibrées (découpage optimal), rangées justifiées ; bornes et bornier de terre **rayés vert / jaune** (`cadre_vj`, bandes de 200, zone du numéro sans bande ; v42 : bandes de 100).
 - **f80** : texte le plus grand possible (320), colonnes longues sur 2 lignes (`tableau_pages(..., coupe=True)`).
 - **f21** : images des blocs PTFIX au-dessus des renvois du haut.
+
+## v42 (26/11, retours de Julien sur la v41)
+- **Numéro de fil centré** (Julien : « centrer le numéro par rapport à la longueur du câble ; fils à plusieurs coudes : le plus au centre possible, sans superposition ; calculer avec la taille de police et la longueur du texte ») : centre = milieu du plus long chemin du tronçon ; numéro sur la partie libre la plus proche (`centre_troncon`) ; marge 130 (60, puis 0 si rien ne tient) ; alignement des voisins seulement si leurs centres sont à moins de 400. Barre = horizontale de plus de 6000 avec au moins 2 piquages (nom près du début).
+- **Obstacles d'un numéro** : fils, textes, câbles, cadres, renvois, et (v42) corps des symboles, noms de broches affichés, textes dessinés du symbole, points de connexion (`obstacles_symboles`).
+- **Cadres de lieu** : englobent le corps, les broches, les noms de broches et les textes dessinés des symboles (`dessin_symbole`).
+- **f40** : textes des contacts de retour à droite du contact, **accrochés à droite** (code 2, `place(..., align=2)`) ; « contact miroir » à gauche du contact.
+- **Symbole sans doublon de noms** : si le symbole écrit déjà ses broches en dessin (KA1), noms de broches masqués (`noms=False`).
+- **Câble client W1** : repère dans l'ovale à droite du dernier conducteur, composition dessous (`cable(..., droite=True)`).
+- **Variateur MCX91A** : pas de 600 dans les groupes X5, X6, X10, X40, X20, X22, X23 (noms de broches lisibles) ; X1 / X2 à 800.
+- **Capteur à broches en haut** (thermocouple) : symbole retourné quand les fils partent vers le bas (jamais de fil à travers un dessin de symbole).
+- **Plans de bornier** : rayé vert / jaune en bandes de 100 ; nom du câble et n° de fil en gras ; sous chaque bornier, une ligne par fonction « n° des bornes : fonction » (boîte +BJM : câble et fonction ; 2 ou 3 colonnes si la place manque).
+- **Liste des câbles (f80) et nomenclature** : folios et origines relus sur le dessin (`cables_schema`), pas seulement sur `saisie.json`.

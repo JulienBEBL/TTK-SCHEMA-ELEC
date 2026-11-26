@@ -93,8 +93,15 @@ def _champs_bloc(block):
     return ch, ref[:3], loc, info[11] == "1", info[2]
 
 
-def lignes(g):
-    """Lignes de la nomenclature [(famille, [7 textes])], famille = appareil / borne / hors / cable / titre."""
+def _cable(c, schema):
+    """v42 : folio(s) et origine relus sur le schéma (schema = {repère : {folio, origine}}) ; saisie.json sinon."""
+    s = (schema or {}).get(c["repere"], {})
+    return s.get("folio") or c["folio"], s.get("origine") or c["origine"]
+
+
+def lignes(g, schema=None):
+    """Lignes de la nomenclature [(famille, [7 textes])], famille = appareil / borne / hors / cable / titre.
+    schema (v42) : folios et origines des câbles relus sur le dessin (saisie.json gardait ceux d'avant la v37)."""
     par_rep = defaultdict(list)
     bornes = Counter()
     folios_bornes = defaultdict(set)
@@ -136,14 +143,14 @@ def lignes(g):
         dest = re.search(r"\+([A-Z0-9]+)", c["destination"])
         lieu = {"BJM": "M"}.get(dest.group(1), dest.group(1)) if dest else ""
         out.append(("cable", [c["repere"], c["fonction"], f"{c['type']} {c['reference']}".strip(),
-                              c["conducteurs"], "1", lieu, c["folio"]]))
+                              c["conducteurs"], "1", lieu, _cable(c, schema)[0]]))
     return out
 
 
-def lignes_cables():
-    """Liste des câbles (f80, v33) : saisie.json, une ligne par câble."""
-    return [("cable", [c["repere"], c["fonction"], c["origine"], c["destination"],
-                       f"{c['type']} {c['reference']}".strip(), c["conducteurs"], c["folio"]])
+def lignes_cables(schema=None):
+    """Liste des câbles (f80, v33) : saisie.json, une ligne par câble ; folio et origine relus sur le schéma (v42)."""
+    return [("cable", [c["repere"], c["fonction"], _cable(c, schema)[1], c["destination"],
+                       f"{c['type']} {c['reference']}".strip(), c["conducteurs"], _cable(c, schema)[0]])
             for c in _saisie()["cables"]]
 
 

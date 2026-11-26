@@ -157,7 +157,7 @@ class Gen:
         return list(self._xsy_cache[path])
 
     def place(self, xsy, rep, folio, x, y, champs=None, ref=None, prefix=None, compact=False,
-              rep_size=None, wrap=28, fpos=None, loc=None, shown=(2, 3, 4), noms=None):
+              rep_size=None, wrap=28, fpos=None, loc=None, shown=(2, 3, 4), noms=None, align=None):
         """Pose un symbole de librairie, origine en (x, y).
 
         champs = {2: désignation, 3: fabricant + réf., 4: caractéristiques} (données nomenclature,
@@ -166,6 +166,7 @@ class Gen:
         fpos = position du repère relative à l'origine (sinon celle de la librairie).
         ref = (fabricant, réf1, réf2), () pour effacer (esclave). loc = localisation (A1, P1, M).
         noms = afficher les noms de broches (True / False), sinon valeur de la librairie.
+        align (v42) : accrochage des textes affichés (0 gauche, 2 droite, 6 centré) ; fpos est alors le point d'accroche.
         """
         if x % 200 or y % 200:
             raise GenError(f"{rep} : origine hors grille ({x},{y})")
@@ -208,6 +209,10 @@ class Gen:
             if idx:
                 c[4] = "0"
             yy += sz + 100 if idx == 0 else 300
+        if align is not None:
+            for c in ch:
+                if c[3] == "1":
+                    c[4] = str(align)
         for k in range(8):
             block[3 + k] = SEP.join(ch[k])
         if ref is not None:
@@ -228,7 +233,7 @@ class Gen:
             if c[3] == "1" and c[0]:
                 sz = int(c[6] or 300)
                 w = int(len(c[0]) * sz * 0.55)
-                tx = int(c[1]) - (w // 2 if c[4] == "6" else 0)
+                tx = int(c[1]) - {"6": w // 2, "2": w}.get(c[4], 0)
                 p.texts.append((c[0], (tx, int(c[2]), tx + w, int(c[2]) + sz)))
         self.symbols.append(p)
         allpins = [xy for pins in p.pins.values() for xy in pins]
@@ -375,9 +380,9 @@ class Gen:
     def texte(self, folio, x, y, txt, size=300, color=0, bold=0):
         self.textes.append((folio, x, y, txt, size, color, bold))
 
-    def texte_v(self, folio, x, y, txt, size=160, angle=90):
+    def texte_v(self, folio, x, y, txt, size=160, angle=90, bold=0):
         """Texte tourné (v37) : angle 90 = se lit de bas en haut, (x, y) = début du texte (en bas à gauche)."""
-        self.textes_v.append((folio, x, y, txt, size, angle))
+        self.textes_v.append((folio, x, y, txt, size, angle, bold))      # v42 : gras possible
 
     def ligne(self, folio, x1, y1, x2, y2, color=0, width=20, dashed=False):
         self.dessins.append((folio, x1, y1, x2, y2, 2, color, width, 2 if dashed else 0))
@@ -406,17 +411,20 @@ class Gen:
                 cx += c
 
     def cable(self, folio, x1, x2, y, rep, compo, desig, brins_x, etiq=None, size=300, ovale=False, compo_dx=None, nums=None, blinde=None,
-              vj=(), court=False):
+              vj=(), court=False, droite=False):
         """Câble (DefCable). etiq = (x, y) du bloc repère / composition / désignation (3 lignes),
         sinon repère à gauche du trait et composition / désignation à droite (défaut WinRelais).
         ovale=True : présentation de Julien (f32, 02/11) : trait du 1er au dernier brin, repère dans un ovale
         à gauche, composition dessous à gauche, désignation gardée mais masquée.
         compo_dx : abscisse de la composition par rapport au 1er brin (placement de Julien, f31 du 02/11).
         vj : abscisses des conducteurs vert/jaune du câble (v37, revue Krizox) : dans le trait, sans numéro de brin.
-        court=True (v37, colonnes à 800 du f60) : repère seul, taille 200, sous le trait à droite du 1er brin ; composition masquée."""
+        court=True (v37, colonnes à 800 du f60) : repère seul, taille 200, sous le trait à droite du 1er brin ; composition masquée.
+        droite=True (v42, f10, Julien 26/11) : ovale du repère à droite du dernier brin, composition centrée dessous."""
         if ovale:
             xs_ = list(brins_x) + list(vj)
             x1, x2, etiq, size = min(xs_), max(xs_), "ovale" if compo_dx is None else f"ovale:{compo_dx}", 300
+            if droite:
+                etiq = "ovaled"
             if x2 - x1 < 800:          # v37 : jamais de câble de longueur nulle (un seul brin) : trait de 800 centré
                 x1, x2 = (x1 + x2) // 2 - 400, (x1 + x2) // 2 + 400
             if court:
@@ -433,6 +441,10 @@ class Gen:
         f, x1, x2, y, rep, compo, desig, brins, etiq, size = c
         if etiq == "bas":
             return [(rep, brins[0] + 100, y + 80, size), ("", brins[0] + 100, y + 380, size), ("", brins[0] + 100, y + 680, size)]
+        if etiq == "ovaled":                       # v42 : repère à droite du câble, composition centrée dessous
+            w, wc = int(len(rep) * size * 0.55), int(len(compo) * size * 0.55)
+            return [(rep, x2 + 600 - w // 2, y - 150, size), (compo, (x2 + 600 - wc // 2) // 50 * 50, y + 400, size),
+                    ("", x2, y + 700, size)]
         if isinstance(etiq, str):
             w = int(len(rep) * size * 0.55)
             # composition sous l'ovale, arrêtée avant le 1er brin (texte long : décalée à gauche, 02/11)
@@ -645,8 +657,8 @@ class Gen:
             L.append("\u00a4#Texte\u00a4")
             for f, x, y, txt, size, color, bold in self.textes:
                 L.append(SEP.join(map(str, (x, y, txt, "", f, 0, "Arial", size, 0, color, bold, -1, 0, 0, "", 0, "", 0))) + SEP)
-            for f, x, y, txt, size, angle in self.textes_v:
-                L.append(SEP.join(map(str, (x, y, txt, "", f, 0, "Arial", size, angle, 0, 0, -1, 0, 0, "", 0, "", 0))) + SEP)
+            for f, x, y, txt, size, angle, bold in self.textes_v:
+                L.append(SEP.join(map(str, (x, y, txt, "", f, 0, "Arial", size, angle, 0, bold, -1, 0, 0, "", 0, "", 0))) + SEP)
         if self.dessins:
             L.append("\u00a4#DSansTexte\u00a4")
             for f, x1, y1, x2, y2, forme, color, width, style, *fd in self.dessins:
@@ -680,7 +692,7 @@ class Gen:
                 L.append(f"802\u00b7500\u00b7{self.cable_type.get(n, 0)}\u00b71\u00b71\u00b711\u00b70\u00b70\u00b7")
                 L.append("4\u00b70\u00b7400\u00b7400\u00b7400\u00b7400\u00b70\u00b7")
                 if ov:
-                    rx = x1 - 600            # repère centré (alignement 6) dans l'ovale
+                    rx = x2 + 600 if etiq == "ovaled" else x1 - 600     # repère centré (alignement 6) dans l'ovale
                 L.append(SEP.join(map(str, (rep, rx, ry, 1, 6 if ov or not etiq else 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 L.append(SEP.join(map(str, (compo, cx, cy, 0 if etiq == "bas" else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)
                 L.append(SEP.join(map(str, (desig, dx_, dy_, 0 if ov or not desig else 1, 0, "Arial", size, 0, 0, 0, 0))) + SEP)

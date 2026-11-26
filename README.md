@@ -5,12 +5,12 @@ BE Bailly Levert (BEBL), dessinateur Julien Thro (THRO.J).
 
 Le schéma n'est pas dessiné à la main : il est **généré par un script Python** (`outils/ttk_schema.py`), puis ouvert et relu dans WinRelais.
 
-## État actuel (25/11/2026)
+## État actuel (26/11/2026)
 | | |
 |---|---|
-| Dernière version | **v41**, `schema/generes/release/TTK_2026-11-25_v41.xrs` (rapports `docs/RAPPORT_v40_2026-11-25.md`, `docs/RAPPORT_v41_2026-11-25.md`) |
-| Contenu | 31 folios, 254 symboles, 712 fils, 93 renvois, 407 numéros de fil, 168 bornes ; boîte +BJM, plans de bornier f70-f73, liste des câbles f80, nomenclature f90-f92 générées |
-| Contrôles | `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` : 0 problème, 0 erreur (28 attentions connues), 0 chevauchement (contrôle élargi), numéros, cadres, textes, 24 V / 0 V, bornes : 0 |
+| Dernière version | **v42**, `schema/generes/release/TTK_2026-11-26_v42.xrs` (rapport `docs/RAPPORT_v42_2026-11-26.md`) |
+| Contenu | 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros de fil, 168 bornes ; boîte +BJM, plans de bornier f70-f73, liste des câbles f80, nomenclature f90-f92 générées |
+| Contrôles | `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` : 0 problème, 0 erreur (28 attentions connues), 0 chevauchement (contrôle élargi : textes, câbles, cadres, corps des symboles, noms de broches, points de connexion), numéros, cadres, textes, 24 V / 0 V, bornes, symboles CUSTOM : 0 |
 | Implantation de l'armoire | v13 (20/11, schéma v36), `implantation/release/` ; à régénérer |
 
 La liste des folios et l'arborescence ci-dessous datent de la v36 : la référence à jour est `memoire/04_REGLES_DESSIN.md` (ordre des folios) et `memoire/06_EN_COURS.md`.

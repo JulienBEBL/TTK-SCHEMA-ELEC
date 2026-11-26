@@ -195,3 +195,12 @@ Détail : `docs/RAPPORT_v40_2026-11-25.md`.
 - f21 : pas d'image pour le bloc noir -X21.14 (aucune image noire) [?].
 - Plans de bornier : rendu du vert / jaune dans WinRelais (remplissage vérifié par calcul seulement) [?].
   26/11 : capture de Julien (v41, -X31.11) : fond jaune, une bande verte en haut et en bas (sous les carrés de connexion), contour vert, numéro sur le jaune. Avis de Julien demandé (garder, ou plus de bandes) [?]
+
+## v42 (26/11) : à regarder par Julien
+Détail : `docs/RAPPORT_v42_2026-11-26.md`.
+- f40 : **réglé en v42** (textes à droite, accrochés à droite, à la demande de Julien du 26/11).
+- Plans de bornier : vert / jaune vu par Julien (26/11) ; **rayé plus marqué en v42** (bandes de 100).
+- Rendu dans WinRelais de la v42 : variateur élargi (f31 / f32), thermocouple retourné (f64), gras et résumés des plans de bornier [?].
+- `implantation/generateur/saisie.json` : folios et origines de W8 (f64), W11 (X43.1x, pas de X41.2x), W12 (X43.2x, f43 / f61 / f63), W14 (f43) d'avant la v37 ; le schéma les relit sur le dessin [D à faire avec l'implantation, accord de Julien].
+- Haut des variateurs f31 / f32 : numéros sur une rangée juste au-dessus des broches (alignement v40), pas centrés (fils 24 V de 600) [H].
+- Nomenclature : 6 bornes de terre dessinées pour 4 achetées ; références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].

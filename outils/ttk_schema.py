@@ -335,8 +335,8 @@ def zones_cables(f_):
             if not txt:
                 continue
             w_ = largeur(txt, sz)
-            if k_ == 0 and isinstance(c[8], str) and c[8] != "bas":
-                tx = x1 - 600 - w_ // 2
+            if k_ == 0 and isinstance(c[8], str) and c[8] != "bas":       # repère centré dans l'ovale (à gauche, ou à droite)
+                tx = (x2 + 600 if c[8] == "ovaled" else x1 - 600) - w_ // 2
             out.append((tx - 150, ty - 100, tx + w_ + 150, ty + sz + 100) if k_ == 0 else (tx, ty, tx + w_, ty + sz))
     for tf, tx, ty, txt, sz, *_ in g.textes:      # v38 : textes libres du folio (lieux, notes)
         if tf == f_ and txt:
@@ -345,7 +345,44 @@ def zones_cables(f_):
         if d[0] == f_ and d[5] == 0 and d[8] == 2:
             x1, x2, y1, y2 = min(d[1], d[3]), max(d[1], d[3]), min(d[2], d[4]), max(d[2], d[4])
             out += [(x1, y1 - 40, x2, y1 + 40), (x1, y2 - 40, x2, y2 + 40), (x1 - 40, y1, x1 + 40, y2), (x2 - 40, y1, x2 + 40, y2)]
+    out += obstacles_symboles(f_)
     return out
+
+
+_OBS = {}
+
+
+def dessin_symbole(s_, point=100):
+    """v42 : rectangles dessinés par un symbole : corps, textes dessinés dedans (BK, GN...), noms de broches affichés,
+    points de connexion (± point)."""
+    from xrs_gen import largeur
+    out = [s_.bbox] if s_.bbox else []
+    noms_ = s_.block[2].split("·")[5] == "1"
+    sec = None
+    for l in s_.block:
+        if l.startswith("¤#"):
+            sec = l
+            continue
+        f = l.split("·")
+        if sec == "¤#MDessin¤" and len(f) > 5 and f[5]:
+            sz = int(f[4] or 150)
+            out.append((int(f[1]), int(f[2]), int(f[1]) + largeur(f[5], sz), int(f[2]) + sz))
+        elif sec == "¤#Broche¤" and len(f) > 13:
+            px, py = int(f[1]), int(f[2])
+            out.append((px - point, py - point, px + point, py + point))
+            if noms_ and f[0]:
+                sz = int(f[13] or 200)
+                out.append((int(f[5]), int(f[6]), int(f[5]) + largeur(f[0], sz), int(f[6]) + sz))
+    return out
+
+
+def obstacles_symboles(f_):
+    """v42 (Julien 26/11 : numéro dans le symbole f64, sur les points rouges et les noms de broche f20) : corps des
+    symboles, textes dessinés dans le symbole (BK, GN...), noms de broches affichés, points de connexion (± 100)."""
+    cle_ = (f_, len(g.symbols), id(g.symbols))
+    if cle_ not in _OBS:
+        _OBS[cle_] = [r for s_ in g.symbols if s_.folio == f_ for r in dessin_symbole(s_, 0)]   # + 150 dans troncon_libre
+    return _OBS[cle_]
 
 
 def troncon_libre(f_, vertical, pos, lo, hi, renv=False, tous=False):
@@ -391,6 +428,99 @@ def troncon_libre(f_, vertical, pos, lo, hi, renv=False, tous=False):
     if tous:
         return sorted(segs)
     return max(segs, key=lambda z: z[1] - z[0]) if segs else (lo, hi)
+
+
+def centre_troncon(f_, ws, ph, renv=True):
+    """v42 (Julien 26/11 : « centrer le numéro de fil par rapport à la longueur du câble ; pour les fils à plusieurs
+    coudes, le plus au centre possible, sans superposition, en fonction de la taille de la police et de la longueur
+    du texte ») : centre du tronçon = milieu de son plus long chemin (longueur réelle des fils) ; parmi les parties
+    libres de chaque fil (troncon_libre : fils, textes, câbles, cadres, renvois, symboles, broches), position la plus
+    proche de ce centre, mesurée le long des fils. Rend [folio, position du fil, début, fin de la partie libre, texte,
+    angle, position voulue du centre du texte], ou None si rien ne tient."""
+    import heapq
+    from collections import defaultdict
+    from xrs_gen import largeur, NUM_T
+    segs = [w for w in ws if w[1:3] != w[3:5]]
+    if not segs:
+        return None
+    lg = largeur(ph, NUM_T)
+    adj = defaultdict(list)
+    for w in segs:
+        a, b, d = (w[1], w[2]), (w[3], w[4]), abs(w[3] - w[1]) + abs(w[4] - w[2])
+        adj[a].append((b, d))
+        adj[b].append((a, d))
+
+    def dij(src):
+        dist, prev, pq = dict(src), {}, [(d, n) for n, d in src.items()]
+        heapq.heapify(pq)
+        while pq:
+            d, n = heapq.heappop(pq)
+            if d > dist.get(n, 1e18):
+                continue
+            for m, l in adj[n]:
+                if d + l < dist.get(m, 1e18):
+                    dist[m], prev[m] = d + l, n
+                    heapq.heappush(pq, (d + l, m))
+        return dist, prev
+    n0 = next((n for n in adj if len(adj[n]) == 1), next(iter(adj)))
+    d1, _ = dij({n0: 0})
+    a_ = max(d1, key=d1.get)
+    d2, prev = dij({a_: 0})
+    b_ = max(d2, key=d2.get)
+    demi = d2[b_] / 2
+    # point du milieu, sur le chemin a_ -> b_
+    n, centre = b_, None
+    while n != a_:
+        p_ = prev[n]
+        if d2[p_] <= demi <= d2[n]:
+            t_ = demi - d2[p_]
+            dx, dy = (n[0] > p_[0]) - (n[0] < p_[0]), (n[1] > p_[1]) - (n[1] < p_[1])
+            centre = (p_, n, (p_[0] + dx * t_, p_[1] + dy * t_))
+            break
+        n = p_
+    if centre is None:
+        centre = (a_, a_, a_)
+    p_, n, c_ = centre
+    dc, _ = dij({p_: abs(c_[0] - p_[0]) + abs(c_[1] - p_[1]), n: abs(c_[0] - n[0]) + abs(c_[1] - n[1])})
+    cands = []
+    # au moins 130 entre le texte et l'obstacle le plus proche ; 60 puis 0 si rien ne tient (fils courts entre bornes)
+    for marge in (130, 60, 0):
+        _centre_cands(f_, segs, lg, marge, renv, p_, n, c_, dc, cands)
+        if cands:
+            break
+    if os.environ.get("TTK_DBG") == ph:
+        print("DBG", g.num(f_), ph, "longueur", d2[b_], "centre", centre, sorted(cands)[:6])
+    if not cands:
+        return None
+    cout, _, pos, c, d, t, ang = min(cands)
+    return [f_, pos, c, d, ph, ang, int(t)]
+
+
+def _centre_cands(f_, segs, lg, marge, renv, p_, n, c_, dc, cands):
+    for w in segs:
+        v_ = w[1] == w[3]
+        pos = w[1] if v_ else w[2]
+        A, B = ((w[1], w[2]), (w[3], w[4]))
+        ka, kb = (A[1], B[1]) if v_ else (A[0], B[0])
+        lo, hi = min(ka, kb), max(ka, kb)
+        libres = troncon_libre(f_, v_, pos, lo, hi, renv, True)
+        if v_:      # le numéro de brin d'un câble s'écrit juste au-dessus du croisement (f20, 30/10) : on reste à l'écart
+            for c in g.cables:
+                if c[0] == f_ and pos in c[7] and lo < c[3] < hi:
+                    libres = [z for a, b in libres for z in ((a, min(b, c[3] - 400)), (max(a, c[3] + 100), b)) if z[1] > z[0]]
+        sur = {p_, n} == {A, B}                 # le centre est sur ce fil
+        kc = c_[1] if v_ else c_[0]
+        da, db = dc.get(A, 1e18), dc.get(B, 1e18)
+        for c, d in libres:
+            t_lo, t_hi = c + marge + lg / 2, d - marge - lg / 2
+            if t_lo > t_hi:
+                continue
+            essais = {t_lo, t_hi, min(max(ka, t_lo), t_hi), min(max(kb, t_lo), t_hi)}
+            if sur:
+                essais.add(min(max(kc, t_lo), t_hi))
+            for t in essais:
+                cout = abs(t - kc) if sur else min(da + abs(t - ka), db + abs(t - kb))
+                cands.append((round(cout), -(d - c), pos, c, d, t, 90 if v_ else 0))
 
 
 def nommer_phases():
@@ -484,6 +614,13 @@ def nommer_phases():
             if w[2] == w[4]:
                 lignes[w[2]] += abs(w[3] - w[1])
         yb = max(lignes, key=lignes.get) if lignes else None
+        # v42 : barre = ligne horizontale de plus de 6000 avec au moins 2 piquages (un long fil coudé n'est pas une barre)
+        deg_ = defaultdict(int)
+        for w in ws:
+            deg_[(w[1], w[2])] += 1
+            deg_[(w[3], w[4])] += 1
+        if yb is not None and lignes[yb] >= 6000 and sum(1 for (x_, y_), d_ in deg_.items() if y_ == yb and d_ >= 3) < 2:
+            yb = None
         if yb is not None and lignes[yb] >= 6000:
             w = min((w for w in ws if w[2] == w[4] == yb), key=lambda w_: min(w_[1], w_[3]))
             lo, hi = min(w[1], w[3]), max(w[1], w[3])
@@ -496,6 +633,12 @@ def nommer_phases():
                 continue
             poses.append([f_, yb, lo, hi, ph, 0, lo + 800])
             continue
+        if f_ in numerotes:                   # v42 : numéro centré sur la longueur du tronçon (Julien 26/11)
+            p_ = centre_troncon(f_, ws, ph)
+            if p_:
+                poses.append(p_)
+                continue
+            NUM_ALERTES.append(f"numérotation : folio {g.num(f_)}, {ph} : aucune place libre, ancien placement")
         w = max(ws, key=lambda w_: abs(w_[3] - w_[1]) + abs(w_[4] - w_[2]))
         if f_ in nouveaux:                    # 16/11 : le fil du tronçon qui a le plus de place libre
             def libre(w_):
@@ -525,26 +668,27 @@ def nommer_phases():
         groupes = []
         for p in sorted((p for p in poses if p[5] == ang), key=lambda p: (p[0], p[1])):
             for c in groupes:
+                # v42 : on n'aligne que des numéros dont les centres voulus sont proches (sinon chacun au centre de son fil)
                 if c[-1][0] == p[0] and 0 < p[1] - c[-1][1] <= 1200 and (c[-1][4] == "PE") == (p[4] == "PE") and \
-                        max(q[2] for q in c + [p]) + 400 <= min(q[3] for q in c + [p]):
+                        max(q[2] for q in c + [p]) + 400 <= min(q[3] for q in c + [p]) and \
+                        abs(p[6] - sum(q[6] for q in c) / len(c)) <= 400:
                     c.append(p)
                     break
             else:
                 groupes.append([p])
         groupes2 = []
         for c in groupes:                     # 16/11 : groupe sans place commune -> chaque numéro sur son fil
-            demi = max(len(q[4]) for q in c) * NUM_T * 0.55 / 2
-            if len(c) > 1 and c[0][0] in nouveaux and max(q[2] for q in c) + 200 + demi > min(q[3] for q in c) - 200 - demi:
+            demi = max(largeur(q[4], NUM_T) for q in c) / 2
+            if len(c) > 1 and max(q[2] for q in c) + 130 + demi > min(q[3] for q in c) - 130 - demi:
                 groupes2 += [[q] for q in c]
             else:
                 groupes2.append(c)
         for c in groupes2:
-            lo, hi = max(q[2] for q in c) + 200, min(q[3] for q in c) - 200
+            # v42 : marge de 130 entre le texte et la fin de sa partie libre, texte entier dans la partie libre
+            demi = max(largeur(q[4], NUM_T) for q in c) / 2     # texte centré (l'ancre est au début du texte)
+            lo, hi = max(q[2] for q in c) + 130 + demi, min(q[3] for q in c) - 130 - demi
             voulu = sum(q[6] for q in c) // len(c)
-            demi = max(len(q[4]) for q in c) * NUM_T * 0.55 / 2     # texte centré (l'ancre est au début du texte)
-            if ang == 0 and lo + demi <= hi - demi:               # 13/11 : texte horizontal entier sur son fil
-                lo, hi = lo + demi, hi - demi
-            mid = min(max(voulu, lo), hi) if lo <= hi else (lo + hi) // 2
+            mid = min(max(voulu, lo), hi) if lo <= hi else (max(q[2] for q in c) + min(q[3] for q in c)) // 2
             for f_, pos, _, _, ph, _, _ in c:
                 if ang == 90:
                     # v38 (Julien 24/11) : f12, « PE » à gauche du fil (à droite, il se lisait mal)
@@ -666,8 +810,7 @@ def emprise(elems):
         if isinstance(e, tuple):
             bx.append(e)
             continue
-        if e.bbox:
-            bx.append(e.bbox)
+        bx += dessin_symbole(e, 0)               # v42 : corps, broches, noms de broches, textes dessinés
         bx += [b for _, b in e.texts]
     return (min(b[0] for b in bx), min(b[1] for b in bx), max(b[2] for b in bx), max(b[3] for b in bx))
 
@@ -681,8 +824,7 @@ def cadre_lieu(f, elems, lieu, marge=300, haut=None, droite=False, gauche=False,
         if isinstance(e, tuple):
             bx.append(e)
             continue
-        if e.bbox:
-            bx.append(e.bbox)
+        bx += dessin_symbole(e, 0)               # v42 : corps, broches, noms de broches, textes dessinés
         bx += [b for _, b in e.texts]
     x1, y1 = min(b[0] for b in bx) - marge, min(b[1] for b in bx) - marge - (haut if haut is not None else 300)
     x2, y2 = max(b[2] for b in bx) + marge, max(b[3] for b in bx) + marge
@@ -750,7 +892,7 @@ def proposition(f, lignes, x=2400, y=1400):
 # ======================================================================== 01 - 04
 texte("01", 4000, 3600, "MACHINE DE TRESSAGE TTK", 900, 0, 1)
 texte("01", 4000, 5000, "DOSSIER DE SCHEMAS ELECTRIQUES", 600, 0, 1)
-texte("01", 4000, 6200, "Client : TTK          Affaire : à compléter          N° machine : 001-EU", 300)
+texte("01", 4000, 6200, "Client : TTK          N° machine : 001-EU", 300)     # v42 (Julien 26/11) : « Affaire » retiré
 g.tableau(F["01"], 4000, 7600, [6000, 10000], 500, [
     ["Caractéristiques d'alimentation", ""],
     ["Réseau", "3 x 400 V + N + PE - 50 Hz (câble client -W101 5G4)"],
@@ -901,9 +1043,10 @@ for r, x in xb.items():
 # v40 (Julien 25/11 : « infos du câble W1 pas bonnes ») : trait au milieu entre le cadre d'arrivée et les bornes
 # (brins à 500 du cadre), composition centrée sous le repère
 from xrs_gen import largeur as _lg
+# v42 (Julien 26/11 : « W1 et 5G4 à droite du câble ») : ovale du repère à droite du conducteur L3, composition dessous
 g.cable(F[f], 0, 0, 2800, "W101", "5G4", "Câble client", [5200, 6000, 6800, 7600], ovale=True, blinde=False, vj=[4400],
-        compo_dx=-round((600 + _lg("5G4", 300) / 2) / 50) * 50)
-q101 = maitre(C + "Legrand_Vistop_022515_4P_63A.xsy", "Q101", f, 5200, 6000)
+        droite=True)
+q101 = maitre(C + "Legrand_Vistop_022515_4P_63A.xsy", "Q101", f, 5200, 6000, fpos=(3000, 0))   # v42 : repère 200 à droite (nom 5/L3)
 q102 = maitre(C + "Hager_NFT820_disjoncteur_3P+N_20A.xsy", "Q102", f, 5200, 10000)
 for r, p in (("X101.1", ("N", 0)), ("X101.2", "1/L1"), ("X101.3", "3/L2"), ("X101.4", "5/L3")):
     W(f, [B[r]["2"], q101[p]], "N" if r == "X101.1" else "L")
@@ -1102,7 +1245,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     # textes à 1400 à droite, sous les broches, au-dessus du fil 2b (8800)
     # v40 (Julien 25/11 : « la résistance de freinage, toujours pas bon ») : résistance sous le variateur, entre +R et -R,
     # loin des broches X20 ; repère seul à droite (la désignation reste dans le symbole, nomenclature f90)
-    R = maitre(res, r, f, 7600, 8400, shown=(), fpos=(250, 600))
+    # v42 (Julien 26/11, variateur élargi) : résistance sous la broche -R (fil -R droit et assez long pour son numéro)
+    R = maitre(res, r, f, T["X2:-R"].x, 8800, shown=(), fpos=(150, 600))
     # symbole modifié par Julien le 02/11 : moteur, sonde TF, frein BE5 dans un même cadre, origine sur U1
     M = maitre(mot, m, f, 4800, 15200, fpos=(10800, 0), wrap=36, noms=False)   # textes à droite du symbole
     # v38 (retours v37) : bornier 10800, câbles 12400, boîte 13600, moteur 15600 : 1600 libres autour des câbles et des cadres
@@ -1126,16 +1270,18 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     W(f, [T["X2:W"], BM["W1"]["1"]], "L")
     g.cable(F[f], 0, 0, YC, w1, "4G2,5 blindé", f"Moteur {m} -> {t} X2", [M[p].x for p in ("U1", "V1", "W1")], ovale=True,
             compo_dx=-2300, vj=[M["PE"].x])      # v37 : V/J sans numéro de brin ; compositions placées comme Julien (02/11)
-    W(f, [T["X2:-R"], (T["X2:-R"].x, 8000), (R["1"].x, 8000), R["1"]], "PDC")              # v40 : -R -> haut de R
-    W(f, [T["X2:+R"], (T["X2:+R"].x, 10400), (R["2"].x, 10400), R["2"]], "PDC")            # v40 : +R -> bas de R
+    W(f, [T["X2:-R"], R["1"]], "PDC")                                                       # v42 : -R -> haut de R, droit
+    W(f, [T["X2:+R"], (T["X2:+R"].x, R["2"].y + 200), (R["2"].x, R["2"].y + 200), R["2"]], "PDC")   # +R -> bas de R
     # frein et sonde TF par le bornier (02/11) ; frein : les 2 fils remontent avant de partir à droite ;
     # broche 2 au-dessus de la broche 3, renvois décalés en x (pas de recouvrement des flèches)
     renvoi("12", out12[(qf, "4/T2")], f, W(f, [BM["2"]["1"], (M["2"].x, 10000), (16800, 10000)], "L"), "L")
     renvoi("12", out12[(qf, "6/T3")], f, W(f, [BM["3"]["1"], (M["3"].x, 10400), (14400, 10400)], "L"), "L")
     # sonde TF : remonte à droite du variateur vers X10 (1b -> X10:1 impose un croisement)
-    W(f, [BM["1b"]["1"], (M["1b"].x, 9600), (21600, 9600), (21600, 4000), (T["X10:1"].x, 4000), T["X10:1"]], "PDC")
-    W(f, [BM["2b"]["1"], (M["2b"].x, 8800), (21200, 8800), (21200, 4400), (T["X10:2"].x, 4400), T["X10:2"]], "PDC")
-    VAR[(f, "PN")] = W(f, [T["X40"], (T["X40"].x, 4800), (16000, 4800)], "PN")          # v40 : variateur 400 plus haut
+    # v42 (Julien 26/11 : variateur élargi, pas de 600) : remontée de la sonde TF à droite des textes du variateur
+    XTF = 23600
+    W(f, [BM["1b"]["1"], (M["1b"].x, 9600), (XTF + 400, 9600), (XTF + 400, 4000), (T["X10:1"].x, 4000), T["X10:1"]], "PDC")
+    W(f, [BM["2b"]["1"], (M["2b"].x, 8800), (XTF, 8800), (XTF, 4400), (T["X10:2"].x, 4400), T["X10:2"]], "PDC")
+    VAR[(f, "PN")] = W(f, [T["X40"], (T["X40"].x, 4800), (T["X40"].x + 1600, 4800)], "PN")   # v42 : 1600 à droite de X40
     g.cable(F[f], 0, 0, YC, w3, "2x0,75 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True, compo_dx=-1600)
     # freins M1 + M2 : UN SEUL câble -W4 (W202) LIYCY-JZ 5G1,5 blindé (05/11, W7 supprimé) : conducteurs 1-2 au f31,
     # 3-4 au f32 ; V/J vers le bornier de terre -XPE1 et la boîte de dérivation côté machine
@@ -1159,8 +1305,8 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
         VAR[(f, "STOin0")] = W(f, [T["X6:2"], (T["X6:2"].x, YB_)], "0V")
         renvoi("20", VAR[("20", "STOout+")], f, VAR[(f, "STO1")], "24")
         renvoi("20", VAR[("20", "STOout0")], f, VAR[(f, "STOin0")], "0V")
-    texte(f, 22400, 4400, "X40 : PROFINET (f54)", 200)
-    texte(f, 22400, 4800, "X5 : 24VELEC (f31) - X6 : STO (f42)", 200)
+    texte(f, XTF + 800, 4400, "X40 : PROFINET (f54)", 200)
+    texte(f, XTF + 800, 4800, "X5 : 24VELEC (f31) - X6 : STO (f42)", 200)
     # v33 (Julien 18/11) : seulement l'essentiel ; TF X10, blindage et W4 : mémoire (05) et repères des câbles
     # v37 (D09) : moteur et bornes de la boîte dans des cadres pointillés (lieu)
     cadre_lieu(f, list(BJ.values()), "+BJM", marge=100, haut=0, droite=True)
@@ -1231,7 +1377,10 @@ W(f, [bh3b["2"], (xh3, Y31 + 7600), (x312["8"].x, Y31 + 7600), x312["8"]], "0V")
 f = "32"
 REP["Q423"]["des"] = "Contacteur auxiliaire : coupure du +48 V des drivers"
 # v37 (revue Krizox, D06) : pôle 5-6 inutilisé plus dessiné (symbole 2 pôles copié du 3 pôles ; l'appareil reste un LC1D09BD 3P)
-q423p = contacteur(os.path.join(ICI, "librairie", "CUSTOM", "Schneider_LC1D09BD_contacts_puissance_2P.xsy"), "Q423", f, 5200, 5600)
+# v42 (Julien 26/11 : « recentre le texte de KA2 par rapport au symbole ») : bloc de texte centré sur la hauteur du
+# contact (entre ses broches), 600 à droite du symbole
+q423p = contacteur(os.path.join(ICI, "librairie", "CUSTOM", "Schneider_LC1D09BD_contacts_puissance_2P.xsy"), "Q423", f, 5200, 5600,
+                   fpos=(1500, -100))
 A48 = {"-U4": W(f, [(XL, 2800), (24000, 2800)], "PDC"),
        "+U4": W(f, [(XL, 3600), (q423p["3/L2"].x, 3600), q423p["3/L2"]], "PDC"),
        "+U3": W(f, [(XL, 4400), (q423p["1/L1"].x, 4400), q423p["1/L1"]], "PDC")}
@@ -1246,6 +1395,9 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     # v37 (revue Krizox, D08) : drivers remontés de 800 ; bornier -X20, câble W9 / W10, bornes de la boîte +BJM, fils au moteur
     D = maitre(drv, T, f, x0, 9200, fpos=(2600, 0), wrap=22, noms=False)
     # v38 (Julien 24/11) : moteur 400 plus bas, textes à droite centrés sur le cercle du symbole (centre à 1250 sous les broches)
+    # v42 (Julien 26/11 : numéros, points rouges et noms des broches du moteur superposés) : bornes de la boîte sur 2 niveaux
+    # à 400 (15800 / 16200, au lieu de 600 : leurs repères sont de part et d'autre, sans conflit) ; le cadre
+    # +M englobe les broches et leurs couleurs (BK, GN...) ; numéros entre les cadres +BJM et +M
     Mo = maitre(mpp, Mrep, f, x0 - 800, 17600, noms=False, fpos=(2000, 800))
     DRV[T] = D
     # moteurs hors armoire (02/11) : bornier entre driver et moteur ; broches à 400 -> bornes sur 2 niveaux
@@ -1257,7 +1409,7 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
         # v38 : niveaux à 600 (12800 / 13400 et 15600 / 16200), câble à 15000 : place des numéros autour du câble
         b = borne(nb, f, D[p].x, 12800 if haut else 13400, fpos=(-500, 125) if haut else (150, 125))
         # v40 (Julien 25/11 : cadres à égale distance) : boîte 200 plus bas, câble 200 plus haut (écart câble / cadre +BJM)
-        bj = bjm(f, D[p].x, 15800 if haut else 16400, {"M321": "W321", "M322": "W322"}[Mrep], k_ + 1,
+        bj = bjm(f, D[p].x, 15800 if haut else 16200, {"M321": "W321", "M322": "W322"}[Mrep], k_ + 1,
                  fpos=(-500, 125) if haut else (150, 125))
         BJ20.append(bj)
         BA20.append(b)
@@ -1279,9 +1431,11 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
         CMD32[(T, s)] = W(f, [D[s + "+"], (xin, D[s + "+"].y)], "24")
         W(f, [D[s + "-"], (xbus, D[s + "-"].y)], "0V")
     # v40 (Julien 25/11) : renvoi du 0 V (1230) horizontal, aligné sous les renvois PUL / DIR / ENA (pas de 800)
-    CMD32[(T, "0V")] = W(f, [(xbus, D["PUL-"].y), (xbus, D["ENA-"].y + 400), (xin, D["ENA-"].y + 400)], "0V")
+    # v42 (Julien 26/11 : renvois 21-F5 vers les PUL- / DIR- / ENA- un peu plus bas, plus clair) : 400 -> 800 sous ENA-
+    CMD32[(T, "0V")] = W(f, [(xbus, D["PUL-"].y), (xbus, D["ENA-"].y + 800), (xin, D["ENA-"].y + 800)], "0V")
     # v40 (Julien 25/11 : égaliser les cadres) : même marge (200), bords gauche et droit alignés (+BJM / +M)
-    eb, em = emprise(BJ20), emprise([Mo])
+    yp_ = Mo["A+"].y
+    eb, em = emprise(BJ20), emprise([Mo, (Mo["A+"].x, yp_, Mo["B-"].x + 400, yp_)])
     xg_, xd_ = min(eb[0], em[0]), max(eb[2], em[2])
     cadre_lieu(f, BJ20 + [(xg_, eb[1], xd_, eb[1])], "+BJM", marge=200, haut=0, gauche=True)          # v37 (D09)
     cadre_lieu(f, [Mo, (xg_, em[1], xd_, em[1])], "+M", marge=200, haut=0, gauche=True)
@@ -1297,7 +1451,8 @@ W(f, [(XL, 8800), (DRV["T322"]["-V"].x, 8800), DRV["T322"]["-V"]], "PDC")
 
 # ======================================================================== 40 RELAIS DE SECURITE
 f = "40"
-k401 = maitre(C + "Schneider_XPSUAF13AP_relais_securite.xsy", "K401", f, 4400, 8000)
+# v42 : noms de broches masqués (déjà écrits en jaune dans le symbole : Z1, 14... apparaissaient deux fois)
+k401 = maitre(C + "Schneider_XPSUAF13AP_relais_securite.xsy", "K401", f, 4400, 8000, noms=False)
 # A1 / A2 : raccordés aux barres du haut après le décalage du folio (voir « barres 24 V / 0 V »)
 for p in ("13", "23", "33"):
     W(f, [k401[p], (k401[p].x, 3600)], "24")
@@ -1311,14 +1466,27 @@ W(f, [(k401["33"].x + 1200, 3600), f401["1"]], "24")
 CMD40 = W(f, [f401["2"], (f401["2"].x, f401["2"].y + 800)], "24")
 texte(f, f401["2"].x + 400, f401["2"].y + 1200, "24VSEC (f31)", 200)
 S40 = {p: W(f, [k401[p], (k401[p].x, 4800)], "24") for p in ("S11", "S12", "S21", "S22")}
-O40 = {p: W(f, [k401[p], (k401[p].x, 11200)], "24") for p in ("14", "24", "34")}
+# v42 (Julien 26/11 : renvois du bas de KA1 un peu plus bas, il y a la place) : 11200 -> 12000
+O40 = {p: W(f, [k401[p], (k401[p].x, 12000)], "24") for p in ("14", "24", "34")}
 miroir = C + "Schneider_LC1D09BD_contact_aux_NC_21-22_miroir.xsy"
 prev = W(f, [k401["Y1"], (8400, 3200), (20000, 3200)], "24")
 DESC_KM = {"KM1": "contacteur amont variateur 1", "KM2": "contacteur amont variateur 2",
            "Q421": "contacteur frein M1", "Q422": "contacteur frein M2", "Q423": "contacteur auxiliaire 48 V"}
+# v42 (Julien 26/11 : « texte à droite du symbole contact, accroché à droite ; déplacer proprement le texte jaune ») :
+# textes à droite du contact, alignés à droite (accroche à XTX40) ; « contact miroir » passe à gauche du contact ;
+# retour vers Y2 décalé à droite (XRET40) pour laisser la place aux textes
+XTX40, XRET40 = 23200, 24400
 for i, rep in enumerate(DESC_KM):
     c = decrit(miroir, rep, f, 20000, 3200 + 2400 * i, f"Retour {DESC_KM[rep]}",
-               prefix="KM" if rep.startswith("KM") else "Q", wrap=24, fpos=(-2600, 400))     # v39 : à côté du contact
+               prefix="KM" if rep.startswith("KM") else "Q", wrap=24, fpos=(XTX40 - 20000, 400), align=2)
+    sec_ = None
+    for k_, l_ in enumerate(c.block):
+        if l_.startswith("¤#"):
+            sec_ = l_
+        elif sec_ == "¤#MDessin¤" and "contact miroir" in l_:
+            f_ = l_.split("·")
+            f_[1] = str(c["21"].x - 1300)
+            c.block[k_] = "·".join(f_)
     if i:
         W(f, [prev, c["21"]], "24")
     prev = c["22"]
@@ -1327,14 +1495,14 @@ s414 = maitre("BP & Commut & Voyants\\BP Affleurant Noir.xsy", "S414", f, 20000,
               ref=("SCHNEIDER ELECTRIC", "", "XB4BA21"))
 # S4 sur la porte : une borne avant, une sur le retour (05/11)
 # v38 (Julien 24/11 : numéros peu visibles) : fils de -X40.11 allongés à 800
-bs4a, bs4b = borne("X721.7", f, 20000, 15200), borne("X721.8", f, 21600, 17200)
+bs4a, bs4b = borne("X721.7", f, 20000, 15200), borne("X721.8", f, XRET40, 17200)
 W(f, [prev, bs4a["1"]], "24")
 W(f, [bs4a["2"], s414["3"]], "24")
 # retour vers Y2 par la droite de la chaîne, au-dessus de Y1 (un seul croisement, avec Y1)
-W(f, [s414["4"], (20000, 18400), (21600, 18400), bs4b["2"]], "24")
-W(f, [bs4b["1"], (21600, 2800), (9200, 2800), k401["Y2"]], "24")
+W(f, [s414["4"], (20000, 18400), (XRET40, 18400), bs4b["2"]], "24")
+W(f, [bs4b["1"], (XRET40, 2800), (9200, 2800), k401["Y2"]], "24")
 # Z1 (diagnostic, non sécuritaire) -> I1.5 de l'automate (Julien 02/11)
-Z1_40 = W(f, [k401["Z1"], (k401["Z1"].x, k401["Z1"].y + 800)], "24")
+Z1_40 = W(f, [k401["Z1"], (k401["Z1"].x, k401["Z1"].y + 1600)], "24")     # v42 : 800 -> 1600 (renvois du bas plus bas)
 renvoi("31", d31["CMD40"], f, CMD40, "24")
 
 # ======================================================================== 41 SECURITE - ENTREES
@@ -1465,7 +1633,7 @@ def chaine_s413(x, ba, bb, n_c, des, conds, y0=Y42):
     t1 = borne(ba, f, x, y0)
     # v38 (retours v37) : 1600 libres autour des câbles (y0 + 1600, y0 + 8000) et des cadres de la boîte
     ja = bjm(f, x, y0 + 2400, "W11", conds[0])
-    c = decrit(CT[n_c], "S413", f, x, y0 + 4000, des, wrap=18)
+    c = decrit(CT[n_c], "S413", f, x, y0 + 4000, des, wrap=18, fpos=(200, 400))   # v42 : 200 plus haut (nom de la broche du bas)
     jb = bjm(f, x, y0 + 6800, "W11", conds[1])
     t2 = borne(bb, f, x, y0 + 9200)
     W(f, [t1["2"], ja["1"]], "24")
@@ -1758,7 +1926,9 @@ REP["B531"]["loc"] = "+M"                    # thermocouple de la tête d'extrus
 # v39 (Julien 24/11 : trop serré, 24 V / 0 V mal placés) : thermocouple, boîte et bornes décalés de 4000 à droite
 # v40 (Julien 25/11 : « Réserve » superposé au reste) : chaîne thermocouple dans l'axe de AI0+ / AI0- (fils droits,
 # plus de fils horizontaux au-dessus des voies de réserve AI1 à AI7) ; 1200 à droite des fils 24 V / 0 V du module
-b531 = maitre("Contacts Capteurs\\Thermocouple.xsy", "B531", f, k531["AI0+"].x, 5200, prefix="B", fpos=(2000, 0))
+# v42 (Julien 26/11 : « le numéro du fil est dans le symbole ») : le thermocouple de la librairie a ses broches en haut,
+# les fils descendaient à travers son dessin ; symbole retourné (CUSTOM Thermocouple_bas, broches en bas)
+b531 = maitre(C + "Thermocouple_bas.xsy", "B531", f, k531["AI0+"].x, 5200, prefix="B", fpos=(1400, -1200), align=0)
 # 02/11 : 2 bornes pour thermocouple (référence à définir, pas encore achetée), entre le câble W8 et -K3
 REP["X701.41"] = REP["X701.42"] = {"des": "Borne thermocouple (PT 2,5, Julien 18/11)", "fab": "", "carac": "", "loc": "+A1"}
 xa_, xb_ = k531["AI0+"].x, k531["AI0-"].x
@@ -2194,6 +2364,40 @@ def _texte_cote(autres, ponts):
     return ""
 
 
+# v42 : fonction de chaque câble arrivant à la boîte +BJM (résumé sous les plans de bornier)
+CAB_FN = {"W201": "moteur M1", "W211": "moteur M2", "W202": "freins M1 + M2", "W321": "pas-à-pas M3",
+          "W322": "pas-à-pas M4", "W203": "sonde TF M1", "W213": "sonde TF M2",
+          "W12": "machine : capot B1, fins de course B3-B6, colonne H1", "W14": "capot B2 (M12)",
+          "W531": "thermocouple B7", "W11": "pupitre : AU S2, sélecteur S3, IHM P1"}
+
+
+def resume_bornier(fo, x, y, larg, b, mo):
+    """Texte court sous un bornier (v42) : bornes consécutives de même fonction regroupées, « 11-15 : fonction »."""
+    from xrs_gen import largeur, _wrap
+    fn_ = {ren(i_): f for i_, f in DES_BORNE.items()}
+    if b == "X1":
+        fn_ = {r_: f"{ren(c_)} {CAB_FN.get(c_, '')}".strip() for (c_, _), r_ in BJM_POSES.items()}
+    grp = []
+    for r_ in mo:
+        n_, f_ = r_.split(".")[1], fn_.get(r_, "")
+        if grp and grp[-1][2] == f_:
+            grp[-1][1] = n_
+        else:
+            grp.append([n_, n_, f_])
+    maxl = (19400 - y) // 260                    # au-dessus du cartouche
+    for ncol in (1, 2, 3):                       # trop de lignes : 2 ou 3 colonnes
+        lc_ = larg // ncol
+        lignes = []
+        for a_, z_, f_ in grp:
+            t_ = (a_ if a_ == z_ else f"{a_}-{z_}") + (f" : {ren(f_)}" if f_ else "")
+            lignes += _wrap(t_, max(12, int((lc_ - 200) / (180 * 0.5))))
+        if len(lignes) <= maxl * ncol:
+            break
+    par_col = -(-len(lignes) // ncol)
+    for i_, l_ in enumerate(lignes):
+        texte(fo, x + (i_ // par_col) * lc_, y + 260 * (i_ % par_col), l_, 180)
+
+
 def plans_bornier(path):
     from xrs_gen import largeur
     net, membres = nets_par_broche(path, bornes_passantes=False)
@@ -2271,8 +2475,9 @@ def plans_bornier(path):
             # repère du bornier dans un cadre, relié à la rangée
             nom_b = "+BJM -X1" if b == "X1" else f"-{b}"
             tout_terre = all("terre" in bornes[r_].block[2] for r_ in mo)
+            xb0_ = x                             # v42 : début du bornier (résumé des fonctions dessous)
             if tout_terre:
-                cadre_vj(fo, x, y0 + 200, x + 1800, y1 - 200, libre=(y0 + HB // 2 - 250, y0 + HB // 2 + 250))
+                cadre_vj(fo, x, y0 + 200, x + 1800, y1 - 200, bande=100, libre=(y0 + HB // 2 - 250, y0 + HB // 2 + 250))
             else:
                 g.cadre(F[fo], x, y0 + 200, x + 1800, y1 - 200, width=20)
             texte(fo, x + 900 - largeur(nom_b, 300) // 2, y0 + HB // 2 - 150, nom_b, 300, 0, 1)
@@ -2290,7 +2495,8 @@ def plans_bornier(path):
                 xc = x + PAS_B // 2
                 terre = "terre" in s_.block[2]
                 if terre:
-                    cadre_vj(fo, xc - LB // 2, y0, xc + LB // 2, y1, color=32768, width=30,
+                    # v42 (Julien 26/11 : rayé plus marqué) : bandes de 100 (200 avant)
+                    cadre_vj(fo, xc - LB // 2, y0, xc + LB // 2, y1, color=32768, width=30, bande=100,
                              libre=(y0 + HB // 2 - 200, y0 + HB // 2 + 200))
                 else:
                     g.cadre(F[fo], xc - LB // 2, y0, xc + LB // 2, y1, width=20)
@@ -2312,13 +2518,17 @@ def plans_bornier(path):
                 n_fil = "" if terre else num_pot.get(racine_pot(s_.folio, *s_.pins[pin_h][0]), "")
                 # haut : fil, appareil (à gauche du fil), n° de fil (à droite) ; texte vertical, début près de la borne
                 g.ligne(F[fo], xc, y0 - ZT + 200, xc, y0, width=10)
-                th = _texte_cote(ch, ph) or ("-" + kh[0] if kh else "")
-                if kh and b == "X1":
-                    th = f"{kh[0]} ({kh[1]}) {th}".strip()
+                # v42 (Julien 26/11) : nom du câble et n° de fil en GRAS (gras : largeur x 1,1)
+                th = _texte_cote(ch, ph)
+                yh_ = y0 - 150
+                if kh and (b == "X1" or not th):
+                    tc_ = f"{kh[0]} ({kh[1]})" if b == "X1" else "-" + kh[0]
+                    g.texte_v(F[fo], xc - 190, yh_, tc_, 160, bold=1)
+                    yh_ -= largeur(tc_, 160) * 11 // 10 + 80
                 if th:
-                    g.texte_v(F[fo], xc - 190, y0 - 150, th[:28], 160)
+                    g.texte_v(F[fo], xc - 190, yh_, th[:28 if yh_ == y0 - 150 else 20], 160)
                 if n_fil:
-                    g.texte_v(F[fo], xc + 30, y0 - 150, n_fil, 160)
+                    g.texte_v(F[fo], xc + 30, y0 - 150, n_fil, 160, bold=1)
                 # bas : fil, appareil (à gauche), câble et conducteur (à droite)
                 g.ligne(F[fo], xc, y1, xc, y1 + ZB - 200, width=10)
                 tb = _texte_cote(cb, pb)
@@ -2326,9 +2536,12 @@ def plans_bornier(path):
                     g.texte_v(F[fo], xc - 190, y1 + 150 + largeur(tb[:28], 160), tb[:28], 160)
                 if kb and b != "X1":
                     tk = f"{kb[0]} ({kb[1]})"
-                    g.texte_v(F[fo], xc + 30, y1 + 150 + largeur(tk, 160), tk, 160)
+                    g.texte_v(F[fo], xc + 30, y1 + 150 + largeur(tk, 160) * 11 // 10, tk, 160, bold=1)
                 x += PAS_B
             g.ligne(F[fo], x, y0 - 100, x, y1 + 100, width=60)                # butée de fin
+            # v42 (Julien 26/11 : « sous chaque bornier, un petit texte qui note les fonctions des câbles ou fils,
+            # résumé simple et concis ») : une ligne par fonction, « n° des bornes : fonction »
+            resume_bornier(fo, xb0_, y1 + ZB + 100, x + 400 - xb0_, b, mo)
             x += 400 + ecart_
     # v38 (Julien 24/11) : note du haut retirée (à retravailler plus tard) ; elle disait : haut = côté intérieur
     # (boîte : côté câble), bas = côté terrain (boîte : côté appareil) ; texte = appareil:broche (folio), n° de fil, câble (conducteur)
@@ -2432,7 +2645,7 @@ def aligner_numeros_f20():
         ydrv = D["A+"].y
         c_a = (ydrv + haut_) / 2
         c_b = (bas_ + yc - 350) / 2                                   # sous les bornes, au-dessus des n° de brin
-        c_d = (bj_bas + 200 + Mo.bbox[1] - 200) / 2                   # entre les cadres +BJM et +M
+        c_d = (bj_bas + 200 + Mo["A+"].y - 200) / 2                   # v42 : entre les cadres +BJM et +M (broches dedans)
         nv = []
         for n_ in g.numeros:
             fo, x, y, txt, ang = n_
@@ -2470,11 +2683,53 @@ for a_ in NUM_ALERTES:
     print("ATTENTION", a_)
 renommer_symboles()
 # nomenclature générée (option B, Julien 18/11) : une ligne par appareil, bornes par type, non dessiné, câbles (f90, f91)
-NOMENC_LIGNES = nomenclature.lignes(g)
+
+
+def cables_schema():
+    """v42 (check complet de la nomenclature, Julien 26/11) : pour chaque câble, folios où il est dessiné et bornes d'armoire
+    où il arrive (relus sur le dessin). L'origine de saisie.json est gardée si elle cite les mêmes groupes de bornes."""
+    from collections import defaultdict
+    fol, born = defaultdict(set), defaultdict(set)
+    for c in g.cables:
+        fol[c[4]].add(g.num(c[0]))
+    for fo, _, _, txt, _ in g.numeros:
+        if txt.startswith("PN"):
+            fol[txt].add(g.num(fo))
+    for (rep_, _), (cab_, _) in _cables_par_borne().items():
+        if not rep_.startswith("X1."):
+            born[cab_].add(rep_)
+    out = {}
+    for c in nomenclature._saisie()["cables"]:
+        r = c["repere"]
+        d = {}
+        if fol.get(r):
+            d["folio"] = ", ".join(sorted(fol[r], key=nomenclature._naturel))
+        if born.get(r):
+            diz = defaultdict(list)
+            for b_ in born[r]:
+                bn, n_ = b_.split(".")
+                diz[f"{bn}.{n_[:-1]}"].append(b_)
+            vus = {f"{k}x" for k in diz}
+            cites = {f"X{a_}.{b_}x" for a_, b_ in re.findall(r"X(\d+)\.(\d)[\dx]", c["origine"])}
+            if cites and vus != cites:          # W1 : origine = le réseau du client, gardée
+                parts = []
+                for k in sorted(diz, key=nomenclature._naturel):
+                    bs = sorted(diz[k], key=nomenclature._naturel)
+                    parts.append(bs[0] if len(bs) == 1 else (f"{bs[0]} / {bs[1]}" if len(bs) == 2 else f"{bs[0]} à {bs[-1]}"))
+                d["origine"] = "+A1 " + ", ".join(parts)
+                print(f"câble {r} : origine relue sur le schéma ({c['origine']} -> {d['origine']})")
+        if d.get("folio") and d["folio"] != c["folio"]:
+            print(f"câble {r} : folio relu sur le schéma ({c['folio']} -> {d['folio']})")
+        out[r] = d
+    return out
+
+
+CAB_SCHEMA = cables_schema()
+NOMENC_LIGNES = nomenclature.lignes(g, CAB_SCHEMA)
 print("nomenclature : taille, ligne, lignes par folio", nomenclature.dessiner(g, _texte, [F["90"], F["91"], F["92"]], NOMENC_LIGNES))
 # v40 (Julien 25/11 : police plus grande au f80) : tailles jusqu'à 360, colonnes longues sur 2 lignes si besoin
 print("liste des câbles : taille, ligne", nomenclature.tableau_pages(g, _texte, [F["80"]], nomenclature.ENTETE_CABLES,
-                                                                     nomenclature.lignes_cables(), ligne_max=960,
+                                                                     nomenclature.lignes_cables(CAB_SCHEMA), ligne_max=960,
                                                                      tailles=(360, 340, 320, 300, 280, 260, 240), coupe=True))
 g.write(SORTIE)
 ecrire_borniers(SORTIE)

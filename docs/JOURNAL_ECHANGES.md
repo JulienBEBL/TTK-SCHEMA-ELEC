@@ -456,3 +456,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : capture du f40 (textes des retours KM1, KM2, KF1) et d'une borne de terre du plan de bornier (-X31.11) dans WinRelais.
 - Lecture : f40, textes alignés à gauche (accrochage à gauche, code 0) ; terre : jaune avec bande verte en haut et en bas, contour vert. Release v41 non réenregistrée par WinRelais.
 - Questions à Julien : f40 conforme ? rendu de la terre à garder ou à changer ?
+
+## 26/11/2026 : retours v41 -> v42
+- Julien : captures du f40 (textes des contacts) et d'une borne de terre ; puis retours sur la v41 : f40 textes à droite accrochés à droite, terre plus marquée, gras sur les plans de bornier, « Affaire » au f01, W1 à droite au f10, f20 (renvois 0 V, numéros sur les broches du moteur, texte KA2), f31 / f32 variateur plus large, f40 renvois du bas, f64 numéro dans le symbole, numéros centrés partout, résumé sous chaque bornier, check nomenclature et folios ; « travaille en autonomie et livre la prochaine version ».
+- Fait : v41 ouverte dans WinRelais comparée (aucune retouche) ; demandes notées (`memoire/revues/2026-11-26_retours_julien_v41.md`) ; v42 (rapport `docs/RAPPORT_v42_2026-11-26.md`) ; contrôle élargi (corps des symboles, noms de broches, points) ; 2 symboles CUSTOM (variateur élargi, thermocouple retourné) ; mémoire (04, 05, 06, 10, README, revues), CLAUDE.md, README ; commit + push.
+- En attente : relecture de la v42 dans WinRelais ; correction de `saisie.json` (W8, W11, W12, W14) avec l'implantation, accord de Julien.
