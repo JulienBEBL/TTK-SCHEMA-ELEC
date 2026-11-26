@@ -177,3 +177,4 @@ Fichiers : `release/TTK_implantation_2026-11-26_v14.pdf` (**3 pages A3**) + `_ve
 - `extraire.py` : X1.n = côté extérieur. `generer.py` : page 3 (boîte, 2 rangées : X1.1-24, X1.25-69 ; haut = borne d'armoire, bas = appareil ; un groupe par câble, butées) ; contrôle des bornes X1 (posées une fois, conducteurs = borne d'armoire raccordée) ; comptage armoire / boîte séparé ; X21.14 plus en tireté rouge.
 - Page 2 pleine : la boîte ne tenait pas, d'où la 3e page (écart à la règle « 2 pages », signalé à Julien).
 - Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs ; 3 PNG relus. Bornes : armoire PT 2,5 36, PT 4 15, terre 6, PTFIX 2X4 38 ; boîte 66 passage + 3 terre.
+- Julien (26/11) : 3e page gardée.

@@ -668,3 +668,4 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : X21.14 à droite de K4 sur R3 (validé) ; bornes de la boîte dessinées en largeur PT 2,5 (5,2 mm), type à choisir [?] ; GO v14.
 - [H] Bornier +BJM-X1 en 3e page : la page 2 est pleine (écart à « 2 pages seulement », signalé à Julien).
 - [C] v14 : contrôle 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs v45.
+- [D] Julien (26/11) : on garde la 3e page de l'implantation (bornier +BJM-X1). Le dossier fait 3 pages.

@@ -3,7 +3,7 @@
 Créé le 17/11/2026. Version actuelle : **v14, indice D** (26/11, schéma v45, PC PERSO JULIEN), **3 pages** (plaque, borniers R3-R5, boîte +BJM-X1), en attente des retours de Julien. v13 et avant dans `old/`.
 
 ## Demande de Julien (18/11) [D]
-- **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). Générateur gardé, **draw.io abandonné**.
+- **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). **26/11 : 3e page gardée** (bornier de la boîte +BJM-X1, Julien) : le dossier fait 3 pages. Générateur gardé, **draw.io abandonné**.
 - Travail limité à R3, R4, R5 (R1, R2, variateurs, résistances, alimentations déjà fixés). Ordre de R4 confirmé : QF4 … QF10, XD1 | X13 | S1, S4, H3, H4 | vis | H2.
 - Répartition W11 / W12 (Q32) : **validée** (05/11, reconfirmée le 18/11) ; plus de marque « à valider ».
 - Freins M1 + M2 : un seul 5G1,5, repère **W4** (Julien 18/11 : ok).
@@ -106,3 +106,4 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 - 26/11 (nouveau chat, état des lieux pour la v14) : v45 comparée à la v36 : **99 bornes d'armoire identiques** (noms à jour dans `saisie.json`), mêmes types et largeurs : R3, R4, R5 inchangés, tout tient. Nouveau : bornier +BJM-X1 (69 bornes, hors armoire) ; le côté extérieur des bornes R5 est maintenant X1.n (sans adaptation, `extraire.py` le range côté armoire et `generer.py` signalerait 69 bornes X1 « posées 0 fois ») ; n° de fil des f43 / f61 / f63 / f64 en +100 ; TF sur X10:3 / X10:4. Questions à Julien : affichage du côté extérieur, boîte sur les 2 pages, X21.14.
 - 26/11 (réponses de Julien) : bas des bornes R5 = **« +BJM X1.n »** seulement [D] ; bornier **+BJM-X1 ajouté** au dossier (« NON RAJOUTE », lecture à confirmer) ; X21.14 : explication demandée par Julien, validation attendue.
 - 26/11 (**v14 indice D**, GO de Julien) : bas des bornes R5 « +BJM X1.n » [D] ; bornier +BJM-X1 ajouté en **page 3** (page 2 pleine) [D « rajoute », 3e page à confirmer] ; X21.14 à droite de K4 **validé** [D] ; bornes de la boîte en largeur PT 2,5 5,2 mm, type à choisir [D / ?]. `saisie.json` : `boite.bornier` (largeur, terre X1.4 / X1.8 / X1.69, 2 rangées par câble). Contrôle 0 / 0 / 0. Seul point ouvert : type de borne de la boîte.
+- 26/11 : **3e page gardée** (Julien). Reste ouvert : type de borne de la boîte +BJM-X1.
