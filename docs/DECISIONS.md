@@ -633,3 +633,10 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : pas de numéro sur le brin V/J de W9 / W10 (retiré du script, pour la v44).
 - [D] Julien : oublier l'écart des bornes de terre (6 dessinées, 4 achetées).
 - [D] Julien : historique de `memoire/06_EN_COURS.md` déplacé dans `docs/HISTORIQUE_VERSIONS.md`.
+
+## 26/11/2026 : réponse écrite de SEW (Xavier)
+- [C] Doc SEW : frein BE5 400 V CA, maintien 0,18 A, rapport appel / maintien 5,9 (1,06 A) : QF2 / QF3 2 A C gardés.
+- [C] Doc SEW : X6 STO 150 mW par variateur : 12,5 mA pour 2 ≥ 10 mA (KA1 R-32).
+- [C] Doc SEW : X10:1 DB00 / X10:2 GND (sortie frein), **X10:3 TF1 / X10:4 GND** (sonde) ; le schéma a la TF sur X10:1 / X10:2 : erreur à corriger [?, accord de Julien].
+- [C] Doc SEW : MCX91A-0055 entrée 5 A ; X5 6 W (8,5 W max) ; 1 mise sous tension / min, 10 s mini hors tension.
+- [C] Doc SEW : VFC^PLUS sans codeur, écart typique 0,2 × glissement nominal ; [?] n_N de la plaque.

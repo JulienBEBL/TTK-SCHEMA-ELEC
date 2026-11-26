@@ -15,7 +15,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | (ancien X13) | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) ; repère à fixer |
 | QM1 / QM2 | Schneider GV2ME14, réglés 6,5 A | amont variateurs |
 | KM1 / KM2 | Schneider LC1D09BD (bobine 24 V CC) | contacteurs variateurs |
-| QF2 / QF3 | Schneider iC60N A9F74202, 2P 2 A courbe C | freins ; calibre à confirmer avec le courant du BE5 |
+| QF2 / QF3 | Schneider iC60N A9F74202, 2P 2 A courbe C | freins ; BE5 400 V CA : maintien 0,18 A, appel 1,06 A (doc SEW 26/11) : 2 A C confirmé |
 | KF1 / KF2 | Schneider LC1D09BD | contacteurs de frein |
 | QF4 / QF5 | Hager NFT706, 1P+N 6 A courbe C | alimentations 24 V |
 | QF6 | Schneider iC60N A9F75204, 2P 4 A courbe D | alimentation 48 V |
@@ -30,7 +30,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 ## Variateurs et moteurs (f31, f32)
 | Repère | Matériel | Remarque |
 |---|---|---|
-| U1 / U2 | SEW MCX91A-0055-5E3 (CSO, CFN) | STO X6, TF X10, X5 24 V de sauvegarde, PROFINET X40 ; bornes X6 / X10 à confirmer |
+| U1 / U2 | SEW MCX91A-0055-5E3 (CSO, CFN) | STO X6, TF X10, X5 24 V de sauvegarde, PROFINET X40 ; doc SEW (26/11) : **TF sur X10:3 (TF1) / X10:4 (GND)**, X10:1 / X10:2 = sortie frein DB00 ; entrée 5 A, X5 6 W, X6 150 mW ; 1 mise sous tension / min max, 10 s hors tension mini |
 | M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW | frein BE5 400 V CA |
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |

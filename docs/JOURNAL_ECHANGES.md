@@ -487,3 +487,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : historique de 06, V/J de W9 / W10, bornes de terre
 - Julien : déplacer l'historique de 06 dans docs/ ; n° du brin V/J de W9 / W10 non voulu ; oublier le point « 6 bornes de terre pour 4 achetées » ; il envoie les infos SEW au prochain message.
 - Fait : historique v17-v41 dans `docs/HISTORIQUE_VERSIONS.md` ; `vj_num=4` retiré du script (essai : 2 brins changent, contrôles à 0 ; pas de nouvelle release) ; point des bornes de terre retiré (05, 09, contrôle de la nomenclature).
+
+## 26/11/2026 : réponse écrite de SEW (Xavier)
+- Julien : mail du 24/11 et réponses de Xavier (7 extraits de doc SEW) ; copie dans la mémoire, analyse, rapport, questions.
+- Fait : images dans `memoire/sew/2026-11-26_reponses_xavier/` ; rapport `docs/RAPPORT_SEW_2026-11-26.md` ; QUESTIONS_SEW, 02, 05, 06, BILAN_24V mis à jour.
+- Trouvé : TF sur X10:3 / X10:4 d'après SEW, le schéma l'a sur X10:1 / X10:2. Frein (1,06 A d'appel), STO (12,5 mA), 24 V X5 (6 W) : réglés. Vitesse : formule SEW, plaque moteur nécessaire.

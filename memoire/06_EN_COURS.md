@@ -8,7 +8,7 @@ Rapport : `docs/RAPPORT_v43_2026-11-26.md`.
 - Plans de bornier : résumé sous le cadre du repère du bornier. Nomenclature : police 300 (280).
 - Brin V/J de W9 / W10 : n° 4 **non voulu** (Julien 26/11) : `vj_num=4` retiré du script (essai : seul changement, 2 brins ; contrôles à 0). Sortira avec la v44, après les autres retours v43.
 - Bornes de terre (6 dessinées / 4 achetées) : point abandonné (Julien 26/11) ; plus signalé par la nomenclature.
-- Suite : Julien envoie les réponses de SEW au prochain message.
+- 26/11 : réponse écrite de SEW (Xavier) reçue et analysée : `docs/RAPPORT_SEW_2026-11-26.md`. **TF à déplacer sur X10:3 / X10:4** (f31, f32), en attente de l'accord de Julien ; plaque moteur (n_N, I_N) à relever.
 - 26/11 (nouveau chat, passation) : mémoire relue, release v43 non réenregistrée ; attente des retours de Julien sur la v43.
 
 ## Version précédente : v42 (26/11/2026, PC PERSO JULIEN)

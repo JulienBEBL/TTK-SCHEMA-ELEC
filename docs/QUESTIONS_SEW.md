@@ -68,3 +68,16 @@ Source : technicien SEW, par téléphone, 24/11/2026. Aucun document. **À confi
 | Bornes X6 (STO) | Réglé d'après la notice : X6.1 / X6.3 = +24 V, X6.2 / X6.4 = 0 V | 05/11 |
 
 Réponses à reporter dans `memoire/05_POINTS_OUVERTS.md` (points 1 bis, 8 à 11, Q37), `docs/DECISIONS.md` et `docs/BILAN_24V.md` (questions 2 et 4).
+
+## Réponse écrite de Xavier (26/11/2026) : extraits de doc SEW
+Images : `memoire/sew/2026-11-26_reponses_xavier/`. Analyse : `docs/RAPPORT_SEW_2026-11-26.md`.
+
+| Question | Réponse [C doc SEW] | État |
+|---|---|---|
+| 1 (frein) | BE5 400 V CA : maintien 0,18 A (CA) ; rapport appel / maintien 5,9, soit 1,06 A [H] ; bobine 50 W | **Réglée** : 1,06 A < 2 A, QF2 / QF3 2 A C conviennent |
+| 2 (STO) | X6 : 150 mW, type 2 IEC 61131-2 ; 12,5 mA pour 2 [H] | **Réglée** (tension de la valeur non donnée, sans effet) |
+| 3 (TF) | **X10:3 = TF1, X10:4 = GND** (X10:1 / X10:2 = sortie frein DB00) ; seuil 1830 Ω | Bornes réglées : **schéma faux (TF sur X10:1 / X10:2)** ; paramètre, réaction, réarmement : sans réponse |
+| 4 (24 V X5) | 6 W (taille 0S, CSO / CFN) ; 8,5 W max ; 24 V -10 % / +20 % | **Réglée** |
+| 5 (réseau) | Entrée 5 A CA ; disjoncteur moteur ≥ 1,1 × courant calculé ou × I nominal moteur | Partielle : appel / précharge sans réponse |
+| 10 (vitesse) | VFC^PLUS sans codeur : écart typique 0,2 × glissement nominal | Partielle : dispersion, échauffement, tension réseau sans réponse ; n_N de plaque nécessaire |
+| 12 (mises sous tension) | 1 par minute au plus ; 10 s mini hors tension | **Réglée** (1 / h visé) |

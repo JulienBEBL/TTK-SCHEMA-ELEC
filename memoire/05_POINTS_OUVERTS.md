@@ -41,7 +41,7 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 
 ## Sécurité
 1. Sortie de diagnostic du XPSUAF13AP : c'est Z1 (24 V, 20 mA, pulsée, non sécuritaire), déjà dans le symbole ; câblée sur I1.5 en v15 (Q23). B2 raccordée au 0 V en v13.
-1 bis. Courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A (en chaîne depuis la v23) à lire (SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : entrée STO 150 mW **par variateur** (précisé par Julien le même jour) : **cas A retenu, 12,5 mA pour les 2, au-dessus de 10 mA** ; le cas B ci-dessous est écarté tant que l'écrit ne dit pas le contraire. Question 2 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
+1 bis. **Réglé le 26/11 (doc SEW écrite, Xavier)** : X6 absorbe 150 mW par variateur (type 2 IEC 61131-2) : 12,5 mA pour 2 ≥ 10 mA, cas A confirmé (`docs/RAPPORT_SEW_2026-11-26.md`). Historique : courant minimal des contacts du KA1 : 10 mA / 15 V (R-32) : courant des entrées STO des 2 MCX91A (en chaîne depuis la v23) à lire (SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : entrée STO 150 mW **par variateur** (précisé par Julien le même jour) : **cas A retenu, 12,5 mA pour les 2, au-dessus de 10 mA** ; le cas B ci-dessous est écarté tant que l'écrit ne dit pas le contraire. Question 2 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
    - Calcul [H] (aucune valeur ajoutée) : 150 mW / 24 V = 6,25 mA.
    - Cas A, 150 mW par variateur : 2 × 6,25 = **12,5 mA** ≥ 10 mA ; marge 2,5 mA (25 %). Si l'entrée est résistive [H] (R ≈ 24² / 0,150 = 3,84 kΩ), le courant suit la tension : 10 mA atteints vers 19,2 V.
    - Cas B, 150 mW au total : **6,25 mA** < 10 mA ; il manque 3,75 mA. 15 V : 24 V suffit dans les 2 cas.
@@ -56,14 +56,14 @@ Ces points étaient dans les notes encadrées des folios jusqu'à la v6 ; ils so
 7. Fins de course B3 à B6 : NO le 05/11, **NF 11-12 depuis le 18/11 (v32, Julien)**.
 
 ## Puissance et variateurs
-8. Courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : redresseur BGE1.5, courant de **maintien 0,18 A** ; **courant d'appel non donné** ; côté CA ou CC et « par frein » non précisés. Question 1 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
+8. **Réglé le 26/11 (doc SEW écrite)** : BE5 400 V CA, maintien 0,18 A, appel 5,9 × = 1,06 A [H] < 2 A : QF2 / QF3 2 A C gardés. Historique : courant du frein BE5 → calibre et courbe de QF2 / QF3 ; section du câble frein (appel SEW). **Réponse partielle ORALE du 24/11 [?], à confirmer par écrit** : redresseur BGE1.5, courant de **maintien 0,18 A** ; **courant d'appel non donné** ; côté CA ou CC et « par frein » non précisés. Question 1 de `docs/QUESTIONS_SEW.md` **toujours ouverte**.
    - Maintien 0,18 A contre QF2 / QF3 (2 A C) : 9 % du calibre. Chaque frein a son disjoncteur et ses propres brins dans W4 (M1 : L1 / L2, M2 : L1 / L3), donc 0,18 A par conducteur [H].
    - Câble 5G1,5 : 0,18 A est très inférieur à 2 A, et QF2 / QF3 protègent le câble. Tenue exacte (NF EN 60204-1, tableau 6) non relevée ; longueur de W4 non définie, donc chute de tension non calculée.
    - Charge de KA1 13-14 : **inchangée**. Le courant du frein passe par les contacts de puissance de KF1 / KF2, pas par KA1. 13-14 ne porte que les bobines (KF1, KF2, KA2 : 0,68 A < 3 A DC-13). Pouvoir de coupure des contacts de KF1 / KF2 : fiche non dans le dépôt [?].
    - **Appel manquant** : on ne peut pas juger le déclenchement magnétique de la courbe C. Seuil indicatif de 5 à 10 × In (IEC 60898) [H, à lire sur la fiche A9F74202], soit 10 à 20 A, soit 55 à 110 × 0,18 A. Le rapport appel / maintien du BGE1.5 est à demander.
    - 0,18 A est cohérent avec les 0,183 A à 400 V d'un chat du 27/08 (écart 1,6 %). Ce chat n'avait pas été vérifié ; l'accord ne prouve pas deux sources indépendantes (le technicien a pu lire la même table). Si 0,18 A est un courant CC de bobine, il ne dit rien du courant CA vu par QF2 / QF3.
    - Rien modifié : calibre, courbe et câble inchangés tant que l'appel manque.
-9. X6 (STO) **réglé le 05/11** (Julien, notice SEW) : X6.1 / X6.3 = F_STO_P +24 V, X6.2 / X6.4 = F_STO_M 0 V, X6.5 VO24_STO / X6.6 GND non utilisés ; câblage du schéma conforme. Reste X10 (TF) et le courant des entrées STO (point 1 bis).
+9. X6 (STO) **réglé le 05/11** (Julien, notice SEW) : X6.1 / X6.3 = F_STO_P +24 V, X6.2 / X6.4 = F_STO_M 0 V, X6.5 VO24_STO / X6.6 GND non utilisés ; câblage du schéma conforme. **X10 (TF), doc SEW du 26/11 : X10:3 TF1 / X10:4 GND ; le schéma a la sonde sur X10:1 / X10:2 (sortie frein DB00) : à corriger (v44, accord de Julien)** [?]. STO : réglé (1 bis).
 10. Mises sous tension du MCX91A (= fermeture de KM1 / KM2, 400 V sur L1-L3) : réponse SEW « 1 » (06/11). Usage (Julien, 09/11) : environ **1 mise sous tension toutes les 8 h** (passage en Manu pour la maintenance, puis retour en Auto) ; l'AU est réservé aux urgences, pas d'usage normal. Compatible avec la réponse « 1 » de SEW : **on garde KM1 / KM2**, point clos pour le schéma. **Rouvert le 18/11 pour le programme** (chat automate) : **réglé le 18/11 (Julien) : 1 mise sous tension par heure**. Programme : `T_SEW_ON` = 3600 s (AL04 dure 1 h après chaque retour en Auto) ; l'alarme AL04 supposait 1 / min (60 s).
 11. Câbles frein 5G1,5 (réserve) et TF 2x0,75 blindé (acheté) : longueurs à définir. Câbles pas-à-pas W9 / W10 : **réglé le 17/11**, LIYCY-JZ 5G1,5 (étiquettes en v34).
 
@@ -209,3 +209,10 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 - W9 / W10 : n° 4 sur le brin V/J **non voulu** (Julien 26/11) : retiré dans le script (v44).
 - f31 / f32 : variateur élargi validé par Julien (26/11).
 - Relecture de la v43 par Julien dans WinRelais (W1, W9 / W10 repris, f40, plans de bornier, nomenclature en 300) [?].
+
+## Réponse écrite SEW (Xavier, 26/11)
+Détail : `docs/RAPPORT_SEW_2026-11-26.md`.
+- **TF sur X10:3 / X10:4, pas X10:1 / X10:2** : schéma à corriger (f31, f32) ; câblage réel à vérifier [?].
+- Vitesse sans codeur (VFC^PLUS) : écart typique 0,2 × glissement nominal ; vitesse nominale n_N de la plaque du DRN100LS4 à relever [?]. Critère [H] : n_N ≥ 1447 tr/min pour ≤ 2 tr/min entre les 2 axes au pire.
+- QM1 / QM2 : courant nominal du moteur (plaque) à relever pour le critère SEW « ≥ 1,1 × I_N moteur » [?] ; 1,1 × 5 A = 5,5 A < 6,5 A réglé.
+- Sans réponse : dispersion entre 2 ensembles, échauffement, tension réseau, appel réseau, paramètre TF / réaction / réarmement [?].
