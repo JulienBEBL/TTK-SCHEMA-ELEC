@@ -547,3 +547,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : implantation v16
 - Julien : « régénère la v16 sans le à vérifier ».
 - Fait : v16 indice F (v15 dans `old/`) ; contrôle 0 / 0 / 0 ; page 3 relue. Commit local, push sur accord.
+- Julien : « Oui, pousse » (v16). Fait : poussé sur `main`.
