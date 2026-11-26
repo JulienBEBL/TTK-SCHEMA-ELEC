@@ -19,7 +19,7 @@ Rapport : `docs/RAPPORT_v42_2026-11-26.md`. Demandes : `memoire/revues/2026-11-2
 
 ### Suite
 - Julien : relire la v42 dans WinRelais (f31 / f32, f40, f64, plans de bornier).
-- `implantation/generateur/saisie.json` : folios et origines de W8, W11, W12, W14 d'avant la v37 (corrigés dans le schéma seulement ; implantation : accord de Julien avant push).
+- `implantation/generateur/saisie.json` : folios et origines de W8, W11, W12, W14 corrigés le 26/11 (accord de Julien) ; v42 régénérée (seul le f80 change). Implantation à régénérer pour en tenir compte.
 - Implantation à régénérer ; freins (D17) ; TIA ; SEW (réponses écrites reçues, à reporter).
 
 ## Version précédente : v41 (25/11/2026, PC PERSO JULIEN)

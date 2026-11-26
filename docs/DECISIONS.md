@@ -608,3 +608,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [H] KA1 : noms de broches masqués (doublon avec les textes jaunes du symbole).
 - [C] Check folios : 31 folios cohérents, 336 renvois « fNN » justes. Check nomenclature : appareils cohérents ; câbles W8, W11, W12, W14 corrigés dans le schéma (folios et origines relus sur le dessin) ; `saisie.json` inchangé (implantation).
 - [C] v42 générée : tous contrôles à 0 (contrôle élargi aux symboles).
+
+## 26/11/2026 : saisie.json (câbles)
+- [D] Julien : « oui, corrige-le » : `implantation/generateur/saisie.json` corrigé pour W8 (f64), W11 (origine X41.1x, X42.1x, X43.1x, X50.1x, X61.1x, X61.2x ; f41, 42, 43, 50, 61), W12 (X43.2x, X61.3x, X63.1x ; f43, 61, 63), W14 (f43).
+- [C] v42 régénérée (même nom, pas encore ouverte dans WinRelais) : seul le f80 change ; contrôles à 0.

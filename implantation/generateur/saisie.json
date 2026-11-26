@@ -1160,7 +1160,7 @@
    "blindage": "blindé, raccordé côté armoire",
    "longueur": "≤ 10 m (bobine 25 m)",
    "statut": "à confirmer",
-   "folio": "63"
+   "folio": "64"
   },
   {
    "repere": "W9",
@@ -1191,7 +1191,7 @@
   {
    "repere": "W11",
    "fonction": "Pupitre : AU S2, sélecteur S3, alimentation IHM",
-   "origine": "+A1 X41.1x, X41.2x, X42.1x, X50.1x, X61.1x, X61.2x",
+   "origine": "+A1 X41.1x, X42.1x, X43.1x, X50.1x, X61.1x, X61.2x",
    "destination": "+BJM, puis +P1 S2, S3, P1",
    "type": "LIYCY-JZ",
    "reference": "AEE261165",
@@ -1199,12 +1199,12 @@
    "blindage": "blindé, raccordé côté armoire",
    "longueur": "≤ 10 m",
    "statut": "acheté",
-   "folio": "41, 42, 50, 60, 70"
+   "folio": "41, 42, 43, 50, 61"
   },
   {
    "repere": "W12",
    "fonction": "Machine : capot B1, fins de course B3-B6, colonne H1",
-   "origine": "+A1 X41.3x, X61.3x, X63.1x",
+   "origine": "+A1 X43.2x, X61.3x, X63.1x",
    "destination": "+BJM",
    "type": "LIYCY-JZ",
    "reference": "AEE261164",
@@ -1212,7 +1212,7 @@
    "blindage": "blindé, raccordé côté armoire",
    "longueur": "≤ 10 m",
    "statut": "acheté",
-   "folio": "41, 60, 62, 70"
+   "folio": "43, 61, 63"
   },
   {
    "repere": "W13",
@@ -1238,7 +1238,7 @@
    "blindage": "à relever (fiche SICK)",
    "longueur": "20 m (surmoulé, longueur fixe)",
    "statut": "acheté",
-   "folio": "41, 70",
+   "folio": "43",
    "propose": false
   },
   {

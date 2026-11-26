@@ -201,6 +201,6 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 - f40 : **réglé en v42** (textes à droite, accrochés à droite, à la demande de Julien du 26/11).
 - Plans de bornier : vert / jaune vu par Julien (26/11) ; **rayé plus marqué en v42** (bandes de 100).
 - Rendu dans WinRelais de la v42 : variateur élargi (f31 / f32), thermocouple retourné (f64), gras et résumés des plans de bornier [?].
-- `implantation/generateur/saisie.json` : folios et origines de W8 (f64), W11 (X43.1x, pas de X41.2x), W12 (X43.2x, f43 / f61 / f63), W14 (f43) d'avant la v37 ; le schéma les relit sur le dessin [D à faire avec l'implantation, accord de Julien].
+- `implantation/generateur/saisie.json` : folios et origines de W8 (f64), W11 (X43.1x, pas de X41.2x), W12 (X43.2x, f43 / f61 / f63), W14 (f43) d'avant la v37 ; le schéma les relit sur le dessin. **Corrigé le 26/11** (accord de Julien) dans `saisie.json`.
 - Haut des variateurs f31 / f32 : numéros sur une rangée juste au-dessus des broches (alignement v40), pas centrés (fils 24 V de 600) [H].
 - Nomenclature : 6 bornes de terre dessinées pour 4 achetées ; références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].

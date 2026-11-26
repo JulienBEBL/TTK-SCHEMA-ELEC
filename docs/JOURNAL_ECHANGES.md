@@ -461,3 +461,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : captures du f40 (textes des contacts) et d'une borne de terre ; puis retours sur la v41 : f40 textes à droite accrochés à droite, terre plus marquée, gras sur les plans de bornier, « Affaire » au f01, W1 à droite au f10, f20 (renvois 0 V, numéros sur les broches du moteur, texte KA2), f31 / f32 variateur plus large, f40 renvois du bas, f64 numéro dans le symbole, numéros centrés partout, résumé sous chaque bornier, check nomenclature et folios ; « travaille en autonomie et livre la prochaine version ».
 - Fait : v41 ouverte dans WinRelais comparée (aucune retouche) ; demandes notées (`memoire/revues/2026-11-26_retours_julien_v41.md`) ; v42 (rapport `docs/RAPPORT_v42_2026-11-26.md`) ; contrôle élargi (corps des symboles, noms de broches, points) ; 2 symboles CUSTOM (variateur élargi, thermocouple retourné) ; mémoire (04, 05, 06, 10, README, revues), CLAUDE.md, README ; commit + push.
 - En attente : relecture de la v42 dans WinRelais ; correction de `saisie.json` (W8, W11, W12, W14) avec l'implantation, accord de Julien.
+
+## 26/11/2026 : correction de saisie.json
+- Julien : accord pour corriger `saisie.json` (W8, W11, W12, W14).
+- Fait : 4 câbles corrigés (folios, origines) ; le schéma ne relit plus rien de différent ; v42 régénérée (f80 seul) ; mémoire 05, 06, rapport v42 ; commit + push. Implantation pas encore régénérée.
