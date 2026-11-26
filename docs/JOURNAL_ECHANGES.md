@@ -478,3 +478,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : texte de passation
 - Julien : demande le texte à coller pour le prochain chat.
 - Fait : texte de `docs/PASSATION_2026-11-26.md` donné tel quel dans le chat.
+
+## 26/11/2026 : reprise dans un nouveau chat (passation)
+- Julien : texte de passation collé ; lire CLAUDE.md, mémoire, rapports v42 / v43 ; résumer en 5 lignes, puis attendre ses retours sur la v43.
+- Fait : `git pull` (à jour) ; release v43 non modifiée (`git status` propre) ; lecture complète ; résumé donné. Rien de modifié au schéma.
+- En attente : retours de Julien sur la v43 ; question du brin V/J n° 4 (W9 / W10).

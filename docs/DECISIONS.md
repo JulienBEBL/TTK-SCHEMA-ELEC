@@ -625,3 +625,6 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 ## 26/11/2026 : contrôle complet, README, passation
 - [D] Julien : mettre à jour la mémoire, vérifier, mettre tout le dépôt à jour (README pas à jour), puis faire un prompt de passation pour le prochain chat.
 - [C] README réécrit (folios v43, arborescence, contrôles) ; mémoire 05, 07, 08, 10, README corrigés (points réglés, outils) ; outils `folio.py`, `retouche.py`, `centrage.py` et scripts de symboles rangés dans le dépôt ; contrôle complet de la v43 : tout à 0 ; passation : `docs/PASSATION_2026-11-26.md`.
+
+## 26/11/2026 : reprise (nouveau chat)
+- [C] Dépôt à jour, release v43 non réenregistrée par WinRelais (git status propre). Aucune décision nouvelle ; attente des retours de Julien sur la v43.
