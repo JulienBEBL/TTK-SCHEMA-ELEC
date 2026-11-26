@@ -663,3 +663,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [D] Julien : bas des bornes R5 = « +BJM X1.n » seulement (pas l'appareil final).
 - [D] Julien : « NON RAJOUTE » : le bornier +BJM-X1 est ajouté dans le dossier (2 pages). Lecture de l'assistant, à confirmer ; type de borne de la boîte toujours à choisir [?].
 - [?] X21.14 à droite de K4 : Julien a demandé ce qu'est X21 ; explication donnée, validation attendue.
+
+## 26/11/2026 : implantation v14 (indice D)
+- [D] Julien : X21.14 à droite de K4 sur R3 (validé) ; bornes de la boîte dessinées en largeur PT 2,5 (5,2 mm), type à choisir [?] ; GO v14.
+- [H] Bornier +BJM-X1 en 3e page : la page 2 est pleine (écart à « 2 pages seulement », signalé à Julien).
+- [C] v14 : contrôle 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs v45.

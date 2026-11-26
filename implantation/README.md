@@ -1,6 +1,6 @@
 # Implantation de l'armoire +A1
 
-Depuis le 17/11/2026 (v11), le dossier est **généré**, tiré du schéma et d'un fichier de saisie. Depuis la v12 (18/11) : **2 pages A3** seulement (plan de la plaque, détail des borniers). Les fonctions des pages câbles / conducteurs / synoptique restent dans `generer.py`, non imprimées.
+Depuis le 17/11/2026 (v11), le dossier est **généré**, tiré du schéma et d'un fichier de saisie. Depuis la v12 (18/11) : **2 pages A3** (plan de la plaque, détail des borniers) ; depuis la v14 (26/11) : **3e page**, bornier de la boîte +BJM-X1 (hors armoire, demande de Julien). Les fonctions des pages câbles / conducteurs / synoptique restent dans `generer.py`, non imprimées.
 
 | Dossier / fichier | Contenu |
 |---|---|

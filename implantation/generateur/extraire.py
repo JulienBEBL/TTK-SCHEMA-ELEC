@@ -19,7 +19,8 @@ sys.path.insert(0, os.path.join(DEPOT, "outils"))
 import xrs_tool  # noqa: E402
 
 # appareils hors armoire (+M machine, +P1 pupitre)
-TERRAIN = re.compile(r"^(B\d|M\d|S2|S3|P1|H1)$")
+# v14 : les bornes X1.n de la boîte +BJM (hors armoire) sont du côté extérieur
+TERRAIN = re.compile(r"^(B\d|M\d|S2|S3|P1|H1|X1\.\d+)$")
 # appareils de porte (+A1, porte)
 PORTE = re.compile(r"^(S1|S4|H2|H3|H4)$")
 

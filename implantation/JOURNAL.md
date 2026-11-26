@@ -169,3 +169,11 @@ Fichiers : `release/TTK_implantation_2026-11-20_v13.pdf` (2 pages A3) + `_verifi
 - Bornes et câbles du .xrs v36 identiques à la v34 : borniers inchangés.
 - Page 1 : renvoi « détail page 2 » (était « pages suivantes »).
 - Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs. Seul point ouvert : X21.14 à droite de K4.
+
+## v14 (indice D) — 26/11/2026 (schéma v45), PC PERSO JULIEN
+Fichiers : `release/TTK_implantation_2026-11-26_v14.pdf` (**3 pages A3**) + `_verification.md` ; v13 dans `old/`.
+- État des lieux v36 -> v45 : 99 bornes d'armoire identiques (noms X43 / X61 / X63 / X64 déjà dans `saisie.json`), mêmes types : R3, R4, R5 inchangés.
+- Réponses de Julien (26/11) : bas des bornes R5 = « +BJM X1.n » seulement ; bornier +BJM-X1 ajouté ; X21.14 à droite de K4 validé ; bornes de la boîte dessinées en largeur PT 2,5 (type à choisir).
+- `extraire.py` : X1.n = côté extérieur. `generer.py` : page 3 (boîte, 2 rangées : X1.1-24, X1.25-69 ; haut = borne d'armoire, bas = appareil ; un groupe par câble, butées) ; contrôle des bornes X1 (posées une fois, conducteurs = borne d'armoire raccordée) ; comptage armoire / boîte séparé ; X21.14 plus en tireté rouge.
+- Page 2 pleine : la boîte ne tenait pas, d'où la 3e page (écart à la règle « 2 pages », signalé à Julien).
+- Contrôle : 0 texte trop large, 0 chevauchement, 0 écart avec le .xrs ; 3 PNG relus. Bornes : armoire PT 2,5 36, PT 4 15, terre 6, PTFIX 2X4 38 ; boîte 66 passage + 3 terre.

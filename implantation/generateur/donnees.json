@@ -1,5 +1,5 @@
 {
- "source": "schema/generes/release/TTK_2026-11-20_v36.xrs",
+ "source": "schema/generes/release/TTK_2026-11-26_v45.xrs",
  "folios": {
   "0": "01",
   "1": "02",
@@ -16,20 +16,2439 @@
   "12": "40",
   "13": "41",
   "14": "42",
-  "15": "50",
-  "16": "60",
-  "17": "61",
-  "18": "62",
-  "19": "63",
-  "20": "70",
-  "21": "71",
-  "22": "80",
-  "23": "85",
-  "24": "90",
-  "25": "91",
-  "26": "92"
+  "15": "43",
+  "16": "50",
+  "17": "60",
+  "18": "61",
+  "19": "62",
+  "20": "63",
+  "21": "64",
+  "22": "70",
+  "23": "71",
+  "24": "72",
+  "25": "73",
+  "26": "80",
+  "27": "85",
+  "28": "90",
+  "29": "91",
+  "30": "92"
  },
  "bornes": {
+  "X1.1": {
+   "repere": "X1.1",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.12:2"
+     ],
+     "numeros": [
+      "3101"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:U1"
+     ],
+     "numeros": [
+      "3101"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.12:2"
+   ],
+   "cote_exterieur": [
+    "M1:U1"
+   ],
+   "numero_fil": "3101"
+  },
+  "X1.10": {
+   "repere": "X1.10",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.32:2"
+     ],
+     "numeros": [
+      "1162"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:3"
+     ],
+     "numeros": [
+      "1162"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.32:2"
+   ],
+   "cote_exterieur": [
+    "M1:3"
+   ],
+   "numero_fil": "1162"
+  },
+  "X1.11": {
+   "repere": "X1.11",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.31:2"
+     ],
+     "numeros": [
+      "1171"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:2"
+     ],
+     "numeros": [
+      "1171"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.31:2"
+   ],
+   "cote_exterieur": [
+    "M2:2"
+   ],
+   "numero_fil": "1171"
+  },
+  "X1.12": {
+   "repere": "X1.12",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.32:2"
+     ],
+     "numeros": [
+      "1173"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:3"
+     ],
+     "numeros": [
+      "1173"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.32:2"
+   ],
+   "cote_exterieur": [
+    "M2:3"
+   ],
+   "numero_fil": "1173"
+  },
+  "X1.13": {
+   "repere": "X1.13",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.11:2"
+     ],
+     "numeros": [
+      "2021"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:A+"
+     ],
+     "numeros": [
+      "2021"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.11:2"
+   ],
+   "cote_exterieur": [
+    "M3:A+"
+   ],
+   "numero_fil": "2021"
+  },
+  "X1.14": {
+   "repere": "X1.14",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.12:2"
+     ],
+     "numeros": [
+      "2022"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:A-"
+     ],
+     "numeros": [
+      "2022"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.12:2"
+   ],
+   "cote_exterieur": [
+    "M3:A-"
+   ],
+   "numero_fil": "2022"
+  },
+  "X1.15": {
+   "repere": "X1.15",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.13:2"
+     ],
+     "numeros": [
+      "2023"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:B+"
+     ],
+     "numeros": [
+      "2023"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.13:2"
+   ],
+   "cote_exterieur": [
+    "M3:B+"
+   ],
+   "numero_fil": "2023"
+  },
+  "X1.16": {
+   "repere": "X1.16",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.14:2"
+     ],
+     "numeros": [
+      "2024"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M3:B-"
+     ],
+     "numeros": [
+      "2024"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.14:2"
+   ],
+   "cote_exterieur": [
+    "M3:B-"
+   ],
+   "numero_fil": "2024"
+  },
+  "X1.17": {
+   "repere": "X1.17",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.21:2"
+     ],
+     "numeros": [
+      "2031"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:A+"
+     ],
+     "numeros": [
+      "2031"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.21:2"
+   ],
+   "cote_exterieur": [
+    "M4:A+"
+   ],
+   "numero_fil": "2031"
+  },
+  "X1.18": {
+   "repere": "X1.18",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.22:2"
+     ],
+     "numeros": [
+      "2032"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:A-"
+     ],
+     "numeros": [
+      "2032"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.22:2"
+   ],
+   "cote_exterieur": [
+    "M4:A-"
+   ],
+   "numero_fil": "2032"
+  },
+  "X1.19": {
+   "repere": "X1.19",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.23:2"
+     ],
+     "numeros": [
+      "2033"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:B+"
+     ],
+     "numeros": [
+      "2033"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.23:2"
+   ],
+   "cote_exterieur": [
+    "M4:B+"
+   ],
+   "numero_fil": "2033"
+  },
+  "X1.2": {
+   "repere": "X1.2",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.13:2"
+     ],
+     "numeros": [
+      "3102"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:V1"
+     ],
+     "numeros": [
+      "3102"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.13:2"
+   ],
+   "cote_exterieur": [
+    "M1:V1"
+   ],
+   "numero_fil": "3102"
+  },
+  "X1.20": {
+   "repere": "X1.20",
+   "folio": "20",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X20.24:2"
+     ],
+     "numeros": [
+      "2034"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M4:B-"
+     ],
+     "numeros": [
+      "2034"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X20.24:2"
+   ],
+   "cote_exterieur": [
+    "M4:B-"
+   ],
+   "numero_fil": "2034"
+  },
+  "X1.21": {
+   "repere": "X1.21",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.21:2"
+     ],
+     "numeros": [
+      "3131"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:1b"
+     ],
+     "numeros": [
+      "3131"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.21:2"
+   ],
+   "cote_exterieur": [
+    "M1:1b"
+   ],
+   "numero_fil": "3131"
+  },
+  "X1.22": {
+   "repere": "X1.22",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.22:2"
+     ],
+     "numeros": [
+      "3132"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:2b"
+     ],
+     "numeros": [
+      "3132"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.22:2"
+   ],
+   "cote_exterieur": [
+    "M1:2b"
+   ],
+   "numero_fil": "3132"
+  },
+  "X1.23": {
+   "repere": "X1.23",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.21:2"
+     ],
+     "numeros": [
+      "3231"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:1b"
+     ],
+     "numeros": [
+      "3231"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.21:2"
+   ],
+   "cote_exterieur": [
+    "M2:1b"
+   ],
+   "numero_fil": "3231"
+  },
+  "X1.24": {
+   "repere": "X1.24",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.22:2"
+     ],
+     "numeros": [
+      "3232"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:2b"
+     ],
+     "numeros": [
+      "3232"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.22:2"
+   ],
+   "cote_exterieur": [
+    "M2:2b"
+   ],
+   "numero_fil": "3232"
+  },
+  "X1.25": {
+   "repere": "X1.25",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X43.21:2"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B1:11"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.21:2"
+   ],
+   "cote_exterieur": [
+    "B1:11"
+   ],
+   "numero_fil": "4121"
+  },
+  "X1.26": {
+   "repere": "X1.26",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B1:12"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X43.22:1"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.22:1"
+   ],
+   "cote_exterieur": [
+    "B1:12"
+   ],
+   "numero_fil": "4301"
+  },
+  "X1.27": {
+   "repere": "X1.27",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X43.23:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B1:23"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.23:2"
+   ],
+   "cote_exterieur": [
+    "B1:23"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.28": {
+   "repere": "X1.28",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B1:24"
+     ],
+     "numeros": [
+      "6113"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X43.24:1"
+     ],
+     "numeros": [
+      "6113"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.24:1"
+   ],
+   "cote_exterieur": [
+    "B1:24"
+   ],
+   "numero_fil": "6113"
+  },
+  "X1.29": {
+   "repere": "X1.29",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.31:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B3:11"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.31:2"
+   ],
+   "cote_exterieur": [
+    "B3:11"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.3": {
+   "repere": "X1.3",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.14:2"
+     ],
+     "numeros": [
+      "3103"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:W1"
+     ],
+     "numeros": [
+      "3103"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.14:2"
+   ],
+   "cote_exterieur": [
+    "M1:W1"
+   ],
+   "numero_fil": "3103"
+  },
+  "X1.30": {
+   "repere": "X1.30",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B3:12"
+     ],
+     "numeros": [
+      "6117"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.32:1"
+     ],
+     "numeros": [
+      "6117"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.32:1"
+   ],
+   "cote_exterieur": [
+    "B3:12"
+   ],
+   "numero_fil": "6117"
+  },
+  "X1.31": {
+   "repere": "X1.31",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.33:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B4:11"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.33:2"
+   ],
+   "cote_exterieur": [
+    "B4:11"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.32": {
+   "repere": "X1.32",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B4:12"
+     ],
+     "numeros": [
+      "6118"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.34:1"
+     ],
+     "numeros": [
+      "6118"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.34:1"
+   ],
+   "cote_exterieur": [
+    "B4:12"
+   ],
+   "numero_fil": "6118"
+  },
+  "X1.33": {
+   "repere": "X1.33",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.35:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B5:11"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.35:2"
+   ],
+   "cote_exterieur": [
+    "B5:11"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.34": {
+   "repere": "X1.34",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B5:12"
+     ],
+     "numeros": [
+      "6121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.36:1"
+     ],
+     "numeros": [
+      "6121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.36:1"
+   ],
+   "cote_exterieur": [
+    "B5:12"
+   ],
+   "numero_fil": "6121"
+  },
+  "X1.35": {
+   "repere": "X1.35",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.37:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B6:11"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.37:2"
+   ],
+   "cote_exterieur": [
+    "B6:11"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.36": {
+   "repere": "X1.36",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B6:12"
+     ],
+     "numeros": [
+      "6122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.38:1"
+     ],
+     "numeros": [
+      "6122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.38:1"
+   ],
+   "cote_exterieur": [
+    "B6:12"
+   ],
+   "numero_fil": "6122"
+  },
+  "X1.37": {
+   "repere": "X1.37",
+   "folio": "63",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X63.11:2"
+     ],
+     "numeros": [
+      "6301"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:RD"
+     ],
+     "numeros": [
+      "6301"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X63.11:2"
+   ],
+   "cote_exterieur": [
+    "H1:RD"
+   ],
+   "numero_fil": "6301"
+  },
+  "X1.38": {
+   "repere": "X1.38",
+   "folio": "63",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X63.12:2"
+     ],
+     "numeros": [
+      "6302"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:OG"
+     ],
+     "numeros": [
+      "6302"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X63.12:2"
+   ],
+   "cote_exterieur": [
+    "H1:OG"
+   ],
+   "numero_fil": "6302"
+  },
+  "X1.39": {
+   "repere": "X1.39",
+   "folio": "63",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X63.13:2"
+     ],
+     "numeros": [
+      "6303"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:GN"
+     ],
+     "numeros": [
+      "6303"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X63.13:2"
+   ],
+   "cote_exterieur": [
+    "H1:GN"
+   ],
+   "numero_fil": "6303"
+  },
+  "X1.4": {
+   "repere": "X1.4",
+   "folio": "31",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.11:2"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "X31.11:2"
+   ],
+   "cote_exterieur": [
+    "M1:PE"
+   ],
+   "numero_fil": "PE"
+  },
+  "X1.40": {
+   "repere": "X1.40",
+   "folio": "63",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X63.14:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "H1:COM"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X63.14:2"
+   ],
+   "cote_exterieur": [
+    "H1:COM"
+   ],
+   "numero_fil": "1230"
+  },
+  "X1.41": {
+   "repere": "X1.41",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X43.31:2"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B2:11"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.31:2"
+   ],
+   "cote_exterieur": [
+    "B2:11"
+   ],
+   "numero_fil": "4122"
+  },
+  "X1.42": {
+   "repere": "X1.42",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B2:12"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X43.32:1"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.32:1"
+   ],
+   "cote_exterieur": [
+    "B2:12"
+   ],
+   "numero_fil": "4302"
+  },
+  "X1.43": {
+   "repere": "X1.43",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X43.33:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "B2:23"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.33:2"
+   ],
+   "cote_exterieur": [
+    "B2:23"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.44": {
+   "repere": "X1.44",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B2:24"
+     ],
+     "numeros": [
+      "6114"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X43.34:1"
+     ],
+     "numeros": [
+      "6114"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.34:1"
+   ],
+   "cote_exterieur": [
+    "B2:24"
+   ],
+   "numero_fil": "6114"
+  },
+  "X1.45": {
+   "repere": "X1.45",
+   "folio": "64",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B7:1"
+     ],
+     "numeros": [
+      "6401"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X64.11:1"
+     ],
+     "numeros": [
+      "6401"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X64.11:1"
+   ],
+   "cote_exterieur": [
+    "B7:1"
+   ],
+   "numero_fil": "6401"
+  },
+  "X1.46": {
+   "repere": "X1.46",
+   "folio": "64",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "B7:2"
+     ],
+     "numeros": [
+      "6402"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X64.12:1"
+     ],
+     "numeros": [
+      "6402"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X64.12:1"
+   ],
+   "cote_exterieur": [
+    "B7:2"
+   ],
+   "numero_fil": "6402"
+  },
+  "X1.47": {
+   "repere": "X1.47",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.11:2"
+     ],
+     "numeros": [
+      "4111"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S2:1"
+     ],
+     "numeros": [
+      "4111"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.11:2"
+   ],
+   "cote_exterieur": [
+    "S2:1"
+   ],
+   "numero_fil": "4111"
+  },
+  "X1.48": {
+   "repere": "X1.48",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S2:2"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X41.12:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.12:1"
+   ],
+   "cote_exterieur": [
+    "S2:2"
+   ],
+   "numero_fil": "4121"
+  },
+  "X1.49": {
+   "repere": "X1.49",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.13:2"
+     ],
+     "numeros": [
+      "4112"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S2:21"
+     ],
+     "numeros": [
+      "4112"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.13:2"
+   ],
+   "cote_exterieur": [
+    "S2:21"
+   ],
+   "numero_fil": "4112"
+  },
+  "X1.5": {
+   "repere": "X1.5",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.12:2"
+     ],
+     "numeros": [
+      "3201"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:U1"
+     ],
+     "numeros": [
+      "3201"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.12:2"
+   ],
+   "cote_exterieur": [
+    "M2:U1"
+   ],
+   "numero_fil": "3201"
+  },
+  "X1.50": {
+   "repere": "X1.50",
+   "folio": "41",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S2:22"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X41.14:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.14:1"
+   ],
+   "cote_exterieur": [
+    "S2:22"
+   ],
+   "numero_fil": "4122"
+  },
+  "X1.51": {
+   "repere": "X1.51",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.11:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S2:13"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.11:2"
+   ],
+   "cote_exterieur": [
+    "S2:13"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.52": {
+   "repere": "X1.52",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S2:14"
+     ],
+     "numeros": [
+      "6111"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.12:1"
+     ],
+     "numeros": [
+      "6111"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.12:1"
+   ],
+   "cote_exterieur": [
+    "S2:14"
+   ],
+   "numero_fil": "6111"
+  },
+  "X1.53": {
+   "repere": "X1.53",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X43.11:2"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:3"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.11:2"
+   ],
+   "cote_exterieur": [
+    "S3:3"
+   ],
+   "numero_fil": "4121"
+  },
+  "X1.54": {
+   "repere": "X1.54",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:4"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X43.12:1"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.12:1"
+   ],
+   "cote_exterieur": [
+    "S3:4"
+   ],
+   "numero_fil": "4301"
+  },
+  "X1.55": {
+   "repere": "X1.55",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X43.13:2"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:7"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.13:2"
+   ],
+   "cote_exterieur": [
+    "S3:7"
+   ],
+   "numero_fil": "4122"
+  },
+  "X1.56": {
+   "repere": "X1.56",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:8"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X43.14:1"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X43.14:1"
+   ],
+   "cote_exterieur": [
+    "S3:8"
+   ],
+   "numero_fil": "4302"
+  },
+  "X1.57": {
+   "repere": "X1.57",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X42.11:2"
+     ],
+     "numeros": [
+      "4004"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:15"
+     ],
+     "numeros": [
+      "4004"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X42.11:2"
+   ],
+   "cote_exterieur": [
+    "S3:15"
+   ],
+   "numero_fil": "4004"
+  },
+  "X1.58": {
+   "repere": "X1.58",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:16"
+     ],
+     "numeros": [
+      "4201"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X42.12:1"
+     ],
+     "numeros": [
+      "4201"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X42.12:1"
+   ],
+   "cote_exterieur": [
+    "S3:16"
+   ],
+   "numero_fil": "4201"
+  },
+  "X1.59": {
+   "repere": "X1.59",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X42.13:2"
+     ],
+     "numeros": [
+      "4005"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:1"
+     ],
+     "numeros": [
+      "4005"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X42.13:2"
+   ],
+   "cote_exterieur": [
+    "S3:1"
+   ],
+   "numero_fil": "4005"
+  },
+  "X1.6": {
+   "repere": "X1.6",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.13:2"
+     ],
+     "numeros": [
+      "3202"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:V1"
+     ],
+     "numeros": [
+      "3202"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.13:2"
+   ],
+   "cote_exterieur": [
+    "M2:V1"
+   ],
+   "numero_fil": "3202"
+  },
+  "X1.60": {
+   "repere": "X1.60",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:2"
+     ],
+     "numeros": [
+      "4202"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X42.14:1"
+     ],
+     "numeros": [
+      "4202"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X42.14:1"
+   ],
+   "cote_exterieur": [
+    "S3:2"
+   ],
+   "numero_fil": "4202"
+  },
+  "X1.61": {
+   "repere": "X1.61",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X42.15:2"
+     ],
+     "numeros": [
+      "4006"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:5"
+     ],
+     "numeros": [
+      "4006"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X42.15:2"
+   ],
+   "cote_exterieur": [
+    "S3:5"
+   ],
+   "numero_fil": "4006"
+  },
+  "X1.62": {
+   "repere": "X1.62",
+   "folio": "42",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:6"
+     ],
+     "numeros": [
+      "4203"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X42.16:1"
+     ],
+     "numeros": [
+      "4203"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X42.16:1"
+   ],
+   "cote_exterieur": [
+    "S3:6"
+   ],
+   "numero_fil": "4203"
+  },
+  "X1.63": {
+   "repere": "X1.63",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.21:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:9"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.21:2"
+   ],
+   "cote_exterieur": [
+    "S3:9"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.64": {
+   "repere": "X1.64",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:10"
+     ],
+     "numeros": [
+      "6115"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.22:1"
+     ],
+     "numeros": [
+      "6115"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.22:1"
+   ],
+   "cote_exterieur": [
+    "S3:10"
+   ],
+   "numero_fil": "6115"
+  },
+  "X1.65": {
+   "repere": "X1.65",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X61.23:2"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "S3:11"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.23:2"
+   ],
+   "cote_exterieur": [
+    "S3:11"
+   ],
+   "numero_fil": "6001"
+  },
+  "X1.66": {
+   "repere": "X1.66",
+   "folio": "61",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "S3:12"
+     ],
+     "numeros": [
+      "6116"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X61.24:1"
+     ],
+     "numeros": [
+      "6116"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X61.24:1"
+   ],
+   "cote_exterieur": [
+    "S3:12"
+   ],
+   "numero_fil": "6116"
+  },
+  "X1.67": {
+   "repere": "X1.67",
+   "folio": "50",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "P1:L+"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X50.11:1"
+     ],
+     "numeros": [
+      "1241"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X50.11:1"
+   ],
+   "cote_exterieur": [
+    "P1:L+"
+   ],
+   "numero_fil": "1241"
+  },
+  "X1.68": {
+   "repere": "X1.68",
+   "folio": "50",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "P1:M"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X50.12:1"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X50.12:1"
+   ],
+   "cote_exterieur": [
+    "P1:M"
+   ],
+   "numero_fil": "1230"
+  },
+  "X1.69": {
+   "repere": "X1.69",
+   "folio": "50",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "P1:FE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X50.13:1"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "X50.13:1"
+   ],
+   "cote_exterieur": [
+    "P1:FE"
+   ],
+   "numero_fil": "PE"
+  },
+  "X1.7": {
+   "repere": "X1.7",
+   "folio": "32",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.14:2"
+     ],
+     "numeros": [
+      "3203"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:W1"
+     ],
+     "numeros": [
+      "3203"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X32.14:2"
+   ],
+   "cote_exterieur": [
+    "M2:W1"
+   ],
+   "numero_fil": "3203"
+  },
+  "X1.8": {
+   "repere": "X1.8",
+   "folio": "32",
+   "symbole": "borne 4 mm terre",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X32.11:2"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M2:PE"
+     ],
+     "numeros": [
+      "PE"
+     ]
+    }
+   ],
+   "type": "terre",
+   "cote_armoire": [
+    "X32.11:2"
+   ],
+   "cote_exterieur": [
+    "M2:PE"
+   ],
+   "numero_fil": "PE"
+  },
+  "X1.9": {
+   "repere": "X1.9",
+   "folio": "31",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Boîte de jonction machine",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X31.31:2"
+     ],
+     "numeros": [
+      "1161"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "M1:2"
+     ],
+     "numeros": [
+      "1161"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X31.31:2"
+   ],
+   "cote_exterieur": [
+    "M1:2"
+   ],
+   "numero_fil": "1161"
+  },
   "X10.11": {
    "repere": "X10.11",
    "folio": "10",
@@ -40,9 +2459,7 @@
     {
      "broche": "1",
      "raccords": [],
-     "numeros": [
-      "PE"
-     ]
+     "numeros": []
     },
     {
      "broche": "2",
@@ -91,9 +2508,7 @@
     {
      "broche": "1",
      "raccords": [],
-     "numeros": [
-      "1004"
-     ]
+     "numeros": []
     },
     {
      "broche": "2",
@@ -122,9 +2537,7 @@
     {
      "broche": "1",
      "raccords": [],
-     "numeros": [
-      "1001"
-     ]
+     "numeros": []
     },
     {
      "broche": "2",
@@ -153,9 +2566,7 @@
     {
      "broche": "1",
      "raccords": [],
-     "numeros": [
-      "1002"
-     ]
+     "numeros": []
     },
     {
      "broche": "2",
@@ -184,9 +2595,7 @@
     {
      "broche": "1",
      "raccords": [],
-     "numeros": [
-      "1003"
-     ]
+     "numeros": []
     },
     {
      "broche": "2",
@@ -520,7 +2929,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M3:A+"
+      "X1.13:1"
      ],
      "numeros": [
       "2021"
@@ -532,7 +2941,7 @@
     "U3:A+"
    ],
    "cote_exterieur": [
-    "M3:A+"
+    "X1.13:1"
    ],
    "numero_fil": "2021"
   },
@@ -555,7 +2964,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M3:A-"
+      "X1.14:1"
      ],
      "numeros": [
       "2022"
@@ -567,7 +2976,7 @@
     "U3:A-"
    ],
    "cote_exterieur": [
-    "M3:A-"
+    "X1.14:1"
    ],
    "numero_fil": "2022"
   },
@@ -590,7 +2999,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M3:B+"
+      "X1.15:1"
      ],
      "numeros": [
       "2023"
@@ -602,7 +3011,7 @@
     "U3:B+"
    ],
    "cote_exterieur": [
-    "M3:B+"
+    "X1.15:1"
    ],
    "numero_fil": "2023"
   },
@@ -625,7 +3034,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M3:B-"
+      "X1.16:1"
      ],
      "numeros": [
       "2024"
@@ -637,7 +3046,7 @@
     "U3:B-"
    ],
    "cote_exterieur": [
-    "M3:B-"
+    "X1.16:1"
    ],
    "numero_fil": "2024"
   },
@@ -711,7 +3120,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M4:A+"
+      "X1.17:1"
      ],
      "numeros": [
       "2031"
@@ -723,7 +3132,7 @@
     "U4:A+"
    ],
    "cote_exterieur": [
-    "M4:A+"
+    "X1.17:1"
    ],
    "numero_fil": "2031"
   },
@@ -746,7 +3155,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M4:A-"
+      "X1.18:1"
      ],
      "numeros": [
       "2032"
@@ -758,7 +3167,7 @@
     "U4:A-"
    ],
    "cote_exterieur": [
-    "M4:A-"
+    "X1.18:1"
    ],
    "numero_fil": "2032"
   },
@@ -781,7 +3190,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M4:B+"
+      "X1.19:1"
      ],
      "numeros": [
       "2033"
@@ -793,7 +3202,7 @@
     "U4:B+"
    ],
    "cote_exterieur": [
-    "M4:B+"
+    "X1.19:1"
    ],
    "numero_fil": "2033"
   },
@@ -816,7 +3225,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M4:B-"
+      "X1.20:1"
      ],
      "numeros": [
       "2034"
@@ -828,7 +3237,7 @@
     "U4:B-"
    ],
    "cote_exterieur": [
-    "M4:B-"
+    "X1.20:1"
    ],
    "numero_fil": "2034"
   },
@@ -888,7 +3297,7 @@
    "folio": "21",
    "symbole": "borne distribution ptfix 6/12x2.5",
    "reference": "3273354",
-   "fonction": "Distribution 24VELEC",
+   "fonction": "Distribution",
    "cotes": [
     {
      "broche": "E",
@@ -901,6 +3310,11 @@
     },
     {
      "broche": "1",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "2",
      "raccords": [
       "K1:2L+",
       "K1:L+",
@@ -908,17 +3322,11 @@
       "K3:L+",
       "K4:V1+",
       "KA1:A1",
-      "X21.21:1",
       "X50.11:2"
      ],
      "numeros": [
       "1241"
      ]
-    },
-    {
-     "broche": "2",
-     "raccords": [],
-     "numeros": []
     },
     {
      "broche": "3",
@@ -927,8 +3335,12 @@
     },
     {
      "broche": "4",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "U1:X5:24V"
+     ],
+     "numeros": [
+      "1241"
+     ]
     },
     {
      "broche": "5",
@@ -937,8 +3349,12 @@
     },
     {
      "broche": "6",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "U2:X5:24V"
+     ],
+     "numeros": [
+      "1241"
+     ]
     },
     {
      "broche": "7",
@@ -962,17 +3378,13 @@
     },
     {
      "broche": "11",
-     "raccords": [
-      "U2:X5:24V"
-     ],
-     "numeros": [
-      "1241"
-     ]
+     "raccords": [],
+     "numeros": []
     },
     {
      "broche": "12",
      "raccords": [
-      "U1:X5:24V"
+      "X21.21:1"
      ],
      "numeros": [
       "1241"
@@ -1001,6 +3413,11 @@
     },
     {
      "broche": "1",
+     "raccords": [],
+     "numeros": []
+    },
+    {
+     "broche": "2",
      "raccords": [
       "K1:1M",
       "K1:2M",
@@ -1019,19 +3436,13 @@
       "KM1:A2",
       "KM2:A2",
       "U1:X6:2",
-      "X21.22:2",
       "X50.12:2",
-      "X62.14:2",
-      "X62.22:2"
+      "X63.14:1",
+      "X63.22:2"
      ],
      "numeros": [
       "1230"
      ]
-    },
-    {
-     "broche": "2",
-     "raccords": [],
-     "numeros": []
     },
     {
      "broche": "3",
@@ -1040,8 +3451,12 @@
     },
     {
      "broche": "4",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "U1:X5:GND"
+     ],
+     "numeros": [
+      "1230"
+     ]
     },
     {
      "broche": "5",
@@ -1051,9 +3466,7 @@
     {
      "broche": "6",
      "raccords": [
-      "U3:DIR-",
-      "U3:ENA-",
-      "U3:PUL-"
+      "U2:X5:GND"
      ],
      "numeros": [
       "1230"
@@ -1066,8 +3479,12 @@
     },
     {
      "broche": "8",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "X21.22:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
     },
     {
      "broche": "9",
@@ -1077,9 +3494,9 @@
     {
      "broche": "10",
      "raccords": [
-      "U4:DIR-",
-      "U4:ENA-",
-      "U4:PUL-"
+      "U3:DIR-",
+      "U3:ENA-",
+      "U3:PUL-"
      ],
      "numeros": [
       "1230"
@@ -1087,17 +3504,15 @@
     },
     {
      "broche": "11",
-     "raccords": [
-      "U2:X5:GND"
-     ],
-     "numeros": [
-      "1230"
-     ]
+     "raccords": [],
+     "numeros": []
     },
     {
      "broche": "12",
      "raccords": [
-      "U1:X5:GND"
+      "U4:DIR-",
+      "U4:ENA-",
+      "U4:PUL-"
      ],
      "numeros": [
       "1230"
@@ -1111,7 +3526,7 @@
    "folio": "21",
    "symbole": "borne distribution ptfix 6/12x2.5",
    "reference": "3273354",
-   "fonction": "Distribution 24VSEC",
+   "fonction": "Distribution",
    "cotes": [
     {
      "broche": "E",
@@ -1129,8 +3544,12 @@
     },
     {
      "broche": "2",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "FA1:2"
+     ],
+     "numeros": [
+      "1231"
+     ]
     },
     {
      "broche": "3",
@@ -1139,8 +3558,12 @@
     },
     {
      "broche": "4",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "K2:3L+"
+     ],
+     "numeros": [
+      "1231"
+     ]
     },
     {
      "broche": "5",
@@ -1174,21 +3597,13 @@
     },
     {
      "broche": "11",
-     "raccords": [
-      "K2:3L+"
-     ],
-     "numeros": [
-      "1231"
-     ]
+     "raccords": [],
+     "numeros": []
     },
     {
      "broche": "12",
-     "raccords": [
-      "FA1:2"
-     ],
-     "numeros": [
-      "1231"
-     ]
+     "raccords": [],
+     "numeros": []
     }
    ],
    "type": "PTFIX"
@@ -1198,7 +3613,7 @@
    "folio": "21",
    "symbole": "borne distribution ptfix 6/12x2.5",
    "reference": "3273354",
-   "fonction": "Distribution 24 V capteurs (L+",
+   "fonction": "Distribution 24",
    "cotes": [
     {
      "broche": "E",
@@ -1216,8 +3631,24 @@
     },
     {
      "broche": "2",
-     "raccords": [],
-     "numeros": []
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
     },
     {
      "broche": "3",
@@ -1266,24 +3697,8 @@
     },
     {
      "broche": "12",
-     "raccords": [
-      "KA2:13",
-      "KM1:13",
-      "KM2:13",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
-     ],
-     "numeros": [
-      "6001"
-     ]
+     "raccords": [],
+     "numeros": []
     }
    ],
    "type": "PTFIX"
@@ -1298,14 +3713,7 @@
     {
      "broche": "1",
      "raccords": [
-      "K1:2L+",
-      "K1:L+",
-      "K2:L+",
-      "K3:L+",
-      "K4:V1+",
-      "KA1:A1",
-      "X21.11:1",
-      "X50.11:2"
+      "X21.11:12"
      ],
      "numeros": [
       "1241"
@@ -1323,14 +3731,7 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "K1:2L+",
-    "K1:L+",
-    "K2:L+",
-    "K3:L+",
-    "K4:V1+",
-    "KA1:A1",
-    "X21.11:1",
-    "X50.11:2"
+    "X21.11:12"
    ],
    "cote_exterieur": [
     "H3:X1"
@@ -1356,27 +3757,7 @@
     {
      "broche": "2",
      "raccords": [
-      "K1:1M",
-      "K1:2M",
-      "K1:M",
-      "K2:1M",
-      "K2:2M",
-      "K2:3M",
-      "K2:M",
-      "K3:M",
-      "K4:V1-",
-      "KA1:A2",
-      "KA1:B2",
-      "KA2:A2",
-      "KF1:A2",
-      "KF2:A2",
-      "KM1:A2",
-      "KM2:A2",
-      "U1:X6:2",
-      "X21.12:1",
-      "X50.12:2",
-      "X62.14:2",
-      "X62.22:2"
+      "X21.12:8"
      ],
      "numeros": [
       "1230"
@@ -1385,27 +3766,7 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "K1:1M",
-    "K1:2M",
-    "K1:M",
-    "K2:1M",
-    "K2:2M",
-    "K2:3M",
-    "K2:M",
-    "K3:M",
-    "K4:V1-",
-    "KA1:A2",
-    "KA1:B2",
-    "KA2:A2",
-    "KF1:A2",
-    "KF2:A2",
-    "KM1:A2",
-    "KM2:A2",
-    "U1:X6:2",
-    "X21.12:1",
-    "X50.12:2",
-    "X62.14:2",
-    "X62.22:2"
+    "X21.12:8"
    ],
    "cote_exterieur": [
     "H3:X2"
@@ -1431,7 +3792,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:PE"
+      "X1.4:1"
      ],
      "numeros": [
       "PE"
@@ -1443,7 +3804,7 @@
     "U1:X2:PE"
    ],
    "cote_exterieur": [
-    "M1:PE"
+    "X1.4:1"
    ],
    "numero_fil": "PE"
   },
@@ -1466,7 +3827,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:U1"
+      "X1.1:1"
      ],
      "numeros": [
       "3101"
@@ -1478,7 +3839,7 @@
     "U1:X2:U"
    ],
    "cote_exterieur": [
-    "M1:U1"
+    "X1.1:1"
    ],
    "numero_fil": "3101"
   },
@@ -1501,7 +3862,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:V1"
+      "X1.2:1"
      ],
      "numeros": [
       "3102"
@@ -1513,7 +3874,7 @@
     "U1:X2:V"
    ],
    "cote_exterieur": [
-    "M1:V1"
+    "X1.2:1"
    ],
    "numero_fil": "3102"
   },
@@ -1536,7 +3897,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:W1"
+      "X1.3:1"
      ],
      "numeros": [
       "3103"
@@ -1548,7 +3909,7 @@
     "U1:X2:W"
    ],
    "cote_exterieur": [
-    "M1:W1"
+    "X1.3:1"
    ],
    "numero_fil": "3103"
   },
@@ -1562,7 +3923,7 @@
     {
      "broche": "1",
      "raccords": [
-      "U1:X10:1"
+      "U1:X10:3"
      ],
      "numeros": [
       "3131"
@@ -1571,7 +3932,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:1b"
+      "X1.21:1"
      ],
      "numeros": [
       "3131"
@@ -1580,10 +3941,10 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "U1:X10:1"
+    "U1:X10:3"
    ],
    "cote_exterieur": [
-    "M1:1b"
+    "X1.21:1"
    ],
    "numero_fil": "3131"
   },
@@ -1597,7 +3958,7 @@
     {
      "broche": "1",
      "raccords": [
-      "U1:X10:2"
+      "U1:X10:4"
      ],
      "numeros": [
       "3132"
@@ -1606,7 +3967,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:2b"
+      "X1.22:1"
      ],
      "numeros": [
       "3132"
@@ -1615,10 +3976,10 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "U1:X10:2"
+    "U1:X10:4"
    ],
    "cote_exterieur": [
-    "M1:2b"
+    "X1.22:1"
    ],
    "numero_fil": "3132"
   },
@@ -1641,7 +4002,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:2"
+      "X1.9:1"
      ],
      "numeros": [
       "1161"
@@ -1653,7 +4014,7 @@
     "KF1:4/T2"
    ],
    "cote_exterieur": [
-    "M1:2"
+    "X1.9:1"
    ],
    "numero_fil": "1161"
   },
@@ -1676,7 +4037,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M1:3"
+      "X1.10:1"
      ],
      "numeros": [
       "1162"
@@ -1688,7 +4049,7 @@
     "KF1:6/T3"
    ],
    "cote_exterieur": [
-    "M1:3"
+    "X1.10:1"
    ],
    "numero_fil": "1162"
   },
@@ -1711,7 +4072,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:PE"
+      "X1.8:1"
      ],
      "numeros": [
       "PE"
@@ -1723,7 +4084,7 @@
     "U2:X2:PE"
    ],
    "cote_exterieur": [
-    "M2:PE"
+    "X1.8:1"
    ],
    "numero_fil": "PE"
   },
@@ -1746,7 +4107,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:U1"
+      "X1.5:1"
      ],
      "numeros": [
       "3201"
@@ -1758,7 +4119,7 @@
     "U2:X2:U"
    ],
    "cote_exterieur": [
-    "M2:U1"
+    "X1.5:1"
    ],
    "numero_fil": "3201"
   },
@@ -1781,7 +4142,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:V1"
+      "X1.6:1"
      ],
      "numeros": [
       "3202"
@@ -1793,7 +4154,7 @@
     "U2:X2:V"
    ],
    "cote_exterieur": [
-    "M2:V1"
+    "X1.6:1"
    ],
    "numero_fil": "3202"
   },
@@ -1816,7 +4177,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:W1"
+      "X1.7:1"
      ],
      "numeros": [
       "3203"
@@ -1828,7 +4189,7 @@
     "U2:X2:W"
    ],
    "cote_exterieur": [
-    "M2:W1"
+    "X1.7:1"
    ],
    "numero_fil": "3203"
   },
@@ -1842,7 +4203,7 @@
     {
      "broche": "1",
      "raccords": [
-      "U2:X10:1"
+      "U2:X10:3"
      ],
      "numeros": [
       "3231"
@@ -1851,7 +4212,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:1b"
+      "X1.23:1"
      ],
      "numeros": [
       "3231"
@@ -1860,10 +4221,10 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "U2:X10:1"
+    "U2:X10:3"
    ],
    "cote_exterieur": [
-    "M2:1b"
+    "X1.23:1"
    ],
    "numero_fil": "3231"
   },
@@ -1877,7 +4238,7 @@
     {
      "broche": "1",
      "raccords": [
-      "U2:X10:2"
+      "U2:X10:4"
      ],
      "numeros": [
       "3232"
@@ -1886,7 +4247,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:2b"
+      "X1.24:1"
      ],
      "numeros": [
       "3232"
@@ -1895,10 +4256,10 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "U2:X10:2"
+    "U2:X10:4"
    ],
    "cote_exterieur": [
-    "M2:2b"
+    "X1.24:1"
    ],
    "numero_fil": "3232"
   },
@@ -1921,7 +4282,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:2"
+      "X1.11:1"
      ],
      "numeros": [
       "1171"
@@ -1933,7 +4294,7 @@
     "KF2:4/T2"
    ],
    "cote_exterieur": [
-    "M2:2"
+    "X1.11:1"
    ],
    "numero_fil": "1171"
   },
@@ -1956,7 +4317,7 @@
     {
      "broche": "2",
      "raccords": [
-      "M2:3"
+      "X1.12:1"
      ],
      "numeros": [
       "1173"
@@ -1968,7 +4329,7 @@
     "KF2:6/T3"
    ],
    "cote_exterieur": [
-    "M2:3"
+    "X1.12:1"
    ],
    "numero_fil": "1173"
   },
@@ -2061,7 +4422,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S2:1"
+      "X1.47:1"
      ],
      "numeros": [
       "4111"
@@ -2073,7 +4434,7 @@
     "X41.52:2"
    ],
    "cote_exterieur": [
-    "S2:1"
+    "X1.47:1"
    ],
    "numero_fil": "4111"
   },
@@ -2087,7 +4448,7 @@
     {
      "broche": "1",
      "raccords": [
-      "S2:2"
+      "X1.48:2"
      ],
      "numeros": [
       "4121"
@@ -2096,8 +4457,8 @@
     {
      "broche": "2",
      "raccords": [
-      "X41.21:1",
-      "X41.31:1"
+      "X43.11:1",
+      "X43.21:1"
      ],
      "numeros": [
       "4121"
@@ -2106,11 +4467,11 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "X41.21:1",
-    "X41.31:1"
+    "X43.11:1",
+    "X43.21:1"
    ],
    "cote_exterieur": [
-    "S2:2"
+    "X1.48:2"
    ],
    "numero_fil": "4121"
   },
@@ -2133,7 +4494,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S2:21"
+      "X1.49:1"
      ],
      "numeros": [
       "4112"
@@ -2145,7 +4506,7 @@
     "X41.54:2"
    ],
    "cote_exterieur": [
-    "S2:21"
+    "X1.49:1"
    ],
    "numero_fil": "4112"
   },
@@ -2159,7 +4520,7 @@
     {
      "broche": "1",
      "raccords": [
-      "S2:22"
+      "X1.50:2"
      ],
      "numeros": [
       "4122"
@@ -2168,8 +4529,8 @@
     {
      "broche": "2",
      "raccords": [
-      "X41.23:1",
-      "X41.41:1"
+      "X43.13:1",
+      "X43.31:1"
      ],
      "numeros": [
       "4122"
@@ -2178,497 +4539,13 @@
    ],
    "type": "borne",
    "cote_armoire": [
-    "X41.23:1",
-    "X41.41:1"
+    "X43.13:1",
+    "X43.31:1"
    ],
    "cote_exterieur": [
-    "S2:22"
+    "X1.50:2"
    ],
    "numero_fil": "4122"
-  },
-  "X41.21": {
-   "repere": "X41.21",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Sélecteur -S3 Manu : shunt",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "X41.12:2",
-      "X41.31:1"
-     ],
-     "numeros": [
-      "4121"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "S3:3"
-     ],
-     "numeros": [
-      "4121"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "X41.12:2",
-    "X41.31:1"
-   ],
-   "cote_exterieur": [
-    "S3:3"
-   ],
-   "numero_fil": "4121"
-  },
-  "X41.22": {
-   "repere": "X41.22",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Sélecteur -S3 Manu : shunt",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "S3:4"
-     ],
-     "numeros": [
-      "4101"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "KA1:S12",
-      "X41.32:2"
-     ],
-     "numeros": [
-      "4101"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "KA1:S12",
-    "X41.32:2"
-   ],
-   "cote_exterieur": [
-    "S3:4"
-   ],
-   "numero_fil": "4101"
-  },
-  "X41.23": {
-   "repere": "X41.23",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Sélecteur -S3 Manu : shunt",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "X41.14:2",
-      "X41.41:1"
-     ],
-     "numeros": [
-      "4122"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "S3:7"
-     ],
-     "numeros": [
-      "4122"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "X41.14:2",
-    "X41.41:1"
-   ],
-   "cote_exterieur": [
-    "S3:7"
-   ],
-   "numero_fil": "4122"
-  },
-  "X41.24": {
-   "repere": "X41.24",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Sélecteur -S3 Manu : shunt",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "S3:8"
-     ],
-     "numeros": [
-      "4102"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "KA1:S22",
-      "X41.42:2"
-     ],
-     "numeros": [
-      "4102"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "KA1:S22",
-    "X41.42:2"
-   ],
-   "cote_exterieur": [
-    "S3:8"
-   ],
-   "numero_fil": "4102"
-  },
-  "X41.31": {
-   "repere": "X41.31",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B1",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "X41.12:2",
-      "X41.21:1"
-     ],
-     "numeros": [
-      "4121"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "B1:11"
-     ],
-     "numeros": [
-      "4121"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "X41.12:2",
-    "X41.21:1"
-   ],
-   "cote_exterieur": [
-    "B1:11"
-   ],
-   "numero_fil": "4121"
-  },
-  "X41.32": {
-   "repere": "X41.32",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B1",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "B1:12"
-     ],
-     "numeros": [
-      "4101"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "KA1:S12",
-      "X41.22:2"
-     ],
-     "numeros": [
-      "4101"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "KA1:S12",
-    "X41.22:2"
-   ],
-   "cote_exterieur": [
-    "B1:12"
-   ],
-   "numero_fil": "4101"
-  },
-  "X41.33": {
-   "repere": "X41.33",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B1",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "KA2:13",
-      "KM1:13",
-      "KM2:13",
-      "X21.14:12",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
-     ],
-     "numeros": [
-      "6001"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "B1:23"
-     ],
-     "numeros": [
-      "6001"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "KA2:13",
-    "KM1:13",
-    "KM2:13",
-    "X21.14:12",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
-   ],
-   "cote_exterieur": [
-    "B1:23"
-   ],
-   "numero_fil": "6001"
-  },
-  "X41.34": {
-   "repere": "X41.34",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B1",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "B1:24"
-     ],
-     "numeros": [
-      "6013"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "K1:I0.2"
-     ],
-     "numeros": [
-      "6013"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "K1:I0.2"
-   ],
-   "cote_exterieur": [
-    "B1:24"
-   ],
-   "numero_fil": "6013"
-  },
-  "X41.41": {
-   "repere": "X41.41",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B2",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "X41.14:2",
-      "X41.23:1"
-     ],
-     "numeros": [
-      "4122"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "B2:11"
-     ],
-     "numeros": [
-      "4122"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "X41.14:2",
-    "X41.23:1"
-   ],
-   "cote_exterieur": [
-    "B2:11"
-   ],
-   "numero_fil": "4122"
-  },
-  "X41.42": {
-   "repere": "X41.42",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B2",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "B2:12"
-     ],
-     "numeros": [
-      "4102"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "KA1:S22",
-      "X41.24:2"
-     ],
-     "numeros": [
-      "4102"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "KA1:S22",
-    "X41.24:2"
-   ],
-   "cote_exterieur": [
-    "B2:12"
-   ],
-   "numero_fil": "4102"
-  },
-  "X41.43": {
-   "repere": "X41.43",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B2",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "KA2:13",
-      "KM1:13",
-      "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
-     ],
-     "numeros": [
-      "6001"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "B2:23"
-     ],
-     "numeros": [
-      "6001"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "KA2:13",
-    "KM1:13",
-    "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
-   ],
-   "cote_exterieur": [
-    "B2:23"
-   ],
-   "numero_fil": "6001"
-  },
-  "X41.44": {
-   "repere": "X41.44",
-   "folio": "41",
-   "symbole": "borne 4 mm",
-   "reference": "",
-   "fonction": "Capot -B2",
-   "cotes": [
-    {
-     "broche": "1",
-     "raccords": [
-      "B2:24"
-     ],
-     "numeros": [
-      "6014"
-     ]
-    },
-    {
-     "broche": "2",
-     "raccords": [
-      "K1:I0.3"
-     ],
-     "numeros": [
-      "6014"
-     ]
-    }
-   ],
-   "type": "borne",
-   "cote_armoire": [
-    "K1:I0.3"
-   ],
-   "cote_exterieur": [
-    "B2:24"
-   ],
-   "numero_fil": "6014"
   },
   "X41.51": {
    "repere": "X41.51",
@@ -2831,7 +4708,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S3:15"
+      "X1.57:1"
      ],
      "numeros": [
       "4004"
@@ -2845,7 +4722,7 @@
     "KF2:A1"
    ],
    "cote_exterieur": [
-    "S3:15"
+    "X1.57:1"
    ],
    "numero_fil": "4004"
   },
@@ -2859,7 +4736,7 @@
     {
      "broche": "1",
      "raccords": [
-      "S3:16"
+      "X1.58:2"
      ],
      "numeros": [
       "4201"
@@ -2880,7 +4757,7 @@
     "KA2:A1"
    ],
    "cote_exterieur": [
-    "S3:16"
+    "X1.58:2"
    ],
    "numero_fil": "4201"
   },
@@ -2903,7 +4780,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S3:1"
+      "X1.59:1"
      ],
      "numeros": [
       "4005"
@@ -2915,7 +4792,7 @@
     "KA1:24"
    ],
    "cote_exterieur": [
-    "S3:1"
+    "X1.59:1"
    ],
    "numero_fil": "4005"
   },
@@ -2929,7 +4806,7 @@
     {
      "broche": "1",
      "raccords": [
-      "S3:2"
+      "X1.60:2"
      ],
      "numeros": [
       "4202"
@@ -2952,7 +4829,7 @@
     "KM2:A1"
    ],
    "cote_exterieur": [
-    "S3:2"
+    "X1.60:2"
    ],
    "numero_fil": "4202"
   },
@@ -2975,7 +4852,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S3:5"
+      "X1.61:1"
      ],
      "numeros": [
       "4006"
@@ -2987,7 +4864,7 @@
     "KA1:34"
    ],
    "cote_exterieur": [
-    "S3:5"
+    "X1.61:1"
    ],
    "numero_fil": "4006"
   },
@@ -3001,7 +4878,7 @@
     {
      "broche": "1",
      "raccords": [
-      "S3:6"
+      "X1.62:2"
      ],
      "numeros": [
       "4203"
@@ -3022,9 +4899,493 @@
     "U1:X6:1"
    ],
    "cote_exterieur": [
-    "S3:6"
+    "X1.62:2"
    ],
    "numero_fil": "4203"
+  },
+  "X43.11": {
+   "repere": "X43.11",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.12:2",
+      "X43.21:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.53:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.12:2",
+    "X43.21:1"
+   ],
+   "cote_exterieur": [
+    "X1.53:1"
+   ],
+   "numero_fil": "4121"
+  },
+  "X43.12": {
+   "repere": "X43.12",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X1.54:2"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S12",
+      "X43.22:2"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S12",
+    "X43.22:2"
+   ],
+   "cote_exterieur": [
+    "X1.54:2"
+   ],
+   "numero_fil": "4301"
+  },
+  "X43.13": {
+   "repere": "X43.13",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.14:2",
+      "X43.31:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.55:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.14:2",
+    "X43.31:1"
+   ],
+   "cote_exterieur": [
+    "X1.55:1"
+   ],
+   "numero_fil": "4122"
+  },
+  "X43.14": {
+   "repere": "X43.14",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Sélecteur -S3 Manu : shunt",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X1.56:2"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S22",
+      "X43.32:2"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S22",
+    "X43.32:2"
+   ],
+   "cote_exterieur": [
+    "X1.56:2"
+   ],
+   "numero_fil": "4302"
+  },
+  "X43.21": {
+   "repere": "X43.21",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.12:2",
+      "X43.11:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.25:1"
+     ],
+     "numeros": [
+      "4121"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.12:2",
+    "X43.11:1"
+   ],
+   "cote_exterieur": [
+    "X1.25:1"
+   ],
+   "numero_fil": "4121"
+  },
+  "X43.22": {
+   "repere": "X43.22",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X1.26:2"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S12",
+      "X43.12:2"
+     ],
+     "numeros": [
+      "4301"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S12",
+    "X43.12:2"
+   ],
+   "cote_exterieur": [
+    "X1.26:2"
+   ],
+   "numero_fil": "4301"
+  },
+  "X43.23": {
+   "repere": "X43.23",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:2",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.27:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:2",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
+   ],
+   "cote_exterieur": [
+    "X1.27:1"
+   ],
+   "numero_fil": "6001"
+  },
+  "X43.24": {
+   "repere": "X43.24",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B1",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X1.28:2"
+     ],
+     "numeros": [
+      "6113"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.2"
+     ],
+     "numeros": [
+      "6113"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.2"
+   ],
+   "cote_exterieur": [
+    "X1.28:2"
+   ],
+   "numero_fil": "6113"
+  },
+  "X43.31": {
+   "repere": "X43.31",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X41.14:2",
+      "X43.13:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.41:1"
+     ],
+     "numeros": [
+      "4122"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "X41.14:2",
+    "X43.13:1"
+   ],
+   "cote_exterieur": [
+    "X1.41:1"
+   ],
+   "numero_fil": "4122"
+  },
+  "X43.32": {
+   "repere": "X43.32",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X1.42:2"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "KA1:S22",
+      "X43.14:2"
+     ],
+     "numeros": [
+      "4302"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA1:S22",
+    "X43.14:2"
+   ],
+   "cote_exterieur": [
+    "X1.42:2"
+   ],
+   "numero_fil": "4302"
+  },
+  "X43.33": {
+   "repere": "X43.33",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "KA2:13",
+      "KM1:13",
+      "KM2:13",
+      "X21.14:2",
+      "X43.23:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.43:1"
+     ],
+     "numeros": [
+      "6001"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "KA2:13",
+    "KM1:13",
+    "KM2:13",
+    "X21.14:2",
+    "X43.23:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
+   ],
+   "cote_exterieur": [
+    "X1.43:1"
+   ],
+   "numero_fil": "6001"
+  },
+  "X43.34": {
+   "repere": "X43.34",
+   "folio": "43",
+   "symbole": "borne 4 mm",
+   "reference": "",
+   "fonction": "Capot -B2",
+   "cotes": [
+    {
+     "broche": "1",
+     "raccords": [
+      "X1.44:2"
+     ],
+     "numeros": [
+      "6114"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "K1:I0.3"
+     ],
+     "numeros": [
+      "6114"
+     ]
+    }
+   ],
+   "type": "borne",
+   "cote_armoire": [
+    "K1:I0.3"
+   ],
+   "cote_exterieur": [
+    "X1.44:2"
+   ],
+   "numero_fil": "6114"
   },
   "X50.11": {
    "repere": "X50.11",
@@ -3036,7 +5397,7 @@
     {
      "broche": "1",
      "raccords": [
-      "P1:L+"
+      "X1.67:2"
      ],
      "numeros": [
       "1241"
@@ -3051,8 +5412,7 @@
       "K3:L+",
       "K4:V1+",
       "KA1:A1",
-      "X21.11:1",
-      "X21.21:1"
+      "X21.11:2"
      ],
      "numeros": [
       "1241"
@@ -3067,11 +5427,10 @@
     "K3:L+",
     "K4:V1+",
     "KA1:A1",
-    "X21.11:1",
-    "X21.21:1"
+    "X21.11:2"
    ],
    "cote_exterieur": [
-    "P1:L+"
+    "X1.67:2"
    ],
    "numero_fil": "1241"
   },
@@ -3085,7 +5444,7 @@
     {
      "broche": "1",
      "raccords": [
-      "P1:M"
+      "X1.68:2"
      ],
      "numeros": [
       "1230"
@@ -3111,10 +5470,9 @@
       "KM1:A2",
       "KM2:A2",
       "U1:X6:2",
-      "X21.12:1",
-      "X21.22:2",
-      "X62.14:2",
-      "X62.22:2"
+      "X21.12:2",
+      "X63.14:1",
+      "X63.22:2"
      ],
      "numeros": [
       "1230"
@@ -3140,13 +5498,12 @@
     "KM1:A2",
     "KM2:A2",
     "U1:X6:2",
-    "X21.12:1",
-    "X21.22:2",
-    "X62.14:2",
-    "X62.22:2"
+    "X21.12:2",
+    "X63.14:1",
+    "X63.22:2"
    ],
    "cote_exterieur": [
-    "P1:M"
+    "X1.68:2"
    ],
    "numero_fil": "1230"
   },
@@ -3160,7 +5517,7 @@
     {
      "broche": "1",
      "raccords": [
-      "P1:FE"
+      "X1.69:2"
      ],
      "numeros": [
       "PE"
@@ -3201,13 +5558,13 @@
     "XD1:PE"
    ],
    "cote_exterieur": [
-    "P1:FE"
+    "X1.69:2"
    ],
    "numero_fil": "PE"
   },
-  "X60.11": {
-   "repere": "X60.11",
-   "folio": "60",
+  "X61.11": {
+   "repere": "X61.11",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "AU pupitre -S2 (contact NO)",
@@ -3218,16 +5575,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3236,7 +5593,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S2:13"
+      "X1.51:1"
      ],
      "numeros": [
       "6001"
@@ -3248,25 +5605,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "S2:13"
+    "X1.51:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.12": {
-   "repere": "X60.12",
-   "folio": "60",
+  "X61.12": {
+   "repere": "X61.12",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "AU pupitre -S2 (contact NO)",
@@ -3274,10 +5631,10 @@
     {
      "broche": "1",
      "raccords": [
-      "S2:14"
+      "X1.52:2"
      ],
      "numeros": [
-      "6011"
+      "6111"
      ]
     },
     {
@@ -3286,7 +5643,7 @@
       "K1:I0.0"
      ],
      "numeros": [
-      "6011"
+      "6111"
      ]
     }
    ],
@@ -3295,13 +5652,13 @@
     "K1:I0.0"
    ],
    "cote_exterieur": [
-    "S2:14"
+    "X1.52:2"
    ],
-   "numero_fil": "6011"
+   "numero_fil": "6111"
   },
-  "X60.21": {
-   "repere": "X60.21",
-   "folio": "60",
+  "X61.21": {
+   "repere": "X61.21",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Sélecteur -S3 Auto / Manu",
@@ -3312,16 +5669,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3330,7 +5687,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S3:9"
+      "X1.63:1"
      ],
      "numeros": [
       "6001"
@@ -3342,25 +5699,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "S3:9"
+    "X1.63:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.22": {
-   "repere": "X60.22",
-   "folio": "60",
+  "X61.22": {
+   "repere": "X61.22",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Sélecteur -S3 Auto / Manu",
@@ -3368,10 +5725,10 @@
     {
      "broche": "1",
      "raccords": [
-      "S3:10"
+      "X1.64:2"
      ],
      "numeros": [
-      "6015"
+      "6115"
      ]
     },
     {
@@ -3380,7 +5737,7 @@
       "K1:I0.4"
      ],
      "numeros": [
-      "6015"
+      "6115"
      ]
     }
    ],
@@ -3389,13 +5746,13 @@
     "K1:I0.4"
    ],
    "cote_exterieur": [
-    "S3:10"
+    "X1.64:2"
    ],
-   "numero_fil": "6015"
+   "numero_fil": "6115"
   },
-  "X60.23": {
-   "repere": "X60.23",
-   "folio": "60",
+  "X61.23": {
+   "repere": "X61.23",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Sélecteur -S3 Auto / Manu",
@@ -3406,16 +5763,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3424,7 +5781,7 @@
     {
      "broche": "2",
      "raccords": [
-      "S3:11"
+      "X1.65:1"
      ],
      "numeros": [
       "6001"
@@ -3436,25 +5793,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "S3:11"
+    "X1.65:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.24": {
-   "repere": "X60.24",
-   "folio": "60",
+  "X61.24": {
+   "repere": "X61.24",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Sélecteur -S3 Auto / Manu",
@@ -3462,10 +5819,10 @@
     {
      "broche": "1",
      "raccords": [
-      "S3:12"
+      "X1.66:2"
      ],
      "numeros": [
-      "6016"
+      "6116"
      ]
     },
     {
@@ -3474,7 +5831,7 @@
       "K1:I0.5"
      ],
      "numeros": [
-      "6016"
+      "6116"
      ]
     }
    ],
@@ -3483,13 +5840,13 @@
     "K1:I0.5"
    ],
    "cote_exterieur": [
-    "S3:12"
+    "X1.66:2"
    ],
-   "numero_fil": "6016"
+   "numero_fil": "6116"
   },
-  "X60.31": {
-   "repere": "X60.31",
-   "folio": "60",
+  "X61.31": {
+   "repere": "X61.31",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3500,16 +5857,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3518,7 +5875,7 @@
     {
      "broche": "2",
      "raccords": [
-      "B3:11"
+      "X1.29:1"
      ],
      "numeros": [
       "6001"
@@ -3530,25 +5887,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "B3:11"
+    "X1.29:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.32": {
-   "repere": "X60.32",
-   "folio": "60",
+  "X61.32": {
+   "repere": "X61.32",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3556,10 +5913,10 @@
     {
      "broche": "1",
      "raccords": [
-      "B3:12"
+      "X1.30:2"
      ],
      "numeros": [
-      "6017"
+      "6117"
      ]
     },
     {
@@ -3568,7 +5925,7 @@
       "K1:I0.6"
      ],
      "numeros": [
-      "6017"
+      "6117"
      ]
     }
    ],
@@ -3577,13 +5934,13 @@
     "K1:I0.6"
    ],
    "cote_exterieur": [
-    "B3:12"
+    "X1.30:2"
    ],
-   "numero_fil": "6017"
+   "numero_fil": "6117"
   },
-  "X60.33": {
-   "repere": "X60.33",
-   "folio": "60",
+  "X61.33": {
+   "repere": "X61.33",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3594,16 +5951,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.35:1",
-      "X60.37:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.35:1",
+      "X61.37:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3612,7 +5969,7 @@
     {
      "broche": "2",
      "raccords": [
-      "B4:11"
+      "X1.31:1"
      ],
      "numeros": [
       "6001"
@@ -3624,25 +5981,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.35:1",
-    "X60.37:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.35:1",
+    "X61.37:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "B4:11"
+    "X1.31:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.34": {
-   "repere": "X60.34",
-   "folio": "60",
+  "X61.34": {
+   "repere": "X61.34",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3650,10 +6007,10 @@
     {
      "broche": "1",
      "raccords": [
-      "B4:12"
+      "X1.32:2"
      ],
      "numeros": [
-      "6018"
+      "6118"
      ]
     },
     {
@@ -3662,7 +6019,7 @@
       "K1:I0.7"
      ],
      "numeros": [
-      "6018"
+      "6118"
      ]
     }
    ],
@@ -3671,13 +6028,13 @@
     "K1:I0.7"
    ],
    "cote_exterieur": [
-    "B4:12"
+    "X1.32:2"
    ],
-   "numero_fil": "6018"
+   "numero_fil": "6118"
   },
-  "X60.35": {
-   "repere": "X60.35",
-   "folio": "60",
+  "X61.35": {
+   "repere": "X61.35",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3688,16 +6045,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.37:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.37:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3706,7 +6063,7 @@
     {
      "broche": "2",
      "raccords": [
-      "B5:11"
+      "X1.33:1"
      ],
      "numeros": [
       "6001"
@@ -3718,25 +6075,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.37:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.37:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "B5:11"
+    "X1.33:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.36": {
-   "repere": "X60.36",
-   "folio": "60",
+  "X61.36": {
+   "repere": "X61.36",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3744,10 +6101,10 @@
     {
      "broche": "1",
      "raccords": [
-      "B5:12"
+      "X1.34:2"
      ],
      "numeros": [
-      "6021"
+      "6121"
      ]
     },
     {
@@ -3756,7 +6113,7 @@
       "K1:I1.0"
      ],
      "numeros": [
-      "6021"
+      "6121"
      ]
     }
    ],
@@ -3765,13 +6122,13 @@
     "K1:I1.0"
    ],
    "cote_exterieur": [
-    "B5:12"
+    "X1.34:2"
    ],
-   "numero_fil": "6021"
+   "numero_fil": "6121"
   },
-  "X60.37": {
-   "repere": "X60.37",
-   "folio": "60",
+  "X61.37": {
+   "repere": "X61.37",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3782,16 +6139,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.41:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.41:1"
      ],
      "numeros": [
       "6001"
@@ -3800,7 +6157,7 @@
     {
      "broche": "2",
      "raccords": [
-      "B6:11"
+      "X1.35:1"
      ],
      "numeros": [
       "6001"
@@ -3812,25 +6169,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.41:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.41:1"
    ],
    "cote_exterieur": [
-    "B6:11"
+    "X1.35:1"
    ],
    "numero_fil": "6001"
   },
-  "X60.38": {
-   "repere": "X60.38",
-   "folio": "60",
+  "X61.38": {
+   "repere": "X61.38",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Fins de course -B3 à -B6",
@@ -3838,10 +6195,10 @@
     {
      "broche": "1",
      "raccords": [
-      "B6:12"
+      "X1.36:2"
      ],
      "numeros": [
-      "6022"
+      "6122"
      ]
     },
     {
@@ -3850,7 +6207,7 @@
       "K1:I1.1"
      ],
      "numeros": [
-      "6022"
+      "6122"
      ]
     }
    ],
@@ -3859,13 +6216,13 @@
     "K1:I1.1"
    ],
    "cote_exterieur": [
-    "B6:12"
+    "X1.36:2"
    ],
-   "numero_fil": "6022"
+   "numero_fil": "6122"
   },
-  "X60.41": {
-   "repere": "X60.41",
-   "folio": "60",
+  "X61.41": {
+   "repere": "X61.41",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "AU armoire -S1 (porte),",
@@ -3876,16 +6233,16 @@
       "KA2:13",
       "KM1:13",
       "KM2:13",
-      "X21.14:12",
-      "X41.33:1",
-      "X41.43:1",
-      "X60.11:1",
-      "X60.21:1",
-      "X60.23:1",
-      "X60.31:1",
-      "X60.33:1",
-      "X60.35:1",
-      "X60.37:1"
+      "X21.14:2",
+      "X43.23:1",
+      "X43.33:1",
+      "X61.11:1",
+      "X61.21:1",
+      "X61.23:1",
+      "X61.31:1",
+      "X61.33:1",
+      "X61.35:1",
+      "X61.37:1"
      ],
      "numeros": [
       "6001"
@@ -3906,25 +6263,25 @@
     "KA2:13",
     "KM1:13",
     "KM2:13",
-    "X21.14:12",
-    "X41.33:1",
-    "X41.43:1",
-    "X60.11:1",
-    "X60.21:1",
-    "X60.23:1",
-    "X60.31:1",
-    "X60.33:1",
-    "X60.35:1",
-    "X60.37:1"
+    "X21.14:2",
+    "X43.23:1",
+    "X43.33:1",
+    "X61.11:1",
+    "X61.21:1",
+    "X61.23:1",
+    "X61.31:1",
+    "X61.33:1",
+    "X61.35:1",
+    "X61.37:1"
    ],
    "cote_exterieur": [
     "S1:13"
    ],
    "numero_fil": "6001"
   },
-  "X60.42": {
-   "repere": "X60.42",
-   "folio": "60",
+  "X61.42": {
+   "repere": "X61.42",
+   "folio": "61",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "AU armoire -S1 (porte),",
@@ -3935,7 +6292,7 @@
       "S1:14"
      ],
      "numeros": [
-      "6012"
+      "6112"
      ]
     },
     {
@@ -3944,7 +6301,7 @@
       "K1:I0.1"
      ],
      "numeros": [
-      "6012"
+      "6112"
      ]
     }
    ],
@@ -3955,11 +6312,11 @@
    "cote_exterieur": [
     "S1:14"
    ],
-   "numero_fil": "6012"
+   "numero_fil": "6112"
   },
-  "X62.11": {
-   "repere": "X62.11",
-   "folio": "62",
+  "X63.11": {
+   "repere": "X63.11",
+   "folio": "63",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Colonne -H1",
@@ -3970,16 +6327,16 @@
       "K2:Q8.0"
      ],
      "numeros": [
-      "6201"
+      "6301"
      ]
     },
     {
      "broche": "2",
      "raccords": [
-      "H1:RD"
+      "X1.37:1"
      ],
      "numeros": [
-      "6201"
+      "6301"
      ]
     }
    ],
@@ -3988,13 +6345,13 @@
     "K2:Q8.0"
    ],
    "cote_exterieur": [
-    "H1:RD"
+    "X1.37:1"
    ],
-   "numero_fil": "6201"
+   "numero_fil": "6301"
   },
-  "X62.12": {
-   "repere": "X62.12",
-   "folio": "62",
+  "X63.12": {
+   "repere": "X63.12",
+   "folio": "63",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Colonne -H1",
@@ -4005,16 +6362,16 @@
       "K2:Q8.1"
      ],
      "numeros": [
-      "6202"
+      "6302"
      ]
     },
     {
      "broche": "2",
      "raccords": [
-      "H1:OG"
+      "X1.38:1"
      ],
      "numeros": [
-      "6202"
+      "6302"
      ]
     }
    ],
@@ -4023,13 +6380,13 @@
     "K2:Q8.1"
    ],
    "cote_exterieur": [
-    "H1:OG"
+    "X1.38:1"
    ],
-   "numero_fil": "6202"
+   "numero_fil": "6302"
   },
-  "X62.13": {
-   "repere": "X62.13",
-   "folio": "62",
+  "X63.13": {
+   "repere": "X63.13",
+   "folio": "63",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Colonne -H1",
@@ -4040,16 +6397,16 @@
       "K2:Q8.2"
      ],
      "numeros": [
-      "6203"
+      "6303"
      ]
     },
     {
      "broche": "2",
      "raccords": [
-      "H1:GN"
+      "X1.39:1"
      ],
      "numeros": [
-      "6203"
+      "6303"
      ]
     }
    ],
@@ -4058,28 +6415,19 @@
     "K2:Q8.2"
    ],
    "cote_exterieur": [
-    "H1:GN"
+    "X1.39:1"
    ],
-   "numero_fil": "6203"
+   "numero_fil": "6303"
   },
-  "X62.14": {
-   "repere": "X62.14",
-   "folio": "62",
+  "X63.14": {
+   "repere": "X63.14",
+   "folio": "63",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Colonne -H1",
    "cotes": [
     {
      "broche": "1",
-     "raccords": [
-      "H1:COM"
-     ],
-     "numeros": [
-      "1230"
-     ]
-    },
-    {
-     "broche": "2",
      "raccords": [
       "K1:1M",
       "K1:2M",
@@ -4098,10 +6446,18 @@
       "KM1:A2",
       "KM2:A2",
       "U1:X6:2",
-      "X21.12:1",
-      "X21.22:2",
+      "X21.12:2",
       "X50.12:2",
-      "X62.22:2"
+      "X63.22:2"
+     ],
+     "numeros": [
+      "1230"
+     ]
+    },
+    {
+     "broche": "2",
+     "raccords": [
+      "X1.40:1"
      ],
      "numeros": [
       "1230"
@@ -4127,19 +6483,18 @@
     "KM1:A2",
     "KM2:A2",
     "U1:X6:2",
-    "X21.12:1",
-    "X21.22:2",
+    "X21.12:2",
     "X50.12:2",
-    "X62.22:2"
+    "X63.22:2"
    ],
    "cote_exterieur": [
-    "H1:COM"
+    "X1.40:1"
    ],
    "numero_fil": "1230"
   },
-  "X62.21": {
-   "repere": "X62.21",
-   "folio": "62",
+  "X63.21": {
+   "repere": "X63.21",
+   "folio": "63",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Voyant -H4 (porte)",
@@ -4150,7 +6505,7 @@
       "K2:Q8.4"
      ],
      "numeros": [
-      "6205"
+      "6305"
      ]
     },
     {
@@ -4159,7 +6514,7 @@
       "H4:X1"
      ],
      "numeros": [
-      "6205"
+      "6305"
      ]
     }
    ],
@@ -4170,11 +6525,11 @@
    "cote_exterieur": [
     "H4:X1"
    ],
-   "numero_fil": "6205"
+   "numero_fil": "6305"
   },
-  "X62.22": {
-   "repere": "X62.22",
-   "folio": "62",
+  "X63.22": {
+   "repere": "X63.22",
+   "folio": "63",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Voyant -H4 (porte)",
@@ -4208,10 +6563,9 @@
       "KM1:A2",
       "KM2:A2",
       "U1:X6:2",
-      "X21.12:1",
-      "X21.22:2",
+      "X21.12:2",
       "X50.12:2",
-      "X62.14:2"
+      "X63.14:1"
      ],
      "numeros": [
       "1230"
@@ -4237,19 +6591,18 @@
     "KM1:A2",
     "KM2:A2",
     "U1:X6:2",
-    "X21.12:1",
-    "X21.22:2",
+    "X21.12:2",
     "X50.12:2",
-    "X62.14:2"
+    "X63.14:1"
    ],
    "cote_exterieur": [
     "H4:X2"
    ],
    "numero_fil": "1230"
   },
-  "X63.11": {
-   "repere": "X63.11",
-   "folio": "63",
+  "X64.11": {
+   "repere": "X64.11",
+   "folio": "64",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Thermocouple -B7",
@@ -4257,10 +6610,10 @@
     {
      "broche": "1",
      "raccords": [
-      "B7:1"
+      "X1.45:2"
      ],
      "numeros": [
-      "6301"
+      "6401"
      ]
     },
     {
@@ -4269,7 +6622,7 @@
       "K3:AI0+"
      ],
      "numeros": [
-      "6301"
+      "6401"
      ]
     }
    ],
@@ -4278,13 +6631,13 @@
     "K3:AI0+"
    ],
    "cote_exterieur": [
-    "B7:1"
+    "X1.45:2"
    ],
-   "numero_fil": "6301"
+   "numero_fil": "6401"
   },
-  "X63.12": {
-   "repere": "X63.12",
-   "folio": "63",
+  "X64.12": {
+   "repere": "X64.12",
+   "folio": "64",
    "symbole": "borne 4 mm",
    "reference": "",
    "fonction": "Thermocouple -B7",
@@ -4292,10 +6645,10 @@
     {
      "broche": "1",
      "raccords": [
-      "B7:2"
+      "X1.46:2"
      ],
      "numeros": [
-      "6302"
+      "6402"
      ]
     },
     {
@@ -4304,7 +6657,7 @@
       "K3:AI0-"
      ],
      "numeros": [
-      "6302"
+      "6402"
      ]
     }
    ],
@@ -4313,9 +6666,9 @@
     "K3:AI0-"
    ],
    "cote_exterieur": [
-    "B7:2"
+    "X1.46:2"
    ],
-   "numero_fil": "6302"
+   "numero_fil": "6402"
   }
  },
  "cables_schema": [
@@ -4324,14 +6677,14 @@
    "folio": "10",
    "composition": "5G4",
    "designation": "Câble client",
-   "brins": "1-2-3-4-5"
+   "brins": "1-2-3-4"
   },
   {
    "repere": "W2",
    "folio": "31",
    "composition": "4G2,5 blindé",
    "designation": "Moteur M1 -> U1 X2",
-   "brins": "1-2-3-4"
+   "brins": "1-2-3"
   },
   {
    "repere": "W3",
@@ -4352,7 +6705,7 @@
    "folio": "32",
    "composition": "4G2,5 blindé",
    "designation": "Moteur M2 -> U2 X2",
-   "brins": "1-2-3-4"
+   "brins": "1-2-3"
   },
   {
    "repere": "W6",
@@ -4373,21 +6726,203 @@
    "folio": "20",
    "composition": "5G1,5 blindé",
    "designation": "Moteur pas-à-pas M3 -> U3",
-   "brins": "1-2-3-4-5"
+   "brins": "1-2-3-4"
   },
   {
    "repere": "W10",
    "folio": "20",
    "composition": "5G1,5 blindé",
    "designation": "Moteur pas-à-pas M4 -> U4",
-   "brins": "1-2-3-4-5"
+   "brins": "1-2-3-4"
+  },
+  {
+   "repere": "W11",
+   "folio": "41",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "1"
+  },
+  {
+   "repere": "W11",
+   "folio": "41",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "2"
+  },
+  {
+   "repere": "W11",
+   "folio": "41",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "3"
+  },
+  {
+   "repere": "W11",
+   "folio": "41",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "4"
+  },
+  {
+   "repere": "W12",
+   "folio": "43",
+   "composition": "19G1 blindé",
+   "designation": "",
+   "brins": "1-3"
+  },
+  {
+   "repere": "W12",
+   "folio": "43",
+   "composition": "19G1 blindé",
+   "designation": "",
+   "brins": "2-4"
+  },
+  {
+   "repere": "W11",
+   "folio": "43",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "7"
+  },
+  {
+   "repere": "W11",
+   "folio": "43",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "8"
+  },
+  {
+   "repere": "W14",
+   "folio": "43",
+   "composition": "M12 8 cond.",
+   "designation": "",
+   "brins": "1-3"
+  },
+  {
+   "repere": "W14",
+   "folio": "43",
+   "composition": "M12 8 cond.",
+   "designation": "",
+   "brins": "2-4"
+  },
+  {
+   "repere": "W11",
+   "folio": "43",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "9"
+  },
+  {
+   "repere": "W11",
+   "folio": "43",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "10"
+  },
+  {
+   "repere": "W11",
+   "folio": "42",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "11"
+  },
+  {
+   "repere": "W11",
+   "folio": "42",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "12"
+  },
+  {
+   "repere": "W11",
+   "folio": "42",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "13"
+  },
+  {
+   "repere": "W11",
+   "folio": "42",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "14"
+  },
+  {
+   "repere": "W11",
+   "folio": "42",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "15"
+  },
+  {
+   "repere": "W11",
+   "folio": "42",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre",
+   "brins": "16"
+  },
+  {
+   "repere": "W11",
+   "folio": "61",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "5"
+  },
+  {
+   "repere": "W11",
+   "folio": "61",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "6"
+  },
+  {
+   "repere": "W11",
+   "folio": "61",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "17-19"
+  },
+  {
+   "repere": "W11",
+   "folio": "61",
+   "composition": "27G1 blindé",
+   "designation": "",
+   "brins": "18-20"
+  },
+  {
+   "repere": "W12",
+   "folio": "61",
+   "composition": "19G1 blindé",
+   "designation": "",
+   "brins": "5-7-9-11"
+  },
+  {
+   "repere": "W12",
+   "folio": "61",
+   "composition": "19G1 blindé",
+   "designation": "",
+   "brins": "6-8-10-12"
+  },
+  {
+   "repere": "W12",
+   "folio": "63",
+   "composition": "19G1 blindé",
+   "designation": "Machine : capot B1, fins de course B3-B6, colonne H1",
+   "brins": "13-14-15-16"
   },
   {
    "repere": "W8",
-   "folio": "63",
+   "folio": "64",
    "composition": "compensation type K RS 236-3959",
    "designation": "",
    "brins": "1-2"
+  },
+  {
+   "repere": "W11",
+   "folio": "50",
+   "composition": "27G1 blindé",
+   "designation": "Pupitre : AU S2, sélecteur S3, alimentation IHM",
+   "brins": "21-22"
   },
   {
    "repere": "W13",
@@ -4463,7 +6998,7 @@
    "reference": ""
   },
   "K1": {
-   "designation": "Automate CPU 1214C G2 DC/DC/DC",
+   "designation": "Automate CPU 1214C G2",
    "reference": "6ES7214-1AH50-0XB0"
   },
   "K2": {
@@ -4564,22 +7099,22 @@
   },
   "QM1": {
    "designation": "Disjoncteur moteur départ",
-   "reference": "GV2ME14"
+   "reference": "GV2ME10"
   },
   "QM2": {
    "designation": "Disjoncteur moteur départ",
-   "reference": "GV2ME14"
+   "reference": "GV2ME10"
   },
   "QS1": {
    "designation": "Sectionneur général",
    "reference": "022515"
   },
   "R1": {
-   "designation": "Résistance de freinage",
+   "designation": "Résistance de freinage U1",
    "reference": "BW100-001"
   },
   "R2": {
-   "designation": "Résistance de freinage",
+   "designation": "Résistance de freinage U2",
    "reference": "BW100-001"
   },
   "S1": {
@@ -4636,9 +7171,9 @@
   "document": {
    "titre": "Armoire +A1 : implantation et borniers",
    "machine": "Machine de tressage TTK, n° 001-EU",
-   "indice": "C",
-   "version": "v13",
-   "date": "20/11/2026",
+   "indice": "D",
+   "version": "v14",
+   "date": "26/11/2026",
    "auteur": "THRO.J",
    "societe": "BEBL",
    "revisions": [
@@ -4656,6 +7191,11 @@
      "C",
      "20/11/2026",
      "Schéma v36 : QF10 Schneider A9P71602 2 A, XD1 limitée à 2 A par QF10. Bornes et câbles inchangés."
+    ],
+    [
+     "D",
+     "26/11/2026",
+     "Schéma v45 : boîte +BJM (bornier X1, 69 bornes, ajouté au dossier), bornes renommées X43 / X61 / X63 / X64, côté extérieur des bornes R5 = « +BJM X1.n », TF sur X10:3 / X10:4, QM1 / QM2 en GV2ME10. X21.14 à droite de K4 validé (Julien 26/11)."
     ]
    ]
   },
@@ -4954,7 +7494,7 @@
     89,
     "fixe",
     "Disjoncteur moteur U1",
-    "Schneider GV2ME14",
+    "Schneider GV2ME10",
     "puissance"
    ],
    [
@@ -4978,7 +7518,7 @@
     89,
     "fixe",
     "Disjoncteur moteur U2",
-    "Schneider GV2ME14",
+    "Schneider GV2ME10",
     "puissance"
    ],
    [
@@ -5168,7 +7708,7 @@
     968.2,
     41,
     28.6,
-    "propose",
+    "a_poser",
     "Distribution 24 V capteurs (noir), L+ capt de K1",
     "Phoenix PTFIX 6/12X2,5 BK 3273366",
     "distrib"
@@ -5342,28 +7882,28 @@
        "X41.12",
        "X41.13",
        "X41.14",
-       "X60.11",
-       "X60.12"
+       "X61.11",
+       "X61.12"
       ]
      },
      {
       "cable": "W11",
       "fonction": "Sélecteur S3",
       "bornes": [
-       "X41.21",
-       "X41.22",
-       "X41.23",
-       "X41.24",
+       "X43.11",
+       "X43.12",
+       "X43.13",
+       "X43.14",
        "X42.11",
        "X42.12",
        "X42.13",
        "X42.14",
        "X42.15",
        "X42.16",
-       "X60.21",
-       "X60.22",
-       "X60.23",
-       "X60.24"
+       "X61.21",
+       "X61.22",
+       "X61.23",
+       "X61.24"
       ]
      },
      {
@@ -5379,34 +7919,34 @@
       "cable": "W12",
       "fonction": "Capot mécanique B1",
       "bornes": [
-       "X41.31",
-       "X41.32",
-       "X41.33",
-       "X41.34"
+       "X43.21",
+       "X43.22",
+       "X43.23",
+       "X43.24"
       ]
      },
      {
       "cable": "W12",
       "fonction": "Fins de course B3 à B6",
       "bornes": [
-       "X60.31",
-       "X60.32",
-       "X60.33",
-       "X60.34",
-       "X60.35",
-       "X60.36",
-       "X60.37",
-       "X60.38"
+       "X61.31",
+       "X61.32",
+       "X61.33",
+       "X61.34",
+       "X61.35",
+       "X61.36",
+       "X61.37",
+       "X61.38"
       ]
      },
      {
       "cable": "W12",
       "fonction": "Colonne lumineuse H1",
       "bornes": [
-       "X62.11",
-       "X62.12",
-       "X62.13",
-       "X62.14"
+       "X63.11",
+       "X63.12",
+       "X63.13",
+       "X63.14"
       ]
      }
     ]
@@ -5420,18 +7960,18 @@
       "cable": "W14",
       "fonction": "Capot magnétique B2",
       "bornes": [
-       "X41.41",
-       "X41.42",
-       "X41.43",
-       "X41.44"
+       "X43.31",
+       "X43.32",
+       "X43.33",
+       "X43.34"
       ]
      },
      {
       "cable": "W8",
       "fonction": "Thermocouple B7 (réserve)",
       "bornes": [
-       "X63.11",
-       "X63.12"
+       "X64.11",
+       "X64.12"
       ],
       "sans_butee": true
      },
@@ -5559,8 +8099,8 @@
        "X41.52",
        "X41.53",
        "X41.54",
-       "X60.41",
-       "X60.42"
+       "X61.41",
+       "X61.42"
       ]
      },
      {
@@ -5583,8 +8123,8 @@
       "cable": "porte",
       "fonction": "Voyant H4",
       "bornes": [
-       "X62.21",
-       "X62.22"
+       "X63.21",
+       "X63.22"
       ]
      },
      {
@@ -5636,40 +8176,40 @@
     "X41.12",
     "X41.13",
     "X41.14",
-    "X60.11",
-    "X60.12",
-    "X41.21",
-    "X41.22",
-    "X41.23",
-    "X41.24",
+    "X61.11",
+    "X61.12",
+    "X43.11",
+    "X43.12",
+    "X43.13",
+    "X43.14",
     "X42.11",
     "X42.12",
     "X42.13",
     "X42.14",
     "X42.15",
     "X42.16",
-    "X60.21",
-    "X60.22",
-    "X60.23",
-    "X60.24",
+    "X61.21",
+    "X61.22",
+    "X61.23",
+    "X61.24",
     "X50.11",
     "X50.12",
-    "X41.31",
-    "X41.32",
-    "X41.33",
-    "X41.34",
-    "X60.31",
-    "X60.32",
-    "X60.33",
-    "X60.34",
-    "X60.35",
-    "X60.36",
-    "X60.37",
-    "X60.38",
-    "X62.11",
-    "X62.12",
-    "X62.13",
-    "X62.14"
+    "X43.21",
+    "X43.22",
+    "X43.23",
+    "X43.24",
+    "X61.31",
+    "X61.32",
+    "X61.33",
+    "X61.34",
+    "X61.35",
+    "X61.36",
+    "X61.37",
+    "X61.38",
+    "X63.11",
+    "X63.12",
+    "X63.13",
+    "X63.14"
    ],
    "terre": [
     "X10.11",
@@ -5701,7 +8241,164 @@
   "boite": {
    "repere": "+BJM",
    "designation": "Boîte de jonction machine (une seule), bornier +BJM-X1",
-   "statut": "nommée par Julien le 17/11 (ancien +M-X1)"
+   "statut": "nommée par Julien le 17/11 (ancien +M-X1)",
+   "bornier": {
+    "_note": "Bornier +BJM-X1, ordre du schéma v37 (X1.1 à X1.69). Hors armoire : dessiné sans rail, ni vis ni support. Type de borne à choisir [?] : dessinées en largeur PT 2,5 (5,2 mm), accord de Julien le 26/11. Une butée de chaque côté de chaque groupe (règle des rails, appliquée à la boîte).",
+    "type": "à choisir",
+    "largeur": 5.2,
+    "terre": [
+     "X1.4",
+     "X1.8",
+     "X1.69"
+    ],
+    "rangees": [
+     {
+      "troncon": "+BJM-X1, bornes 1 à 24",
+      "groupes": [
+       {
+        "cable": "W2",
+        "fonction": "Moteur M1",
+        "bornes": [
+         "X1.1",
+         "X1.2",
+         "X1.3",
+         "X1.4"
+        ]
+       },
+       {
+        "cable": "W5",
+        "fonction": "Moteur M2",
+        "bornes": [
+         "X1.5",
+         "X1.6",
+         "X1.7",
+         "X1.8"
+        ]
+       },
+       {
+        "cable": "W4",
+        "fonction": "Freins M1 / M2",
+        "bornes": [
+         "X1.9",
+         "X1.10",
+         "X1.11",
+         "X1.12"
+        ]
+       },
+       {
+        "cable": "W9",
+        "fonction": "Pas-à-pas M3",
+        "bornes": [
+         "X1.13",
+         "X1.14",
+         "X1.15",
+         "X1.16"
+        ]
+       },
+       {
+        "cable": "W10",
+        "fonction": "Pas-à-pas M4",
+        "bornes": [
+         "X1.17",
+         "X1.18",
+         "X1.19",
+         "X1.20"
+        ]
+       },
+       {
+        "cable": "W3",
+        "fonction": "Sonde TF M1",
+        "bornes": [
+         "X1.21",
+         "X1.22"
+        ]
+       },
+       {
+        "cable": "W6",
+        "fonction": "Sonde TF M2",
+        "bornes": [
+         "X1.23",
+         "X1.24"
+        ]
+       }
+      ]
+     },
+     {
+      "troncon": "+BJM-X1, bornes 25 à 69",
+      "groupes": [
+       {
+        "cable": "W12",
+        "fonction": "B1, B3 à B6, H1",
+        "bornes": [
+         "X1.25",
+         "X1.26",
+         "X1.27",
+         "X1.28",
+         "X1.29",
+         "X1.30",
+         "X1.31",
+         "X1.32",
+         "X1.33",
+         "X1.34",
+         "X1.35",
+         "X1.36",
+         "X1.37",
+         "X1.38",
+         "X1.39",
+         "X1.40"
+        ]
+       },
+       {
+        "cable": "W14",
+        "fonction": "Capot magnétique B2",
+        "bornes": [
+         "X1.41",
+         "X1.42",
+         "X1.43",
+         "X1.44"
+        ]
+       },
+       {
+        "cable": "W8",
+        "fonction": "Thermocouple B7",
+        "bornes": [
+         "X1.45",
+         "X1.46"
+        ]
+       },
+       {
+        "cable": "W11",
+        "fonction": "Pupitre +P1 (S2, S3, P1)",
+        "bornes": [
+         "X1.47",
+         "X1.48",
+         "X1.49",
+         "X1.50",
+         "X1.51",
+         "X1.52",
+         "X1.53",
+         "X1.54",
+         "X1.55",
+         "X1.56",
+         "X1.57",
+         "X1.58",
+         "X1.59",
+         "X1.60",
+         "X1.61",
+         "X1.62",
+         "X1.63",
+         "X1.64",
+         "X1.65",
+         "X1.66",
+         "X1.67",
+         "X1.68",
+         "X1.69"
+        ]
+       }
+      ]
+     }
+    ]
+   }
   },
   "cables": [
    {
@@ -5721,7 +8418,7 @@
     "repere": "W2",
     "fonction": "Moteur M1 (U V W PE)",
     "origine": "+A1 X31.11 à X31.14 (U1 X2)",
-    "destination": "+M M1 : U1 V1 W1 PE",
+    "destination": "+BJM, puis +M M1 : U1 V1 W1 PE",
     "type": "2XSLCY-K",
     "reference": "AEE261757",
     "conducteurs": "4G2,5",
@@ -5734,7 +8431,7 @@
     "repere": "W3",
     "fonction": "Sonde TF M1",
     "origine": "+A1 X31.21 / X31.22 (U1 X10)",
-    "destination": "+M M1 : 1b / 2b",
+    "destination": "+BJM, puis +M M1 : 1b / 2b",
     "type": "LIYCY",
     "reference": "PPMM0180",
     "conducteurs": "2 x 0,75",
@@ -5760,7 +8457,7 @@
     "repere": "W5",
     "fonction": "Moteur M2 (U V W PE)",
     "origine": "+A1 X32.11 à X32.14 (U2 X2)",
-    "destination": "+M M2 : U1 V1 W1 PE",
+    "destination": "+BJM, puis +M M2 : U1 V1 W1 PE",
     "type": "2XSLCY-K",
     "reference": "AEE261757",
     "conducteurs": "4G2,5",
@@ -5773,7 +8470,7 @@
     "repere": "W6",
     "fonction": "Sonde TF M2",
     "origine": "+A1 X32.21 / X32.22 (U2 X10)",
-    "destination": "+M M2 : 1b / 2b",
+    "destination": "+BJM, puis +M M2 : 1b / 2b",
     "type": "LIYCY",
     "reference": "PPMM0180",
     "conducteurs": "2 x 0,75",
@@ -5785,21 +8482,21 @@
    {
     "repere": "W8",
     "fonction": "Thermocouple K, tête Microdia",
-    "origine": "+A1 X63.11 / X63.12 (K3 AI0)",
-    "destination": "+M B7",
+    "origine": "+A1 X64.11 / X64.12 (K3 AI0)",
+    "destination": "+BJM, puis +M B7",
     "type": "Câble de compensation type K",
     "reference": "RS 236-3959",
     "conducteurs": "2 cond. (7 x 0,2 mm)",
     "blindage": "blindé, raccordé côté armoire",
     "longueur": "≤ 10 m (bobine 25 m)",
     "statut": "à confirmer",
-    "folio": "63"
+    "folio": "64"
    },
    {
     "repere": "W9",
     "fonction": "Moteur pas-à-pas M3 (A+ A- B+ B-), 48 V",
     "origine": "+A1 X20.11 à X20.15 (U3)",
-    "destination": "+M M3",
+    "destination": "+BJM, puis +M M3",
     "type": "LIYCY-JZ",
     "reference": "AEE261168",
     "conducteurs": "5G1,5 (4 + V/J)",
@@ -5812,7 +8509,7 @@
     "repere": "W10",
     "fonction": "Moteur pas-à-pas M4 (A+ A- B+ B-), 48 V",
     "origine": "+A1 X20.21 à X20.25 (U4)",
-    "destination": "+M M4",
+    "destination": "+BJM, puis +M M4",
     "type": "LIYCY-JZ",
     "reference": "AEE261168",
     "conducteurs": "5G1,5 (4 + V/J)",
@@ -5824,20 +8521,20 @@
    {
     "repere": "W11",
     "fonction": "Pupitre : AU S2, sélecteur S3, alimentation IHM",
-    "origine": "+A1 X41.1x, X41.2x, X42.1x, X50.1x, X60.1x, X60.2x",
-    "destination": "+P1 S2, S3, P1",
+    "origine": "+A1 X41.1x, X42.1x, X43.1x, X50.1x, X61.1x, X61.2x",
+    "destination": "+BJM, puis +P1 S2, S3, P1",
     "type": "LIYCY-JZ",
     "reference": "AEE261165",
     "conducteurs": "27G1 (26 + V/J) : 22 + V/J utilisés, 4 réserve",
     "blindage": "blindé, raccordé côté armoire",
     "longueur": "≤ 10 m",
     "statut": "acheté",
-    "folio": "41, 42, 50, 60, 70"
+    "folio": "41, 42, 43, 50, 61"
    },
    {
     "repere": "W12",
     "fonction": "Machine : capot B1, fins de course B3-B6, colonne H1",
-    "origine": "+A1 X41.3x, X60.3x, X62.1x",
+    "origine": "+A1 X43.2x, X61.3x, X63.1x",
     "destination": "+BJM",
     "type": "LIYCY-JZ",
     "reference": "AEE261164",
@@ -5845,7 +8542,7 @@
     "blindage": "blindé, raccordé côté armoire",
     "longueur": "≤ 10 m",
     "statut": "acheté",
-    "folio": "41, 60, 62, 70"
+    "folio": "43, 61, 63"
    },
    {
     "repere": "W13",
@@ -5863,15 +8560,15 @@
    {
     "repere": "W14",
     "fonction": "Capot magnétique codé B2",
-    "origine": "+A1 X41.41 à X41.44",
-    "destination": "+M B2 (connecteur M12)",
+    "origine": "+A1 X43.31 à X43.34",
+    "destination": "+BJM, puis +M B2",
     "type": "Câble M12 8 broches femelle, extrémité libre",
     "reference": "RS 285-9453 (SICK)",
     "conducteurs": "8 cond. (section à relever)",
     "blindage": "à relever (fiche SICK)",
     "longueur": "20 m (surmoulé, longueur fixe)",
     "statut": "acheté",
-    "folio": "41, 70",
+    "folio": "43",
     "propose": false
    },
    {
@@ -5947,27 +8644,27 @@
     ],
     [
      "5",
-     "X60.11"
+     "X61.11"
     ],
     [
      "6",
-     "X60.12"
+     "X61.12"
     ],
     [
      "7",
-     "X41.21"
+     "X43.11"
     ],
     [
      "8",
-     "X41.22"
+     "X43.12"
     ],
     [
      "9",
-     "X41.23"
+     "X43.13"
     ],
     [
      "10",
-     "X41.24"
+     "X43.14"
     ],
     [
      "11",
@@ -5995,19 +8692,19 @@
     ],
     [
      "17",
-     "X60.21"
+     "X61.21"
     ],
     [
      "18",
-     "X60.22"
+     "X61.22"
     ],
     [
      "19",
-     "X60.23"
+     "X61.23"
     ],
     [
      "20",
-     "X60.24"
+     "X61.24"
     ],
     [
      "21",
@@ -6041,67 +8738,67 @@
    "W12": [
     [
      "1",
-     "X41.31"
+     "X43.21"
     ],
     [
      "2",
-     "X41.32"
+     "X43.22"
     ],
     [
      "3",
-     "X41.33"
+     "X43.23"
     ],
     [
      "4",
-     "X41.34"
+     "X43.24"
     ],
     [
      "5",
-     "X60.31"
+     "X61.31"
     ],
     [
      "6",
-     "X60.32"
+     "X61.32"
     ],
     [
      "7",
-     "X60.33"
+     "X61.33"
     ],
     [
      "8",
-     "X60.34"
+     "X61.34"
     ],
     [
      "9",
-     "X60.35"
+     "X61.35"
     ],
     [
      "10",
-     "X60.36"
+     "X61.36"
     ],
     [
      "11",
-     "X60.37"
+     "X61.37"
     ],
     [
      "12",
-     "X60.38"
+     "X61.38"
     ],
     [
      "13",
-     "X62.11"
+     "X63.11"
     ],
     [
      "14",
-     "X62.12"
+     "X63.12"
     ],
     [
      "15",
-     "X62.13"
+     "X63.13"
     ],
     [
      "16",
-     "X62.14"
+     "X63.14"
     ],
     [
      "V/J",
@@ -6241,29 +8938,29 @@
    "W8": [
     [
      "vert (+)",
-     "X63.11"
+     "X64.11"
     ],
     [
      "blanc (-)",
-     "X63.12"
+     "X64.12"
     ]
    ],
    "W14": [
     [
      "?",
-     "X41.41"
+     "X43.31"
     ],
     [
      "?",
-     "X41.42"
+     "X43.32"
     ],
     [
      "?",
-     "X41.43"
+     "X43.33"
     ],
     [
      "?",
-     "X41.44"
+     "X43.34"
     ]
    ]
   },

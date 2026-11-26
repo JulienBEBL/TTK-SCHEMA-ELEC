@@ -3,9 +3,9 @@
  "document": {
   "titre": "Armoire +A1 : implantation et borniers",
   "machine": "Machine de tressage TTK, n° 001-EU",
-  "indice": "C",
-  "version": "v13",
-  "date": "20/11/2026",
+  "indice": "D",
+  "version": "v14",
+  "date": "26/11/2026",
   "auteur": "THRO.J",
   "societe": "BEBL",
   "revisions": [
@@ -23,6 +23,11 @@
     "C",
     "20/11/2026",
     "Schéma v36 : QF10 Schneider A9P71602 2 A, XD1 limitée à 2 A par QF10. Bornes et câbles inchangés."
+   ],
+   [
+    "D",
+    "26/11/2026",
+    "Schéma v45 : boîte +BJM (bornier X1, 69 bornes, ajouté au dossier), bornes renommées X43 / X61 / X63 / X64, côté extérieur des bornes R5 = « +BJM X1.n », TF sur X10:3 / X10:4, QM1 / QM2 en GV2ME10. X21.14 à droite de K4 validé (Julien 26/11)."
    ]
   ]
  },
@@ -535,7 +540,7 @@
    968.2,
    41,
    28.6,
-   "propose",
+   "a_poser",
    "Distribution 24 V capteurs (noir), L+ capt de K1",
    "Phoenix PTFIX 6/12X2,5 BK 3273366",
    "distrib"
@@ -1068,7 +1073,164 @@
  "boite": {
   "repere": "+BJM",
   "designation": "Boîte de jonction machine (une seule), bornier +BJM-X1",
-  "statut": "nommée par Julien le 17/11 (ancien +M-X1)"
+  "statut": "nommée par Julien le 17/11 (ancien +M-X1)",
+  "bornier": {
+   "_note": "Bornier +BJM-X1, ordre du schéma v37 (X1.1 à X1.69). Hors armoire : dessiné sans rail, ni vis ni support. Type de borne à choisir [?] : dessinées en largeur PT 2,5 (5,2 mm), accord de Julien le 26/11. Une butée de chaque côté de chaque groupe (règle des rails, appliquée à la boîte).",
+   "type": "à choisir",
+   "largeur": 5.2,
+   "terre": [
+    "X1.4",
+    "X1.8",
+    "X1.69"
+   ],
+   "rangees": [
+    {
+     "troncon": "+BJM-X1, bornes 1 à 24",
+     "groupes": [
+      {
+       "cable": "W2",
+       "fonction": "Moteur M1",
+       "bornes": [
+        "X1.1",
+        "X1.2",
+        "X1.3",
+        "X1.4"
+       ]
+      },
+      {
+       "cable": "W5",
+       "fonction": "Moteur M2",
+       "bornes": [
+        "X1.5",
+        "X1.6",
+        "X1.7",
+        "X1.8"
+       ]
+      },
+      {
+       "cable": "W4",
+       "fonction": "Freins M1 / M2",
+       "bornes": [
+        "X1.9",
+        "X1.10",
+        "X1.11",
+        "X1.12"
+       ]
+      },
+      {
+       "cable": "W9",
+       "fonction": "Pas-à-pas M3",
+       "bornes": [
+        "X1.13",
+        "X1.14",
+        "X1.15",
+        "X1.16"
+       ]
+      },
+      {
+       "cable": "W10",
+       "fonction": "Pas-à-pas M4",
+       "bornes": [
+        "X1.17",
+        "X1.18",
+        "X1.19",
+        "X1.20"
+       ]
+      },
+      {
+       "cable": "W3",
+       "fonction": "Sonde TF M1",
+       "bornes": [
+        "X1.21",
+        "X1.22"
+       ]
+      },
+      {
+       "cable": "W6",
+       "fonction": "Sonde TF M2",
+       "bornes": [
+        "X1.23",
+        "X1.24"
+       ]
+      }
+     ]
+    },
+    {
+     "troncon": "+BJM-X1, bornes 25 à 69",
+     "groupes": [
+      {
+       "cable": "W12",
+       "fonction": "B1, B3 à B6, H1",
+       "bornes": [
+        "X1.25",
+        "X1.26",
+        "X1.27",
+        "X1.28",
+        "X1.29",
+        "X1.30",
+        "X1.31",
+        "X1.32",
+        "X1.33",
+        "X1.34",
+        "X1.35",
+        "X1.36",
+        "X1.37",
+        "X1.38",
+        "X1.39",
+        "X1.40"
+       ]
+      },
+      {
+       "cable": "W14",
+       "fonction": "Capot magnétique B2",
+       "bornes": [
+        "X1.41",
+        "X1.42",
+        "X1.43",
+        "X1.44"
+       ]
+      },
+      {
+       "cable": "W8",
+       "fonction": "Thermocouple B7",
+       "bornes": [
+        "X1.45",
+        "X1.46"
+       ]
+      },
+      {
+       "cable": "W11",
+       "fonction": "Pupitre +P1 (S2, S3, P1)",
+       "bornes": [
+        "X1.47",
+        "X1.48",
+        "X1.49",
+        "X1.50",
+        "X1.51",
+        "X1.52",
+        "X1.53",
+        "X1.54",
+        "X1.55",
+        "X1.56",
+        "X1.57",
+        "X1.58",
+        "X1.59",
+        "X1.60",
+        "X1.61",
+        "X1.62",
+        "X1.63",
+        "X1.64",
+        "X1.65",
+        "X1.66",
+        "X1.67",
+        "X1.68",
+        "X1.69"
+       ]
+      }
+     ]
+    }
+   ]
+  }
  },
  "cables": [
   {

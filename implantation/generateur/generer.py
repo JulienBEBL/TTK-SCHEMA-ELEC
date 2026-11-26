@@ -26,7 +26,9 @@ EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 FAMILLE = {"alim": "#fff2cc", "variateur": "#f8cecc", "puissance": "#fbe3d6", "distrib": "#eeeeee",
            "automate": "#d5e8d4", "securite": "#ffe6cc"}
 ETAT = {"fixe": "déjà fixé", "a_poser": "à poser", "deplace": "déplacé (13/11)", "propose": "proposé"}
-TYPE_FILL = {"PT 2,5": "#d9d9d9", "PT 4": "#a6a6a6", "terre": "#7fbf5f", "PTFIX 2X4": "#c9d6e8"}
+TYPE_FILL = {"PT 2,5": "#d9d9d9", "PT 4": "#a6a6a6", "terre": "#7fbf5f", "PTFIX 2X4": "#c9d6e8",
+             "boîte": "#f3e6c9"}
+BJM = S["boite"]["bornier"]   # v14 : bornier +BJM-X1 (hors armoire)
 
 PAGES = []
 
@@ -93,10 +95,15 @@ def court_armoire(rec):
 
 
 def court_ext(rec):
-    return " / ".join(rec.get("cote_exterieur", [])) or "-"
+    ext = rec.get("cote_exterieur", [])
+    if ext and all(x.startswith("X1.") for x in ext):   # v14 (Julien 26/11) : seulement « +BJM X1.n »
+        return "+BJM " + " / ".join(x.split(":")[0] for x in ext)
+    return " / ".join(ext) or "-"
 
 
 def type_borne(rep):
+    if rep.startswith("X1."):
+        return "terre" if rep in BJM["terre"] else "boîte"
     t = S["types_bornes"]
     if rep in t["terre"]:
         return "terre"
@@ -107,7 +114,16 @@ def type_borne(rep):
     return "PT 2,5"
 
 
+def larg_borne(rep):
+    if rep.startswith("X1."):
+        return BJM["largeur"]
+    return S["types_bornes"]["largeur"][type_borne(rep)]
+
+
 def conducteur(cable, rep):
+    if rep.startswith("X1."):   # boîte : n° du conducteur de la borne d'armoire raccordée
+        arm = [x.split(":")[0] for x in B[rep]["cote_armoire"]]
+        rep = arm[0] if arm else rep
     for n, b in S["conducteurs"].get(cable, []):
         if b == rep:
             return n
@@ -120,7 +136,7 @@ BUTEE, CAPOT, ZONE = 10.0, 2.2, 20.0
 
 def disposer(bornier):
     """Positions réelles (mm) : butées, bornes, capots. Saute les vis / supports (zone de 20 mm)."""
-    rail = S["rails"][bornier["rail"]]
+    rail = S["rails"].get(bornier["rail"], {"x": 0, "l": 1e9})   # boîte +BJM : pas de rail
     obst = rail.get("vis", []) + rail.get("supports", [])
     x = bornier["x0"] - BUTEE
     out = []
@@ -132,7 +148,7 @@ def disposer(bornier):
         return None
 
     for g in bornier["groupes"]:
-        larg = sum(S["types_bornes"]["largeur"][type_borne(r)] for r in g["bornes"]) + CAPOT
+        larg = sum(larg_borne(r) for r in g["bornes"]) + CAPOT
         if "apres_vis" in g:
             x = max(x, g["apres_vis"] + ZONE)
         if g.get("sans_butee") and out and out[-1][0] == "butee":
@@ -150,7 +166,7 @@ def disposer(bornier):
             x += BUTEE
         x0 = x
         for r in g["bornes"]:
-            w = S["types_bornes"]["largeur"][type_borne(r)]
+            w = larg_borne(r)
             out.append(("borne", x, w, r, g))
             x += w
         out.append(("capot", x, CAPOT))
@@ -158,7 +174,7 @@ def disposer(bornier):
         g["_x"] = (x0, x)
         out.append(("butee", x, BUTEE))
         x += BUTEE
-    fin = rail["x"] + rail["l"]
+    fin = rail["x"] + rail["l"] if bornier["rail"] in S["rails"] else x
     return out, obst, x, fin
 
 
@@ -202,7 +218,10 @@ def rangee(p, bornier, y, titre, x_page=16):
                dash="1.2,0.6" if av else None)
         if cab in CAB:
             c = CAB[cab]
-            lieu = {"W11": "+P1 pupitre", "W12": "+BJM", "W4": "+BJM", "W1": "réseau client"}.get(cab, "+M")
+            if bornier["rail"] == "+BJM":
+                lieu = {"W11": "+P1 pupitre"}.get(cab, "+M")
+            else:
+                lieu = "réseau client" if cab == "W1" else "+BJM"
             lab = f"{cab} · {c['conducteurs'].split(' (')[0]} · vers {lieu}"
             if av:
                 lab += " · répartition à valider"
@@ -241,7 +260,9 @@ def rangee(p, bornier, y, titre, x_page=16):
             if fil:
                 p.text(cx + 1.7, Y_CORPS + 11.3, fil, 1.7, rot=-90, maxw=9, coul="#1f3f7f")
             # côté armoire (haut) et côté extérieur (bas), lus de bas en haut
-            for i, l in enumerate(coupe(court_armoire(rec), 1.7, 10.8)[:2]):
+            haut = ("+A1 " + " / ".join(x.split(":")[0] for x in rec["cote_armoire"])) if rep.startswith("X1.") \
+                else court_armoire(rec)
+            for i, l in enumerate(coupe(haut, 1.7, 10.8)[:2]):
                 p.text(cx - 0.8 + 1.8 * i, Y_CORPS - 2.2, l, 1.7, rot=-90, maxw=10.8)
             n = conducteur(g["cable"], rep)
             n = {"vert (+)": "VE+", "blanc (-)": "BL-", "blanc": "BL", "marron": "MA"}.get(n, n)
@@ -250,8 +271,6 @@ def rangee(p, bornier, y, titre, x_page=16):
                 p.text(cx, Y_COND, n, 2.0 if len(n) < 3 else 1.6, ancre="middle", gras=True, coul="#1f3f7f",
                        maxw=ww - 1)
             ext = court_ext(rec)
-            if g["cable"] in ("W12", "W4") and ext != "-":
-                ext = "+BJM → " + ext
             if g["cable"] == "W1":
                 ext = "réseau client"
             if g["cable"] == "int":
@@ -484,7 +503,7 @@ def page_plaque():
     for br in S["borniers"]:
         nb[br["rail"]] += sum(len(g["bornes"]) for g in br["groupes"])
     for rep, des, ref in S["hors_plaque"] + [["Borniers", f"R5 : {nb['R5']} bornes ; R4 : {nb['R4']} bornes "
-                                              "(détail page 2)", ""]]:
+                                              "(détail page 2) ; boîte +BJM-X1 : 69 bornes (page 3)", ""]]:
         y += 4.15
         p.text(x0, y, rep, 2.1, maxw=14 if len(rep) < 6 else 30)
         p.text(x0 + (15 if len(rep) < 6 else 31), y, des, 2.1, maxw=76 if len(rep) < 6 else 124)
@@ -494,7 +513,7 @@ def page_plaque():
              "Cotes : plaque 1100 x 1670 depuis le coin haut gauche ; rails, vis et supports relevés sur l'indice K "
              "(v10). Pas de cote fine : ajustement au montage.",
              "R2 est plein et monté (13/11) : XR1 et XR2 côte à côte, l'ordre est juste, les positions sont indicatives.",
-             "X21.14 (proposé) : à droite de K4, près de K1 qui l'alimente (L+ capteurs) ; FA1 et KA1 restent en place.",
+             "X21.14 : à droite de K4, près de K1 qui l'alimente (L+ capteurs), validé par Julien le 26/11.",
              "Rien sur les parois sauf les ventilateurs EV1 / EV2. U3 / U4 et -XPE1 vissés sur la plaque.",
              "R5 tronçon 1 : bornes W11 / W12 en PTFIX 2X4 (6 mm) ; répartition validée (Julien 05/11, 18/11)."]
     for n in notes:
@@ -517,24 +536,49 @@ def page_borniers():
     return p
 
 
-def legende_etroite(p, x, y):
+def page_boite():
+    """Page 3 (v14) : bornier +BJM-X1 de la boîte de jonction machine (hors armoire)."""
+    p = nouvelle("Bornier de la boîte de jonction machine +BJM-X1 (hors armoire, vue de face, bornes x 1,2)")
+    cadre(p)
+    y = 24
+    for i, rg in enumerate(BJM["rangees"]):
+        br = {"rail": "+BJM", "x0": 10.0, "groupes": rg["groupes"]}
+        y, xd = rangee(p, br, y + (3 if i else 0), rg["troncon"] + " : haut = borne d'armoire raccordée (+A1), "
+                       "bas = appareil sur la machine ou le pupitre")
+    y += 6
+    notes = [f"Boîte de fabrication BEBL, bornier X1 de 69 bornes (66 de passage, 3 de terre : X1.4, X1.8, X1.69). "
+             f"Type de borne à choisir : dessinées en largeur PT 2,5 ({str(BJM['largeur']).replace('.', ',')} mm), "
+             "accord de Julien du 26/11.",
+             "Ordre des bornes = ordre du schéma (v37) : un groupe par câble, une butée de chaque côté de chaque groupe "
+             "(règle des rails de l'armoire, appliquée à la boîte).",
+             "N° de conducteur = celui de la borne d'armoire raccordée. Tous les câbles sortants passent par la boîte, "
+             "W1 (réseau client) et W13 (V/J vers le bâti) exceptés.",
+             "Plans de bornier du schéma : folios 70 à 73."]
+    for n in notes:
+        y = p.bloc(16, y, "• " + n, 2.4, maxw=222) + 0.8
+    legende_etroite(p, 300, 162, bas="Bas : appareil (+M, +P1)")
+    return p
+
+
+def legende_etroite(p, x, y, bas="Bas : côté extérieur (+BJM X1.n)"):
     """Légende de lecture d'une borne, en colonne (à droite du rail R4)."""
     w = 404 - x
     p.text(x, y, "Lecture d'une borne", 2.6, gras=True, maxw=w)
     y += 4.2
     for it in ["Haut : côté armoire", "Corps : repère (gras), n° de fil (bleu)", "Pastille : n° de conducteur",
-               "Bas : côté extérieur", "Bandeau : câble, destination", "Tireté rouge : à valider"]:
+               bas, "Bandeau : câble, destination"]:
         p.text(x, y, it, 2.0, maxw=w)
         y += 3.4
     y += 1.6
     for i, (nom, f) in enumerate([("PT 2,5 (5,2)", TYPE_FILL["PT 2,5"]), ("PT 4 (6,2)", TYPE_FILL["PT 4"]),
                                   ("PTFIX 2X4 (6)", TYPE_FILL["PTFIX 2X4"]), ("Terre V/J (5,2)", TYPE_FILL["terre"]),
-                                  ("Butée (10)", "#262626"), ("Capot de fin", "#8c8c8c")]):
+                                  ("Butée (10)", "#262626"), ("Capot de fin", "#8c8c8c"),
+                                  ("Boîte : type ?", TYPE_FILL["boîte"])]):
         xx = x + (i % 2) * (w / 2)
         yy = y + (i // 2) * 4.2
         p.rect(xx, yy - 2.6, 4, 3, fill=f, stroke="#000", sw=0.2)
         p.text(xx + 5, yy, nom, 2.0, maxw=w / 2 - 6)
-    p.text(x, y + 13, "Largeurs réelles en mm", 1.9, coul="#555", maxw=w)
+    p.text(x, y + 16.5, "Largeurs réelles en mm", 1.9, coul="#555", maxw=w)
 
 
 def r3(p, x, y):
@@ -551,7 +595,7 @@ def r3(p, x, y):
             xx += 23
             continue
         w = 7.4 if rep == "X12.11" else 26
-        prop = rep == "X21.14"
+        prop = False   # X21.14 validé à droite de K4 (Julien 26/11)
         p.rect(xx, y, w, 19, fill=f, stroke="#d00000" if prop else "#000", sw=0.35, dash="1.2,0.6" if prop else None)
         coul = "#ffffff" if rep in ("X21.11", "X21.14") else "#000"
         if rep == "X12.11":
@@ -562,7 +606,7 @@ def r3(p, x, y):
             p.text(xx + w / 2, y + 13.5, "fil " + fil, 1.9, ancre="middle", coul=coul, maxw=w - 1.5)
             p.text(xx + w / 2, y + 17.3, "1 entrée + 12", 1.7, ancre="middle", coul=coul, maxw=w - 1.5)
         xx += w + 2
-    p.bloc(x, y + 23.5, "X21.14 proposé (tireté rouge) : à droite de K4, près de K1 (L+ capteurs). "
+    p.bloc(x, y + 23.5, "X21.14 à droite de K4, près de K1 (L+ capteurs), validé le 26/11. "
            "Dessin réduit, ordre réel de gauche à droite.", 2.0, maxw=404 - x)
 
 
@@ -778,20 +822,24 @@ def page_synoptique():
 def ouverts():
     t = S["types_bornes"]
     besoin = {k: 0 for k in t["achetes"]}
+    boite = {"passage (type à choisir)": 0, "terre": 0}
     for rep, rec in B.items():
-        if rec["type"] != "PTFIX":
+        if rep.startswith("X1."):
+            boite["terre" if type_borne(rep) == "terre" else "passage (type à choisir)"] += 1
+        elif rec["type"] != "PTFIX":
             besoin[type_borne(rep)] += 1
     manque = {k: besoin[k] - t["achetes"][k] for k in besoin}
-    OUVERTS.append("X21.14 (PTFIX noir) proposé à droite de K4 sur R3 : la place prévue à côté de X21.13 est occupée "
-                   "par FA1 et KA1.")
-    return besoin, manque
+    OUVERTS.append(f"Boîte +BJM-X1 : type de borne à choisir ; dessinée en largeur PT 2,5 "
+                   f"({str(BJM['largeur']).replace('.', ',')} mm), "
+                   "accord de Julien du 26/11.")
+    return besoin, manque, boite
 
 
 def croisement():
     """Croise les repères et bornes écrits dans les pages avec le .xrs."""
     ecarts = []
     tous = " ".join(t for p in PAGES for t in p.textes)
-    reps_pdf = set(re.findall(r"\bX\d\d\.\d\d\b", tous))
+    reps_pdf = set(re.findall(r"\bX\d\d\.\d\d\b", tous)) | set(re.findall(r"\bX1\.\d\d?\b", tous))
     reps_xrs = set(B)
     for r in sorted(reps_xrs - reps_pdf):
         ecarts.append(f"borne du schéma absente du dossier : {r}")
@@ -799,7 +847,7 @@ def croisement():
         ecarts.append(f"borne du dossier absente du schéma : {r}")
     # chaque borne dessinée une seule fois dans les borniers
     vus = {}
-    for br in S["borniers"]:
+    for br in S["borniers"] + BJM["rangees"]:
         for g in br["groupes"]:
             for r in g["bornes"]:
                 vus[r] = vus.get(r, 0) + 1
@@ -819,6 +867,12 @@ def croisement():
     # bornes des tables de conducteurs = bornes du groupe du même câble
     for cab, lst in S["conducteurs"].items():
         bornes_cab = {r for br in S["borniers"] for g in br["groupes"] if g["cable"] == cab for r in g["bornes"]}
+        # v14 : même contrôle côté boîte (borne X1 -> borne d'armoire raccordée)
+        bjm = {B[r]["cote_armoire"][0].split(":")[0] for br in BJM["rangees"] for g in br["groupes"]
+               if g["cable"] == cab for r in g["bornes"] if B[r]["cote_armoire"]}
+        tab0 = {r for _, r in lst if r.startswith("X") and r in B}
+        if bjm and not bjm <= tab0 | {"X31.11", "X32.11", "X50.13"}:
+            ecarts.append(f"{cab} : bornes de la boîte raccordées à {sorted(bjm - tab0)}, absentes de la table")
         tab = {r for _, r in lst if r.startswith("X") and r in B}
         if bornes_cab and tab != bornes_cab:
             ecarts.append(f"{cab} : bornes de la table {sorted(tab ^ bornes_cab)} ≠ bornier")
@@ -831,11 +885,12 @@ def croisement():
 
 
 def main():
-    besoin, manque = ouverts()
+    besoin, manque, boite = ouverts()
     # v12 (Julien 18/11) : 2 pages seulement. Garde, charte, câbles, conducteurs et synoptique (v11) ne sont
-    # plus imprimés ; leurs fonctions restent dans ce fichier.
+    # plus imprimés ; leurs fonctions restent dans ce fichier. v14 (26/11) : 3e page, bornier de la boîte +BJM.
     page_plaque()
     page_borniers()
+    page_boite()   # v14 : bornier +BJM-X1 (Julien 26/11 : « rajoute »)
     n = len(PAGES)
     erreurs = []
     for q in PAGES:
@@ -872,7 +927,9 @@ def main():
            f"## Mise en page (textes trop larges, chevauchements) : {len(erreurs)}"] + [f"- {e}" for e in erreurs] + [
            "", f"## Croisement avec le .xrs : {len(ecarts)} écart(s)"] + [f"- {e}" for e in ecarts] + [
            "", "## Points ouverts (hors dessin)"] + [f"- {o}" for o in OUVERTS] + [
-           "", "## Comptage des bornes (dessinées au schéma, sans comparaison au stock : Julien 18/11)"] + [f"- {k} : {v}" for k, v in besoin.items()]
+           "", "## Comptage des bornes (dessinées au schéma, sans comparaison au stock : Julien 18/11)",
+           "", "Armoire +A1 :"] + [f"- {k} : {v}" for k, v in besoin.items()] + [
+           "", "Boîte +BJM-X1 (hors armoire) :"] + [f"- {k} : {v}" for k, v in boite.items()]
     open(os.path.join(ICI, "..", "release", nom + "_verification.md"), "w", encoding="utf-8", newline="\n").write(
         "\n".join(rap) + "\n")
     print("\n".join(rap))

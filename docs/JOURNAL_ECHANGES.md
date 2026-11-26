@@ -527,3 +527,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : implantation v14, réponses aux 3 questions
 - Julien : 1 « seulement +BJM X1.13 » ; 2 « NON RAJOUTE » ; 3 « c'est quoi déjà X21 ? ».
 - Fait : X21 expliqué (4 blocs PTFIX 6/12 de distribution 24 V sur R3, f21) ; lecture du 2 et largeur des bornes de la boîte à confirmer. Pas de GO encore, rien généré.
+
+## 26/11/2026 : implantation v14
+- Julien : « 1 ok 2 oui 3 GO » (X21.14 à droite de K4, boîte en largeur PT 2,5, GO).
+- Fait : v14 indice D, 3 pages (boîte +BJM-X1 en page 3, page 2 pleine) ; `extraire.py`, `generer.py`, `saisie.json` adaptés ; contrôle 0 / 0 / 0 ; PNG relus. Commit local, push sur accord.
