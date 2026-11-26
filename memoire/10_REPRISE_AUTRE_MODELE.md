@@ -4,7 +4,7 @@
 
 ## État
 - Version : **v43** (`schema/generes/release/TTK_2026-11-26_v43.xrs`), rapport `docs/RAPPORT_v43_2026-11-26.md`.
-- Attente : retours de Julien sur la v43 ; question du brin V/J n° 4 (W9 / W10).
+- Attente : retours de Julien sur la v43 ; réponses de SEW. Brin V/J de W9 / W10 sans numéro (script modifié le 26/11, pour la v44).
 - Piège (v43) : dans ce terminal, un heredoc bash passé à python transforme « \\ » en « \ » : pour un correctif qui contient des antislashs (« \u00b7 » de xrs_gen), écrire le script Python dans un fichier (outil Write).
 - Placement des numéros de fil (v42) : `centre_troncon` (milieu du plus long chemin, parties libres de `troncon_libre`) ; obstacles des symboles : `obstacles_symboles` / `dessin_symbole` ; débogage : `TTK_DBG=<numéro>` affiche les positions candidates.
 - Lecture d'un folio par calcul : `outils/controles/folio.py <xrs> <folio affiché>` (dans le dépôt depuis la v43). Comparer une release réenregistrée : `outils/controles/retouche.py` + comparer à part les blocs ¤#DefCable (positions des textes de câble). Centrage des numéros : `outils/controles/centrage.py`.

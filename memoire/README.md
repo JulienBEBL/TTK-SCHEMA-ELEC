@@ -10,7 +10,7 @@ Point d'entrée unique pour reprendre le projet sans relire tout l'historique.
 | [03_ARCHITECTURE.md](03_ARCHITECTURE.md) | Puissance, 24 V, 48 V, sécurité, automate, PROFINET |
 | [04_REGLES_DESSIN.md](04_REGLES_DESSIN.md) | Règles de Julien pour le dessin (à respecter sur tous les folios) |
 | [05_POINTS_OUVERTS.md](05_POINTS_OUVERTS.md) | Questions en suspens et valeurs à vérifier |
-| [06_EN_COURS.md](06_EN_COURS.md) | Version actuelle, ce qui a changé, travail en cours |
+| [06_EN_COURS.md](06_EN_COURS.md) | Version actuelle, ce qui a changé, travail en cours (historique v17-v41 : `docs/HISTORIQUE_VERSIONS.md`, 26/11) |
 | [07_METHODE_TRAVAIL.md](07_METHODE_TRAVAIL.md) | Dépôt, génération, contrôle, commit, façon de répondre à Julien |
 | [08_IMPLANTATION.md](08_IMPLANTATION.md) | Dossier d'implantation généré (PDF de 2 pages depuis la v12) : demande, générateur, saisie.json, points ouverts |
 | [10_REPRISE_AUTRE_MODELE.md](10_REPRISE_AUTRE_MODELE.md) | **Comment reprendre** (méthode, contrôles, pièges) : à lire en 2e, après CLAUDE.md (24/11, passage à Sonnet) |

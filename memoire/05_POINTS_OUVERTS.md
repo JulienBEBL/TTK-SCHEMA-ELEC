@@ -131,7 +131,7 @@ Liste à jour des doutes, inconnus et manques : `docs/REVUE_COMPLETE_v29.md` (§
 ## Revue v33 (18/11)
 Liste à jour des zones d'ombre : `docs/REVUE_SCHEMA_v33_2026-11-18.md` § 1 (remplace `REVUE_COMPLETE_v29.md` § 3). Nouveaux :
 - **+BJM** : **réglé le 18/11**, la boîte n'est pas dessinée (Julien). f80 : W4 / W12 vers +BJM, les autres vers +M.
-- V/J de W9 / W10 : **réglé le 18/11 (v34)**, bornes de terre X20.15 / X20.25, non raccordé au moteur. **Stock : 6 bornes de terre dessinées pour 4 achetées** [?].
+- V/J de W9 / W10 : **réglé le 18/11 (v34)**, bornes de terre X20.15 / X20.25, non raccordé au moteur. Stock des bornes de terre (6 dessinées, 4 achetées) : **point abandonné le 26/11** (Julien : « oublie ce point »).
 - Bornes X63 : **PT 2,5** (Julien 18/11, v34).
 - f85 : **réglé le 18/11**, image du plan d'implantation à insérer quand il sera validé (Julien).
 - Fils de H2 : **2,5 mm²** (Julien 18/11, « normalement »). Rappel : tenue sous QF1 20 A à vérifier selon le mode de pose (NF EN 60204-1, tableau 6) [?].
@@ -203,9 +203,9 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 - Rendu dans WinRelais : variateur élargi (f31 / f32) **validé par Julien (26/11)** ; thermocouple retourné (f64), gras et résumés des plans de bornier (résumé sous le cadre du repère en v43) : à relire sur la v43 [?].
 - `implantation/generateur/saisie.json` : folios et origines de W8 (f64), W11 (X43.1x, pas de X41.2x), W12 (X43.2x, f43 / f61 / f63), W14 (f43) d'avant la v37 ; le schéma les relit sur le dessin. **Corrigé le 26/11** (accord de Julien) dans `saisie.json`.
 - Haut des variateurs f31 / f32 : numéros sur une rangée juste au-dessus des broches (alignement v40), pas centrés (fils 24 V de 600) [H].
-- Nomenclature : 6 bornes de terre dessinées pour 4 achetées ; références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].
+- Nomenclature : références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].
 
 ## v43 (26/11)
-- W9 / W10 : le brin du V/J porte le n° 4 (comme le conducteur 4), repris de la retouche de Julien : voulu ? [?]
+- W9 / W10 : n° 4 sur le brin V/J **non voulu** (Julien 26/11) : retiré dans le script (v44).
 - f31 / f32 : variateur élargi validé par Julien (26/11).
 - Relecture de la v43 par Julien dans WinRelais (W1, W9 / W10 repris, f40, plans de bornier, nomenclature en 300) [?].

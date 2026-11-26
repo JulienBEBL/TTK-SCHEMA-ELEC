@@ -483,3 +483,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : texte de passation collé ; lire CLAUDE.md, mémoire, rapports v42 / v43 ; résumer en 5 lignes, puis attendre ses retours sur la v43.
 - Fait : `git pull` (à jour) ; release v43 non modifiée (`git status` propre) ; lecture complète ; résumé donné. Rien de modifié au schéma.
 - En attente : retours de Julien sur la v43 ; question du brin V/J n° 4 (W9 / W10).
+
+## 26/11/2026 : historique de 06, V/J de W9 / W10, bornes de terre
+- Julien : déplacer l'historique de 06 dans docs/ ; n° du brin V/J de W9 / W10 non voulu ; oublier le point « 6 bornes de terre pour 4 achetées » ; il envoie les infos SEW au prochain message.
+- Fait : historique v17-v41 dans `docs/HISTORIQUE_VERSIONS.md` ; `vj_num=4` retiré du script (essai : 2 brins changent, contrôles à 0 ; pas de nouvelle release) ; point des bornes de terre retiré (05, 09, contrôle de la nomenclature).

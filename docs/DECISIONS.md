@@ -628,3 +628,8 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 
 ## 26/11/2026 : reprise (nouveau chat)
 - [C] Dépôt à jour, release v43 non réenregistrée par WinRelais (git status propre). Aucune décision nouvelle ; attente des retours de Julien sur la v43.
+
+## 26/11/2026 : retours sur la v43 (début)
+- [D] Julien : pas de numéro sur le brin V/J de W9 / W10 (retiré du script, pour la v44).
+- [D] Julien : oublier l'écart des bornes de terre (6 dessinées, 4 achetées).
+- [D] Julien : historique de `memoire/06_EN_COURS.md` déplacé dans `docs/HISTORIQUE_VERSIONS.md`.

@@ -324,7 +324,7 @@ def controle(chemin, numeros_folios):
     stock = []
     for t, n in sorted(lu.items()):
         achat = tb["achetes"].get(t)
-        if achat is not None and n > achat:
+        if achat is not None and n > achat and t != "terre":   # 26/11 : bornes de terre, point oublié (Julien)
             stock.append(f"{t} : {n} dessinées pour {achat} achetées")
     # 3. câbles : ceux du schéma (DefCable) et ceux de saisie.json
     for c in m["cables"]:

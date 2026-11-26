@@ -43,7 +43,7 @@ Tableau dans `cablage/TTK_CABLES.xlsx` (onglets « Stock câbles » et « Liaiso
 | Borne PT 2,5 | Phoenix 3209510 | 70 (20 + 50) | 36 (v32) | [C 17/11] ; [D 18/11] tout le rail R4 (porte, X13) |
 | Borne PT 4 | Phoenix 3211757 | 15 | 15 (v32) | [D 18/11] arrivée X10.12-15, moteurs X31.12-14 / X32.12-14, freins X31.31-32 / X32.31-32 ; + X12.11 [H] |
 | Bloc distributeur PTFIX 2X4 | Phoenix 1028361 | ? | 38 points (v32) | [D 18/11] bornes des appareils des câbles 27G1 (W11) et 19G1 (W12). Bloc de passage classique, **2 trous**, **6 mm** (Julien 18/11). Julien : « 19 et 27 » blocs ; réserves non bornées, X50.13 en terre (Julien 18/11) : 38 blocs utilisés |
-| Borne de terre | RS 708-1687 (Phoenix 3211867) | 4, en livraison | **6** (X10.11, X31.11, X32.11, X50.13 ; + X20.15, X20.25 en v34) | [C 17/11] ; **manque 2** [?] (V/J de W9 / W10, Julien 18/11) |
+| Borne de terre | RS 708-1687 (Phoenix 3211867) | 4, en livraison | **6** (X10.11, X31.11, X32.11, X50.13 ; + X20.15, X20.25 en v34) | [C 17/11] ; écart de 2 : **point abandonné le 26/11** (Julien) |
 | Bloc PTFIX 6/12X2,5 | Phoenix 3273354 (couleurs RD, BK, GY, BU) | 4 | 4 (X21.11 à X21.14) | [C 16/11] référence par couleur [?] |
 | Butées d'arrêt | ? | 50 + 60 + 50 (tous projets) | 20 (implantation v8) | [C 05/11] référence [?] |
 | Répartiteur 4P 125 A 7 départs | AEE300427 | 2 | XR1, XR2 (non dessinés) | [C] |

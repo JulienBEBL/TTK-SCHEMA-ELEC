@@ -1427,7 +1427,7 @@ for T, Mrep, x0 in (("T322", "M321", 12000), ("T323", "M322", 23200)):
     texte(f, xpe + (400 if Mrep == "M321" else 500), 14900, "V/J non raccordé", 180)   # v43 : place de Julien
     g.cable(F[f], 0, 0, 15000, {"M321": "W321", "M322": "W322"}[Mrep], "5G1,5 blindé",
             f"Moteur pas-à-pas {Mrep} -> {T}", [Mo[p].x for p in ("A+", "A-", "B+", "B-")], ovale=True, compo_dx=-2800,
-            compo_dy=-100, vj=[xpe], ellipse=(0, 200, 0, 200), vj_num=4)
+            compo_dy=-100, vj=[xpe], ellipse=(0, 200, 0, 200))   # 26/11 : pas de n° sur le V/J (Julien)
     # v43 : retouches de Julien sur la v42 (WinRelais) reprises : câble 200 plus bas, composition à gauche de l'ovale,
     # ellipse « 0 200 0 200 », brin n° 4 écrit aussi sur le V/J
     xin, xbus = x0 - 4000, x0 - 3200
