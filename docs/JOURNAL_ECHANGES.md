@@ -537,3 +537,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : implantation v15, types de bornes de la boîte
 - Julien : « PT 2,5 pour la boîte et des PT 4 pour les arrivées moteurs et frein notamment ; aussi PT 4 pour la terre ».
 - Fait : v15 indice E (types dans `saisie.json`, générateur) ; contrôle 0 / 0 / 0 ; page 3 relue. Commit local, push sur accord.
+- Julien : « Oui, pousse » (v15). Fait : poussé sur `main`.
