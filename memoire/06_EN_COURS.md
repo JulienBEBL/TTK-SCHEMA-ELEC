@@ -48,3 +48,4 @@ Rapport : `docs/RAPPORT_v42_2026-11-26.md`. Demandes : `memoire/revues/2026-11-2
 
 ## Historique
 Versions v17 à v41, feuilles de route et bilans du 05/11 au 25/11 : `docs/HISTORIQUE_VERSIONS.md` (déplacé le 26/11, demande de Julien). Chaque version a aussi son rapport `docs/RAPPORT_vNN_*.md`.
+- 26/11 (nouveau chat schéma, passation v45) : mémoire relue ; release v45 non réenregistrée ; 2 lignes périmées corrigées (05 : TF X10 ; 10 : fins de ligne CRLF). Attente des retours de Julien sur la v45.

@@ -519,3 +519,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : nouveau chat, suivre `docs/PROMPT_IMPLANTATION_2026-11-26.md` (état des lieux d'abord, sans rien générer).
 - Fait : mémoire relue ; `extraire.py` sur la v45 (168 bornes, 37 câbles), `donnees.json` remis par `git checkout` ; comparaison avec la v36 : 99 bornes d'armoire inchangées, rails inchangés ; générateur à adapter pour la boîte +BJM. 3 questions posées. Rien généré, rien poussé.
 - Julien : « Oui, pousse ». Fait : commit 7af72ce poussé sur `main`. En attente des réponses aux 3 questions et du GO v14.
+
+## 26/11/2026 : reprise du chat schéma (v45)
+- Julien : suivre `docs/PASSATION_2026-11-26_v45.md`.
+- Fait : `git pull --rebase` (à jour) ; mémoire et rapports relus ; release v45 inchangée ; mémoire 05 (TF X10 corrigé en v44) et 10 (`ttk_schema.py` en CRLF) mises à jour. Attente des retours sur la v45.
