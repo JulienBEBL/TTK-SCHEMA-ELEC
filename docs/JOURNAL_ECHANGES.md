@@ -531,3 +531,4 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : implantation v14
 - Julien : « 1 ok 2 oui 3 GO » (X21.14 à droite de K4, boîte en largeur PT 2,5, GO).
 - Fait : v14 indice D, 3 pages (boîte +BJM-X1 en page 3, page 2 pleine) ; `extraire.py`, `generer.py`, `saisie.json` adaptés ; contrôle 0 / 0 / 0 ; PNG relus. Commit local, push sur accord.
+- Julien : « Oui, pousse » (v14). Fait : poussé sur `main`.
