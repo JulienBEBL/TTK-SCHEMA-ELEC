@@ -206,13 +206,13 @@ Détail : `docs/RAPPORT_v42_2026-11-26.md`.
 - Nomenclature : références B7, H2, H3, H4, bornes +BJM, butées : à vérifier (inchangé) [?].
 
 ## v43 (26/11)
-- W9 / W10 : n° 4 sur le brin V/J **non voulu** (Julien 26/11) : retiré dans le script (v44).
+- W9 / W10 : n° 4 sur le brin V/J **non voulu** (Julien 26/11) : retiré, **fait en v44**.
 - f31 / f32 : variateur élargi validé par Julien (26/11).
 - Relecture de la v43 par Julien dans WinRelais (W1, W9 / W10 repris, f40, plans de bornier, nomenclature en 300) [?].
 
 ## Réponse écrite SEW (Xavier, 26/11)
 Détail : `docs/RAPPORT_SEW_2026-11-26.md`.
-- **TF sur X10:3 / X10:4, pas X10:1 / X10:2** : schéma à corriger (f31, f32) ; câblage réel à vérifier [?].
-- Vitesse sans codeur (VFC^PLUS) : écart typique 0,2 × glissement nominal ; vitesse nominale n_N de la plaque du DRN100LS4 à relever [?]. Critère [H] : n_N ≥ 1447 tr/min pour ≤ 2 tr/min entre les 2 axes au pire.
-- QM1 / QM2 : courant nominal du moteur (plaque) à relever pour le critère SEW « ≥ 1,1 × I_N moteur » [?] ; 1,1 × 5 A = 5,5 A < 6,5 A réglé.
-- Sans réponse : dispersion entre 2 ensembles, échauffement, tension réseau, appel réseau, paramètre TF / réaction / réarmement [?].
+- **TF sur X10:3 / X10:4** : **fait en v44** ; pas encore câblé (Julien 26/11).
+- Vitesse sans codeur (VFC^PLUS) : écart typique 0,2 × glissement nominal. Plaque : 1450 tr/min (Julien 26/11) : **0,94 tr/min par axe en sortie, 1,89 tr/min entre les 2 axes au pire** (≤ 2, marge 0,11). Écart typique, pas un maximum : à mesurer au banc [?].
+- QM1 / QM2 : plaque 4,75 A (Julien 26/11). **Référence montée incertaine** (GV2ME10 4-6,3 A et GV2ME14 6-10 A achetés) : les deux tiennent la pleine charge (5 A, mini SEW 5,5 A) : GV2ME10 réglé 6,3 A, GV2ME14 réglé 6-6,5 A. Lire la face avant ; si GV2ME10 : symbole et nomenclature à changer [?]. Seuil magnétique (fiche Schneider) et appel du variateur non relevés [?].
+- Sans réponse : dispersion entre 2 ensembles, échauffement, tension réseau, appel réseau, paramètre TF / réaction / réarmement. **Julien 26/11 : pas de relance de SEW** (« on reste tel quel ») ; à voir au banc.

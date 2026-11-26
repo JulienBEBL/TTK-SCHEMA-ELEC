@@ -58,3 +58,8 @@ Sources : 7 extraits de documentation SEW, dans `memoire/sew/2026-11-26_reponses
 - **Schéma** : TF de X10:1 / X10:2 vers **X10:3 / X10:4** (f31, f32). À faire en v44 avec l'accord de Julien. Vérifier aussi le câblage réel si l'armoire est déjà câblée.
 - QF2 / QF3 (2 A C), STO, QM1 / QM2 (6,5 A) : inchangés.
 - Programme (dépôt automatisme) : 10 s mini entre ouverture et fermeture de KM1 / KM2 ; mode VFC^PLUS ; identification du moteur.
+
+## 9. Suite (Julien, 26/11)
+- Sonde TF pas encore câblée ; schéma corrigé en v44 (X10:3 / X10:4).
+- Plaque : n_N = 1450 tr/min, I_N = 4,75 A. Écart typique : 0,2 × 50 / 10,61 = **0,94 tr/min par axe** ; au pire **1,89 tr/min** entre les axes (≤ 2).
+- Pas de relance de SEW. Calcul des disjoncteurs moteur : `docs/RAPPORT_v44_2026-11-26.md`.

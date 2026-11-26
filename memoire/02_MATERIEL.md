@@ -13,7 +13,7 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 | TR1 | TEMCo TT1041, 480 D / 400 Y-230, 15 kVA | variante US, hors armoire |
 | -XR1, -XR2 (ancien X12) | 2 répartiteurs 4P 125 A 7 départs AEE300427 par armoire | non dessinés depuis le 29/10 (renvois directs QF1 → bus f11). Fil 4 mm² seulement : seuls les 5 petits départs (1,5-6 mm²) serrent. QF1 → XR1, puis 1 pont 4 mm² par pôle XR1 → XR2 (la borne de QF1 n'accepte pas 2 × 4 mm²) [D 04/11]. Repères XR1 et XR2 [D 05/11]. Affectation des départs : `implantation/` page 5 ; **13/11 (Julien, monté)** : XR1 et XR2 **collés côte à côte sur le même rail que QS1 / QF1 (R2)** ; ce rail est plein. XR2 n'est plus sur le R4. Électriquement rien ne change (QF1 → XR1 → XR2, toujours non dessinés : renvois QF1 → bus f11). Ponts XR1 → XR2 : 1 pont 4 mm² par pôle, sauf indication contraire de Julien |
 | (ancien X13) | Legrand 404839, bornier de terre 27 | non dessiné depuis le 29/10 (départs PE au f10) ; repère à fixer |
-| QM1 / QM2 | Schneider GV2ME14, réglés 6,5 A | amont variateurs |
+| QM1 / QM2 | Schneider GV2ME14 (6-10 A) au schéma ; **achetés : GV2ME10 (4-6,3 A) x 2 et GV2ME14 x 2, référence montée à lire** [?] (Julien 26/11 : pas sûr) | amont variateurs ; pleine charge 5 A (entrée MCX91A), mini SEW 5,5 A : GV2ME10 réglé 6,3 A ou GV2ME14 réglé 6-6,5 A (`docs/RAPPORT_v44_2026-11-26.md`) |
 | KM1 / KM2 | Schneider LC1D09BD (bobine 24 V CC) | contacteurs variateurs |
 | QF2 / QF3 | Schneider iC60N A9F74202, 2P 2 A courbe C | freins ; BE5 400 V CA : maintien 0,18 A, appel 1,06 A (doc SEW 26/11) : 2 A C confirmé |
 | KF1 / KF2 | Schneider LC1D09BD | contacteurs de frein |
@@ -30,8 +30,8 @@ Source : symboles CUSTOM posés (`outils/librairie/CUSTOM/`), passation du 29/10
 ## Variateurs et moteurs (f31, f32)
 | Repère | Matériel | Remarque |
 |---|---|---|
-| U1 / U2 | SEW MCX91A-0055-5E3 (CSO, CFN) | STO X6, TF X10, X5 24 V de sauvegarde, PROFINET X40 ; doc SEW (26/11) : **TF sur X10:3 (TF1) / X10:4 (GND)**, X10:1 / X10:2 = sortie frein DB00 ; entrée 5 A, X5 6 W, X6 150 mW ; 1 mise sous tension / min max, 10 s hors tension mini |
-| M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW | frein BE5 400 V CA |
+| U1 / U2 | SEW MCX91A-0055-5E3 (CSO, CFN) | STO X6, TF X10, X5 24 V de sauvegarde, PROFINET X40 ; doc SEW (26/11) : **TF sur X10:3 (TF1) / X10:4 (GND)** (dessiné en v44), X10:1 / X10:2 = sortie frein DB00 non utilisée ; entrée 5 A, X5 6 W, X6 150 mW ; 1 mise sous tension / min max, 10 s hors tension mini |
+| M1 / M2 | SEW K39 DRN100LS4 / BE5 / TF, 2,2 kW, **1450 tr/min, 4,75 A à 400 V** (plaque et fiche, Julien 26/11), réducteur 10,61 | frein BE5 400 V CA |
 | R1 / R2 | SEW BW100-001 | **ne jamais proposer de les déplacer** |
 | W2 / W5 | Moteur 4G2,5 blindé (2XSLCY-K, 50 m en stock) | |
 | **W4** (W7 supprimé) [D 05/11, v18] | Freins M1 + M2 : **un seul** LIYCY-JZ 5G1,5 blindé de réserve (AEE261168, 80 m) | 300/500 V CA [C fiche Achat Electrique]. Conducteurs 1-2 = frein M1 (f31), 3-4 = frein M2 (f32), V/J → bornier de terre -XPE1 et boîte de dérivation côté machine (pas de borne sur rail). **Correction du 05/11** : le schéma appelle W4 / W7 les freins et W3 / W6 les sondes TF depuis la v11 ; « W3 » noté le 05/11 par l'agent d'implantation était faux (Julien : « le numéro m'importe peu ») |

@@ -640,3 +640,9 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Doc SEW : X10:1 DB00 / X10:2 GND (sortie frein), **X10:3 TF1 / X10:4 GND** (sonde) ; le schéma a la TF sur X10:1 / X10:2 : erreur à corriger [?, accord de Julien].
 - [C] Doc SEW : MCX91A-0055 entrée 5 A ; X5 6 W (8,5 W max) ; 1 mise sous tension / min, 10 s mini hors tension.
 - [C] Doc SEW : VFC^PLUS sans codeur, écart typique 0,2 × glissement nominal ; [?] n_N de la plaque.
+
+## 26/11/2026 : v44
+- [C] Julien : moteur DRN100LS4 1450 tr/min, 4,75 A (plaque et fiche). Écart de vitesse typique 0,94 tr/min par axe, 1,89 au pire entre axes [H].
+- [D] Julien : pas de relance de SEW.
+- [C] v44 : TF sur X10:3 / X10:4 (sonde pas encore câblée, Julien) ; brin V/J de W9 / W10 sans n° ; tous contrôles à 0.
+- [H] QM1 / QM2 : GV2ME10 (réglé 6,3 A) ou GV2ME14 (réglé 6-6,5 A) tiennent la pleine charge (5 A, mini SEW 5,5 A). [?] Référence montée à lire par Julien.

@@ -296,3 +296,7 @@ Détail et contexte : `memoire/revues/2026-11-20_krizox_v36_demandes.md`.
 - **Câbles W9 / W10** (f20) : présentation de Julien : composition à gauche de l'ovale (100 au-dessus du trait), ellipse « 0 200 0 200 », brin n° 4 sur le V/J.
 - **Plans de bornier** : résumé des fonctions **juste sous le cadre du repère** du bornier (largeur 2300, police 160).
 - **Nomenclature** : police la plus grande qui tient (300), blanc de colonne 0,4 x la taille.
+
+## v44 (26/11, retours de Julien sur la v43 et doc SEW)
+- **Câbles en G (W9 / W10)** : pas de numéro de brin sur le V/J (Julien), comme la règle de la revue Krizox.
+- **Sonde TF du MCX91A** : X10:3 (TF1) / X10:4 (GND), d'après la doc SEW ; X10:1 / X10:2 = sortie frein DB00, non câblée.

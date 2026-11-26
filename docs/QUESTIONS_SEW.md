@@ -81,3 +81,7 @@ Images : `memoire/sew/2026-11-26_reponses_xavier/`. Analyse : `docs/RAPPORT_SEW_
 | 5 (réseau) | Entrée 5 A CA ; disjoncteur moteur ≥ 1,1 × courant calculé ou × I nominal moteur | Partielle : appel / précharge sans réponse |
 | 10 (vitesse) | VFC^PLUS sans codeur : écart typique 0,2 × glissement nominal | Partielle : dispersion, échauffement, tension réseau sans réponse ; n_N de plaque nécessaire |
 | 12 (mises sous tension) | 1 par minute au plus ; 10 s mini hors tension | **Réglée** (1 / h visé) |
+
+### Suite du 26/11 (Julien)
+- Plaque et fiche moteur : 1450 tr/min, 4,75 A à 400 V. Vitesse : 0,94 tr/min par axe, 1,89 tr/min entre les axes au pire (≤ 2).
+- **Pas de relance de SEW** sur les points sans réponse (« on reste tel quel »). TF dessinée sur X10:3 / X10:4 en v44 (pas encore câblée).

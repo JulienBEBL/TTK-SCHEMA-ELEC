@@ -9,10 +9,10 @@ Assistant : lire d'abord `CLAUDE.md`, puis `memoire/` (README, 10, puis 01 à 09
 ## État actuel (26/11/2026)
 | | |
 |---|---|
-| Dernière version | **v43**, `schema/generes/release/TTK_2026-11-26_v43.xrs` (rapport `docs/RAPPORT_v43_2026-11-26.md`) |
+| Dernière version | **v44**, `schema/generes/release/TTK_2026-11-26_v44.xrs` (rapport `docs/RAPPORT_v44_2026-11-26.md`) |
 | Contenu | 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros de fil, 168 bornes ; boîte +BJM, plans de bornier f70-f73, liste des câbles f80, nomenclature f90-f92 générés par le script |
 | Contrôles | `sh outils/controles/tout.sh <essai.xrs> JJ/MM/AAAA` : tout à 0 (verifier : 0 erreur, 28 attentions connues) |
-| En attente | Relecture de la v43 par Julien dans WinRelais ; question du brin V/J n° 4 (W9 / W10) ; points ouverts : `memoire/05_POINTS_OUVERTS.md` |
+| En attente | Relecture de la v44 par Julien dans WinRelais ; référence montée de QM1 / QM2 ; points ouverts : `memoire/05_POINTS_OUVERTS.md` |
 | Implantation de l'armoire | v13 (20/11, schéma v36), `implantation/release/` ; à régénérer (accord de Julien avant push) |
 
 ## La machine en bref

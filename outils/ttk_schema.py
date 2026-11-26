@@ -245,11 +245,11 @@ SOURCES_NUM = [
     ("55", "K501", [("L+ capt", 0, 1)], 0),          # v38 : sur le f60 (alimentation)            # 24 V capteurs (L+ capt CPU -> -X21.14) : 6001
     ("51", "K501", [("Q0.0", 0, 1), ("Q0.1", 0, 2), ("Q0.2", 0, 3), ("Q0.3", 0, 4), ("Q0.4", 0, 5), ("Q0.5", 0, 6)], 0),
     # 16/11 : f31 / f32 (variateurs) : U1 / U2 -> moteur U V W (01-03), résistance de freinage +R / -R (11 / 12),
-    # chaîne STO X6:3 -> U2 X6:1 (21) et X6:4 -> U2 X6:2 (20, 0 V), sonde TF X10:1 / X10:2 (31 / 32)
+    # chaîne STO X6:3 -> U2 X6:1 (21) et X6:4 -> U2 X6:2 (20, 0 V), sonde TF X10:3 / X10:4 (31 / 32 ; doc SEW 26/11)
     ("20", "T201", [("X2:U", 0, 1), ("X2:V", 0, 2), ("X2:W", 0, 3)], 0), ("20", "T201", [("X2:+R", 0, 1), ("X2:-R", 0, 2)], 10),
-    ("20", "T201", [("X6:3", 0, 1), ("X6:4", 0, 0)], 20), ("20", "T201", [("X10:1", 0, 1), ("X10:2", 0, 2)], 30),
+    ("20", "T201", [("X6:3", 0, 1), ("X6:4", 0, 0)], 20), ("20", "T201", [("X10:3", 0, 1), ("X10:4", 0, 2)], 30),
     ("21", "T211", [("X2:U", 0, 1), ("X2:V", 0, 2), ("X2:W", 0, 3)], 0), ("21", "T211", [("X2:+R", 0, 1), ("X2:-R", 0, 2)], 10),
-    ("21", "T211", [("X10:1", 0, 1), ("X10:2", 0, 2)], 30),
+    ("21", "T211", [("X10:3", 0, 1), ("X10:4", 0, 2)], 30),
     # f40 : KA1 (sorties de gauche à droite, rangée du haut puis du bas ; Z1 = entrée I1.5, voir f60), FA1, puis la boucle de retour Y1 -> Y2
     ("40", "K401", [("S11", 0, 1), ("S21", 0, 2), ("Y1", 0, 3), ("14", 0, 4), ("24", 0, 5), ("34", 0, 6)], 0),
     ("40", "F401", [("1", 0, 1)], 10), ("40", "KM1", [("22", 0, 1)], 20), ("40", "KM2", [("22", 0, 1)], 30),
@@ -1277,11 +1277,12 @@ for f, t, r, m, w1, w2, w3, km, qf in (("20", "T201", "R201", "M201", "W201", "W
     # broche 2 au-dessus de la broche 3, renvois décalés en x (pas de recouvrement des flèches)
     renvoi("12", out12[(qf, "4/T2")], f, W(f, [BM["2"]["1"], (M["2"].x, 10000), (16800, 10000)], "L"), "L")
     renvoi("12", out12[(qf, "6/T3")], f, W(f, [BM["3"]["1"], (M["3"].x, 10400), (14400, 10400)], "L"), "L")
-    # sonde TF : remonte à droite du variateur vers X10 (1b -> X10:1 impose un croisement)
+    # sonde TF : remonte à droite du variateur vers X10:3 (TF1) / X10:4 (GND) (doc SEW, Xavier 26/11 ;
+    # X10:1 / X10:2 = sortie de commande de frein DB00, non utilisée ; avant la v44 : TF sur X10:1 / X10:2, faux)
     # v42 (Julien 26/11 : variateur élargi, pas de 600) : remontée de la sonde TF à droite des textes du variateur
     XTF = 23600
-    W(f, [BM["1b"]["1"], (M["1b"].x, 9600), (XTF + 400, 9600), (XTF + 400, 4000), (T["X10:1"].x, 4000), T["X10:1"]], "PDC")
-    W(f, [BM["2b"]["1"], (M["2b"].x, 8800), (XTF, 8800), (XTF, 4400), (T["X10:2"].x, 4400), T["X10:2"]], "PDC")
+    W(f, [BM["1b"]["1"], (M["1b"].x, 9600), (XTF + 400, 9600), (XTF + 400, 4000), (T["X10:3"].x, 4000), T["X10:3"]], "PDC")
+    W(f, [BM["2b"]["1"], (M["2b"].x, 8800), (XTF, 8800), (XTF, 4400), (T["X10:4"].x, 4400), T["X10:4"]], "PDC")
     VAR[(f, "PN")] = W(f, [T["X40"], (T["X40"].x, 4800), (T["X40"].x + 1600, 4800)], "PN")   # v42 : 1600 à droite de X40
     g.cable(F[f], 0, 0, YC, w3, "2x0,75 blindé", f"Sonde TF {m} (1b-2b) -> {t} X10", [M["1b"].x, M["2b"].x], ovale=True, compo_dx=-1600)
     # freins M1 + M2 : UN SEUL câble -W4 (W202) LIYCY-JZ 5G1,5 blindé (05/11, W7 supprimé) : conducteurs 1-2 au f31,
@@ -2055,7 +2056,7 @@ MEMES = [
     ["M201:PE", "T201:X2:PE"], ["M211:PE", "T211:X2:PE"],
     ["B531:1", "K531:AI0+"], ["B531:2", "K531:AI0-"],
     # moteurs SEW : frein (W202 / W212) et sonde TF (W203 / W213) en direct, sans bornier
-    ["M201:1b", "T201:X10:1"], ["M201:2b", "T201:X10:2"], ["M211:1b", "T211:X10:1"], ["M211:2b", "T211:X10:2"],
+    ["M201:1b", "T201:X10:3"], ["M201:2b", "T201:X10:4"], ["M211:1b", "T211:X10:3"], ["M211:2b", "T211:X10:4"],
     ["Q421:4/T2", "M201:2"], ["Q421:6/T3", "M201:3"], ["Q422:4/T2", "M211:2"], ["Q422:6/T3", "M211:3"],
     # distribution par bus (29/10) : phases de -QF1 jusqu'aux appareils
     ["Q102:2", "Q121:1/L1", "Q122:1/L1", "Q123:1", "Q124:1", "Q132:1", "Q133:1"],

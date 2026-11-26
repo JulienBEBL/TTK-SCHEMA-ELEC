@@ -1,6 +1,14 @@
 # 06 · Travail en cours (version actuelle et suite)
 
-## Version actuelle : v43 (26/11/2026, PC PERSO JULIEN)
+## Version actuelle : v44 (26/11/2026, PC PERSO JULIEN)
+`schema/generes/release/TTK_2026-11-26_v44.xrs` : 31 folios, 254 symboles, 708 fils, 93 renvois, 407 numéros ; tous contrôles à 0. v43 dans old/ (non réenregistrée).
+Rapport : `docs/RAPPORT_v44_2026-11-26.md`. Demandes : `memoire/revues/2026-11-26_retours_julien_v43.md`.
+- f31 / f32 : sonde TF sur X10:3 / X10:4 (doc SEW, Xavier 26/11) ; plans de bornier suivent.
+- f20 : plus de n° sur le brin V/J de W9 / W10.
+- Réponse SEW analysée (`docs/RAPPORT_SEW_2026-11-26.md`) ; plaque moteur 1450 tr/min, 4,75 A.
+- Suite : Julien lit la référence de QM1 / QM2 (GV2ME10 ou GV2ME14) ; relecture de la v44 ; implantation à régénérer ; freins (D17), TIA.
+
+## Version précédente : v43 (26/11/2026, PC PERSO JULIEN)
 `schema/generes/release/TTK_2026-11-26_v43.xrs` : tous contrôles à 0. v42 dans old/ ; v42 retouchée par Julien archivée (`schema/recus/2026-11-26_v42_ouverte_WinRelais.xrs`).
 Rapport : `docs/RAPPORT_v43_2026-11-26.md`.
 - Retouches de Julien reprises : W1 (f10, textes à droite sans ovale), W9 / W10 (f20, câble 200 plus bas, composition, ellipse, brin 4 sur le V/J, texte « V/J non raccordé »).
