@@ -474,3 +474,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : mise à jour complète et passation
 - Julien : « mets à jour la mémoire, check si tout est ok, mets à jour le repo entièrement, regarde le README, puis fais un prompt de passation pour le prochain chat ».
 - Fait : README réécrit ; mémoire relue et corrigée ; outils rangés ; contrôles relancés sur la v43 (0 partout) ; `docs/PASSATION_2026-11-26.md` ; commit + push.
+
+## 26/11/2026 : texte de passation
+- Julien : demande le texte à coller pour le prochain chat.
+- Fait : texte de `docs/PASSATION_2026-11-26.md` donné tel quel dans le chat.
