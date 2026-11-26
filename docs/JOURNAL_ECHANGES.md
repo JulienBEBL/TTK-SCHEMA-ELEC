@@ -506,3 +506,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 26/11/2026 : saisie.json, GV2ME10
 - Julien : « Oui, corrige » (GV2ME14 -> GV2ME10 dans `saisie.json`).
 - Fait : 2 lignes corrigées (QM1, QM2) ; JSON valide ; schéma régénéré identique à la v45, contrôles à 0. Implantation pas régénérée.
+
+## 26/11/2026 : prompt pour refaire l'implantation
+- Julien : un prompt pour un nouveau chat qui refait l'implantation, et une phrase courte pour l'y envoyer.
+- Fait : `docs/PROMPT_IMPLANTATION_2026-11-26.md` (lecture, état v13 / schéma v45, changements depuis la v36, état des lieux avant GO, v14 indice D, règles). Essai : `extraire.py` lit la v45 (168 bornes, 37 câbles).
