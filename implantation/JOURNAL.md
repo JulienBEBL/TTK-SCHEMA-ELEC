@@ -186,3 +186,8 @@ Fichiers : `release/TTK_implantation_2026-11-26_v15.pdf` (3 pages A3) + `_verifi
 - Comme dans l'armoire : W9 / W10 (pas-à-pas) restent en PT 2,5.
 - Contrôle : 0 / 0 / 0. Boîte : 56 PT 2,5, 10 PT 4, 3 terre (PT 4).
 - Julien (26/11) : W9 / W10 en PT 2,5 et terre PT 4 à 6,2 mm confirmés. Générateur corrigé (plus de « à vérifier ») ; PDF non régénéré.
+
+## v16 (indice F) — 26/11/2026 (schéma v45), PC PERSO JULIEN
+Fichiers : `release/TTK_implantation_2026-11-26_v16.pdf` (3 pages A3) + `_verification.md` ; v15 dans `old/`.
+- Demande de Julien : régénérer sans « à vérifier » (terre PT 4 6,2 mm et W9 / W10 en PT 2,5 confirmés). Seule la note de la page 3 et l'indice changent.
+- Contrôle : 0 / 0 / 0, aucun point ouvert ; page 3 relue.

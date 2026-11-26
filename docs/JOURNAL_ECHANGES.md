@@ -543,3 +543,7 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 - Julien : « 1 oui 2 oui » (W9 / W10 en PT 2,5 ; terre PT 4 à 6,2 mm).
 - Fait : noté (mémoire 08, décisions, journal d'implantation) ; « à vérifier » retiré du générateur et de `saisie.json` ; PDF v15 non régénéré.
 - Julien : « Oui, pousse ». Fait : poussé sur `main`.
+
+## 26/11/2026 : implantation v16
+- Julien : « régénère la v16 sans le à vérifier ».
+- Fait : v16 indice F (v15 dans `old/`) ; contrôle 0 / 0 / 0 ; page 3 relue. Commit local, push sur accord.

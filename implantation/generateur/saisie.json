@@ -3,8 +3,8 @@
  "document": {
   "titre": "Armoire +A1 : implantation et borniers",
   "machine": "Machine de tressage TTK, n° 001-EU",
-  "indice": "E",
-  "version": "v15",
+  "indice": "F",
+  "version": "v16",
   "date": "26/11/2026",
   "auteur": "THRO.J",
   "societe": "BEBL",
@@ -33,6 +33,11 @@
     "E",
     "26/11/2026",
     "Boîte +BJM-X1 : types de borne choisis par Julien (26/11) : PT 2,5 ; PT 4 pour les moteurs M1 / M2 et les freins ; terre en PT 4."
+   ],
+   [
+    "F",
+    "26/11/2026",
+    "Boîte +BJM-X1 : terre PT 4 (6,2 mm) et pas-à-pas W9 / W10 en PT 2,5 confirmés (Julien 26/11), mention « à vérifier » retirée. Bornes inchangées."
    ]
   ]
  },

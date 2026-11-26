@@ -1,6 +1,6 @@
 # 08 · Dossier d'implantation +A1 (généré)
 
-Créé le 17/11/2026. Version actuelle : **v15, indice E** (26/11, schéma v45, PC PERSO JULIEN), **3 pages** (plaque, borniers R3-R5, boîte +BJM-X1), en attente des retours de Julien. v13 et avant dans `old/`.
+Créé le 17/11/2026. Version actuelle : **v16, indice F** (26/11, schéma v45, PC PERSO JULIEN), **3 pages** (plaque, borniers R3-R5, boîte +BJM-X1), en attente des retours de Julien. v13 et avant dans `old/`.
 
 ## Demande de Julien (18/11) [D]
 - **2 pages seulement** : plan de la plaque, détail des borniers (bornes élargies, groupes par câble / fonction). **26/11 : 3e page gardée** (bornier de la boîte +BJM-X1, Julien) : le dossier fait 3 pages. Générateur gardé, **draw.io abandonné**.
@@ -109,3 +109,4 @@ Points ouverts : dans `release/…_v12_verification.md` (plus de page de garde).
 - 26/11 : **3e page gardée** (Julien). Reste ouvert : type de borne de la boîte +BJM-X1.
 - 26/11 (**v15 indice E**) : types de borne de la boîte +BJM-X1 [D Julien] : **PT 2,5** ; **PT 4** pour les moteurs M1 / M2 (X1.1-3, X1.5-7) et les freins (X1.9-12) ; **terre en PT 4** (X1.4, X1.8, X1.69 ; largeur prise à 6,2 mm [H, à vérifier]). Boîte : 56 PT 2,5, 10 PT 4, 3 terre. Contrôle 0 / 0 / 0. v14 dans `old/`.
 - 26/11 : Julien confirme : pas-à-pas W9 / W10 en PT 2,5 dans la boîte ; borne de terre PT 4 = 6,2 mm. Plus de point ouvert sur l'implantation. Le PDF v15 garde la mention « à vérifier » (page 3) : elle disparaîtra à la prochaine version (générateur déjà corrigé).
+- 26/11 (**v16 indice F**, demande de Julien) : régénérée sans « à vérifier » (terre PT 4 6,2 mm et W9 / W10 en PT 2,5 confirmés). Bornes inchangées. Contrôle 0 / 0 / 0, aucun point ouvert. v15 dans `old/`.
