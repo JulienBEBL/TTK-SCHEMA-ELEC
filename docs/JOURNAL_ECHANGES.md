@@ -451,3 +451,8 @@ Une entrée par échange : date, sujet, décisions [D], points ouverts [?], remi
 ## 25/11/2026 : contour moteur, v41, contrôle de la mémoire
 - Julien : capture du f31, contour du symbole moteur beaucoup trop épais (f32 pareil) ; contrôle complet de la mémoire, commit, sync, mise à jour du dépôt.
 - Fait : cause trouvée (épaisseur 200 écrite en v40) ; symbole corrigé (3 copies) ; v41 (rapport `docs/RAPPORT_v41_2026-11-25.md`) ; contrôle `symboles.py` ajouté à `tout.sh` ; mémoire relue : 05 (2 points v38 dépassés), 06 (v41), 07 (tout.sh), 08 (préfixe), 10 (piège des retouches de symbole, copies CUSTOM), README, CLAUDE.md ; commit + push.
+
+## 26/11/2026 : captures v41 (f40, borne de terre)
+- Julien : capture du f40 (textes des retours KM1, KM2, KF1) et d'une borne de terre du plan de bornier (-X31.11) dans WinRelais.
+- Lecture : f40, textes alignés à gauche (accrochage à gauche, code 0) ; terre : jaune avec bande verte en haut et en bas, contour vert. Release v41 non réenregistrée par WinRelais.
+- Questions à Julien : f40 conforme ? rendu de la terre à garder ou à changer ?

@@ -190,6 +190,8 @@ Détail : `docs/RAPPORT_v37_2026-11-23.md`.
 ## v40 (25/11) : à regarder par Julien
 Détail : `docs/RAPPORT_v40_2026-11-25.md`.
 - **f40, question** : accrochage du texte des contacts de retour. Le fichier porte déjà le code 0 (librairie : 0 = gauche, 2 = droite, 6 = centré) : valeur vue dans WinRelais et valeur voulue ? [?]
+  26/11 : capture de Julien (v41) : textes de -KM1, -KM2, -KF1 alignés à gauche, à gauche du contact. Lecture : accrochage à gauche déjà en place ; confirmation demandée à Julien [?]
 - f31 / f32 : résistance avec son repère seul (désignation masquée, faute de place) [H].
 - f21 : pas d'image pour le bloc noir -X21.14 (aucune image noire) [?].
 - Plans de bornier : rendu du vert / jaune dans WinRelais (remplissage vérifié par calcul seulement) [?].
+  26/11 : capture de Julien (v41, -X31.11) : fond jaune, une bande verte en haut et en bas (sous les carrés de connexion), contour vert, numéro sur le jaune. Avis de Julien demandé (garder, ou plus de bandes) [?]

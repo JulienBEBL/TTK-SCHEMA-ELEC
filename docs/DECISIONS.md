@@ -592,3 +592,7 @@ Statut : [D] décision de Julien · [C] confirmé · [H] hypothèse · [?] ouver
 - [C] Julien (capture f31) : contour du moteur SEW beaucoup trop épais aux f31 / f32. Cause : erreur de l'assistant en v40 (épaisseur 200 au lieu de 20, champ de style perdu, 3 copies du symbole).
 - [C] v41 : contour à 20, trait plein ; diff v40 -> v41 = 8 lignes ; tous contrôles à 0.
 - [D] Nouveau contrôle `outils/controles/symboles.py` dans `tout.sh` (copies CUSTOM, format des contours).
+
+## 26/11/2026 : captures v41
+- [C] f40 dans WinRelais : textes des contacts de retour accrochés à gauche (code 0). Attente de la confirmation de Julien [?].
+- [C] Borne de terre des plans de bornier : rendu jaune + bandes vertes visible dans WinRelais. Avis de Julien attendu [?].
